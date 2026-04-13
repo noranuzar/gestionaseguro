@@ -1,0 +1,60 @@
+/* ============================================================
+   TOKENS DE DISEÑO — Gestionaseguro.com
+   "El Faro que guía en la oscuridad burocrática"
+   ============================================================
+   Estos tokens se usan como respaldo para componentes 
+   que no pasen por Tailwind (emails, widgets embebidos, etc.)
+   La fuente de verdad es tailwind.config.js
+   ============================================================ */
+
+:root {
+  /* --- Paleta Tierra --- */
+  --color-oliva:      #556B2F;
+  --color-oliva-light: #7d9448;
+  --color-oliva-dark:  #37441c;
+
+  --color-arena:       #F5F5DC;
+  --color-arena-light: #fefefb;
+  --color-arena-dark:  #eae5be;
+
+  --color-terracota:       #E2725B;
+  --color-terracota-light: #ee9e8b;
+  --color-terracota-dark:  #ad4534;
+
+  /* --- Semánticos --- */
+  --color-primario:   var(--color-oliva);
+  --color-secundario: var(--color-arena);
+  --color-acento:     var(--color-terracota);
+  --color-fondo:      var(--color-arena-light);
+  --color-texto:      #2a2a2a;
+  --color-texto-suave: #5a5a5a;
+
+  /* --- Tipografía --- */
+  --font-principal: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display:   'Outfit', 'Inter', sans-serif;
+
+  /* --- Espaciado --- */
+  --espacio-seccion: 5rem;
+  --radio-faro:      0.75rem;
+
+  /* --- Sombras --- */
+  --sombra-faro:    0 4px 20px rgba(85, 107, 47, 0.12);
+  --sombra-elevada: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+  /* --- Efecto Día 1 (componente destacado DT5/DT6) --- */
+  --dia1-fondo:     #FFF3EE;
+  --dia1-borde:     var(--color-terracota);
+  --dia1-icono:     var(--color-terracota);
+}
+
+/* --- Tipografía base --- */
+body {
+  font-family: var(--font-principal);
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}

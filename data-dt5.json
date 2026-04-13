@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "disposicion": "DT 5 — Protección Internacional",
+    "version": "Borrador Feb 2026",
+    "descripcion": "Ruta para solicitantes de protección internacional con solicitud anterior al 01/01/2026"
+  },
+
+  "perfil": {
+    "titulo": "¿Es esta tu ruta?",
+    "sara_norma": "Disposición Transitoria Quinta. Aplicable a personas extranjeras que hubieran presentado solicitud de protección internacional con anterioridad al 1 de enero de 2026, con independencia del estado de tramitación de dicha solicitud.",
+    "nora_traduce": "Esta ruta es para ti si pediste asilo o protección internacional ANTES del 1 de enero de 2026. No importa si te lo denegaron, si está pendiente, o si recurriste. Lo que cuenta es la FECHA en que lo pediste.",
+    "solucion_segura": "Comprueba tu resguardo de solicitud de asilo. Si la fecha es anterior al 01/01/2026, esta es tu vía. Si no tienes el resguardo, Sara puede orientarte sobre cómo obtener un duplicado."
+  },
+
+  "requisitos_especificos": [],
+
+  "documentacion": [],
+
+  "efecto_dia1_aplicable": true
+}

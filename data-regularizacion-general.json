@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "seccion": "Regularización Extraordinaria 2026",
+    "version": "Borrador Feb 2026",
+    "fuente": "3er Borrador del Real Decreto de Regularización Extraordinaria",
+    "ultima_actualizacion": "2026-02-XX",
+    "nota_vigencia": "Este contenido se basa en el 3er borrador del RD. Se actualizará cuando se publique en el BOE."
+  },
+
+  "origen_proceso": {
+    "titulo": "¿De dónde viene este proceso?",
+    "sara_norma": "La Iniciativa Legislativa Popular (ILP) 'Regularización Ya' reunió más de 700.000 firmas ciudadanas, superando ampliamente el mínimo de 500.000 requerido por la Ley Orgánica 3/1984. Fue admitida a trámite por la Mesa del Congreso y generó un compromiso parlamentario para articular un mecanismo extraordinario de regularización.",
+    "nora_traduce": "Más de 700.000 personas firmaron para que este proceso existiera. No es un rumor ni una promesa electoral: tiene respaldo ciudadano real y compromiso del Congreso. Si estás aquí, es porque la sociedad española pidió que se te diera esta oportunidad.",
+    "solucion_segura": "El proceso tiene base legal sólida. No es un bulo. Pero ATENCIÓN: hasta que no se publique en el BOE, los detalles pueden cambiar. Sigue solo fuentes oficiales."
+  },
+
+  "efecto_dia1": {
+    "titulo": "Efecto Día 1 — Tu derecho desde la admisión a trámite",
+    "sara_norma": "Conforme al borrador del RD, la admisión a trámite de la solicitud conllevará la autorización provisional para residir y trabajar en España, tanto por cuenta propia como por cuenta ajena, desde el mismo día de la admisión.",
+    "nora_traduce": "Esto significa que NO tienes que esperar meses a que resuelvan. Desde el día en que te admiten el expediente, ya puedes trabajar legalmente (con contrato o como autónomo). Lleva tu resguardo de admisión: es tu salvoconducto.",
+    "solucion_segura": "Es el punto más potente de este RD. Pero necesitas que te ADMITAN a trámite primero, así que la documentación debe estar impecable desde el primer día."
+  },
+
+  "pilares": {
+    "titulo": "Los 3 pilares que debes demostrar",
+    "items": [
+      {
+        "id": "identidad",
+        "nombre": "Identidad",
+        "sara_norma": "Acreditación de la identidad mediante pasaporte en vigor o documento de viaje válido. En caso de imposibilidad, cédula de inscripción conforme al art. 211 del Reglamento de Extranjería.",
+        "nora_traduce": "Necesitas tu pasaporte vigente (no caducado). Si no puedes renovarlo en tu consulado, existe la 'cédula de inscripción' como alternativa, pero es un trámite adicional. Revisa la fecha de tu pasaporte HOY.",
+        "solucion_segura": "Prioridad MÁXIMA. Sin identidad acreditada, no se abre expediente. Si tu pasaporte caduca pronto, renuévalo ANTES de solicitar."
+      },
+      {
+        "id": "permanencia",
+        "nombre": "Permanencia",
+        "sara_norma": "Acreditación de permanencia continuada en territorio español. El medio de prueba principal será el certificado de empadronamiento histórico colectivo, complementable con otros medios de prueba admitidos en Derecho.",
+        "nora_traduce": "Necesitas demostrar que llevas viviendo en España un tiempo continuado. El documento clave es el certificado de empadronamiento HISTÓRICO (no el simple). Se pide en tu Ayuntamiento, es gratuito, y tarda unos días. Si has cambiado de ciudad, necesitas el de cada municipio.",
+        "solucion_segura": "Requisito obligatorio. Solicita tu certificado histórico colectivo YA, aunque todavía no esté el RD publicado. No cuesta nada y tenerlo listo te da ventaja."
+      },
+      {
+        "id": "antecedentes",
+        "nombre": "Antecedentes Penales",
+        "sara_norma": "Ausencia de antecedentes penales en España y en el país de origen o de residencia habitual durante los últimos 5 años, por delitos tipificados en el ordenamiento jurídico español.",
+        "nora_traduce": "No puedes tener antecedentes penales en España ni en tu país de los últimos 5 años. Necesitarás el certificado de antecedentes de tu país (apostillado o con legalización consular) y el español (se pide online en la sede del Ministerio de Justicia).",
+        "solucion_segura": "Si tienes dudas sobre antecedentes antiguos o menores, consulta con Sara antes de solicitar. Hay matices importantes según el tipo de delito y la fecha."
+      }
+    ]
+  },
+
+  "plazos": {
+    "titulo": "Plazos clave",
+    "sara_norma": "Pendiente de confirmación en la versión final del RD. El borrador contempla un plazo de presentación de solicitudes y un plazo máximo de resolución.",
+    "nora_traduce": "Aún no hay fechas fijas. Cuando se publique el RD en el BOE, actualizaremos esto inmediatamente. NO te fíes de nadie que te diga fechas concretas ahora mismo.",
+    "solucion_segura": "ALERTA: Si alguien te cobra por 'reservarte plaza' o te dice que el plazo ya empezó, es una ESTAFA. El plazo comenzará cuando el RD se publique en el BOE. Ni antes."
+  },
+
+  "alertas_bulos": [
+    {
+      "bulo": "Ya se puede solicitar la regularización",
+      "realidad": "FALSO. Hasta que el RD no se publique en el BOE, no se puede presentar ninguna solicitud.",
+      "solucion_segura": "No pagues a nadie por 'iniciar tu trámite' antes de tiempo. Prepara documentos, pero no presentes nada aún."
+    },
+    {
+      "bulo": "Solo pueden regularizarse los que tengan contrato de trabajo",
+      "realidad": "FALSO según el borrador. Existen múltiples vías (DT5 para protección internacional, DT6 para arraigo por distintos criterios).",
+      "solucion_segura": "Infórmate de TODAS las vías antes de descartarte. Puede que califiques por una ruta que no conocías."
+    }
+  ]
+}

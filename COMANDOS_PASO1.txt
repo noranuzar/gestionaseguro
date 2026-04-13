@@ -1,0 +1,54 @@
+# ============================================================
+# MÓDULO 2 — PASO 1: CREAR ESTRUCTURA DE CARPETAS
+# ============================================================
+# Copia y pega estos comandos en tu terminal (Git Bash en Windows, Terminal en Mac)
+# IMPORTANTE: Pégalos TODOS de una vez. Se ejecutan en secuencia.
+# ============================================================
+
+# 1. Ir al Escritorio (elige TU línea según tu sistema)
+# ------- Si usas WINDOWS con Git Bash: -------
+cd ~/Desktop
+
+# ------- Si usas MAC: -------
+# cd ~/Desktop
+
+# ------- Si usas WINDOWS con CMD en español: -------
+# cd %USERPROFILE%\Escritorio
+
+# 2. Crear la carpeta del proyecto y entrar en ella
+mkdir gestionaseguro
+cd gestionaseguro
+
+# 3. Inicializar el repositorio Git
+git init
+
+# 4. Crear TODA la estructura de carpetas
+mkdir -p css
+mkdir -p js
+mkdir -p components
+mkdir -p regularizacion/dt5
+mkdir -p regularizacion/dt6
+mkdir -p educacion
+mkdir -p trabajo
+mkdir -p comunidad/red-apoyo
+mkdir -p comunidad/fondo-solidario
+
+# 5. Verificar que todo se creó bien (verás el árbol de carpetas)
+find . -type d | sort
+
+# ============================================================
+# Si todo salió bien, deberías ver algo así:
+#
+# .
+# ./components
+# ./comunidad
+# ./comunidad/fondo-solidario
+# ./comunidad/red-apoyo
+# ./css
+# ./educacion
+# ./js
+# ./regularizacion
+# ./regularizacion/dt5
+# ./regularizacion/dt6
+# ./trabajo
+# ============================================================

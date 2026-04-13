@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "disposicion": "DT 6 — Arraigo Extraordinario",
+    "version": "Borrador Feb 2026",
+    "descripcion": "Ruta basada en criterios laborales, familiares o de vulnerabilidad"
+  },
+
+  "perfil": {
+    "titulo": "¿Es esta tu ruta?",
+    "sara_norma": "Disposición Transitoria Sexta. Aplicable a personas extranjeras que se encuentren en España en situación irregular y puedan acreditar arraigo laboral, familiar, o circunstancias de especial vulnerabilidad, conforme a los criterios establecidos en el RD.",
+    "nora_traduce": "Esta ruta es para ti si llevas tiempo viviendo en España sin papeles y puedes demostrar que tienes vínculos aquí: has trabajado (aunque fuera sin contrato), tienes familia española o con residencia, o te encuentras en una situación de vulnerabilidad reconocida.",
+    "solucion_segura": "No te descalifiques tú mismo. La DT6 tiene varias puertas de entrada. Revisa cada criterio con calma. Si encajas en AL MENOS uno, tienes opción."
+  },
+
+  "criterios_arraigo": {
+    "laboral": {
+      "sara_norma": "Acreditación de relaciones laborales en España, con independencia de la regularidad de las mismas.",
+      "nora_traduce": "Si has trabajado en España, aunque fuera sin contrato formal, puedes acreditarlo. Nóminas, transferencias, mensajes con el empleador, testimonios de compañeros... todo suma.",
+      "solucion_segura": "Reúne TODAS las pruebas que tengas de haber trabajado. No borres conversaciones de WhatsApp con jefes o compañeros. Pueden ser prueba."
+    },
+    "familiar": {
+      "sara_norma": "Vínculos familiares con ciudadanos españoles o con residentes legales en España, en los grados y condiciones que establezca el RD.",
+      "nora_traduce": "Si tienes pareja, hijos, padres u otros familiares con papeles en España, ese vínculo te puede servir. Necesitarás documentos que prueben la relación (libro de familia, partidas de nacimiento, etc.).",
+      "solucion_segura": "Prepara los documentos familiares ya. Las partidas de nacimiento de tu país necesitan apostilla o legalización consular, y eso tarda."
+    },
+    "vulnerabilidad": {
+      "sara_norma": "Circunstancias de especial vulnerabilidad conforme a los supuestos contemplados en el RD y la legislación vigente en materia de protección social.",
+      "nora_traduce": "Situaciones como ser víctima de violencia de género, trata, explotación laboral grave, tener una enfermedad grave, o ser menor ex-tutelado. Hay más supuestos — consulta con Sara.",
+      "solucion_segura": "Si crees que estás en situación de vulnerabilidad, habla con Sara directamente. Estos casos requieren un enfoque personalizado y pueden tener vías prioritarias."
+    }
+  },
+
+  "efecto_dia1_aplicable": true
+}
