@@ -4,16 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestiona Seguro — Tu Faro en la Regularización 2026</title>
-  <meta name="description" content="Guía profesional y humana para la regularización extraordinaria 2026 en España. Información verificada del 3er borrador del Real Decreto.">
+  <meta name="description" content="Guía profesional y humana para la regularización extraordinaria 2026 en España. Información verificada del Real Decreto 316/2026 publicado en el BOE.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ============================================================
-       TOKENS — Paleta Tierra & Escala Tipográfica
-       ============================================================ */
     :root {
       --oliva: #556B2F;
       --oliva-light: #7d9448;
@@ -28,7 +25,6 @@
       --texto: #2a2218;
       --texto-suave: #5e5649;
       --blanco: #fffdf8;
-      
       --font-base: 1.125rem;
       --font-h1: clamp(2.5rem, 6vw, 4rem);
       --font-h2: clamp(1.8rem, 4vw, 2.6rem);
@@ -36,433 +32,157 @@
       --font-body-sm: 1rem;
       --font-label: 0.8rem;
       --font-nav: 0.88rem;
-      
       --transicion: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       --radio: 20px;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Source Sans 3', system-ui, sans-serif;
-      color: var(--texto);
-      background: var(--blanco);
-      font-size: var(--font-base);
-      line-height: 1.8;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
+      color: var(--texto); background: var(--blanco);
+      font-size: var(--font-base); line-height: 1.8;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
     }
-
-    h1, h2, h3, h4 {
-      font-family: 'DM Serif Display', serif;
-      line-height: 1.1;
-      color: var(--oliva-dark);
-    }
-
+    h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; line-height: 1.1; color: var(--oliva-dark); }
     a { color: inherit; text-decoration: none; }
     .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-    /* ============================================================
-       NAVBAR
-       ============================================================ */
-    .navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255, 253, 248, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(85, 107, 47, 0.1);
-      transition: all var(--transicion);
-    }
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,253,248,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(85,107,47,0.1); transition: all var(--transicion); }
     .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-    .navbar-inner {
-      height: 80px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo {
-      display: flex; align-items: center; gap: 12px;
-      font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--oliva-dark);
-    }
-    .logo-icon {
-      width: 40px; height: 40px; background: var(--oliva); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; color: var(--arena);
-      font-size: 1.1rem;
-    }
+    .navbar-inner { height: 80px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 12px; font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--oliva-dark); }
+    .logo-icon { width: 40px; height: 40px; background: var(--oliva); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--arena); font-size: 1.1rem; }
     .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-    .nav-links a { 
-      font-size: var(--font-nav);
-      font-weight: 600; color: var(--texto-suave);
-      transition: color var(--transicion);
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute; bottom: -4px; left: 0;
-      width: 0; height: 2px; background: var(--oliva);
-      transition: width var(--transicion); border-radius: 2px;
-    }
+    .nav-links a { font-size: var(--font-nav); font-weight: 600; color: var(--texto-suave); transition: color var(--transicion); position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--oliva); transition: width var(--transicion); border-radius: 2px; }
     .nav-links a:hover { color: var(--oliva); }
     .nav-links a:hover::after { width: 100%; }
-    .nav-cta {
-      background: var(--oliva) !important; color: var(--arena) !important;
-      padding: 12px 24px; border-radius: 50px;
-      font-weight: 700 !important;
-      transition: background var(--transicion), transform var(--transicion) !important;
-    }
+    .nav-cta { background: var(--oliva) !important; color: var(--arena) !important; padding: 12px 24px; border-radius: 50px; font-weight: 700 !important; transition: background var(--transicion), transform var(--transicion) !important; }
     .nav-cta::after { display: none !important; }
     .nav-cta:hover { background: var(--oliva-dark) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { width: 24px; height: 2px; background: var(--oliva-dark); border-radius: 2px; transition: var(--transicion); }
 
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px; cursor: pointer;
-      padding: 8px; background: none; border: none;
-    }
-    .hamburger span {
-      width: 24px; height: 2px; background: var(--oliva-dark);
-      border-radius: 2px; transition: var(--transicion);
-    }
+    /* HERO */
+    .hero { padding: 180px 24px 100px; text-align: center; background: radial-gradient(circle at top, rgba(85,107,47,0.06), transparent); position: relative; }
+    .hero::before { content: ''; position: absolute; top: 80px; left: 50%; transform: translateX(-50%); width: 320px; height: 320px; background: radial-gradient(circle, rgba(85,107,47,0.05) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: -1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--oliva-bg); color: var(--oliva); font-size: var(--font-label); font-weight: 700; padding: 8px 18px; border-radius: 50px; margin-bottom: 28px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(85,107,47,0.12); animation: fadeDown 0.6s ease-out both; }
+    .hero-badge .pulse { width: 8px; height: 8px; background: var(--oliva); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+    .hero h1 { font-size: var(--font-h1); margin-bottom: 24px; animation: fadeDown 0.7s ease-out 0.1s both; }
+    .hero h1 em { font-family: 'Source Sans 3', system-ui, sans-serif; font-style: normal; font-weight: 700; color: var(--terracota); letter-spacing: -0.02em; }
+    .hero-sub { font-size: 1.15rem; color: var(--texto-suave); max-width: 680px; margin: 0 auto 32px; font-weight: 300; line-height: 1.7; animation: fadeDown 0.7s ease-out 0.2s both; }
+    .hero-vigencia { display: inline-flex; align-items: center; gap: 8px; background: var(--terracota-bg); color: var(--terracota-dark); padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: var(--font-label); animation: fadeDown 0.7s ease-out 0.3s both; }
 
-    /* ============================================================
-       HERO
-       ============================================================ */
-    .hero {
-      padding: 180px 24px 100px; text-align: center;
-      background: radial-gradient(circle at top, rgba(85,107,47,0.06), transparent);
-      position: relative;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; top: 80px; left: 50%;
-      transform: translateX(-50%);
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(85,107,47,0.05) 0%, transparent 70%);
-      border-radius: 50%; pointer-events: none; z-index: -1;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--oliva-bg); color: var(--oliva);
-      font-size: var(--font-label); font-weight: 700;
-      padding: 8px 18px; border-radius: 50px;
-      margin-bottom: 28px; letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: 1px solid rgba(85, 107, 47, 0.12);
-      animation: fadeDown 0.6s ease-out both;
-    }
-    .hero-badge .pulse {
-      width: 8px; height: 8px; background: var(--oliva);
-      border-radius: 50%; animation: pulse 2s ease-in-out infinite;
-    }
-    .hero h1 {
-      font-size: var(--font-h1); margin-bottom: 24px;
-      animation: fadeDown 0.7s ease-out 0.1s both;
-    }
-    /* Sello de certeza: Sans bold contra Serif clásico */
-    .hero h1 em {
-      font-family: 'Source Sans 3', system-ui, sans-serif;
-      font-style: normal;
-      font-weight: 700;
-      color: var(--terracota);
-      letter-spacing: -0.02em;
-    }
-    .hero-sub {
-      font-size: 1.15rem;
-      color: var(--texto-suave);
-      max-width: 680px; margin: 0 auto 32px;
-      font-weight: 300; line-height: 1.7;
-      animation: fadeDown 0.7s ease-out 0.2s both;
-    }
-    .hero-vigencia {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--terracota-bg); color: var(--terracota-dark);
-      padding: 8px 16px; border-radius: 8px;
-      font-weight: 700; font-size: var(--font-label);
-      animation: fadeDown 0.7s ease-out 0.3s both;
-    }
+    /* ALERTA — RD PUBLICADO (calma, oliva) */
+    .alerta-rd { background: var(--oliva-bg); border-bottom: 3px solid var(--oliva); padding: 28px 24px; }
+    .alerta-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .alerta-badge-rd { display: inline-block; background: var(--oliva); color: var(--arena); font-size: var(--font-label); font-weight: 800; letter-spacing: 0.1em; padding: 5px 14px; border-radius: 50px; margin-bottom: 8px; }
+    .alerta-titulo { font-family: 'DM Serif Display', serif; font-size: clamp(1.15rem, 2.5vw, 1.4rem); color: var(--oliva-dark); margin-bottom: 4px; line-height: 1.25; }
+    .alerta-texto { font-size: var(--font-body-sm); line-height: 1.6; color: var(--texto-suave); max-width: 560px; }
+    .alerta-texto strong { color: var(--oliva-dark); }
+    .alerta-boton { display: inline-flex; align-items: center; gap: 8px; background: var(--oliva); color: var(--arena); font-weight: 700; font-size: var(--font-body-sm); padding: 14px 28px; border-radius: 50px; white-space: nowrap; flex-shrink: 0; transition: transform var(--transicion), background var(--transicion); }
+    .alerta-boton:hover { background: var(--oliva-dark); transform: translateY(-1px); }
 
-    /* ============================================================
-       ORIGEN — Bloque ILP
-       ============================================================ */
-    .origen {
-      max-width: 800px; margin: 0 auto 72px; padding: 0 24px;
-    }
-    .origen-card {
-      background: var(--arena-warm);
-      border: 1px solid var(--arena-dark);
-      border-radius: var(--radio); padding: 40px 36px;
-      position: relative; overflow: hidden;
-    }
-    .origen-card::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 5px; background: var(--oliva);
-    }
-    .origen-label {
-      font-size: var(--font-label); font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--oliva); margin-bottom: 12px;
-    }
+    /* ORIGEN */
+    .origen { max-width: 800px; margin: 0 auto 72px; padding: 0 24px; }
+    .origen-card { background: var(--arena-warm); border: 1px solid var(--arena-dark); border-radius: var(--radio); padding: 40px 36px; position: relative; overflow: hidden; }
+    .origen-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--oliva); }
+    .origen-label { font-size: var(--font-label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--oliva); margin-bottom: 12px; }
     .origen-card h3 { font-size: var(--font-h3); margin-bottom: 14px; }
-    .origen-card p {
-      font-size: var(--font-body-sm);
-      color: var(--texto-suave); line-height: 1.7;
-    }
+    .origen-card p { font-size: var(--font-body-sm); color: var(--texto-suave); line-height: 1.7; }
     .origen-card p strong { color: var(--texto); font-weight: 600; }
 
-    /* ============================================================
-       VÍAS — DT5 / DT6
-       ============================================================ */
+    /* VÍAS */
     .vias { padding: 80px 0; }
     .vias-header { text-align: center; margin-bottom: 48px; }
     .vias-header h2 { font-size: var(--font-h2); margin-bottom: 12px; }
-    .vias-header p {
-      font-size: 1.05rem; color: var(--texto-suave);
-      max-width: 520px; margin: 0 auto;
-    }
-    .vias-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
-    }
-    .via-card {
-      background: var(--blanco);
-      border: 1.5px solid rgba(85, 107, 47, 0.1);
-      border-radius: var(--radio); padding: 48px 36px 40px;
-      transition: all var(--transicion); cursor: pointer;
-      display: flex; flex-direction: column;
-    }
-    .via-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(85,107,47,0.08);
-    }
+    .vias-header p { font-size: 1.05rem; color: var(--texto-suave); max-width: 520px; margin: 0 auto; }
+    .vias-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .via-card { background: var(--blanco); border: 1.5px solid rgba(85,107,47,0.1); border-radius: var(--radio); padding: 48px 36px 40px; transition: all var(--transicion); cursor: pointer; display: flex; flex-direction: column; }
+    .via-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(85,107,47,0.08); }
     .via-card--dt5:hover { border-color: var(--oliva-light); }
     .via-card--dt6:hover { border-color: var(--terracota); }
-
-    .via-tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: var(--font-label); font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      padding: 6px 14px; border-radius: 50px;
-      margin-bottom: 20px; width: fit-content;
-    }
+    .via-tag { display: inline-flex; align-items: center; gap: 6px; font-size: var(--font-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 6px 14px; border-radius: 50px; margin-bottom: 20px; width: fit-content; }
     .via-card--dt5 .via-tag { background: var(--oliva-bg); color: var(--oliva); }
     .via-card--dt6 .via-tag { background: var(--terracota-bg); color: var(--terracota-dark); }
-
-    .via-icon {
-      width: 56px; height: 56px; border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px; font-size: 1.5rem;
-    }
+    .via-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.5rem; }
     .via-card--dt5 .via-icon { background: linear-gradient(135deg, var(--oliva-bg), rgba(85,107,47,0.12)); }
     .via-card--dt6 .via-icon { background: linear-gradient(135deg, var(--terracota-bg), rgba(226,114,91,0.12)); }
-
     .via-card h3 { font-size: var(--font-h3); margin-bottom: 14px; color: var(--texto); }
-    .via-card p {
-      font-size: var(--font-body-sm);
-      color: var(--texto-suave); line-height: 1.65;
-      flex-grow: 1; margin-bottom: 24px;
-    }
-    .via-fecha {
-      display: flex; align-items: center; gap: 8px;
-      font-size: var(--font-nav); font-weight: 600;
-      padding: 10px 16px; border-radius: 10px; margin-bottom: 20px;
-    }
+    .via-card p { font-size: var(--font-body-sm); color: var(--texto-suave); line-height: 1.65; flex-grow: 1; margin-bottom: 24px; }
+    .via-fecha { display: flex; align-items: center; gap: 8px; font-size: var(--font-nav); font-weight: 600; padding: 10px 16px; border-radius: 10px; margin-bottom: 20px; }
     .via-card--dt5 .via-fecha { background: var(--oliva-bg); color: var(--oliva-dark); }
     .via-card--dt6 .via-fecha { background: var(--terracota-bg); color: var(--terracota-dark); }
-
-    .via-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-weight: 600; font-size: var(--font-body-sm);
-      transition: gap var(--transicion);
-    }
+    .via-cta { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: var(--font-body-sm); transition: gap var(--transicion); }
     .via-card--dt5 .via-cta { color: var(--oliva); }
     .via-card--dt6 .via-cta { color: var(--terracota); }
     .via-card:hover .via-cta { gap: 14px; }
 
-    /* ============================================================
-       EFECTO DÍA 1 — Banner Sara & Nora
-       ============================================================ */
+    /* DÍA 1 */
     .dia1 { max-width: 1000px; margin: 0 auto 80px; padding: 0 24px; }
-    .dia1-card {
-      background: var(--oliva-bg);
-      border-radius: 28px; padding: 56px;
-      border-left: 8px solid var(--oliva);
-      position: relative; overflow: hidden;
-    }
-    .dia1-card::before {
-      content: ''; position: absolute; top: -40px; right: -40px;
-      width: 180px; height: 180px;
-      background: radial-gradient(circle, rgba(85,107,47,0.06), transparent 70%);
-      border-radius: 50%; pointer-events: none;
-    }
-    .dia1-top {
-      display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
-    }
-    .dia1-icon {
-      width: 52px; height: 52px; background: var(--terracota);
-      border-radius: 50%; display: flex; align-items: center;
-      justify-content: center; flex-shrink: 0;
-    }
-    .dia1-icon svg {
-      width: 26px; height: 26px; fill: none;
-      stroke: var(--arena); stroke-width: 2;
-      stroke-linecap: round; stroke-linejoin: round;
-    }
-    .dia1-label {
-      font-size: var(--font-label); font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.12em;
-      color: var(--terracota);
-    }
-    .dia1-from {
-      font-size: var(--font-nav); color: var(--texto-suave); font-weight: 500;
-    }
-    .dia1-card h3 {
-      font-size: var(--font-h2); margin-bottom: 20px;
-    }
-    .dia1-card h3 em {
-      font-style: italic; color: var(--terracota);
-    }
-    .dia1-body {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-    }
-    .voz {
-      padding: 28px; border-radius: 16px;
-      font-size: var(--font-body-sm); line-height: 1.7;
-    }
-    .voz--sara {
-      background: rgba(255,255,255,0.8);
-      border-left: 3px solid var(--terracota);
-    }
-    .voz--nora {
-      background: rgba(255,255,255,0.6);
-      border-left: 3px solid var(--oliva-light);
-    }
-    .voz-label {
-      font-size: var(--font-label); font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      display: block; margin-bottom: 10px;
-    }
+    .dia1-card { background: var(--oliva-bg); border-radius: 28px; padding: 56px; border-left: 8px solid var(--oliva); position: relative; overflow: hidden; }
+    .dia1-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(85,107,47,0.06), transparent 70%); border-radius: 50%; pointer-events: none; }
+    .dia1-top { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+    .dia1-icon { width: 52px; height: 52px; background: var(--terracota); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .dia1-icon svg { width: 26px; height: 26px; fill: none; stroke: var(--arena); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .dia1-label { font-size: var(--font-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--terracota); }
+    .dia1-from { font-size: var(--font-nav); color: var(--texto-suave); font-weight: 500; }
+    .dia1-card h3 { font-size: var(--font-h2); margin-bottom: 20px; }
+    .dia1-card h3 em { font-style: italic; color: var(--terracota); }
+    .dia1-body { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .voz { padding: 28px; border-radius: 16px; font-size: var(--font-body-sm); line-height: 1.7; }
+    .voz--sara { background: rgba(255,255,255,0.8); border-left: 3px solid var(--terracota); }
+    .voz--nora { background: rgba(255,255,255,0.6); border-left: 3px solid var(--oliva-light); }
+    .voz-label { font-size: var(--font-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px; }
     .voz--sara .voz-label { color: var(--terracota); }
     .voz--nora .voz-label { color: var(--oliva); }
 
-    /* ============================================================
-       PILARES
-       ============================================================ */
+    /* PILARES */
     .pilares { padding: 80px 0; }
     .pilares-header { text-align: center; margin-bottom: 40px; }
     .pilares-header h2 { font-size: var(--font-h2); margin-bottom: 10px; }
     .pilares-header p { color: var(--texto-suave); font-size: 1.05rem; }
-    .pilares-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-    }
-    .pilar {
-      background: var(--arena-warm); padding: 40px 28px;
-      border-radius: var(--radio); text-align: center;
-      border: 1px solid var(--arena-dark);
-      transition: transform var(--transicion), box-shadow var(--transicion);
-    }
-    .pilar:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(85,107,47,0.08);
-    }
-    .pilar-num {
-      width: 50px; height: 50px; background: var(--oliva); color: var(--arena);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px; font-family: 'DM Serif Display', serif;
-      font-size: 1.3rem;
-    }
+    .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pilar { background: var(--arena-warm); padding: 40px 28px; border-radius: var(--radio); text-align: center; border: 1px solid var(--arena-dark); transition: transform var(--transicion), box-shadow var(--transicion); }
+    .pilar:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(85,107,47,0.08); }
+    .pilar-num { width: 50px; height: 50px; background: var(--oliva); color: var(--arena); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-family: 'DM Serif Display', serif; font-size: 1.3rem; }
     .pilar h4 { font-size: 1.15rem; margin-bottom: 10px; }
-    .pilar p {
-      font-size: var(--font-body-sm);
-      color: var(--texto-suave); line-height: 1.65;
-    }
+    .pilar p { font-size: var(--font-body-sm); color: var(--texto-suave); line-height: 1.65; }
 
-    /* ============================================================
-       EQUIPO
-       ============================================================ */
-    .equipo {
-      max-width: 800px; margin: 0 auto 80px;
-      padding: 0 24px; text-align: center;
-    }
+    /* EQUIPO */
+    .equipo { max-width: 800px; margin: 0 auto 80px; padding: 0 24px; text-align: center; }
     .equipo h2 { font-size: var(--font-h2); margin-bottom: 10px; }
     .equipo > p { color: var(--texto-suave); margin-bottom: 36px; }
     .equipo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .persona {
-      background: var(--arena-warm); border-radius: var(--radio);
-      padding: 32px 28px; text-align: left;
-      border: 1px solid var(--arena-dark);
-    }
-    .persona__name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem; color: var(--oliva-dark); margin-bottom: 4px;
-    }
-    .persona__role {
-      font-size: var(--font-label); font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      color: var(--terracota); margin-bottom: 12px;
-    }
-    .persona p {
-      font-size: var(--font-body-sm);
-      color: var(--texto-suave); line-height: 1.65;
-    }
+    .persona { background: var(--arena-warm); border-radius: var(--radio); padding: 32px 28px; text-align: left; border: 1px solid var(--arena-dark); }
+    .persona__name { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--oliva-dark); margin-bottom: 4px; }
+    .persona__role { font-size: var(--font-label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--terracota); margin-bottom: 12px; }
+    .persona p { font-size: var(--font-body-sm); color: var(--texto-suave); line-height: 1.65; }
 
-    /* ============================================================
-       FOOTER
-       ============================================================ */
-    .footer {
-      background: var(--oliva-dark); color: rgba(245, 245, 220, 0.8);
-      padding: 80px 0 40px; margin-top: 40px;
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      gap: 60px; margin-bottom: 40px;
-    }
+    /* FOOTER */
+    .footer { background: var(--oliva-dark); color: rgba(245,245,220,0.8); padding: 80px 0 40px; margin-top: 40px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 40px; }
     .footer .logo { color: var(--arena); margin-bottom: 16px; }
-    .footer .logo-icon { background: rgba(245, 245, 220, 0.15); }
-    .footer-brand p {
-      font-size: var(--font-body-sm); line-height: 1.65; max-width: 300px;
-    }
+    .footer .logo-icon { background: rgba(245,245,220,0.15); }
+    .footer-brand p { font-size: var(--font-body-sm); line-height: 1.65; max-width: 300px; }
     .footer h4 { font-size: 0.95rem; color: var(--arena); margin-bottom: 16px; }
-    .footer-links {
-      list-style: none; display: flex; flex-direction: column; gap: 10px;
-    }
-    .footer-links a {
-      font-size: var(--font-body-sm); transition: color var(--transicion);
-    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: var(--font-body-sm); transition: color var(--transicion); }
     .footer-links a:hover { color: var(--arena); }
-    .footer-bottom {
-      padding-top: 28px;
-      border-top: 1px solid rgba(245, 245, 220, 0.1);
-      display: flex; justify-content: space-between;
-      align-items: center; font-size: 0.82rem;
-    }
+    .footer-bottom { padding-top: 28px; border-top: 1px solid rgba(245,245,220,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; }
 
-    /* ============================================================
-       ANIMATIONS
-       ============================================================ */
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.4); }
-    }
-    .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: 0.8s all ease-out;
-    }
+    /* ANIMATIONS */
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
+    .reveal { opacity: 0; transform: translateY(28px); transition: 0.8s all ease-out; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ============================================================
-       RESPONSIVE
-       ============================================================ */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .nav-links.open {
-        display: flex; flex-direction: column;
-        position: absolute; top: 80px; left: 0; right: 0;
-        background: rgba(255, 253, 248, 0.98);
-        backdrop-filter: blur(12px);
-        padding: 20px 24px 28px; gap: 20px;
-        border-bottom: 1px solid rgba(85, 107, 47, 0.08);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; background: rgba(255,253,248,0.98); backdrop-filter: blur(12px); padding: 20px 24px 28px; gap: 20px; border-bottom: 1px solid rgba(85,107,47,0.08); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
       .hero { padding: 140px 20px 80px; }
       .vias-grid { grid-template-columns: 1fr; }
       .dia1-card { padding: 32px 24px; border-radius: 20px; }
@@ -473,68 +193,51 @@
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
       .origen-card { padding: 28px 24px; }
       .via-card { padding: 36px 28px 32px; }
+      .alerta-inner { flex-direction: column; text-align: center; }
+      .alerta-texto { max-width: 100%; }
+      .alerta-boton { width: 100%; justify-content: center; }
     }
-
     @media (max-width: 480px) {
       .hero h1 { font-size: 2rem; }
       .dia1-card h3 { font-size: 1.4rem; }
     }
-    /* ============================================================
-       ALERTA — RD PUBLICADO
-       ============================================================ */
-
   </style>
 </head>
 <body>
 
-  <!-- ====== NAVBAR ====== -->
   <nav class="navbar" id="navbar">
     <div class="container navbar-inner">
-      <a href="/" class="logo">
-        <span class="logo-icon">⚓</span>
-        Gestiona Seguro
-      </a>
+      <a href="/" class="logo"><span class="logo-icon">⚓</span> Gestiona Seguro</a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#vias">Vías</a></li>
         <li><a href="#pilares">Requisitos</a></li>
         <li><a href="#equipo">Quiénes somos</a></li>
         <li><a href="#contacto" class="nav-cta">Contactar</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- ====== HERO ====== -->
   <header class="hero">
     <div class="container">
-      <div class="hero-badge">
-        <span class="pulse"></span>
-        Información verificada
-      </div>
+      <div class="hero-badge"><span class="pulse"></span> Información verificada</div>
       <h1>Tu Faro en la<br><em>Regularización 2026</em></h1>
-      <p class="hero-sub">
-        Información profesional y humana basada en el Real Decreto 316/2026, 
-        publicado en el BOE el 15 de abril. Empoderamos a la comunidad migrante con certezas.
-      </p>
+      <p class="hero-sub">Información profesional y humana basada en el Real Decreto 316/2026, publicado en el BOE el 15 de abril. Empoderamos a la comunidad migrante con certezas.</p>
       <div class="hero-vigencia">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         RD 316/2026 — BOE nº 92, 15 de abril de 2026
       </div>
     </div>
   </header>
-  <!-- ====== ALERTA — RD PUBLICADO HOY ====== -->
-  <div class="alerta-rd" id="alertaRD">
+
+  <!-- ====== ALERTA — RD PUBLICADO ====== -->
+  <div class="alerta-rd">
     <div class="container">
       <div class="alerta-inner">
         <div class="alerta-left">
-          <span class="alerta-badge">✓ BOE 15 ABRIL 2026</span>
+          <span class="alerta-badge-rd">✓ BOE 15 ABRIL 2026</span>
           <h2 class="alerta-titulo">La regularización ya es oficial</h2>
-          <p class="alerta-texto">
-            El RD 316/2026 está publicado. Plazo para solicitar: hasta el 
-            <strong>30 de junio de 2026</strong>. Hemos preparado una guía clara, paso a paso.
-          </p>
+          <p class="alerta-texto">El RD 316/2026 está publicado. Plazo para solicitar: hasta el <strong>30 de junio de 2026</strong>. Hemos preparado una guía clara, paso a paso.</p>
         </div>
         <a href="/guia-regularizacion-2026" class="alerta-boton">
           Leer la guía
@@ -543,100 +246,50 @@
       </div>
     </div>
   </div>
-  <!-- ====== ALERTA — RD PUBLICADO HOY ====== -->
-  <div class="alerta-rd" id="alertaRD">
-    <div class="container">
-      <div class="alerta-inner">
-        <div class="alerta-left">
-          <span class="alerta-badge">⚡ PUBLICADO EN EL BOE — 15 ABRIL 2026</span>
-          <h2 class="alerta-titulo">El Real Decreto 316/2026 ya es ley</h2>
-          <p class="alerta-texto">
-            La regularización extraordinaria es oficial. Tienes hasta el 
-            <strong>30 de junio de 2026</strong> para presentar tu solicitud. 
-            Hemos preparado una guía completa, paso a paso, sin lenguaje jurídico.
-          </p>
-        </div>
-        <a href="/guia-regularizacion-2026" class="alerta-boton">
-          Leer la guía completa
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
 
-  <!-- ====== ORIGEN DEL PROCESO ====== -->
   <div class="origen reveal">
     <div class="origen-card">
       <div class="origen-label">Contexto — ¿De dónde viene este proceso?</div>
       <h3>La voz de más de 700.000 personas</h3>
-      <p>
-        La <strong>Iniciativa Legislativa Popular (ILP) "Regularización Ya"</strong> reunió 
-        más de 700.000 firmas ciudadanas, superando el mínimo legal. 
-        Fue admitida a trámite por la Mesa del Congreso y generó un compromiso 
-        parlamentario para crear un mecanismo extraordinario de regularización. 
-        <strong>Esto no es un rumor:</strong> tiene respaldo ciudadano real y base legal sólida.
-      </p>
+      <p>La <strong>Iniciativa Legislativa Popular (ILP) "Regularización Ya"</strong> reunió más de 700.000 firmas ciudadanas, superando el mínimo legal. Fue admitida a trámite por la Mesa del Congreso y generó un compromiso parlamentario para crear un mecanismo extraordinario de regularización. <strong>Esto no es un rumor:</strong> tiene respaldo ciudadano real y base legal sólida.</p>
     </div>
   </div>
 
-  <!-- ====== VÍAS — DT5 / DT6 ====== -->
   <section class="vias container reveal" id="vias">
     <div class="vias-header">
       <h2>¿Cuál es tu camino?</h2>
-      <p>El borrador del Real Decreto contempla dos rutas principales. Identifica la tuya.</p>
+      <p>El Real Decreto contempla dos rutas principales. Identifica la tuya.</p>
     </div>
     <div class="vias-grid">
-
-      <!-- DT5 -->
-      <a href="/regularizacion/dt5/" class="via-card via-card--dt5">
-        <span class="via-tag">Disposición Transitoria 5</span>
+      <a href="/guia-regularizacion-2026" class="via-card via-card--dt5">
+        <span class="via-tag">Disposición Adicional 20ª</span>
         <div class="via-icon">🛡️</div>
         <h3>Solicitantes de Asilo</h3>
-        <p>
-          Para quienes pidieron protección internacional 
-          <strong>antes del 1 de enero de 2026</strong>. No importa el estado 
-          actual de tu solicitud: pendiente, denegada o en recurso.
-        </p>
+        <p>Para quienes pidieron protección internacional <strong>antes del 1 de enero de 2026</strong> y cuya solicitud o recurso aún no haya sido resuelto.</p>
         <div class="via-fecha">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
           Fecha clave: solicitud anterior al 01/01/2026
         </div>
-        <span class="via-cta">
-          Ver requisitos y pasos
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
+        <span class="via-cta">Ver requisitos y pasos <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </a>
-
-      <!-- DT6 -->
-      <a href="/regularizacion/dt6/" class="via-card via-card--dt6">
-        <span class="via-tag">Disposición Transitoria 6</span>
+      <a href="/guia-regularizacion-2026" class="via-card via-card--dt6">
+        <span class="via-tag">Disposición Adicional 21ª</span>
         <div class="via-icon">🤝</div>
         <h3>Arraigo Extraordinario</h3>
-        <p>
-          Para quienes residan en España y puedan acreditar <strong>arraigo laboral</strong> 
-          (has trabajado aquí), <strong>arraigo familiar</strong> (tienes familia con papeles) 
-          o <strong>vulnerabilidad</strong> reconocida.
-        </p>
+        <p>Para quienes estuvieran en España <strong>antes del 1 de enero de 2026</strong> y puedan acreditar <strong>vínculo laboral</strong>, <strong>convivencia familiar</strong> o <strong>vulnerabilidad</strong> reconocida.</p>
         <div class="via-fecha">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
           Criterios: laboral · familiar · vulnerabilidad
         </div>
-        <span class="via-cta">
-          Ver criterios y pasos
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
+        <span class="via-cta">Ver criterios y pasos <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </a>
-
     </div>
   </section>
 
-  <!-- ====== EFECTO DÍA 1 — Banner Sara & Nora ====== -->
   <section class="dia1 reveal">
     <div class="dia1-card">
       <div class="dia1-top">
-        <div class="dia1-icon">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
+        <div class="dia1-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <div>
           <div class="dia1-label">Efecto Día 1</div>
           <div class="dia1-from">Análisis conjunto — Sara &amp; Nora</div>
@@ -646,21 +299,16 @@
       <div class="dia1-body">
         <div class="voz voz--sara">
           <span class="voz-label">Sara — La norma</span>
-          La admisión a trámite habilita de forma provisional para residir 
-          y trabajar en España, tanto por cuenta ajena como por cuenta propia, 
-          desde el mismo día de la admisión.
+          La comunicación de inicio de tramitación habilita de forma provisional para residir y trabajar en España, tanto por cuenta ajena como por cuenta propia, en cualquier sector y en todo el territorio nacional.
         </div>
         <div class="voz voz--nora">
           <span class="voz-label">Nora — En claro</span>
-          No tienes que esperar meses. Con el resguardo de admisión ya puedes 
-          buscar un contrato legal o darte de alta como autónomo. 
-          Ese resguardo es tu salvoconducto.
+          No tienes que esperar meses. Con la comunicación de inicio ya puedes buscar un contrato legal o darte de alta como autónomo. Ese documento es tu salvoconducto.
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ====== 3 PILARES ====== -->
   <section class="pilares container reveal" id="pilares">
     <div class="pilares-header">
       <h2>Los 3 pilares del proceso</h2>
@@ -670,22 +318,21 @@
       <div class="pilar">
         <div class="pilar-num">1</div>
         <h4>Identidad</h4>
-        <p>Pasaporte en vigor o documento de viaje válido. Revisa la fecha de caducidad hoy mismo.</p>
+        <p>Pasaporte (en vigor o caducado), cédula de inscripción o título de viaje. Si puedes renovarlo, mejor, pero el caducado sirve para solicitar.</p>
       </div>
       <div class="pilar">
         <div class="pilar-num">2</div>
         <h4>Permanencia</h4>
-        <p>Certificado de empadronamiento histórico colectivo. Se pide en tu Ayuntamiento. Es gratuito.</p>
+        <p>Acreditar 5 meses de permanencia ininterrumpida en España antes de solicitar. Empadronamiento, informes médicos u otras pruebas válidas.</p>
       </div>
       <div class="pilar">
         <div class="pilar-num">3</div>
         <h4>Antecedentes</h4>
-        <p>Sin antecedentes penales en España ni en tu país de origen en los últimos 5 años.</p>
+        <p>Carecer de antecedentes penales en España y en tu país de origen. Si tu país tarda en enviar el certificado, hay un mecanismo por vía diplomática.</p>
       </div>
     </div>
   </section>
 
-  <!-- ====== EQUIPO ====== -->
   <section class="equipo reveal" id="equipo">
     <h2>Quiénes somos</h2>
     <p>Ex-migrantes que hoy servimos al colectivo con rigor profesional y empatía.</p>
@@ -703,24 +350,20 @@
     </div>
   </section>
 
-  <!-- ====== FOOTER ====== -->
   <footer class="footer" id="contacto">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="logo">
-            <span class="logo-icon">⚓</span>
-            Gestiona Seguro
-          </div>
+          <div class="logo"><span class="logo-icon">⚓</span> Gestiona Seguro</div>
           <p>Traduciendo la burocracia en oportunidades reales para el colectivo migrante en España.</p>
         </div>
         <div>
           <h4>Secciones</h4>
           <ul class="footer-links">
+            <li><a href="/guia-regularizacion-2026">Guía Regularización</a></li>
             <li><a href="/regularizacion/">Regularización</a></li>
             <li><a href="/educacion/">Educación</a></li>
             <li><a href="/trabajo/">Trabajo</a></li>
-            <li><a href="/comunidad/red-apoyo/">Red de Apoyo</a></li>
           </ul>
         </div>
         <div>
@@ -733,36 +376,19 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Gestiona Seguro. Todos los derechos reservados.</span>
-        <span>RD 316/2026 — BOE nº 92, 15 de abril de 2026</span>
+        <span>Basado en RD 316/2026 (BOE 15/04/2026) · No sustituye asesoría legal individual</span>
       </div>
     </div>
   </footer>
 
-  <!-- ====== SCRIPTS ====== -->
   <script>
-    // Navbar scroll
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    });
-
-    // Hamburger
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('open'));
-    });
-
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
+    hamburger.addEventListener('click', () => { navLinks.classList.toggle('open'); });
+    navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => navLinks.classList.remove('open')); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 
