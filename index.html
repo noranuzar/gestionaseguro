@@ -208,6 +208,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .hero h1 { font-size: 2rem; }
       .dia1-card h3 { font-size: 1.4rem; }
     }
+    .contador { font-weight: 700; color: var(--oliva); }
+    .persona__tragsatec {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: var(--oliva-bg);
+  border-left: 3px solid var(--oliva);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.85rem;
+  color: var(--oliva-dark);
+  line-height: 1.55;
+  font-weight: 500;
+}
   </style>
 </head>
 <body>
@@ -247,7 +259,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="alerta-left">
           <span class="alerta-badge-rd">✓ BOE 15 ABRIL 2026</span>
           <h2 class="alerta-titulo">La regularización ya es oficial</h2>
-          <p class="alerta-texto">El RD 316/2026 está publicado. Plazo para solicitar: hasta el <strong>30 de junio de 2026</strong>. Hemos preparado una guía clara, paso a paso.</p>
+          <p class="alerta-texto">El RD 316/2026 está publicado. Plazo para solicitar: hasta el <strong>30 de junio de 2026</strong>. <span class="contador" id="contadorIndex"></span> Hemos preparado una guía clara, paso a paso.</p>
         </div>
        <a href="guia-regularizacion-2026.html" class="alerta-boton">
           Leer la guía
@@ -352,12 +364,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="persona__role">Abogada de extranjería</div>
         <p>Especialista en derecho migratorio. Ancla cada información en la norma y el BOE para que sepas exactamente dónde pisas.</p>
       </div>
-      <div class="persona">
+    <div class="persona">
         <div class="persona__name">Nora Núñez Zárate</div>
         <div class="persona__role">Gestora técnica · +15 años en administración</div>
         <p>Traduce la burocracia a pasos claros. Su misión: que puedas hacer tus trámites tú mismo, sin depender de nadie.</p>
+        <p class="persona__tragsatec">Trabajó 5 años en TRAGSATEC, la misma entidad que el Gobierno ha designado para tramitar estos expedientes de regularización. Conoce el sistema desde dentro.</p>
       </div>
-    </div>
   </section>
 
   <footer class="footer" id="contacto">
@@ -400,6 +412,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => navLinks.classList.remove('open')); });
     const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Contador discreto
+(function() {
+  const fin = new Date('2026-06-30T23:59:59');
+  const hoy = new Date();
+  const dias = Math.max(0, Math.ceil((fin - hoy) / (1000 * 60 * 60 * 24)));
+  const els = document.querySelectorAll('.contador');
+  if (dias > 0) {
+    els.forEach(el => el.textContent = '(' + dias + ' días restantes)');
+  } else {
+    els.forEach(el => el.textContent = '(plazo finalizado)');
+  }
+})();
   </script>
 
 </body>
