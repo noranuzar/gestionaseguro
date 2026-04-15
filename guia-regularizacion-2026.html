@@ -445,6 +445,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .card, .path-card, details, .step {
     animation: fadeIn 0.4s ease both;
   }
+  .contador { font-weight: 700; opacity: 1; }
 </style>
 </head>
 <body>
@@ -485,8 +486,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- ════════ DEADLINE ════════ -->
   <div class="deadline">
     <span class="date">Hasta el 30 de junio de 2026</span>
-    <span class="sub">Fecha límite para presentar tu solicitud. No esperes al último día.</span>
-  </div>
+    <span class="sub">Fecha límite para presentar tu solicitud. <span class="contador" id="contadorGuia"></span></span>
+</div>
 
   <!-- ════════ 2. ¿QUIÉN PUEDE SOLICITAR? ════════ -->
   <div class="section-label">
@@ -758,7 +759,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     Última actualización: 15 de abril de 2026
   </div>
 </footer>
-
+<script>
+(function() {
+  var fin = new Date('2026-06-30T23:59:59');
+  var hoy = new Date();
+  var dias = Math.max(0, Math.ceil((fin - hoy) / (1000 * 60 * 60 * 24)));
+  var els = document.querySelectorAll('.contador');
+  if (dias > 0) {
+    els.forEach(function(el) { el.textContent = 'Quedan ' + dias + ' días.'; });
+  } else {
+    els.forEach(function(el) { el.textContent = 'El plazo ha finalizado.'; });
+  }
+})();
+</script>
 </body>
 </html>
 
