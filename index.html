@@ -479,6 +479,71 @@
       .hero h1 { font-size: 2rem; }
       .dia1-card h3 { font-size: 1.4rem; }
     }
+    /* ============================================================
+       ALERTA — RD PUBLICADO
+       ============================================================ */
+    .alerta-rd {
+      background: linear-gradient(135deg, var(--terracota) 0%, var(--terracota-dark) 100%);
+      color: #fff;
+      padding: 40px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .alerta-rd::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+    .alerta-rd::after {
+      content: '';
+      position: absolute; bottom: -40px; left: 10%;
+      width: 120px; height: 120px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    .alerta-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 32px;
+      position: relative; z-index: 1;
+    }
+    .alerta-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      font-size: var(--font-label); font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 6px 16px; border-radius: 50px;
+      margin-bottom: 12px;
+    }
+    .alerta-titulo {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      color: #fff; margin-bottom: 8px; line-height: 1.2;
+    }
+    .alerta-texto {
+      font-size: 1rem; line-height: 1.6;
+      opacity: 0.92; max-width: 520px;
+    }
+    .alerta-texto strong { color: #fff; }
+    .alerta-boton {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fff; color: var(--terracota-dark);
+      font-weight: 700; font-size: 1rem;
+      padding: 16px 32px; border-radius: 50px;
+      white-space: nowrap; flex-shrink: 0;
+      transition: transform var(--transicion), box-shadow var(--transicion);
+    }
+    .alerta-boton:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    @media (max-width: 768px) {
+      .alerta-inner { flex-direction: column; text-align: center; }
+      .alerta-texto { max-width: 100%; }
+      .alerta-boton { width: 100%; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -511,15 +576,35 @@
       </div>
       <h1>Tu Faro en la<br><em>Regularización 2026</em></h1>
       <p class="hero-sub">
-        Información profesional y humana basada en el borrador oficial 
-        del 18 de febrero. Empoderamos a la comunidad migrante con certezas.
+        Información profesional y humana basada en el Real Decreto 316/2026, 
+        publicado en el BOE el 15 de abril. Empoderamos a la comunidad migrante con certezas.
       </p>
       <div class="hero-vigencia">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        Basado en 3er Borrador del Real Decreto (Feb 2026)
+        RD 316/2026 — BOE nº 92, 15 de abril de 2026
       </div>
     </div>
   </header>
+  <!-- ====== ALERTA — RD PUBLICADO HOY ====== -->
+  <div class="alerta-rd" id="alertaRD">
+    <div class="container">
+      <div class="alerta-inner">
+        <div class="alerta-left">
+          <span class="alerta-badge">⚡ PUBLICADO EN EL BOE — 15 ABRIL 2026</span>
+          <h2 class="alerta-titulo">El Real Decreto 316/2026 ya es ley</h2>
+          <p class="alerta-texto">
+            La regularización extraordinaria es oficial. Tienes hasta el 
+            <strong>30 de junio de 2026</strong> para presentar tu solicitud. 
+            Hemos preparado una guía completa, paso a paso, sin lenguaje jurídico.
+          </p>
+        </div>
+        <a href="/guia-regularizacion-2026" class="alerta-boton">
+          Leer la guía completa
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- ====== ORIGEN DEL PROCESO ====== -->
   <div class="origen reveal">
@@ -690,7 +775,7 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Gestiona Seguro. Todos los derechos reservados.</span>
-        <span>Basado en 3er Borrador RD · No sustituye asesoría legal individual</span>
+        <span>RD 316/2026 — BOE nº 92, 15 de abril de 2026</span>
       </div>
     </div>
   </footer>
