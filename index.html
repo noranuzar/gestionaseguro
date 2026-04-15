@@ -204,6 +204,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .alerta-texto { max-width: 100%; }
       .alerta-boton { width: 100%; justify-content: center; }
     }
+    .recursos div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
     @media (max-width: 480px) {
       .hero h1 { font-size: 2rem; }
       .dia1-card h3 { font-size: 1.4rem; }
@@ -330,7 +331,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </section>
-
+<!-- ====== RECURSOS OFICIALES ====== -->
+  <section class="recursos container reveal" style="padding-bottom: 40px;">
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <a href="https://www.inclusion.gob.es/documents/d/guest/entidades-colaboradoras-150426-1" 
+         target="_blank" rel="noopener"
+         style="background: var(--oliva-bg); border: 1.5px solid rgba(85,107,47,0.15); border-radius: var(--radio); padding: 28px 24px; text-decoration: none; transition: transform 0.3s ease, box-shadow 0.3s ease; display:block;">
+        <div style="font-size:1.5rem; margin-bottom:10px;">🤝</div>
+        <div style="font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--oliva-dark); margin-bottom: 6px;">Entidades colaboradoras</div>
+        <div style="font-size: 0.9rem; color: var(--texto-suave); line-height: 1.55; margin-bottom: 12px;">Más de 200 organizaciones que te asesoran gratis y pueden presentar tu solicitud.</div>
+        <span style="font-size: 0.85rem; font-weight: 700; color: var(--oliva);">Ver lista completa →</span>
+      </a>
+      <a href="/formulario-vulnerabilidad-EX32.pdf" 
+         target="_blank" rel="noopener"
+         style="background: var(--arena-warm); border: 1.5px solid var(--arena-dark); border-radius: var(--radio); padding: 28px 24px; text-decoration: none; transition: transform 0.3s ease, box-shadow 0.3s ease; display:block;">
+        <div style="font-size:1.5rem; margin-bottom:10px;">📄</div>
+        <div style="font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--oliva-dark); margin-bottom: 6px;">Formulario vulnerabilidad</div>
+        <div style="font-size: 0.9rem; color: var(--texto-suave); line-height: 1.55; margin-bottom: 12px;">Formulario EX-32 oficial. Lo rellena y sella la entidad que certifica tu situación.</div>
+        <span style="font-size: 0.85rem; font-weight: 700; color: var(--terracota);">Descargar PDF →</span>
+      </a>
+    </div>
+  </section>
   <section class="pilares container reveal" id="pilares">
     <div class="pilares-header">
       <h2>Los 3 pilares del proceso</h2>
