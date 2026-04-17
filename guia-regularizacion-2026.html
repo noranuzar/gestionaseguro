@@ -515,7 +515,373 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </div>
   </div>
+<!-- ============================================================ -->
+<!-- BLOQUE: Requisitos vía laboral — PARA PEGAR EN               -->
+<!-- guia-regularizacion-2026.html                                -->
+<!-- Ubicación: dentro del apartado sobre la DA 21ª vía laboral   -->
+<!-- ============================================================ -->
 
+<style>
+  .gs-guia {
+    --gs-verde-oscuro: #2d4a3e;
+    --gs-verde-claro: #e8efe9;
+    --gs-verde-muy-claro: #f5f8f5;
+    --gs-naranja: #d97757;
+    --gs-naranja-suave: #f5e4db;
+    --gs-naranja-claro: #fdf2ec;
+    --gs-texto: #1f2a25;
+    --gs-texto-suave: #4a5550;
+    --gs-borde: #d4ddd6;
+
+    background: white;
+    border-radius: 14px;
+    padding: 36px 32px;
+    box-shadow: 0 2px 20px rgba(45, 74, 62, 0.06);
+    border: 1px solid var(--gs-borde);
+    max-width: 860px;
+    margin: 40px auto;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--gs-texto);
+    line-height: 1.6;
+  }
+  .gs-guia h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--gs-verde-oscuro);
+    line-height: 1.25;
+  }
+  .gs-guia .gs-intro {
+    font-size: 15.5px;
+    color: var(--gs-texto-suave);
+    margin-bottom: 28px;
+  }
+  .gs-guia .gs-intro strong { color: var(--gs-verde-oscuro); }
+  .gs-guia .gs-cards {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .gs-guia .gs-card {
+    border-radius: 12px;
+    padding: 22px 24px;
+    border: 1px solid var(--gs-borde);
+    position: relative;
+    overflow: hidden;
+  }
+  .gs-guia .gs-card-num {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.12;
+  }
+  .gs-guia .gs-card h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--gs-verde-oscuro);
+  }
+  .gs-guia .gs-card-azul { background: var(--gs-verde-muy-claro); border-color: var(--gs-verde-claro); }
+  .gs-guia .gs-card-azul .gs-card-num { color: var(--gs-verde-oscuro); }
+  .gs-guia .gs-card-naranja { background: var(--gs-naranja-claro); border-color: var(--gs-naranja-suave); }
+  .gs-guia .gs-card-naranja .gs-card-num { color: var(--gs-naranja); }
+  .gs-guia .gs-datos { list-style: none; padding: 0; margin: 0; }
+  .gs-guia .gs-datos li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 15px;
+    display: flex;
+    gap: 10px;
+    line-height: 1.5;
+  }
+  .gs-guia .gs-datos li:last-child { border-bottom: none; }
+  .gs-guia .gs-dato-label {
+    font-weight: 700;
+    color: var(--gs-verde-oscuro);
+    min-width: 90px;
+  }
+  .gs-guia .gs-card-naranja .gs-dato-label { color: var(--gs-naranja); }
+  .gs-guia .gs-dato-valor strong { color: var(--gs-verde-oscuro); }
+  .gs-guia .gs-comp-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gs-verde-oscuro);
+    margin: 8px 0 14px;
+    text-align: center;
+  }
+  .gs-guia .gs-jornadas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .gs-guia .gs-jornada-card {
+    background: white;
+    border: 2px solid var(--gs-verde-claro);
+    border-radius: 12px;
+    padding: 22px 20px;
+    text-align: center;
+  }
+  .gs-guia .gs-jornada-tipo {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gs-naranja);
+    margin-bottom: 6px;
+  }
+  .gs-guia .gs-jornada-horas {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--gs-verde-oscuro);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .gs-guia .gs-jornada-horas span {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gs-texto-suave);
+    font-family: 'Inter', sans-serif;
+    display: block;
+    margin-top: 4px;
+  }
+  .gs-guia .gs-smi {
+    background: var(--gs-verde-muy-claro);
+    border-radius: 8px;
+    padding: 12px 10px;
+  }
+  .gs-guia .gs-smi-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--gs-texto-suave);
+    margin-bottom: 4px;
+  }
+  .gs-guia .gs-smi-valor {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--gs-verde-oscuro);
+  }
+  .gs-guia .gs-smi-sub {
+    font-size: 12px;
+    color: var(--gs-texto-suave);
+    margin-top: 2px;
+  }
+  .gs-guia .gs-comp-nota {
+    font-size: 13px;
+    color: var(--gs-texto-suave);
+    text-align: center;
+    padding: 12px 18px;
+    background: var(--gs-naranja-claro);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    line-height: 1.55;
+  }
+  .gs-guia .gs-comp-nota strong { color: var(--gs-naranja); }
+  .gs-guia .gs-recomendacion {
+    background: var(--gs-verde-oscuro);
+    color: white;
+    border-radius: 12px;
+    padding: 28px;
+    margin-top: 8px;
+  }
+  .gs-guia .gs-recomendacion h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+  .gs-guia .gs-recomendacion p {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.95;
+    margin-bottom: 12px;
+  }
+  .gs-guia .gs-recomendacion strong { color: #f5e4db; }
+  .gs-guia .gs-checklist { list-style: none; padding: 0; margin-top: 14px; }
+  .gs-guia .gs-checklist li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .gs-guia .gs-checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    color: var(--gs-naranja);
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .gs-guia .gs-descarga {
+    background: linear-gradient(135deg, var(--gs-naranja-claro) 0%, var(--gs-naranja-suave) 100%);
+    border: 2px solid var(--gs-naranja-suave);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .gs-guia .gs-descarga-icono {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background: var(--gs-naranja);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 800;
+  }
+  .gs-guia .gs-descarga-texto { flex: 1; }
+  .gs-guia .gs-descarga-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gs-verde-oscuro);
+    margin-bottom: 4px;
+  }
+  .gs-guia .gs-descarga-desc {
+    font-size: 14px;
+    color: var(--gs-texto-suave);
+    line-height: 1.5;
+  }
+  .gs-guia .gs-descarga-btn {
+    flex-shrink: 0;
+    background: var(--gs-verde-oscuro);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .gs-guia .gs-aviso {
+    background: #f4f0e8;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--gs-texto-suave);
+    line-height: 1.55;
+    border-left: 3px solid #d4c9a8;
+  }
+  .gs-guia .gs-aviso strong { color: var(--gs-texto); }
+  .gs-guia .gs-fecha {
+    text-align: right;
+    color: var(--gs-texto-suave);
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 14px;
+  }
+  @media (max-width: 640px) {
+    .gs-guia { padding: 28px 20px; }
+    .gs-guia h2 { font-size: 22px; }
+    .gs-guia .gs-card-num { font-size: 44px; }
+    .gs-guia .gs-jornadas { grid-template-columns: 1fr; }
+    .gs-guia .gs-descarga { flex-direction: column; text-align: center; }
+  }
+</style>
+
+<section class="gs-guia" id="requisitos-oferta-laboral">
+  <h2>Tu oferta de trabajo, explicada</h2>
+  <p class="gs-intro">Si vas por la <strong>vía laboral</strong> (DA 21ª), esto es lo que tu oferta o contrato necesita cumplir. Directo, sin rodeos.</p>
+
+  <div class="gs-cards">
+    <div class="gs-card gs-card-azul">
+      <span class="gs-card-num">1</span>
+      <h4>Lo que exige el BOE</h4>
+      <ul class="gs-datos">
+        <li><span class="gs-dato-label">Duración</span><span class="gs-dato-valor"><strong>Más de 90 días</strong>. Si es indefinido, mejor.</span></li>
+        <li><span class="gs-dato-label">Modalidad</span><span class="gs-dato-valor">Cualquier contrato válido: indefinido, fijo-discontinuo o temporal por causa.</span></li>
+        <li><span class="gs-dato-label">Datos</span><span class="gs-dato-valor">Razón social, CIF, categoría, jornada, salario y duración. Todo claro.</span></li>
+      </ul>
+    </div>
+
+    <div class="gs-card gs-card-naranja">
+      <span class="gs-card-num">2</span>
+      <h4>Lo que debes mirar tú</h4>
+      <ul class="gs-datos">
+        <li><span class="gs-dato-label">Salario</span><span class="gs-dato-valor"><strong>SMI proporcional</strong> a las horas que te contraten.</span></li>
+        <li><span class="gs-dato-label">Empresa</span><span class="gs-dato-valor">Al corriente con Hacienda y Seguridad Social.</span></li>
+        <li><span class="gs-dato-label">Convenio</span><span class="gs-dato-valor">Si el convenio paga más que el SMI, se aplica el convenio.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="gs-comp-titulo">Jornada completa o media jornada: las dos sirven</h3>
+
+  <div class="gs-jornadas">
+    <div class="gs-jornada-card">
+      <div class="gs-jornada-tipo">Jornada completa</div>
+      <div class="gs-jornada-horas">40h<span>por semana</span></div>
+      <div class="gs-smi">
+        <div class="gs-smi-label">Salario mínimo</div>
+        <div class="gs-smi-valor">17.094 €</div>
+        <div class="gs-smi-sub">brutos al año · SMI 2026</div>
+      </div>
+    </div>
+    <div class="gs-jornada-card">
+      <div class="gs-jornada-tipo">Media jornada</div>
+      <div class="gs-jornada-horas">20h<span>por semana</span></div>
+      <div class="gs-smi">
+        <div class="gs-smi-label">Salario mínimo</div>
+        <div class="gs-smi-valor">8.547 €</div>
+        <div class="gs-smi-sub">brutos al año · proporcional</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gs-comp-nota">
+    <strong>¿Y si son horas intermedias?</strong> El salario se calcula en proporción. Para 30h/semana el mínimo es 12.820 € al año. Y puedes <strong>sumar varios contratos</strong> si son compatibles entre sí.
+  </div>
+
+  <div class="gs-recomendacion">
+    <h4>Antes de firmar, revisa esto</h4>
+    <p>El RD admite tu oferta sea cual sea la jornada, pero asegúrate antes de firmar:</p>
+    <ul class="gs-checklist">
+      <li>Duración del contrato mayor a 90 días</li>
+      <li>Salario que alcance el SMI proporcional a las horas</li>
+      <li>Empresa al corriente con Hacienda y Seguridad Social</li>
+      <li>Todos los datos de la oferta completos y legibles</li>
+    </ul>
+    <p style="margin-top:16px;"><strong>Truco:</strong> si puedes sumar varias ofertas de distintos empleadores, cuenta el conjunto. Y si puedes negociar más horas, hazlo.</p>
+  </div>
+
+  <a href="/modelo-precontrato-regularizacion-2026.pdf" download class="gs-descarga">
+    <div class="gs-descarga-icono">↓</div>
+    <div class="gs-descarga-texto">
+      <div class="gs-descarga-titulo">Modelo oficial de pre-contrato</div>
+      <div class="gs-descarga-desc">Descarga el modelo del SEPE que puedes usar con tu empleador. Listo para rellenar.</div>
+    </div>
+    <div class="gs-descarga-btn">Descargar PDF</div>
+  </a>
+
+  <div class="gs-aviso">
+    <strong>Importante.</strong> Información basada en el RD 316/2026 (BOE 15/04/2026). Si tu caso es especial (hogar, autónomo, varios empleadores, cargas familiares), consúltanos antes de presentar.
+  </div>
+
+  <p class="gs-fecha">Última actualización: 17 de abril de 2026</p>
+</section>
+
+<!-- FIN BLOQUE Requisitos vía laboral -->
   <!-- ════════ 3. REQUISITOS COMUNES ════════ -->
   <div class="section-label">
     <div class="section-number">3</div>
