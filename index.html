@@ -232,7 +232,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container navbar-inner">
       <a href="/" class="logo"><span class="logo-icon">⚓</span> Gestiona Seguro</a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="guia-regularizacion-2026.html">Vías</a></li>
+       <li><a href="guia-regularizacion-2026.html">Vías</a></li>
         <li><a href="#pilares">Requisitos</a></li>
         <li><a href="#equipo">Quiénes somos</a></li>
         <li><a href="#contacto" class="nav-cta">Contactar</a></li>
@@ -320,6 +320,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="dia1-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <div>
           <div class="dia1-label">Efecto Día 1</div>
+          
           <div class="dia1-from">Análisis conjunto — Sara &amp; Nora</div>
         </div>
       </div>
@@ -335,7 +336,194 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div>
+    
   </section>
+  <!-- ============================================================ -->
+<!-- BLOQUE: Vía laboral / Jornada — PARA PEGAR EN index.html    -->
+<!-- Ubicación sugerida: debajo del bloque "Efecto Día 1"         -->
+<!-- ============================================================ -->
+
+<style>
+  .gs-jornada {
+    --gs-verde-oscuro: #2d4a3e;
+    --gs-verde-claro: #e8efe9;
+    --gs-verde-muy-claro: #f5f8f5;
+    --gs-naranja: #d97757;
+    --gs-naranja-suave: #f5e4db;
+    --gs-texto: #1f2a25;
+    --gs-texto-suave: #4a5550;
+    --gs-borde: #d4ddd6;
+
+    background: white;
+    border-radius: 14px;
+    padding: 36px 32px;
+    box-shadow: 0 2px 20px rgba(45, 74, 62, 0.06);
+    border: 1px solid var(--gs-borde);
+    max-width: 860px;
+    margin: 40px auto;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--gs-texto);
+    line-height: 1.6;
+  }
+  .gs-jornada .gs-etiqueta {
+    display: inline-block;
+    background: var(--gs-naranja-suave);
+    color: var(--gs-naranja);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .gs-jornada h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    color: var(--gs-verde-oscuro);
+  }
+  .gs-jornada .gs-respuesta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--gs-verde-claro);
+    border-left: 4px solid var(--gs-verde-oscuro);
+    padding: 20px 22px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+  }
+  .gs-jornada .gs-respuesta-si {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--gs-verde-oscuro);
+    line-height: 1;
+  }
+  .gs-jornada .gs-respuesta-texto {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .gs-jornada .gs-respuesta-texto strong { color: var(--gs-verde-oscuro); }
+  .gs-jornada .gs-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .gs-jornada .gs-chip {
+    background: var(--gs-verde-muy-claro);
+    border: 1.5px solid var(--gs-verde-claro);
+    color: var(--gs-verde-oscuro);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .gs-jornada .gs-chip-num {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    color: var(--gs-naranja);
+    font-size: 16px;
+  }
+  .gs-jornada .gs-firmas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  .gs-jornada .gs-firma {
+    padding: 14px 16px;
+    border-radius: 8px;
+    line-height: 1.55;
+  }
+  .gs-jornada .gs-firma-sara {
+    background: var(--gs-verde-claro);
+    border-left: 3px solid var(--gs-verde-oscuro);
+  }
+  .gs-jornada .gs-firma-nora {
+    background: var(--gs-naranja-suave);
+    border-left: 3px solid var(--gs-naranja);
+  }
+  .gs-jornada .gs-firma .gs-nombre {
+    font-weight: 700;
+    color: var(--gs-verde-oscuro);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+  }
+  .gs-jornada .gs-firma-nora .gs-nombre { color: var(--gs-naranja); }
+  .gs-jornada .gs-cta { text-align: center; padding-top: 8px; }
+  .gs-jornada .gs-btn {
+    display: inline-block;
+    background: var(--gs-naranja);
+    color: white;
+    text-decoration: none;
+    padding: 15px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 2px 8px rgba(217, 119, 87, 0.3);
+    transition: transform 0.15s;
+  }
+  .gs-jornada .gs-btn:hover { transform: translateY(-2px); }
+  .gs-jornada .gs-nota {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gs-texto-suave);
+    margin-top: 12px;
+  }
+  @media (max-width: 640px) {
+    .gs-jornada { padding: 28px 20px; }
+    .gs-jornada h2 { font-size: 22px; }
+    .gs-jornada .gs-respuesta-si { font-size: 36px; }
+    .gs-jornada .gs-respuesta { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .gs-jornada .gs-firmas { grid-template-columns: 1fr; }
+  }
+</style>
+
+<section class="gs-jornada">
+  <span class="gs-etiqueta">Vía laboral — DA 21ª</span>
+  <h2>¿Tienes una oferta de trabajo?</h2>
+
+  <div class="gs-respuesta">
+    <div class="gs-respuesta-si">Sí</div>
+    <div class="gs-respuesta-texto">
+      <strong>Sirve para la Regularización 2026</strong>, sea jornada completa o parcial. El RD 316/2026 no exige un número mínimo de horas. Solo pide 3 cosas:
+    </div>
+  </div>
+
+  <div class="gs-chips">
+    <div class="gs-chip"><span class="gs-chip-num">+90</span> días de duración</div>
+    <div class="gs-chip"><span class="gs-chip-num">SMI</span> proporcional a las horas</div>
+    <div class="gs-chip"><span class="gs-chip-num">✓</span> Empresa al corriente</div>
+  </div>
+
+  <div class="gs-firmas">
+    <div class="gs-firma gs-firma-sara">
+      <span class="gs-nombre">Sara — La norma</span>
+      El RD admite cualquier modalidad contractual. Duración superior a 90 días y datos completos del empleador.
+    </div>
+    <div class="gs-firma gs-firma-nora">
+      <span class="gs-nombre">Nora — En claro</span>
+      Vale jornada completa, media jornada o suma de varias ofertas. Cuantas más horas, más sólida la solicitud.
+    </div>
+  </div>
+
+  <div class="gs-cta">
+    <a href="/evaluador.html" class="gs-btn">Evalúa tu oferta en 2 minutos</a>
+    <p class="gs-nota">Actualizado el 17 de abril de 2026</p>
+  </div>
+</section>
+
+<!-- FIN BLOQUE Vía laboral / Jornada -->
 <!-- ====== RECURSOS OFICIALES ====== -->
   <section class="recursos container reveal" style="padding-bottom: 40px;">
     <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
