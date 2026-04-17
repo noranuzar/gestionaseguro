@@ -222,6 +222,62 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   line-height: 1.55;
   font-weight: 500;
 }
+    /* --- CSS MAESTRO: 3 VÍAS + SECCIÓN FAMILIAS --- */
+
+/* 1. El Grid: 3 columnas en PC, 2 en Tablet (centrada), 1 en Móvil */
+.vias-grid { 
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 24px !important; 
+}
+
+@media (max-width: 960px) {
+    .vias-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .via-card--menores { 
+        grid-column: 1 / -1; 
+        max-width: 540px; 
+        margin: 0 auto; 
+        width: 100%; 
+    }
+}
+
+/* --- LÓGICA DE 3 COLUMNAS (PC, TABLET, MÓVIL) --- */
+  .vias-grid { 
+      display: grid !important; 
+      grid-template-columns: repeat(3, 1fr) !important; 
+      gap: 24px !important; 
+  }
+
+  @media (max-width: 960px) {
+      .vias-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .via-card--menores { grid-column: 1 / -1; max-width: 540px; margin: 0 auto; width: 100%; }
+  }
+
+  @media (max-width: 640px) {
+      .vias-grid { grid-template-columns: 1fr !important; }
+      .via-card--menores { max-width: 100%; }
+  }
+
+  /* --- COLORES TARJETA MENORES (DORADO) --- */
+  .via-card--menores { background: #fdfbf5; }
+  .via-card--menores:hover { border-color: #c9922e; }
+  .via-card--menores .via-tag { background: #fbf1d9; color: #8b6914; }
+  .via-card--menores .via-icon { background: linear-gradient(135deg, #fbf1d9, rgba(201, 146, 46, 0.15)); }
+  .via-card--menores .via-fecha { background: #fbf1d9; color: #8b6914; }
+  .via-card--menores .via-cta { color: #c9922e; }
+
+  /* --- BANNER VERDE (ESPERANZA) --- */
+  .hero-menores {
+      background: linear-gradient(135deg, #2d4a3e 0%, #3d5c4e 100%);
+      color: white; border-radius: 18px; padding: 48px 40px;
+      position: relative; overflow: hidden; margin: 40px 0;
+  }
+  .hero-etiqueta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(217, 119, 87, 0.2); color: #ffd4c2;
+      padding: 7px 16px; border-radius: 30px; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; margin-bottom: 18px; border: 1px solid rgba(217, 119, 87, 0.3);
+  }
   </style>
 </head>
 <body>
@@ -284,34 +340,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <section class="vias container reveal" id="vias">
+ <section class="vias container reveal" id="vias">
     <div class="vias-header">
       <h2>¿Cuál es tu camino?</h2>
-      <p>El Real Decreto contempla dos rutas principales. Identifica la tuya.</p>
+      <p>El Real Decreto contempla dos rutas principales, y <strong>abre una vía especial</strong> para hijos menores. Identifica la tuya.</p>
     </div>
     <div class="vias-grid">
-     <a href="guia-regularizacion-2026.html" class="via-card via-card--dt5">
+      
+      <a href="guia-regularizacion-2026.html" class="via-card via-card--dt5">
         <span class="via-tag">Disposición Adicional 20ª</span>
         <div class="via-icon">🛡️</div>
         <h3>Solicitantes de Asilo</h3>
-        <p>Para quienes pidieron protección internacional <strong>antes del 1 de enero de 2026</strong> y cuya solicitud o recurso aún no haya sido resuelto.</p>
+        <p>Para quienes pidieron protección internacional <strong>antes del 1 de enero de 2026</strong> y aún no tengan resolución definitiva.</p>
         <div class="via-fecha">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          Fecha clave: solicitud anterior al 01/01/2026
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Solicitud previa al 01/01/2026
         </div>
-        <span class="via-cta">Ver requisitos y pasos <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        <span class="via-cta">Ver pasos ➔</span>
       </a>
-     <a href="guia-regularizacion-2026.html" class="via-card via-card--dt6">
+
+      <a href="guia-regularizacion-2026.html" class="via-card via-card--dt6">
         <span class="via-tag">Disposición Adicional 21ª</span>
         <div class="via-icon">🤝</div>
         <h3>Arraigo Extraordinario</h3>
-        <p>Para quienes estuvieran en España <strong>antes del 1 de enero de 2026</strong> y puedan acreditar <strong>vínculo laboral</strong>, <strong>convivencia familiar</strong> o <strong>vulnerabilidad</strong> reconocida.</p>
+        <p>Para quienes acrediten <strong>vínculo laboral</strong>, familiar o vulnerabilidad y estuvieran en España antes de 2026.</p>
         <div class="via-fecha">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          Criterios: laboral · familiar · vulnerabilidad
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Laboral · Familiar · Social
         </div>
-        <span class="via-cta">Ver criterios y pasos <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        <span class="via-cta">Ver criterios ➔</span>
       </a>
+
+      <a href="guia-regularizacion-2026.html#menores" class="via-card via-card--menores">
+        <span class="via-tag">Vía especial · DT 1ª</span>
+        <div class="via-icon">🎒</div>
+        <h3>Hijos menores</h3>
+        <p>Proceso conjunto para regularizar a tus <strong>hijos menores o con discapacidad</strong> en tu mismo expediente.</p>
+        <div class="via-fecha">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          TIE de 5 años · Sin medios
+        </div>
+        <span class="via-cta">Guía para familias ➔</span>
+      </a>
+
     </div>
   </section>
 
@@ -321,7 +392,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="dia1-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <div>
           <div class="dia1-label">Efecto Día 1</div>
-          
           <div class="dia1-from">Análisis conjunto — Sara &amp; Nora</div>
         </div>
       </div>
@@ -329,15 +399,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="dia1-body">
         <div class="voz voz--sara">
           <span class="voz-label">Sara — La norma</span>
-          La comunicación de inicio de tramitación habilita de forma provisional para residir y trabajar en España, tanto por cuenta ajena como por cuenta propia, en cualquier sector y en todo el territorio nacional.
+          La comunicación de inicio de tramitación habilita de forma provisional para residir y trabajar en España en cualquier sector.
         </div>
         <div class="voz voz--nora">
           <span class="voz-label">Nora — En claro</span>
-          No tienes que esperar meses. Con la comunicación de inicio ya puedes buscar un contrato legal o darte de alta como autónomo. Ese documento es tu salvoconducto.
+          No tienes que esperar meses. Con la comunicación de inicio ya puedes buscar un contrato legal. Ese papel es tu salvoconducto.
         </div>
       </div>
     </div>
-    
+  </section>
+
+  <section class="container reveal" style="margin-bottom: 60px;">
+    <div style="background: linear-gradient(135deg, #fdf2ec 0%, #f5e4db 100%); border-radius: 18px; padding: 40px; border: 1px solid #e9d5ca; display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 300px;">
+        <span style="background: #d97757; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase;">¿Tienes una oferta?</span>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 28px; color: #2d4a3e; margin: 15px 0 10px;">La clave es la <em>jornada laboral</em></h3>
+        <p style="color: #4a5550; font-size: 16px; line-height: 1.6;">Para la vía de arraigo, tu oferta de trabajo debe cumplir unos requisitos mínimos de horas y duración. No pierdas el tiempo con ofertas que no sirven para el expediente.</p>
+      </div>
+      <div style="text-align: center;">
+        <a href="evaluador.html" class="gs-btn" style="background: #d97757; color: white; padding: 18px 30px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-block; box-shadow: 0 4px 15px rgba(217, 119, 87, 0.3);">Evalúa tu oferta en 2 min ➔</a>
+        <p style="font-size: 12px; color: #d97757; margin-top: 10px; font-weight: 600;">Es gratuito y anónimo</p>
+      </div>
+    </div>
   </section>
   <!-- ============================================================ -->
 <!-- BLOQUE: Vía laboral / Jornada — PARA PEGAR EN index.html    -->
