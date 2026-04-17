@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Menores 2026 — Gestiona Seguro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde-oscuro: #2d4a3e;
+            --verde-medio: #4a6b5d;
+            --verde-claro: #e8efe9;
+            --naranja: #d97757;
+            --naranja-suave: #f5e4db;
+            --crema: #faf7f2;
+            --texto: #1f2a25;
+            --texto-suave: #4a5550;
+            --borde: #d4ddd6;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--crema);
+            color: var(--texto);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        
+        .header-guia { text-align: center; margin-bottom: 50px; }
+        .header-guia h1 { font-family: 'Playfair Display', serif; font-size: 38px; color: var(--verde-oscuro); margin-bottom: 15px; }
+        
+        .guia-menores { background: white; border-radius: 14px; padding: 40px; border: 1px solid var(--borde); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .seccion-num { display: flex; gap: 20px; margin: 30px 0; align-items: flex-start; }
+        .seccion-marca { width: 44px; height: 44px; background: var(--verde-claro); color: var(--verde-oscuro); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; font-family: 'Playfair Display', serif; }
+        
+        .lista-tranquila { list-style: none; padding: 0; }
+        .lista-tranquila li { padding: 8px 0 8px 28px; position: relative; font-size: 15px; margin-bottom: 8px; }
+        .lista-tranquila li::before { content: "✓"; position: absolute; left: 0; color: var(--naranja); font-weight: 800; }
+        
+        .cuadro-alerta { background: #fdfaf5; border-left: 4px solid var(--naranja); padding: 25px; border-radius: 10px; margin: 30px 0; }
+        
+        .btn-volver { display: inline-block; margin-top: 30px; color: var(--verde-oscuro); text-decoration: none; font-weight: 600; font-size: 14px; }
+        
+        .consejo-nora-box { background: var(--naranja-suave); border-radius: 12px; padding: 25px; display: flex; gap: 20px; align-items: center; margin-top: 30px; border-left: 4px solid var(--verde-oscuro); }
+
+        @media (max-width: 600px) {
+            .header-guia h1 { font-size: 28px; }
+            .guia-menores { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-guia">
+        <a href="index.html" class="btn-volver">← Volver al inicio</a>
+        <h1>Guía de Regularización 2026: <br><em>Especial Familias e Hijos</em></h1>
+    </div>
+
+    <section class="guia-menores">
+        <p style="margin: 20px 0; color: var(--texto-suave); font-size: 16.5px; line-height: 1.6;">
+            El Real Decreto 316/2026 ha puesto a los menores en el centro. Ya no es necesario que los padres tengan contratos millonarios para que sus hijos tengan papeles. **Esto es lo que debes saber:**
+        </p>
+
+        <div class="seccion-num">
+            <div class="seccion-marca">1</div>
+            <div class="seccion-contenido">
+                <h3 style="color: var(--verde-oscuro);">¿En qué situación está tu hijo?</h3>
+                <ul class="lista-tranquila">
+                    <li><strong>Regularización conjunta:</strong> Solicitas tus papeles y los de tu hijo a la vez.</li>
+                    <li><strong>Regularización independiente:</strong> Si tú ya tienes TIE pero tu hijo no, puedes solicitarlo por esta vía especial.</li>
+                    <li><strong>Hijos mayores de 18:</strong> Solo si tienen una discapacidad o estado de salud que les impida valerse por sí mismos.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="seccion-num">
+            <div class="seccion-marca">2</div>
+            <div class="seccion-contenido">
+                <h3 style="color: var(--verde-oscuro);">Demostrar la permanencia (5 meses)</h3>
+                <p>Sirve cualquier documento oficial donde aparezca el niño:</p>
+                <ul class="lista-tranquila">
+                    <li><strong>Colegio:</strong> Certificado de matriculación o asistencia.</li>
+                    <li><strong>Salud:</strong> Cartilla de vacunación o historial del pediatra.</li>
+                    <li><strong>Ayuntamiento:</strong> Empadronamiento histórico conjunto.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cuadro-alerta">
+            <h4 style="color: var(--verde-oscuro);">⚓ ¿Y si el otro progenitor no está en España?</h4>
+            <p>La ley permite que tú solo/a solicites la residencia del niño si demuestras convivencia. Necesitarás una **Declaración Responsable** explicando que el menor está bajo tu cargo exclusivo aquí.</p>
+        </div>
+
+        <h3 style="color: var(--verde-oscuro);">Checklist de documentos</h3>
+        <ul class="lista-tranquila" style="background: #f8f9f8; padding: 20px; border-radius: 10px;">
+            <li><strong>Pasaporte del niño:</strong> Aunque esté caducado.</li>
+            <li><strong>Certificado de nacimiento:</strong> Con Apostilla si es de fuera.</li>
+            <li><strong>Si nació en España:</strong> Pídelo online (te llega gratis a casa) o en el Registro Civil.</li>
+        </ul>
+
+        <div class="consejo-nora-box">
+            <div style="font-size: 30px;">👤</div>
+            <div>
+                <strong>El consejo de Nora:</strong> No esperes. Pide YA el acta de nacimiento a tu país. Sin la apostilla, el expediente del niño se detendrá. ¡Gánale tiempo al reloj!
+                <br><small>— Nora, Gestiona Seguro</small>
+            </div>
+        </div>
+    </section>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="guia-regularizacion-2026.html" style="color: var(--naranja); font-weight: 700;">Consulta aquí la Guía para Adultos (Asilo y Arraigo) →</a>
+    </div>
+</div>
+
+</body>
+</html>
