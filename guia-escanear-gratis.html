@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escanear documentos GRATIS con tu móvil</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #27AE60;
+    --verde-oscuro: #1E7E46;
+    --verde-claro: #D5F5E3;
+    --naranja: #E67E22;
+    --naranja-claro: #FDEBD0;
+    --rojo: #C0392B;
+    --rojo-claro: #FADBD8;
+    --azul: #2980B9;
+    --azul-claro: #D6EAF8;
+    --amarillo: #F39C12;
+    --amarillo-claro: #FEF5D7;
+    --gris-fondo: #FAF8F5;
+    --texto: #1A1A2E;
+    --texto-suave: #444;
+    --blanco: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 17px; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--gris-fondo);
+    color: var(--texto);
+    line-height: 1.7;
+    font-weight: 600;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #27AE60 0%, #1ABC9C 50%, #2980B9 100%);
+    color: white;
+    text-align: center;
+    padding: 48px 24px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 260px; height: 260px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 340px; height: 340px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--amarillo);
+    color: #1a1a1a;
+    font-weight: 900;
+    font-size: 15px;
+    padding: 8px 18px;
+    border-radius: 24px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(32px, 6vw, 46px);
+    line-height: 1.25;
+    margin-bottom: 18px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .hero h1 span {
+    color: var(--amarillo);
+  }
+  .hero p {
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: 0.96;
+    max-width: 540px;
+    margin: 0 auto;
+    font-weight: 600;
+  }
+  .hero-emoji {
+    font-size: 80px;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  /* ALERTA */
+  .alerta {
+    background: #FFF3CD;
+    border-left: 8px solid var(--naranja);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin: -30px 20px 0;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+  .alerta p {
+    font-size: 17px;
+    font-weight: 700;
+    color: #7D5B00;
+    line-height: 1.6;
+  }
+  .alerta p span { font-size: 24px; }
+
+  /* CONTENEDOR */
+  .contenido {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 18px 72px;
+  }
+
+  .seccion { margin-bottom: 40px; }
+
+  .seccion-titulo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 26px;
+    color: var(--texto);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    line-height: 1.3;
+  }
+  .seccion-titulo .numero {
+    background: var(--verde);
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  /* BANNERS DE ÁNIMO */
+  .animo {
+    background: linear-gradient(135deg, #FEF5D7 0%, #FDEBD0 100%);
+    border-radius: 16px;
+    padding: 18px 22px;
+    margin: 24px 0;
+    text-align: center;
+    border: 3px dashed var(--amarillo);
+  }
+  .animo p {
+    font-size: 18px;
+    font-weight: 800;
+    color: #7D5B00;
+    line-height: 1.5;
+  }
+  .animo .emoji-grande {
+    font-size: 36px;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  /* EXPLICACIÓN */
+  .explicacion-box {
+    background: var(--azul-claro);
+    border-radius: 18px;
+    padding: 24px 20px;
+    border: 3px dashed var(--azul);
+    text-align: center;
+  }
+  .explicacion-box .icono-grande { font-size: 64px; margin-bottom: 14px; }
+  .explicacion-box p {
+    font-size: 18px;
+    color: #1a5276;
+    font-weight: 700;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .flecha-ejemplo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  .ejemplo-item {
+    background: white;
+    border-radius: 14px;
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--azul);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    min-width: 100px;
+  }
+  .ejemplo-item .emoji { font-size: 32px; display: block; margin-bottom: 6px; }
+  .ejemplo-item small { font-size: 13px; font-weight: 600; display: block; }
+  .flecha { font-size: 34px; color: var(--azul); font-weight: 900; }
+
+  /* APPS */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+  .app-card {
+    background: white;
+    border-radius: 16px;
+    padding: 22px 16px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-top: 5px solid var(--verde);
+  }
+  .app-card:nth-child(2) { border-top-color: var(--azul); }
+  .app-card:nth-child(3) { border-top-color: var(--naranja); }
+  .app-card .app-emoji { font-size: 52px; margin-bottom: 10px; }
+  .app-card h3 { font-size: 19px; font-weight: 900; margin-bottom: 8px; }
+  .app-card p { font-size: 15px; color: var(--texto-suave); line-height: 1.5; }
+  .badge-gratis {
+    display: inline-block;
+    background: var(--verde-claro);
+    color: var(--verde-oscuro);
+    font-weight: 900;
+    font-size: 13px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+
+  /* PASOS */
+  .paso {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  }
+  .paso-num {
+    background: var(--verde);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 24px;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .paso-contenido h4 {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 6px;
+    color: var(--texto);
+    line-height: 1.4;
+  }
+  .paso-contenido p {
+    font-size: 16px;
+    color: var(--texto-suave);
+    line-height: 1.65;
+    font-weight: 600;
+  }
+  .paso-contenido .nota {
+    background: var(--amarillo-claro);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 15px;
+    margin-top: 12px;
+    font-weight: 700;
+    color: #7D5B00;
+    line-height: 1.55;
+  }
+
+  /* DESCARGA */
+  .descarga-box {
+    background: #EBF5FB;
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 16px;
+  }
+  .descarga-box h4 {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    line-height: 1.4;
+    color: #1A5276;
+  }
+  .descarga-paso {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .descarga-paso .d-num {
+    background: var(--azul);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .descarga-paso p { font-size: 16px; line-height: 1.55; }
+
+  /* CONSEJOS */
+  .consejos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  .consejo-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 14px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+  .consejo-card .c-emoji { font-size: 42px; margin-bottom: 10px; }
+  .consejo-card p { font-size: 15px; font-weight: 800; color: var(--texto); line-height: 1.4; }
+
+  /* ERRORES */
+  .error-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--rojo-claro);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 12px;
+    border-left: 5px solid var(--rojo);
+  }
+  .error-item .e-emoji { font-size: 30px; flex-shrink: 0; }
+  .error-item div h4 { font-size: 17px; font-weight: 900; color: #922B21; margin-bottom: 5px; line-height: 1.4; }
+  .error-item div p { font-size: 15px; color: #7B241C; line-height: 1.55; font-weight: 600; }
+
+  /* REGULARIZACIÓN */
+  .regulariz-box {
+    background: linear-gradient(135deg, #FFF5EC 0%, #FEF9E7 100%);
+    border-radius: 20px;
+    padding: 26px 22px 22px;
+    border: 3px solid var(--naranja);
+    position: relative;
+    margin-bottom: 18px;
+  }
+  .regulariz-box::before {
+    content: '⭐ IMPORTANTE';
+    position: absolute;
+    top: -14px;
+    left: 18px;
+    background: var(--naranja);
+    color: white;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+  .regulariz-titulo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 21px;
+    color: #B8651F;
+    margin: 10px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.3;
+  }
+  .regulariz-intro {
+    font-size: 16px;
+    color: #7D4B1A;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .checklist-doc {
+    background: white;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    border-left: 5px solid var(--verde);
+  }
+  .checklist-doc .check-emoji {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+  .checklist-doc h5 {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--texto);
+    margin-bottom: 5px;
+    line-height: 1.4;
+  }
+  .checklist-doc p {
+    font-size: 15px;
+    color: var(--texto-suave);
+    line-height: 1.6;
+    font-weight: 600;
+  }
+  .checklist-doc p strong {
+    color: #B8651F;
+  }
+
+  .aviso-critico {
+    background: #FADBD8;
+    border: 3px solid var(--rojo);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-top: 14px;
+  }
+  .aviso-critico h5 {
+    font-size: 17px;
+    font-weight: 900;
+    color: #922B21;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .aviso-critico p {
+    font-size: 15px;
+    color: #7B241C;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  .tip-dorado {
+    background: var(--amarillo-claro);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 14px;
+    font-size: 15px;
+    color: #7D5B00;
+    font-weight: 700;
+    border-left: 4px solid var(--amarillo);
+    line-height: 1.6;
+  }
+
+  /* MENSAJE FINAL */
+  .mensaje-final {
+    background: linear-gradient(135deg, #27AE60, #1ABC9C);
+    border-radius: 24px;
+    padding: 40px 26px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 28px rgba(39,174,96,0.35);
+  }
+  .mensaje-final .mf-emoji { font-size: 72px; margin-bottom: 16px; }
+  .mensaje-final h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 30px;
+    margin-bottom: 18px;
+    line-height: 1.25;
+  }
+  .mensaje-final p {
+    font-size: 18px;
+    opacity: 0.97;
+    margin-bottom: 14px;
+    line-height: 1.6;
+    font-weight: 600;
+  }
+  .mensaje-final strong { font-weight: 900; }
+  .mensaje-final .cta-compartir {
+    margin-top: 20px;
+    font-size: 18px;
+    background: rgba(255,255,255,0.15);
+    padding: 18px;
+    border-radius: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 26px 20px;
+    font-size: 14px;
+    color: #888;
+    border-top: 1px solid #eee;
+    line-height: 1.6;
+  }
+  .footer strong { color: var(--verde-oscuro); font-size: 15px; }
+  .footer small { font-size: 13px; }
+
+  .divider {
+    border: none;
+    border-top: 3px dashed #D8D8D8;
+    margin: 36px 0;
+  }
+
+  .txt-importante {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--texto);
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+
+  @media print {
+    html { font-size: 14px; }
+    .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-card, .paso, .consejo-card, .checklist-doc, .regulariz-box { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emoji">📱</span>
+  <div class="hero-badge">✅ Gratis · Fácil · 5 minutos</div>
+  <h1>Escanea tus documentos <span>GRATIS</span><br>con tu móvil</h1>
+  <p>No tienes que pagar nada a nadie.<br>Puedes hacerlo tú desde casa, tranquilo/a. 🏠</p>
+</div>
+
+<div class="alerta">
+  <p><span>⚠️</span> Muchas personas están pagando entre 5€ y 20€ por escanear papeles. <strong>¡Eso no es necesario!</strong> Con esta guía lo harás gratis y por tu cuenta.</p>
+</div>
+
+<div class="contenido">
+
+  <div class="animo">
+    <p><span class="emoji-grande">🤗</span> Respira. Es más fácil de lo que parece.<br>Vamos paso a paso, sin prisa.</p>
+  </div>
+
+  <!-- 1. QUÉ SIGNIFICA -->
+  <div class="seccion">
+    <div class="seccion-titulo">
+      <div class="numero">1</div>
+      ¿Qué significa "escanear"?
+    </div>
+    <div class="explicacion-box">
+      <div class="icono-grande">🤔</div>
+      <p>Escanear es hacerle una <strong>foto especial</strong> a tu papel con el móvil. Así se convierte en un <strong>archivo (PDF)</strong> que puedes enviar por internet.</p>
+      <div class="flecha-ejemplo">
+        <div class="ejemplo-item">
+          <span class="emoji">📄</span>
+          Tu papel<br><small>en la mano</small>
+        </div>
+        <span class="flecha">→</span>
+        <div class="ejemplo-item">
+          <span class="emoji">📱</span>
+          Foto con<br><small>la app</small>
+        </div>
+        <span class="flecha">→</span>
+        <div class="ejemplo-item">
+          <span class="emoji">💾</span>
+          Archivo PDF<br><small>en tu móvil</small>
+        </div>
+      </div>
+      <p>Es lo mismo que un escáner de una oficina, pero con tu teléfono. <strong>¡Y totalmente gratis!</strong> 🖨️</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 2. APPS -->
+  <div class="seccion">
+    <div class="seccion-titulo">
+      <div class="numero">2</div>
+      3 aplicaciones GRATUITAS que funcionan muy bien
+    </div>
+    <p class="txt-importante">Cualquiera de las 3 sirve. <strong>Elige solo UNA</strong> para empezar. 👇</p>
+    <div class="apps-grid">
+      <div class="app-card">
+        <div class="app-emoji">🟢</div>
+        <h3>CamScanner</h3>
+        <p>Muy popular y fácil. Buena para empezar.</p>
+        <span class="badge-gratis">✅ Gratis</span>
+      </div>
+      <div class="app-card">
+        <div class="app-emoji">🔵</div>
+        <h3>Microsoft Lens</h3>
+        <p>Muy clara y sencilla. Va muy bien con documentos oficiales.</p>
+        <span class="badge-gratis">✅ Gratis</span>
+      </div>
+      <div class="app-card">
+        <div class="app-emoji">🟡</div>
+        <h3>Google Drive</h3>
+        <p>Si ya tienes Google Drive, no necesitas descargar nada más.</p>
+        <span class="badge-gratis">✅ Gratis</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 3. DESCARGA -->
+  <div class="seccion">
+    <div class="seccion-titulo">
+      <div class="numero">3</div>
+      ¿No sabes descargar una app? Te lo explico 😊
+    </div>
+
+    <div class="descarga-box">
+      <h4>📱 Si tu móvil es Android<br>(Samsung, Xiaomi, Huawei…)</h4>
+      <div class="descarga-paso">
+        <div class="d-num">1</div>
+        <p>Busca en tu móvil el icono de <strong>"Play Store"</strong> (un triángulo de colores ▶️). Tócalo.</p>
+      </div>
+      <div class="descarga-paso">
+        <div class="d-num">2</div>
+        <p>Arriba verás una <strong>barra para escribir</strong>. Escribe: <strong>"CamScanner"</strong></p>
+      </div>
+      <div class="descarga-paso">
+        <div class="d-num">3</div>
+        <p>Toca el botón verde que dice <strong>"Instalar"</strong>. Espera un poco y listo. ✅</p>
+      </div>
+    </div>
+
+    <div class="descarga-box">
+      <h4>🍎 Si tu móvil es iPhone<br>(Apple)</h4>
+      <div class="descarga-paso">
+        <div class="d-num">1</div>
+        <p>Busca el icono de <strong>"App Store"</strong> (una "A" azul 🅰️). Tócalo.</p>
+      </div>
+      <div class="descarga-paso">
+        <div class="d-num">2</div>
+        <p>Abajo a la derecha hay una <strong>lupa 🔍</strong>. Tócala y escribe: <strong>"Microsoft Lens"</strong></p>
+      </div>
+      <div class="descarga-paso">
+        <div class="d-num">3</div>
+        <p>Toca <strong>"Obtener"</strong>. Puede pedirte tu contraseña o huella. Ponla y listo. ✅</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="animo">
+    <p><span class="emoji-grande">💪</span> ¡Ya tienes la app!<br>Ahora viene lo más fácil.</p>
+  </div>
+
+  <!-- 4. PASOS -->
+  <div class="seccion">
+    <div class="seccion-titulo">
+      <div class="numero">4</div>
+      Cómo escanear — paso a paso 📋
+    </div>
+    <p class="txt-importante">Sigue los pasos con calma. No hay prisa. 😌</p>
+
+    <div class="paso">
+      <div class="paso-num">1</div>
+      <div class="paso-contenido">
+        <h4>📱 Abre la app que descargaste</h4>
+        <p>Busca su icono en tu móvil y tócalo. Si es la primera vez, te pedirá registrarte. Puedes hacerlo con tu correo de Gmail o Facebook. Sigue siendo gratis.</p>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">2</div>
+      <div class="paso-contenido">
+        <h4>📷 Busca el botón de la cámara</h4>
+        <p>Dentro de la app verás un botón redondo grande con una cámara 📷 o un símbolo "+". Tócalo para empezar.</p>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">3</div>
+      <div class="paso-contenido">
+        <h4>🗺️ Pon el papel sobre una mesa</h4>
+        <p>Coloca tu documento (pasaporte, DNI, contrato…) sobre una mesa limpia. Que no haya nada encima. Que esté bien estirado, sin arrugas.</p>
+        <div class="nota">💡 Una mesa de color oscuro ayuda mucho. Así el papel blanco se ve mejor.</div>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">4</div>
+      <div class="paso-contenido">
+        <h4>🔆 Cuida la luz</h4>
+        <p>Enciende la luz de la habitación o acércate a una ventana. Cuanta más luz, mejor sale. <strong>Tu sombra no debe caer sobre el papel.</strong></p>
+        <div class="nota">💡 Pon el móvil justo arriba del papel, recto. No de lado.</div>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">5</div>
+      <div class="paso-contenido">
+        <h4>📸 Haz la foto</h4>
+        <p>La app detecta sola los bordes del papel (verás una línea azul o verde alrededor). Cuando veas que está bien colocado, toca el botón para hacer la foto.</p>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">6</div>
+      <div class="paso-contenido">
+        <h4>✂️ Ajusta los bordes si hace falta</h4>
+        <p>Después de la foto, la app te enseña el resultado. Si los bordes no están bien, muévelos con el dedo hasta que solo se vea el papel.</p>
+        <div class="nota">💡 Es como recortar con tijeras, pero con el dedo. Solo deja lo que necesitas.</div>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">7</div>
+      <div class="paso-contenido">
+        <h4>💾 Guárdalo como PDF</h4>
+        <p>Busca la opción <strong>"Guardar"</strong>, <strong>"Exportar"</strong> o <strong>"Compartir"</strong>. Elige el formato <strong>PDF</strong>. Si no ves PDF, elige "Documento" y también vale.</p>
+        <div class="nota">🎉 ¡Ya tienes tu documento escaneado en el móvil!</div>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">8</div>
+      <div class="paso-contenido">
+        <h4>👀 Revísalo antes de enviarlo</h4>
+        <p>Abre el PDF y mira bien que todo se lee. Si algo está borroso o cortado, repite la foto. Solo tardas 2 minutos más.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="animo">
+    <p><span class="emoji-grande">🌟</span> ¡Lo estás haciendo genial!<br>Ya casi eres un experto/a.</p>
+  </div>
+
+  <!-- 5. CONSEJOS -->
+  <div class="seccion">
+    <div class="seccion-titulo">
+      <div class="numero">5</div>
+      Consejos para que quede perfecto ✅
+    </div>
+    <div class="consejos-grid">
+      <div class="consejo-card">
+        <div class="c-emoji">☀️</div>
+        <p>Buena luz.<br>Nunca a oscuras.</p>
+      </div>
+      <div class="consejo-card">
+        <div class="c-emoji">🖤</div>
+        <p>Fondo oscuro y limpio.<br>Sin otros papeles.</p>
+      </div>
+      <div class="consejo-card">
+        <div class="c-emoji">🚫</div>
+        <p>Sin sombras.<br>Móvil recto.</p>
+      </div>
+      <div class="consejo-card">
+        <div class="c-emoji">📏</div>
+        <p>Que se vean todos los bordes.</p>
+      </div>
+      <div class="consejo-card">
+        <div class="c-emoji">👓</div>
+        <p>Las letras, bien claras.</p>
+      </div>
+      <div class="consejo-card">
+        <div class="c-emoji">🔄</div>
+        <p>¿Salió mal? Repite.<br>¡No pasa nada!</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 6. ERRORES -->
+  <div class="seccion">
+    <div class="seccion-titulo">
+      <div class="numero">6</div>
+      Errores que debes evitar ⚠️
+    </div>
+
+    <div class="error-item">
+      <span class="e-emoji">🌑</span>
+      <div>
+        <h4>Poca luz</h4>
+        <p>A oscuras el papel sale borroso y no se lee. Siempre en un sitio bien iluminado.</p>
+      </div>
+    </div>
+
+    <div class="error-item">
+      <span class="e-emoji">🌫️</span>
+      <div>
+        <h4>Foto movida o borrosa</h4>
+        <p>Sujeta el móvil con las dos manos. Apoya los codos en la mesa. No te muevas al disparar.</p>
+      </div>
+    </div>
+
+    <div class="error-item">
+      <span class="e-emoji">✂️</span>
+      <div>
+        <h4>Documento cortado</h4>
+        <p>Si no se ven los bordes del papel, parte de la información se pierde. Que el papel entero entre en la foto.</p>
+      </div>
+    </div>
+
+    <div class="error-item">
+      <span class="e-emoji">📐</span>
+      <div>
+        <h4>Foto de lado o torcida</h4>
+        <p>Pon el móvil recto, mirando al papel desde arriba. Como si fuera un espejo del papel.</p>
+      </div>
+    </div>
+
+    <div class="error-item">
+      <span class="e-emoji">👆</span>
+      <div>
+        <h4>Los dedos tapan el documento</h4>
+        <p>Suelta el papel antes de disparar. Si se mueve, pon algo pequeño en las esquinas para sujetarlo.</p>
+      </div>
+    </div>
+
+    <div class="error-item">
+      <span class="e-emoji">📤</span>
+      <div>
+        <h4>Enviar sin revisar</h4>
+        <p>Antes de enviar, abre el PDF y léelo. Un documento ilegible puede retrasar tu trámite.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 7. REGULARIZACIÓN -->
+  <div class="seccion">
+    <div class="seccion-titulo">
+      <div class="numero" style="background: var(--naranja);">7</div>
+      Para tu Regularización 2026 📋
+    </div>
+
+    <div class="regulariz-box">
+      <div class="regulariz-titulo">🛂 Cómo escanear tu PASAPORTE</div>
+      <p class="regulariz-intro">Este es el documento más importante. Hazlo bien y no tendrás que repetirlo.</p>
+
+      <div class="checklist-doc">
+        <span class="check-emoji">📖</span>
+        <div>
+          <h5>TODAS las páginas. Sí, todas.</h5>
+          <p>Escanea el pasaporte <strong>completo, de principio a fin</strong>. Incluso las hojas en blanco (las que no tienen nada escrito ni ningún sello). <strong>No te saltes ninguna.</strong></p>
+        </div>
+      </div>
+
+      <div class="checklist-doc">
+        <span class="check-emoji">🔢</span>
+        <div>
+          <h5>En orden y todo junto</h5>
+          <p>Escanea las páginas <strong>en orden</strong>, empezando por la portada. La app te deja añadir una foto detrás de otra. Al final, guarda todo como <strong>UN solo PDF.</strong></p>
+        </div>
+      </div>
+
+      <div class="checklist-doc">
+        <span class="check-emoji">🆔</span>
+        <div>
+          <h5>La hoja de tus datos bien clara</h5>
+          <p>La página con tu foto, nombre y número de pasaporte debe verse <strong>perfectamente</strong>. Sin reflejos. Sin sombras. Si no se lee, te rechazan el expediente.</p>
+        </div>
+      </div>
+
+      <div class="checklist-doc">
+        <span class="check-emoji">🗺️</span>
+        <div>
+          <h5>Todos los sellos visibles</h5>
+          <p>Los sellos de entrada y salida son muy importantes. Comprueba que <strong>cada sello se lee bien</strong>, con sus fechas. No importa que estén torcidos o repetidos.</p>
+        </div>
+      </div>
+
+      <div class="aviso-critico">
+        <h5>🚨 Muy importante</h5>
+        <p>Si tu pasaporte está <strong>caducado</strong>, tienes que renovarlo antes de enviar el expediente. Un pasaporte caducado no sirve para la regularización.</p>
+      </div>
+    </div>
+
+    <div class="regulariz-box" style="border-color: var(--azul); background: linear-gradient(135deg, #EBF5FB 0%, #F4F9FD 100%);">
+      <div class="regulariz-titulo" style="color: #1A5276;">📝 Otros documentos del expediente</div>
+      <p class="regulariz-intro" style="color: #1A5276;">Los mismos cuidados para todos los demás papeles.</p>
+
+      <div class="checklist-doc" style="border-left-color: var(--azul);">
+        <span class="check-emoji">↔️</span>
+        <div>
+          <h5>Documentos por las dos caras</h5>
+          <p>Si un documento tiene información por detrás (NIE, contratos, certificados), <strong>escanea las dos caras</strong>. Aunque una parezca vacía.</p>
+        </div>
+      </div>
+
+      <div class="checklist-doc" style="border-left-color: var(--azul);">
+        <span class="check-emoji">📅</span>
+        <div>
+          <h5>Empadronamiento reciente</h5>
+          <p>El certificado de empadronamiento debe ser de <strong>menos de 3 meses</strong>. Si es más antiguo, pide uno nuevo antes de escanearlo.</p>
+        </div>
+      </div>
+
+      <div class="checklist-doc" style="border-left-color: var(--azul);">
+        <span class="check-emoji">🌍</span>
+        <div>
+          <h5>Documentos de tu país de origen</h5>
+          <p>Si envías antecedentes penales u otros documentos de tu país, escanea también <strong>la apostilla de La Haya o la legalización</strong> (el sello que los valida en España). Forma parte del documento.</p>
+        </div>
+      </div>
+
+      <div class="checklist-doc" style="border-left-color: var(--azul);">
+        <span class="check-emoji">🏷️</span>
+        <div>
+          <h5>Pon nombre claro a cada archivo</h5>
+          <p>Antes de enviar, cambia el nombre del PDF. Ejemplos:<br>
+          <strong>PASAPORTE_JUAN_PEREZ.pdf</strong><br>
+          <strong>EMPADRONAMIENTO_JUAN_PEREZ.pdf</strong><br>
+          <strong>CONTRATO_TRABAJO_JUAN_PEREZ.pdf</strong></p>
+        </div>
+      </div>
+
+      <div class="checklist-doc" style="border-left-color: var(--azul);">
+        <span class="check-emoji">📄</span>
+        <div>
+          <h5>Siempre PDF, nunca foto normal</h5>
+          <p>La Administración pide <strong>formato PDF</strong>. Nunca envíes una foto normal (.jpg o .png). Usa siempre la app de escáner para crear el PDF.</p>
+        </div>
+      </div>
+
+      <div class="checklist-doc" style="border-left-color: var(--azul);">
+        <span class="check-emoji">⚖️</span>
+        <div>
+          <h5>Nada recortado, nada cubierto</h5>
+          <p>Que se vean <strong>todos los bordes</strong> del papel. Nada de dedos encima. Nada de márgenes cortados. El sello, la firma y las fechas deben salir completos.</p>
+        </div>
+      </div>
+
+      <div class="tip-dorado">
+        💡 <strong>Consejo de oro:</strong> Guarda TODOS los PDFs escaneados en una carpeta del móvil o en Google Drive. Así los tienes a mano y no los pierdes si cambias de teléfono.
+      </div>
+    </div>
+
+    <div class="regulariz-box" style="border-color: var(--verde); background: linear-gradient(135deg, #E8F8F0 0%, #F0FBF5 100%);">
+      <div class="regulariz-titulo" style="color: #1E7E46;">✅ Antes de enviar — lista de repaso</div>
+      <div class="checklist-doc" style="border-left-color: var(--verde);">
+        <span class="check-emoji">1️⃣</span>
+        <div>
+          <h5>Abre cada PDF y léelo entero</h5>
+          <p>Revisa página por página. Que no falte ninguna. Que todo se lea bien.</p>
+        </div>
+      </div>
+      <div class="checklist-doc" style="border-left-color: var(--verde);">
+        <span class="check-emoji">2️⃣</span>
+        <div>
+          <h5>Cuenta las páginas</h5>
+          <p>Cuenta las páginas del pasaporte físico y cuéntalas también en el PDF. Tienen que coincidir.</p>
+        </div>
+      </div>
+      <div class="checklist-doc" style="border-left-color: var(--verde);">
+        <span class="check-emoji">3️⃣</span>
+        <div>
+          <h5>Tamaño del archivo</h5>
+          <p>Que cada PDF no pese más de <strong>10 MB</strong>. Si pesa más, la app tiene una opción para reducirlo ("comprimir" o "tamaño medio").</p>
+        </div>
+      </div>
+      <div class="checklist-doc" style="border-left-color: var(--verde);">
+        <span class="check-emoji">4️⃣</span>
+        <div>
+          <h5>Pide a alguien que lo mire</h5>
+          <p>Antes de enviar, pide a un familiar o amigo que lo revise contigo. <strong>Cuatro ojos ven más que dos.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MENSAJE FINAL -->
+  <div class="mensaje-final">
+    <div class="mf-emoji">💪</div>
+    <h2>¡Tú puedes hacerlo!</h2>
+    <p><strong>No tienes que pagar ni un euro</strong> por escanear tus documentos.</p>
+    <p>Con tu móvil y esta guía, puedes hacerlo en casa, en cualquier momento, <strong>totalmente gratis.</strong></p>
+    <p>Si la primera foto no sale bien, <strong>inténtalo otra vez</strong>. En el segundo o tercer intento ya te saldrá. ✅</p>
+    <div class="cta-compartir">
+      📲 <strong>Comparte esta guía</strong> con quien la necesite.<br>
+      Cuantos más lo sepan, menos abusos habrá.
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Guía elaborada por <strong>Gestiona Seguro</strong><br>
+  Para la Regularización Extraordinaria 2026<br>
+  <small>Información y ayuda para personas migrantes en España</small>
+</div>
+
+</body>
+</html>
