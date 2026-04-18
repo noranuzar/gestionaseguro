@@ -33,28 +33,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       --texto: #2a2218;
       --texto-suave: #5e5649;
       --blanco: #fffdf8;
-      --font-base: 1.125rem;
-      --font-h1: clamp(2.5rem, 6vw, 4rem);
-      --font-h2: clamp(1.8rem, 4vw, 2.6rem);
-      --font-h3: clamp(1.3rem, 2.5vw, 1.6rem);
-      --font-body-sm: 1rem;
-      --font-label: 0.8rem;
-      --font-nav: 0.88rem;
+
+      /* ESCALA UNIFICADA - Aquí está el truco */
+      --font-base: 1.063rem;    /* 17px - Texto de lectura */
+      --font-intro: 1.2rem;     /* 19px - Texto de bienvenida */
+      --font-sm: 0.95rem;       /* 15px - Texto en tarjetas */
+      
+      --font-h1: clamp(2.5rem, 6vw, 3.8rem);
+      --font-h2: clamp(1.8rem, 4vw, 2.4rem);
+      --font-h3: clamp(1.25rem, 2.5vw, 1.5rem);
+      
       --transicion: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       --radio: 20px;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Source Sans 3', system-ui, sans-serif;
       color: var(--texto); background: var(--blanco);
-      font-size: var(--font-base); line-height: 1.8;
+      font-size: var(--font-base); 
+      line-height: 1.7; /* Altura de línea constante para armonía */
       overflow-x: hidden; -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; line-height: 1.1; color: var(--oliva-dark); }
+
+    h1, h2, h3, h4 { 
+      font-family: 'DM Serif Display', serif; 
+      line-height: 1.2; 
+      color: var(--oliva-dark); 
+      margin-bottom: 1.2rem; 
+    }
+
     a { color: inherit; text-decoration: none; }
     .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-
+  
     /* NAVBAR */
     .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,253,248,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(85,107,47,0.1); transition: all var(--transicion); }
     .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
