@@ -1,143 +1,255 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Escanear documentos GRATIS con tu móvil</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<title>Clase Interactiva: Escanear Gratis — Gestiona Seguro</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
   :root {
-    --verde: #27AE60;
-    --verde-oscuro: #1E7E46;
-    --verde-claro: #D5F5E3;
-    --naranja: #E67E22;
-    --naranja-claro: #FDEBD0;
-    --rojo: #C0392B;
-    --rojo-claro: #FADBD8;
-    --azul: #2980B9;
-    --azul-claro: #D6EAF8;
-    --amarillo: #F39C12;
-    --amarillo-claro: #FEF5D7;
-    --gris-fondo: #FAF8F5;
-    --texto: #1A1A2E;
-    --texto-suave: #444;
-    --blanco: #FFFFFF;
+    /* PALETA GESTIONA SEGURO */
+    --oliva: #556B2F;
+    --oliva-light: #7d9448;
+    --oliva-dark: #3a4a1f;
+    --oliva-bg: #f0f3e8;
+    --oliva-pastel: #e4ecd4;
+    --arena: #F5F5DC;
+    --arena-warm: #f8f6ed;
+    --arena-dark: #e8e2c8;
+    --terracota: #E2725B;
+    --terracota-dark: #c45a42;
+    --terracota-bg: #fdf3f0;
+    --terracota-pastel: #fae4dd;
+
+    /* Neutros */
+    --texto: #2a2218;
+    --texto-suave: #5e5649;
+    --blanco: #fffdf8;
+
+    /* Acentos pastel para conceptos */
+    --pastel-azul: #e8f0f7;
+    --pastel-azul-borde: #b8d0e8;
+    --pastel-amarillo: #fef5d7;
+    --pastel-amarillo-borde: #f0d779;
+    --pastel-rosa: #fbeae4;
+    --pastel-rosa-borde: #e8b8a6;
+
+    /* Completado */
+    --verde-ok: #4a8f3e;
+    --verde-ok-bg: #e0f0d8;
+
+    /* Tamaños */
+    --fs-xs:   1rem;         /* 16 */
+    --fs-sm:   1.0625rem;    /* 17 */
+    --fs-base: 1.125rem;     /* 18 */
+    --fs-md:   1.25rem;      /* 20 */
+    --fs-lg:   1.4rem;       /* ~22 */
+
+    --transicion: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { font-size: 17px; }
+  html { font-size: 16px; scroll-behavior: smooth; }
 
   body {
-    font-family: 'Nunito', sans-serif;
-    background: var(--gris-fondo);
+    font-family: 'Nunito', system-ui, sans-serif;
+    background: linear-gradient(180deg, var(--arena-warm) 0%, var(--blanco) 300px);
     color: var(--texto);
-    line-height: 1.7;
-    font-weight: 600;
+    line-height: 1.65;
+    font-weight: 500;
+    padding-top: 70px; /* espacio para la barra de progreso fija */
   }
 
-  /* HERO */
-  .hero {
-    background: linear-gradient(135deg, #27AE60 0%, #1ABC9C 50%, #2980B9 100%);
+  /* ============================================================
+     BARRA DE PROGRESO FIJA (ARRIBA)
+     ============================================================ */
+  .progress-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,253,248,0.97);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(85,107,47,0.1);
+    z-index: 1000;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .progress-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--oliva-bg);
+    color: var(--oliva-dark);
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1.5px solid rgba(85,107,47,0.15);
+    transition: all var(--transicion);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .progress-home:hover {
+    background: var(--oliva);
     color: white;
+    transform: translateY(-1px);
+  }
+  .progress-bar-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .progress-label .progress-pct {
+    color: var(--terracota);
+  }
+  .progress-track {
+    height: 10px;
+    background: var(--arena-dark);
+    border-radius: 50px;
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--oliva) 0%, var(--oliva-light) 50%, var(--terracota) 100%);
+    border-radius: 50px;
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  /* ============================================================
+     HERO DE BIENVENIDA A LA CLASE
+     ============================================================ */
+  .hero-clase {
+    background: linear-gradient(135deg, var(--oliva) 0%, var(--oliva-dark) 100%);
+    color: var(--blanco);
+    padding: 56px 24px 72px;
     text-align: center;
-    padding: 48px 24px 72px;
+    border-radius: 0 0 32px 32px;
     position: relative;
     overflow: hidden;
+    margin-bottom: 36px;
   }
-  .hero::before {
+  .hero-clase::before {
     content: '';
     position: absolute;
     top: -80px; right: -80px;
     width: 260px; height: 260px;
-    background: rgba(255,255,255,0.08);
+    background: rgba(245,245,220,0.08);
     border-radius: 50%;
   }
-  .hero::after {
+  .hero-clase::after {
     content: '';
     position: absolute;
     bottom: -100px; left: -60px;
-    width: 340px; height: 340px;
-    background: rgba(255,255,255,0.06);
+    width: 300px; height: 300px;
+    background: rgba(226,114,91,0.12);
     border-radius: 50%;
   }
-  .hero-badge {
-    display: inline-block;
-    background: var(--amarillo);
-    color: #1a1a1a;
-    font-weight: 900;
-    font-size: 15px;
-    padding: 8px 18px;
-    border-radius: 24px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-  .hero h1 {
-    font-family: 'Fredoka One', cursive;
-    font-size: clamp(32px, 6vw, 46px);
-    line-height: 1.25;
-    margin-bottom: 18px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  }
-  .hero h1 span {
-    color: var(--amarillo);
-  }
-  .hero p {
-    font-size: 19px;
-    line-height: 1.6;
-    opacity: 0.96;
-    max-width: 540px;
-    margin: 0 auto;
-    font-weight: 600;
-  }
-  .hero-emoji {
-    font-size: 80px;
-    display: block;
-    margin-bottom: 20px;
-  }
-
-  /* ALERTA */
-  .alerta {
-    background: #FFF3CD;
-    border-left: 8px solid var(--naranja);
-    border-radius: 14px;
-    padding: 20px 22px;
-    margin: -30px 20px 0;
-    position: relative;
-    z-index: 10;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-  }
-  .alerta p {
-    font-size: 17px;
-    font-weight: 700;
-    color: #7D5B00;
-    line-height: 1.6;
-  }
-  .alerta p span { font-size: 24px; }
-
-  /* CONTENEDOR */
-  .contenido {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 32px 18px 72px;
-  }
-
-  .seccion { margin-bottom: 40px; }
-
-  .seccion-titulo {
-    font-family: 'Fredoka One', cursive;
-    font-size: 26px;
-    color: var(--texto);
-    margin-bottom: 18px;
-    display: flex;
+  .hero-clase-badge {
+    display: inline-flex;
     align-items: center;
-    gap: 14px;
-    line-height: 1.3;
+    gap: 8px;
+    background: rgba(245,245,220,0.15);
+    color: var(--arena);
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 8px 18px;
+    border-radius: 50px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    border: 1px solid rgba(245,245,220,0.25);
+    position: relative;
+    z-index: 2;
   }
-  .seccion-titulo .numero {
-    background: var(--verde);
+  .hero-clase h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-clase h1 em {
+    font-style: normal;
+    color: var(--terracota);
+  }
+  .hero-clase p {
+    font-size: var(--fs-base);
+    max-width: 540px;
+    margin: 0 auto 28px;
+    opacity: 0.95;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-clase .meta {
+    display: inline-flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-clase .meta span {
+    background: rgba(245,245,220,0.15);
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1px solid rgba(245,245,220,0.25);
+  }
+
+  /* ============================================================
+     CONTENEDOR GENERAL
+     ============================================================ */
+  .contenido {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* ============================================================
+     TARJETA DE LECCIÓN
+     ============================================================ */
+  .leccion {
+    background: var(--blanco);
+    border-radius: 24px;
+    padding: 32px 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(42,34,24,0.06);
+    border: 1.5px solid rgba(85,107,47,0.08);
+    transition: all var(--transicion);
+    position: relative;
+  }
+  .leccion.completado {
+    background: var(--verde-ok-bg);
+    border-color: var(--verde-ok);
+    box-shadow: 0 4px 20px rgba(74,143,62,0.15);
+  }
+  .leccion.completado::before {
+    content: '✓';
+    position: absolute;
+    top: -14px;
+    right: 20px;
+    background: var(--verde-ok);
     color: white;
     width: 44px;
     height: 44px;
@@ -145,851 +257,1017 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: 900;
+    font-family: 'Fredoka One', cursive;
+    box-shadow: 0 4px 12px rgba(74,143,62,0.3);
+    animation: bump 0.4s ease-out;
+  }
+
+  @keyframes bump {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+
+  .leccion-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 2px dashed var(--arena-dark);
+  }
+  .leccion-numero {
     flex-shrink: 0;
-  }
-
-  /* BANNERS DE ÁNIMO */
-  .animo {
-    background: linear-gradient(135deg, #FEF5D7 0%, #FDEBD0 100%);
-    border-radius: 16px;
-    padding: 18px 22px;
-    margin: 24px 0;
-    text-align: center;
-    border: 3px dashed var(--amarillo);
-  }
-  .animo p {
-    font-size: 18px;
-    font-weight: 800;
-    color: #7D5B00;
-    line-height: 1.5;
-  }
-  .animo .emoji-grande {
-    font-size: 36px;
-    display: inline-block;
-    margin-right: 8px;
-    vertical-align: middle;
-  }
-
-  /* EXPLICACIÓN */
-  .explicacion-box {
-    background: var(--azul-claro);
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--oliva), var(--oliva-light));
+    color: var(--blanco);
     border-radius: 18px;
-    padding: 24px 20px;
-    border: 3px dashed var(--azul);
-    text-align: center;
-  }
-  .explicacion-box .icono-grande { font-size: 64px; margin-bottom: 14px; }
-  .explicacion-box p {
-    font-size: 18px;
-    color: #1a5276;
-    font-weight: 700;
-    line-height: 1.6;
-    margin-bottom: 8px;
-  }
-  .flecha-ejemplo {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
-    flex-wrap: wrap;
+    font-family: 'Fredoka One', cursive;
+    font-size: 26px;
+    box-shadow: 0 4px 12px rgba(85,107,47,0.25);
   }
-  .ejemplo-item {
-    background: white;
-    border-radius: 14px;
-    padding: 14px 16px;
-    text-align: center;
-    font-size: 15px;
+  .leccion.completado .leccion-numero {
+    background: linear-gradient(135deg, var(--verde-ok), #6aa55e);
+  }
+  .leccion-titulo-wrap {
+    flex: 1;
+  }
+  .leccion-etiqueta {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.78rem;
     font-weight: 800;
-    color: var(--azul);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    min-width: 100px;
+    color: var(--terracota);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 3px;
   }
-  .ejemplo-item .emoji { font-size: 32px; display: block; margin-bottom: 6px; }
-  .ejemplo-item small { font-size: 13px; font-weight: 600; display: block; }
-  .flecha { font-size: 34px; color: var(--azul); font-weight: 900; }
+  .leccion-titulo {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.3rem, 4vw, 1.65rem);
+    color: var(--oliva-dark);
+    line-height: 1.25;
+  }
 
-  /* APPS */
+  /* Contenido de la lección */
+  .leccion-body { font-size: var(--fs-sm); color: var(--texto); line-height: 1.7; }
+  .leccion-body p { margin-bottom: 14px; }
+  .leccion-body p strong { color: var(--oliva-dark); }
+
+  /* ============================================================
+     CAJAS DE CONCEPTO CLAVE (PASTEL)
+     ============================================================ */
+  .concepto {
+    margin: 20px 0;
+    padding: 18px 20px;
+    border-radius: 16px;
+    border-left: 5px solid;
+    position: relative;
+  }
+  .concepto-label {
+    display: inline-block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+  .concepto h4 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .concepto p {
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+    margin-bottom: 0 !important;
+  }
+
+  .concepto--azul {
+    background: var(--pastel-azul);
+    border-left-color: var(--pastel-azul-borde);
+  }
+  .concepto--azul .concepto-label { background: var(--pastel-azul-borde); color: #1a5276; }
+  .concepto--azul h4 { color: #1a5276; }
+
+  .concepto--amarillo {
+    background: var(--pastel-amarillo);
+    border-left-color: var(--pastel-amarillo-borde);
+  }
+  .concepto--amarillo .concepto-label { background: var(--pastel-amarillo-borde); color: #7d5b00; }
+  .concepto--amarillo h4 { color: #7d5b00; }
+
+  .concepto--terracota {
+    background: var(--terracota-pastel);
+    border-left-color: var(--terracota);
+  }
+  .concepto--terracota .concepto-label { background: var(--terracota); color: white; }
+  .concepto--terracota h4 { color: var(--terracota-dark); }
+
+  .concepto--oliva {
+    background: var(--oliva-pastel);
+    border-left-color: var(--oliva);
+  }
+  .concepto--oliva .concepto-label { background: var(--oliva); color: white; }
+  .concepto--oliva h4 { color: var(--oliva-dark); }
+
+  /* ============================================================
+     APPS CARDS
+     ============================================================ */
   .apps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
+    gap: 12px;
+    margin: 18px 0;
   }
-  .app-card {
-    background: white;
+  .app-item {
+    background: var(--arena-warm);
+    border: 1.5px solid var(--arena-dark);
     border-radius: 16px;
-    padding: 22px 16px;
+    padding: 18px 14px;
     text-align: center;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    border-top: 5px solid var(--verde);
+    transition: transform var(--transicion);
   }
-  .app-card:nth-child(2) { border-top-color: var(--azul); }
-  .app-card:nth-child(3) { border-top-color: var(--naranja); }
-  .app-card .app-emoji { font-size: 52px; margin-bottom: 10px; }
-  .app-card h3 { font-size: 19px; font-weight: 900; margin-bottom: 8px; }
-  .app-card p { font-size: 15px; color: var(--texto-suave); line-height: 1.5; }
-  .badge-gratis {
+  .app-item:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(42,34,24,0.08); }
+  .app-item .app-emoji { font-size: 42px; margin-bottom: 8px; display: block; }
+  .app-item h5 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.05rem;
+    color: var(--oliva-dark);
+    margin-bottom: 6px;
+  }
+  .app-item p { font-size: 0.92rem !important; color: var(--texto-suave); line-height: 1.45; margin-bottom: 8px !important; }
+  .app-item .app-badge {
     display: inline-block;
-    background: var(--verde-claro);
-    color: var(--verde-oscuro);
-    font-weight: 900;
-    font-size: 13px;
-    padding: 5px 14px;
+    background: var(--oliva-pastel);
+    color: var(--oliva-dark);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 10px;
     border-radius: 20px;
-    margin-top: 10px;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
-  /* PASOS */
-  .paso {
+  /* ============================================================
+     PASOS DENTRO DE UNA LECCIÓN
+     ============================================================ */
+  .sub-paso {
     display: flex;
-    gap: 16px;
+    gap: 14px;
     align-items: flex-start;
-    background: white;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 14px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-  }
-  .paso-num {
-    background: var(--verde);
-    color: white;
-    font-family: 'Fredoka One', cursive;
-    font-size: 24px;
-    width: 52px;
-    height: 52px;
+    background: var(--arena-warm);
     border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 10px;
+  }
+  .sub-paso-num {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    background: var(--terracota);
+    color: white;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-  }
-  .paso-contenido h4 {
+    font-family: 'Fredoka One', cursive;
     font-size: 18px;
-    font-weight: 900;
-    margin-bottom: 6px;
-    color: var(--texto);
-    line-height: 1.4;
   }
-  .paso-contenido p {
-    font-size: 16px;
+  .sub-paso h5 {
+    font-family: 'Nunito', sans-serif;
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    color: var(--oliva-dark);
+    margin-bottom: 4px;
+  }
+  .sub-paso p {
+    font-size: var(--fs-sm) !important;
     color: var(--texto-suave);
-    line-height: 1.65;
-    font-weight: 600;
+    line-height: 1.6;
+    margin-bottom: 0 !important;
   }
-  .paso-contenido .nota {
-    background: var(--amarillo-claro);
-    border-radius: 10px;
-    padding: 10px 14px;
-    font-size: 15px;
-    margin-top: 12px;
-    font-weight: 700;
-    color: #7D5B00;
+
+  /* ============================================================
+     CHECKLIST DE DOCUMENTOS (REGULARIZACIÓN)
+     ============================================================ */
+  .doc-check {
+    background: white;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    border-left: 4px solid var(--oliva);
+  }
+  .doc-check .doc-emoji { font-size: 24px; flex-shrink: 0; }
+  .doc-check h5 {
+    font-family: 'Nunito', sans-serif;
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    color: var(--oliva-dark);
+    margin-bottom: 3px;
+  }
+  .doc-check p {
+    font-size: 0.95rem !important;
+    color: var(--texto-suave);
+    line-height: 1.55;
+    margin-bottom: 0 !important;
+  }
+  .doc-check p strong { color: var(--terracota-dark); }
+
+  /* ============================================================
+     ERRORES COMUNES
+     ============================================================ */
+  .error-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #fdeeeb;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--terracota);
+  }
+  .error-item .e-emoji { font-size: 24px; flex-shrink: 0; }
+  .error-item h5 {
+    font-family: 'Nunito', sans-serif;
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    color: var(--terracota-dark);
+    margin-bottom: 3px;
+  }
+  .error-item p {
+    font-size: 0.95rem !important;
+    color: #7a3f30;
+    line-height: 1.55;
+    margin-bottom: 0 !important;
+  }
+
+  /* ============================================================
+     BOTÓN "HE COMPLETADO ESTE PASO"
+     ============================================================ */
+  .btn-completar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: var(--fs-base);
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(226,114,91,0.3);
+    transition: all var(--transicion);
+  }
+  .btn-completar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(226,114,91,0.4);
+  }
+  .btn-completar:active { transform: translateY(0); }
+  .btn-completar .check-icon {
+    width: 24px; height: 24px;
+    background: white;
+    color: var(--terracota);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 14px;
+  }
+  .leccion.completado .btn-completar {
+    background: linear-gradient(135deg, var(--verde-ok), #6aa55e);
+    cursor: default;
+    pointer-events: none;
+  }
+  .leccion.completado .btn-completar .check-icon {
+    color: var(--verde-ok);
+  }
+  .leccion.completado .btn-completar .btn-texto::before {
+    content: '¡Lección completada! ';
+  }
+  .leccion.completado .btn-completar .btn-texto-default {
+    display: none;
+  }
+  .btn-texto-done { display: none; }
+  .leccion.completado .btn-texto-done { display: inline; }
+
+  /* ============================================================
+     MINI-QUIZ FINAL
+     ============================================================ */
+  .quiz-box {
+    background: linear-gradient(135deg, var(--arena-warm), var(--oliva-pastel));
+    border-radius: 24px;
+    padding: 32px 28px;
+    margin: 32px 0;
+    border: 2.5px dashed var(--oliva);
+    box-shadow: 0 4px 20px rgba(85,107,47,0.1);
+  }
+  .quiz-box-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .quiz-emoji {
+    font-size: 56px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .quiz-box h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.4rem, 4vw, 1.75rem);
+    color: var(--oliva-dark);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .quiz-box .quiz-intro {
+    font-size: var(--fs-sm);
+    color: var(--texto-suave);
     line-height: 1.55;
   }
 
-  /* DESCARGA */
-  .descarga-box {
-    background: #EBF5FB;
-    border-radius: 16px;
-    padding: 22px;
-    margin-bottom: 16px;
-  }
-  .descarga-box h4 {
-    font-size: 18px;
-    font-weight: 900;
-    margin-bottom: 16px;
-    line-height: 1.4;
-    color: #1A5276;
-  }
-  .descarga-paso {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    margin-bottom: 12px;
-  }
-  .descarga-paso .d-num {
-    background: var(--azul);
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    font-weight: 900;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .descarga-paso p { font-size: 16px; line-height: 1.55; }
-
-  /* CONSEJOS */
-  .consejos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-  }
-  .consejo-card {
+  .quiz-pregunta {
     background: white;
-    border-radius: 14px;
-    padding: 18px 14px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  }
-  .consejo-card .c-emoji { font-size: 42px; margin-bottom: 10px; }
-  .consejo-card p { font-size: 15px; font-weight: 800; color: var(--texto); line-height: 1.4; }
-
-  /* ERRORES */
-  .error-item {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    background: var(--rojo-claro);
-    border-radius: 14px;
+    border-radius: 16px;
     padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(42,34,24,0.05);
+  }
+  .quiz-pregunta-texto {
+    font-family: 'Nunito', sans-serif;
+    font-size: var(--fs-base);
+    font-weight: 800;
+    color: var(--oliva-dark);
     margin-bottom: 12px;
-    border-left: 5px solid var(--rojo);
+    line-height: 1.45;
   }
-  .error-item .e-emoji { font-size: 30px; flex-shrink: 0; }
-  .error-item div h4 { font-size: 17px; font-weight: 900; color: #922B21; margin-bottom: 5px; line-height: 1.4; }
-  .error-item div p { font-size: 15px; color: #7B241C; line-height: 1.55; font-weight: 600; }
-
-  /* REGULARIZACIÓN */
-  .regulariz-box {
-    background: linear-gradient(135deg, #FFF5EC 0%, #FEF9E7 100%);
-    border-radius: 20px;
-    padding: 26px 22px 22px;
-    border: 3px solid var(--naranja);
-    position: relative;
-    margin-bottom: 18px;
-  }
-  .regulariz-box::before {
-    content: '⭐ IMPORTANTE';
-    position: absolute;
-    top: -14px;
-    left: 18px;
-    background: var(--naranja);
-    color: white;
-    font-size: 13px;
-    font-weight: 900;
-    padding: 6px 14px;
-    border-radius: 20px;
-    letter-spacing: 1px;
-  }
-  .regulariz-titulo {
-    font-family: 'Fredoka One', cursive;
-    font-size: 21px;
-    color: #B8651F;
-    margin: 10px 0 12px;
+  .quiz-opciones {
     display: flex;
-    align-items: center;
     gap: 10px;
+  }
+  .quiz-opcion {
+    flex: 1;
+    padding: 14px 12px;
+    border: 2.5px solid var(--arena-dark);
+    background: var(--arena-warm);
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    cursor: pointer;
+    transition: all var(--transicion);
+    color: var(--texto-suave);
+  }
+  .quiz-opcion:hover {
+    border-color: var(--oliva);
+    color: var(--oliva-dark);
+    transform: translateY(-1px);
+  }
+  .quiz-opcion.seleccionada-si {
+    background: var(--verde-ok);
+    border-color: var(--verde-ok);
+    color: white;
+  }
+  .quiz-opcion.seleccionada-no {
+    background: var(--terracota);
+    border-color: var(--terracota);
+    color: white;
+  }
+
+  .quiz-resultado {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 16px;
+    text-align: center;
+    display: none;
+  }
+  .quiz-resultado.visible { display: block; animation: fadeIn 0.5s ease-out; }
+  .quiz-resultado.exito {
+    background: linear-gradient(135deg, var(--verde-ok), #6aa55e);
+    color: white;
+  }
+  .quiz-resultado.revisar {
+    background: var(--pastel-amarillo);
+    color: #7d5b00;
+    border: 2.5px solid var(--pastel-amarillo-borde);
+  }
+  .quiz-resultado .res-emoji {
+    font-size: 54px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .quiz-resultado h4 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.3rem, 4vw, 1.6rem);
+    margin-bottom: 10px;
     line-height: 1.3;
   }
-  .regulariz-intro {
-    font-size: 16px;
-    color: #7D4B1A;
-    font-weight: 700;
-    margin-bottom: 16px;
+  .quiz-resultado p {
+    font-size: var(--fs-sm);
     line-height: 1.6;
-  }
-  .checklist-doc {
-    background: white;
-    border-radius: 14px;
-    padding: 16px 18px;
-    margin-bottom: 10px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    border-left: 5px solid var(--verde);
-  }
-  .checklist-doc .check-emoji {
-    font-size: 28px;
-    flex-shrink: 0;
-  }
-  .checklist-doc h5 {
-    font-size: 17px;
-    font-weight: 900;
-    color: var(--texto);
-    margin-bottom: 5px;
-    line-height: 1.4;
-  }
-  .checklist-doc p {
-    font-size: 15px;
-    color: var(--texto-suave);
-    line-height: 1.6;
-    font-weight: 600;
-  }
-  .checklist-doc p strong {
-    color: #B8651F;
-  }
-
-  .aviso-critico {
-    background: #FADBD8;
-    border: 3px solid var(--rojo);
-    border-radius: 14px;
-    padding: 16px 18px;
-    margin-top: 14px;
-  }
-  .aviso-critico h5 {
-    font-size: 17px;
-    font-weight: 900;
-    color: #922B21;
     margin-bottom: 8px;
-    line-height: 1.4;
   }
-  .aviso-critico p {
-    font-size: 15px;
-    color: #7B241C;
-    font-weight: 700;
-    line-height: 1.6;
+  .quiz-resultado strong { font-weight: 900; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  .tip-dorado {
-    background: var(--amarillo-claro);
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin-top: 14px;
-    font-size: 15px;
-    color: #7D5B00;
-    font-weight: 700;
-    border-left: 4px solid var(--amarillo);
-    line-height: 1.6;
-  }
-
-  /* MENSAJE FINAL */
-  .mensaje-final {
-    background: linear-gradient(135deg, #27AE60, #1ABC9C);
-    border-radius: 24px;
-    padding: 40px 26px;
+  /* ============================================================
+     MENSAJE FINAL DE GRADUACIÓN
+     ============================================================ */
+  .graduacion {
+    background: linear-gradient(135deg, var(--oliva) 0%, var(--oliva-dark) 100%);
+    color: var(--blanco);
+    border-radius: 28px;
+    padding: 44px 28px;
     text-align: center;
-    color: white;
-    box-shadow: 0 8px 28px rgba(39,174,96,0.35);
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;
+    display: none;
   }
-  .mensaje-final .mf-emoji { font-size: 72px; margin-bottom: 16px; }
-  .mensaje-final h2 {
+  .graduacion.visible { display: block; animation: fadeIn 0.6s ease-out; }
+  .graduacion::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: rgba(226,114,91,0.2);
+    border-radius: 50%;
+  }
+  .graduacion::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 220px; height: 220px;
+    background: rgba(245,245,220,0.08);
+    border-radius: 50%;
+  }
+  .graduacion > * { position: relative; z-index: 2; }
+  .graduacion .grad-emoji { font-size: 72px; margin-bottom: 14px; display: block; }
+  .graduacion h2 {
     font-family: 'Fredoka One', cursive;
-    font-size: 30px;
-    margin-bottom: 18px;
-    line-height: 1.25;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    margin-bottom: 14px;
+    line-height: 1.2;
   }
-  .mensaje-final p {
-    font-size: 18px;
-    opacity: 0.97;
+  .graduacion h2 span { color: var(--terracota); }
+  .graduacion p {
+    font-size: var(--fs-base);
+    opacity: 0.96;
     margin-bottom: 14px;
     line-height: 1.6;
-    font-weight: 600;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .mensaje-final strong { font-weight: 900; }
-  .mensaje-final .cta-compartir {
+  .graduacion .cta-compartir {
     margin-top: 20px;
-    font-size: 18px;
-    background: rgba(255,255,255,0.15);
     padding: 18px;
-    border-radius: 14px;
-    border: 2px solid rgba(255,255,255,0.3);
-    line-height: 1.6;
+    background: rgba(245,245,220,0.12);
+    border: 1.5px solid rgba(245,245,220,0.25);
+    border-radius: 16px;
+    font-size: var(--fs-sm);
+    line-height: 1.55;
   }
+  .graduacion .cta-compartir strong { color: var(--terracota); }
 
-  /* FOOTER */
+  /* ============================================================
+     FOOTER
+     ============================================================ */
   .footer {
     text-align: center;
-    padding: 26px 20px;
-    font-size: 14px;
-    color: #888;
-    border-top: 1px solid #eee;
-    line-height: 1.6;
+    padding: 28px 20px 40px;
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+    line-height: 1.55;
   }
-  .footer strong { color: var(--verde-oscuro); font-size: 15px; }
-  .footer small { font-size: 13px; }
+  .footer strong { color: var(--oliva-dark); }
 
-  .divider {
-    border: none;
-    border-top: 3px dashed #D8D8D8;
-    margin: 36px 0;
-  }
-
-  .txt-importante {
-    font-size: 17px;
-    font-weight: 800;
-    color: var(--texto);
-    margin-bottom: 14px;
-    line-height: 1.6;
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 640px) {
+    .progress-home span.label-texto { display: none; }
+    .hero-clase { padding: 40px 20px 56px; }
+    .leccion { padding: 24px 20px; }
+    .leccion-header { gap: 12px; padding-bottom: 14px; margin-bottom: 14px; }
+    .leccion-numero { width: 50px; height: 50px; font-size: 22px; border-radius: 14px; }
+    .quiz-opciones { flex-direction: column; }
+    .graduacion { padding: 36px 20px; }
+    .quiz-box { padding: 24px 20px; }
   }
 
   @media print {
-    html { font-size: 14px; }
-    .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .app-card, .paso, .consejo-card, .checklist-doc, .regulariz-box { break-inside: avoid; }
+    .progress-fixed, .btn-completar, .quiz-box { display: none; }
+    .leccion { break-inside: avoid; }
   }
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <span class="hero-emoji">📱</span>
-  <div class="hero-badge">✅ Gratis · Fácil · 5 minutos</div>
-  <h1>Escanea tus documentos <span>GRATIS</span><br>con tu móvil</h1>
-  <p>No tienes que pagar nada a nadie.<br>Puedes hacerlo tú desde casa, tranquilo/a. 🏠</p>
+<!-- BARRA DE PROGRESO FIJA -->
+<div class="progress-fixed">
+  <a href="index.html" class="progress-home">
+    <span aria-hidden="true">🏠</span>
+    <span class="label-texto">Inicio</span>
+  </a>
+  <div class="progress-bar-wrap">
+    <div class="progress-label">
+      <span>Tu progreso</span>
+      <span class="progress-pct" id="progressPct">0%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
 </div>
 
-<div class="alerta">
-  <p><span>⚠️</span> Muchas personas están pagando entre 5€ y 20€ por escanear papeles. <strong>¡Eso no es necesario!</strong> Con esta guía lo harás gratis y por tu cuenta.</p>
-</div>
-
-<div class="contenido">
-
-  <div class="animo">
-    <p><span class="emoji-grande">🤗</span> Respira. Es más fácil de lo que parece.<br>Vamos paso a paso, sin prisa.</p>
+<!-- HERO -->
+<header class="hero-clase">
+  <div class="hero-clase-badge">📱 Clase Interactiva · Gestiona Seguro</div>
+  <h1>Aprende a escanear <em>GRATIS</em></h1>
+  <p>Una clase paso a paso para que prepares tus papeles de la regularización sin pagar ni un euro. 🙌</p>
+  <div class="meta">
+    <span>⏱ 10 minutos</span>
+    <span>📚 4 lecciones</span>
+    <span>✅ Certificado final</span>
   </div>
+</header>
 
-  <!-- 1. QUÉ SIGNIFICA -->
-  <div class="seccion">
-    <div class="seccion-titulo">
-      <div class="numero">1</div>
-      ¿Qué significa "escanear"?
+<main class="contenido">
+
+  <!-- ============ LECCIÓN 1 ============ -->
+  <section class="leccion" id="leccion-1" data-leccion="1">
+    <div class="leccion-header">
+      <div class="leccion-numero">1</div>
+      <div class="leccion-titulo-wrap">
+        <span class="leccion-etiqueta">Paso 1 de 4</span>
+        <h2 class="leccion-titulo">Preparación: qué vas a aprender</h2>
+      </div>
     </div>
-    <div class="explicacion-box">
-      <div class="icono-grande">🤔</div>
-      <p>Escanear es hacerle una <strong>foto especial</strong> a tu papel con el móvil. Así se convierte en un <strong>archivo (PDF)</strong> que puedes enviar por internet.</p>
-      <div class="flecha-ejemplo">
-        <div class="ejemplo-item">
-          <span class="emoji">📄</span>
-          Tu papel<br><small>en la mano</small>
+
+    <div class="leccion-body">
+      <p>Antes de empezar, quiero que respires. <strong>Esto es más fácil de lo que parece</strong>. Mucha gente paga entre 5€ y 20€ por algo que puedes hacer tú desde casa con tu móvil. Vamos a cambiar eso. 💪</p>
+
+      <div class="concepto concepto--azul">
+        <span class="concepto-label">Concepto clave</span>
+        <h4>¿Qué significa "escanear"?</h4>
+        <p>Escanear es hacerle una <strong>foto especial</strong> a un papel para convertirlo en un archivo digital (PDF). Ese PDF puedes enviarlo por internet a la Administración. Es lo mismo que hace un escáner de una oficina, pero con tu teléfono.</p>
+      </div>
+
+      <div class="concepto concepto--amarillo">
+        <span class="concepto-label">¿Qué es un PDF?</span>
+        <h4>Un PDF es el "formato oficial" que pide la Administración</h4>
+        <p>Piensa en el PDF como un sobre cerrado: el papel va dentro, no se arruga, y cualquiera puede abrirlo en su ordenador. Nunca envíes fotos normales (.jpg). Siempre PDF.</p>
+      </div>
+
+      <p>Al final de esta clase habrás aprendido a:</p>
+      <p>✅ <strong>Descargar</strong> una app gratuita de escaneo.<br>
+      ✅ <strong>Hacer la foto</strong> correcta sin sombras ni reflejos.<br>
+      ✅ <strong>Preparar</strong> tu pasaporte completo para la regularización.<br>
+      ✅ <strong>Revisar</strong> que tu documento está listo para enviar.</p>
+
+      <button class="btn-completar" onclick="completarLeccion(1)">
+        <span class="check-icon">✓</span>
+        <span class="btn-texto">
+          <span class="btn-texto-default">He entendido. ¡Empezamos!</span>
+          <span class="btn-texto-done">Has completado la preparación</span>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ LECCIÓN 2 ============ -->
+  <section class="leccion" id="leccion-2" data-leccion="2">
+    <div class="leccion-header">
+      <div class="leccion-numero">2</div>
+      <div class="leccion-titulo-wrap">
+        <span class="leccion-etiqueta">Paso 2 de 4</span>
+        <h2 class="leccion-titulo">La app: descárgala en 2 minutos</h2>
+      </div>
+    </div>
+
+    <div class="leccion-body">
+      <p>Vamos a elegir una aplicación para escanear. <strong>Las tres son gratuitas</strong> y funcionan muy bien. Elige solo UNA para empezar.</p>
+
+      <div class="apps-grid">
+        <div class="app-item">
+          <span class="app-emoji">🟢</span>
+          <h5>CamScanner</h5>
+          <p>Muy popular y fácil. Buena para empezar.</p>
+          <span class="app-badge">✅ Gratis</span>
         </div>
-        <span class="flecha">→</span>
-        <div class="ejemplo-item">
-          <span class="emoji">📱</span>
-          Foto con<br><small>la app</small>
+        <div class="app-item">
+          <span class="app-emoji">🔵</span>
+          <h5>Microsoft Lens</h5>
+          <p>Clara y sencilla. Ideal para documentos oficiales.</p>
+          <span class="app-badge">✅ Gratis</span>
         </div>
-        <span class="flecha">→</span>
-        <div class="ejemplo-item">
-          <span class="emoji">💾</span>
-          Archivo PDF<br><small>en tu móvil</small>
+        <div class="app-item">
+          <span class="app-emoji">🟡</span>
+          <h5>Google Drive</h5>
+          <p>Si ya lo usas, no descargas nada más.</p>
+          <span class="app-badge">✅ Gratis</span>
         </div>
       </div>
-      <p>Es lo mismo que un escáner de una oficina, pero con tu teléfono. <strong>¡Y totalmente gratis!</strong> 🖨️</p>
+
+      <div class="concepto concepto--oliva">
+        <span class="concepto-label">Android · Samsung · Xiaomi · Huawei</span>
+        <h4>🤖 Cómo descargar en Android</h4>
+        <p><strong>1.</strong> Busca el icono "Play Store" (triángulo de colores ▶️) en tu móvil.<br>
+        <strong>2.</strong> Arriba hay una barra: escribe <strong>"CamScanner"</strong>.<br>
+        <strong>3.</strong> Toca <strong>"Instalar"</strong> (verde). Espera. Listo ✅</p>
+      </div>
+
+      <div class="concepto concepto--terracota">
+        <span class="concepto-label">iPhone · Apple</span>
+        <h4>🍎 Cómo descargar en iPhone</h4>
+        <p><strong>1.</strong> Busca el icono "App Store" (una A azul 🅰️).<br>
+        <strong>2.</strong> Toca la <strong>lupa 🔍</strong> abajo a la derecha y escribe <strong>"Microsoft Lens"</strong>.<br>
+        <strong>3.</strong> Toca <strong>"Obtener"</strong>. Pon tu contraseña o huella. Listo ✅</p>
+      </div>
+
+      <button class="btn-completar" onclick="completarLeccion(2)">
+        <span class="check-icon">✓</span>
+        <span class="btn-texto">
+          <span class="btn-texto-default">Ya tengo la app instalada</span>
+          <span class="btn-texto-done">App instalada correctamente</span>
+        </span>
+      </button>
     </div>
-  </div>
+  </section>
 
-  <hr class="divider">
-
-  <!-- 2. APPS -->
-  <div class="seccion">
-    <div class="seccion-titulo">
-      <div class="numero">2</div>
-      3 aplicaciones GRATUITAS que funcionan muy bien
-    </div>
-    <p class="txt-importante">Cualquiera de las 3 sirve. <strong>Elige solo UNA</strong> para empezar. 👇</p>
-    <div class="apps-grid">
-      <div class="app-card">
-        <div class="app-emoji">🟢</div>
-        <h3>CamScanner</h3>
-        <p>Muy popular y fácil. Buena para empezar.</p>
-        <span class="badge-gratis">✅ Gratis</span>
-      </div>
-      <div class="app-card">
-        <div class="app-emoji">🔵</div>
-        <h3>Microsoft Lens</h3>
-        <p>Muy clara y sencilla. Va muy bien con documentos oficiales.</p>
-        <span class="badge-gratis">✅ Gratis</span>
-      </div>
-      <div class="app-card">
-        <div class="app-emoji">🟡</div>
-        <h3>Google Drive</h3>
-        <p>Si ya tienes Google Drive, no necesitas descargar nada más.</p>
-        <span class="badge-gratis">✅ Gratis</span>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- 3. DESCARGA -->
-  <div class="seccion">
-    <div class="seccion-titulo">
-      <div class="numero">3</div>
-      ¿No sabes descargar una app? Te lo explico 😊
-    </div>
-
-    <div class="descarga-box">
-      <h4>📱 Si tu móvil es Android<br>(Samsung, Xiaomi, Huawei…)</h4>
-      <div class="descarga-paso">
-        <div class="d-num">1</div>
-        <p>Busca en tu móvil el icono de <strong>"Play Store"</strong> (un triángulo de colores ▶️). Tócalo.</p>
-      </div>
-      <div class="descarga-paso">
-        <div class="d-num">2</div>
-        <p>Arriba verás una <strong>barra para escribir</strong>. Escribe: <strong>"CamScanner"</strong></p>
-      </div>
-      <div class="descarga-paso">
-        <div class="d-num">3</div>
-        <p>Toca el botón verde que dice <strong>"Instalar"</strong>. Espera un poco y listo. ✅</p>
+  <!-- ============ LECCIÓN 3 ============ -->
+  <section class="leccion" id="leccion-3" data-leccion="3">
+    <div class="leccion-header">
+      <div class="leccion-numero">3</div>
+      <div class="leccion-titulo-wrap">
+        <span class="leccion-etiqueta">Paso 3 de 4</span>
+        <h2 class="leccion-titulo">La captura: cómo hacer la foto perfecta</h2>
       </div>
     </div>
 
-    <div class="descarga-box">
-      <h4>🍎 Si tu móvil es iPhone<br>(Apple)</h4>
-      <div class="descarga-paso">
-        <div class="d-num">1</div>
-        <p>Busca el icono de <strong>"App Store"</strong> (una "A" azul 🅰️). Tócalo.</p>
-      </div>
-      <div class="descarga-paso">
-        <div class="d-num">2</div>
-        <p>Abajo a la derecha hay una <strong>lupa 🔍</strong>. Tócala y escribe: <strong>"Microsoft Lens"</strong></p>
-      </div>
-      <div class="descarga-paso">
-        <div class="d-num">3</div>
-        <p>Toca <strong>"Obtener"</strong>. Puede pedirte tu contraseña o huella. Ponla y listo. ✅</p>
-      </div>
-    </div>
-  </div>
+    <div class="leccion-body">
+      <p>Esta es la parte más importante. Sigue estos pasos sin prisa. 😌</p>
 
-  <div class="animo">
-    <p><span class="emoji-grande">💪</span> ¡Ya tienes la app!<br>Ahora viene lo más fácil.</p>
-  </div>
-
-  <!-- 4. PASOS -->
-  <div class="seccion">
-    <div class="seccion-titulo">
-      <div class="numero">4</div>
-      Cómo escanear — paso a paso 📋
-    </div>
-    <p class="txt-importante">Sigue los pasos con calma. No hay prisa. 😌</p>
-
-    <div class="paso">
-      <div class="paso-num">1</div>
-      <div class="paso-contenido">
-        <h4>📱 Abre la app que descargaste</h4>
-        <p>Busca su icono en tu móvil y tócalo. Si es la primera vez, te pedirá registrarte. Puedes hacerlo con tu correo de Gmail o Facebook. Sigue siendo gratis.</p>
-      </div>
-    </div>
-
-    <div class="paso">
-      <div class="paso-num">2</div>
-      <div class="paso-contenido">
-        <h4>📷 Busca el botón de la cámara</h4>
-        <p>Dentro de la app verás un botón redondo grande con una cámara 📷 o un símbolo "+". Tócalo para empezar.</p>
-      </div>
-    </div>
-
-    <div class="paso">
-      <div class="paso-num">3</div>
-      <div class="paso-contenido">
-        <h4>🗺️ Pon el papel sobre una mesa</h4>
-        <p>Coloca tu documento (pasaporte, DNI, contrato…) sobre una mesa limpia. Que no haya nada encima. Que esté bien estirado, sin arrugas.</p>
-        <div class="nota">💡 Una mesa de color oscuro ayuda mucho. Así el papel blanco se ve mejor.</div>
-      </div>
-    </div>
-
-    <div class="paso">
-      <div class="paso-num">4</div>
-      <div class="paso-contenido">
-        <h4>🔆 Cuida la luz</h4>
-        <p>Enciende la luz de la habitación o acércate a una ventana. Cuanta más luz, mejor sale. <strong>Tu sombra no debe caer sobre el papel.</strong></p>
-        <div class="nota">💡 Pon el móvil justo arriba del papel, recto. No de lado.</div>
-      </div>
-    </div>
-
-    <div class="paso">
-      <div class="paso-num">5</div>
-      <div class="paso-contenido">
-        <h4>📸 Haz la foto</h4>
-        <p>La app detecta sola los bordes del papel (verás una línea azul o verde alrededor). Cuando veas que está bien colocado, toca el botón para hacer la foto.</p>
-      </div>
-    </div>
-
-    <div class="paso">
-      <div class="paso-num">6</div>
-      <div class="paso-contenido">
-        <h4>✂️ Ajusta los bordes si hace falta</h4>
-        <p>Después de la foto, la app te enseña el resultado. Si los bordes no están bien, muévelos con el dedo hasta que solo se vea el papel.</p>
-        <div class="nota">💡 Es como recortar con tijeras, pero con el dedo. Solo deja lo que necesitas.</div>
-      </div>
-    </div>
-
-    <div class="paso">
-      <div class="paso-num">7</div>
-      <div class="paso-contenido">
-        <h4>💾 Guárdalo como PDF</h4>
-        <p>Busca la opción <strong>"Guardar"</strong>, <strong>"Exportar"</strong> o <strong>"Compartir"</strong>. Elige el formato <strong>PDF</strong>. Si no ves PDF, elige "Documento" y también vale.</p>
-        <div class="nota">🎉 ¡Ya tienes tu documento escaneado en el móvil!</div>
-      </div>
-    </div>
-
-    <div class="paso">
-      <div class="paso-num">8</div>
-      <div class="paso-contenido">
-        <h4>👀 Revísalo antes de enviarlo</h4>
-        <p>Abre el PDF y mira bien que todo se lee. Si algo está borroso o cortado, repite la foto. Solo tardas 2 minutos más.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="animo">
-    <p><span class="emoji-grande">🌟</span> ¡Lo estás haciendo genial!<br>Ya casi eres un experto/a.</p>
-  </div>
-
-  <!-- 5. CONSEJOS -->
-  <div class="seccion">
-    <div class="seccion-titulo">
-      <div class="numero">5</div>
-      Consejos para que quede perfecto ✅
-    </div>
-    <div class="consejos-grid">
-      <div class="consejo-card">
-        <div class="c-emoji">☀️</div>
-        <p>Buena luz.<br>Nunca a oscuras.</p>
-      </div>
-      <div class="consejo-card">
-        <div class="c-emoji">🖤</div>
-        <p>Fondo oscuro y limpio.<br>Sin otros papeles.</p>
-      </div>
-      <div class="consejo-card">
-        <div class="c-emoji">🚫</div>
-        <p>Sin sombras.<br>Móvil recto.</p>
-      </div>
-      <div class="consejo-card">
-        <div class="c-emoji">📏</div>
-        <p>Que se vean todos los bordes.</p>
-      </div>
-      <div class="consejo-card">
-        <div class="c-emoji">👓</div>
-        <p>Las letras, bien claras.</p>
-      </div>
-      <div class="consejo-card">
-        <div class="c-emoji">🔄</div>
-        <p>¿Salió mal? Repite.<br>¡No pasa nada!</p>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- 6. ERRORES -->
-  <div class="seccion">
-    <div class="seccion-titulo">
-      <div class="numero">6</div>
-      Errores que debes evitar ⚠️
-    </div>
-
-    <div class="error-item">
-      <span class="e-emoji">🌑</span>
-      <div>
-        <h4>Poca luz</h4>
-        <p>A oscuras el papel sale borroso y no se lee. Siempre en un sitio bien iluminado.</p>
-      </div>
-    </div>
-
-    <div class="error-item">
-      <span class="e-emoji">🌫️</span>
-      <div>
-        <h4>Foto movida o borrosa</h4>
-        <p>Sujeta el móvil con las dos manos. Apoya los codos en la mesa. No te muevas al disparar.</p>
-      </div>
-    </div>
-
-    <div class="error-item">
-      <span class="e-emoji">✂️</span>
-      <div>
-        <h4>Documento cortado</h4>
-        <p>Si no se ven los bordes del papel, parte de la información se pierde. Que el papel entero entre en la foto.</p>
-      </div>
-    </div>
-
-    <div class="error-item">
-      <span class="e-emoji">📐</span>
-      <div>
-        <h4>Foto de lado o torcida</h4>
-        <p>Pon el móvil recto, mirando al papel desde arriba. Como si fuera un espejo del papel.</p>
-      </div>
-    </div>
-
-    <div class="error-item">
-      <span class="e-emoji">👆</span>
-      <div>
-        <h4>Los dedos tapan el documento</h4>
-        <p>Suelta el papel antes de disparar. Si se mueve, pon algo pequeño en las esquinas para sujetarlo.</p>
-      </div>
-    </div>
-
-    <div class="error-item">
-      <span class="e-emoji">📤</span>
-      <div>
-        <h4>Enviar sin revisar</h4>
-        <p>Antes de enviar, abre el PDF y léelo. Un documento ilegible puede retrasar tu trámite.</p>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- 7. REGULARIZACIÓN -->
-  <div class="seccion">
-    <div class="seccion-titulo">
-      <div class="numero" style="background: var(--naranja);">7</div>
-      Para tu Regularización 2026 📋
-    </div>
-
-    <div class="regulariz-box">
-      <div class="regulariz-titulo">🛂 Cómo escanear tu PASAPORTE</div>
-      <p class="regulariz-intro">Este es el documento más importante. Hazlo bien y no tendrás que repetirlo.</p>
-
-      <div class="checklist-doc">
-        <span class="check-emoji">📖</span>
+      <div class="sub-paso">
+        <div class="sub-paso-num">1</div>
         <div>
-          <h5>TODAS las páginas. Sí, todas.</h5>
-          <p>Escanea el pasaporte <strong>completo, de principio a fin</strong>. Incluso las hojas en blanco (las que no tienen nada escrito ni ningún sello). <strong>No te saltes ninguna.</strong></p>
+          <h5>📱 Abre la app</h5>
+          <p>Toca el icono en tu móvil. Si es la primera vez, te pedirá registrarte (puedes usar tu Gmail o Facebook, sigue siendo gratis).</p>
         </div>
       </div>
 
-      <div class="checklist-doc">
-        <span class="check-emoji">🔢</span>
+      <div class="sub-paso">
+        <div class="sub-paso-num">2</div>
         <div>
-          <h5>En orden y todo junto</h5>
-          <p>Escanea las páginas <strong>en orden</strong>, empezando por la portada. La app te deja añadir una foto detrás de otra. Al final, guarda todo como <strong>UN solo PDF.</strong></p>
+          <h5>📷 Busca el botón de la cámara</h5>
+          <p>Verás un botón redondo grande con una cámara 📷 o un símbolo "+". Tócalo.</p>
         </div>
       </div>
 
-      <div class="checklist-doc">
-        <span class="check-emoji">🆔</span>
+      <div class="sub-paso">
+        <div class="sub-paso-num">3</div>
         <div>
-          <h5>La hoja de tus datos bien clara</h5>
-          <p>La página con tu foto, nombre y número de pasaporte debe verse <strong>perfectamente</strong>. Sin reflejos. Sin sombras. Si no se lee, te rechazan el expediente.</p>
+          <h5>🗺️ Pon el papel en una mesa limpia</h5>
+          <p>Que esté estirado, sin arrugas. Que no haya nada encima. Una mesa oscura ayuda mucho.</p>
         </div>
       </div>
 
-      <div class="checklist-doc">
-        <span class="check-emoji">🗺️</span>
+      <div class="sub-paso">
+        <div class="sub-paso-num">4</div>
+        <div>
+          <h5>📸 Haz la foto desde arriba</h5>
+          <p>La app detecta sola los bordes (verás una línea azul). Móvil recto, no de lado. Cuando esté bien encuadrado, toca el botón.</p>
+        </div>
+      </div>
+
+      <div class="sub-paso">
+        <div class="sub-paso-num">5</div>
+        <div>
+          <h5>✂️ Ajusta los bordes con el dedo</h5>
+          <p>Si la línea no está perfecta, muévela con el dedo hasta que solo se vea el papel. Es como recortar con tijeras.</p>
+        </div>
+      </div>
+
+      <div class="sub-paso">
+        <div class="sub-paso-num">6</div>
+        <div>
+          <h5>💾 Guarda como PDF</h5>
+          <p>Busca "Guardar", "Exportar" o "Compartir". Elige <strong>PDF</strong>. Si no ves PDF, elige "Documento".</p>
+        </div>
+      </div>
+
+      <div class="concepto concepto--amarillo">
+        <span class="concepto-label">La regla de oro</span>
+        <h4>💡 La luz lo es TODO</h4>
+        <p>El 80% de los escaneos malos son por mala luz. Enciende la lámpara de la habitación o acércate a una ventana. <strong>Y muy importante: que tu sombra no caiga sobre el papel.</strong> Si ves una sombra, muévete.</p>
+      </div>
+
+      <p style="margin-top: 18px;"><strong>Errores más frecuentes</strong> que debes evitar:</p>
+
+      <div class="error-item">
+        <span class="e-emoji">🌫️</span>
+        <div>
+          <h5>Foto movida</h5>
+          <p>Sujeta el móvil con las dos manos. Apoya los codos en la mesa.</p>
+        </div>
+      </div>
+
+      <div class="error-item">
+        <span class="e-emoji">✂️</span>
+        <div>
+          <h5>Bordes cortados</h5>
+          <p>Que el papel entero entre en la foto. Si no se ven los 4 bordes, falta información.</p>
+        </div>
+      </div>
+
+      <div class="error-item">
+        <span class="e-emoji">👆</span>
+        <div>
+          <h5>Dedos tapando el documento</h5>
+          <p>Suelta el papel antes de disparar. Si se mueve, pon algo pequeño en las esquinas.</p>
+        </div>
+      </div>
+
+      <button class="btn-completar" onclick="completarLeccion(3)">
+        <span class="check-icon">✓</span>
+        <span class="btn-texto">
+          <span class="btn-texto-default">Ya sé hacer la foto correctamente</span>
+          <span class="btn-texto-done">Dominas la técnica de escaneo</span>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ LECCIÓN 4 ============ -->
+  <section class="leccion" id="leccion-4" data-leccion="4">
+    <div class="leccion-header">
+      <div class="leccion-numero">4</div>
+      <div class="leccion-titulo-wrap">
+        <span class="leccion-etiqueta">Paso 4 de 4 · El más importante</span>
+        <h2 class="leccion-titulo">Para tu Regularización 2026</h2>
+      </div>
+    </div>
+
+    <div class="leccion-body">
+      <p>Ahora vamos con lo que de verdad importa: <strong>cómo preparar tu expediente</strong> para que no te lo rechacen. 📋</p>
+
+      <div class="concepto concepto--terracota">
+        <span class="concepto-label">⭐ Lo más importante</span>
+        <h4>🛂 Tu pasaporte: TODAS las páginas</h4>
+        <p>Escanea el pasaporte <strong>entero, de principio a fin</strong>. Incluso las hojas en blanco (las que no tienen nada escrito ni sellos). En orden, desde la portada, y guárdalo como <strong>UN SOLO PDF</strong>. No te saltes ninguna página.</p>
+      </div>
+
+      <div class="doc-check">
+        <span class="doc-emoji">🆔</span>
+        <div>
+          <h5>La hoja de tus datos, perfecta</h5>
+          <p>La página con tu foto, nombre y número de pasaporte tiene que verse <strong>sin reflejos y sin sombras</strong>. Si no se lee, te rechazan el expediente.</p>
+        </div>
+      </div>
+
+      <div class="doc-check">
+        <span class="doc-emoji">🗺️</span>
         <div>
           <h5>Todos los sellos visibles</h5>
-          <p>Los sellos de entrada y salida son muy importantes. Comprueba que <strong>cada sello se lee bien</strong>, con sus fechas. No importa que estén torcidos o repetidos.</p>
+          <p>Los sellos de entrada y salida son importantes. Que <strong>cada fecha se lea bien</strong>. No importa si están torcidos o repetidos.</p>
         </div>
       </div>
 
-      <div class="aviso-critico">
-        <h5>🚨 Muy importante</h5>
-        <p>Si tu pasaporte está <strong>caducado</strong>, tienes que renovarlo antes de enviar el expediente. Un pasaporte caducado no sirve para la regularización.</p>
-      </div>
-    </div>
-
-    <div class="regulariz-box" style="border-color: var(--azul); background: linear-gradient(135deg, #EBF5FB 0%, #F4F9FD 100%);">
-      <div class="regulariz-titulo" style="color: #1A5276;">📝 Otros documentos del expediente</div>
-      <p class="regulariz-intro" style="color: #1A5276;">Los mismos cuidados para todos los demás papeles.</p>
-
-      <div class="checklist-doc" style="border-left-color: var(--azul);">
-        <span class="check-emoji">↔️</span>
+      <div class="doc-check">
+        <span class="doc-emoji">↔️</span>
         <div>
           <h5>Documentos por las dos caras</h5>
-          <p>Si un documento tiene información por detrás (NIE, contratos, certificados), <strong>escanea las dos caras</strong>. Aunque una parezca vacía.</p>
+          <p>NIE, contratos, certificados: <strong>escanea las dos caras</strong>. Aunque una parezca vacía.</p>
         </div>
       </div>
 
-      <div class="checklist-doc" style="border-left-color: var(--azul);">
-        <span class="check-emoji">📅</span>
+      <div class="doc-check">
+        <span class="doc-emoji">📅</span>
         <div>
           <h5>Empadronamiento reciente</h5>
-          <p>El certificado de empadronamiento debe ser de <strong>menos de 3 meses</strong>. Si es más antiguo, pide uno nuevo antes de escanearlo.</p>
+          <p>Menos de <strong>3 meses</strong>. Si es más antiguo, pide uno nuevo antes de escanear.</p>
         </div>
       </div>
 
-      <div class="checklist-doc" style="border-left-color: var(--azul);">
-        <span class="check-emoji">🌍</span>
+      <div class="doc-check">
+        <span class="doc-emoji">🌍</span>
         <div>
-          <h5>Documentos de tu país de origen</h5>
-          <p>Si envías antecedentes penales u otros documentos de tu país, escanea también <strong>la apostilla de La Haya o la legalización</strong> (el sello que los valida en España). Forma parte del documento.</p>
+          <h5>Apostilla de La Haya incluida</h5>
+          <p>Si son documentos de tu país, escanea también <strong>el sello de la apostilla o legalización</strong>. Forma parte del documento.</p>
         </div>
       </div>
 
-      <div class="checklist-doc" style="border-left-color: var(--azul);">
-        <span class="check-emoji">🏷️</span>
-        <div>
-          <h5>Pon nombre claro a cada archivo</h5>
-          <p>Antes de enviar, cambia el nombre del PDF. Ejemplos:<br>
-          <strong>PASAPORTE_JUAN_PEREZ.pdf</strong><br>
-          <strong>EMPADRONAMIENTO_JUAN_PEREZ.pdf</strong><br>
-          <strong>CONTRATO_TRABAJO_JUAN_PEREZ.pdf</strong></p>
-        </div>
+      <div class="concepto concepto--oliva">
+        <span class="concepto-label">Consejo de oro</span>
+        <h4>🏷️ Ponle nombre a cada archivo</h4>
+        <p>Antes de enviar, cambia el nombre del PDF. Ejemplos:<br>
+        · <strong>PASAPORTE_JUAN_PEREZ.pdf</strong><br>
+        · <strong>EMPADRONAMIENTO_JUAN_PEREZ.pdf</strong><br>
+        · <strong>CONTRATO_TRABAJO_JUAN_PEREZ.pdf</strong></p>
       </div>
 
-      <div class="checklist-doc" style="border-left-color: var(--azul);">
-        <span class="check-emoji">📄</span>
-        <div>
-          <h5>Siempre PDF, nunca foto normal</h5>
-          <p>La Administración pide <strong>formato PDF</strong>. Nunca envíes una foto normal (.jpg o .png). Usa siempre la app de escáner para crear el PDF.</p>
-        </div>
+      <div class="concepto concepto--amarillo">
+        <span class="concepto-label">¡Aviso importante!</span>
+        <h4>🚨 Pasaporte caducado</h4>
+        <p>Si tu pasaporte está caducado, <strong>tienes que renovarlo antes de enviar el expediente</strong>. Un pasaporte caducado no sirve para la regularización.</p>
       </div>
 
-      <div class="checklist-doc" style="border-left-color: var(--azul);">
-        <span class="check-emoji">⚖️</span>
-        <div>
-          <h5>Nada recortado, nada cubierto</h5>
-          <p>Que se vean <strong>todos los bordes</strong> del papel. Nada de dedos encima. Nada de márgenes cortados. El sello, la firma y las fechas deben salir completos.</p>
-        </div>
-      </div>
+      <button class="btn-completar" onclick="completarLeccion(4)">
+        <span class="check-icon">✓</span>
+        <span class="btn-texto">
+          <span class="btn-texto-default">Tengo claro qué escanear</span>
+          <span class="btn-texto-done">Listo para preparar el expediente</span>
+        </span>
+      </button>
+    </div>
+  </section>
 
-      <div class="tip-dorado">
-        💡 <strong>Consejo de oro:</strong> Guarda TODOS los PDFs escaneados en una carpeta del móvil o en Google Drive. Así los tienes a mano y no los pierdes si cambias de teléfono.
+  <!-- ============ MINI QUIZ ============ -->
+  <section class="quiz-box" id="quizBox">
+    <div class="quiz-box-header">
+      <span class="quiz-emoji">🎯</span>
+      <h3>¿Tu documento está listo?</h3>
+      <p class="quiz-intro">Antes de enviar nada, responde a estas 3 preguntas. Te ayudarán a estar seguro/a.</p>
+    </div>
+
+    <div class="quiz-pregunta" data-correcta="si">
+      <div class="quiz-pregunta-texto">1. ¿Se ven los 4 bordes del papel en la foto?</div>
+      <div class="quiz-opciones">
+        <button class="quiz-opcion" data-respuesta="si" onclick="responderQuiz(this, 1)">✅ Sí</button>
+        <button class="quiz-opcion" data-respuesta="no" onclick="responderQuiz(this, 1)">❌ No</button>
       </div>
     </div>
 
-    <div class="regulariz-box" style="border-color: var(--verde); background: linear-gradient(135deg, #E8F8F0 0%, #F0FBF5 100%);">
-      <div class="regulariz-titulo" style="color: #1E7E46;">✅ Antes de enviar — lista de repaso</div>
-      <div class="checklist-doc" style="border-left-color: var(--verde);">
-        <span class="check-emoji">1️⃣</span>
-        <div>
-          <h5>Abre cada PDF y léelo entero</h5>
-          <p>Revisa página por página. Que no falte ninguna. Que todo se lea bien.</p>
-        </div>
-      </div>
-      <div class="checklist-doc" style="border-left-color: var(--verde);">
-        <span class="check-emoji">2️⃣</span>
-        <div>
-          <h5>Cuenta las páginas</h5>
-          <p>Cuenta las páginas del pasaporte físico y cuéntalas también en el PDF. Tienen que coincidir.</p>
-        </div>
-      </div>
-      <div class="checklist-doc" style="border-left-color: var(--verde);">
-        <span class="check-emoji">3️⃣</span>
-        <div>
-          <h5>Tamaño del archivo</h5>
-          <p>Que cada PDF no pese más de <strong>10 MB</strong>. Si pesa más, la app tiene una opción para reducirlo ("comprimir" o "tamaño medio").</p>
-        </div>
-      </div>
-      <div class="checklist-doc" style="border-left-color: var(--verde);">
-        <span class="check-emoji">4️⃣</span>
-        <div>
-          <h5>Pide a alguien que lo mire</h5>
-          <p>Antes de enviar, pide a un familiar o amigo que lo revise contigo. <strong>Cuatro ojos ven más que dos.</strong></p>
-        </div>
+    <div class="quiz-pregunta" data-correcta="no">
+      <div class="quiz-pregunta-texto">2. ¿Hay sombras o reflejos sobre el papel?</div>
+      <div class="quiz-opciones">
+        <button class="quiz-opcion" data-respuesta="si" onclick="responderQuiz(this, 2)">😟 Sí, hay</button>
+        <button class="quiz-opcion" data-respuesta="no" onclick="responderQuiz(this, 2)">✅ No, está limpio</button>
       </div>
     </div>
-  </div>
 
-  <hr class="divider">
+    <div class="quiz-pregunta" data-correcta="si">
+      <div class="quiz-pregunta-texto">3. ¿Guardaste el archivo como PDF (no como foto)?</div>
+      <div class="quiz-opciones">
+        <button class="quiz-opcion" data-respuesta="si" onclick="responderQuiz(this, 3)">✅ Sí, es PDF</button>
+        <button class="quiz-opcion" data-respuesta="no" onclick="responderQuiz(this, 3)">❌ No, es foto</button>
+      </div>
+    </div>
 
-  <!-- MENSAJE FINAL -->
-  <div class="mensaje-final">
-    <div class="mf-emoji">💪</div>
-    <h2>¡Tú puedes hacerlo!</h2>
-    <p><strong>No tienes que pagar ni un euro</strong> por escanear tus documentos.</p>
-    <p>Con tu móvil y esta guía, puedes hacerlo en casa, en cualquier momento, <strong>totalmente gratis.</strong></p>
-    <p>Si la primera foto no sale bien, <strong>inténtalo otra vez</strong>. En el segundo o tercer intento ya te saldrá. ✅</p>
+    <div class="quiz-resultado" id="quizResultado">
+      <!-- Se rellena con JS -->
+    </div>
+  </section>
+
+  <!-- ============ GRADUACIÓN ============ -->
+  <section class="graduacion" id="graduacion">
+    <span class="grad-emoji">🎓</span>
+    <h2>¡Felicidades! Has <span>ahorrado 20€</span> y tu documento está perfecto</h2>
+    <p>Acabas de aprender algo que mucha gente está pagando sin necesidad. <strong>Tu expediente va a ir con calidad profesional.</strong></p>
+    <p>Ahora tú también puedes enseñar a otra persona. Los conocimientos se comparten. 🤝</p>
     <div class="cta-compartir">
-      📲 <strong>Comparte esta guía</strong> con quien la necesite.<br>
-     
+      📲 <strong>Comparte esta guía</strong> con alguien que lo necesite.<br>
+      Cuantos más sepan, menos abusos habrá.
     </div>
-  </div>
+  </section>
 
-</div>
+</main>
 
-<div class="footer">
-  Guía elaborada por <strong>Gestiona Seguro</strong><br>
+<footer class="footer">
+  Clase elaborada por <strong>Gestiona Seguro</strong><br>
   Para la Regularización Extraordinaria 2026<br>
   <small>Información y ayuda para personas migrantes en España</small>
-</div>
+</footer>
+
+<script>
+  // ============ BARRA DE PROGRESO AL SCROLL ============
+  const progressFill = document.getElementById('progressFill');
+  const progressPct = document.getElementById('progressPct');
+
+  function actualizarProgreso() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = Math.min(100, Math.round((scrollTop / docHeight) * 100));
+    progressFill.style.width = pct + '%';
+    progressPct.textContent = pct + '%';
+  }
+
+  window.addEventListener('scroll', actualizarProgreso);
+  window.addEventListener('resize', actualizarProgreso);
+
+  // ============ COMPLETAR LECCIÓN ============
+  function completarLeccion(num) {
+    const leccion = document.getElementById('leccion-' + num);
+    leccion.classList.add('completado');
+
+    // Guardar en localStorage para que persista
+    try {
+      const completadas = JSON.parse(localStorage.getItem('gs_escanear_completadas') || '[]');
+      if (!completadas.includes(num)) {
+        completadas.push(num);
+        localStorage.setItem('gs_escanear_completadas', JSON.stringify(completadas));
+      }
+    } catch(e) { /* localStorage puede fallar en modo privado, no pasa nada */ }
+
+    // Scroll suave a la siguiente lección
+    setTimeout(() => {
+      const siguiente = document.getElementById('leccion-' + (num + 1)) || document.getElementById('quizBox');
+      if (siguiente) {
+        siguiente.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 400);
+  }
+
+  // ============ RESTAURAR PROGRESO GUARDADO ============
+  window.addEventListener('DOMContentLoaded', () => {
+    try {
+      const completadas = JSON.parse(localStorage.getItem('gs_escanear_completadas') || '[]');
+      completadas.forEach(num => {
+        const leccion = document.getElementById('leccion-' + num);
+        if (leccion) leccion.classList.add('completado');
+      });
+    } catch(e) {}
+    actualizarProgreso();
+  });
+
+  // ============ QUIZ FINAL ============
+  const respuestasQuiz = {};
+
+  function responderQuiz(btn, numPregunta) {
+    const opciones = btn.parentElement.querySelectorAll('.quiz-opcion');
+    opciones.forEach(o => {
+      o.classList.remove('seleccionada-si', 'seleccionada-no');
+    });
+
+    const respuesta = btn.dataset.respuesta;
+    const pregunta = btn.closest('.quiz-pregunta');
+    const correcta = pregunta.dataset.correcta;
+
+    if (respuesta === correcta) {
+      btn.classList.add('seleccionada-si');
+    } else {
+      btn.classList.add('seleccionada-no');
+    }
+
+    respuestasQuiz[numPregunta] = (respuesta === correcta);
+
+    // Si ya hay 3 respuestas, mostrar resultado
+    if (Object.keys(respuestasQuiz).length === 3) {
+      setTimeout(mostrarResultadoQuiz, 500);
+    }
+  }
+
+  function mostrarResultadoQuiz() {
+    const resultado = document.getElementById('quizResultado');
+    const graduacion = document.getElementById('graduacion');
+    const todasCorrectas = Object.values(respuestasQuiz).every(r => r === true);
+
+    if (todasCorrectas) {
+      resultado.className = 'quiz-resultado exito visible';
+      resultado.innerHTML = `
+        <span class="res-emoji">🌟</span>
+        <h4>¡Perfecto! Tu documento está listo para enviar</h4>
+        <p>Has dominado las 3 reglas de oro del escaneo. Tu expediente va a entrar con calidad profesional.</p>
+      `;
+      // Mostrar graduación después de un momento
+      setTimeout(() => {
+        graduacion.classList.add('visible');
+        graduacion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 1200);
+    } else {
+      resultado.className = 'quiz-resultado revisar visible';
+      const fallos = Object.entries(respuestasQuiz).filter(([_, ok]) => !ok).map(([n]) => n);
+      resultado.innerHTML = `
+        <span class="res-emoji">🔄</span>
+        <h4>Casi lo tienes, ¡vuelve a intentarlo!</h4>
+        <p>Repasa la <strong>Lección 3</strong> para revisar bien la pregunta ${fallos.join(' y la ')}.</p>
+        <p style="margin-top:10px;">No pasa nada. Repetir hasta que salga bien es exactamente lo que hay que hacer. 💪</p>
+      `;
+      resultado.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+</script>
 
 </body>
 </html>
