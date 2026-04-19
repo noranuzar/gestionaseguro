@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clase Interactiva: Escanear Gratis — Gestiona Seguro</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
   :root {
     /* PALETA GESTIONA SEGURO */
@@ -751,6 +752,518 @@
   .graduacion .cta-compartir strong { color: var(--terracota); }
 
   /* ============================================================
+     LISTA DE DOCUMENTOS REQUERIDOS (vista general)
+     ============================================================ */
+  .docs-requeridos {
+    background: linear-gradient(135deg, #fef5d7 0%, #fdeac9 100%);
+    border: 2.5px solid var(--pastel-amarillo-borde);
+    border-radius: 20px;
+    padding: 24px 22px;
+    margin: 20px 0 24px;
+  }
+  .docs-requeridos-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 2px dashed rgba(125,91,0,0.2);
+  }
+  .docs-requeridos-header .header-emoji {
+    font-size: 36px;
+    flex-shrink: 0;
+  }
+  .docs-requeridos-header h4 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    color: #7d5b00;
+    line-height: 1.25;
+    margin-bottom: 2px;
+  }
+  .docs-requeridos-header p {
+    font-size: 0.92rem !important;
+    color: #8a6500;
+    margin-bottom: 0 !important;
+    font-weight: 700;
+  }
+
+  .docs-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .doc-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    border-radius: 12px;
+    padding: 12px 14px;
+    box-shadow: 0 2px 6px rgba(125,91,0,0.08);
+  }
+  .doc-item-num {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    background: #7d5b00;
+    color: #fef5d7;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 16px;
+  }
+  .doc-item-emoji {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .doc-item-texto {
+    flex: 1;
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--texto);
+    line-height: 1.35;
+  }
+  .doc-item-texto small {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--texto-suave);
+    margin-top: 2px;
+  }
+
+  .docs-nota-final {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 10px;
+    font-size: 0.92rem;
+    color: #7d5b00;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* ============================================================
+     SEPARADORES CON TÍTULO
+     ============================================================ */
+  .separador-titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0 16px;
+  }
+  .separador-titulo h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.15rem;
+    color: var(--oliva-dark);
+    line-height: 1.25;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  .separador-titulo::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: var(--arena-dark);
+    border-radius: 2px;
+  }
+
+  /* ============================================================
+     BOTÓN DE REINICIAR (RESET)
+     ============================================================ */
+  .btn-reset {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1.5px solid var(--arena-dark);
+    color: var(--texto-suave);
+    padding: 8px 12px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transicion);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .btn-reset.visible { display: inline-flex; }
+  .btn-reset:hover {
+    background: var(--terracota-pastel);
+    border-color: var(--terracota);
+    color: var(--terracota-dark);
+  }
+  .btn-reset .reset-icon {
+    display: inline-block;
+    transition: transform 0.5s ease;
+  }
+  .btn-reset:hover .reset-icon {
+    transform: rotate(-180deg);
+  }
+
+  /* ============================================================
+     SECCIÓN CERTIFICADO
+     ============================================================ */
+  .certificado-seccion {
+    display: none;
+    margin-top: 32px;
+  }
+  .certificado-seccion.visible {
+    display: block;
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .cert-invitacion {
+    background: linear-gradient(135deg, var(--arena-warm), var(--oliva-pastel));
+    border: 2.5px dashed var(--oliva);
+    border-radius: 24px;
+    padding: 32px 24px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .cert-invitacion .cert-inv-emoji {
+    font-size: 60px;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .cert-invitacion h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.4rem, 4vw, 1.75rem);
+    color: var(--oliva-dark);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .cert-invitacion p {
+    font-size: var(--fs-sm);
+    color: var(--texto-suave);
+    max-width: 460px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+  }
+
+  .cert-nombre-input {
+    width: 100%;
+    max-width: 380px;
+    padding: 16px 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: var(--fs-base);
+    font-weight: 700;
+    border: 2.5px solid var(--arena-dark);
+    background: white;
+    color: var(--texto);
+    border-radius: 14px;
+    outline: none;
+    transition: border-color var(--transicion);
+    text-align: center;
+  }
+  .cert-nombre-input:focus {
+    border-color: var(--oliva);
+  }
+  .cert-nombre-input::placeholder {
+    color: var(--texto-suave);
+    font-weight: 500;
+    opacity: 0.7;
+  }
+
+  .cert-generar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 16px 28px;
+    background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: var(--fs-base);
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(226,114,91,0.3);
+    transition: all var(--transicion);
+  }
+  .cert-generar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(226,114,91,0.4);
+  }
+
+  /* CERTIFICADO VISUAL */
+  .certificado-wrap {
+    display: none;
+  }
+  .certificado-wrap.visible {
+    display: block;
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .certificado {
+    background: var(--blanco);
+    border: 3px double var(--oliva);
+    border-radius: 20px;
+    padding: 36px 24px 32px;
+    margin: 0 auto;
+    max-width: 560px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(42,34,24,0.12);
+    overflow: hidden;
+  }
+  .certificado::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1.5px solid var(--oliva-light);
+    border-radius: 12px;
+    pointer-events: none;
+    opacity: 0.35;
+  }
+  .certificado::after {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(226,114,91,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cert-inner { position: relative; z-index: 2; text-align: center; }
+
+  .cert-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--oliva);
+    color: var(--arena);
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .cert-header .anchor {
+    font-size: 14px;
+  }
+
+  .cert-titulo {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    color: var(--oliva-dark);
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .cert-subtitulo {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--terracota);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 28px;
+  }
+
+  .cert-otorgado {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .cert-nombre {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    color: var(--terracota-dark);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    padding: 0 10px 14px;
+    border-bottom: 2px solid var(--arena-dark);
+    word-wrap: break-word;
+  }
+
+  .cert-por {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    color: var(--texto);
+    line-height: 1.6;
+    max-width: 420px;
+    margin: 0 auto 24px;
+    font-weight: 500;
+  }
+  .cert-por strong {
+    color: var(--oliva-dark);
+    font-weight: 800;
+  }
+
+  .cert-skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .cert-skill {
+    background: var(--oliva-pastel);
+    color: var(--oliva-dark);
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  .cert-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1.5px solid var(--arena-dark);
+    font-family: 'Nunito', sans-serif;
+  }
+  .cert-firma {
+    text-align: left;
+  }
+  .cert-firma .cert-firma-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--texto-suave);
+    margin-bottom: 2px;
+  }
+  .cert-firma .cert-firma-texto {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.95rem;
+    color: var(--oliva-dark);
+    line-height: 1.2;
+  }
+  .cert-fecha {
+    text-align: right;
+  }
+  .cert-fecha .cert-fecha-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--texto-suave);
+    margin-bottom: 2px;
+  }
+  .cert-fecha .cert-fecha-valor {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.95rem;
+    color: var(--oliva-dark);
+  }
+
+  .cert-sello {
+    position: absolute;
+    right: 24px;
+    top: 100px;
+    width: 80px;
+    height: 80px;
+    border: 2.5px solid var(--terracota);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--terracota-dark);
+    font-family: 'Nunito', sans-serif;
+    transform: rotate(-12deg);
+    background: rgba(253,243,240,0.7);
+  }
+  .cert-sello-year {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  .cert-sello-txt {
+    font-size: 0.55rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+
+  /* ACCIONES DEL CERTIFICADO */
+  .cert-acciones {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 22px;
+  }
+  .cert-accion-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 22px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    cursor: pointer;
+    transition: all var(--transicion);
+    border: none;
+    text-decoration: none;
+  }
+  .cert-accion-btn--descargar {
+    background: var(--oliva);
+    color: white;
+    box-shadow: 0 4px 12px rgba(85,107,47,0.25);
+  }
+  .cert-accion-btn--descargar:hover {
+    background: var(--oliva-dark);
+    transform: translateY(-2px);
+  }
+  .cert-accion-btn--whatsapp {
+    background: #25D366;
+    color: white;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.25);
+  }
+  .cert-accion-btn--whatsapp:hover {
+    background: #1da851;
+    transform: translateY(-2px);
+  }
+  .cert-accion-btn--reiniciar {
+    background: transparent;
+    color: var(--texto-suave);
+    border: 1.5px solid var(--arena-dark);
+  }
+  .cert-accion-btn--reiniciar:hover {
+    background: var(--arena-warm);
+    color: var(--texto);
+  }
+
+  .cert-nota {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    margin-top: 16px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  @media (max-width: 640px) {
+    .cert-sello {
+      right: 16px;
+      top: 85px;
+      width: 64px;
+      height: 64px;
+    }
+    .cert-sello-year { font-size: 0.95rem; }
+    .cert-sello-txt { font-size: 0.48rem; }
+    .certificado { padding: 28px 18px 24px; }
+    .cert-footer { flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+    .cert-firma, .cert-fecha { text-align: center; }
+  }
+
+  /* ============================================================
      FOOTER
      ============================================================ */
   .footer {
@@ -799,6 +1312,10 @@
       <div class="progress-fill" id="progressFill"></div>
     </div>
   </div>
+  <button class="btn-reset" id="btnReset" onclick="reiniciarClase()" title="Empezar la clase desde el principio">
+    <span class="reset-icon">↻</span>
+    <span class="label-texto">Reiniciar</span>
+  </button>
 </div>
 
 <!-- HERO -->
@@ -1032,9 +1549,92 @@
     <div class="leccion-body">
       <p>Ahora vamos con lo que de verdad importa: <strong>cómo preparar tu expediente</strong> para que no te lo rechacen. 📋</p>
 
+      <!-- AVISO CENTRAL: NO ES SOLO EL PASAPORTE -->
+      <div class="concepto concepto--terracota">
+        <span class="concepto-label">⚠️ Atención</span>
+        <h4>No basta con escanear solo el pasaporte</h4>
+        <p>Para tu regularización necesitas <strong>preparar varios documentos</strong>, no uno solo. Todos tienen que ir bien escaneados. Vamos a verlos todos, uno por uno.</p>
+      </div>
+
+      <!-- LISTA COMPLETA DE DOCUMENTOS -->
+      <div class="docs-requeridos">
+        <div class="docs-requeridos-header">
+          <span class="header-emoji">📂</span>
+          <div>
+            <h4>Documentos que vas a escanear</h4>
+            <p>Esta es tu lista. Cada uno como un PDF aparte.</p>
+          </div>
+        </div>
+
+        <div class="docs-lista">
+          <div class="doc-item">
+            <div class="doc-item-num">1</div>
+            <span class="doc-item-emoji">🛂</span>
+            <div class="doc-item-texto">
+              Pasaporte completo
+              <small>Todas las páginas, incluidas las vacías</small>
+            </div>
+          </div>
+
+          <div class="doc-item">
+            <div class="doc-item-num">2</div>
+            <span class="doc-item-emoji">🏠</span>
+            <div class="doc-item-texto">
+              Certificado de empadronamiento
+              <small>De menos de 3 meses</small>
+            </div>
+          </div>
+
+          <div class="doc-item">
+            <div class="doc-item-num">3</div>
+            <span class="doc-item-emoji">⚖️</span>
+            <div class="doc-item-texto">
+              Antecedentes penales de tu país
+              <small>Con apostilla de La Haya o legalización</small>
+            </div>
+          </div>
+
+          <div class="doc-item">
+            <div class="doc-item-num">4</div>
+            <span class="doc-item-emoji">💼</span>
+            <div class="doc-item-texto">
+              Contrato u oferta de trabajo
+              <small>Si vas por la vía laboral (arraigo)</small>
+            </div>
+          </div>
+
+          <div class="doc-item">
+            <div class="doc-item-num">5</div>
+            <span class="doc-item-emoji">👨‍👩‍👧</span>
+            <div class="doc-item-texto">
+              Libro de familia o partidas
+              <small>Si hay menores o cónyuge en el expediente</small>
+            </div>
+          </div>
+
+          <div class="doc-item">
+            <div class="doc-item-num">6</div>
+            <span class="doc-item-emoji">📄</span>
+            <div class="doc-item-texto">
+              Otros documentos de apoyo
+              <small>NIE antiguo, informes médicos, certificados, etc.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="docs-nota-final">
+          💡 La lista exacta depende de tu vía (DA 20ª, DA 21ª o menores).<br>Consulta la <a href="guia-regularizacion-2026.html" style="color:#7d5b00; text-decoration: underline;">guía completa de regularización</a> para saber la tuya.
+        </div>
+      </div>
+
+      <!-- SECCIÓN 1: PASAPORTE -->
+      <div class="separador-titulo">
+        <h3>🛂 Documento 1 · Pasaporte</h3>
+      </div>
+
       <div class="concepto concepto--terracota">
         <span class="concepto-label">⭐ Lo más importante</span>
-        <h4>🛂 Tu pasaporte: TODAS las páginas</h4>
+        <h4>TODAS las páginas, incluidas las vacías</h4>
         <p>Escanea el pasaporte <strong>entero, de principio a fin</strong>. Incluso las hojas en blanco (las que no tienen nada escrito ni sellos). En orden, desde la portada, y guárdalo como <strong>UN SOLO PDF</strong>. No te saltes ninguna página.</p>
       </div>
 
@@ -1054,11 +1654,24 @@
         </div>
       </div>
 
+      <div class="concepto concepto--amarillo">
+        <span class="concepto-label">¡Aviso importante!</span>
+        <h4>🚨 Pasaporte caducado</h4>
+        <p>Si tu pasaporte está caducado, <strong>tienes que renovarlo antes de enviar el expediente</strong>. Un pasaporte caducado no sirve para la regularización.</p>
+      </div>
+
+      <!-- SECCIÓN 2: RESTO DE DOCUMENTOS -->
+      <div class="separador-titulo">
+        <h3>📋 Los demás documentos</h3>
+      </div>
+
+      <p>Para el resto de papeles de tu expediente, recuerda estas reglas. Funcionan para todos.</p>
+
       <div class="doc-check">
         <span class="doc-emoji">↔️</span>
         <div>
-          <h5>Documentos por las dos caras</h5>
-          <p>NIE, contratos, certificados: <strong>escanea las dos caras</strong>. Aunque una parezca vacía.</p>
+          <h5>Siempre por las dos caras</h5>
+          <p>NIE, contratos, certificados, libro de familia: <strong>escanea las dos caras</strong>. Aunque una parezca vacía.</p>
         </div>
       </div>
 
@@ -1066,7 +1679,7 @@
         <span class="doc-emoji">📅</span>
         <div>
           <h5>Empadronamiento reciente</h5>
-          <p>Menos de <strong>3 meses</strong>. Si es más antiguo, pide uno nuevo antes de escanear.</p>
+          <p>Menos de <strong>3 meses</strong>. Si es más antiguo, pide uno nuevo en tu ayuntamiento antes de escanear.</p>
         </div>
       </div>
 
@@ -1074,23 +1687,37 @@
         <span class="doc-emoji">🌍</span>
         <div>
           <h5>Apostilla de La Haya incluida</h5>
-          <p>Si son documentos de tu país, escanea también <strong>el sello de la apostilla o legalización</strong>. Forma parte del documento.</p>
+          <p>Si son documentos de tu país (antecedentes penales, partidas...), escanea también <strong>el sello de la apostilla o legalización</strong>. Forma parte del documento.</p>
         </div>
+      </div>
+
+      <div class="doc-check">
+        <span class="doc-emoji">📝</span>
+        <div>
+          <h5>Traducción jurada si no están en español</h5>
+          <p>Si el documento no está en español, necesita <strong>traducción jurada oficial</strong>. Escanéala también. Grapada al original o aparte, según te indiquen.</p>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 3: ORGANIZACIÓN -->
+      <div class="separador-titulo">
+        <h3>🗂️ Organizar tus archivos</h3>
       </div>
 
       <div class="concepto concepto--oliva">
         <span class="concepto-label">Consejo de oro</span>
-        <h4>🏷️ Ponle nombre a cada archivo</h4>
-        <p>Antes de enviar, cambia el nombre del PDF. Ejemplos:<br>
+        <h4>🏷️ Ponle nombre claro a cada PDF</h4>
+        <p>Antes de enviar, cambia el nombre del archivo para que tú (y la Administración) sepáis qué es solo mirándolo. Ejemplos:<br>
         · <strong>PASAPORTE_JUAN_PEREZ.pdf</strong><br>
         · <strong>EMPADRONAMIENTO_JUAN_PEREZ.pdf</strong><br>
+        · <strong>ANTECEDENTES_PENALES_JUAN_PEREZ.pdf</strong><br>
         · <strong>CONTRATO_TRABAJO_JUAN_PEREZ.pdf</strong></p>
       </div>
 
-      <div class="concepto concepto--amarillo">
-        <span class="concepto-label">¡Aviso importante!</span>
-        <h4>🚨 Pasaporte caducado</h4>
-        <p>Si tu pasaporte está caducado, <strong>tienes que renovarlo antes de enviar el expediente</strong>. Un pasaporte caducado no sirve para la regularización.</p>
+      <div class="concepto concepto--azul">
+        <span class="concepto-label">Práctica recomendada</span>
+        <h4>📁 Una carpeta para todo tu expediente</h4>
+        <p>Crea una carpeta en tu móvil o en Google Drive llamada "<strong>Mi Regularización 2026</strong>" y guarda ahí todos los PDFs. Así los tienes juntos, no se pierden y puedes encontrarlos rápido el día que los envíes.</p>
       </div>
 
       <button class="btn-completar" onclick="completarLeccion(4)">
@@ -1152,6 +1779,93 @@
     </div>
   </section>
 
+  <!-- ============ CERTIFICADO ============ -->
+  <section class="certificado-seccion" id="certificadoSeccion">
+
+    <!-- Invitación a generar -->
+    <div class="cert-invitacion" id="certInvitacion">
+      <span class="cert-inv-emoji">🏆</span>
+      <h3>Recoge tu certificado de la clase</h3>
+      <p>Has terminado las 4 lecciones y aprobado el examen. Escribe tu nombre y genera un certificado personalizado que podrás guardar o compartir.</p>
+      <input
+        type="text"
+        id="nombreInput"
+        class="cert-nombre-input"
+        placeholder="Escribe tu nombre aquí"
+        maxlength="40"
+        autocomplete="name"
+      >
+      <br>
+      <button class="cert-generar-btn" onclick="generarCertificado()">
+        <span>✨</span>
+        <span>Generar mi certificado</span>
+      </button>
+    </div>
+
+    <!-- Certificado visual -->
+    <div class="certificado-wrap" id="certificadoWrap">
+      <div class="certificado" id="certificadoImg">
+        <div class="cert-sello">
+          <span class="cert-sello-year">2026</span>
+          <span class="cert-sello-txt">Verificado</span>
+        </div>
+        <div class="cert-inner">
+          <div class="cert-header">
+            <span class="anchor">⚓</span>
+            <span>Gestiona Seguro</span>
+          </div>
+          <div class="cert-titulo">Certificado de<br>Aprovechamiento</div>
+          <div class="cert-subtitulo">Clase de Escaneo Digital · Nivel Básico</div>
+
+          <div class="cert-otorgado">Se otorga a</div>
+          <div class="cert-nombre" id="certNombre">—</div>
+
+          <div class="cert-por">
+            Por haber completado con éxito la clase interactiva "<strong>Escanear documentos GRATIS con tu móvil</strong>", desarrollando las competencias necesarias para preparar documentación de la Regularización Extraordinaria 2026.
+          </div>
+
+          <div class="cert-skills">
+            <span class="cert-skill">📱 Uso de app</span>
+            <span class="cert-skill">📸 Captura</span>
+            <span class="cert-skill">📄 PDF</span>
+            <span class="cert-skill">🛂 Pasaporte completo</span>
+          </div>
+
+          <div class="cert-footer">
+            <div class="cert-firma">
+              <div class="cert-firma-label">Emitido por</div>
+              <div class="cert-firma-texto">Gestiona Seguro</div>
+            </div>
+            <div class="cert-fecha">
+              <div class="cert-fecha-label">Fecha</div>
+              <div class="cert-fecha-valor" id="certFecha">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-acciones">
+        <button class="cert-accion-btn cert-accion-btn--descargar" onclick="descargarCertificado()">
+          <span>⬇️</span>
+          <span>Descargar imagen</span>
+        </button>
+        <button class="cert-accion-btn cert-accion-btn--whatsapp" onclick="compartirWhatsApp()">
+          <span>📲</span>
+          <span>Compartir por WhatsApp</span>
+        </button>
+        <button class="cert-accion-btn cert-accion-btn--reiniciar" onclick="reiniciarClase()">
+          <span>↻</span>
+          <span>Hacer otra vez</span>
+        </button>
+      </div>
+
+      <p class="cert-nota">
+        Este certificado es un reconocimiento personal de aprovechamiento educativo.<br>
+        No sustituye documentación oficial del trámite de regularización.
+      </p>
+    </div>
+  </section>
+
 </main>
 
 <footer class="footer">
@@ -1164,6 +1878,7 @@
   // ============ BARRA DE PROGRESO AL SCROLL ============
   const progressFill = document.getElementById('progressFill');
   const progressPct = document.getElementById('progressPct');
+  const btnReset = document.getElementById('btnReset');
 
   function actualizarProgreso() {
     const scrollTop = window.scrollY;
@@ -1176,27 +1891,70 @@
   window.addEventListener('scroll', actualizarProgreso);
   window.addEventListener('resize', actualizarProgreso);
 
+  // ============ MOSTRAR/OCULTAR BOTÓN RESET ============
+  function chequearProgreso() {
+    try {
+      const completadas = JSON.parse(localStorage.getItem('gs_escanear_completadas') || '[]');
+      if (completadas.length > 0) {
+        btnReset.classList.add('visible');
+      } else {
+        btnReset.classList.remove('visible');
+      }
+    } catch(e) {}
+  }
+
   // ============ COMPLETAR LECCIÓN ============
   function completarLeccion(num) {
     const leccion = document.getElementById('leccion-' + num);
     leccion.classList.add('completado');
 
-    // Guardar en localStorage para que persista
     try {
       const completadas = JSON.parse(localStorage.getItem('gs_escanear_completadas') || '[]');
       if (!completadas.includes(num)) {
         completadas.push(num);
         localStorage.setItem('gs_escanear_completadas', JSON.stringify(completadas));
       }
-    } catch(e) { /* localStorage puede fallar en modo privado, no pasa nada */ }
+    } catch(e) {}
 
-    // Scroll suave a la siguiente lección
+    chequearProgreso();
+
     setTimeout(() => {
       const siguiente = document.getElementById('leccion-' + (num + 1)) || document.getElementById('quizBox');
       if (siguiente) {
         siguiente.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }, 400);
+  }
+
+  // ============ REINICIAR CLASE ============
+  function reiniciarClase() {
+    const mensaje = '¿Seguro que quieres empezar la clase desde el principio?\n\nSe borrará todo tu progreso actual.';
+    if (!confirm(mensaje)) return;
+
+    try {
+      localStorage.removeItem('gs_escanear_completadas');
+      localStorage.removeItem('gs_escanear_nombre');
+    } catch(e) {}
+
+    // Limpiar estado visual sin recargar (más amable)
+    document.querySelectorAll('.leccion.completado').forEach(l => l.classList.remove('completado'));
+    document.querySelectorAll('.quiz-opcion').forEach(o => o.classList.remove('seleccionada-si', 'seleccionada-no'));
+    document.getElementById('quizResultado').className = 'quiz-resultado';
+    document.getElementById('quizResultado').innerHTML = '';
+    document.getElementById('graduacion').classList.remove('visible');
+    document.getElementById('certificadoSeccion').classList.remove('visible');
+    document.getElementById('certificadoWrap').classList.remove('visible');
+    document.getElementById('certInvitacion').style.display = 'block';
+    const nombreInput = document.getElementById('nombreInput');
+    if (nombreInput) nombreInput.value = '';
+
+    // Limpiar respuestas del quiz
+    for (let key in respuestasQuiz) delete respuestasQuiz[key];
+
+    chequearProgreso();
+
+    // Volver arriba suavemente
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   // ============ RESTAURAR PROGRESO GUARDADO ============
@@ -1208,6 +1966,7 @@
         if (leccion) leccion.classList.add('completado');
       });
     } catch(e) {}
+    chequearProgreso();
     actualizarProgreso();
   });
 
@@ -1232,7 +1991,6 @@
 
     respuestasQuiz[numPregunta] = (respuesta === correcta);
 
-    // Si ya hay 3 respuestas, mostrar resultado
     if (Object.keys(respuestasQuiz).length === 3) {
       setTimeout(mostrarResultadoQuiz, 500);
     }
@@ -1241,6 +1999,7 @@
   function mostrarResultadoQuiz() {
     const resultado = document.getElementById('quizResultado');
     const graduacion = document.getElementById('graduacion');
+    const certificadoSeccion = document.getElementById('certificadoSeccion');
     const todasCorrectas = Object.values(respuestasQuiz).every(r => r === true);
 
     if (todasCorrectas) {
@@ -1250,10 +2009,14 @@
         <h4>¡Perfecto! Tu documento está listo para enviar</h4>
         <p>Has dominado las 3 reglas de oro del escaneo. Tu expediente va a entrar con calidad profesional.</p>
       `;
-      // Mostrar graduación después de un momento
       setTimeout(() => {
         graduacion.classList.add('visible');
         graduacion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Mostrar sección de certificado después de la graduación
+        setTimeout(() => {
+          certificadoSeccion.classList.add('visible');
+        }, 600);
       }, 1200);
     } else {
       resultado.className = 'quiz-resultado revisar visible';
@@ -1266,6 +2029,99 @@
       `;
       resultado.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+  }
+
+  // ============ CERTIFICADO ============
+  function generarCertificado() {
+    const nombreInput = document.getElementById('nombreInput');
+    let nombre = nombreInput.value.trim();
+
+    if (!nombre) {
+      nombreInput.focus();
+      nombreInput.style.borderColor = '#E2725B';
+      nombreInput.placeholder = '👆 Escribe aquí tu nombre, por favor';
+      setTimeout(() => { nombreInput.style.borderColor = ''; }, 2000);
+      return;
+    }
+
+    // Capitalizar cada palabra del nombre
+    nombre = nombre.split(' ').map(p =>
+      p.length > 0 ? p.charAt(0).toUpperCase() + p.slice(1).toLowerCase() : p
+    ).join(' ');
+
+    // Rellenar certificado
+    document.getElementById('certNombre').textContent = nombre;
+
+    const hoy = new Date();
+    const opciones = { day: 'numeric', month: 'long', year: 'numeric' };
+    const fechaStr = hoy.toLocaleDateString('es-ES', opciones);
+    document.getElementById('certFecha').textContent = fechaStr;
+
+    // Guardar nombre para futuras visitas
+    try { localStorage.setItem('gs_escanear_nombre', nombre); } catch(e) {}
+
+    // Ocultar invitación, mostrar certificado
+    document.getElementById('certInvitacion').style.display = 'none';
+    document.getElementById('certificadoWrap').classList.add('visible');
+
+    setTimeout(() => {
+      document.getElementById('certificadoWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
+  }
+
+  // ============ DESCARGAR CERTIFICADO COMO IMAGEN ============
+  function descargarCertificado() {
+    const cert = document.getElementById('certificadoImg');
+    const btn = event.currentTarget;
+    const textoOriginal = btn.innerHTML;
+    btn.innerHTML = '<span>⏳</span><span>Generando...</span>';
+    btn.disabled = true;
+
+    // Asegurar que html2canvas cargó
+    if (typeof html2canvas === 'undefined') {
+      alert('No se pudo descargar en este momento. Por favor, haz una captura de pantalla del certificado.');
+      btn.innerHTML = textoOriginal;
+      btn.disabled = false;
+      return;
+    }
+
+    html2canvas(cert, {
+      scale: 2,
+      backgroundColor: '#fffdf8',
+      logging: false,
+      useCORS: true
+    }).then(canvas => {
+      const link = document.createElement('a');
+      const nombreArchivo = 'certificado-gestiona-seguro.png';
+      link.download = nombreArchivo;
+      link.href = canvas.toDataURL('image/png');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      btn.innerHTML = '<span>✅</span><span>¡Descargado!</span>';
+      setTimeout(() => {
+        btn.innerHTML = textoOriginal;
+        btn.disabled = false;
+      }, 2000);
+    }).catch(err => {
+      console.error('Error al generar certificado:', err);
+      alert('No se pudo descargar automáticamente. Por favor, haz una captura de pantalla del certificado.');
+      btn.innerHTML = textoOriginal;
+      btn.disabled = false;
+    });
+  }
+
+  // ============ COMPARTIR POR WHATSAPP ============
+  function compartirWhatsApp() {
+    const nombre = document.getElementById('certNombre').textContent || 'alguien';
+    const texto = encodeURIComponent(
+      `🎓 ¡Acabo de terminar la Clase de Escaneo Gratis de Gestiona Seguro!\n\n` +
+      `He aprendido a escanear mis documentos para la Regularización 2026 sin pagar nada. ` +
+      `Si conoces a alguien que lo necesite, comparte esta guía con él o ella 👇\n\n` +
+      `https://gestionaseguro.com/guia-escanear-gratis.html`
+    );
+    window.open(`https://wa.me/?text=${texto}`, '_blank');
   }
 </script>
 
