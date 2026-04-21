@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa de Ruta: Informe de Vulnerabilidad Madrid | Gestiona Seguro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --oliva: #556B2F;
+    --oliva-claro: #7A8B4F;
+    --oliva-suave: #E8EDD9;
+    --oliva-muy-suave: #F3F6EA;
+    --terracota: #E2725B;
+    --terracota-suave: #FBE6DF;
+    --terracota-oscuro: #B85A45;
+    --ambar: #E5B800;
+    --ambar-suave: #FFF9E5;
+    --fondo: #FAF7F2;
+    --texto: #2D2D2D;
+    --texto-suave: #5C5C5C;
+    --borde: #E5E0D5;
+    --sombra: 0 2px 10px rgba(85, 107, 47, 0.08);
+    --sombra-hover: 0 6px 22px rgba(85, 107, 47, 0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', system-ui, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+    padding-top: 70px;
+  }
+
+  /* ========== HEADER FIJO ========== */
+  .header-fijo {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--borde);
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .logo {
+    font-family: 'Fredoka One', cursive;
+    color: var(--oliva);
+    font-size: 1.1rem;
+    line-height: 1.1;
+  }
+  .logo small {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: var(--texto-suave);
+    font-size: 0.68rem;
+    letter-spacing: 0.8px;
+  }
+  .btn-inicio {
+    background: var(--oliva-suave);
+    color: var(--oliva);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-inicio:hover { background: var(--oliva); color: #fff; }
+
+  /* ========== HERO ========== */
+  .hero {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 30px 20px 10px;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--terracota-suave);
+    color: var(--terracota-oscuro);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+    color: var(--oliva);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .hero p.subtitulo {
+    color: var(--texto-suave);
+    font-size: 1.05rem;
+    max-width: 560px;
+    margin: 0 auto 24px;
+  }
+
+  /* ========== CONTADOR ========== */
+  .contador {
+    background: #fff;
+    border-radius: 18px;
+    padding: 22px 20px;
+    box-shadow: var(--sombra);
+    border: 1px solid var(--borde);
+    margin: 0 auto 22px;
+    max-width: 520px;
+  }
+  .contador-label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--texto-suave);
+    letter-spacing: 1.2px;
+    margin-bottom: 6px;
+  }
+  .contador-dias {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3.4rem;
+    color: var(--oliva);
+    line-height: 1;
+    margin-bottom: 2px;
+    transition: color 0.3s;
+  }
+  .contador-dias.urgente { color: var(--terracota); }
+  .contador-texto {
+    font-weight: 700;
+    color: var(--texto);
+    margin-bottom: 10px;
+  }
+  .contador-fechas {
+    font-size: 0.88rem;
+    color: var(--texto-suave);
+    padding-top: 10px;
+    border-top: 1px solid var(--borde);
+  }
+  .contador-fechas strong { color: var(--oliva); }
+  .contador.cerrado .contador-dias { color: #999; font-size: 1.8rem; padding: 10px 0; }
+
+  /* ========== REGLA DE ORO ========== */
+  .regla-oro {
+    max-width: 780px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+  }
+  .regla-box {
+    background: linear-gradient(135deg, var(--oliva) 0%, var(--oliva-claro) 100%);
+    color: #fff;
+    border-radius: 20px;
+    padding: 26px 22px;
+    box-shadow: var(--sombra-hover);
+    position: relative;
+    overflow: hidden;
+  }
+  .regla-box::before {
+    content: "🏆";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 8rem;
+    opacity: 0.08;
+    transform: rotate(15deg);
+  }
+  .regla-box h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .regla-lista {
+    list-style: none;
+    position: relative;
+  }
+  .regla-lista li {
+    padding: 10px 0 10px 36px;
+    position: relative;
+    font-size: 0.98rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .regla-lista li:first-child { border-top: none; }
+  .regla-lista li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    color: var(--oliva);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+
+  /* ========== MAPA / TIMELINE ========== */
+  .mapa-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px 30px;
+  }
+  .mapa-titulo {
+    font-family: 'Fredoka One', cursive;
+    color: var(--oliva);
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .mapa-subtitulo {
+    text-align: center;
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 38px;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--oliva) 0%, var(--oliva-claro) 50%, var(--terracota) 100%);
+    border-radius: 3px;
+  }
+
+  .hito {
+    position: relative;
+    margin-bottom: 18px;
+  }
+  .hito-numero {
+    position: absolute;
+    left: -38px;
+    top: 8px;
+    width: 38px;
+    height: 38px;
+    background: #fff;
+    color: var(--oliva);
+    border: 3px solid var(--oliva);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.05rem;
+    z-index: 2;
+    transition: all 0.3s;
+  }
+  .hito.abierto .hito-numero {
+    background: var(--oliva);
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 6px var(--oliva-suave);
+  }
+
+  .hito-cabecera {
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    padding: 16px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: all 0.2s;
+    font-family: inherit;
+    text-align: left;
+    width: 100%;
+    box-shadow: var(--sombra);
+  }
+  .hito-cabecera:hover {
+    border-color: var(--oliva);
+    transform: translateX(2px);
+  }
+  .hito.abierto .hito-cabecera {
+    border-color: var(--oliva);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: var(--oliva-muy-suave);
+  }
+  .hito-titulo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.05rem;
+    color: var(--oliva);
+    line-height: 1.2;
+    flex: 1;
+  }
+  .hito-chevron {
+    color: var(--oliva);
+    font-size: 1.3rem;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .hito.abierto .hito-chevron { transform: rotate(180deg); }
+
+  .hito-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: #fff;
+    border: 1px solid var(--oliva);
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+  }
+  .hito.abierto .hito-panel {
+    max-height: 2200px;
+  }
+  .hito-panel-inner {
+    padding: 20px 20px 22px;
+  }
+
+  .hito-panel p { margin-bottom: 12px; }
+  .hito-panel strong { color: var(--oliva); font-weight: 800; }
+  .hito-panel ul {
+    list-style: none;
+    margin: 10px 0 14px;
+  }
+  .hito-panel ul li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    font-size: 0.95rem;
+  }
+  .hito-panel ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--terracota);
+    font-weight: 800;
+  }
+
+  /* ========== CAJAS NORA / SARA / ALERTA ========== */
+  .caja {
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 14px 0;
+    font-size: 0.92rem;
+  }
+  .caja-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.98rem;
+    margin-bottom: 6px;
+  }
+  .caja-header .avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .caja-nora {
+    background: var(--oliva-suave);
+    border-left: 4px solid var(--oliva);
+  }
+  .caja-nora .caja-header { color: var(--oliva); }
+  .caja-nora .avatar { background: var(--oliva); }
+
+  .caja-sara {
+    background: var(--terracota-suave);
+    border-left: 4px solid var(--terracota);
+  }
+  .caja-sara .caja-header { color: var(--terracota-oscuro); }
+  .caja-sara .avatar { background: var(--terracota); }
+
+  .caja-alerta {
+    background: var(--ambar-suave);
+    border-left: 4px solid var(--ambar);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .caja-alerta::before {
+    content: "⚠️";
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .caja-alerta strong { color: #8B6B00; }
+
+  /* ========== FRASE COPIABLE ========== */
+  .frase-box {
+    background: #2D2D2D;
+    color: #fff;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 16px 0;
+    position: relative;
+  }
+  .frase-texto {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    padding-left: 24px;
+    border-left: 3px solid var(--terracota);
+  }
+  .btn-copiar {
+    background: var(--terracota);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    width: 100%;
+    justify-content: center;
+  }
+  .btn-copiar:hover { background: var(--terracota-oscuro); }
+  .btn-copiar.copiado {
+    background: #2E7D32;
+    pointer-events: none;
+  }
+
+  /* ========== SELECTOR DE DISTRITO ========== */
+  .distrito-selector {
+    margin: 14px 0;
+    padding: 14px;
+    background: var(--oliva-muy-suave);
+    border-radius: 12px;
+  }
+  .distrito-selector label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--oliva);
+    margin-bottom: 8px;
+  }
+  .distrito-selector select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--borde);
+    border-radius: 10px;
+    background: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    color: var(--texto);
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .distrito-selector select:focus {
+    outline: none;
+    border-color: var(--oliva);
+  }
+  .distrito-feedback {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    display: none;
+    background: #fff;
+    border: 1px solid var(--oliva);
+    color: var(--oliva);
+    font-weight: 700;
+  }
+  .distrito-feedback.mostrar { display: block; }
+
+  /* ========== FOOTER ========== */
+  .footer-aviso {
+    max-width: 780px;
+    margin: 20px auto 40px;
+    padding: 0 20px;
+  }
+  .footer-inner {
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+  }
+  .footer-inner h3 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--terracota);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  .footer-inner p {
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+    margin-bottom: 14px;
+  }
+  .btn-cta {
+    display: inline-block;
+    background: var(--oliva);
+    color: #fff;
+    padding: 11px 22px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+  }
+  .btn-cta:hover {
+    background: var(--oliva-claro);
+    transform: translateY(-2px);
+  }
+
+  /* ========== RESPONSIVE AJUSTES ========== */
+  @media (max-width: 480px) {
+    .timeline { padding-left: 30px; }
+    .hito-numero { left: -30px; width: 32px; height: 32px; font-size: 0.95rem; }
+    .timeline::before { left: 14px; }
+    .hito-cabecera { padding: 14px 14px; }
+    .hito-titulo { font-size: 0.98rem; }
+    .hito-panel-inner { padding: 16px 14px 18px; }
+    .contador-dias { font-size: 2.8rem; }
+  }
+
+  /* ========== ACCESIBILIDAD ========== */
+  :focus-visible {
+    outline: 3px solid var(--terracota);
+    outline-offset: 2px;
+  }
+  .hito-cabecera:focus { outline-offset: -2px; }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER FIJO -->
+<header class="header-fijo">
+  <div class="header-inner">
+    <div class="logo">
+      Gestiona Seguro
+      <small>MAPA DE RUTA</small>
+    </div>
+    <a href="index.html" class="btn-inicio" aria-label="Volver a Inicio">🏠 Volver a Inicio</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-badge">REGULARIZACIÓN 2026 · MADRID CAPITAL</span>
+  <h1>Informe de Vulnerabilidad</h1>
+  <p class="subtitulo">Tu mapa paso a paso para solicitarlo en el Ayuntamiento de Madrid antes de que se cierre el plazo.</p>
+
+  <!-- CONTADOR -->
+  <div class="contador" id="contador">
+    <div class="contador-label">TIEMPO RESTANTE</div>
+    <div class="contador-dias" id="dias">—</div>
+    <div class="contador-texto" id="dias-texto">días para solicitarlo</div>
+    <div class="contador-fechas">
+      Plazo oficial: <strong>17 abr 2026</strong> → <strong>30 jun 2026</strong>
+    </div>
+  </div>
+</section>
+
+<!-- REGLA DE ORO -->
+<section class="regla-oro">
+  <div class="regla-box">
+    <h2>La Regla de Oro 🏆</h2>
+    <ul class="regla-lista">
+      <li>Solo para <strong>residentes empadronados en Madrid capital</strong> (no otros municipios).</li>
+      <li><strong>No se aportan documentos</strong> con la solicitud. Solo se rellena la instancia.</li>
+      <li>Debe presentarse <strong>antes del 30 de junio de 2026</strong>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- MAPA / TIMELINE -->
+<section class="mapa-wrap">
+  <h2 class="mapa-titulo">Tu ruta en 5 pasos</h2>
+  <p class="mapa-subtitulo">Pulsa cada hito para ver los detalles</p>
+
+  <div class="timeline">
+
+    <!-- HITO 1 -->
+    <div class="hito" data-hito="1">
+      <div class="hito-numero">1</div>
+      <button class="hito-cabecera" aria-expanded="false" aria-controls="panel-1">
+        <span class="hito-titulo">Requisitos — ¿Puedo solicitarlo?</span>
+        <span class="hito-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="hito-panel" id="panel-1">
+        <div class="hito-panel-inner">
+          <p>Para solicitar el Informe de Vulnerabilidad del Ayuntamiento de Madrid necesitas:</p>
+          <ul>
+            <li>Estar <strong>empadronado/a en Madrid capital</strong> (no en otros municipios de la Comunidad).</li>
+            <li>Tener <strong>pasaporte, aunque esté caducado</strong>.</li>
+            <li>Estar en situación administrativa irregular.</li>
+          </ul>
+
+          <div class="caja caja-nora">
+            <div class="caja-header"><span class="avatar">💡</span>Nora te explica</div>
+            <p>Para comprobar dónde estás empadronado/a, mira tu <strong>volante de empadronamiento</strong>. Debe poner "Ayuntamiento de Madrid". Si pone otro municipio (Móstoles, Alcorcón, Getafe, Leganés…), este informe <strong>no es el tuyo</strong>: cada ayuntamiento tiene su propio procedimiento.</p>
+          </div>
+
+          <div class="caja caja-sara">
+            <div class="caja-header"><span class="avatar">⚖️</span>Sara informa</div>
+            <p>El Informe de Vulnerabilidad es uno de los documentos admitidos para acreditar el arraigo social dentro del procedimiento extraordinario del <strong>RD 316/2026</strong>. En Madrid capital, la competencia corresponde al Área del Ayuntamiento encargada de servicios sociales.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HITO 2 -->
+    <div class="hito" data-hito="2">
+      <div class="hito-numero">2</div>
+      <button class="hito-cabecera" aria-expanded="false" aria-controls="panel-2">
+        <span class="hito-titulo">La Frase Mágica — No se te puede olvidar</span>
+        <span class="hito-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="hito-panel" id="panel-2">
+        <div class="hito-panel-inner">
+          <p>En tu solicitud, <strong>obligatoriamente</strong>, tiene que aparecer esta frase escrita tal cual:</p>
+
+          <div class="frase-box">
+            <p class="frase-texto" id="frase-texto">Declaro bajo mi responsabilidad que en este momento me encuentro en situación administrativa irregular</p>
+            <button class="btn-copiar" id="btn-copiar" aria-label="Copiar frase obligatoria al portapapeles">
+              <span id="btn-copiar-icono">📋</span>
+              <span id="btn-copiar-texto">Copiar frase obligatoria</span>
+            </button>
+          </div>
+
+          <div class="caja caja-nora">
+            <div class="caja-header"><span class="avatar">💡</span>Nora te explica</div>
+            <p>Pulsa el botón "Copiar" y luego pega (Ctrl+V o mantén pulsado el campo) la frase al principio del apartado <strong>"EXPONE"</strong> de la instancia general. Así te aseguras de que no hay erratas.</p>
+          </div>
+
+          <div class="caja caja-sara">
+            <div class="caja-header"><span class="avatar">⚖️</span>Sara informa</div>
+            <p>Esta es una <strong>declaración responsable</strong>. Si falta, el Ayuntamiento puede no activar el procedimiento especial del RD 316/2026 y tratarte como cualquier otro solicitante. Es el elemento clave que marca que solicitas el informe <strong>en el contexto de la regularización</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HITO 3 -->
+    <div class="hito" data-hito="3">
+      <div class="hito-numero">3</div>
+      <button class="hito-cabecera" aria-expanded="false" aria-controls="panel-3">
+        <span class="hito-titulo">La Gestión — Rellenar la Instancia General</span>
+        <span class="hito-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="hito-panel" id="panel-3">
+        <div class="hito-panel-inner">
+          <p>La solicitud se presenta <strong>online</strong>, rellenando una <strong>Instancia General</strong> dirigida al Ayuntamiento de Madrid. Para firmarla necesitas una de estas opciones:</p>
+          <ul>
+            <li>Tu propio <strong>Certificado Digital</strong> (FNMT) o <strong>Cl@ve</strong>.</li>
+            <li>Una persona de confianza que firme por ti con <em>su</em> certificado.</li>
+          </ul>
+
+          <div class="caja caja-alerta">
+            <div>
+              <strong>Atención: Autorización de Representación</strong><br>
+              Si otra persona presenta la solicitud con su certificado en tu nombre, <strong>tienes que firmarle una Autorización de Representación</strong>. Sin ese papel, el Ayuntamiento puede rechazar la solicitud por falta de representación válida.
+            </div>
+          </div>
+
+          <div class="caja caja-nora">
+            <div class="caja-header"><span class="avatar">💡</span>Nora te explica</div>
+            <p>Si no tienes certificado digital, pide a un familiar o amistad que tenga el suyo. El Ayuntamiento facilita un <strong>modelo oficial</strong> de autorización: se imprime, lo firmas a mano, lo escaneas o fotografías, y la persona autorizada lo adjunta en el trámite junto con la copia de tu pasaporte.</p>
+          </div>
+
+          <div class="caja caja-sara">
+            <div class="caja-header"><span class="avatar">⚖️</span>Sara informa</div>
+            <p>La representación administrativa está regulada en la <strong>Ley 39/2015</strong> de Procedimiento Administrativo Común. Debe acreditarse por cualquier medio válido en derecho; un documento firmado y la copia del pasaporte del representado son suficientes en la mayoría de los casos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HITO 4 -->
+    <div class="hito" data-hito="4">
+      <div class="hito-numero">4</div>
+      <button class="hito-cabecera" aria-expanded="false" aria-controls="panel-4">
+        <span class="hito-titulo">Envío — Distrito y canal electrónico</span>
+        <span class="hito-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="hito-panel" id="panel-4">
+        <div class="hito-panel-inner">
+          <p>Al presentar la instancia tienes que indicar <strong>tu distrito</strong> (Madrid tiene 21) y elegir el canal de envío:</p>
+          <ul>
+            <li><strong>Sede Electrónica del Ayuntamiento de Madrid</strong> — el canal principal.</li>
+            <li><strong>Red SARA</strong> — permite presentar registros ante cualquier administración pública española.</li>
+          </ul>
+
+          <div class="distrito-selector">
+            <label for="distrito">¿Cuál es tu distrito? (opcional — solo para orientarte)</label>
+            <select id="distrito">
+              <option value="">-- Selecciona tu distrito --</option>
+              <option>Arganzuela</option>
+              <option>Barajas</option>
+              <option>Carabanchel</option>
+              <option>Centro</option>
+              <option>Chamartín</option>
+              <option>Chamberí</option>
+              <option>Ciudad Lineal</option>
+              <option>Fuencarral-El Pardo</option>
+              <option>Hortaleza</option>
+              <option>Latina</option>
+              <option>Moncloa-Aravaca</option>
+              <option>Moratalaz</option>
+              <option>Puente de Vallecas</option>
+              <option>Retiro</option>
+              <option>Salamanca</option>
+              <option>San Blas-Canillejas</option>
+              <option>Tetuán</option>
+              <option>Usera</option>
+              <option>Vicálvaro</option>
+              <option>Villa de Vallecas</option>
+              <option>Villaverde</option>
+            </select>
+            <div class="distrito-feedback" id="distrito-feedback"></div>
+          </div>
+
+          <div class="caja caja-nora">
+            <div class="caja-header"><span class="avatar">💡</span>Nora te explica</div>
+            <p>Si no sabes tu distrito, mira el <strong>volante de empadronamiento</strong>: aparece junto a tu dirección. También puedes buscar tu calle en el <em>callejero</em> oficial (madrid.es) y te sale el distrito. No te agobies si te confundes: el Ayuntamiento puede derivar la solicitud internamente.</p>
+          </div>
+
+          <div class="caja caja-sara">
+            <div class="caja-header"><span class="avatar">⚖️</span>Sara informa</div>
+            <p>Los dos canales tienen <strong>plena validez legal</strong>. Lo que cuenta a efectos del plazo es la <strong>fecha de registro electrónico</strong>: si lo presentas el 30 de junio a las 23:59, está dentro de plazo. Conserva siempre el justificante de registro.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HITO 5 -->
+    <div class="hito" data-hito="5">
+      <div class="hito-numero">5</div>
+      <button class="hito-cabecera" aria-expanded="false" aria-controls="panel-5">
+        <span class="hito-titulo">Confirmación — Justificante y espera</span>
+        <span class="hito-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="hito-panel" id="panel-5">
+        <div class="hito-panel-inner">
+          <p>Al terminar el envío, el sistema te da un <strong>justificante con número de registro</strong>. Este papel es oro:</p>
+          <ul>
+            <li>Demuestra que <strong>presentaste la solicitud dentro del plazo</strong>.</li>
+            <li>Sirve como prueba si luego hay problemas o retrasos.</li>
+            <li>Es el número que usarás para consultar el estado del trámite.</li>
+          </ul>
+          <p>Después, el Ayuntamiento te <strong>citará para una entrevista</strong> con servicios sociales (o emitirá el informe directamente, según tu caso). El informe tarda varias semanas o meses — <strong>no te preocupes si no hay respuesta inmediata</strong>.</p>
+
+          <div class="caja caja-nora">
+            <div class="caja-header"><span class="avatar">💡</span>Nora te explica</div>
+            <p>Guarda el justificante en <strong>tres sitios distintos</strong>: imprímelo, guárdalo en tu móvil, y súbelo a una nube (Google Drive, iCloud, tu correo). Si se te pierde, pierdes la prueba de haberlo solicitado a tiempo.</p>
+          </div>
+
+          <div class="caja caja-sara">
+            <div class="caja-header"><span class="avatar">⚖️</span>Sara informa</div>
+            <p>Lo importante es haber presentado la solicitud <strong>dentro del plazo</strong> (antes del 30/06/2026). La resolución posterior puede demorarse. Si tienes dudas sobre tiempos de respuesta o sobre cómo continuar el trámite de regularización una vez tengas el informe, consulta con tu asesor/a legal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER AVISO -->
+<section class="footer-aviso">
+  <div class="footer-inner">
+    <h3>¿Necesitas ayuda personalizada?</h3>
+    <p>Este mapa es una guía general. Cada caso tiene matices. Si tienes dudas o no te aclaras con algún paso, ponte en contacto con nosotras.</p>
+    <a href="index.html#contacto" class="btn-cta">Volver a Gestiona Seguro</a>
+  </div>
+</section>
+
+<script>
+  // ========== CONTADOR DE DÍAS ==========
+  (function() {
+    const deadline = new Date('2026-06-30T23:59:59');
+    const start = new Date('2026-04-17T00:00:00');
+    const now = new Date();
+
+    const diasEl = document.getElementById('dias');
+    const textoEl = document.getElementById('dias-texto');
+    const contadorEl = document.getElementById('contador');
+
+    if (now < start) {
+      diasEl.textContent = 'Próximamente';
+      textoEl.textContent = 'El plazo aún no ha comenzado';
+      contadorEl.classList.add('cerrado');
+      return;
+    }
+    if (now > deadline) {
+      diasEl.textContent = 'Plazo cerrado';
+      textoEl.textContent = 'El plazo oficial ha terminado';
+      contadorEl.classList.add('cerrado');
+      return;
+    }
+
+    const diff = deadline - now;
+    const dias = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    diasEl.textContent = dias;
+    textoEl.textContent = dias === 1 ? 'día para solicitarlo' : 'días para solicitarlo';
+
+    if (dias <= 10) {
+      diasEl.classList.add('urgente');
+      textoEl.innerHTML = '<strong style="color: var(--terracota);">Quedan pocos días — date prisa</strong>';
+    }
+  })();
+
+  // ========== HITOS DESPLEGABLES ==========
+  document.querySelectorAll('.hito-cabecera').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const hito = btn.closest('.hito');
+      const abierto = hito.classList.contains('abierto');
+
+      // Cerrar todos los demás (modo acordeón)
+      document.querySelectorAll('.hito').forEach(h => {
+        h.classList.remove('abierto');
+        h.querySelector('.hito-cabecera').setAttribute('aria-expanded', 'false');
+      });
+
+      if (!abierto) {
+        hito.classList.add('abierto');
+        btn.setAttribute('aria-expanded', 'true');
+        // Scroll suave al hito tras la animación
+        setTimeout(() => {
+          const y = hito.getBoundingClientRect().top + window.scrollY - 90;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 100);
+      }
+    });
+  });
+
+  // ========== BOTÓN COPIAR FRASE ==========
+  const btnCopiar = document.getElementById('btn-copiar');
+  const btnIcono = document.getElementById('btn-copiar-icono');
+  const btnTexto = document.getElementById('btn-copiar-texto');
+  const fraseTexto = document.getElementById('frase-texto').textContent.trim();
+
+  btnCopiar.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(fraseTexto);
+      btnCopiar.classList.add('copiado');
+      btnIcono.textContent = '✅';
+      btnTexto.textContent = '¡Frase copiada!';
+
+      setTimeout(() => {
+        btnCopiar.classList.remove('copiado');
+        btnIcono.textContent = '📋';
+        btnTexto.textContent = 'Copiar frase obligatoria';
+      }, 2500);
+    } catch (err) {
+      // Fallback para navegadores antiguos
+      const temp = document.createElement('textarea');
+      temp.value = fraseTexto;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+
+      btnCopiar.classList.add('copiado');
+      btnIcono.textContent = '✅';
+      btnTexto.textContent = '¡Frase copiada!';
+      setTimeout(() => {
+        btnCopiar.classList.remove('copiado');
+        btnIcono.textContent = '📋';
+        btnTexto.textContent = 'Copiar frase obligatoria';
+      }, 2500);
+    }
+  });
+
+  // ========== SELECTOR DE DISTRITO ==========
+  const distritoSel = document.getElementById('distrito');
+  const distritoFB = document.getElementById('distrito-feedback');
+
+  distritoSel.addEventListener('change', () => {
+    const valor = distritoSel.value;
+    if (!valor) {
+      distritoFB.classList.remove('mostrar');
+      return;
+    }
+    distritoFB.innerHTML = '✓ <strong>' + valor + '</strong> es distrito de Madrid capital. Indícalo en el formulario de la instancia general.';
+    distritoFB.classList.add('mostrar');
+  });
+</script>
+
+</body>
+</html>
