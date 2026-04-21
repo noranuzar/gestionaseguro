@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase Interactiva: Aprende a firmar digitalmente | Gestiona Seguro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --oliva: #556B2F;
+    --oliva-claro: #7A8B4F;
+    --oliva-suave: #E8EDD9;
+    --terracota: #E2725B;
+    --terracota-suave: #FBE6DF;
+    --verde-ok: #2E7D32;
+    --verde-ok-suave: #DFF2E1;
+    --fondo: #FAF7F2;
+    --texto: #2D2D2D;
+    --texto-suave: #5C5C5C;
+    --borde: #E5E0D5;
+    --sombra: 0 2px 10px rgba(85, 107, 47, 0.08);
+    --sombra-hover: 0 4px 18px rgba(85, 107, 47, 0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', system-ui, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+    padding-top: 90px;
+  }
+
+  /* ========== BARRA DE PROGRESO FIJA ========== */
+  .barra-fija {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--borde);
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .barra-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 12px;
+  }
+
+  .logo-clase {
+    font-family: 'Fredoka One', cursive;
+    color: var(--oliva);
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+  .logo-clase small {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    color: var(--texto-suave);
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-inicio {
+    background: var(--oliva-suave);
+    color: var(--oliva);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-inicio:hover {
+    background: var(--oliva);
+    color: #fff;
+  }
+
+  .progreso-wrap {
+    padding: 0 20px 12px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .progreso-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--texto-suave);
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .progreso-barra {
+    background: var(--oliva-suave);
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .progreso-relleno {
+    background: linear-gradient(90deg, var(--oliva) 0%, var(--oliva-claro) 100%);
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+  }
+
+  /* ========== CONTENEDOR PRINCIPAL ========== */
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+  }
+
+  .intro {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  .intro h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    color: var(--oliva);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .intro p {
+    color: var(--texto-suave);
+    font-size: 1.05rem;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ========== TARJETAS DE LECCIÓN ========== */
+  .leccion {
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--sombra);
+    border: 1px solid var(--borde);
+    transition: all 0.3s;
+  }
+  .leccion.completada {
+    border-color: var(--verde-ok);
+    background: linear-gradient(180deg, #fff 0%, var(--verde-ok-suave) 100%);
+  }
+
+  .leccion-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .leccion-numero {
+    width: 44px;
+    height: 44px;
+    background: var(--oliva);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .leccion.completada .leccion-numero {
+    background: var(--verde-ok);
+  }
+  .leccion-titulo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.35rem;
+    color: var(--oliva);
+    line-height: 1.2;
+  }
+
+  .leccion p {
+    margin-bottom: 14px;
+    color: var(--texto);
+    font-size: 1rem;
+  }
+  .leccion strong { color: var(--oliva); font-weight: 800; }
+
+  /* ========== CAJAS ESPECIALES ========== */
+  .caja {
+    border-radius: 14px;
+    padding: 18px 18px 18px 54px;
+    margin: 18px 0;
+    position: relative;
+    font-size: 0.95rem;
+  }
+  .caja::before {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+  .caja h4 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+  .caja-concepto {
+    background: var(--oliva-suave);
+    border-left: 5px solid var(--oliva);
+  }
+  .caja-concepto::before { content: "💡"; }
+  .caja-concepto h4 { color: var(--oliva); }
+
+  .caja-sos {
+    background: var(--terracota-suave);
+    border-left: 5px solid var(--terracota);
+  }
+  .caja-sos::before { content: "🆘"; }
+  .caja-sos h4 { color: var(--terracota); }
+
+  .caja-tip {
+    background: #FFF9E5;
+    border-left: 5px solid #E5B800;
+  }
+  .caja-tip::before { content: "✨"; }
+  .caja-tip h4 { color: #8B6B00; }
+
+  /* ========== COMPARATIVA CERT vs CLAVE ========== */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .comp-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    border: 1px solid var(--borde);
+  }
+  .comp-item h5 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--oliva);
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+  }
+  .comp-item p { font-size: 0.85rem; margin: 0; }
+  @media (max-width: 520px) {
+    .comparativa { grid-template-columns: 1fr; }
+  }
+
+  /* ========== TARJETAS DE SISTEMA OPERATIVO ========== */
+  .sistemas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 18px 0;
+  }
+  .sistema-card {
+    background: var(--oliva-suave);
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .sistema-card:hover {
+    border-color: var(--oliva);
+    transform: translateY(-2px);
+  }
+  .sistema-icono {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+  }
+  .sistema-card h4 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--oliva);
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .sistema-card p {
+    font-size: 0.85rem;
+    margin: 0;
+    color: var(--texto-suave);
+  }
+  @media (max-width: 520px) {
+    .sistemas { grid-template-columns: 1fr; }
+  }
+
+  /* ========== LISTA DE PASOS ========== */
+  .pasos {
+    list-style: none;
+    margin: 18px 0;
+    counter-reset: paso;
+  }
+  .pasos li {
+    position: relative;
+    padding: 12px 14px 12px 46px;
+    background: var(--oliva-suave);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    counter-increment: paso;
+  }
+  .pasos li::before {
+    content: counter(paso);
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    background: var(--oliva);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.85rem;
+  }
+
+  /* ========== SIMULACIÓN DE FIRMA (datos ficticios) ========== */
+  .firma-demo {
+    background: #fff;
+    border: 2px dashed var(--oliva);
+    border-radius: 12px;
+    padding: 18px;
+    margin: 18px 0;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 16px;
+    align-items: start;
+    position: relative;
+  }
+  .firma-demo::after {
+    content: "EJEMPLO";
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: var(--terracota);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+  }
+  .firma-nombre {
+    font-family: 'Arial Black', sans-serif;
+    font-size: clamp(1rem, 3.5vw, 1.4rem);
+    color: #222;
+    line-height: 1.15;
+    font-weight: 900;
+  }
+  .firma-detalles {
+    font-size: 0.72rem;
+    color: #333;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+  }
+  .firma-detalles strong { color: #000; font-weight: 700; }
+  @media (max-width: 520px) {
+    .firma-demo { grid-template-columns: 1fr; }
+  }
+
+  .firma-check {
+    list-style: none;
+    margin-top: 16px;
+  }
+  .firma-check li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 0.95rem;
+  }
+  .firma-check li::before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    top: 8px;
+  }
+
+  /* ========== BOTÓN COMPLETAR ========== */
+  .btn-completar {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px 20px;
+    background: var(--terracota);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 3px 0 #b85a45;
+  }
+  .btn-completar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 #b85a45;
+  }
+  .btn-completar:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 0 #b85a45;
+  }
+  .btn-completar.done {
+    background: var(--verde-ok);
+    box-shadow: 0 3px 0 #1B5E20;
+    cursor: default;
+  }
+  .btn-completar.done:hover { transform: none; }
+
+  /* ========== QUIZ ========== */
+  .quiz {
+    background: linear-gradient(135deg, var(--oliva) 0%, var(--oliva-claro) 100%);
+    color: #fff;
+    border-radius: 20px;
+    padding: 30px 24px;
+    margin-top: 30px;
+    box-shadow: var(--sombra-hover);
+  }
+  .quiz-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .quiz-header h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+  }
+  .quiz-header p {
+    opacity: 0.9;
+    font-size: 0.95rem;
+  }
+
+  .pregunta {
+    background: rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 14px;
+    backdrop-filter: blur(4px);
+  }
+  .pregunta-texto {
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-size: 1.02rem;
+  }
+  .opciones {
+    display: grid;
+    gap: 8px;
+  }
+  .opcion {
+    background: rgba(255,255,255,0.95);
+    color: var(--texto);
+    border: 2px solid transparent;
+    padding: 11px 14px;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+  }
+  .opcion:hover:not(:disabled) {
+    transform: translateX(3px);
+    border-color: var(--terracota);
+  }
+  .opcion.correcta {
+    background: var(--verde-ok);
+    color: #fff;
+    border-color: #fff;
+  }
+  .opcion.incorrecta {
+    background: var(--terracota);
+    color: #fff;
+    border-color: #fff;
+  }
+  .feedback {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    display: none;
+  }
+  .feedback.mostrar { display: block; }
+
+  /* ========== RESULTADO FINAL ========== */
+  .resultado-final {
+    background: #fff;
+    color: var(--texto);
+    border-radius: 20px;
+    padding: 30px 24px;
+    margin-top: 24px;
+    text-align: center;
+    display: none;
+    box-shadow: var(--sombra-hover);
+  }
+  .resultado-final.mostrar { display: block; }
+  .resultado-final h3 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--oliva);
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+  .resultado-final .emoji-grande {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .resultado-final p { margin-bottom: 14px; }
+  .btn-cta {
+    display: inline-block;
+    background: var(--terracota);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 800;
+    margin-top: 10px;
+    transition: all 0.2s;
+  }
+  .btn-cta:hover {
+    background: #cf5e46;
+    transform: translateY(-2px);
+  }
+
+  /* ========== CELEBRACIÓN ========== */
+  @keyframes pop {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .leccion.completada .leccion-numero { animation: pop 0.4s ease-out; }
+
+</style>
+</head>
+<body>
+
+<!-- ========== BARRA FIJA ========== -->
+<header class="barra-fija">
+  <div class="barra-top">
+    <div class="logo-clase">
+      Clase Interactiva
+      <small>GESTIONA SEGURO</small>
+    </div>
+    <a href="index.html" class="btn-inicio" aria-label="Volver a Inicio">🏠 Volver a Inicio</a>
+  </div>
+  <div class="progreso-wrap">
+    <div class="progreso-info">
+      <span>Tu progreso</span>
+      <span id="progreso-texto">0 de 4 lecciones</span>
+    </div>
+    <div class="progreso-barra">
+      <div class="progreso-relleno" id="progreso-relleno"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ========== CONTENIDO ========== -->
+<main>
+
+  <section class="intro">
+    <h1>Aprende a firmar digitalmente 📝</h1>
+    <p>Una clase paso a paso para que puedas firmar tus documentos oficiales desde casa, con seguridad y sin miedo a equivocarte.</p>
+  </section>
+
+  <!-- ========== LECCIÓN 1 ========== -->
+  <article class="leccion" id="leccion-1" data-leccion="1">
+    <div class="leccion-header">
+      <div class="leccion-numero">1</div>
+      <h2 class="leccion-titulo">¿Qué es esto? Tu sello oficial digital</h2>
+    </div>
+
+    <p>Tu <strong>firma electrónica</strong> es como un sello oficial, pero digital. Cuando la usas, estás diciendo dos cosas muy importantes:</p>
+    <ul style="margin-left: 20px; margin-bottom: 16px;">
+      <li>✔️ <strong>Que eres tú</strong> quien firma el documento.</li>
+      <li>✔️ <strong>Que aceptas</strong> lo que dice ese papel.</li>
+    </ul>
+    <p>Tiene la misma validez que firmar con bolígrafo delante de un funcionario. Pero lo haces desde tu casa, con tu móvil o tu ordenador.</p>
+
+    <div class="caja caja-concepto">
+      <h4>CONCEPTO CLAVE: Certificado vs Cl@ve</h4>
+      <p>Son dos formas distintas de identificarte ante la Administración. No son lo mismo:</p>
+      <div class="comparativa">
+        <div class="comp-item">
+          <h5>🔐 Certificado Digital</h5>
+          <p>Es un <strong>archivo</strong> que se instala en tu ordenador o móvil. Lo emite la FNMT y sirve para firmar documentos PDF. Lo usas con <strong>AutoFirma</strong>.</p>
+        </div>
+        <div class="comp-item">
+          <h5>🔑 Cl@ve</h5>
+          <p>Es un <strong>sistema de claves</strong> (Cl@ve PIN o Cl@ve Permanente) para entrar en webs oficiales. No firma PDFs por sí sola, solo te identifica.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="caja caja-tip">
+      <h4>En resumen</h4>
+      <p>Para <strong>firmar un PDF</strong> (como el formulario de regularización) necesitas <strong>Certificado Digital + AutoFirma</strong>. Cl@ve sirve para otras gestiones online.</p>
+    </div>
+
+    <button class="btn-completar" data-btn="1">He completado este paso ✅</button>
+  </article>
+
+  <!-- ========== LECCIÓN 2 ========== -->
+  <article class="leccion" id="leccion-2" data-leccion="2">
+    <div class="leccion-header">
+      <div class="leccion-numero">2</div>
+      <h2 class="leccion-titulo">Instalación de AutoFirma 💻</h2>
+    </div>
+
+    <p><strong>AutoFirma</strong> es el programa oficial y gratuito del Gobierno de España. Es el "bolígrafo digital" que vas a usar para firmar tus PDFs.</p>
+
+    <div class="sistemas">
+      <div class="sistema-card">
+        <div class="sistema-icono">🪟</div>
+        <h4>Windows</h4>
+        <p>Elige la versión de 32 o 64 bits según tu ordenador (en la mayoría modernos, 64 bits).</p>
+      </div>
+      <div class="sistema-card">
+        <div class="sistema-icono">🍎</div>
+        <h4>Mac</h4>
+        <p>Descarga la versión para macOS. Si te sale un aviso de seguridad, ábrelo desde "Preferencias del Sistema".</p>
+      </div>
+    </div>
+
+    <p><strong>Pasos para instalarlo:</strong></p>
+    <ol class="pasos">
+      <li>Entra en la web oficial: <em>firmaelectronica.gob.es</em></li>
+      <li>Busca la sección "Descargar AutoFirma".</li>
+      <li>Descarga la versión de tu sistema operativo.</li>
+      <li>Abre el archivo descargado y sigue las instrucciones (Siguiente → Siguiente → Instalar).</li>
+      <li>Cuando termine, <strong>reinicia el navegador</strong>.</li>
+    </ol>
+
+    <div class="caja caja-tip">
+      <h4>Truco importante</h4>
+      <p>Descarga AutoFirma <strong>solo desde la web oficial del Gobierno</strong>. No te fíes de otras páginas que digan ofrecer el programa: pueden ser falsas.</p>
+    </div>
+
+    <button class="btn-completar" data-btn="2">He completado este paso ✅</button>
+  </article>
+
+  <!-- ========== LECCIÓN 3 ========== -->
+  <article class="leccion" id="leccion-3" data-leccion="3">
+    <div class="leccion-header">
+      <div class="leccion-numero">3</div>
+      <h2 class="leccion-titulo">El momento de firmar 🖊️</h2>
+    </div>
+
+    <p>Ya tienes AutoFirma instalado y tu Certificado Digital en el ordenador. Ahora vamos a firmar. Tranquilo, son solo unos clics:</p>
+
+    <ol class="pasos">
+      <li>Abre <strong>AutoFirma</strong> (busca el programa en el menú de inicio).</li>
+      <li>Pulsa en <strong>"Seleccionar ficheros a firmar"</strong> y elige tu PDF.</li>
+      <li>Haz clic en <strong>"Firmar"</strong>.</li>
+      <li>Aparecerá una ventana con tu certificado. Selecciónalo y pulsa <strong>Aceptar</strong>.</li>
+      <li>Elige dónde guardar el PDF firmado (ponle un nombre como "solicitud_firmada.pdf").</li>
+      <li>¡Listo! Ya tienes tu PDF firmado y con valor legal.</li>
+    </ol>
+
+    <div class="caja caja-sos">
+      <h4>SOS: Error común — "No se puede conectar"</h4>
+      <p>Si te aparece un mensaje de error de conexión o que AutoFirma "no responde":</p>
+      <ul style="margin-left: 18px; margin-top: 6px;">
+        <li>1. <strong>Cierra el navegador completamente</strong> y vuelve a abrirlo.</li>
+        <li>2. Comprueba que AutoFirma está abierto en tu ordenador.</li>
+        <li>3. Si usas Chrome o Firefox, acepta el "protocolo AutoFirma" cuando el navegador te lo pida.</li>
+        <li>4. Si sigue fallando, <strong>reinicia el ordenador</strong>. En el 90% de los casos lo soluciona.</li>
+      </ul>
+    </div>
+
+    <button class="btn-completar" data-btn="3">He completado este paso ✅</button>
+  </article>
+
+  <!-- ========== LECCIÓN 4 ========== -->
+  <article class="leccion" id="leccion-4" data-leccion="4">
+    <div class="leccion-header">
+      <div class="leccion-numero">4</div>
+      <h2 class="leccion-titulo">¿Está bien hecho? Así se ve una firma correcta</h2>
+    </div>
+
+    <p>Cuando abras tu PDF ya firmado, verás un recuadro parecido a este. <strong>Este es solo un ejemplo con datos ficticios</strong>, pero te muestra cómo debe verse el tuyo:</p>
+
+    <div class="firma-demo" aria-label="Ejemplo visual de firma digital con datos ficticios">
+      <div class="firma-nombre">
+        APELLIDO<br>
+        APELLIDO<br>
+        NOMBRE -<br>
+        00000000X
+      </div>
+      <div class="firma-detalles">
+        <strong>Firmado digitalmente por</strong> APELLIDO APELLIDO NOMBRE - 00000000X<br>
+        <strong>Nombre de reconocimiento (DN):</strong> c=ES,<br>
+        serialNumber=IDCES-00000000X,<br>
+        givenName=NOMBRE, sn=APELLIDO APELLIDO,<br>
+        cn=APELLIDO APELLIDO NOMBRE - 00000000X<br>
+        <strong>Fecha:</strong> 2026.04.21 12:00:00 +02'00'
+      </div>
+    </div>
+
+    <p><strong>Comprueba que tu firma tiene estos cuatro elementos:</strong></p>
+    <ul class="firma-check">
+      <li>Tu nombre completo y tu DNI/NIE en grande, a la izquierda.</li>
+      <li>La frase <strong>"Firmado digitalmente por..."</strong> con tus datos.</li>
+      <li>El código <strong>c=ES</strong> (indica que es un certificado español).</li>
+      <li>La <strong>fecha y hora</strong> exactas del momento de la firma.</li>
+    </ul>
+
+    <div class="caja caja-tip">
+      <h4>Señal de que está bien</h4>
+      <p>Si abres el PDF en Adobe Reader y arriba aparece una <strong>franja azul o verde</strong> que dice "Firmado y todas las firmas son válidas", entonces tu documento es oficial y válido. 🎉</p>
+    </div>
+
+    <button class="btn-completar" data-btn="4">He completado este paso ✅</button>
+  </article>
+
+  <!-- ========== MINI QUIZ ========== -->
+  <section class="quiz" id="quiz">
+    <div class="quiz-header">
+      <h2>Mini-Quiz final 🎯</h2>
+      <p>Tres preguntas rápidas para comprobar que lo has pillado</p>
+    </div>
+
+    <div class="pregunta" data-pregunta="1">
+      <p class="pregunta-texto">1. ¿Se puede modificar un PDF después de firmarlo digitalmente?</p>
+      <div class="opciones">
+        <button class="opcion" data-correcta="false">Sí, siempre que quiera.</button>
+        <button class="opcion" data-correcta="true">No. Si se modifica, la firma deja de ser válida.</button>
+        <button class="opcion" data-correcta="false">Solo si uso AutoFirma para modificarlo.</button>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="pregunta" data-pregunta="2">
+      <p class="pregunta-texto">2. ¿Cuál es la diferencia entre Certificado Digital y Cl@ve?</p>
+      <div class="opciones">
+        <button class="opcion" data-correcta="false">Son lo mismo, solo cambia el nombre.</button>
+        <button class="opcion" data-correcta="false">Cl@ve firma PDFs y el Certificado no.</button>
+        <button class="opcion" data-correcta="true">El Certificado es un archivo que firma PDFs; Cl@ve es un sistema de claves que solo te identifica.</button>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="pregunta" data-pregunta="3">
+      <p class="pregunta-texto">3. ¿Desde dónde debes descargar AutoFirma?</p>
+      <div class="opciones">
+        <button class="opcion" data-correcta="false">Desde cualquier página que aparezca en Google.</button>
+        <button class="opcion" data-correcta="true">Solo desde la web oficial: firmaelectronica.gob.es</button>
+        <button class="opcion" data-correcta="false">Desde una app del móvil llamada "AutoFirma Pro".</button>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+  <!-- ========== RESULTADO ========== -->
+  <section class="resultado-final" id="resultado-final">
+    <span class="emoji-grande" id="emoji-final">🎉</span>
+    <h3 id="titulo-final">¡Enhorabuena!</h3>
+    <p id="texto-final">Has terminado la clase. Ya sabes firmar tus documentos oficiales digitalmente.</p>
+    <p id="score-final" style="font-weight: 800; color: var(--oliva);"></p>
+    <a href="index.html" class="btn-cta">🏠 Volver a Gestiona Seguro</a>
+  </section>
+
+</main>
+
+<script>
+  // ========== PROGRESO DE LECCIONES ==========
+  const TOTAL_LECCIONES = 4;
+  const completadas = new Set();
+
+  document.querySelectorAll('.btn-completar').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.btn;
+      if (completadas.has(id)) return;
+
+      completadas.add(id);
+      btn.textContent = '¡Completado! ✅';
+      btn.classList.add('done');
+      document.getElementById('leccion-' + id).classList.add('completada');
+
+      actualizarProgreso();
+
+      // Scroll suave a la siguiente lección
+      const siguiente = document.getElementById('leccion-' + (parseInt(id) + 1));
+      if (siguiente) {
+        setTimeout(() => siguiente.scrollIntoView({ behavior: 'smooth', block: 'start' }), 400);
+      } else {
+        // Era la última lección → llevar al quiz
+        setTimeout(() => document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' }), 400);
+      }
+    });
+  });
+
+  function actualizarProgreso() {
+    const n = completadas.size;
+    const pct = (n / TOTAL_LECCIONES) * 100;
+    document.getElementById('progreso-relleno').style.width = pct + '%';
+    document.getElementById('progreso-texto').textContent = n + ' de ' + TOTAL_LECCIONES + ' lecciones';
+  }
+
+  // ========== QUIZ ==========
+  const respuestas = new Map(); // pregunta → acierto (true/false)
+  const feedbackTextos = {
+    "1-true": "Exacto. Cualquier modificación posterior invalida la firma.",
+    "1-false": "No es así. La firma digital garantiza que el documento no se ha tocado después de firmarlo.",
+    "2-true": "Perfecto. El Certificado firma, Cl@ve solo identifica.",
+    "2-false": "No. El Certificado es un archivo que sirve para firmar PDFs; Cl@ve es un sistema de claves.",
+    "3-true": "Así es. Nunca descargues AutoFirma de sitios no oficiales.",
+    "3-false": "¡Cuidado! Solo la web oficial firmaelectronica.gob.es es segura."
+  };
+
+  document.querySelectorAll('.pregunta').forEach(preguntaEl => {
+    const numPregunta = preguntaEl.dataset.pregunta;
+    const opciones = preguntaEl.querySelectorAll('.opcion');
+    const feedback = preguntaEl.querySelector('.feedback');
+
+    opciones.forEach(opcion => {
+      opcion.addEventListener('click', () => {
+        if (respuestas.has(numPregunta)) return; // ya respondió
+
+        const esCorrecta = opcion.dataset.correcta === 'true';
+        respuestas.set(numPregunta, esCorrecta);
+
+        opciones.forEach(o => {
+          o.disabled = true;
+          if (o.dataset.correcta === 'true') o.classList.add('correcta');
+          else if (o === opcion) o.classList.add('incorrecta');
+        });
+
+        feedback.textContent = feedbackTextos[numPregunta + '-' + esCorrecta];
+        feedback.classList.add('mostrar');
+
+        // ¿Ya contestó las 3?
+        if (respuestas.size === 3) {
+          setTimeout(mostrarResultado, 600);
+        }
+      });
+    });
+  });
+
+  function mostrarResultado() {
+    const aciertos = [...respuestas.values()].filter(Boolean).length;
+    const res = document.getElementById('resultado-final');
+    const emoji = document.getElementById('emoji-final');
+    const titulo = document.getElementById('titulo-final');
+    const texto = document.getElementById('texto-final');
+    const score = document.getElementById('score-final');
+
+    if (aciertos === 3) {
+      emoji.textContent = '🏆';
+      titulo.textContent = '¡Perfecto!';
+      texto.textContent = 'Has acertado las 3 preguntas. Ya puedes firmar tus documentos oficiales con total seguridad.';
+    } else if (aciertos === 2) {
+      emoji.textContent = '🎉';
+      titulo.textContent = '¡Muy bien!';
+      texto.textContent = 'Has entendido lo esencial. Repasa la lección que te falló y estarás lista/o.';
+    } else {
+      emoji.textContent = '💪';
+      titulo.textContent = 'Casi lo tienes';
+      texto.textContent = 'Te recomendamos repasar las lecciones con calma. ¡No pasa nada, firmar digital se aprende con la práctica!';
+    }
+
+    score.textContent = 'Puntuación: ' + aciertos + '/3 aciertos';
+    res.classList.add('mostrar');
+    res.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
+
+</body>
+</html>
