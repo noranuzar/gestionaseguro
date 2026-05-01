@@ -142,6 +142,7 @@
       flex-shrink: 0;
     }
     .logo-icon {
+      
       width: 40px; height: 40px;
       background: var(--oliva);
       border-radius: 50%;
@@ -149,6 +150,19 @@
       color: var(--arena);
       font-size: 1.1rem;
     }
+    .logo-header img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.logo-header span {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.45rem;
+  color: var(--oliva-dark);
+}
 
     .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
     .nav-item { position: relative; }
@@ -1205,6 +1219,13 @@
     }
     .footer .logo { color: var(--arena); margin-bottom: 16px; }
     .footer .logo-icon { background: rgba(245,245,220,0.15); }
+    .footer-logo img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
     .footer-brand p {
       font-size: var(--fs-sm);           /* 17px */
       line-height: var(--lh-normal);
@@ -1397,7 +1418,10 @@
   <!-- ============ NAVBAR CON 3 DROPDOWNS ============ -->
   <nav class="navbar" id="navbar">
     <div class="container navbar-inner">
-      <a href="/" class="logo"><span class="logo-icon">⚓</span> Gestiona Seguro</a>
+     <a href="/" class="logo logo-header">
+  <img src="logo-gestiona-seguro.png" alt="Gestiona Seguro">
+  <span>Gestiona Seguro</span>
+</a>
 
       <ul class="nav-links" id="navLinks">
 
@@ -1805,7 +1829,10 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="logo"><span class="logo-icon">⚓</span> Gestiona Seguro</div>
+          <div class="logo footer-logo">
+  <img src="logo-gestiona-seguro.png" alt="Gestiona Seguro">
+  <span>Gestiona Seguro</span>
+</div>
           <p>Traduciendo la burocracia en oportunidades reales para el colectivo migrante en España.</p>
         </div>
         <div>
