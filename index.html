@@ -958,12 +958,22 @@
       text-align: left;
       border: 1px solid var(--arena-dark);
     }
+    .persona__foto {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 18px;
+  margin-bottom: 22px;
+  box-shadow: 0 14px 28px rgba(42, 34, 24, 0.12);
+}
     .persona__name {
       font-family: 'DM Serif Display', serif;
       font-size: 1.375rem;       /* 22px */
       color: var(--oliva-dark);
       margin-bottom: 4px;
     }
+    
     .persona__role {
       font-size: var(--fs-label);
       font-weight: 700;
@@ -1565,6 +1575,11 @@
         <p>Especialista en derecho migratorio. Ancla cada información en la norma y el BOE para que sepas exactamente dónde pisas.</p>
       </div>
       <div class="persona">
+       <img
+    src="nora-comunidad-madrid.png"
+    alt="Nora Núñez Zárate, gestora técnica especializada en Administración Pública"
+    class="persona__foto"
+  >
         <div class="persona__name">Nora Núñez Zárate</div>
         <div class="persona__role">Gestora técnica · +15 años en administración</div>
         <p>Traduce la burocracia a pasos claros. Su misión: que puedas hacer tus trámites tú mismo, sin depender de nadie.</p>
