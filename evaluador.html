@@ -328,15 +328,15 @@
     </div>
 
     <div class="service-card">
-      <div class="service-title">
-        <h3 id="viableServiceTitle">📋 Te recomendamos: Análisis de viabilidad</h3>
-        <span class="service-price" id="viableServicePrice">50€</span>
-      </div>
-     Videollamada de 1h + informe escrito con la vía que te conviene, documentos que necesitas y riesgos. Si tu caso es claro, este análisis puede darte una ruta suficiente para decidir el siguiente paso con seguridad.
-    </div>
-
-    <a href="#" class="whatsapp-btn" id="whatsappViable">💬 Continuar con Nora por WhatsApp</a>
+  <div class="service-title">
+    <h3>📋 Siguiente paso recomendado</h3>
   </div>
+  <p>
+    En tu caso conviene revisar la documentación y los posibles riesgos antes de presentar. Te orientamos sobre si merece la pena avanzar, por qué vía y cómo preparar mejor el expediente.
+  </p>
+</div>
+
+   <a href="#" class="whatsapp-btn" id="whatsappRevisar">💬 Consultar mi caso por WhatsApp</a>
 
   <!-- RESULTADO 2: REVISAR -->
   <div class="result-card result-revisar" id="resultRevisar">
@@ -349,8 +349,7 @@
 
     <div class="warning-box">
       <strong>⚠️ No presentes sin análisis previo</strong>
-      Una presentación fallida te deja "interesado en procedimiento" y bloquea otras vías. Mejor gastar 50€ en el análisis que perder la oportunidad.
-    </div>
+      Una presentación fallida puede dejarte como "interesado en procedimiento" y afectar a otras vías. Conviene revisar el caso antes de presentar para evitar errores.    </div>
 
     <div class="info-block">
       <h3>Qué vamos a revisar en tu caso</h3>
@@ -358,12 +357,13 @@
     </div>
 
     <div class="service-card">
-      <div class="service-title">
-        <h3>📋 Te recomendamos: Análisis de viabilidad</h3>
-        <span class="service-price">50€</span>
-      </div>
-      <p>Videollamada + informe escrito. En tu caso es <strong>especialmente importante</strong> antes de pagar tasas o presentar nada. Te decimos si merece la pena, por qué vía y cómo blindar el expediente.</p>
-    </div>
+  <div class="service-title">
+    <h3 id="viableServiceTitle">📋 Siguiente paso recomendado</h3>
+  </div>
+  <p id="viableServiceDesc">
+    Podemos revisar tu caso concreto, confirmar la vía adecuada y orientarte sobre los documentos que conviene preparar antes de presentar.
+  </p>
+</div>
 
     <a href="#" class="whatsapp-btn" id="whatsappRevisar">💬 Agendar análisis por WhatsApp</a>
   </div>
@@ -400,24 +400,25 @@
       <div class="step-item"><div class="step-num">3</div><div class="step-text"><strong>Pide tu certificado de antecedentes penales</strong>Vale 6 meses. Tenlo listo cuando toque.</div></div>
     </div>
 
-    <div class="service-card" style="background: var(--abierta-bg); border-color: var(--abierta);">
-      <div class="service-title">
-        <h3>📋 Revisión documental + Estrategia personalizada</h3>
-        <span class="service-price" style="background: var(--abierta);">50€</span>
-      </div>
-      <p>Videollamada con Nora + informe escrito con tu ruta personalizada: qué vía te corresponde, cuándo podrás solicitar, qué documentos empezar a reunir hoy y qué trampas evitar. Revisamos toda tu documentación actual para que no pierdas tiempo.</p>
-    </div>
+  <div class="service-card" style="background: var(--abierta-bg); border-color: var(--abierta);">
+  <div class="service-title">
+    <h3>📋 Revisión documental y estrategia personalizada</h3>
+  </div>
+  <p>
+    Podemos revisar tu situación actual y orientarte sobre qué vía podría corresponderte, cuándo podrías solicitar y qué documentos conviene empezar a reunir desde ahora.
+  </p>
+</div>
 
     <div class="service-card" style="background: var(--arena-warm); border-color: var(--arena-dark);">
-      <div class="service-title">
-        <h3>🎯 Después: Gestión Integral cuando llegue tu momento</h3>
-        <span class="service-price" style="background: var(--oliva);">300€</span>
-      </div>
-      <p>Cuando cumplas los requisitos de tu vía, preparamos y presentamos todo el expediente. <strong>Los 50€ de la revisión se descuentan</strong> — solo pagas 250€ adicionales. Sin repetir trámites, sin empezar de cero.</p>
-    </div>
-
-    <a href="#" class="whatsapp-btn" id="whatsappAbierta">💬 Reservar mi revisión documental (50€)</a>
+  <div class="service-title">
+    <h3>🎯 Después: preparación del expediente</h3>
   </div>
+  <p>
+    Cuando cumplas los requisitos de tu vía, podremos orientarte sobre la preparación del expediente, la documentación necesaria y la forma de presentación más adecuada.
+  </p>
+</div>
+
+    <a href="#" class="whatsapp-btn" id="whatsappAbierta">💬 Consultar mi caso por WhatsApp</a>
 
 </div>
 
@@ -621,7 +622,6 @@ if (!emailRegex.test(email)) {
         document.getElementById('viaTitle').textContent = 'Disposición Adicional 20ª (asilo pendiente)';
         document.getElementById('viaDesc').innerHTML = 'Para personas con solicitud de protección internacional pendiente presentada antes del 1 de enero de 2026. <strong>Importante</strong>: si te la conceden, tendrás que renunciar a tu solicitud de asilo. Esta decisión requiere asesoramiento previo.';
         document.getElementById('viableServiceTitle').textContent = '🎯 Te recomendamos: Gestión Integral';
-        document.getElementById('viableServicePrice').textContent = '300€';
         document.getElementById('viableServiceDesc').textContent = 'En tu caso, la decisión de renunciar al asilo es crítica. La Gestión Integral incluye análisis jurídico de Sara (abogada), preparación completa del expediente y presentación telemática.';
       } else {
         var viaMap = {
@@ -636,10 +636,9 @@ if (!emailRegex.test(email)) {
 
         // FIX #4: Si es vulnerabilidad, enlazar al formulario EX-32
         if (answers.q3 === 'vulnerabilidad') {
-          document.getElementById('viableServiceTitle').textContent = '🎯 Te recomendamos: Gestión Integral';
-          document.getElementById('viableServicePrice').textContent = '300€';
-          document.getElementById('viableServiceDesc').textContent = 'La vía de vulnerabilidad requiere coordinar el formulario EX-32 con servicios sociales o una entidad RECEX. Preparamos toda la documentación, coordinamos el certificado y presentamos el expediente completo.';
-          document.getElementById('viaExtra').innerHTML = '<a href="/formulario-vulnerabilidad-EX32.pdf" target="_blank" rel="noopener noreferrer" class="download-link">⬇ Descargar formulario EX-32 (PDF)</a>';        }
+        document.getElementById('viableServiceTitle').textContent = '📋 Siguiente paso recomendado';
+        document.getElementById('viableServiceDesc').textContent = 'La vía de vulnerabilidad requiere coordinar el formulario EX-32 con servicios sociales o una entidad RECEX. Preparamos toda la documentación, coordinamos el certificado y presentamos el expediente completo.';
+        document.getElementById('viaExtra').innerHTML = '<a href="/formulario-vulnerabilidad-EX32.pdf" target="_blank" rel="noopener noreferrer" class="download-link">⬇ Descargar formulario EX-32 (PDF)</a>';        }
       }
     }
 
@@ -701,9 +700,7 @@ if (!emailRegex.test(email)) {
     };
     var waMessages = {
       'viable': 'Hola Nora, soy ' + answers.nombre + ' (' + answers.nacionalidad + '). He hecho el evaluador y mi resultado es VIABLE. Quiero información sobre mi caso.',
-      'revisar': 'Hola Nora, soy ' + answers.nombre + ' (' + answers.nacionalidad + '). He hecho el evaluador y mi resultado es REVISAR. Me gustaría agendar el análisis de viabilidad (50€).',
-      'abierta': 'Hola Nora, soy ' + answers.nombre + ' (' + answers.nacionalidad + '). He hecho el evaluador y mi resultado es ' + (isShortFlow ? 'ESTRATEGIA A FUTURO' : 'CONSULTA ABIERTA') + '. Me interesa la revisión documental y estrategia personalizada (50€).'
-    };
+abierta': 'Hola Nora, soy ' + answers.nombre +     };
     var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(waMessages[result]);
 
     var cardIdMap = { 'viable': 'resultViable', 'revisar': 'resultRevisar', 'abierta': 'resultAbierta' };
