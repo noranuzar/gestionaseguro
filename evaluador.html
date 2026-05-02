@@ -697,15 +697,17 @@ if (!emailRegex.test(email)) {
       'viable': 'VIABLE',
       'revisar': 'REVISAR',
       'abierta': isShortFlow ? 'ESTRATEGIA A FUTURO' : 'CONSULTA ABIERTA'
-    };
-    var waMessages = {
-      'viable': 'Hola Nora, soy ' + answers.nombre + ' (' + answers.nacionalidad + '). He hecho el evaluador y mi resultado es VIABLE. Quiero información sobre mi caso.',
-abierta': 'Hola Nora, soy ' + answers.nombre +     };
-    var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(waMessages[result]);
+    }; 
+var waMessages = {
+  'viable': 'Hola Nora, soy ' + answers.nombre + ' (' + answers.nacionalidad + '). He hecho el evaluador y mi resultado es VIABLE. Me gustaría recibir orientación sobre mi caso.',
+  'revisar': 'Hola Nora, soy ' + answers.nombre + ' (' + answers.nacionalidad + '). He hecho el evaluador y mi resultado es REVISAR. Me gustaría consultar mi caso.',
+  'abierta': 'Hola Nora, soy ' + answers.nombre + ' (' + answers.nacionalidad + '). He hecho el evaluador y mi resultado es ' + (isShortFlow ? 'ESTRATEGIA A FUTURO' : 'CONSULTA ABIERTA') + '. Me gustaría recibir orientación sobre mi caso.'
+};
 
-    var cardIdMap = { 'viable': 'resultViable', 'revisar': 'resultRevisar', 'abierta': 'resultAbierta' };
-    var waIdMap = { 'viable': 'whatsappViable', 'revisar': 'whatsappRevisar', 'abierta': 'whatsappAbierta' };
+var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(waMessages[result]);
 
+var cardIdMap = { 'viable': 'resultViable', 'revisar': 'resultRevisar', 'abierta': 'resultAbierta' };
+var waIdMap = { 'viable': 'whatsappViable', 'revisar': 'whatsappRevisar', 'abierta': 'whatsappAbierta' };
     document.getElementById(cardIdMap[result]).classList.add('active');
     document.getElementById(waIdMap[result]).href = waUrl;
 
