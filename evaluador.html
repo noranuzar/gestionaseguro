@@ -254,22 +254,19 @@
       </div>
 
       <label class="input-label">Nombre</label>
-      <input type="text" id="nombre" class="input-field" placeholder="Tu nombre" required>
-      
+     <input type="text" id="nombre" name="nombre" class="input-field" placeholder="Tu nombre" required>
       <label class="input-label">Teléfono (WhatsApp)</label>
-      <input type="tel" id="telefono" class="input-field" placeholder="+34 600 000 000" required>
-      
+    <input type="tel" id="telefono" name="telefono" class="input-field" placeholder="+34 600 000 000" required>
       <label class="input-label">Email</label>
-      <input type="email" id="email" class="input-field" placeholder="tu@email.com" required>
-      
+    <input type="email" id="email" name="email" class="input-field" placeholder="tu@email.com" required>
       <label class="input-label">Nacionalidad</label>
-      <input type="text" id="nacionalidad" class="input-field" placeholder="Perú, Colombia, Marruecos..." required>
+   <input type="text" id="nacionalidad" name="nacionalidad" class="input-field" placeholder="Perú, Colombia, Marruecos..." required>
 
       <label class="option" style="cursor:pointer; align-items: center; margin-top: 16px;">
         <input type="checkbox" id="consentimiento" style="margin-right:8px; width:18px; height:18px;">
-       <span style="font-size:0.9rem; line-height:1.55;"> Acepto que Gestiona Seguro use mis datos solo para enviarme orientación y contactarme sobre este trámite por email o WhatsApp. 
-  No vendemos ni compartimos tus datos. 
-  <a href="/politica-privacidad.html" target="_blank" style="color:var(--oliva); font-weight:700;">Ver política de privacidad</a>.
+       <span style="font-size:0.9rem; line-height:1.55;"> Acepto que Gestiona Seguro utilice mis datos únicamente para enviarme mi orientación y contactarme sobre este trámite por email o WhatsApp.
+  No vendemos ni compartimos sus datos con terceros.
+  <a href="/politica-privacidad.html" target="_blank" rel="noopener noreferrer" style="color:var(--oliva); font-weight:700;">Ver política de privacidad</a>.
 </span>
       </label>
 
@@ -299,7 +296,7 @@
       <h3>Qué te ofrece</h3>
       <ul>
         <li>Autorización de residencia y trabajo de <strong>1 año</strong></li>
-        <li>Desde la comunicación de inicio, <strong>ya puedes trabajar legalmente</strong></li>
+        <li>Desde la comunicación de inicio, podrías quedar habilitado/a para trabajar según la vía aplicable y la documentación presentada</li>
         <li>Tu pasaporte caducado sirve para solicitar</li>
         <li>Familiares directos pueden solicitar a la vez</li>
       </ul>
@@ -318,7 +315,7 @@
         <h3 id="viableServiceTitle">📋 Te recomendamos: Análisis de viabilidad</h3>
         <span class="service-price" id="viableServicePrice">50€</span>
       </div>
-      <p id="viableServiceDesc">Videollamada de 1h + informe escrito con la vía que te conviene, documentos que necesitas y riesgos. Si tu caso es claro, con esto te sobra.</p>
+     Videollamada de 1h + informe escrito con la vía que te conviene, documentos que necesitas y riesgos. Si tu caso es claro, este análisis puede darte una ruta suficiente para decidir el siguiente paso con seguridad.
     </div>
 
     <a href="#" class="whatsapp-btn" id="whatsappViable">💬 Continuar con Nora por WhatsApp</a>
@@ -425,35 +422,8 @@
   var isShortFlow = false; // FIX #1: flujo corto para llegados en 2026
 
   // Etiquetas legibles para el resumen
-  var labels = {
-  'antes-2026': 'Llegué antes del 1/1/2026',
-  'despues-2026': 'Llegué en 2026 o después',
-
-  'si': '5 meses seguidos sin salir',
-  'viaje-corto': '5 meses con algún viaje corto',
-  'viaje-largo': 'Viaje largo reciente',
-  'no': 'Menos de 5 meses',
-
-  'laboral': 'He trabajado o tengo oferta de trabajo',
-  'familiar': 'Convivo con familiares',
-  'vulnerabilidad': 'Situación de vulnerabilidad',
-  'asilo': 'Asilo pendiente antes del 1/1/2026',
-  'ninguna': 'Ninguna de las anteriores',
-
-  'sin-antecedentes': 'No tengo antecedentes ni orden de expulsión',
-  'penales-cancelables': 'Antecedentes penales antiguos o posiblemente cancelables',
-  'penales-activos': 'Antecedentes penales recientes o activos',
-  'policiales-expulsion': 'Antecedentes policiales, sanción administrativa u orden de expulsión/devolución',
-  'no-se': 'No sé si tengo antecedentes'
-};var labels = {
-  'antes-2026': 'Llegué antes del 1/1/2026',
-  'despues-2026': 'Llegué en 2026 o después',
-
-  'si': '5 meses seguidos sin salir',
-  'viaje-corto': '5 meses con algún viaje corto',
-  'viaje-largo': 'Viaje largo reciente',
-  'no': 'Menos de 5 meses',
-
+  var labels = {  'antes-2026': 'Llegué antes del 1/1/2026',  'despues-2026': 'Llegué en 2026 o después',  'si': '5 meses seguidos sin salir',
+  'viaje-corto': '5 meses con algún viaje corto',  'viaje-largo': 'Viaje largo reciente',  'no': 'Menos de 5 meses',
   'laboral': 'He trabajado o tengo oferta de trabajo',
   'familiar': 'Convivo con familiares',
   'vulnerabilidad': 'Situación de vulnerabilidad',
@@ -466,12 +436,19 @@
   'policiales-expulsion': 'Antecedentes policiales, sanción administrativa u orden de expulsión/devolución',
   'no-se': 'No sé si tengo antecedentes'
 };
-  function updateProgress() {
-    var total = isShortFlow ? 2 : totalSteps;
-    var current = isShortFlow ? (currentStep === 1 ? 1 : 2) : currentStep;
-    document.getElementById('progressBar').style.width = (current / total) * 100 + '%';
+ 
+function updateProgress() {
+  var total = isShortFlow ? 2 : totalSteps;
+  var current = isShortFlow ? (currentStep === 1 ? 1 : 2) : currentStep;
+
+  document.getElementById('progressBar').style.width = (current / total) * 100 + '%';
+
+  if (isShortFlow && currentStep === 5) {
+    document.getElementById('progressText').textContent = 'Último paso';
+  } else {
     document.getElementById('progressText').textContent = 'Pregunta ' + current + ' de ' + total;
   }
+}
 
   function showStep(step) {
     document.querySelectorAll('.card').forEach(function(c) { c.classList.remove('active'); });
@@ -573,7 +550,12 @@
     var consent = document.getElementById('consentimiento').checked;
 
     if (!nombre || !telefono || !email || !nacionalidad) { alert('Por favor, completa todos los campos.'); return; }
-    if (!email.includes('@')) { alert('Email no válido.'); return; }
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailRegex.test(email)) {
+  alert('Introduce un email válido.');
+  return;
+}
     if (!consent) { alert('Debes aceptar el tratamiento de datos para recibir tu diagnóstico.'); return; }
 
     answers.nombre = nombre;
@@ -601,8 +583,14 @@
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(Object.assign({ _subject: subjectMap[result] + ' ' + answers.nombre }, answers))
     })
-    .then(function() { showResult(result); })
-    .catch(function() { showResult(result); });
+    .then(function(response) {
+  answers.formspree_status = response.ok ? 'enviado' : 'fallo_envio';
+  showResult(result);
+})
+.catch(function() {
+  answers.formspree_status = 'fallo_envio';
+  showResult(result);
+});
   }
 
   function showResult(result) {
@@ -634,8 +622,7 @@
           document.getElementById('viableServiceTitle').textContent = '🎯 Te recomendamos: Gestión Integral';
           document.getElementById('viableServicePrice').textContent = '300€';
           document.getElementById('viableServiceDesc').textContent = 'La vía de vulnerabilidad requiere coordinar el formulario EX-32 con servicios sociales o una entidad RECEX. Preparamos toda la documentación, coordinamos el certificado y presentamos el expediente completo.';
-          document.getElementById('viaExtra').innerHTML = '<a href="/formulario-vulnerabilidad-EX32.pdf" target="_blank" class="download-link">⬇ Descargar formulario EX-32 (PDF)</a>';
-        }
+          document.getElementById('viaExtra').innerHTML = '<a href="/formulario-vulnerabilidad-EX32.pdf" target="_blank" rel="noopener noreferrer" class="download-link">⬇ Descargar formulario EX-32 (PDF)</a>';        }
       }
     }
 
@@ -683,8 +670,6 @@
           '<div class="step-item"><div class="step-num">5</div><div class="step-text"><strong>Mes 24: presentas con expediente blindado</strong>Si hiciste los deberes, llegas sin sorpresas.</div></div>';
       } else if (answers.q2 === 'no') {
         document.getElementById('abiertaIntro').textContent = 'Llevas menos de 5 meses continuados en España, requisito del RD 316/2026. Cuando los cumplas podrías entrar, o podemos valorar otras vías.';
-      } else if (answers.q4 === 'activos') {
-        document.getElementById('abiertaIntro').textContent = 'Los antecedentes penales activos bloquean la mayoría de vías. Pero cada caso tiene particularidades. Mejor lo hablamos en confianza.';
       } else if (answers.q3 === 'ninguna') {
         document.getElementById('abiertaIntro').textContent = 'No encajas claramente en las vías del RD 316/2026, pero puede haber ángulos que no hayas valorado. El sistema tiene muchas puertas.';
       }
