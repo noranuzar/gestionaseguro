@@ -267,7 +267,10 @@
 
       <label class="option" style="cursor:pointer; align-items: center; margin-top: 16px;">
         <input type="checkbox" id="consentimiento" style="margin-right:8px; width:18px; height:18px;">
-        <span style="font-size:0.9rem;">Acepto que Gestiona Seguro trate mis datos para enviarme el diagnóstico y contactarme.</span>
+       <span style="font-size:0.9rem; line-height:1.55;"> Acepto que Gestiona Seguro use mis datos solo para enviarme orientación y contactarme sobre este trámite por email o WhatsApp. 
+  No vendemos ni compartimos tus datos. 
+  <a href="/politica-privacidad.html" target="_blank" style="color:var(--oliva); font-weight:700;">Ver política de privacidad</a>.
+</span>
       </label>
 
       <div class="btn-row" style="margin-top: 16px;">
@@ -423,13 +426,46 @@
 
   // Etiquetas legibles para el resumen
   var labels = {
-    'sin-antecedentes': 'No tengo antecedentes ni orden de expulsión',
-    'penales-cancelables': 'Antecedentes penales antiguos o posiblemente cancelables',
-    'penales-activos': 'Antecedentes penales recientes o activos',
-    'policiales-expulsion': 'Antecedentes policiales, sanción administrativa u orden de expulsión/devolución',
-    'no-se': 'No sé si tengo antecedentes'
-  };
+  'antes-2026': 'Llegué antes del 1/1/2026',
+  'despues-2026': 'Llegué en 2026 o después',
 
+  'si': '5 meses seguidos sin salir',
+  'viaje-corto': '5 meses con algún viaje corto',
+  'viaje-largo': 'Viaje largo reciente',
+  'no': 'Menos de 5 meses',
+
+  'laboral': 'He trabajado o tengo oferta de trabajo',
+  'familiar': 'Convivo con familiares',
+  'vulnerabilidad': 'Situación de vulnerabilidad',
+  'asilo': 'Asilo pendiente antes del 1/1/2026',
+  'ninguna': 'Ninguna de las anteriores',
+
+  'sin-antecedentes': 'No tengo antecedentes ni orden de expulsión',
+  'penales-cancelables': 'Antecedentes penales antiguos o posiblemente cancelables',
+  'penales-activos': 'Antecedentes penales recientes o activos',
+  'policiales-expulsion': 'Antecedentes policiales, sanción administrativa u orden de expulsión/devolución',
+  'no-se': 'No sé si tengo antecedentes'
+};var labels = {
+  'antes-2026': 'Llegué antes del 1/1/2026',
+  'despues-2026': 'Llegué en 2026 o después',
+
+  'si': '5 meses seguidos sin salir',
+  'viaje-corto': '5 meses con algún viaje corto',
+  'viaje-largo': 'Viaje largo reciente',
+  'no': 'Menos de 5 meses',
+
+  'laboral': 'He trabajado o tengo oferta de trabajo',
+  'familiar': 'Convivo con familiares',
+  'vulnerabilidad': 'Situación de vulnerabilidad',
+  'asilo': 'Asilo pendiente antes del 1/1/2026',
+  'ninguna': 'Ninguna de las anteriores',
+
+  'sin-antecedentes': 'No tengo antecedentes ni orden de expulsión',
+  'penales-cancelables': 'Antecedentes penales antiguos o posiblemente cancelables',
+  'penales-activos': 'Antecedentes penales recientes o activos',
+  'policiales-expulsion': 'Antecedentes policiales, sanción administrativa u orden de expulsión/devolución',
+  'no-se': 'No sé si tengo antecedentes'
+};
   function updateProgress() {
     var total = isShortFlow ? 2 : totalSteps;
     var current = isShortFlow ? (currentStep === 1 ? 1 : 2) : currentStep;
@@ -520,7 +556,6 @@
     // CONSULTA ABIERTA
     if (q1 === 'despues-2026') return 'abierta';
     if (q2 === 'no' || q2 === 'no-aplica') return 'abierta';
-   if (q4 === 'cancelables' || q4 === 'no-se') return 'revisar';
     if (q3 === 'ninguna' || q3 === 'no-aplica') return 'abierta';
 
     // REVISAR
@@ -609,8 +644,14 @@
       var puntos = [];
       if (answers.q2 === 'viaje-corto') puntos.push('<li><strong>Viajes cortos durante los 5 meses:</strong> hay que analizar si rompen la continuidad o no, depende de la duración y motivo.</li>');
       if (answers.q2 === 'viaje-largo') puntos.push('<li><strong>Viaje largo reciente:</strong> probablemente rompe la permanencia ininterrumpida. Valoramos alternativas.</li>');
-      if (answers.q4 === 'cancelables') puntos.push('<li><strong>Antecedentes cancelables:</strong> hay que solicitar la cancelación al Ministerio de Justicia antes de la resolución. Es un paso previo crítico.</li>');
-      if (answers.q4 === 'no-se') puntos.push('<li><strong>Antecedentes dudosos:</strong> primero hay que pedir tu certificado para saber exactamente qué tienes. Si aparecen, preparamos la estrategia.</li>');
+      if (answers.q4 === 'penales-cancelables') { puntos.push('<li><strong>Antecedentes penales antiguos:</strong> pueden ser cancelables. Conviene revisar el certificado y, si procede, solicitar la cancelación antes de la resolución.</li>');
+}
+     if (answers.q4 === 'penales-activos') {  puntos.push('<li><strong>Antecedentes penales recientes o activos:</strong> no significa que debas rendirte, pero sí requiere análisis cuidadoso antes de presentar.</li>');
+}
+     if (answers.q4 === 'policiales-expulsion') {  puntos.push('<li><strong>Antecedentes policiales, sanción administrativa u orden de expulsión/devolución:</strong> no implican automáticamente una denegación. Hay que revisar el caso y preparar bien la estrategia.</li>');
+}
+     if (answers.q4 === 'no-se') {  puntos.push('<li><strong>Dudas sobre antecedentes:</strong> primero conviene comprobar tu situación real antes de presentar nada.</li>');
+}
       document.getElementById('revisarPuntos').innerHTML = puntos.join('');
     }
 
