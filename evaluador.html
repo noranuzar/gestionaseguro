@@ -224,16 +224,18 @@
     </div>
 
     <!-- P4: Antecedentes -->
-    <div class="card" data-step="4">
-      <div class="card-step">Pregunta 4</div>
-      <h2>¿Tienes antecedentes penales?</h2>
-      <p class="card-hint">En España o en tu país de origen. Sinceridad es clave: es la pregunta que más expedientes tumba.</p>
-      <div class="options">
-        <button class="option" data-value="no"><span class="option-icon"></span><span>No, ninguno</span></button>
-        <button class="option" data-value="cancelables"><span class="option-icon"></span><span>Sí, pero antiguos (posiblemente cancelables)</span></button>
-        <button class="option" data-value="activos"><span class="option-icon"></span><span>Sí, tengo antecedentes activos recientes</span></button>
-        <button class="option" data-value="no-se"><span class="option-icon"></span><span>No lo sé con seguridad</span></button>
-      </div>
+    <!-- P4: Antecedentes -->
+<div class="card" data-step="4">
+  <div class="card-step">Pregunta 4</div>
+  <h2>¿Tienes antecedentes penales, policiales u orden de expulsión?</h2>
+  <p class="card-hint">Responde con calma. Tener antecedentes policiales, sanciones administrativas u orden de expulsión no significa automáticamente que no puedas regularizarte, pero conviene revisar el caso.</p>
+  <div class="options">
+    <button class="option" data-value="sin-antecedentes"><span class="option-icon"></span><span>No, no tengo antecedentes ni orden de expulsión</span></button>
+    <button class="option" data-value="penales-cancelables"><span class="option-icon"></span><span>Sí, tengo antecedentes penales antiguos o creo que pueden cancelarse</span></button>
+    <button class="option" data-value="penales-activos"><span class="option-icon"></span><span>Sí, tengo antecedentes penales recientes o activos</span></button>
+    <button class="option" data-value="policiales-expulsion"><span class="option-icon"></span><span>Tengo antecedentes policiales, sanción administrativa u orden de expulsión/devolución</span></button>
+    <button class="option" data-value="no-se"><span class="option-icon"></span><span>No lo sé con seguridad</span></button>
+  </div>
       <div class="btn-row">
         <button class="btn btn-secondary" onclick="prev()">← Atrás</button>
         <button class="btn btn-primary" disabled onclick="next()">Siguiente →</button>
@@ -421,19 +423,10 @@
 
   // Etiquetas legibles para el resumen
   var labels = {
-    'antes-2026': 'Llegué antes del 1/1/2026',
-    'despues-2026': 'Llegué en 2026 o después',
-    'si': '5 meses seguidos sin salir',
-    'viaje-corto': '5 meses con algún viaje corto',
-    'viaje-largo': 'Viaje largo reciente',
-    'no': 'Menos de 5 meses',
-    'laboral': 'He trabajado / tengo oferta',
-    'familiar': 'Convivo con familia',
-    'vulnerabilidad': 'Situación de vulnerabilidad',
-    'asilo': 'Asilo pendiente antes 1/1/2026',
-    'ninguna': 'Ninguna de las anteriores',
-    'cancelables': 'Antecedentes cancelables',
-    'activos': 'Antecedentes activos',
+    'sin-antecedentes': 'No tengo antecedentes ni orden de expulsión',
+    'penales-cancelables': 'Antecedentes penales antiguos o posiblemente cancelables',
+    'penales-activos': 'Antecedentes penales recientes o activos',
+    'policiales-expulsion': 'Antecedentes policiales, sanción administrativa u orden de expulsión/devolución',
     'no-se': 'No sé si tengo antecedentes'
   };
 
@@ -527,13 +520,12 @@
     // CONSULTA ABIERTA
     if (q1 === 'despues-2026') return 'abierta';
     if (q2 === 'no' || q2 === 'no-aplica') return 'abierta';
-    if (q4 === 'activos') return 'abierta';
+   if (q4 === 'cancelables' || q4 === 'no-se') return 'revisar';
     if (q3 === 'ninguna' || q3 === 'no-aplica') return 'abierta';
 
     // REVISAR
     if (q2 === 'viaje-corto' || q2 === 'viaje-largo') return 'revisar';
-    if (q4 === 'cancelables' || q4 === 'no-se') return 'revisar';
-
+    if (q4 === 'penales-activos' || q4 === 'penales-cancelables' || q4 === 'policiales-expulsion' || q4 === 'no-se') return 'revisar';
     // VIABLE
     return 'viable';
   }
