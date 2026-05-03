@@ -1317,6 +1317,134 @@ object-position: 25% center;
       .vias-grid { grid-template-columns: 1fr !important; }
       .via-card--menores { max-width: 100%; }
     }
+    /* ── ÁREAS HOME ─────────────────────────────────────────── */
+.areas-home {
+  padding: 60px 0 72px;
+  background: var(--blanco);
+}
+.areas-home-header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+.areas-home-header h2 { margin-bottom: 10px; }
+.areas-home-header p {
+  color: var(--texto-suave);
+  font-size: var(--fs-md);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: var(--lh-normal);
+}
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.area-card {
+  border-radius: 24px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transicion), box-shadow var(--transicion);
+  text-decoration: none;
+  color: var(--texto);
+}
+.area-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 44px rgba(42, 34, 24, 0.09);
+}
+.area-card--proceso      { background: var(--oliva-bg);    border: 2px solid rgba(85,107,47,0.15); }
+.area-card--herramientas { background: var(--terracota-bg); border: 2px solid rgba(226,114,91,0.15); }
+.area-card--recursos     { background: #FEF9EC;             border: 2px solid rgba(201,146,46,0.2); }
+.area-card--equipo       { background: var(--arena-warm);   border: 2px solid var(--arena-dark); }
+.area-card__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.area-card__icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.area-card--proceso      .area-card__icon { background: rgba(85,107,47,0.12); }
+.area-card--herramientas .area-card__icon { background: rgba(226,114,91,0.12); }
+.area-card--recursos     .area-card__icon { background: rgba(201,146,46,0.12); }
+.area-card--equipo       .area-card__icon { background: rgba(85,107,47,0.08); }
+.area-card__tag {
+  font-size: var(--fs-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.area-card--proceso      .area-card__tag { color: var(--oliva); }
+.area-card--herramientas .area-card__tag { color: var(--terracota-dark); }
+.area-card--recursos     .area-card__tag { color: #8b6914; }
+.area-card--equipo       .area-card__tag { color: var(--oliva-dark); }
+.area-card h3 {
+  font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+  margin-bottom: 10px;
+  line-height: 1.2;
+  color: var(--oliva-dark);
+}
+.area-card > p {
+  font-size: var(--fs-sm);
+  color: var(--texto-suave);
+  line-height: var(--lh-normal);
+  margin-bottom: 22px;
+}
+.area-card__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 26px;
+  flex-grow: 1;
+}
+.area-card__links li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  transition: gap var(--transicion);
+}
+.area-card--proceso      .area-card__links li a { color: var(--oliva-dark); }
+.area-card--herramientas .area-card__links li a { color: var(--terracota-dark); }
+.area-card--recursos     .area-card__links li a { color: #8b6914; }
+.area-card--equipo       .area-card__links li a { color: var(--oliva-dark); }
+.area-card__links li a:hover { gap: 12px; }
+.area-card__links li a::before { content: '→'; font-weight: 700; opacity: 0.6; }
+.area-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  padding: 12px 22px;
+  border-radius: 50px;
+  margin-top: auto;
+  width: fit-content;
+  transition: gap var(--transicion), opacity var(--transicion);
+}
+.area-card--proceso      .area-card__cta { background: var(--oliva);      color: var(--arena); }
+.area-card--herramientas .area-card__cta { background: var(--terracota);  color: #fff; }
+.area-card--recursos     .area-card__cta { background: #c9922e;           color: #fff; }
+.area-card--equipo       .area-card__cta { background: var(--oliva-dark); color: var(--arena); }
+.area-card:hover .area-card__cta { opacity: 0.88; gap: 13px; }
+.area-soon {
+  font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  background: rgba(94,86,73,0.1); color: var(--texto-suave);
+  padding: 2px 8px; border-radius: 20px;
+  margin-left: 4px; vertical-align: middle;
+}
+@media (max-width: 768px) {
+  .areas-grid { grid-template-columns: 1fr; }
+  .area-card  { padding: 30px 24px; }
+}
+/* ── FIN ÁREAS HOME ─────────────────────────────────────── */
   </style>
 </head>
 <body>
@@ -1485,8 +1613,87 @@ Guías prácticas, herramientas gratuitas e información verificada para ayudart
     </div>
   </div>
  </header>
+ <!-- ============ ÁREAS HOME ============ -->
+<section class="areas-home container reveal" id="areas">
+  <div class="areas-home-header">
+    <h2>¿Qué necesitas hoy?</h2>
+    <p>Elige tu punto de partida. Tenemos recursos para cada etapa de tu proceso en España.</p>
+  </div>
 
- 
+  <div class="areas-grid">
+
+    <!-- Proceso 2026 -->
+    <a href="proceso-2026.html" class="area-card area-card--proceso">
+      <div class="area-card__head">
+        <div class="area-card__icon">🛂</div>
+        <span class="area-card__tag">Regularización</span>
+      </div>
+      <h3>Proceso Extraordinario 2026</h3>
+      <p>Todo sobre el RD 316/2026: quién puede solicitarlo, qué documentos necesitas y cómo presentar la solicitud.</p>
+      <ul class="area-card__links">
+        <li><a href="proceso-2026.html#vias">Vías de arraigo disponibles</a></li>
+        <li><a href="evaluador.html">Test de aptitud gratuito</a></li>
+        <li><a href="guia-regularizacion-2026.html">Guía paso a paso</a></li>
+        <li><a href="guia-menores-2026.html">Menores y familia</a></li>
+      </ul>
+      <span class="area-card__cta">Explorar el proceso ➔</span>
+    </a>
+
+    <!-- Herramientas -->
+    <div class="area-card area-card--herramientas">
+      <div class="area-card__head">
+        <div class="area-card__icon">🧰</div>
+        <span class="area-card__tag">Herramientas</span>
+      </div>
+      <h3>Herramientas Prácticas</h3>
+      <p>Aprende a gestionar tus documentos y trámites digitales de forma autónoma, sin pagar a terceros.</p>
+      <ul class="area-card__links">
+        <li><a href="guia-escanear-gratis.html">Escanear documentos gratis</a></li>
+        <li><a href="guia-firma-digital.html">Firma digital con AutoFirma</a></li>
+        <li><a href="#">Manejar PDFs desde el móvil <span class="area-soon">Próximamente</span></a></li>
+        <li><a href="#">Certificado digital <span class="area-soon">Próximamente</span></a></li>
+        <li><a href="#">Declaración de la Renta <span class="area-soon">Próximamente</span></a></li>
+      </ul>
+      <span class="area-card__cta">Ver herramientas ➔</span>
+    </div>
+
+    <!-- Recursos -->
+   <a href="#recursos" class="area-card area-card--recursos">
+      <div class="area-card__head">
+        <div class="area-card__icon">📂</div>
+        <span class="area-card__tag">Recursos gratuitos</span>
+      </div>
+      <h3>Formularios y Guías</h3>
+      <p>Documentos oficiales y guías descargables sin coste. Lo que es público y gratuito, aquí lo encontrarás.</p>
+      <ul class="area-card__links">
+        <li><a href="modelo-precontrato-regularizacion-2026.pdf" target="_blank" rel="noopener">Modelo pre-contrato (vía laboral)</a></li>
+        <li><a href="formulario-vulnerabilidad-EX32.pdf" target="_blank" rel="noopener">Formulario EX-32 (vulnerabilidad)</a></li>
+        <li><a href="mapa-madrid-2026.html">Ruta Informe de Vulnerabilidad Madrid</a></li>
+        <li><a href="https://www.inclusion.gob.es/documents/d/guest/entidades-colaboradoras-150426-1" target="_blank" rel="noopener">Entidades colaboradoras oficiales</a></li>
+      </ul>
+      <span class="area-card__cta">Ver todos los recursos ➔</span>
+    </a>
+
+    <!-- Quiénes somos -->
+    <a href="#equipo" class="area-card area-card--equipo">
+      <div class="area-card__head">
+        <div class="area-card__icon">👥</div>
+        <span class="area-card__tag">Equipo</span>
+      </div>
+      <h3>Quiénes somos</h3>
+      <p>Ex-migrantes que hoy sirven al colectivo con rigor profesional. Sara desde el derecho, Nora desde la administración.</p>
+      <ul class="area-card__links">
+        <li><a href="#equipo">Conoce a Sara y Nora</a></li>
+        <li><a href="#contacto">Email y teléfonos directos</a></li>
+        <li><a href="https://www.youtube.com/channel/UCyjRDvnjNXxBO2S2V-0adbA" target="_blank" rel="noopener">Canal de YouTube</a></li>
+        <li><a href="https://www.instagram.com/gestionaseguroweb/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+      <span class="area-card__cta">Conocernos ➔</span>
+    </a>
+
+  </div>
+</section>
+<!-- ============ FIN ÁREAS HOME ============ -->
   <!-- ============ RECURSOS ============ -->
   <section class="container reveal recursos-seccion" id="recursos">
     <div class="recursos-intro">
