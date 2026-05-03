@@ -1461,10 +1461,11 @@ object-position: 25% center;
 .footer-comunidad h4 {
   color: var(--arena);
   margin-bottom: 8px;
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.5rem;
-  text-transform: none;
-  letter-spacing: 0;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .footer-comunidad p {
@@ -1478,19 +1479,21 @@ object-position: 25% center;
 .footer-comunidad-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 10px;
+  max-width: 620px;
 }
 
 .footer-comunidad-links a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 14px;
+  padding: 8px 13px;
   border-radius: 999px;
   background: rgba(245,245,220,0.12);
   color: var(--arena);
-  font-weight: 800;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 0.95rem;
 }
 
 .footer-comunidad-links a:hover {
@@ -1510,10 +1513,9 @@ object-position: 25% center;
 }
 
 @media (max-width: 768px) {
-  .footer-comunidad-inner {
-    flex-direction: column;
-    text-align: center;
-  }
+.footer-comunidad-links {
+  justify-content: center;
+}
 
   .footer-comunidad-links {
     justify-content: center;
