@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homologación de estudios no universitarios — Gestiona Seguro</title>
+  <meta name="description" content="Te ayudamos a homologar o convalidar tus estudios extranjeros en España. ESO, Bachillerato y estudios no universitarios. Perú, Colombia, Paraguay y más países.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── TOKENS ────────────────────────────────── */
+    :root {
+      --oliva:        #556B2F;
+      --oliva-light:  #7d9448;
+      --oliva-dark:   #3a4a1f;
+      --oliva-bg:     #f0f3e8;
+      --arena:        #F5F5DC;
+      --arena-warm:   #f8f6ed;
+      --arena-dark:   #e8e2c8;
+      --terracota:    #E2725B;
+      --terra-dark:   #c45a42;
+      --terra-bg:     #fdf3f0;
+      --texto:        #2a2218;
+      --suave:        #5e5649;
+      --blanco:       #fffdf8;
+      --fs-label:     0.8125rem;
+      --fs-sm:        1.0625rem;
+      --fs-base:      1.125rem;
+      --fs-h3:        clamp(1.375rem, 2.5vw, 1.625rem);
+      --fs-h2:        clamp(1.875rem, 4vw, 2.5rem);
+      --lh-tight:     1.3;
+      --lh-normal:    1.65;
+      --tr:           0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --r:            20px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      color: var(--texto);
+      background: var(--blanco);
+      line-height: var(--lh-normal);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h2, h3 {
+      font-family: 'DM Serif Display', serif;
+      line-height: var(--lh-tight);
+      color: var(--oliva-dark);
+      font-weight: 400;
+    }
+
+    p { font-size: var(--fs-base); line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* ─── NAVBAR ─────────────────────────────────── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,253,248,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(85,107,47,0.08);
+      transition: box-shadow var(--tr);
+    }
+    .navbar.scrolled { box-shadow: 0 2px 20px rgba(42,34,24,0.08); }
+    .nav-inner {
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; max-width: 1120px; margin: 0 auto;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem; color: var(--oliva-dark);
+    }
+    .nav-logo img {
+      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
+    }
+    /* ── Placeholder logo si no carga la imagen ── */
+    .nav-logo-placeholder {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--oliva); color: var(--arena);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 6px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.9rem; font-weight: 600; color: var(--suave);
+      padding: 7px 13px; border-radius: 50px;
+      transition: background var(--tr), color var(--tr);
+    }
+    .nav-links a:hover { background: var(--oliva-bg); color: var(--oliva-dark); }
+    .nav-links a.active { background: var(--oliva-bg); color: var(--oliva); }
+
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--terracota); color: white;
+      padding: 9px 18px; border-radius: 50px;
+      font-size: 0.88rem; font-weight: 800;
+      transition: background var(--tr), transform var(--tr);
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px;
+      background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--oliva-dark); border-radius: 2px;
+      transition: all var(--tr);
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column; gap: 4px;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: var(--blanco);
+        border-bottom: 1px solid var(--arena-dark);
+        padding: 16px 24px 20px;
+        box-shadow: 0 8px 24px rgba(42,34,24,0.07);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 14px; }
+    }
+
+    /* ─── HERO BREADCRUMB ────────────────────────── */
+    .hero-breadcrumb {
+      margin-top: 64px;
+      background: var(--oliva-dark);
+      padding: 52px 0 48px;
+      position: relative; overflow: hidden;
+    }
+    .hero-breadcrumb::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(245,245,220,.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    .hero-breadcrumb::after {
+      content: '🎓';
+      position: absolute; right: clamp(20px,7vw,90px); top: 28px;
+      font-size: clamp(5rem,12vw,9rem);
+      opacity: 0.05; pointer-events: none;
+    }
+    .hb-inner {
+      position: relative; z-index: 2;
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+    }
+    .hb-path {
+      display: flex; align-items: center; gap: 8px;
+      font-size: var(--fs-label); font-weight: 700;
+      color: rgba(245,245,220,.45);
+      margin-bottom: 14px;
+    }
+    .hb-path a { color: rgba(245,245,220,.6); transition: color var(--tr); }
+    .hb-path a:hover { color: var(--arena); }
+    .hb-path span { color: var(--terracota); }
+    .hb-etiqueta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(226,114,91,0.18);
+      border: 1px solid rgba(226,114,91,0.25);
+      color: #f5a58a;
+      padding: 6px 14px; border-radius: 50px;
+      font-size: var(--fs-label); font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .hb-inner h1 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--arena);
+      line-height: 1.2;
+      max-width: 700px;
+      margin-bottom: 12px;
+    }
+    .hb-inner h1 em { color: var(--terracota); font-style: italic; }
+    .hb-sub {
+      color: rgba(245,245,220,.65);
+      font-size: var(--fs-base);
+      max-width: 580px;
+    }
+
+    /* ─── SECCIÓN PRINCIPAL ──────────────────────── */
+    .homologacion {
+      padding: 72px 0 88px;
+      background: linear-gradient(180deg, var(--blanco) 0%, var(--arena-warm) 100%);
+    }
+
+    /* ─── INTRO CARD ─────────────────────────────── */
+    .hp-intro-card {
+      background: var(--oliva-dark);
+      color: rgba(245,245,220,0.88);
+      border-radius: 28px;
+      padding: 36px 38px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 32px;
+      box-shadow: 0 18px 46px rgba(42,34,24,0.13);
+    }
+    .hp-intro-card h3 {
+      color: var(--arena);
+      font-size: var(--fs-h3);
+      margin-bottom: 10px;
+    }
+    .hp-intro-card > div:first-child p {
+      font-size: var(--fs-base);
+      color: rgba(245,245,220,.78);
+    }
+    .hp-steps {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 10px;
+    }
+    .hp-step {
+      background: rgba(245,245,220,.09);
+      border: 1px solid rgba(245,245,220,.13);
+      border-radius: 16px; padding: 16px 14px;
+    }
+    .hp-step strong {
+      display: block; color: var(--arena);
+      font-size: 0.97rem; margin-bottom: 4px;
+    }
+    .hp-step span {
+      display: block; font-size: 0.93rem;
+      line-height: 1.45; color: rgba(245,245,220,.68);
+    }
+
+    /* ─── TARJETAS PAÍS ──────────────────────────── */
+    .paises-titulo {
+      text-align: center; margin: 44px auto 26px;
+      max-width: 720px;
+    }
+    .paises-titulo h2 { font-size: var(--fs-h2); margin-bottom: 10px; }
+    .paises-titulo p { font-size: var(--fs-base); color: var(--suave); }
+
+    .hp-grid-paises {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 22px; margin-bottom: 28px;
+    }
+
+    .hp-pais-card {
+      background: var(--blanco);
+      border: 1.5px solid var(--arena-dark);
+      border-radius: 24px; padding: 30px 26px;
+      display: flex; flex-direction: column;
+      min-height: 380px; position: relative; overflow: hidden;
+      transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+    }
+    .hp-pais-card::after {
+      content: attr(data-flag);
+      position: absolute; right: 18px; bottom: 14px;
+      font-size: 5.5rem; opacity: 0.055;
+      line-height: 1; pointer-events: none;
+    }
+    .hp-pais-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 42px rgba(42,34,24,0.09);
+      border-color: rgba(85,107,47,0.25);
+    }
+    .hp-pais-card--otros {
+      background: linear-gradient(160deg, var(--blanco) 0%, var(--oliva-bg) 100%);
+      border-color: rgba(85,107,47,0.2);
+    }
+    .hp-pais-top {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 14px;
+      margin-bottom: 18px; position: relative; z-index: 1;
+    }
+    .hp-pais-flag {
+      width: 66px; height: 66px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem; background: var(--blanco);
+      border: 4px solid var(--oliva-bg);
+      box-shadow: 0 8px 20px rgba(42,34,24,0.09);
+      flex-shrink: 0;
+    }
+    .hp-pais-card--otros .hp-pais-flag { border-color: var(--terra-bg); }
+    .hp-pais-badge {
+      font-size: 0.78rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      color: var(--oliva); background: var(--oliva-bg);
+      padding: 5px 10px; border-radius: 50px; white-space: nowrap;
+    }
+    .hp-pais-card--otros .hp-pais-badge {
+      color: var(--terra-dark); background: var(--terra-bg);
+    }
+    .hp-pais-card h3 {
+      font-size: clamp(1.35rem,2vw,1.6rem);
+      margin-bottom: 8px; position: relative; z-index: 1;
+    }
+    .hp-pais-card > p {
+      font-size: var(--fs-sm); color: var(--suave);
+      margin-bottom: 16px; position: relative; z-index: 1;
+    }
+    .hp-lista {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 7px; margin-bottom: 22px; flex-grow: 1;
+      position: relative; z-index: 1;
+    }
+    .hp-lista li {
+      position: relative; padding-left: 22px;
+      color: var(--suave); font-size: var(--fs-sm); line-height: 1.45;
+    }
+    .hp-lista li::before {
+      content: "✓"; position: absolute; left: 0; top: 0;
+      color: var(--terracota); font-weight: 800;
+    }
+    .hp-card-cta {
+      display: inline-flex; align-items: center;
+      justify-content: center; gap: 7px;
+      width: fit-content; padding: 11px 20px;
+      border-radius: 50px; background: var(--oliva);
+      color: var(--arena); font-weight: 800; font-size: 0.97rem;
+      margin-top: auto; transition: background var(--tr), transform var(--tr);
+      position: relative; z-index: 1;
+    }
+    .hp-card-cta:hover { background: var(--oliva-dark); transform: translateY(-1px); }
+    .hp-pais-card--otros .hp-card-cta { background: var(--terracota); color: white; }
+    .hp-pais-card--otros .hp-card-cta:hover { background: var(--terra-dark); }
+
+    /* ─── CASOS COMPLEJOS ────────────────────────── */
+    .hp-casos {
+      background: linear-gradient(135deg, #FEF5D7 0%, #fff8e5 100%);
+      border: 2px dashed #F39C12;
+      border-radius: 24px; padding: 30px 32px;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 28px; align-items: center;
+      margin-bottom: 32px;
+    }
+    .hp-casos h3 { color: #7D5B00; margin-bottom: 8px; font-size: var(--fs-h3); }
+    .hp-casos p  { color: #7D4B1A; font-size: var(--fs-base); }
+    .hp-casos-tags {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: flex-end; max-width: 480px;
+    }
+    .hp-casos-tags span {
+      background: rgba(255,255,255,.8);
+      border: 1px solid rgba(243,156,18,.28);
+      color: #7D4B1A; padding: 7px 12px;
+      border-radius: 50px; font-size: 0.95rem;
+      font-weight: 700; white-space: nowrap;
+    }
+
+    /* ─── PAQUETES ───────────────────────────────── */
+    .paquetes-titulo {
+      text-align: center; margin: 8px auto 28px; max-width: 680px;
+    }
+    .paquetes-titulo h2 { font-size: var(--fs-h2); margin-bottom: 10px; }
+    .paquetes-titulo p  { color: var(--suave); font-size: var(--fs-base); }
+
+    .hp-modalidades {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 22px; margin-bottom: 32px;
+    }
+    .hp-modalidad {
+      border-radius: 26px; padding: 34px 32px;
+      border: 2px solid transparent;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .hp-modalidad--revision {
+      background: var(--oliva-bg);
+      border-color: rgba(85,107,47,0.18);
+    }
+    .hp-modalidad--tramite {
+      background: var(--terra-bg);
+      border-color: rgba(226,114,91,0.18);
+    }
+    .hp-modalidad-label {
+      display: inline-block; font-size: var(--fs-label);
+      font-weight: 900; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .hp-modalidad--revision .hp-modalidad-label { color: var(--oliva); }
+    .hp-modalidad--tramite .hp-modalidad-label { color: var(--terra-dark); }
+    .hp-modalidad h3   { font-size: var(--fs-h3); margin-bottom: 10px; }
+    .hp-modalidad > p  { color: var(--suave); font-size: var(--fs-base); margin-bottom: 16px; }
+    .hp-modalidad ul   { list-style: none; display: grid; gap: 8px; margin-bottom: 22px; flex: 1; }
+    .hp-modalidad li {
+      font-size: var(--fs-sm); color: var(--suave);
+      padding-left: 22px; position: relative; line-height: 1.5;
+    }
+    .hp-modalidad li::before {
+      content: "•"; position: absolute; left: 4px; top: -1px;
+      font-size: 1.2rem; line-height: 1;
+    }
+    .hp-modalidad--revision li::before { color: var(--oliva); }
+    .hp-modalidad--tramite li::before  { color: var(--terracota); }
+
+    /* Quién gestiona — chip dentro del paquete */
+    .hp-quien {
+      display: flex; align-items: center; gap: 9px;
+      background: rgba(255,255,255,.6);
+      border: 1px solid rgba(0,0,0,.07);
+      border-radius: 50px; padding: 7px 13px;
+      margin-bottom: 16px; width: fit-content;
+    }
+    .hp-quien-ava {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 900;
+      flex-shrink: 0; color: white;
+    }
+    .ava-nora  { background: var(--oliva); }
+    .ava-sara  { background: var(--terracota); }
+    .ava-ambas { background: var(--oliva-dark); }
+    .hp-quien-txt {
+      font-size: 0.82rem; font-weight: 700; color: var(--suave); line-height: 1.3;
+    }
+    .hp-quien-txt strong { color: var(--texto); font-size: 0.85rem; }
+
+    .hp-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 13px 24px; border-radius: 50px;
+      font-weight: 800; font-size: 1rem;
+      transition: transform var(--tr), background var(--tr);
+      margin-top: auto;
+    }
+    .hp-btn:hover { transform: translateY(-1px); }
+    .hp-btn--primary   { background: var(--terracota); color: #fff; }
+    .hp-btn--primary:hover { background: var(--terra-dark); }
+    .hp-btn--secondary { background: white; color: var(--oliva-dark); border: 1.5px solid rgba(85,107,47,0.2); }
+    .hp-btn--secondary:hover { background: var(--oliva-bg); }
+
+    /* ─── EQUIPO ─────────────────────────────────── */
+    .equipo-sec {
+      background: var(--oliva-dark);
+      padding: 56px 0;
+      position: relative; overflow: hidden;
+    }
+    .equipo-sec::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(245,245,220,.04) 1px, transparent 1px);
+      background-size: 22px 22px; pointer-events: none;
+    }
+    .eq-header {
+      text-align: center; margin-bottom: 40px;
+      position: relative; z-index: 2;
+    }
+    .eq-label {
+      display: inline-block;
+      font-size: var(--fs-label); font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--terracota); margin-bottom: 10px;
+    }
+    .eq-header h2 {
+      color: var(--arena); font-size: clamp(1.7rem,4vw,2.4rem);
+      margin-bottom: 8px;
+    }
+    .eq-header p {
+      color: rgba(245,245,220,.6); font-size: var(--fs-base);
+      max-width: 540px; margin: 0 auto;
+    }
+    .eq-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 22px; max-width: 800px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    .eq-card {
+      background: rgba(245,245,220,.06);
+      border: 1px solid rgba(245,245,220,.11);
+      border-radius: 24px; padding: 28px 26px;
+      display: flex; gap: 20px; align-items: flex-start;
+      transition: background var(--tr), transform var(--tr);
+    }
+    .eq-card:hover { background: rgba(245,245,220,.1); transform: translateY(-3px); }
+
+    /*
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    SWAP DE FOTOS — INSTRUCCIONES
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    Cuando tengas las fotos definitivas:
+    1. Sube el archivo al repo (ej: sara-altamirano.jpg, nora-nunez.jpg)
+    2. Reemplaza el div .eq-avatar por esta etiqueta:
+       <img src="sara-altamirano.jpg" alt="Sara Altamirano" class="eq-foto">
+    3. Añade esta regla CSS:
+       .eq-foto { width:80px; height:80px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    */
+    .eq-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem; flex-shrink: 0;
+      border: 3px solid rgba(245,245,220,.15);
+    }
+    .eq-avatar.av-sara  { background: rgba(226,114,91,.25); color: #f5a58a; }
+    .eq-avatar.av-nora  { background: rgba(85,107,47,.35);  color: #b8d080; }
+
+    .eq-info { flex: 1; }
+    .eq-nombre {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem; color: var(--arena);
+      font-weight: 400; margin-bottom: 3px;
+    }
+    .eq-rol {
+      font-size: var(--fs-label); font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      margin-bottom: 8px; display: block;
+    }
+    .eq-card:first-child .eq-rol { color: var(--terracota); }
+    .eq-card:last-child  .eq-rol { color: #b8d080; }
+    .eq-desc {
+      font-size: 0.95rem; color: rgba(245,245,220,.6);
+      line-height: 1.55; margin-bottom: 10px;
+    }
+    .eq-cred {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .eq-cred span {
+      background: rgba(245,245,220,.08);
+      border: 1px solid rgba(245,245,220,.12);
+      color: rgba(245,245,220,.65);
+      padding: 3px 10px; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 700;
+    }
+
+    /* ─── CTA FINAL ──────────────────────────────── */
+    .hp-final-cta {
+      text-align: center;
+      background: var(--blanco);
+      border: 1.5px solid var(--arena-dark);
+      border-radius: 26px; padding: 38px 28px;
+    }
+    .hp-final-cta h3 { font-size: var(--fs-h3); margin-bottom: 8px; }
+    .hp-final-cta p  {
+      color: var(--suave); max-width: 640px;
+      margin: 0 auto 24px; font-size: var(--fs-base);
+    }
+    .hp-buttons {
+      display: flex; align-items: center;
+      justify-content: center; gap: 12px; flex-wrap: wrap;
+    }
+    .hp-btn-mail {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: 50px;
+      background: var(--oliva-bg); color: var(--oliva-dark);
+      font-weight: 800; font-size: 1rem;
+      border: 1.5px solid rgba(85,107,47,.18);
+      transition: background var(--tr), transform var(--tr);
+    }
+    .hp-btn-mail:hover { background: var(--arena-dark); transform: translateY(-1px); }
+    .hp-nota {
+      margin-top: 20px; font-size: 0.92rem;
+      color: var(--suave); line-height: 1.55;
+      max-width: 720px; margin-left: auto; margin-right: auto;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    .footer {
+      background: var(--oliva-dark);
+      border-top: 1px solid rgba(245,245,220,.08);
+      padding: 36px 24px;
+    }
+    .footer-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem; color: var(--arena);
+    }
+    .footer-logo-placeholder {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(245,245,220,.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 800; color: var(--arena);
+    }
+    .footer-links {
+      display: flex; gap: 20px; flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: var(--fs-label); font-weight: 700;
+      color: rgba(245,245,220,.5);
+      transition: color var(--tr);
+    }
+    .footer-links a:hover { color: var(--arena); }
+    .footer-copy {
+      font-size: var(--fs-label); color: rgba(245,245,220,.35);
+      text-align: right;
+    }
+
+    /* ─── REVEAL ─────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hp-intro-card { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .homologacion { padding: 52px 0 68px; }
+      .hp-intro-card,
+      .hp-modalidad,
+      .hp-final-cta { padding: 24px 20px; border-radius: 20px; }
+      .hp-steps,
+      .hp-grid-paises,
+      .hp-modalidades,
+      .hp-casos { grid-template-columns: 1fr; }
+      .hp-casos { grid-template-columns: 1fr; }
+      .hp-casos-tags { justify-content: flex-start; max-width: 100%; }
+      .hp-btn, .hp-card-cta, .hp-btn-mail { width: 100%; }
+      .eq-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-copy { text-align: left; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════ NAVBAR ══════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo-gestiona-seguro.png" alt="Gestiona Seguro"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="nav-logo-placeholder" style="display:none">GS</div>
+        Gestiona Seguro
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="proceso-2026.html">Regularización 2026</a></li>
+        <li><a href="evaluador.html">Evaluador</a></li>
+        <li><a href="index.html#servicios" class="active">Servicios</a></li>
+        <li><a href="index.html#equipo">Nosotros</a></li>
+      </ul>
+      <a href="https://wa.me/34644416479?text=Hola%2C%20quiero%20información%20sobre%20vuestros%20servicios"
+         class="nav-cta" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Consultar
+      </a>
+    </div>
+  </nav>
+
+  <!-- ══════════ HERO BREADCRUMB ══════════ -->
+  <section class="hero-breadcrumb">
+    <div class="hb-inner">
+      <div class="hb-path">
+        <a href="index.html">Inicio</a>
+        <span>›</span>
+        <span>Servicios</span>
+        <span>›</span>
+        <span style="color:rgba(245,245,220,.75)">Homologación de estudios</span>
+      </div>
+      <div class="hb-etiqueta">🎓 Estudios oficiales en España</div>
+      <h1>Homologación y convalidación<br>de estudios <em>no universitarios</em></h1>
+      <p class="hb-sub">ESO, Bachillerato y estudios secundarios extranjeros. Perú, Colombia, Paraguay y otros países. Te acompañamos de principio a fin.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ SECCIÓN PRINCIPAL ══════════ -->
+  <section class="homologacion" id="homologacion">
+    <div class="container">
+
+      <!-- Intro card -->
+      <div class="hp-intro-card reveal">
+        <div>
+          <h3>Primero analizamos tu país y tu documentación. Después decides cómo avanzar.</h3>
+          <p>
+            Cada sistema educativo tiene sus propios cursos, títulos y documentos. Revisamos tu país,
+            el último curso aprobado, la documentación disponible y tu objetivo en España: FP,
+            universidad, empleo, extranjería o continuidad académica.
+          </p>
+        </div>
+        <div class="hp-steps">
+          <div class="hp-step">
+            <strong>1. Nos escribes</strong>
+            <span>Cuéntanos tu caso por WhatsApp o email.</span>
+          </div>
+          <div class="hp-step">
+            <strong>2. Subes tus docs</strong>
+            <span>Título, notas, apostillas y documentos.</span>
+          </div>
+          <div class="hp-step">
+            <strong>3. Eliges tu opción</strong>
+            <span>Revisión estratégica o tramitación total.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selector de país -->
+      <div class="paises-titulo reveal">
+        <h2>Selecciona tu país de estudios</h2>
+        <p>Cada país tiene un sistema educativo y documentación propia. Consulta tu caso directamente.</p>
+      </div>
+
+      <div class="hp-grid-paises">
+
+        <article class="hp-pais-card reveal" data-flag="🇵🇪">
+          <div class="hp-pais-top">
+            <div class="hp-pais-flag" aria-hidden="true">🇵🇪</div>
+            <span class="hp-pais-badge">Perú</span>
+          </div>
+          <h3>Perú — Secundaria completa y nuevas oportunidades</h3>
+          <p>Para personas que estudiaron en Perú y quieren acceder a estudios oficiales en España, FP, o mejorar sus opciones laborales y de extranjería.</p>
+          <ul class="hp-lista">
+            <li>Certificado oficial de estudios peruano</li>
+            <li>5.º de secundaria o título final</li>
+            <li>Apostilla, legalización y constancias</li>
+            <li>Objetivo en España: FP, universidad, empleo o extranjería</li>
+          </ul>
+          <a href="https://wa.me/34644416479?text=Hola%2C%20quiero%20consultar%20mi%20caso%20de%20homologaci%C3%B3n%20de%20estudios%20de%20Per%C3%BA."
+             class="hp-card-cta" target="_blank" rel="noopener">Consultar caso de Perú →</a>
+        </article>
+
+        <article class="hp-pais-card reveal d1" data-flag="🇨🇴">
+          <div class="hp-pais-top">
+            <div class="hp-pais-flag" aria-hidden="true">🇨🇴</div>
+            <span class="hp-pais-badge">Colombia</span>
+          </div>
+          <h3>Colombia — Bachiller, acta y documentación académica</h3>
+          <p>Para personas con título de Bachiller colombiano que necesitan presentar correctamente su documentación académica en España.</p>
+          <ul class="hp-lista">
+            <li>Diploma de Bachiller y acta de grado</li>
+            <li>Notas o certificados de Secretaría de Educación</li>
+            <li>Casos de colegio cerrado o falta de notas</li>
+            <li>Apostilla, traducción y objetivo en España</li>
+          </ul>
+          <a href="https://wa.me/34644416479?text=Hola%2C%20quiero%20consultar%20mi%20caso%20de%20homologaci%C3%B3n%20de%20estudios%20de%20Colombia."
+             class="hp-card-cta" target="_blank" rel="noopener">Consultar caso de Colombia →</a>
+        </article>
+
+        <article class="hp-pais-card reveal" data-flag="🇵🇾">
+          <div class="hp-pais-top">
+            <div class="hp-pais-flag" aria-hidden="true">🇵🇾</div>
+            <span class="hp-pais-badge">Paraguay</span>
+          </div>
+          <h3>Paraguay — Educación Media y continuidad en España</h3>
+          <p>Para personas que cursaron Educación Media en Paraguay y quieren homologar, convalidar o continuar estudios oficiales en España.</p>
+          <ul class="hp-lista">
+            <li>Título de Bachiller y modalidad cursada</li>
+            <li>Certificado de estudios y calificaciones</li>
+            <li>Apostilla, legalización y documentación disponible</li>
+            <li>Acceso a FP, continuidad académica u otras vías</li>
+          </ul>
+          <a href="https://wa.me/34644416479?text=Hola%2C%20quiero%20consultar%20mi%20caso%20de%20homologaci%C3%B3n%20de%20estudios%20de%20Paraguay."
+             class="hp-card-cta" target="_blank" rel="noopener">Consultar caso de Paraguay →</a>
+        </article>
+
+        <article class="hp-pais-card hp-pais-card--otros reveal d1" data-flag="🌍">
+          <div class="hp-pais-top">
+            <div class="hp-pais-flag" aria-hidden="true">🌍</div>
+            <span class="hp-pais-badge">Otros países</span>
+          </div>
+          <h3>Otros países — Revisamos tu sistema educativo</h3>
+          <p>Si estudiaste en otro país hispanohablante o fuera de América Latina, también podemos revisar tu documentación y orientarte sobre la vía adecuada.</p>
+          <ul class="hp-lista">
+            <li>País donde estudiaste y último curso aprobado</li>
+            <li>Título, diploma o certificado final</li>
+            <li>Notas o calificaciones disponibles</li>
+            <li>Apostilla, traducción y objetivo en España</li>
+          </ul>
+          <a href="https://wa.me/34644416479?text=Hola%2C%20quiero%20consultar%20mi%20caso%20de%20homologaci%C3%B3n%20de%20estudios%20de%20otro%20pa%C3%ADs."
+             class="hp-card-cta" target="_blank" rel="noopener">Consultar otro país →</a>
+        </article>
+
+      </div>
+
+      <!-- Casos complejos -->
+      <div class="hp-casos reveal">
+        <div>
+          <h3>¿Tu caso no es sencillo? También podemos ayudarte</h3>
+          <p>Expediente incompleto, requerimiento previo, denegación, colegio cerrado o urgencia por matrícula. Revisamos tu situación antes de presentar o continuar el trámite.</p>
+        </div>
+        <div class="hp-casos-tags">
+          <span>Me falta documentación</span>
+          <span>Mi centro cerró</span>
+          <span>No tengo todas las notas</span>
+          <span>Recibí un requerimiento</span>
+          <span>Mi expediente caducó</span>
+          <span>Me denegaron la homologación</span>
+          <span>Necesito volante condicional</span>
+          <span>Tengo urgencia por matrícula</span>
+        </div>
+      </div>
+
+      <!-- Paquetes -->
+      <div class="paquetes-titulo reveal">
+        <h2>Elige cómo quieres avanzar</h2>
+        <p>Dos formas de trabajar juntos. Sin precio oculto: nos contactas y valoramos tu caso antes de comprometerte a nada.</p>
+      </div>
+
+      <div class="hp-modalidades">
+
+        <article class="hp-modalidad hp-modalidad--revision reveal">
+          <span class="hp-modalidad-label">Opción 1 — Revisión y Estrategia</span>
+          <h3>Sabemos qué tienes y qué necesitas</h3>
+          <p>Para quien quiere un análisis profesional de su expediente antes de presentarlo, o necesita saber exactamente qué pasos dar.</p>
+          <div class="hp-quien">
+            <div class="hp-quien-ava ava-nora">NN</div>
+            <div class="hp-quien-ava ava-sara" style="margin-left:-8px">SA</div>
+            <div class="hp-quien-txt"><strong>Nora y Sara</strong><br>Gestión documental + criterio legal</div>
+          </div>
+          <ul>
+            <li>Revisión de documentos aportados por el cliente</li>
+            <li>Análisis por país y vía aplicable en España</li>
+            <li>Detección de riesgos, documentos faltantes y problemas</li>
+            <li>Orientación por escrito con los próximos pasos</li>
+            <li>Una sesión de resolución de dudas incluida</li>
+          </ul>
+          <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20contratar%20la%20revisi%C3%B3n%20y%20estrategia%20de%20homologaci%C3%B3n%20de%20estudios."
+             class="hp-btn hp-btn--secondary" target="_blank" rel="noopener">
+            Quiero revisión y estrategia →
+          </a>
+        </article>
+
+        <article class="hp-modalidad hp-modalidad--tramite reveal d1">
+          <span class="hp-modalidad-label">Opción 2 — Tramitación Completa</span>
+          <h3>Nosotras lo gestionamos de principio a fin</h3>
+          <p>Para quien quiere delegar. Preparamos el expediente, redactamos los escritos, presentamos y hacemos el seguimiento. Tú solo pones los documentos y pagas las tasas oficiales.</p>
+          <div class="hp-quien">
+            <div class="hp-quien-ava ava-nora">NN</div>
+            <div class="hp-quien-ava ava-sara" style="margin-left:-8px">SA</div>
+            <div class="hp-quien-txt"><strong>Nora y Sara</strong><br>Expediente + representación legal</div>
+          </div>
+          <ul>
+            <li>Preparación completa del expediente y escritos</li>
+            <li>Mandato de representación ante la Administración</li>
+            <li>Presentación o asistencia en registro</li>
+            <li>Seguimiento activo del expediente</li>
+            <li>Gestión de requerimientos y resoluciones</li>
+            <li>Comunicación directa en cada fase del trámite</li>
+          </ul>
+          <a href="https://wa.me/34644416479?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20tramitaci%C3%B3n%20completa%20de%20mi%20homologaci%C3%B3n%20de%20estudios."
+             class="hp-btn hp-btn--primary" target="_blank" rel="noopener">
+            Quiero tramitación completa →
+          </a>
+        </article>
+
+      </div>
+
+      <!-- CTA final -->
+      <div class="hp-final-cta reveal">
+        <h3>¿No sabes por cuál empezar?</h3>
+        <p>Escríbenos, cuéntanos tu caso y te orientamos sin compromiso. En menos de 24 horas sabrás qué opción se adapta mejor a tu situación.</p>
+        <div class="hp-buttons">
+          <a href="https://wa.me/34644416479?text=Hola%2C%20quiero%20empezar%20un%20diagn%C3%B3stico%20de%20homologaci%C3%B3n%20de%20estudios."
+             class="hp-btn hp-btn--primary" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Escribir por WhatsApp
+          </a>
+          <a href="mailto:info@gestionaseguro.com?subject=Consulta%20homologaci%C3%B3n%20de%20estudios"
+             class="hp-btn-mail">
+            ✉️ info@gestionaseguro.com
+          </a>
+        </div>
+        <p class="hp-nota">
+          La resolución final corresponde siempre al órgano administrativo competente. Las tasas oficiales,
+          apostillas, traducciones juradas y documentos emitidos por autoridades extranjeras no están incluidos
+          en nuestros honorarios.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════ EQUIPO ══════════ -->
+  <section class="equipo-sec">
+    <div class="container">
+      <div class="eq-header">
+        <span class="eq-label">Quiénes gestionamos tu expediente</span>
+        <h2>Sara y Nora — un equipo completo</h2>
+        <p>Criterio legal y gestión documental en un solo servicio. Tu expediente no pasa por manos desconocidas.</p>
+      </div>
+      <div class="eq-grid">
+
+        <!-- SWAP SARA: reemplaza .eq-avatar por <img src="sara-altamirano.jpg" alt="Sara Altamirano" class="eq-foto"> -->
+        <div class="eq-card">
+          <div class="eq-avatar av-sara">SA</div>
+          <div class="eq-info">
+            <div class="eq-nombre">Sara Altamirano Mauricci</div>
+            <span class="eq-rol">Abogada de extranjería</span>
+            <p class="eq-desc">Valida el criterio legal, redacta los escritos jurídicos y representa a los clientes ante la Administración cuando el trámite lo requiere.</p>
+            <div class="eq-cred">
+              <span>ICAM 143312</span>
+              <span>+20 años de trayectoria</span>
+              <span>Extranjería</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SWAP NORA: reemplaza .eq-avatar por <img src="nora-nunez.jpg" alt="Nora Núñez" class="eq-foto"> -->
+        <div class="eq-card">
+          <div class="eq-avatar av-nora">NN</div>
+          <div class="eq-info">
+            <div class="eq-nombre">Nora Núñez Zárate</div>
+            <span class="eq-rol">Documentalista y gestora de información</span>
+            <p class="eq-desc">Organiza y revisa los expedientes, prepara la documentación y coordina el proceso administrativo con precisión y experiencia en la Administración Pública.</p>
+            <div class="eq-cred">
+              <span>+15 años Adm. Pública</span>
+              <span>UC3M</span>
+              <span>Documentación</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo-gestiona-seguro.png" alt="Gestiona Seguro" style="width:32px;height:32px;border-radius:50%;object-fit:cover"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="footer-logo-placeholder" style="display:none">GS</div>
+        Gestiona Seguro
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="proceso-2026.html">Regularización 2026</a>
+        <a href="evaluador.html">Evaluador</a>
+        <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a>
+      </div>
+      <div class="footer-copy">
+        © 2026 Gestiona Seguro<br>No sustituye asesoría legal individual
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Reveal on scroll
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  </script>
+
+</body>
+</html>
