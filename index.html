@@ -1511,7 +1511,155 @@ object-position: 25% center;
   background: rgba(245,245,220,0.22);
 }
 
-    
+ /* ═══════════════════════════════════════
+   SERVICIOS — sección nueva
+═══════════════════════════════════════ */
+.servicios-sec {
+  padding: 0 0 80px;
+  background: var(--blanco);
+}
+.servicios-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.servicios-header .sec-label {
+  display: inline-block;
+  font-size: var(--fs-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--terracota);
+  margin-bottom: 10px;
+}
+.servicios-header h2 { margin-bottom: 10px; }
+.servicios-header p {
+  color: var(--texto-suave);
+  font-size: var(--fs-md);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--lh-normal);
+}
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.srv-card {
+  background: var(--blanco);
+  border: 1.5px solid var(--arena-dark);
+  border-radius: 24px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transicion), box-shadow var(--transicion), border-color var(--transicion);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--texto);
+}
+.srv-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(42,34,24,0.09);
+  border-color: rgba(85,107,47,0.3);
+}
+.srv-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 24px 24px 0 0;
+}
+.srv-card--homologacion::before { background: var(--oliva); }
+.srv-card--proximamente::before { background: var(--arena-dark); }
+.srv-card__icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+}
+.srv-card--homologacion .srv-card__icon { background: var(--oliva-bg); }
+.srv-card--proximamente .srv-card__icon { background: var(--arena-warm); }
+.srv-card__tag {
+  font-size: var(--fs-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 8px;
+  display: block;
+}
+.srv-card--homologacion .srv-card__tag { color: var(--oliva); }
+.srv-card--proximamente .srv-card__tag { color: var(--texto-suave); }
+.srv-card h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  margin-bottom: 10px;
+  color: var(--oliva-dark);
+}
+.srv-card > p {
+  font-size: var(--fs-sm);
+  color: var(--texto-suave);
+  line-height: var(--lh-normal);
+  margin-bottom: 22px;
+  flex-grow: 1;
+}
+.srv-paquetes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 22px;
+}
+.srv-paquetes span {
+  font-size: .78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 50px;
+  background: var(--oliva-bg);
+  color: var(--oliva-dark);
+}
+.srv-card--proximamente .srv-paquetes span {
+  background: var(--arena-warm);
+  color: var(--texto-suave);
+}
+.srv-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  width: fit-content;
+  margin-top: auto;
+  transition: background var(--transicion), transform var(--transicion);
+}
+.srv-cta:hover { transform: translateY(-1px); }
+.srv-cta--activo { background: var(--oliva); color: var(--arena); }
+.srv-cta--activo:hover { background: var(--oliva-dark); }
+.srv-cta--pronto {
+  background: var(--arena-dark);
+  color: var(--texto-suave);
+  cursor: default;
+  pointer-events: none;
+}
+.srv-card--proximamente { opacity: .72; }
+.srv-pronto-badge {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: var(--arena-dark);
+  color: var(--texto-suave);
+  font-size: .72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+@media (max-width: 768px) {
+  .servicios-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .servicios-grid { grid-template-columns: 1fr 1fr; }
+}   
 
 .footer-comunidad .footer-bottom {
   padding-top: 18px;
@@ -1629,7 +1777,10 @@ object-position: 25% center;
             </li>
           </ul>
         </li>
-
+<!-- SERVICIOS — enlace simple -->
+<li class="nav-item">
+  <a href="#servicios">Servicios</a>
+</li>
         <!-- BLOQUE 3: NOSOTROS -->
         <li class="nav-item has-dropdown">
           <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
@@ -1748,7 +1899,7 @@ Guías prácticas, herramientas gratuitas e información verificada para ayudart
         <li><a href="#">Certificado digital <span class="area-soon">Próximamente</span></a></li>
         <li><a href="#">Declaración de la Renta <span class="area-soon">Próximamente</span></a></li>
       </ul>
-   <a href="#areas" class="area-card__cta">Ver herramientas ➔</a>
+ <a href="guia-escanear-gratis.html" class="area-card__cta">Ver herramientas ➔</a>
     </div>
 
     <!-- Recursos -->
@@ -1788,7 +1939,56 @@ Guías prácticas, herramientas gratuitas e información verificada para ayudart
   </div>
 </section>
 <!-- ============ FIN ÁREAS HOME ============ -->
- 
+ <!-- ============ SERVICIOS ============ -->
+<section class="servicios-sec container reveal" id="servicios">
+  <div class="servicios-header">
+    <span class="sec-label">Servicios profesionales</span>
+    <h2>Te acompañamos cuando lo necesitas</h2>
+    <p>Más allá de los recursos gratuitos, Sara y Nora gestionan tu expediente de principio a fin.</p>
+  </div>
+  <div class="servicios-grid">
+
+    <a href="servicios-homologacion.html" class="srv-card srv-card--homologacion">
+      <div class="srv-card__icon">🎓</div>
+      <span class="srv-card__tag">Estudios no universitarios</span>
+      <h3>Homologación y convalidación de estudios</h3>
+      <p>Revisión, estrategia y tramitación para iniciar o continuar estudios oficiales en España. Perú, Colombia, Paraguay y otros países.</p>
+      <div class="srv-paquetes">
+        <span>Revisión y estrategia</span>
+        <span>Tramitación completa</span>
+      </div>
+      <span class="srv-cta srv-cta--activo">Ver servicio →</span>
+    </a>
+
+    <div class="srv-card srv-card--proximamente">
+      <span class="srv-pronto-badge">Próximamente</span>
+      <div class="srv-card__icon">🏛️</div>
+      <span class="srv-card__tag">Estudios universitarios</span>
+      <h3>Homologación de titulaciones universitarias</h3>
+      <p>Convalidación de títulos de grado y posgrado extranjeros para ejercer en España o continuar formación oficial.</p>
+      <div class="srv-paquetes">
+        <span>Revisión y estrategia</span>
+        <span>Tramitación completa</span>
+      </div>
+      <span class="srv-cta srv-cta--pronto">Disponible pronto</span>
+    </div>
+
+    <div class="srv-card srv-card--proximamente">
+      <span class="srv-pronto-badge">Próximamente</span>
+      <div class="srv-card__icon">🎨</div>
+      <span class="srv-card__tag">Estudios artísticos</span>
+      <h3>Homologación de estudios artísticos</h3>
+      <p>Música, danza, arte dramático y otras enseñanzas artísticas superiores. Análisis del caso y estrategia según el sistema educativo de origen.</p>
+      <div class="srv-paquetes">
+        <span>Revisión y estrategia</span>
+        <span>Tramitación completa</span>
+      </div>
+      <span class="srv-cta srv-cta--pronto">Disponible pronto</span>
+    </div>
+
+  </div>
+</section>
+<!-- ============ FIN SERVICIOS ============ -->
   <!-- ============ EQUIPO ============ -->
   <section class="equipo reveal" id="equipo">
     <h2>Quiénes somos</h2>
