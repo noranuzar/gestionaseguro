@@ -1445,6 +1445,57 @@ object-position: 25% center;
   .area-card  { padding: 30px 24px; }
 }
 /* ── FIN ÁREAS HOME ─────────────────────────────────────── */
+    /* ── TARJETA CON PESTAÑAS ─────────────────────── */
+.srv-card--tabs { cursor: default; }
+.srv-tabs {
+  display: flex; gap: 6px; margin-bottom: 24px;
+  background: var(--oliva-bg); border-radius: 12px; padding: 4px;
+}
+.srv-tab-btn {
+  flex: 1; padding: 9px 10px; border: none;
+  background: transparent; border-radius: 9px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.83rem; font-weight: 700;
+  color: var(--texto-suave); cursor: pointer;
+  transition: all var(--transicion); white-space: nowrap;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.srv-tab-btn.active {
+  background: white; color: var(--oliva-dark);
+  box-shadow: 0 2px 10px rgba(42,34,24,0.1);
+}
+.srv-tab-btn:not(.active):hover {
+  background: rgba(255,255,255,0.5); color: var(--oliva-dark);
+}
+.srv-tab-panel {
+  display: none; flex-direction: column; flex: 1;
+  animation: tabFadeIn 0.25s ease-out;
+}
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.srv-tab-panel.active { display: flex; }
+.srv-check-list {
+  list-style: none; display: flex; flex-direction: column;
+  gap: 9px; margin-bottom: 24px; flex-grow: 1;
+}
+.srv-check-list li {
+  font-size: var(--fs-sm); color: var(--texto-suave);
+  padding-left: 24px; position: relative; line-height: 1.45;
+}
+.srv-check-list li::before {
+  content: "✓"; position: absolute; left: 0; top: 0;
+  color: var(--oliva); font-weight: 800; font-size: 0.95rem;
+}
+.tab-badge {
+  display: inline-block; font-size: 0.72rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 3px 10px; border-radius: 50px;
+  margin-bottom: 10px; width: fit-content;
+}
+.tab-badge--fisica  { background: var(--oliva-bg);    color: var(--oliva); }
+.tab-badge--autonomo { background: var(--terracota-bg); color: var(--terracota-dark); }
 .footer-comunidad {
   padding: 44px 0 28px;
   margin-top: 50px;
@@ -1958,27 +2009,58 @@ Información clara, herramientas útiles y acompañamiento práctico para avanza
   </div>
   <div class="servicios-grid">
 
-   <a href="servicios-tramites-electronicos.html" class="srv-card srv-card--homologacion">
-      <div class="srv-card__icon">🖋️</div>
-      <span class="srv-card__tag">Trámites electrónicos</span>
-      <h3>Identidad digital y tramitación online</h3>
-      <p>Certificado digital, Autofirma, renovaciones, presentación de trámites en sede y REC, y vigilancia de notificaciones electrónicas.</p>
-      <div class="srv-paquetes">
-        <span>Servicio puntual</span>
-        <span>Buzón Vigilado mensual</span>
+   <div class="srv-card srv-card--homologacion srv-card--tabs">
+      <div class="srv-tabs">
+        <button class="srv-tab-btn active" onclick="switchTab(this, 'fisica')">
+          👤 Persona física
+        </button>
+        <button class="srv-tab-btn" onclick="switchTab(this, 'autonomo')">
+          🏢 Autónomo
+        </button>
       </div>
-      <span class="srv-cta srv-cta--activo">Ver servicio →</span>
-    </a> 
-    <a href="servicios-homologacion.html" class="srv-card srv-card--homologacion">
+      <div class="srv-tab-panel active" id="panel-fisica">
+        <div class="srv-card__icon">🗂️</div>
+        <span class="tab-badge tab-badge--fisica">Carpeta Ciudadana · Persona física</span>
+        <h3>Tu Carpeta Ciudadana, explicada y vigilada</h3>
+        <p>La Administración ya no manda cartas a casa. Vigilamos tu buzón electrónico, te avisamos cuando llega algo y te explicamos qué significa y qué tienes que hacer.</p>
+        <ul class="srv-check-list">
+          <li>Vigilancia semanal de tu Carpeta Ciudadana</li>
+          <li>Aviso inmediato cuando llega una notificación</li>
+          <li>Te explicamos qué significa y qué plazo tienes</li>
+          <li>Sin certificado digital, sin complicaciones técnicas</li>
+        </ul>
+        <a href="servicios-tramites-electronicos.html" class="srv-cta srv-cta--activo">
+          Empezar como persona física →
+        </a>
+      </div>
+      <div class="srv-tab-panel" id="panel-autonomo">
+        <div class="srv-card__icon">💼</div>
+        <span class="tab-badge tab-badge--autonomo">Carpeta Ciudadana · Autónomo</span>
+        <h3>Tu Carpeta Ciudadana, vigilada mientras trabajas</h3>
+        <p>Tu gestoría lleva tus impuestos. Pero no vigila tu buzón electrónico. Nosotras sí: Hacienda, Seguridad Social, ayudas, subvenciones — sin que tengas que acordarte de mirar.</p>
+        <ul class="srv-check-list">
+          <li>Vigilancia semanal: Hacienda, SS, subvenciones, ayudas</li>
+          <li>Aviso inmediato ante cualquier notificación o requerimiento</li>
+          <li>Te traducimos lo que la Administración te está pidiendo</li>
+          <li>Sin cambiar de gestoría, como servicio complementario</li>
+        </ul>
+        <a href="servicios-tramites-electronicos.html" class="srv-cta srv-cta--activo">
+          Empezar como autónomo →
+        </a>
+      </div>
+    </div>
+   <a href="servicios-homologacion.html" class="srv-card srv-card--homologacion">
       <div class="srv-card__icon">🎓</div>
       <span class="srv-card__tag">Estudios no universitarios</span>
-      <h3>Homologación y convalidación de estudios</h3>
-      <p>Revisión, estrategia y tramitación para iniciar o continuar estudios oficiales en España. Perú, Colombia, Paraguay y otros países.</p>
-      <div class="srv-paquetes">
-        <span>Revisión y estrategia</span>
-        <span>Tramitación completa</span>
-      </div>
-      <span class="srv-cta srv-cta--activo">Ver servicio →</span>
+      <h3>Estudiaste en tu país.<br>Que cuente en España.</h3>
+      <p>Tu ESO, Bachillerato o secundaria de Perú, Colombia, Paraguay u otro país puede abrirte las puertas de la FP, la universidad o el empleo aquí. Nosotras lo tramitamos.</p>
+      <ul class="srv-check-list">
+        <li>Perú, Colombia, Paraguay y otros países</li>
+        <li>ESO, Bachillerato y educación secundaria</li>
+        <li>Acceso a FP, universidad o empleo en España</li>
+        <li>Denegaciones y casos complejos: recursos y escritos personalizados</li>
+      </ul>
+      <span class="srv-cta srv-cta--activo">Homologar mis estudios →</span>
     </a>
 
     <div class="srv-card srv-card--proximamente">
@@ -2137,7 +2219,14 @@ Información clara, herramientas útiles y acompañamiento práctico para avanza
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+// Pestañas tarjeta Trámites Electrónicos
+function switchTab(btn, panelId) {
+  const card = btn.closest('.srv-card--tabs');
+  card.querySelectorAll('.srv-tab-btn').forEach(b => b.classList.remove('active'));
+  card.querySelectorAll('.srv-tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + panelId).classList.add('active');
+}
     // Contador días
     (function() {
       const fin = new Date('2026-06-30T23:59:59');
