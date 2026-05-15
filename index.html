@@ -1496,6 +1496,51 @@ object-position: 25% center;
 }
 .tab-badge--fisica  { background: var(--oliva-bg);    color: var(--oliva); }
 .tab-badge--autonomo { background: var(--terracota-bg); color: var(--terracota-dark); }
+    /* ── SELECTOR DE PAQUETES ─────────────────────── */
+.srv-selector-label {
+  font-size: 0.82rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--texto-suave);
+  margin-bottom: 10px; margin-top: 16px;
+}
+.srv-option-selector {
+  display: flex; flex-direction: column;
+  gap: 9px; margin-bottom: 20px;
+}
+.srv-option {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 13px 14px;
+  border: 2px solid var(--arena-dark);
+  border-radius: 12px; cursor: pointer;
+  transition: all var(--transicion);
+  background: var(--arena-warm);
+}
+.srv-option:hover { border-color: var(--oliva-light); background: var(--oliva-bg); }
+.srv-option.selected { border-color: var(--oliva); background: var(--oliva-bg); }
+.srv-option-radio {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--arena-dark);
+  flex-shrink: 0; margin-top: 3px;
+  transition: all var(--transicion);
+  position: relative; background: white;
+}
+.srv-option.selected .srv-option-radio { border-color: var(--oliva); background: var(--oliva); }
+.srv-option.selected .srv-option-radio::after {
+  content: ''; position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 6px; height: 6px; border-radius: 50%; background: white;
+}
+.srv-option-content strong {
+  display: block; font-size: 0.88rem; font-weight: 700;
+  color: var(--texto); margin-bottom: 3px;
+  font-family: 'Source Sans 3', sans-serif;
+}
+.srv-option-content span { font-size: 0.8rem; color: var(--texto-suave); line-height: 1.45; }
+.srv-cta--inactivo {
+  background: var(--arena-dark); color: var(--texto-suave);
+  cursor: not-allowed; opacity: 0.65; pointer-events: none;
+  font-size: 0.88rem; text-align: center; justify-content: center;
+}
 .footer-comunidad {
   padding: 44px 0 28px;
   margin-top: 50px;
@@ -2022,31 +2067,49 @@ Información clara, herramientas útiles y acompañamiento práctico para avanza
         <div class="srv-card__icon">🗂️</div>
         <span class="tab-badge tab-badge--fisica">Carpeta Ciudadana · Persona física</span>
         <h3>Tu Carpeta Ciudadana, explicada y vigilada</h3>
-<p><strong>¿Sabes qué canal de notificación tienes configurado?</strong><br>Los plazos son cortos. Si no las ves a tiempo, tu solicitud puede archivarse <strong>sin que te hayas enterado</strong>.</p>      
-        <ul class="srv-check-list">
-          <li>Vigilancia semanal de tu Carpeta Ciudadana</li>
-          <li>Aviso inmediato cuando llega una notificación</li>
-          <li>Te explicamos qué significa y qué plazo tienes</li>
-          <li>Sin certificado digital, sin complicaciones técnicas</li>
-        </ul>
-        <a href="servicios-tramites-electronicos.html" class="srv-cta srv-cta--activo">
-          Empezar como persona física →
-        </a>
+        <p><strong>¿Sabes qué canal de notificación tienes configurado?</strong><br>Los plazos son cortos. Si no las ves a tiempo, tu solicitud puede archivarse <strong>sin que te hayas enterado</strong>.</p>
+        <p class="srv-selector-label">¿Qué necesitas?</p>
+        <div class="srv-option-selector">
+          <div class="srv-option" onclick="selectOption(this,'cta-fisica','Hola%2C%20me%20interesa%20el%20servicio%20puntual%3A%20tengo%20una%20notificaci%C3%B3n%20que%20no%20entiendo%20y%20necesito%20que%20me%20la%20expliquen.')">
+            <div class="srv-option-radio"></div>
+            <div class="srv-option-content">
+              <strong>📄 Me llegó algo y no entiendo qué es</strong>
+              <span>Mándanos la notificación. Te explicamos qué significa y qué tienes que hacer.</span>
+            </div>
+          </div>
+          <div class="srv-option" onclick="selectOption(this,'cta-fisica','Hola%2C%20me%20interesa%20el%20seguimiento%20mensual%20de%20mi%20Carpeta%20Ciudadana.%20Tengo%20procedimientos%20abiertos%20y%20quiero%20que%20los%20revisen%20cada%20mes.')">
+            <div class="srv-option-radio"></div>
+            <div class="srv-option-content">
+              <strong>📅 Tengo procedimientos abiertos</strong>
+              <span>Revisamos tu Carpeta Ciudadana cada mes y te mandamos un informe con novedades.</span>
+            </div>
+          </div>
+        </div>
+        <a id="cta-fisica" href="#" class="srv-cta srv-cta--inactivo" onclick="return false">Selecciona una opción</a>
       </div>
       <div class="srv-tab-panel" id="panel-autonomo">
         <div class="srv-card__icon">💼</div>
         <span class="tab-badge tab-badge--autonomo">Carpeta Ciudadana · Autónomo</span>
         <h3>Tu Carpeta Ciudadana, vigilada mientras trabajas</h3>
-        <p>Tu gestoría lleva tus impuestos. Pero no vigila tu buzón electrónico. Nosotras sí: Hacienda, Seguridad Social, ayudas, subvenciones — sin que tengas que acordarte de mirar.</p>
-        <ul class="srv-check-list">
-          <li>Vigilancia semanal: Hacienda, SS, subvenciones, ayudas</li>
-          <li>Aviso inmediato ante cualquier notificación o requerimiento</li>
-          <li>Te traducimos lo que la Administración te está pidiendo</li>
-          <li>Sin cambiar de gestoría, como servicio complementario</li>
-        </ul>
-        <a href="servicios-tramites-electronicos.html" class="srv-cta srv-cta--activo">
-          Empezar como autónomo →
-        </a>
+        <p>Si eres autónomo, estás obligado a recibir notificaciones electrónicas. Tu gestoría gestiona tus impuestos. Nosotras vigilamos que ninguna notificación de Hacienda, Seguridad Social o ayudas se te pase.</p>
+        <p class="srv-selector-label">¿Qué necesitas?</p>
+        <div class="srv-option-selector">
+          <div class="srv-option" onclick="selectOption(this,'cta-autonomo','Hola%2C%20soy%20aut%C3%B3nomo%20y%20me%20lleg%C3%B3%20una%20notificaci%C3%B3n%20que%20no%20entiendo.%20Me%20interesa%20el%20servicio%20puntual%20de%20traducci%C3%B3n.')">
+            <div class="srv-option-radio"></div>
+            <div class="srv-option-content">
+              <strong>📄 Me llegó algo de Hacienda o SS</strong>
+              <span>Mándanos la notificación. Te explicamos qué es y qué plazo tienes para actuar.</span>
+            </div>
+          </div>
+          <div class="srv-option" onclick="selectOption(this,'cta-autonomo','Hola%2C%20soy%20aut%C3%B3nomo%20y%20me%20interesa%20el%20seguimiento%20mensual%20de%20mi%20Carpeta%20Ciudadana%3A%20Hacienda%2C%20SS%20y%20ayudas.')">
+            <div class="srv-option-radio"></div>
+            <div class="srv-option-content">
+              <strong>📅 Quiero vigilancia mensual</strong>
+              <span>Revisamos tu Carpeta cada mes: Hacienda, SS, subvenciones y ayudas. Informe incluido.</span>
+            </div>
+          </div>
+        </div>
+        <a id="cta-autonomo" href="#" class="srv-cta srv-cta--inactivo" onclick="return false">Selecciona una opción</a>
       </div>
     </div>
    <a href="servicios-homologacion.html" class="srv-card srv-card--homologacion">
@@ -2225,7 +2288,19 @@ function switchTab(btn, panelId) {
   card.querySelectorAll('.srv-tab-btn').forEach(b => b.classList.remove('active'));
   card.querySelectorAll('.srv-tab-panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('panel-' + panelId).classList.add('active');
+  document.getElementById('panel-' + panelId).classList.add('visible');
+}
+    function selectOption(el, ctaId, mensaje) {
+  const selector = el.closest('.srv-option-selector');
+  selector.querySelectorAll('.srv-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  const cta = document.getElementById(ctaId);
+  cta.classList.remove('srv-cta--inactivo');
+  cta.classList.add('srv-cta--activo');
+  cta.style.pointerEvents = 'all';
+  cta.href = 'https://wa.me/34697154442?text=' + mensaje;
+  cta.onclick = null;
+  cta.textContent = 'Consultar →';
 }
     // Contador días
     (function() {
