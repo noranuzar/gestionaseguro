@@ -2288,7 +2288,7 @@ function switchTab(btn, panelId) {
   card.querySelectorAll('.srv-tab-btn').forEach(b => b.classList.remove('active'));
   card.querySelectorAll('.srv-tab-panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('panel-' + panelId).classList.add('visible');
+ document.getElementById('panel-' + panelId).classList.add('active');
 }
     function selectOption(el, ctaId, mensaje) {
   const selector = el.closest('.srv-option-selector');
@@ -2298,7 +2298,8 @@ function switchTab(btn, panelId) {
   cta.classList.remove('srv-cta--inactivo');
   cta.classList.add('srv-cta--activo');
   cta.style.pointerEvents = 'all';
-cta.href = 'servicios-tramites-electronicos.html';  cta.onclick = null;
+      cta.href = 'servicios-tramites-electronicos.html';
+      cta.onclick = null;
   cta.textContent = 'Consultar →';
 }
     // Contador días
