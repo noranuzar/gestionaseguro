@@ -3,1039 +3,511 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trámites electrónicos e identidad digital — Gestiona Seguro</title>
-  <meta name="description" content="Gestionamos tu certificado digital, Autofirma, renovaciones, presentación de trámites y vigilancia de notificaciones electrónicas. Tramitación administrativa en sede y REC.">
+  <title>Carpeta Ciudadana — Tu agente para la Administración · Gestiona Seguro</title>
+  <meta name="description" content="Vigilamos tu Carpeta Ciudadana, te explicamos cada notificación y te decimos qué plazo tienes. Para personas físicas y autónomos en España.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
   <style>
-    /* ─── TOKENS ────────────────────────────────── */
     :root {
-      --oliva:        #556B2F;
-      --oliva-light:  #7d9448;
-      --oliva-dark:   #3a4a1f;
-      --oliva-bg:     #f0f3e8;
-      --arena:        #F5F5DC;
-      --arena-warm:   #f8f6ed;
-      --arena-dark:   #e8e2c8;
-      --terracota:    #E2725B;
-      --terra-dark:   #c45a42;
-      --terra-bg:     #fdf3f0;
-      --texto:        #2a2218;
-      --suave:        #5e5649;
-      --blanco:       #fffdf8;
-      --fs-label:     0.8125rem;
-      --fs-sm:        1.0625rem;
-      --fs-base:      1.125rem;
-      --fs-h3:        clamp(1.375rem, 2.5vw, 1.625rem);
-      --fs-h2:        clamp(1.875rem, 4vw, 2.5rem);
-      --lh-tight:     1.3;
-      --lh-normal:    1.65;
-      --tr:           0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      --r:            20px;
+      --oliva:#556B2F;--oliva-light:#7d9448;--oliva-dark:#3a4a1f;--oliva-bg:#f0f3e8;
+      --arena:#F5F5DC;--arena-warm:#f8f6ed;--arena-dark:#e8e2c8;
+      --terracota:#E2725B;--terra-dark:#c45a42;--terra-bg:#fdf3f0;
+      --texto:#2a2218;--suave:#5e5649;--blanco:#fffdf8;
+      --fs-label:0.8125rem;--fs-xs:1rem;--fs-sm:1.0625rem;--fs-base:1.125rem;
+      --fs-h3:clamp(1.375rem,2.5vw,1.625rem);--fs-h2:clamp(1.875rem,4vw,2.5rem);
+      --lh-tight:1.3;--lh-normal:1.65;--tr:0.35s cubic-bezier(0.4,0,0.2,1);--r:20px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Source Sans 3',system-ui,sans-serif;color:var(--texto);background:var(--blanco);line-height:var(--lh-normal);-webkit-font-smoothing:antialiased;}
+    h2,h3{font-family:'DM Serif Display',serif;line-height:var(--lh-tight);color:var(--oliva-dark);font-weight:400;}
+    p{font-size:var(--fs-base);line-height:1.7;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+    /* NAVBAR */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,253,248,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(85,107,47,0.08);transition:box-shadow var(--tr);}
+    .navbar.scrolled{box-shadow:0 2px 20px rgba(42,34,24,0.08);}
+    .nav-inner{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;max-width:1120px;margin:0 auto;}
+    .nav-logo{display:flex;align-items:center;gap:10px;font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--oliva-dark);}
+    .nav-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover;}
+    .nav-logo-placeholder{width:36px;height:36px;border-radius:50%;background:var(--oliva);color:var(--arena);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:800;flex-shrink:0;}
+    .nav-links{display:flex;align-items:center;gap:6px;list-style:none;}
+    .nav-links a{font-size:0.9rem;font-weight:600;color:var(--suave);padding:7px 13px;border-radius:50px;transition:background var(--tr),color var(--tr);}
+    .nav-links a:hover{background:var(--oliva-bg);color:var(--oliva-dark);}
+    .nav-links a.active{background:var(--oliva-bg);color:var(--oliva);}
+    .nav-back{display:inline-flex;align-items:center;gap:6px;font-size:0.88rem;font-weight:700;color:var(--suave);padding:8px 16px;border-radius:50px;border:1.5px solid var(--arena-dark);transition:all var(--tr);white-space:nowrap;}
+    .nav-back:hover{background:var(--oliva-bg);color:var(--oliva-dark);border-color:var(--oliva-bg);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--oliva-dark);border-radius:2px;transition:all var(--tr);}
+    @media(max-width:768px){
+      .hamburger{display:flex;}
+      .nav-links{display:none;flex-direction:column;gap:4px;position:absolute;top:64px;left:0;right:0;background:var(--blanco);border-bottom:1px solid var(--arena-dark);padding:16px 24px 20px;box-shadow:0 8px 24px rgba(42,34,24,0.07);}
+      .nav-links.open{display:flex;}
+      .nav-links a{padding:10px 14px;}
+      .nav-back{display:none;}
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    /* HERO */
+    .hero-breadcrumb{margin-top:64px;background:var(--oliva-dark);padding:52px 0 48px;position:relative;overflow:hidden;}
+    .hero-breadcrumb::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(245,245,220,.06) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;}
+    .hero-breadcrumb::after{content:'🗂️';position:absolute;right:clamp(20px,7vw,90px);top:28px;font-size:clamp(5rem,12vw,9rem);opacity:0.05;pointer-events:none;}
+    .hb-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:0 24px;}
+    .hb-path{display:flex;align-items:center;gap:8px;font-size:var(--fs-label);font-weight:700;color:rgba(245,245,220,.45);margin-bottom:14px;}
+    .hb-path a{color:rgba(245,245,220,.6);transition:color var(--tr);}
+    .hb-path a:hover{color:var(--arena);}
+    .hb-path span{color:var(--terracota);}
+    .hb-etiqueta{display:inline-flex;align-items:center;gap:8px;background:rgba(226,114,91,0.18);border:1px solid rgba(226,114,91,0.25);color:#f5a58a;padding:6px 14px;border-radius:50px;font-size:var(--fs-label);font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;}
+    .hb-inner h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2rem,5vw,3rem);color:var(--arena);line-height:1.2;max-width:700px;margin-bottom:12px;}
+    .hb-inner h1 em{color:var(--terracota);font-style:italic;}
+    .hb-sub{color:rgba(245,245,220,.65);font-size:var(--fs-base);max-width:580px;}
 
-    body {
-      font-family: 'Source Sans 3', system-ui, sans-serif;
-      color: var(--texto);
-      background: var(--blanco);
-      line-height: var(--lh-normal);
-      -webkit-font-smoothing: antialiased;
-    }
+    /* BANNER — colores armonizados */
+    .diagnostico-banner{background:var(--arena-warm);border-top:1px solid rgba(85,107,47,0.12);border-bottom:3px solid var(--oliva);padding:24px 0;position:relative;overflow:hidden;}
+    .diagnostico-banner::before{content:'';position:absolute;top:0;right:-80px;bottom:0;width:280px;background:radial-gradient(ellipse at center,rgba(85,107,47,0.08) 0%,transparent 70%);pointer-events:none;}
+    .diag-inner{display:flex;align-items:center;gap:22px;position:relative;z-index:2;}
+    .diag-icono{font-size:2.2rem;flex-shrink:0;width:60px;height:60px;background:var(--blanco);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(85,107,47,0.12);border:2px solid rgba(85,107,47,0.15);}
+    .diag-tag{display:inline-block;font-size:0.72rem;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;color:var(--terracota);background:rgba(226,114,91,0.12);padding:3px 10px;border-radius:50px;margin-bottom:6px;}
+    .diag-texto{flex:1;}
+    .diag-texto h3{font-family:'DM Serif Display',serif;color:var(--oliva-dark);font-size:clamp(1.1rem,2vw,1.35rem);margin-bottom:4px;line-height:1.25;}
+    .diag-texto p{font-size:0.97rem;color:var(--suave);line-height:1.5;margin:0;}
+    .diag-cta{display:inline-flex;align-items:center;gap:8px;background:var(--terracota);color:white;padding:13px 24px;border-radius:50px;font-weight:800;font-size:0.97rem;white-space:nowrap;flex-shrink:0;transition:background var(--tr),transform var(--tr);box-shadow:0 5px 16px rgba(226,114,91,0.28);}
+    .diag-cta:hover{background:var(--terra-dark);transform:translateY(-2px);}
+    @media(max-width:768px){.diagnostico-banner{padding:20px 0;}.diag-inner{flex-direction:column;text-align:center;gap:14px;}.diag-cta{width:100%;justify-content:center;}}
 
-    h2, h3 {
-      font-family: 'DM Serif Display', serif;
-      line-height: var(--lh-tight);
-      color: var(--oliva-dark);
-      font-weight: 400;
-    }
+    /* SECCIÓN PRINCIPAL */
+    .tramites-sec{padding:72px 0 88px;background:linear-gradient(180deg,var(--blanco) 0%,var(--arena-warm) 100%);}
 
-    p { font-size: var(--fs-base); line-height: 1.7; }
-    a { color: inherit; text-decoration: none; }
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    /* INTRO CARD */
+    .hp-intro-card{background:var(--oliva-dark);color:rgba(245,245,220,0.88);border-radius:28px;padding:36px 38px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:32px;align-items:center;margin-bottom:32px;box-shadow:0 18px 46px rgba(42,34,24,0.13);}
+    .hp-intro-card h3{color:var(--arena);font-size:var(--fs-h3);margin-bottom:10px;}
+    .hp-intro-card>div:first-child p{font-size:var(--fs-base);color:rgba(245,245,220,.78);}
+    .hp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+    .hp-step{background:rgba(245,245,220,.09);border:1px solid rgba(245,245,220,.13);border-radius:16px;padding:16px 14px;}
+    .hp-step strong{display:block;color:var(--arena);font-size:0.97rem;margin-bottom:4px;}
+    .hp-step span{display:block;font-size:0.93rem;line-height:1.45;color:rgba(245,245,220,.68);}
 
-    /* ─── NAVBAR ─────────────────────────────────── */
-    .navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,253,248,0.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(85,107,47,0.08);
-      transition: box-shadow var(--tr);
-    }
-    .navbar.scrolled { box-shadow: 0 2px 20px rgba(42,34,24,0.08); }
-    .nav-inner {
-      height: 64px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 24px; max-width: 1120px; margin: 0 auto;
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem; color: var(--oliva-dark);
-    }
-    .nav-logo img {
-      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
-    }
-    .nav-logo-placeholder {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--oliva); color: var(--arena);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
-    }
+    /* TÍTULO SECCIÓN */
+    .sec-titulo{text-align:center;margin:44px auto 26px;max-width:720px;}
+    .sec-titulo h2{font-size:var(--fs-h2);margin-bottom:10px;}
+    .sec-titulo p{font-size:var(--fs-base);color:var(--suave);}
 
-    .nav-links {
-      display: flex; align-items: center; gap: 6px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.9rem; font-weight: 600; color: var(--suave);
-      padding: 7px 13px; border-radius: 50px;
-      transition: background var(--tr), color var(--tr);
-    }
-    .nav-links a:hover { background: var(--oliva-bg); color: var(--oliva-dark); }
-    .nav-links a.active { background: var(--oliva-bg); color: var(--oliva); }
+    /* TARJETAS DE PERFIL — franja terracota opción D */
+    .perfiles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:28px;}
+    .perfil-card{background:var(--blanco);border:1.5px solid var(--arena-dark);border-radius:24px;padding:30px 26px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform var(--tr),box-shadow var(--tr),border-color var(--tr);}
+    .perfil-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;border-radius:24px 24px 0 0;background:var(--terracota);}
+    .perfil-card:hover{transform:translateY(-5px);box-shadow:0 18px 42px rgba(42,34,24,0.09);border-color:rgba(226,114,91,0.3);}
+    .perfil-card::after{content:attr(data-emoji);position:absolute;right:18px;bottom:14px;font-size:5.5rem;opacity:0.055;line-height:1;pointer-events:none;}
+    .perfil-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px;position:relative;z-index:1;}
+    .perfil-icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;background:var(--blanco);border:4px solid var(--terra-bg);box-shadow:0 8px 20px rgba(42,34,24,0.09);flex-shrink:0;}
+    .perfil-badge{font-size:0.78rem;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;color:var(--terra-dark);background:var(--terra-bg);padding:5px 10px;border-radius:50px;white-space:nowrap;}
+    .perfil-card h3{font-size:clamp(1.35rem,2vw,1.6rem);margin-bottom:8px;position:relative;z-index:1;}
+    .perfil-card>p{font-size:var(--fs-sm);color:var(--suave);margin-bottom:16px;position:relative;z-index:1;}
+    .perfil-lista{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:22px;flex-grow:1;position:relative;z-index:1;}
+    .perfil-lista li{position:relative;padding-left:22px;color:var(--suave);font-size:var(--fs-sm);line-height:1.45;}
+    .perfil-lista li::before{content:"✓";position:absolute;left:0;top:0;color:var(--terracota);font-weight:800;}
+    .perfil-cta{display:inline-flex;align-items:center;justify-content:center;gap:7px;width:fit-content;padding:11px 20px;border-radius:50px;background:var(--terracota);color:white;font-weight:800;font-size:0.97rem;margin-top:auto;transition:background var(--tr),transform var(--tr);position:relative;z-index:1;}
+    .perfil-cta:hover{background:var(--terra-dark);transform:translateY(-1px);}
 
-    .nav-cta {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: var(--terracota); color: white;
-      padding: 9px 18px; border-radius: 50px;
-      font-size: 0.88rem; font-weight: 800;
-      transition: background var(--tr), transform var(--tr);
-      white-space: nowrap;
-    }
-    .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }
+    /* CASOS COMPLEJOS */
+    .hp-casos{background:linear-gradient(135deg,#FEF5D7 0%,#fff8e5 100%);border:2px dashed #F39C12;border-radius:24px;padding:30px 32px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;margin-bottom:32px;}
+    .hp-casos h3{color:#7D5B00;margin-bottom:8px;font-size:var(--fs-h3);}
+    .hp-casos p{color:#7D4B1A;font-size:var(--fs-base);}
+    .hp-casos-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;max-width:480px;}
+    .hp-casos-tags span{background:rgba(255,255,255,.8);border:1px solid rgba(243,156,18,.28);color:#7D4B1A;padding:7px 12px;border-radius:50px;font-size:0.95rem;font-weight:700;white-space:nowrap;}
 
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; padding: 6px;
-      background: none; border: none;
-    }
-    .hamburger span {
-      display: block; width: 22px; height: 2px;
-      background: var(--oliva-dark); border-radius: 2px;
-      transition: all var(--tr);
-    }
+    /* PAQUETES — franja terracota opción D */
+    .hp-modalidades{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:32px;}
+    .hp-modalidad{border-radius:26px;padding:34px 32px;border:2px solid transparent;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+    .hp-modalidad::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;border-radius:26px 26px 0 0;background:var(--terracota);}
+    .hp-modalidad--puntual{background:var(--oliva-bg);border-color:rgba(85,107,47,0.18);}
+    .hp-modalidad--mensual{background:var(--terra-bg);border-color:rgba(226,114,91,0.18);}
+    .hp-modalidad-label{display:inline-block;font-size:var(--fs-label);font-weight:900;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
+    .hp-modalidad--puntual .hp-modalidad-label{color:var(--oliva);}
+    .hp-modalidad--mensual .hp-modalidad-label{color:var(--terra-dark);}
+    .hp-modalidad h3{font-size:var(--fs-h3);margin-bottom:10px;}
+    .hp-modalidad>p{color:var(--suave);font-size:var(--fs-base);margin-bottom:16px;}
+    .hp-modalidad ul{list-style:none;display:grid;gap:8px;margin-bottom:22px;flex:1;}
+    .hp-modalidad li{font-size:var(--fs-sm);color:var(--suave);padding-left:22px;position:relative;line-height:1.5;}
+    .hp-modalidad li::before{content:"•";position:absolute;left:4px;top:-1px;font-size:1.2rem;line-height:1;}
+    .hp-modalidad--puntual li::before{color:var(--oliva);}
+    .hp-modalidad--mensual li::before{color:var(--terracota);}
+    .hp-quien{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.07);border-radius:50px;padding:7px 13px;margin-bottom:16px;width:fit-content;}
+    .hp-quien-ava{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:900;flex-shrink:0;color:white;}
+    .ava-nora{background:var(--oliva);}
+    .ava-sara{background:var(--terracota);}
+    .hp-quien-txt{font-size:0.82rem;font-weight:700;color:var(--suave);line-height:1.3;}
+    .hp-quien-txt strong{color:var(--texto);font-size:0.85rem;}
+    .paquete-ctas{display:flex;flex-direction:column;gap:9px;margin-top:auto;}
+    .hp-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:50px;font-weight:800;font-size:var(--fs-sm);transition:transform var(--tr),background var(--tr);width:100%;}
+    .hp-btn:hover{transform:translateY(-1px);}
+    .hp-btn--primary{background:var(--terracota);color:#fff;}
+    .hp-btn--primary:hover{background:var(--terra-dark);}
+    .hp-btn--secondary{background:white;color:var(--oliva-dark);border:1.5px solid rgba(85,107,47,0.2);}
+    .hp-btn--secondary:hover{background:var(--oliva-bg);}
 
-    @media (max-width: 768px) {
-      .hamburger { display: flex; }
-      .nav-links {
-        display: none; flex-direction: column; gap: 4px;
-        position: absolute; top: 64px; left: 0; right: 0;
-        background: var(--blanco);
-        border-bottom: 1px solid var(--arena-dark);
-        padding: 16px 24px 20px;
-        box-shadow: 0 8px 24px rgba(42,34,24,0.07);
-      }
-      .nav-links.open { display: flex; }
-      .nav-links a { padding: 10px 14px; }
-    }
+    /* CÓMO FUNCIONA */
+    .como-funciona{margin-bottom:32px;}
+    .como-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+    .como-card{background:var(--blanco);border:1.5px solid var(--arena-dark);border-radius:24px;padding:30px 26px;}
+    .como-card-header{display:flex;align-items:center;gap:12px;margin-bottom:22px;}
+    .como-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+    .como-icon--fisica{background:var(--oliva-bg);}
+    .como-icon--autonomo{background:var(--terra-bg);}
+    .como-card-header h3{font-size:var(--fs-h3);margin:0;}
+    .como-pasos{list-style:none;display:flex;flex-direction:column;gap:16px;}
+    .como-paso{display:flex;gap:14px;align-items:flex-start;}
+    .paso-num{width:28px;height:28px;border-radius:50%;background:var(--terracota);color:white;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:0.95rem;flex-shrink:0;margin-top:2px;}
+    .paso-texto strong{display:block;font-size:var(--fs-sm);color:var(--texto);margin-bottom:3px;font-weight:700;}
+    .paso-texto span{font-size:0.95rem;color:var(--suave);line-height:1.5;}
 
-    /* ─── HERO BREADCRUMB ────────────────────────── */
-    .hero-breadcrumb {
-      margin-top: 64px;
-      background: var(--oliva-dark);
-      padding: 52px 0 48px;
-      position: relative; overflow: hidden;
-    }
-    .hero-breadcrumb::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(245,245,220,.06) 1px, transparent 1px);
-      background-size: 24px 24px;
-      pointer-events: none;
-    }
-    .hero-breadcrumb::after {
-      content: '🖋️';
-      position: absolute; right: clamp(20px,7vw,90px); top: 28px;
-      font-size: clamp(5rem,12vw,9rem);
-      opacity: 0.05; pointer-events: none;
-    }
-    .hb-inner {
-      position: relative; z-index: 2;
-      max-width: 1120px; margin: 0 auto; padding: 0 24px;
-    }
-    .hb-path {
-      display: flex; align-items: center; gap: 8px;
-      font-size: var(--fs-label); font-weight: 700;
-      color: rgba(245,245,220,.45);
-      margin-bottom: 14px;
-    }
-    .hb-path a { color: rgba(245,245,220,.6); transition: color var(--tr); }
-    .hb-path a:hover { color: var(--arena); }
-    .hb-path span { color: var(--terracota); }
-    .hb-etiqueta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(226,114,91,0.18);
-      border: 1px solid rgba(226,114,91,0.25);
-      color: #f5a58a;
-      padding: 6px 14px; border-radius: 50px;
-      font-size: var(--fs-label); font-weight: 800;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .hb-inner h1 {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: clamp(2rem, 5vw, 3rem);
-      color: var(--arena);
-      line-height: 1.2;
-      max-width: 720px;
-      margin-bottom: 12px;
-    }
-    .hb-inner h1 em { color: var(--terracota); font-style: italic; }
-    .hb-sub {
-      color: rgba(245,245,220,.65);
-      font-size: var(--fs-base);
-      max-width: 620px;
-    }
+    /* CTA FINAL */
+    .hp-final-cta{text-align:center;background:var(--blanco);border:1.5px solid var(--arena-dark);border-radius:26px;padding:38px 28px;}
+    .hp-final-cta h3{font-size:var(--fs-h3);margin-bottom:8px;}
+    .hp-final-cta p{color:var(--suave);max-width:640px;margin:0 auto 24px;font-size:var(--fs-base);}
+    .hp-buttons{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;}
+    .hp-btn-mail{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:50px;background:var(--oliva-bg);color:var(--oliva-dark);font-weight:800;font-size:1rem;border:1.5px solid rgba(85,107,47,.18);transition:background var(--tr),transform var(--tr);}
+    .hp-btn-mail:hover{background:var(--arena-dark);transform:translateY(-1px);}
+    .hp-nota{margin-top:20px;font-size:0.92rem;color:var(--suave);line-height:1.55;max-width:720px;margin-left:auto;margin-right:auto;}
 
-    /* ─── SECCIÓN PRINCIPAL ──────────────────────── */
-    .tramites {
-      padding: 72px 0 88px;
-      background: linear-gradient(180deg, var(--blanco) 0%, var(--arena-warm) 100%);
-    }
+    /* EQUIPO */
+    .equipo-sec{background:var(--oliva-dark);padding:56px 0;position:relative;overflow:hidden;}
+    .equipo-sec::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(245,245,220,.04) 1px,transparent 1px);background-size:22px 22px;pointer-events:none;}
+    .eq-header{text-align:center;margin-bottom:40px;position:relative;z-index:2;}
+    .eq-label{display:inline-block;font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--terracota);margin-bottom:10px;}
+    .eq-header h2{color:var(--arena);font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:8px;}
+    .eq-header p{color:rgba(245,245,220,.6);font-size:var(--fs-base);max-width:540px;margin:0 auto;}
+    .eq-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:800px;margin:0 auto;position:relative;z-index:2;}
+    .eq-card{background:rgba(245,245,220,.06);border:1px solid rgba(245,245,220,.11);border-radius:24px;padding:28px 26px;display:flex;gap:20px;align-items:flex-start;transition:background var(--tr),transform var(--tr);}
+    .eq-card:hover{background:rgba(245,245,220,.1);transform:translateY(-3px);}
+    .eq-avatar{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1.6rem;flex-shrink:0;border:3px solid rgba(245,245,220,.15);}
+    .eq-avatar.av-sara{background:rgba(226,114,91,.25);color:#f5a58a;}
+    .eq-avatar.av-nora{background:rgba(85,107,47,.35);color:#b8d080;}
+    .eq-info{flex:1;}
+    .eq-nombre{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--arena);font-weight:400;margin-bottom:3px;}
+    .eq-rol{font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px;display:block;}
+    .eq-card:first-child .eq-rol{color:#b8d080;}
+    .eq-card:last-child .eq-rol{color:var(--terracota);}
+    .eq-desc{font-size:0.95rem;color:rgba(245,245,220,.6);line-height:1.55;margin-bottom:10px;}
+    .eq-cred{display:flex;flex-wrap:wrap;gap:6px;}
+    .eq-cred span{background:rgba(245,245,220,.08);border:1px solid rgba(245,245,220,.12);color:rgba(245,245,220,.65);padding:3px 10px;border-radius:50px;font-size:0.78rem;font-weight:700;}
 
-    /* ─── INTRO CARD ─────────────────────────────── */
-    .hp-intro-card {
-      background: var(--oliva-dark);
-      color: rgba(245,245,220,0.88);
-      border-radius: 28px;
-      padding: 36px 38px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 32px;
-      align-items: center;
-      margin-bottom: 32px;
-      box-shadow: 0 18px 46px rgba(42,34,24,0.13);
-    }
-    .hp-intro-card h3 {
-      color: var(--arena);
-      font-size: var(--fs-h3);
-      margin-bottom: 10px;
-    }
-    .hp-intro-card > div:first-child p {
-      font-size: var(--fs-base);
-      color: rgba(245,245,220,.78);
-    }
-    .hp-steps {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 10px;
-    }
-    .hp-step {
-      background: rgba(245,245,220,.09);
-      border: 1px solid rgba(245,245,220,.13);
-      border-radius: 16px; padding: 16px 14px;
-    }
-    .hp-step strong {
-      display: block; color: var(--arena);
-      font-size: 0.97rem; margin-bottom: 4px;
-    }
-    .hp-step span {
-      display: block; font-size: 0.93rem;
-      line-height: 1.45; color: rgba(245,245,220,.68);
-    }
+    /* FOOTER */
+    .footer{background:var(--oliva-dark);border-top:1px solid rgba(245,245,220,.08);padding:36px 24px;}
+    .footer-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .footer-logo{display:flex;align-items:center;gap:10px;font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--arena);}
+    .footer-logo-placeholder{width:32px;height:32px;border-radius:50%;background:rgba(245,245,220,.15);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800;color:var(--arena);}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+    .footer-links a{font-size:var(--fs-label);font-weight:700;color:rgba(245,245,220,.5);transition:color var(--tr);}
+    .footer-links a:hover{color:var(--arena);}
+    .footer-copy{font-size:var(--fs-label);color:rgba(245,245,220,.35);text-align:right;}
 
-    /* ─── TARJETAS SERVICIO ──────────────────────── */
-    .servicios-titulo {
-      text-align: center; margin: 44px auto 26px;
-      max-width: 720px;
-    }
-    .servicios-titulo h2 { font-size: var(--fs-h2); margin-bottom: 10px; }
-    .servicios-titulo p { font-size: var(--fs-base); color: var(--suave); }
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .d1{transition-delay:.1s;}
+    .d2{transition-delay:.2s;}
 
-    .hp-grid-paises {
-      display: grid; grid-template-columns: repeat(2,1fr);
-      gap: 22px; margin-bottom: 28px;
-    }
-
-    .hp-pais-card {
-      background: var(--blanco);
-      border: 1.5px solid var(--arena-dark);
-      border-radius: 24px; padding: 30px 26px;
-      display: flex; flex-direction: column;
-      min-height: 380px; position: relative; overflow: hidden;
-      transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
-    }
-    .hp-pais-card::after {
-      content: attr(data-flag);
-      position: absolute; right: 18px; bottom: 14px;
-      font-size: 5.5rem; opacity: 0.055;
-      line-height: 1; pointer-events: none;
-    }
-    .hp-pais-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 42px rgba(42,34,24,0.09);
-      border-color: rgba(85,107,47,0.25);
-    }
-    .hp-pais-card--destacado {
-      background: linear-gradient(160deg, var(--blanco) 0%, var(--oliva-bg) 100%);
-      border-color: rgba(85,107,47,0.2);
-    }
-    .hp-pais-top {
-      display: flex; align-items: center;
-      justify-content: space-between; gap: 14px;
-      margin-bottom: 18px; position: relative; z-index: 1;
-    }
-    .hp-pais-flag {
-      width: 66px; height: 66px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.2rem; background: var(--blanco);
-      border: 4px solid var(--oliva-bg);
-      box-shadow: 0 8px 20px rgba(42,34,24,0.09);
-      flex-shrink: 0;
-    }
-    .hp-pais-card--destacado .hp-pais-flag { border-color: var(--terra-bg); }
-    .hp-pais-badge {
-      font-size: 0.78rem; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.07em;
-      color: var(--oliva); background: var(--oliva-bg);
-      padding: 5px 10px; border-radius: 50px; white-space: nowrap;
-    }
-    .hp-pais-card--destacado .hp-pais-badge {
-      color: var(--terra-dark); background: var(--terra-bg);
-    }
-    .hp-pais-card h3 {
-      font-size: clamp(1.35rem,2vw,1.6rem);
-      margin-bottom: 8px; position: relative; z-index: 1;
-    }
-    .hp-pais-card > p {
-      font-size: var(--fs-sm); color: var(--suave);
-      margin-bottom: 16px; position: relative; z-index: 1;
-    }
-    .hp-lista {
-      list-style: none; display: flex; flex-direction: column;
-      gap: 7px; margin-bottom: 22px; flex-grow: 1;
-      position: relative; z-index: 1;
-    }
-    .hp-lista li {
-      position: relative; padding-left: 22px;
-      color: var(--suave); font-size: var(--fs-sm); line-height: 1.45;
-    }
-    .hp-lista li::before {
-      content: "✓"; position: absolute; left: 0; top: 0;
-      color: var(--terracota); font-weight: 800;
-    }
-    .hp-card-cta {
-      display: inline-flex; align-items: center;
-      justify-content: center; gap: 7px;
-      width: fit-content; padding: 11px 20px;
-      border-radius: 50px; background: var(--oliva);
-      color: var(--arena); font-weight: 800; font-size: 0.97rem;
-      margin-top: auto; transition: background var(--tr), transform var(--tr);
-      position: relative; z-index: 1;
-    }
-    .hp-card-cta:hover { background: var(--oliva-dark); transform: translateY(-1px); }
-    .hp-pais-card--destacado .hp-card-cta { background: var(--terracota); color: white; }
-    .hp-pais-card--destacado .hp-card-cta:hover { background: var(--terra-dark); }
-
-    /* ─── CASOS COMPLEJOS ────────────────────────── */
-    .hp-casos {
-      background: linear-gradient(135deg, #FEF5D7 0%, #fff8e5 100%);
-      border: 2px dashed #F39C12;
-      border-radius: 24px; padding: 30px 32px;
-      display: grid; grid-template-columns: 1fr auto;
-      gap: 28px; align-items: center;
-      margin-bottom: 32px;
-    }
-    .hp-casos h3 { color: #7D5B00; margin-bottom: 8px; font-size: var(--fs-h3); }
-    .hp-casos p  { color: #7D4B1A; font-size: var(--fs-base); }
-    .hp-casos-tags {
-      display: flex; flex-wrap: wrap; gap: 10px;
-      justify-content: flex-end; max-width: 480px;
-    }
-    .hp-casos-tags span {
-      background: rgba(255,255,255,.8);
-      border: 1px solid rgba(243,156,18,.28);
-      color: #7D4B1A; padding: 7px 12px;
-      border-radius: 50px; font-size: 0.95rem;
-      font-weight: 700; white-space: nowrap;
-    }
-
-    /* ─── MODALIDADES ────────────────────────────── */
-    .modalidades-titulo {
-      text-align: center; margin: 8px auto 28px; max-width: 680px;
-    }
-    .modalidades-titulo h2 { font-size: var(--fs-h2); margin-bottom: 10px; }
-    .modalidades-titulo p  { color: var(--suave); font-size: var(--fs-base); }
-
-    .hp-modalidades {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 22px; margin-bottom: 32px;
-    }
-    .hp-modalidad {
-      border-radius: 26px; padding: 34px 32px;
-      border: 2px solid transparent;
-      position: relative; overflow: hidden;
-      display: flex; flex-direction: column;
-    }
-    .hp-modalidad--puntual {
-      background: var(--oliva-bg);
-      border-color: rgba(85,107,47,0.18);
-    }
-    .hp-modalidad--suscripcion {
-      background: var(--terra-bg);
-      border-color: rgba(226,114,91,0.18);
-    }
-    .hp-modalidad-label {
-      display: inline-block; font-size: var(--fs-label);
-      font-weight: 900; letter-spacing: 0.08em;
-      text-transform: uppercase; margin-bottom: 10px;
-    }
-    .hp-modalidad--puntual .hp-modalidad-label { color: var(--oliva); }
-    .hp-modalidad--suscripcion .hp-modalidad-label { color: var(--terra-dark); }
-    .hp-modalidad h3   { font-size: var(--fs-h3); margin-bottom: 10px; }
-    .hp-modalidad > p  { color: var(--suave); font-size: var(--fs-base); margin-bottom: 16px; }
-    .hp-modalidad ul   { list-style: none; display: grid; gap: 8px; margin-bottom: 22px; flex: 1; }
-    .hp-modalidad li {
-      font-size: var(--fs-sm); color: var(--suave);
-      padding-left: 22px; position: relative; line-height: 1.5;
-    }
-    .hp-modalidad li::before {
-      content: "•"; position: absolute; left: 4px; top: -1px;
-      font-size: 1.2rem; line-height: 1;
-    }
-    .hp-modalidad--puntual li::before     { color: var(--oliva); }
-    .hp-modalidad--suscripcion li::before { color: var(--terracota); }
-
-    /* Quién gestiona */
-    .hp-quien {
-      display: flex; align-items: center; gap: 9px;
-      background: rgba(255,255,255,.6);
-      border: 1px solid rgba(0,0,0,.07);
-      border-radius: 50px; padding: 7px 13px;
-      margin-bottom: 16px; width: fit-content;
-    }
-    .hp-quien-ava {
-      width: 28px; height: 28px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.72rem; font-weight: 900;
-      flex-shrink: 0; color: white;
-    }
-    .ava-nora  { background: var(--oliva); }
-    .ava-sara  { background: var(--terracota); }
-    .ava-ambas { background: var(--oliva-dark); }
-    .hp-quien-txt {
-      font-size: 0.82rem; font-weight: 700; color: var(--suave); line-height: 1.3;
-    }
-    .hp-quien-txt strong { color: var(--texto); font-size: 0.85rem; }
-
-    .hp-btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: 8px; padding: 13px 24px; border-radius: 50px;
-      font-weight: 800; font-size: 1rem;
-      transition: transform var(--tr), background var(--tr);
-      margin-top: auto;
-    }
-    .hp-btn:hover { transform: translateY(-1px); }
-    .hp-btn--primary   { background: var(--terracota); color: #fff; }
-    .hp-btn--primary:hover { background: var(--terra-dark); }
-    .hp-btn--secondary { background: white; color: var(--oliva-dark); border: 1.5px solid rgba(85,107,47,0.2); }
-    .hp-btn--secondary:hover { background: var(--oliva-bg); }
-
-    /* ─── EQUIPO ─────────────────────────────────── */
-    .equipo-sec {
-      background: var(--oliva-dark);
-      padding: 56px 0;
-      position: relative; overflow: hidden;
-    }
-    .equipo-sec::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(245,245,220,.04) 1px, transparent 1px);
-      background-size: 22px 22px; pointer-events: none;
-    }
-    .eq-header {
-      text-align: center; margin-bottom: 40px;
-      position: relative; z-index: 2;
-    }
-    .eq-label {
-      display: inline-block;
-      font-size: var(--fs-label); font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--terracota); margin-bottom: 10px;
-    }
-    .eq-header h2 {
-      color: var(--arena); font-size: clamp(1.7rem,4vw,2.4rem);
-      margin-bottom: 8px;
-    }
-    .eq-header p {
-      color: rgba(245,245,220,.6); font-size: var(--fs-base);
-      max-width: 540px; margin: 0 auto;
-    }
-    .eq-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 22px; max-width: 800px; margin: 0 auto;
-      position: relative; z-index: 2;
-    }
-    .eq-card {
-      background: rgba(245,245,220,.06);
-      border: 1px solid rgba(245,245,220,.11);
-      border-radius: 24px; padding: 28px 26px;
-      display: flex; gap: 20px; align-items: flex-start;
-      transition: background var(--tr), transform var(--tr);
-    }
-    .eq-card:hover { background: rgba(245,245,220,.1); transform: translateY(-3px); }
-
-    /*
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    SWAP DE FOTOS — INSTRUCCIONES
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    Cuando tengas las fotos definitivas:
-    1. Sube el archivo al repo (ej: sara-altamirano.jpg, nora-nunez.jpg)
-    2. Reemplaza el div .eq-avatar por esta etiqueta:
-       <img src="sara-altamirano.jpg" alt="Sara Altamirano" class="eq-foto">
-    3. Añade esta regla CSS:
-       .eq-foto { width:80px; height:80px; border-radius:50%; object-fit:cover; flex-shrink:0; }
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    */
-    .eq-avatar {
-      width: 80px; height: 80px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem; flex-shrink: 0;
-      border: 3px solid rgba(245,245,220,.15);
-    }
-    .eq-avatar.av-sara  { background: rgba(226,114,91,.25); color: #f5a58a; }
-    .eq-avatar.av-nora  { background: rgba(85,107,47,.35);  color: #b8d080; }
-
-    .eq-info { flex: 1; }
-    .eq-nombre {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem; color: var(--arena);
-      font-weight: 400; margin-bottom: 3px;
-    }
-    .eq-rol {
-      font-size: var(--fs-label); font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.07em;
-      margin-bottom: 8px; display: block;
-    }
-    .eq-card:first-child .eq-rol { color: var(--terracota); }
-    .eq-card:last-child  .eq-rol { color: #b8d080; }
-    .eq-desc {
-      font-size: 0.95rem; color: rgba(245,245,220,.6);
-      line-height: 1.55; margin-bottom: 10px;
-    }
-    .eq-cred {
-      display: flex; flex-wrap: wrap; gap: 6px;
-    }
-    .eq-cred span {
-      background: rgba(245,245,220,.08);
-      border: 1px solid rgba(245,245,220,.12);
-      color: rgba(245,245,220,.65);
-      padding: 3px 10px; border-radius: 50px;
-      font-size: 0.78rem; font-weight: 700;
-    }
-
-    /* ─── CTA FINAL ──────────────────────────────── */
-    .hp-final-cta {
-      text-align: center;
-      background: var(--blanco);
-      border: 1.5px solid var(--arena-dark);
-      border-radius: 26px; padding: 38px 28px;
-    }
-    .hp-final-cta h3 { font-size: var(--fs-h3); margin-bottom: 8px; }
-    .hp-final-cta p  {
-      color: var(--suave); max-width: 640px;
-      margin: 0 auto 24px; font-size: var(--fs-base);
-    }
-    .hp-buttons {
-      display: flex; align-items: center;
-      justify-content: center; gap: 12px; flex-wrap: wrap;
-    }
-    .hp-btn-mail {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 24px; border-radius: 50px;
-      background: var(--oliva-bg); color: var(--oliva-dark);
-      font-weight: 800; font-size: 1rem;
-      border: 1.5px solid rgba(85,107,47,.18);
-      transition: background var(--tr), transform var(--tr);
-    }
-    .hp-btn-mail:hover { background: var(--arena-dark); transform: translateY(-1px); }
-    .hp-nota {
-      margin-top: 20px; font-size: 0.92rem;
-      color: var(--suave); line-height: 1.55;
-      max-width: 720px; margin-left: auto; margin-right: auto;
-    }
-
-    /* ─── BANNER DIAGNÓSTICO ─────────────────────── */
-    .diagnostico-banner {
-      background: linear-gradient(135deg, var(--terra-bg) 0%, #fef0ea 100%);
-      border-top: 1px solid rgba(226,114,91,0.18);
-      border-bottom: 3px solid var(--terracota);
-      padding: 26px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .diagnostico-banner::before {
-      content: '';
-      position: absolute;
-      top: 0; right: -80px; bottom: 0;
-      width: 280px;
-      background: radial-gradient(ellipse at center, rgba(226,114,91,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .diag-inner {
-      display: flex; align-items: center; gap: 22px;
-      position: relative; z-index: 2;
-    }
-    .diag-icono {
-      font-size: 2.4rem;
-      flex-shrink: 0;
-      width: 64px; height: 64px;
-      background: var(--blanco);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 16px rgba(226,114,91,0.18);
-      border: 2px solid rgba(226,114,91,0.22);
-    }
-    .diag-texto { flex: 1; }
-    .diag-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--terracota);
-      background: rgba(226,114,91,0.12);
-      padding: 3px 10px;
-      border-radius: 50px;
-      margin-bottom: 6px;
-    }
-    .diag-texto h3 {
-      font-family: 'DM Serif Display', serif;
-      color: var(--terra-dark);
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
-      margin-bottom: 4px;
-      line-height: 1.25;
-    }
-    .diag-texto p {
-      font-size: 0.97rem;
-      color: var(--suave);
-      line-height: 1.5;
-      margin: 0;
-    }
-    .diag-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--terracota);
-      color: white;
-      padding: 14px 24px;
-      border-radius: 50px;
-      font-weight: 800;
-      font-size: 0.97rem;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: background var(--tr), transform var(--tr);
-      box-shadow: 0 6px 18px rgba(226,114,91,0.3);
-    }
-    .diag-cta:hover {
-      background: var(--terra-dark);
-      transform: translateY(-2px);
-    }
-    @media (max-width: 768px) {
-      .diagnostico-banner { padding: 22px 0; }
-      .diag-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 14px;
-      }
-      .diag-cta { width: 100%; justify-content: center; }
-    }
-
-    /* ─── FOOTER ─────────────────────────────────── */
-    .footer {
-      background: var(--oliva-dark);
-      border-top: 1px solid rgba(245,245,220,.08);
-      padding: 36px 24px;
-    }
-    .footer-inner {
-      max-width: 1120px; margin: 0 auto;
-      display: flex; align-items: center;
-      justify-content: space-between; gap: 20px;
-      flex-wrap: wrap;
-    }
-    .footer-logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem; color: var(--arena);
-    }
-    .footer-logo-placeholder {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: rgba(245,245,220,.15);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.78rem; font-weight: 800; color: var(--arena);
-    }
-    .footer-links {
-      display: flex; gap: 20px; flex-wrap: wrap;
-    }
-    .footer-links a {
-      font-size: var(--fs-label); font-weight: 700;
-      color: rgba(245,245,220,.5);
-      transition: color var(--tr);
-    }
-    .footer-links a:hover { color: var(--arena); }
-    .footer-copy {
-      font-size: var(--fs-label); color: rgba(245,245,220,.35);
-      text-align: right;
-    }
-
-    /* ─── REVEAL ─────────────────────────────────── */
-    .reveal {
-      opacity: 0; transform: translateY(22px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .d1 { transition-delay: .1s; }
-    .d2 { transition-delay: .2s; }
-
-    /* ─── RESPONSIVE ─────────────────────────────── */
-    @media (max-width: 1024px) {
-      .hp-intro-card { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      .tramites { padding: 52px 0 68px; }
-      .hp-intro-card,
-      .hp-modalidad,
-      .hp-final-cta { padding: 24px 20px; border-radius: 20px; }
-      .hp-steps,
-      .hp-grid-paises,
-      .hp-modalidades,
-      .hp-casos { grid-template-columns: 1fr; }
-      .hp-casos-tags { justify-content: flex-start; max-width: 100%; }
-      .hp-btn, .hp-card-cta, .hp-btn-mail { width: 100%; }
-      .eq-grid { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-      .footer-copy { text-align: left; }
+    /* RESPONSIVE */
+    @media(max-width:1024px){.hp-intro-card{grid-template-columns:1fr;}}
+    @media(max-width:768px){
+      .tramites-sec{padding:52px 0 68px;}
+      .hp-intro-card,.hp-final-cta{padding:24px 20px;border-radius:20px;}
+      .hp-steps,.perfiles-grid,.hp-modalidades,.hp-casos,.como-grid{grid-template-columns:1fr;}
+      .hp-casos{grid-template-columns:1fr;}
+      .hp-casos-tags{justify-content:flex-start;max-width:100%;}
+      .hp-btn,.perfil-cta,.hp-btn-mail{width:100%;}
+      .eq-grid{grid-template-columns:1fr;}
+      .footer-inner{flex-direction:column;align-items:flex-start;}
+      .footer-copy{text-align:left;}
     }
   </style>
 </head>
-
 <body>
 
-  <!-- ══════════ NAVBAR ══════════ -->
+  <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <img src="logo-gestiona-seguro.png" alt="Gestiona Seguro"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="logo-gestiona-seguro.png" alt="Gestiona Seguro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="nav-logo-placeholder" style="display:none">GS</div>
         Gestiona Seguro
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
       <ul class="nav-links" id="navLinks">
         <li><a href="proceso-2026.html">Regularización 2026</a></li>
         <li><a href="evaluador.html">Evaluador</a></li>
         <li><a href="index.html#servicios" class="active">Servicios</a></li>
         <li><a href="index.html#equipo">Nosotros</a></li>
       </ul>
-      <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20de%20tr%C3%A1mites%20electr%C3%B3nicos"
-         class="nav-cta" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        Consultar
-      </a>
+      <a href="index.html#servicios" class="nav-back">← Volver a servicios</a>
     </div>
   </nav>
 
-  <!-- ══════════ HERO BREADCRUMB ══════════ -->
+  <!-- HERO -->
   <section class="hero-breadcrumb">
     <div class="hb-inner">
       <div class="hb-path">
-        <a href="index.html">Inicio</a>
-        <span>›</span>
-        <span>Servicios</span>
-        <span>›</span>
-        <span style="color:rgba(245,245,220,.75)">Trámites electrónicos</span>
+        <a href="index.html">Inicio</a><span>›</span><span>Servicios</span><span>›</span>
+        <span style="color:rgba(245,245,220,.75)">Carpeta Ciudadana</span>
       </div>
-      <div class="hb-etiqueta">🖋️ Identidad digital y tramitación online</div>
-      <h1>Trámites electrónicos<br>e <em>identidad digital</em></h1>
-    <p class="hb-sub">Yo me ocupo de tus trámites. Dedica tu tiempo a lo que más te importa.</p>
+      <div class="hb-etiqueta">🗂️ Tu agente para la Administración</div>
+      <h1>Tu Carpeta Ciudadana,<br><em>explicada y vigilada</em></h1>
+      <p class="hb-sub">Yo me ocupo de tus trámites. Dedica tu tiempo a lo que más te importa.</p>
     </div>
   </section>
 
-  <!-- ══════════ BANNER DIAGNÓSTICO GRATUITO ══════════ -->
+  <!-- BANNER DIAGNÓSTICO — colores armonizados -->
   <section class="diagnostico-banner">
     <div class="container">
       <div class="diag-inner">
         <div class="diag-icono">🔍</div>
         <div class="diag-texto">
-         <span class="diag-tag">⚡ Tu agente para la Administración</span>
-        <h3>Diagnóstico gratuito de tu identidad digital</h3>
-       <p>15 minutos · Sin compromiso · Te decimos exactamente qué necesitas</p>
+          <span class="diag-tag">⚡ Tu agente para la Administración</span>
+          <h3>Diagnóstico gratuito de tu Carpeta Ciudadana</h3>
+          <p>15 minutos · Sin compromiso · Te decimos exactamente qué necesitas</p>
         </div>
-        <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20un%20diagn%C3%B3stico%20gratuito%20de%20mi%20identidad%20digital."
-           class="diag-cta" target="_blank" rel="noopener">
-         Conocer el servicio
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
+        <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20un%20diagn%C3%B3stico%20gratuito%20de%20mi%20Carpeta%20Ciudadana." class="diag-cta" target="_blank" rel="noopener">
+          Conocer el servicio
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ══════════ SECCIÓN PRINCIPAL ══════════ -->
-  <section class="tramites" id="tramites">
+  <!-- SECCIÓN PRINCIPAL -->
+  <section class="tramites-sec" id="tramites">
     <div class="container">
 
       <!-- Intro card -->
       <div class="hp-intro-card reveal">
         <div>
-          <h3>Primero entendemos qué necesitas. Después decides cómo trabajar.</h3>
-          <p>
-            Cada situación tiene su urgencia. Revisamos tu identidad digital actual, el trámite
-            que te aprieta y los plazos que manejas. Si llevas días sin abrir tu buzón electrónico,
-            eso es lo primero que resolvemos.
-          </p>
+          <h3>Primero entendemos tu situación. Después decides cómo trabajar.</h3>
+          <p>Cada caso tiene su urgencia. Revisamos tu Carpeta Ciudadana, los procedimientos que tienes abiertos y los plazos que manejas. Cuéntanos y te decimos qué necesitas sin cobrarte nada primero.</p>
         </div>
         <div class="hp-steps">
-          <div class="hp-step">
-            <strong>1. Nos escribes</strong>
-            <span>Cuéntanos qué problema tienes.</span>
-          </div>
-          <div class="hp-step">
-            <strong>2. Diagnóstico</strong>
-            <span>Revisamos tu situación técnica.</span>
-          </div>
-          <div class="hp-step">
-            <strong>3. Eliges opción</strong>
-            <span>Servicio puntual o suscripción.</span>
-          </div>
+          <div class="hp-step"><strong>1. Nos escribes</strong><span>Cuéntanos qué procedimientos tienes abiertos.</span></div>
+          <div class="hp-step"><strong>2. Diagnóstico</strong><span>Revisamos tu situación sin cobrarte nada.</span></div>
+          <div class="hp-step"><strong>3. Eliges opción</strong><span>Traducción puntual o seguimiento mensual.</span></div>
         </div>
       </div>
 
-      <!-- Selector de servicio -->
-      <div class="servicios-titulo reveal">
-        <h2>Elige tu necesidad</h2>
-        <p>Cuatro servicios concretos. Si tu caso encaja en varios, lo conversamos sin compromiso.</p>
+      <!-- Perfiles -->
+      <div class="sec-titulo reveal">
+        <h2>¿Cuál es tu perfil?</h2>
+        <p>El servicio se adapta a tu situación. Selecciona el tuyo para consultar directamente.</p>
       </div>
 
-      <div class="hp-grid-paises">
-
-        <article class="hp-pais-card reveal" data-flag="🔐">
-          <div class="hp-pais-top">
-            <div class="hp-pais-flag" aria-hidden="true">🔐</div>
-            <span class="hp-pais-badge">Certificado</span>
+      <div class="perfiles-grid">
+        <article class="perfil-card reveal" data-emoji="👤">
+          <div class="perfil-top">
+            <div class="perfil-icon">👤</div>
+            <span class="perfil-badge">Persona física</span>
           </div>
-          <h3>Certificado digital + Autofirma</h3>
-          <p>Para quien empieza desde cero. Te dejamos el equipo configurado y operativo, con tu identidad digital lista para firmar.</p>
-          <ul class="hp-lista">
-            <li>Solicitud y descarga del certificado FNMT</li>
-            <li>Instalación en navegadores y Autofirma</li>
-            <li>Copia de seguridad cifrada del archivo .p12</li>
-            <li>Sesión de formación para que sepas usarlo</li>
+          <h3>Para la persona de a pie</h3>
+          <p>Tienes procedimientos abiertos con la Administración: una ayuda solicitada, una regularización en trámite, una prestación. Nosotras vigilamos que nada se pierda por el camino.</p>
+          <ul class="perfil-lista">
+            <li>Vigilancia de tu Carpeta Ciudadana y DEHú</li>
+            <li>Aviso inmediato antes de que venzan los plazos</li>
+            <li>Te explicamos qué significa cada notificación</li>
+            <li>Te acompañamos a entrar, descargar y actuar</li>
           </ul>
-          <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20instalar%20mi%20certificado%20digital%20y%20Autofirma."
-             class="hp-card-cta" target="_blank" rel="noopener">Quiero mi certificado →</a>
+          <a href="https://wa.me/34697154442?text=Hola%2C%20soy%20persona%20f%C3%ADsica%20y%20quiero%20informaci%C3%B3n%20sobre%20la%20vigilancia%20de%20mi%20Carpeta%20Ciudadana." class="perfil-cta" target="_blank" rel="noopener">Consultar como persona física →</a>
         </article>
 
-        <article class="hp-pais-card reveal d1" data-flag="🔄">
-          <div class="hp-pais-top">
-            <div class="hp-pais-flag" aria-hidden="true">🔄</div>
-            <span class="hp-pais-badge">Renovación</span>
+        <article class="perfil-card reveal d1" data-emoji="🏢">
+          <div class="perfil-top">
+            <div class="perfil-icon">🏢</div>
+            <span class="perfil-badge">Autónomo</span>
           </div>
-          <h3>Renovación de certificado digital</h3>
-          <p>Antes de que caduque, o cuando ya caducó. Nos encargamos de la renovación, la reinstalación y la copia de seguridad.</p>
-          <ul class="hp-lista">
-            <li>Renovación online si tu certificado sigue vigente</li>
-            <li>Tramitación completa si ya caducó</li>
-            <li>Reinstalación en todos tus dispositivos</li>
-            <li>Comprobación con prueba de firma real</li>
+          <h3>Para el autónomo que tiene gestoría</h3>
+          <p>Estás obligado por ley a recibir notificaciones electrónicas. Tu gestoría lleva tus impuestos pero no vigila tu buzón. Nosotras cubrimos ese hueco: Hacienda, SS, ayudas, subvenciones.</p>
+          <ul class="perfil-lista">
+            <li>Vigilancia semanal: Hacienda, SS, subvenciones, ayudas</li>
+            <li>Aviso inmediato ante cualquier notificación o requerimiento</li>
+            <li>Te traducimos lo que la Administración te está pidiendo</li>
+            <li>Sin cambiar de gestoría, como servicio complementario</li>
           </ul>
-          <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20renovar%20mi%20certificado%20digital."
-             class="hp-card-cta" target="_blank" rel="noopener">Renovar certificado →</a>
+          <a href="https://wa.me/34697154442?text=Hola%2C%20soy%20aut%C3%B3nomo%20y%20quiero%20informaci%C3%B3n%20sobre%20la%20vigilancia%20de%20mi%20Carpeta%20Ciudadana." class="perfil-cta" target="_blank" rel="noopener">Consultar como autónomo →</a>
         </article>
-
-        <article class="hp-pais-card reveal" data-flag="📤">
-          <div class="hp-pais-top">
-            <div class="hp-pais-flag" aria-hidden="true">📤</div>
-            <span class="hp-pais-badge">Tramitación</span>
-          </div>
-          <h3>Subida de trámites a sede o REC</h3>
-          <p>RD 316/2026, arraigos, escritos por REC, recursos administrativos. Tú aportas la documentación, nosotras la preparamos y registramos.</p>
-          <ul class="hp-lista">
-            <li>Preparación y firma electrónica del PDF</li>
-            <li>Presentación en sede específica o REC</li>
-            <li>Entrega del justificante con código CSV</li>
-            <li>Verificación posterior de la presentación</li>
-          </ul>
-          <a href="https://wa.me/34697154442?text=Hola%2C%20necesito%20subir%20un%20tr%C3%A1mite%20a%20sede%20electr%C3%B3nica."
-             class="hp-card-cta" target="_blank" rel="noopener">Subir mi trámite →</a>
-        </article>
-
-        <article class="hp-pais-card hp-pais-card--destacado reveal d1" data-flag="📬">
-          <div class="hp-pais-top">
-            <div class="hp-pais-flag" aria-hidden="true">📬</div>
-            <span class="hp-pais-badge">Suscripción mensual</span>
-          </div>
-          <h3>Buzón Vigilado</h3>
-          <p>Vigilamos tu DEHú y Carpeta Ciudadana cada semana. Si llega una notificación, te avisamos antes de que venzan los 10 días naturales del Art. 43.2 LPAC.</p>
-          <ul class="hp-lista">
-            <li>Revisión semanal de DEHú y Carpeta Ciudadana</li>
-            <li>Aviso inmediato por WhatsApp y email</li>
-            <li>Soporte para interpretar la notificación</li>
-            <li>Sin permanencia: cancelas cuando quieras</li>
-          </ul>
-          <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Buz%C3%B3n%20Vigilado%20mensual."
-             class="hp-card-cta" target="_blank" rel="noopener">Quiero Buzón Vigilado →</a>
-        </article>
-
       </div>
 
       <!-- Casos complejos -->
       <div class="hp-casos reveal">
         <div>
-          <h3>¿Tu situación no es estándar? También te ayudamos</h3>
-          <p>Certificado caducado con un trámite urgente encima, Autofirma que no detecta el navegador, Mac que no carga el .p12, o una notificación que llevas días sin poder abrir. Revisamos tu caso antes de cobrarte nada.</p>
+          <h3>¿Tu caso no es sencillo? También te ayudamos</h3>
+          <p>Notificación que no entiendes, plazo que se acerca, requerimiento que no sabes cómo responder, certificado caducado. Cuéntanos antes de agobiarte.</p>
         </div>
         <div class="hp-casos-tags">
+          <span>No entiendo lo que me llegó</span>
+          <span>El plazo se me acaba</span>
+          <span>Recibí un requerimiento</span>
+          <span>No sé si tengo que responder</span>
           <span>Mi certificado caducó</span>
-          <span>No puedo instalar Autofirma</span>
-          <span>Tengo Mac y no funciona</span>
-          <span>Perdí mi archivo .p12</span>
-          <span>Cambié de ordenador</span>
-          <span>No puedo abrir una notificación</span>
-          <span>Soy persona jurídica obligada</span>
-          <span>Tengo urgencia con un trámite</span>
+          <span>No puedo entrar a mi Carpeta</span>
         </div>
       </div>
 
-      <!-- Modalidades -->
-      <div class="modalidades-titulo reveal">
+      <!-- Paquetes -->
+      <div class="sec-titulo reveal">
         <h2>Elige cómo quieres trabajar</h2>
-        <p>Dos formas de contratarnos. Sin precio oculto: nos contactas y valoramos tu caso antes de comprometerte a nada.</p>
+        <p>Dos servicios concretos. Sin precio oculto: cuéntanos tu caso y te decimos cuál encaja mejor.</p>
       </div>
 
       <div class="hp-modalidades">
 
         <article class="hp-modalidad hp-modalidad--puntual reveal">
-          <span class="hp-modalidad-label">Opción 1 — Servicio Puntual</span>
-          <h3>Resolvemos tu problema concreto</h3>
-          <p>Para quien tiene una necesidad específica: un certificado que instalar, un trámite que subir, una notificación que abrir, una renovación que toca ya.</p>
+          <span class="hp-modalidad-label">Servicio puntual</span>
+          <h3>Traducción de notificación</h3>
+          <p>Recibes algo de la Administración y no sabes qué significa ni si tienes que actuar. Nos lo mandas, lo leemos y te explicamos exactamente qué es, qué plazo tienes y qué tienes que hacer.</p>
           <div class="hp-quien">
             <div class="hp-quien-ava ava-nora">NN</div>
             <div class="hp-quien-txt"><strong>Nora</strong><br>Gestión técnica especializada</div>
           </div>
           <ul>
-            <li>Diagnóstico técnico inicial gratuito</li>
-            <li>Resolución del problema o trámite concreto</li>
-            <li>Documentación del proceso por escrito</li>
-            <li>Verificación final de que todo funciona</li>
-            <li>Soporte de seguimiento 7 días tras la entrega</li>
+            <li>Lectura completa de la notificación o resolución</li>
+            <li>Explicación en lenguaje claro: qué es y qué significa</li>
+            <li>Plazo exacto que tienes para actuar</li>
+            <li>Pasos concretos que debes dar</li>
+            <li>Respuesta en menos de 24 horas</li>
           </ul>
-          <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20contratar%20un%20servicio%20puntual%20de%20tr%C3%A1mites%20electr%C3%B3nicos."
-             class="hp-btn hp-btn--secondary" target="_blank" rel="noopener">
-            Contratar servicio puntual →
-          </a>
+          <div class="paquete-ctas">
+            <a href="https://wa.me/34697154442?text=Hola%2C%20soy%20persona%20f%C3%ADsica%20y%20necesito%20que%20me%20expliquen%20una%20notificaci%C3%B3n%20que%20me%20ha%20llegado." class="hp-btn hp-btn--primary" target="_blank" rel="noopener">Soy persona física →</a>
+            <a href="https://wa.me/34697154442?text=Hola%2C%20soy%20aut%C3%B3nomo%20y%20necesito%20que%20me%20expliquen%20una%20notificaci%C3%B3n%20de%20Hacienda%20o%20SS." class="hp-btn hp-btn--secondary" target="_blank" rel="noopener">Soy autónomo →</a>
+          </div>
         </article>
 
-        <article class="hp-modalidad hp-modalidad--suscripcion reveal d1">
-          <span class="hp-modalidad-label">Opción 2 — Buzón Vigilado</span>
-          <h3>Tranquilidad mensual con tu buzón vigilado</h3>
-          <p>Suscripción mensual para personas y autónomos que ya manejan trámites con la Administración. No te pierdes ninguna notificación, y si necesitas subir algo durante el mes, lo hacemos sin tarifa extra.</p>
+        <article class="hp-modalidad hp-modalidad--mensual reveal d1">
+          <span class="hp-modalidad-label">Suscripción mensual</span>
+          <h3>Seguimiento mensual</h3>
+          <p>Tienes procedimientos abiertos y no quieres estar pendiente. Nos autorizas, revisamos tu Carpeta cada semana y si llega algo te avisamos antes de que venzan los plazos. Recibes informe aunque no haya novedades.</p>
           <div class="hp-quien">
             <div class="hp-quien-ava ava-nora">NN</div>
             <div class="hp-quien-ava ava-sara" style="margin-left:-8px">SA</div>
             <div class="hp-quien-txt"><strong>Nora y Sara</strong><br>Vigilancia técnica + apoyo legal si aparece</div>
           </div>
           <ul>
-            <li>Revisión semanal de DEHú y Carpeta Ciudadana</li>
-            <li>Aviso inmediato por WhatsApp ante cualquier notificación</li>
-            <li>Hasta 2 subidas de trámites al mes incluidas</li>
-            <li>Renovación de certificado incluida si toca durante la suscripción</li>
-            <li>Asesoramiento de Sara si llega un requerimiento jurídico</li>
+            <li>Revisión semanal de tu Carpeta Ciudadana y DEHú</li>
+            <li>Aviso inmediato si llega algo</li>
+            <li>Informe mensual aunque no haya novedades</li>
+            <li>Traducción incluida de cualquier notificación recibida</li>
+            <li>Sara analiza si llega un requerimiento jurídico</li>
             <li>Sin permanencia: cancelas cuando quieras</li>
           </ul>
-          <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20suscribirme%20al%20Buz%C3%B3n%20Vigilado%20mensual."
-             class="hp-btn hp-btn--primary" target="_blank" rel="noopener">
-            Suscribirme al Buzón Vigilado →
-          </a>
+          <div class="paquete-ctas">
+            <a href="https://wa.me/34697154442?text=Hola%2C%20soy%20persona%20f%C3%ADsica%20y%20me%20interesa%20el%20seguimiento%20mensual%20de%20mi%20Carpeta%20Ciudadana." class="hp-btn hp-btn--primary" target="_blank" rel="noopener">Soy persona física →</a>
+            <a href="https://wa.me/34697154442?text=Hola%2C%20soy%20aut%C3%B3nomo%20y%20me%20interesa%20el%20seguimiento%20mensual%20de%20mi%20Carpeta%20Ciudadana." class="hp-btn hp-btn--secondary" target="_blank" rel="noopener">Soy autónomo →</a>
+          </div>
         </article>
 
       </div>
 
+      <!-- Cómo funciona -->
+      <div class="sec-titulo reveal">
+        <h2>Cómo funciona</h2>
+        <p>El proceso es distinto según tu perfil.</p>
+      </div>
+
+      <div class="como-funciona">
+        <div class="como-grid">
+          <div class="como-card reveal">
+            <div class="como-card-header">
+              <div class="como-icon como-icon--fisica">👤</div>
+              <h3>Para persona física</h3>
+            </div>
+            <ol class="como-pasos">
+              <li class="como-paso">
+                <div class="paso-num">1</div>
+                <div class="paso-texto"><strong>Nos escribes y nos cuentas</strong><span>Qué procedimientos tienes abiertos, qué notificación te llegó o qué te preocupa de tu situación administrativa.</span></div>
+              </li>
+              <li class="como-paso">
+                <div class="paso-num">2</div>
+                <div class="paso-texto"><strong>Nos mandas la notificación o nos autorizas</strong><span>Para el servicio puntual: nos mandas el documento. Para el seguimiento mensual: tramitamos la autorización de representación.</span></div>
+              </li>
+              <li class="como-paso">
+                <div class="paso-num">3</div>
+                <div class="paso-texto"><strong>Te explicamos qué significa y qué hacer</strong><span>En lenguaje claro: qué es, qué plazo tienes y cada paso que debes dar. Nada de burocracia sin traducir.</span></div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="como-card reveal d1">
+            <div class="como-card-header">
+              <div class="como-icon como-icon--autonomo">🏢</div>
+              <h3>Para autónomo</h3>
+            </div>
+            <ol class="como-pasos">
+              <li class="como-paso">
+                <div class="paso-num">1</div>
+                <div class="paso-texto"><strong>Nos escribes y nos dices qué tienes abierto</strong><span>Procedimientos con Hacienda, Seguridad Social, ayudas o subvenciones. Todo lo que tengas en trámite con la Administración.</span></div>
+              </li>
+              <li class="como-paso">
+                <div class="paso-num">2</div>
+                <div class="paso-texto"><strong>Tramitamos la autorización de representación</strong><span>Para que podamos acceder a tu Carpeta en tu nombre y revisar sin que tengas que estar pendiente.</span></div>
+              </li>
+              <li class="como-paso">
+                <div class="paso-num">3</div>
+                <div class="paso-texto"><strong>Vigilamos cada semana y te mandamos el informe</strong><span>Si llega algo, te avisamos antes de que venzan los plazos. Si no hay novedades, recibes el informe igualmente.</span></div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
       <!-- CTA final -->
       <div class="hp-final-cta reveal">
-        <h3>¿No sabes qué necesitas?</h3>
-        <p>Cuéntanos qué problema tienes y en menos de 24 horas te decimos qué opción se adapta a tu situación. Sin compromiso y sin presupuesto sorpresa.</p>
+        <h3>¿No sabes por dónde empezar?</h3>
+        <p>Cuéntanos tu situación y en menos de 24 horas te decimos qué servicio encaja mejor. Sin compromiso y sin presupuesto sorpresa.</p>
         <div class="hp-buttons">
-          <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20un%20diagn%C3%B3stico%20sobre%20mi%20situaci%C3%B3n%20de%20tr%C3%A1mites%20electr%C3%B3nicos."
-             class="hp-btn hp-btn--primary" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
+          <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20vigilancia%20de%20mi%20Carpeta%20Ciudadana." class="hp-btn hp-btn--primary" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Escribir por WhatsApp
           </a>
-          <a href="mailto:info@gestionaseguro.com?subject=Consulta%20tr%C3%A1mites%20electr%C3%B3nicos"
-             class="hp-btn-mail">
-            ✉️ info@gestionaseguro.com
-          </a>
+          <a href="mailto:info@gestionaseguro.com?subject=Consulta%20Carpeta%20Ciudadana" class="hp-btn-mail">✉️ info@gestionaseguro.com</a>
         </div>
-        <p class="hp-nota">
-          Las tasas oficiales de la FNMT u otras autoridades de certificación, los costes de DNIe, las apostillas
-          y otros gastos administrativos no están incluidos en nuestros honorarios. La validez jurídica de los
-          trámites presentados corresponde siempre a la Administración receptora.
-        </p>
+        <p class="hp-nota">La validez jurídica de los trámites corresponde siempre a la Administración receptora. Para casos que requieran representación legal formal, Sara analiza el expediente con su colegiación profesional.</p>
       </div>
 
     </div>
   </section>
 
-  <!-- ══════════ EQUIPO ══════════ -->
+  <!-- EQUIPO -->
   <section class="equipo-sec">
     <div class="container">
       <div class="eq-header">
-        <span class="eq-label">Quiénes gestionamos tus trámites</span>
-        <h2>Sara y Nora — un equipo completo</h2>
+        <span class="eq-label">Quiénes gestionan tu Carpeta</span>
+        <h2>Nora y Sara — un equipo completo</h2>
         <p>La parte técnica la lleva Nora. Sara entra cuando aparece un requerimiento que necesita criterio jurídico.</p>
       </div>
       <div class="eq-grid">
-
-        <!-- SWAP SARA: reemplaza .eq-avatar por <img src="sara-altamirano.jpg" alt="Sara Altamirano" class="eq-foto"> -->
-        <div class="eq-card">
-          <div class="eq-avatar av-sara">SA</div>
-          <div class="eq-info">
-            <div class="eq-nombre">Sara Altamirano Mauricci</div>
-            <span class="eq-rol">Abogada de extranjería</span>
-            <p class="eq-desc">Valida el criterio legal cuando llega un requerimiento, redacta los escritos jurídicos y representa a los clientes ante la Administración cuando el trámite lo requiere.</p>
-            <div class="eq-cred">
-              <span>ICAM 143312</span>
-              <span>+20 años de trayectoria</span>
-              <span>Extranjería</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SWAP NORA: reemplaza .eq-avatar por <img src="nora-nunez.jpg" alt="Nora Núñez" class="eq-foto"> -->
         <div class="eq-card">
           <div class="eq-avatar av-nora">NN</div>
           <div class="eq-info">
             <div class="eq-nombre">Nora Núñez Zárate</div>
             <span class="eq-rol">Documentalista y gestora de información</span>
-            <p class="eq-desc">Lleva la parte técnica: instalación de certificados, Autofirma, preparación de PDFs administrativos, presentación en sede y REC, y vigilancia de notificaciones electrónicas.</p>
-            <div class="eq-cred">
-              <span>+15 años Adm. Pública</span>
-              <span>UC3M</span>
-              <span>Documentación</span>
-            </div>
+            <p class="eq-desc">Vigilancia de Carpeta Ciudadana, interpretación de notificaciones, gestión de plazos y tramitación electrónica. Más de 15 años en Administración Pública.</p>
+            <div class="eq-cred"><span>+15 años Adm. Pública</span><span>UC3M</span><span>TRAGSATEC</span></div>
           </div>
         </div>
-
+        <div class="eq-card">
+          <div class="eq-avatar av-sara">SA</div>
+          <div class="eq-info">
+            <div class="eq-nombre">Sara Altamirano Mauricci</div>
+            <span class="eq-rol">Abogada de extranjería</span>
+            <p class="eq-desc">Entra cuando una notificación requiere interpretación jurídica o redacción de alegaciones. Valida el criterio legal con su colegiación profesional.</p>
+            <div class="eq-cred"><span>ICAM 143312</span><span>+20 años</span><span>Extranjería</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════ FOOTER ══════════ -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-logo">
-        <img src="logo-gestiona-seguro.png" alt="Gestiona Seguro" style="width:32px;height:32px;border-radius:50%;object-fit:cover"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="logo-gestiona-seguro.png" alt="Gestiona Seguro" style="width:32px;height:32px;border-radius:50%;object-fit:cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="footer-logo-placeholder" style="display:none">GS</div>
         Gestiona Seguro
       </div>
@@ -1043,30 +515,20 @@
         <a href="index.html">Inicio</a>
         <a href="proceso-2026.html">Regularización 2026</a>
         <a href="evaluador.html">Evaluador</a>
+        <a href="servicios-homologacion.html">Homologación</a>
         <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a>
       </div>
-      <div class="footer-copy">
-        © 2026 Gestiona Seguro<br>No sustituye asesoría legal individual
-      </div>
+      <div class="footer-copy">© 2026 Gestiona Seguro<br>No sustituye asesoría legal individual</div>
     </div>
   </footer>
 
   <script>
-    // Navbar scroll
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-
-    // Hamburger
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
     const hamburger = document.getElementById('hamburger');
     const navLinks  = document.getElementById('navLinks');
     hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => navLinks.classList.remove('open'));
-    });
-
-    // Reveal on scroll
+    navLinks.querySelectorAll('a').forEach(a => { a.addEventListener('click', () => navLinks.classList.remove('open')); });
     const ro = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
