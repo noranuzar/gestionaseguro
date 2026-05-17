@@ -1446,11 +1446,15 @@ object-position: 25% center;
 }
 /* ── FIN ÁREAS HOME ─────────────────────────────────────── */
     /* ── TARJETA CON PESTAÑAS ─────────────────────── */
-.srv-card--tabs { cursor: default; }
-.srv-tabs {
-  display: flex; gap: 6px; margin-bottom: 24px;
-  background: var(--oliva-bg); border-radius: 12px; padding: 4px;
+.srv-card--tabs .srv-cta { margin-top: 0; }
+.srv-card-info-link {
+  display: block; text-align: center;
+  font-size: var(--fs-label); font-weight: 600;
+  color: var(--texto-suave); margin-bottom: 14px;
+  text-decoration: underline; text-underline-offset: 3px;
+  opacity: 0.65; transition: opacity var(--transicion), color var(--transicion);
 }
+.srv-card-info-link:hover { opacity: 1; color: var(--oliva); }
 .srv-tab-btn {
   flex: 1; padding: 9px 10px; border: none;
   background: transparent; border-radius: 9px;
@@ -2063,6 +2067,7 @@ Información clara, herramientas útiles y acompañamiento práctico para avanza
           🏢 Autónomo
         </button>
       </div>
+     <a href="servicios-tramites-electronicos.html" class="srv-card-info-link">¿Quieres saber más antes de escribir? Ver el servicio →</a>
       <div class="srv-tab-panel active" id="panel-fisica">
         <div class="srv-card__icon">🗂️</div>
         <span class="tab-badge tab-badge--fisica">Carpeta Ciudadana · Persona física</span>
@@ -2284,7 +2289,7 @@ Información clara, herramientas útiles y acompañamiento práctico para avanza
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 // Pestañas tarjeta Trámites Electrónicos
 function switchTab(btn, panelId) {
-  const card = btn.closest('.srv-card--tabs');
+  const card = btn.closest('.');
   card.querySelectorAll('.srv-tab-btn').forEach(b => b.classList.remove('active'));
   card.querySelectorAll('.srv-tab-panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
