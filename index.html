@@ -1787,6 +1787,7 @@ object-position: 25% center;
     justify-content: center;
   }
 }
+   .cta-diagnostico:hover { background: var(--terracota-dark) !important; } 
   </style>
 </head>
 <body>
@@ -1836,7 +1837,7 @@ object-position: 25% center;
         </li>
 
         <!-- BLOQUE 2: HERRAMIENTAS -->
-        <li class="nav-item has-dropdown">
+      <li class="nav-item has-dropdown">
           <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
             Herramientas
             <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1844,6 +1845,12 @@ object-position: 25% center;
             </svg>
           </button>
           <ul class="dropdown" role="menu">
+            <li role="none">
+              <a href="diagnostico_post_presentacion.html" class="dropdown-item" role="menuitem">
+                <strong>🔍 Diagnóstico Expediente</strong>
+                <span>¿Ya presentaste? Mira qué hacer ahora</span>
+              </a>
+            </li>
             <li role="none">
               <a href="evaluador.html" class="dropdown-item" role="menuitem">
                 <strong>✓ Test de Aptitud</strong>
@@ -1856,19 +1863,18 @@ object-position: 25% center;
                 <span>Prepara tus papeles con el móvil</span>
               </a>
             </li>
-            
             <li role="none">
               <a href="guia-firma-digital.html" class="dropdown-item" role="menuitem">
                 <strong>🖋️ Firma Digital</strong>
-                  <span>Aprende a usar AutoFirma</span>
-                  </a>
-                 </li>
+                <span>Aprende a usar AutoFirma</span>
+              </a>
+            </li>
             <li role="none">
-            <a href="mapa-madrid-2026.html" class="dropdown-item" role="menuitem">
-             <strong>📍 Mapa Madrid Ciudad</strong>
-              <span>Informe de Vulnerabilidad (EX-32)</span>
-                </a>
-               </li>
+              <a href="mapa-madrid-2026.html" class="dropdown-item" role="menuitem">
+                <strong>📍 Mapa Madrid Ciudad</strong>
+                <span>Informe de Vulnerabilidad (EX-32)</span>
+              </a>
+            </li>
             <li role="none">
               <a href="proceso-2026.html#recursos" class="dropdown-item" role="menuitem">
                 <strong>📂 Formularios</strong>
@@ -1952,13 +1958,21 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
 </div>
       </div>
 
-      <div class="hero-cta-bloque">
-        <h3>¿Soy apto para esta regularización?</h3>
-        <p>Confirma tu situación en menos de 2 minutos, de forma privada y gratuita.</p>
-        <a href="evaluador.html" class="nav-cta cta-grande">Hacer test gratuito ➔</a>
-        <p class="cta-nota">⚓ Sin registro · Resultado inmediato · 100% confidencial</p>
+     <div class="hero-cta-bloque">
+        <h3>¿Cómo te ayudamos con tu regularización?</h3>
+        <p>Confirma tu situación en menos de 2 minutos, o gestiona tu expediente si ya has presentado. Servicio privado y gratuito.</p>
+        
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%; margin-bottom: 16px; margin-top: 10px;">
+          <a href="evaluador.html" class="nav-cta cta-grande" style="flex: 1; min-width: 220px; justify-content: center;">
+            Hacer test gratuito ➔
+          </a>
+          <a href="diagnostico.html" class="nav-cta cta-grande cta-diagnostico" style="flex: 1; min-width: 220px; justify-content: center; background: var(--terracota) !important;">
+            Gestionar mi expediente ➔
+          </a>
+        </div>
+        
+        <p class="cta-nota">⚓ Sin registro · Resultado inmediato o diagnóstico · 100% confidencial</p>
       </div>
-    </div>
 
     <div class="hero-home-image">
       <img
