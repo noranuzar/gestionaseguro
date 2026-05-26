@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="description" content="Diagnóstico post-presentación de la Regularización Extraordinaria 2026. Sabe qué hacer con tu expediente según tu situación.">
+<meta name="theme-color" content="#5C6E3F">
+<title>¿Y ahora qué? · Diagnóstico de tu expediente · Gestiona Seguro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   PALETA Y VARIABLES — GESTIONA SEGURO
+========================================================= */
+:root {
+  --oliva: #5C6E3F;
+  --oliva-medio: #7B8F5C;
+  --oliva-claro: #B5C29A;
+  --oliva-tinta: #3D4A2A;
+  --terracota: #C66A4C;
+  --terracota-suave: #E5B5A0;
+  --terracota-fondo: #FCE9E0;
+  --arena: #F3EDDE;
+  --crema: #FAF6EC;
+  --blanco: #FFFFFF;
+  --texto: #2D2A24;
+  --texto-medio: #5C5A52;
+  --gris: #8A8478;
+  --rojo: #B5483A;
+  --verde: #5A8A4F;
+  --amarillo-aviso: #E8B547;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 8px rgba(45, 42, 36, 0.06);
+  --shadow-md: 0 6px 20px rgba(45, 42, 36, 0.08);
+  --shadow-lg: 0 14px 40px rgba(45, 42, 36, 0.12);
+
+  --t-fast: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-base: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================================
+   RESET Y BASE
+========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--texto);
+  background: var(--arena);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(198, 106, 76, 0.06) 0, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(92, 110, 63, 0.07) 0, transparent 45%);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button { font-family: inherit; cursor: pointer; }
+a { color: var(--terracota); text-decoration: none; font-weight: 700; }
+a:hover { text-decoration: underline; }
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 640px) {
+  .app { padding: 32px 24px 60px; }
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Serif Display', sans-serif;
+  color: var(--oliva);
+  font-size: 18px;
+}
+.brand-dot {
+  width: 26px;
+  height: 26px;
+  background: var(--oliva);
+  border-radius: 50%;
+  position: relative;
+}
+.brand-dot::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  background: var(--terracota);
+  border-radius: 50%;
+}
+.header-link {
+  font-size: 13px;
+  color: var(--texto-medio);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* =========================================================
+   HERO / INTRO
+========================================================= */
+.hero {
+  background: var(--blanco);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  background: var(--terracota);
+  border-radius: 50%;
+  opacity: 0.08;
+}
+.hero-eyebrow {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--terracota);
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+}
+.hero-title {
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 28px;
+  line-height: 1.1;
+  color: var(--texto);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+}
+@media (min-width: 640px) {
+  .hero-title { font-size: 36px; }
+}
+.hero-desc {
+  color: var(--texto-medio);
+  font-size: 15px;
+  margin: 0;
+  max-width: 540px;
+}
+
+/* =========================================================
+   PROGRESO
+========================================================= */
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 0 4px;
+}
+.progress-step {
+  flex: 1;
+  height: 6px;
+  background: var(--oliva-claro);
+  border-radius: var(--radius-pill);
+  opacity: 0.4;
+  transition: opacity var(--t-base), background var(--t-base);
+}
+.progress-step.active {
+  opacity: 1;
+  background: var(--oliva);
+}
+.progress-step.current {
+  background: var(--terracota);
+  opacity: 1;
+}
+.progress-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--texto-medio);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   TARJETA DE PREGUNTA
+========================================================= */
+.question-card {
+  background: var(--blanco);
+  border-radius: var(--radius-lg);
+  padding: 28px 22px;
+  box-shadow: var(--shadow-md);
+  animation: fadeUp var(--t-base);
+}
+@media (min-width: 640px) {
+  .question-card { padding: 36px 32px; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.question-num {
+  font-family: 'DM Serif Display', sans-serif;
+  color: var(--terracota);
+  font-size: 14px;
+  margin: 0 0 10px 0;
+}
+.question-text {
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 24px;
+  line-height: 1.25;
+  color: var(--texto);
+  margin: 0 0 8px 0;
+}
+@media (min-width: 640px) {
+  .question-text { font-size: 28px; }
+}
+.question-help {
+  font-size: 14px;
+  color: var(--texto-medio);
+  margin: 0 0 24px 0;
+}
+
+/* =========================================================
+   BOTONES DE OPCIÓN
+========================================================= */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.option {
+  background: var(--crema);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--texto);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all var(--t-fast);
+  min-height: 60px;
+  line-height: 1.3;
+}
+.option:hover {
+  background: var(--blanco);
+  border-color: var(--oliva);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+.option:focus-visible {
+  outline: 3px solid var(--terracota);
+  outline-offset: 2px;
+}
+.option-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--oliva);
+  color: var(--blanco);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 15px;
+}
+.option-text {
+  flex: 1;
+}
+.option-title {
+  display: block;
+  font-weight: 700;
+  color: var(--texto);
+}
+.option-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--texto-medio);
+  margin-top: 2px;
+}
+
+/* Variantes de color para iconos */
+.option:nth-child(2) .option-icon { background: var(--terracota); }
+.option:nth-child(3) .option-icon { background: var(--oliva-medio); }
+.option:nth-child(4) .option-icon { background: var(--oliva-tinta); }
+.option:nth-child(5) .option-icon { background: var(--gris); }
+.option:nth-child(6) .option-icon { background: var(--terracota-suave); color: var(--texto); }
+
+/* =========================================================
+   BARRA INFERIOR (BACK / RESET)
+========================================================= */
+.nav-row {
+  margin-top: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--texto-medio);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--t-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-btn:hover { background: var(--blanco); color: var(--texto); }
+.nav-btn:disabled { opacity: 0; pointer-events: none; }
+
+/* =========================================================
+   RESULTADO
+========================================================= */
+.result {
+  animation: fadeUp var(--t-base);
+}
+.result-header {
+  background: var(--oliva);
+  color: var(--blanco);
+  border-radius: var(--radius-lg);
+  padding: 26px 22px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.result-header::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  background: var(--terracota);
+  border-radius: 50%;
+  opacity: 0.18;
+}
+.result-tag {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--terracota-suave);
+  margin-bottom: 8px;
+}
+.result-title {
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 0 0 10px 0;
+}
+@media (min-width: 640px) {
+  .result-title { font-size: 26px; }
+}
+.result-summary {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--blanco);
+  opacity: 0.95;
+}
+
+/* Bloque de sección dentro del resultado */
+.section {
+  background: var(--blanco);
+  border-radius: var(--radius-lg);
+  padding: 22px 20px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+}
+@media (min-width: 640px) {
+  .section { padding: 26px 26px; }
+}
+.section-title {
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 17px;
+  color: var(--oliva-tinta);
+  margin: 0 0 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--oliva);
+  color: var(--blanco);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+.section.is-warning .section-title-icon { background: var(--rojo); }
+.section.is-deadline .section-title-icon { background: var(--terracota); }
+.section.is-channel .section-title-icon { background: var(--oliva-medio); }
+.section.is-resources .section-title-icon { background: var(--oliva-tinta); }
+
+/* Lista de acciones (timeline) */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.action {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  position: relative;
+}
+.action-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--arena);
+  color: var(--oliva-tinta);
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 13px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 2px solid var(--oliva);
+}
+.action-content {
+  flex: 1;
+  padding-top: 2px;
+}
+.action-title {
+  font-weight: 800;
+  color: var(--texto);
+  font-size: 15px;
+  line-height: 1.3;
+  margin: 0 0 4px 0;
+}
+.action-desc {
+  font-size: 14px;
+  color: var(--texto-medio);
+  margin: 0;
+  line-height: 1.5;
+}
+.action-desc strong { color: var(--oliva-tinta); }
+.action-desc code {
+  background: var(--arena);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--oliva-tinta);
+}
+
+/* Plazos */
+.deadlines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.deadline {
+  background: var(--terracota-fondo);
+  border-left: 4px solid var(--terracota);
+  padding: 12px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.deadline.critical {
+  background: #FDE5E0;
+  border-left-color: var(--rojo);
+}
+.deadline-label {
+  font-weight: 700;
+  color: var(--texto);
+  font-size: 14px;
+  line-height: 1.3;
+}
+.deadline-time {
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 15px;
+  color: var(--terracota);
+  white-space: nowrap;
+}
+.deadline.critical .deadline-time { color: var(--rojo); }
+
+/* Aviso/alarma */
+.alerts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.alert {
+  background: #FFF7E0;
+  border-left: 4px solid var(--amarillo-aviso);
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--texto);
+  line-height: 1.5;
+}
+.alert strong { color: var(--rojo); }
+
+/* Tarjeta destinatario + 3 tipos de mensaje */
+.notif-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 16px;
+  background: linear-gradient(135deg, var(--crema), var(--arena));
+  border-radius: var(--radius-md);
+  border-left: 5px solid var(--oliva);
+  margin-bottom: 18px;
+}
+.notif-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--blanco);
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(45, 42, 36, 0.08);
+}
+.notif-card-body { flex: 1; }
+.notif-card-headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: var(--oliva-tinta);
+  margin: 0 0 6px 0;
+  line-height: 1.2;
+}
+.notif-card-detail {
+  font-size: 13.5px;
+  color: var(--texto-medio);
+  margin: 0;
+  line-height: 1.55;
+}
+.notif-card-detail strong { color: var(--texto); }
+.notif-card-detail code {
+  background: var(--blanco);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--oliva-tinta);
+}
+
+.notif-types-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--oliva-tinta);
+  margin: 0 0 10px 0;
+}
+.notif-types {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.notif-type {
+  background: var(--blanco);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  border-left: 4px solid var(--gris);
+}
+.notif-type-official { border-left-color: var(--verde); }
+.notif-type-aviso { border-left-color: var(--amarillo-aviso); }
+.notif-type-info { border-left-color: var(--oliva-medio); }
+.notif-type-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.notif-type-icon { font-size: 16px; }
+.notif-type-tag {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--texto);
+}
+.notif-type-official .notif-type-tag { color: var(--verde); }
+.notif-type-aviso .notif-type-tag { color: #B58200; }
+.notif-type-info .notif-type-tag { color: var(--oliva-medio); }
+.notif-type-desc {
+  font-size: 13px;
+  color: var(--texto-medio);
+  margin: 0;
+  line-height: 1.5;
+}
+.notif-type-desc strong { color: var(--texto); }
+
+/* Canal recomendado (nueva estructura: tarjetas individuales por canal) */
+.canal-intro {
+  font-size: 13.5px;
+  color: var(--texto);
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+  font-weight: 700;
+}
+.canal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.canal-card {
+  background: linear-gradient(135deg, var(--crema), var(--arena));
+  border-radius: var(--radius-md);
+  padding: 14px 14px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  border-left: 4px solid var(--oliva-medio);
+}
+.canal-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--blanco);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(45, 42, 36, 0.08);
+}
+.canal-card-body { flex: 1; min-width: 0; }
+.canal-card-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px;
+  color: var(--oliva-tinta);
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+.canal-card-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--terracota);
+  background: var(--blanco);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 8px;
+}
+.canal-card-how {
+  font-size: 13px;
+  color: var(--texto-medio);
+  margin: 0;
+  line-height: 1.55;
+}
+.canal-card-how strong { color: var(--oliva-tinta); }
+.canal-card-how code {
+  background: var(--blanco);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--oliva-tinta);
+  word-break: break-word;
+}
+
+/* Canal recomendado (legacy box - mantenido por compatibilidad) */
+.channel-box {
+  background: linear-gradient(135deg, var(--crema), var(--arena));
+  padding: 18px 16px;
+  border-radius: var(--radius-md);
+}
+.channel-name {
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 17px;
+  color: var(--oliva-tinta);
+  margin: 0 0 6px 0;
+}
+.channel-desc {
+  font-size: 14px;
+  color: var(--texto-medio);
+  margin: 0;
+  line-height: 1.5;
+}
+.channel-desc code {
+  background: var(--blanco);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--oliva-tinta);
+}
+
+/* Recursos */
+.resources {
+  display: grid;
+  gap: 10px;
+}
+.resource {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--crema);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--texto);
+  transition: all var(--t-fast);
+  border: 2px solid transparent;
+}
+.resource:hover {
+  background: var(--blanco);
+  border-color: var(--oliva);
+  transform: translateX(3px);
+  text-decoration: none;
+}
+.resource-info {
+  flex: 1;
+  min-width: 0;
+}
+.resource-title {
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--texto);
+  margin: 0 0 2px 0;
+}
+.resource-url {
+  font-size: 12px;
+  color: var(--texto-medio);
+  word-break: break-all;
+  font-weight: 400;
+}
+.resource-arrow {
+  color: var(--terracota);
+  font-size: 18px;
+  flex-shrink: 0;
+  font-weight: 800;
+}
+
+/* CTA final */
+.result-cta {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+.btn {
+  flex: 1;
+  min-width: 140px;
+  background: var(--oliva);
+  color: var(--blanco);
+  border: none;
+  padding: 14px 20px;
+  border-radius: var(--radius-pill);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  transition: all var(--t-fast);
+}
+.btn:hover { background: var(--oliva-tinta); transform: translateY(-2px); }
+.btn.secondary {
+  background: var(--blanco);
+  color: var(--oliva);
+  border: 2px solid var(--oliva);
+}
+.btn.secondary:hover { background: var(--oliva); color: var(--blanco); }
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer {
+  margin-top: auto;
+  padding-top: 30px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--texto-medio);
+  line-height: 1.6;
+}
+.footer strong { color: var(--oliva-tinta); }
+.footer a { color: var(--terracota); }
+
+/* =========================================================
+   GUÍA ESPECIAL: SI NO CONSIGUES CITA DE HUELLAS
+   (solo aparece en fase 'ok' / concesión)
+========================================================= */
+.guide-cita {
+  background: linear-gradient(135deg, #FCE9E0 0%, #F9E4C9 100%);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-md);
+  border-left: 6px solid var(--terracota);
+}
+@media (min-width: 640px) {
+  .guide-cita { padding: 30px 28px; }
+}
+.guide-cita-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--rojo);
+  margin: 0 0 6px 0;
+}
+.guide-cita-title {
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 22px;
+  color: var(--oliva-tinta);
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+.guide-cita-intro {
+  font-size: 14.5px;
+  color: var(--texto);
+  margin: 0 0 18px 0;
+  line-height: 1.55;
+}
+
+.guide-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.guide-block {
+  background: var(--blanco);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  box-shadow: 0 2px 6px rgba(45, 42, 36, 0.04);
+}
+.guide-block-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.guide-block-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--terracota);
+  color: var(--blanco);
+  display: grid;
+  place-items: center;
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.guide-block-title {
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 16px;
+  color: var(--texto);
+  margin: 0;
+  flex: 1;
+  line-height: 1.25;
+}
+.guide-block-body {
+  font-size: 14px;
+  color: var(--texto-medio);
+  line-height: 1.55;
+  margin: 0;
+}
+.guide-block-body strong { color: var(--oliva-tinta); }
+.guide-block-body code {
+  background: var(--arena);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--oliva-tinta);
+}
+.chip-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chip-list li {
+  background: var(--arena);
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--oliva-tinta);
+}
+
+/* Caja de cobertura legal */
+.legal-box {
+  background: var(--oliva);
+  color: var(--blanco);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  margin-top: 14px;
+}
+.legal-eyebrow {
+  font-size: 10.5px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--terracota-suave);
+  margin: 0 0 6px 0;
+}
+.legal-title {
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 15px;
+  margin: 0 0 8px 0;
+  color: var(--blanco);
+}
+.legal-text {
+  font-size: 13.5px;
+  margin: 0;
+  color: var(--blanco);
+  opacity: 0.95;
+  line-height: 1.55;
+}
+.legal-text strong { color: var(--terracota-suave); }
+
+/* Plantilla del escrito */
+.template-box {
+  margin-top: 14px;
+  background: var(--cremaClaro, var(--crema));
+  border: 2px dashed var(--oliva-medio);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.template-header {
+  background: var(--oliva-medio);
+  color: var(--blanco);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.template-header-title {
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 14px;
+  margin: 0;
+}
+.template-actions-row {
+  display: flex;
+  gap: 6px;
+}
+.template-btn {
+  background: var(--blanco);
+  color: var(--oliva-tinta);
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+.template-btn:hover { background: var(--terracota); color: var(--blanco); transform: translateY(-1px); }
+.template-btn.copied { background: var(--verde); color: var(--blanco); }
+.template-body {
+  padding: 18px 18px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--texto);
+  white-space: pre-wrap;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.template-body strong { color: var(--oliva-tinta); }
+.template-fill {
+  background: #FFF3D9;
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--rojo);
+  font-weight: 700;
+}
+
+/* =========================================================
+   VIGILANCIA ACTIVA DEL EXPEDIENTE
+   Infografía visual + hábitos en acordeón.
+========================================================= */
+.vigilancia {
+  background: linear-gradient(135deg, #FFF8E1 0%, #FCE9E0 100%);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-md);
+  border-left: 6px solid var(--amarillo-aviso);
+}
+@media (min-width: 640px) {
+  .vigilancia { padding: 30px 28px; }
+}
+.vigilancia-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--rojo);
+  margin: 0 0 6px 0;
+}
+.vigilancia-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  color: var(--oliva-tinta);
+  margin: 0 0 8px 0;
+  line-height: 1.15;
+}
+.vigilancia-pitch {
+  font-size: 14.5px;
+  color: var(--texto);
+  margin: 0 0 16px 0;
+  line-height: 1.55;
+}
+.vigilancia-pitch strong { color: var(--rojo); }
+
+.vigilancia-section-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--oliva-tinta);
+  margin: 18px 0 10px 0;
+}
+
+/* ===== Mini-infografía del flujo de notificación ===== */
+.flujo {
+  background: var(--blanco);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(45, 42, 36, 0.04);
+}
+.flujo-paso {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  background: var(--crema);
+  border-left: 4px solid var(--oliva-medio);
+}
+.flujo-paso.inicio { border-left-color: var(--oliva); }
+.flujo-paso.ok { border-left-color: var(--verde); background: #EAF5E6; }
+.flujo-paso.alerta { border-left-color: var(--rojo); background: #FCE9E0; }
+.flujo-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--blanco);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(45, 42, 36, 0.08);
+}
+.flujo-text {
+  flex: 1;
+  line-height: 1.35;
+}
+.flujo-text strong {
+  display: block;
+  color: var(--texto);
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+.flujo-text span {
+  display: block;
+  font-size: 12.5px;
+  color: var(--texto-medio);
+}
+.flujo-arrow {
+  text-align: center;
+  font-size: 16px;
+  color: var(--gris);
+  font-weight: 800;
+  line-height: 1;
+  user-select: none;
+  margin: 2px 0;
+}
+.flujo-split {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0;
+}
+.flujo-split-line {
+  flex: 1;
+  height: 1px;
+  background: var(--gris);
+  opacity: 0.3;
+}
+.flujo-split-label {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--gris);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0 6px;
+}
+
+/* ===== Hábitos como acordeón nativo (details/summary) ===== */
+.habitos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.habito-card {
+  background: var(--blanco);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(45, 42, 36, 0.04);
+  transition: box-shadow var(--t-fast);
+}
+.habito-card[open] {
+  box-shadow: 0 4px 12px rgba(45, 42, 36, 0.10);
+}
+.habito-card summary {
+  padding: 13px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  color: var(--texto);
+  font-size: 14px;
+  transition: background var(--t-fast);
+  user-select: none;
+}
+.habito-card summary::-webkit-details-marker { display: none; }
+.habito-card summary:hover { background: var(--crema); }
+.habito-card summary:focus-visible { outline: 3px solid var(--terracota); outline-offset: -3px; }
+.habito-card[open] summary { background: var(--crema); }
+
+.habito-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--amarillo-aviso);
+  color: var(--texto);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.habito-summary-text {
+  flex: 1;
+  line-height: 1.3;
+}
+.habito-toggle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--arena);
+  color: var(--terracota);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 800;
+  flex-shrink: 0;
+  transition: transform var(--t-base), background var(--t-fast), color var(--t-fast);
+  line-height: 1;
+}
+.habito-card[open] .habito-toggle {
+  transform: rotate(45deg);
+  background: var(--terracota);
+  color: var(--blanco);
+}
+.habito-content {
+  padding: 6px 16px 18px 60px;
+  font-size: 13.5px;
+  color: var(--texto-medio);
+  line-height: 1.55;
+}
+.habito-content strong { color: var(--oliva-tinta); }
+.habito-content code {
+  background: var(--arena);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--oliva-tinta);
+  word-break: break-word;
+}
+@media (max-width: 480px) {
+  .habito-content { padding-left: 16px; }
+}
+
+/* ===== CTA al TEU-BOE al final ===== */
+.vigilancia-cta {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--oliva);
+  color: var(--blanco);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--t-fast);
+}
+.vigilancia-cta:hover {
+  background: var(--oliva-tinta);
+  text-decoration: none;
+  color: var(--blanco);
+  transform: translateY(-2px);
+}
+.vigilancia-cta-text {
+  flex: 1;
+  line-height: 1.3;
+}
+.vigilancia-cta-text strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 2px;
+  color: var(--blanco);
+}
+.vigilancia-cta-text span {
+  font-size: 12px;
+  opacity: 0.9;
+  color: var(--blanco);
+}
+.vigilancia-cta-arrow {
+  font-size: 22px;
+  color: var(--terracota-suave);
+  flex-shrink: 0;
+  font-weight: 800;
+}
+
+@media print {
+  .header, .hero, .progress, .result-cta, .footer, .nav-row { display: none !important; }
+  .guide-cita, .section, .result-header, .vigilancia { box-shadow: none; break-inside: avoid; }
+  .habito-card { box-shadow: none; }
+  .habito-toggle { display: none; }
+  details summary { background: transparent !important; }
+  details > *:not(summary) { display: block !important; }
+  body { background: white; }
+}
+
+
+/* =========================================================
+   UTILS
+========================================================= */
+.hidden { display: none !important; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>
+      Gestiona Seguro
+    </div>
+    <a class="header-link" href="https://gestionaseguroweb.com" target="_blank" rel="noopener">Ir a la web →</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <p class="hero-eyebrow">Diagnóstico gratuito · Regularización 2026</p>
+    <h1 class="hero-title">¿Y ahora qué hago con mi expediente?</h1>
+    <p class="hero-desc">
+      Ya has presentado tu solicitud. Responde 3 preguntas y te decimos exactamente qué paso te toca ahora,
+      qué plazo tienes y por dónde puedes mover tu expediente, tengas o no certificado digital.
+    </p>
+  </section>
+
+  <!-- PROGRESO -->
+  <div class="progress" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" id="progressBar">
+    <div class="progress-step current"></div>
+    <div class="progress-step"></div>
+    <div class="progress-step"></div>
+    <div class="progress-step"></div>
+  </div>
+
+  <!-- CONTENIDO DINÁMICO -->
+  <main id="content" aria-live="polite"></main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>
+      Información basada en el <strong>RD 316/2026</strong> y los Criterios Interpretativos de la DGGM
+      actualizados a 18 mayo 2026. Esta herramienta es orientativa y no sustituye asesoramiento jurídico individualizado.
+    </p>
+    <p style="margin-top: 10px;">
+      Hecho con cariño por <strong>Gestiona Seguro</strong> · <a href="https://gestionaseguroweb.com">gestionaseguroweb.com</a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+/* =========================================================
+   DATOS DE PREGUNTAS
+========================================================= */
+const QUESTIONS = [
+  {
+    id: 'via',
+    num: 'Pregunta 1 de 3',
+    title: '¿Cómo presentaste tu solicitud?',
+    help: 'Si no te acuerdas exactamente, marca la última opción.',
+    options: [
+      { value: 'yo_tele', icon: '👤', title: 'Por mi cuenta, telemáticamente', sub: 'Con Cl@ve o certificado, en Mercurio' },
+      { value: 'yo_pres', icon: '🏤', title: 'Por mi cuenta, en una oficina', sub: 'Correos, Seguridad Social u Oficina de Extranjería' },
+      { value: 'abogado', icon: '⚖️', title: 'Me lo tramitó un abogado o gestor', sub: 'Servicio de pago' },
+      { value: 'recex', icon: '🤝', title: 'Me lo tramitó una ONG o sindicato', sub: 'CEAR, ACCEM, CCOO, UGT, CEPAIM...' },
+      { value: 'no_se', icon: '❓', title: 'No estoy seguro', sub: 'Lo averiguamos juntos en el resultado' },
+    ]
+  },
+  {
+    id: 'fase',
+    num: 'Pregunta 2 de 3',
+    title: '¿En qué punto estás ahora?',
+    help: 'Elige lo último que te ha pasado con tu expediente.',
+    options: [
+      { value: 'justif', icon: '📄', title: 'Solo tengo el justificante de presentación', sub: 'Todavía no he recibido nada más de la Administración' },
+      { value: 'utex', icon: '✉️', title: 'Mi expediente está en trámite', sub: 'Tengo número de expediente y/o comunicación de inicio. Espero la resolución.' },
+      { value: 'req', icon: '⚠️', title: 'Me han pedido más documentos (requerimiento)', sub: 'Tengo que aportar algo en 15 días' },
+      { value: 'ok', icon: '✅', title: 'Ya tengo la resolución de concesión', sub: 'Me han concedido la autorización. Toca pedir la TIE.' },
+      { value: 'ko', icon: '❌', title: 'Me la han denegado', sub: 'Tengo resolución negativa' },
+      { value: 'silencio', icon: '⏳', title: 'Han pasado más de 3 meses sin respuesta', sub: 'Silencio administrativo' },
+    ]
+  },
+  {
+    id: 'clave',
+    num: 'Pregunta 3 de 3',
+    title: '¿Tienes Cl@ve o certificado digital?',
+    help: 'Te indicaremos los canales que mejor te funcionan según tu caso.',
+    options: [
+      { value: 'si', icon: '🔓', title: 'Sí, tengo Cl@ve o certificado', sub: 'Puedo entrar a sedes electrónicas' },
+      { value: 'no', icon: '🔒', title: 'No, todavía no tengo', sub: 'No puedo identificarme online' },
+      { value: 'duda', icon: '🤷', title: 'No sé qué es eso', sub: 'Te lo explicamos en el resultado' },
+    ]
+  },
+];
+
+/* =========================================================
+   MOTOR DE RESULTADO
+   Combina las 3 respuestas y construye una hoja de ruta.
+========================================================= */
+
+const FASE_BASE = {
+  justif: {
+    tag: 'FASE INICIAL · ESPERANDO RESPUESTA',
+    title: 'Has presentado y estás esperando',
+    summary: 'Tu solicitud está registrada pero el procedimiento aún no se ha iniciado oficialmente. La Unidad de Tramitación de Expedientes de Extranjería (UTEX) te enviará una comunicación de inicio cuando reciba tu expediente. Hasta entonces, no puedes trabajar todavía.',
+    actions: [
+      { titulo: 'Guarda tu justificante de presentación', desc: 'Es la prueba de que metiste la solicitud en plazo. Hazle foto, escanéalo y mándatelo por email para tenerlo siempre a mano.' },
+      { titulo: 'Espera la comunicación de inicio de UTEX', desc: 'Es un documento <strong>distinto del justificante</strong>. Suele llegar entre 2 y 6 semanas después. Te asigna número de expediente y NUSS de oficio, y te habilita para trabajar legalmente.' },
+      { titulo: 'Revisa cada semana tus canales de notificación', desc: 'Email, correo postal y, si la marcaste, la DEHú (Dirección Electrónica Habilitada Única). Las notificaciones electrónicas se entienden notificadas a los 10 días aunque no las hayas abierto.' },
+      { titulo: 'No firmes contratos de trabajo aún', desc: 'Hasta que no recibas la comunicación de inicio, no estás habilitado para trabajar legalmente. Firmar antes puede complicarte el expediente.' },
+    ],
+    plazos: [
+      { label: 'Estimación de llegada de la comunicación', time: '2-6 semanas', critical: false },
+    ],
+    alerts: [
+      'Si pasan más de 2 meses sin recibir nada, consulta el estado de tu expediente. Puede que haya un retraso o una incidencia.',
+    ],
+  },
+  utex: {
+    tag: 'PROCEDIMIENTO EN MARCHA · YA PUEDES TRABAJAR',
+    title: '¡Tu procedimiento ya está activo!',
+    summary: 'Importante: tener número de expediente o la comunicación de inicio NO significa que ya te hayan concedido la autorización. Es el inicio formal del procedimiento. La resolución (concesión o denegación) llegará después. Eso sí, la comunicación de inicio de UTEX ya activa derechos importantes: estás habilitado para trabajar en todo el territorio nacional y en cualquier sector, tienes NUSS asignado de oficio y derecho a asistencia sanitaria. Ahora toca esperar la resolución, que debe llegar como máximo 3 meses desde que UTEX recibió tu expediente.',
+    actions: [
+      { titulo: 'Ve a tu centro de salud con la comunicación de UTEX', desc: 'Te tienen que dar la <strong>tarjeta sanitaria</strong>. Lleva también tu pasaporte y empadronamiento.' },
+      { titulo: 'Apúntate al SEPE como demandante de empleo', desc: 'Aunque ya tengas trabajo, estar inscrito te ayuda y es gratis. Necesitarás cita previa.' },
+      { titulo: 'Si firmas un contrato, asegúrate del alta en Seguridad Social', desc: 'Tu empresa debe darte de alta. El alta es obligatoria desde el primer día. Si no te dan de alta, no firmes.' },
+      { titulo: 'Vigila tus notificaciones', desc: 'La resolución puede llegar en cualquier momento (favorable, denegatoria o requerimiento). Revisa email y buzón cada pocos días.' },
+    ],
+    plazos: [
+      { label: 'Plazo máximo de resolución', time: '3 meses desde UTEX', critical: false },
+    ],
+    alerts: [
+      'El plazo de 3 meses <strong>se cuenta desde que UTEX recibió tu expediente</strong>, no desde que tú presentaste. Mira la fecha que aparece en tu comunicación de inicio.',
+    ],
+  },
+  req: {
+    tag: 'URGENTE · TIENES 15 DÍAS',
+    title: 'Tienes que aportar documentación',
+    summary: 'Te han enviado un requerimiento de subsanación. Esto NO significa que vayan a denegarte la solicitud, es una segunda oportunidad para corregir o completar el expediente. Pero tienes un plazo máximo de 15 días. Si no contestas a tiempo, se entiende que desistes y archivan tu expediente.',
+    actions: [
+      { titulo: 'Lee con calma exactamente qué te están pidiendo', desc: 'No improvises. El requerimiento describe los documentos concretos que necesitan. Aporta SOLO lo que piden, ni más ni menos. Si no entiendes algo, pide ayuda a una entidad RECEX o a un abogado.' },
+      { titulo: 'Cuenta los días', desc: 'El plazo es de <strong>15 días naturales</strong> desde la notificación. Si lo recibiste por correo postal, cuenta desde el día siguiente al sello de Correos. Si fue electrónico, desde que lo abriste (o a los 10 días aunque no lo abrieras).' },
+      { titulo: 'Prepara los documentos pedidos', desc: 'Si te piden traducciones o legalizaciones, son lentas. Empieza ya. Si te piden un documento que ya aportaste, vuelve a aportarlo (no des por hecho que lo tienen).' },
+      { titulo: 'Entrega la documentación en plazo', desc: 'Mira la siguiente sección "Canal recomendado" para saber por dónde aportarla en tu caso.' },
+    ],
+    plazos: [
+      { label: 'Plazo para responder al requerimiento', time: '15 días', critical: true },
+    ],
+    alerts: [
+      'Si no contestas en plazo, <strong>tu expediente se archivará por desistimiento</strong>. No esperes al último día.',
+      'Si te piden el certificado de antecedentes del país de origen y aún no ha llegado, aporta el justificante de que lo has solicitado. La Administración puede activar la vía diplomática si pasa más de 1 mes.',
+    ],
+  },
+  ok: {
+    tag: 'CONCEDIDA · 1 MES PARA LA TIE',
+    title: '¡Te han concedido la autorización!',
+    summary: 'Tienes resolución favorable. La autorización ya está concedida con plenos derechos: puedes trabajar y residir desde hoy, no necesitas esperar a tener la tarjeta física. Pero tienes 1 mes desde la notificación para pedir cita de toma de huellas (TIE) y darte de alta en Seguridad Social si vas a trabajar. La cita es el principal cuello de botella ahora mismo, así que más abajo encontrarás una guía específica para conseguirla aunque la web diga que no hay disponibilidad.',
+    actions: [
+      { titulo: 'Paga ya la tasa modelo 790 código 012', desc: 'Cuesta unos <strong>12 €</strong> y se paga en cualquier banco o por internet con el código que genera la sede. No pagues a "gestores" que ofrecen pagártela: el trámite es gratuito de por sí (salvo la tasa), nadie debería cobrarte por ello.' },
+      { titulo: 'Prepara la documentación para la cita', desc: 'EX-17 cumplimentado, pasaporte original y fotocopia, resolución favorable impresa, certificado de empadronamiento actualizado (menos de 3 meses), fotografía tipo carné en color con fondo blanco, justificante de pago de la tasa 790-012.' },
+      { titulo: 'Pide cita en la sede oficial', desc: 'Entra en <code>icp.administracionelectronica.gob.es</code> → selecciona Madrid → "Trámites Policía Nacional" → "POLICÍA – TOMA DE HUELLAS (EXPEDICIÓN DE TIE)". <strong>Marca "Cualquier oficina"</strong> para multiplicar tus opciones.' },
+      { titulo: 'Si no hay citas: aplica la guía del recuadro de abajo', desc: 'Las citas en Madrid están agotadas durante semanas. No pagues a nadie: hay alternativas oficiales gratuitas. Lee atentamente la sección <strong>"¿Y si no consigues cita?"</strong> que aparece a continuación.' },
+      { titulo: 'Da de alta el contrato en Seguridad Social', desc: 'Si ya tienes oferta de trabajo, el alta debe formalizarse <strong>en el mismo mes</strong> desde la notificación de la concesión. Sin alta, la autorización de trabajo pierde eficacia. Esto es independiente de tener o no la TIE física.' },
+    ],
+    plazos: [
+      { label: 'Pedir cita de huellas y alta en SS', time: '1 mes desde notificación', critical: true },
+      { label: 'Vigencia de la autorización inicial', time: '1 año', critical: false },
+    ],
+    alerts: [
+      '<strong>NO PAGUES POR UNA CITA</strong>. La toma de huellas es un trámite GRATUITO (solo pagas la tasa 790-012 al banco). Hay redes que venden citas entre 50 y 500 €. La Policía Nacional ha detenido a varias de estas mafias y la operación sigue activa. Si te ofrecen una cita por dinero, es ilegal.',
+      'Aunque no tengas todavía la TIE física, <strong>puedes trabajar y residir desde la concesión</strong>. La resolución favorable es suficiente mientras tramitas la tarjeta.',
+      'Tu autorización dura <strong>1 año</strong>. En los 2 meses anteriores a su expiración tienes que pedir modificación o prórroga. Apúntalo ya en el calendario.',
+    ],
+  },
+  ko: {
+    tag: 'ATENCIÓN · TIENES PLAZO PARA RECURRIR',
+    title: 'Han denegado tu autorización',
+    summary: 'La denegación no es el final del camino, pero hay que actuar rápido. Tienes 1 mes para presentar recurso de reposición (potestativo) o 2 meses para acudir a la vía contencioso-administrativa. La denegación no implica expulsión automática, pero conviene tener asesoramiento profesional desde ya.',
+    actions: [
+      { titulo: 'Lee la resolución con atención', desc: 'En la resolución aparece <strong>el motivo concreto</strong> de la denegación. Esto es clave: el recurso se construye combatiendo ese motivo específico.' },
+      { titulo: 'Busca asesoramiento profesional ya', desc: 'En una denegación, normalmente conviene tener abogado o entidad RECEX. El recurso tiene técnica jurídica y plazos cortos. Si no puedes pagar abogado, las entidades RECEX y los colegios de abogados (turno de oficio) ofrecen alternativas.' },
+      { titulo: 'Reúne nueva documentación si la hubo', desc: 'Si la denegación se debió a falta de prueba (empadronamiento, antecedentes, contrato...), el recurso es el momento de reforzarla. Aporta lo que faltaba o lo que estaba mal.' },
+      { titulo: 'Decide qué vía de recurso usar', desc: '<strong>Reposición</strong>: ante el mismo órgano que denegó, 1 mes, no obligatorio. <strong>Contencioso-administrativo</strong>: vía judicial, 2 meses, requiere abogado y procurador. La estrategia depende del caso.' },
+    ],
+    plazos: [
+      { label: 'Recurso de reposición (potestativo)', time: '1 mes', critical: true },
+      { label: 'Recurso contencioso-administrativo', time: '2 meses', critical: true },
+    ],
+    alerts: [
+      'No esperes a "ver qué pasa". Los plazos de recurso <strong>no se pueden ampliar</strong>. Si los pierdes, la denegación queda firme.',
+      'La denegación NO conlleva expulsión automática. Es un acto administrativo civil. Pero hay que actuar para no quedar en situación irregular.',
+    ],
+  },
+  silencio: {
+    tag: 'SILENCIO ADMINISTRATIVO · ACTÚA',
+    title: 'Han pasado 3 meses sin respuesta',
+    summary: 'El silencio administrativo en la regularización extraordinaria es NEGATIVO. Es decir, si pasan 3 meses sin que te resuelvan, se entiende que te la han denegado a efectos legales. Pero antes de dar nada por perdido, hay que confirmar varias cosas: cuándo entró tu expediente en UTEX y si hay alguna comunicación que se te haya pasado.',
+    actions: [
+      { titulo: 'Confirma cuándo entró tu expediente en UTEX', desc: 'El plazo de 3 meses NO empieza cuando tú presentaste, sino cuando UTEX recibió. Mira la fecha en tu comunicación de inicio. Si entró tarde, el plazo aún no se ha cumplido.' },
+      { titulo: 'Revisa todas tus notificaciones a fondo', desc: 'Email, DEHú, buzón postal, y si te presentó otro: contacta con él. A veces hay una resolución o requerimiento que pasó desapercibido.' },
+      { titulo: 'Consulta el estado del expediente', desc: 'Por SMS al <code>600 124 377</code> (el servicio es gratuito por parte de la Administración; tu operador puede facturar el SMS según tu tarifa, normalmente sale 0€ si tu tarifa incluye SMS), por web (infoext2 con formulario), o por teléfono al 060 (atención: el 060 NO es gratuito, lo cobra tu operador según tarifa). Mira si dice "Resuelto Favorable", "Resuelto Desfavorable" o sigue "En trámite".' },
+      { titulo: 'Si efectivamente hay silencio negativo, considera recurso', desc: 'Puedes interponer recurso contencioso-administrativo en el plazo de 6 meses desde que se cumplió el silencio. Necesitas abogado.' },
+    ],
+    plazos: [
+      { label: 'Plazo para recurso contencioso por silencio', time: '6 meses', critical: false },
+    ],
+    alerts: [
+      'A veces el silencio se debe a saturación administrativa, no a una denegación real. Si te resuelven después aunque hayan pasado los 3 meses, esa resolución sigue siendo válida.',
+      'No presentes una nueva solicitud sin asesoramiento. Tener dos expedientes abiertos puede provocar archivo del nuevo.',
+    ],
+  },
+};
+
+const VIA_CONTEXT = {
+  yo_tele: {
+    notif_icon: '🔐',
+    notif_headline: 'A TI, por vía electrónica',
+    notif_detail: 'Las notificaciones oficiales se hacen por <strong>DEHú</strong> (Dirección Electrónica Habilitada única) y/o por <strong>Carpeta Ciudadana</strong>. Necesitas Cl@ve o certificado digital para verlas. A los <strong>10 días naturales</strong> se entienden notificadas aunque no las hayas abierto.',
+    canal_action: 'Entra a <code>notificaciones.060.es</code> (DEHú) o a Carpeta Ciudadana con tu Cl@ve o certificado para ver todas tus notificaciones. En Mercurio puedes ver además la documentación aportada, requerimientos y resoluciones pulsando "Mis expedientes".',
+  },
+  yo_pres: {
+    notif_icon: '📮',
+    notif_headline: 'A TI, por correo postal',
+    notif_detail: 'Las notificaciones oficiales te llegan como <strong>carta certificada con acuse de recibo</strong> al domicilio que pusiste en la solicitud. Asegúrate de que tu nombre esté visible en el buzón y de que alguien pueda recogerlas si te ausentas.',
+    canal_action: 'Como presentaste en una oficina, revisa periódicamente el buzón postal. Si te mudas, comunícalo de inmediato a la UTEX por escrito. Para consultas rápidas (sin valor legal pero útiles), usa el SMS al 600 124 377 o la web infoext2.',
+  },
+  abogado: {
+    notif_icon: '⚖️',
+    notif_headline: 'A TU ABOGADO/GESTOR, no a ti',
+    notif_detail: 'Cuando hay representación, las notificaciones se dirigen al representante (Ley 39/2015). Tu abogado/gestor es quien recibe los avisos oficiales y tiene la responsabilidad de comunicártelos.',
+    canal_action: 'Pídele copia de TODO lo que haya recibido en tu expediente. Si no te ha comunicado nada en semanas, contáctalo ya. Si has perdido contacto, pide cita urgente con otra asesoría o entidad RECEX.',
+  },
+  recex: {
+    notif_icon: '🤝',
+    notif_headline: 'A LA ENTIDAD RECEX, no a ti',
+    notif_detail: 'La persona habilitada de la entidad (CEAR, ACCEM, CCOO, UGT, CEPAIM, etc.) que firmó tu solicitud es la que recibe las notificaciones oficiales. Tiene la responsabilidad de comunicártelas.',
+    canal_action: 'Contacta con la entidad que te tramitó y pide cita para revisar tu expediente. Es gratuito y forma parte de su servicio. Pide siempre copia de los documentos recibidos.',
+  },
+  no_se: {
+    notif_icon: '❓',
+    notif_headline: 'Primero hay que averiguarlo',
+    notif_detail: 'Busca tu justificante de presentación: en la parte inferior aparece quién firmó. Si firmaste tú, las notificaciones te llegan a ti. Si firmó otra persona (abogado, gestor o entidad), le llegan a esa persona.',
+    canal_action: 'Mientras lo averiguas, consulta el estado del expediente por SMS al 600 124 377 o por web (infoext2 → "Entrar con formulario"). Solo necesitas tu NIE, la fecha de presentación y el año de nacimiento.',
+  },
+};
+
+const CLAVE_CHANNELS = {
+  si: {
+    title: 'Tienes Cl@ve o certificado: puedes usar la sede electrónica',
+    channels: [
+      {
+        icon: '🔐',
+        name: 'Sede electrónica Mercurio',
+        purpose: 'VER TU EXPEDIENTE COMPLETO',
+        how: 'Entra con Cl@ve o certificado y pulsa <code>Mis expedientes</code>. Verás documentos aportados, requerimientos y resoluciones. Para subsanar un requerimiento, aporta los documentos desde ahí mismo.',
+      },
+      {
+        icon: '🗂️',
+        name: 'Mi Carpeta Ciudadana',
+        purpose: 'CONSULTAR TODOS TUS TRÁMITES',
+        how: 'Entra en <code>carpetaciudadana.gob.es</code> con tu Cl@ve. Verás también notificaciones electrónicas pendientes.',
+      },
+    ],
+  },
+  no: {
+    title: 'Sin Cl@ve: estos tres canales hacen casi todo lo que necesitas',
+    channels: [
+      {
+        icon: '🌐',
+        name: 'Web infoext2',
+        purpose: 'CONSULTAR ESTADO',
+        how: 'Entra en <code>sede.administracionespublicas.gob.es/infoext2</code> → <strong>Entrar con formulario</strong>. Solo necesitas: NIE + fecha de presentación + año de nacimiento.',
+      },
+      {
+        icon: '📱',
+        name: 'SMS al 600 124 377',
+        purpose: 'CONSULTAR ESTADO POR MÓVIL',
+        how: 'Envía: <code>NIE [tu número]</code>. El servicio es gratuito por parte de la Administración; el SMS lo factura tu operador según tu tarifa (si tienes SMS incluidos sale 0€).',
+      },
+      {
+        icon: '🏤',
+        name: 'Cualquier oficina de Correos',
+        purpose: 'SUBSANAR UN REQUERIMIENTO',
+        how: 'Ve a una de las <strong>383 oficinas de Correos habilitadas, SIN cita previa</strong>. Confirmado por la Secretaría de Estado de Migraciones el 22 de mayo de 2026.',
+      },
+    ],
+  },
+  duda: {
+    title: 'No te preocupes: empieza por los canales sin certificado',
+    channels: [
+      {
+        icon: '💡',
+        name: '¿Qué es Cl@ve?',
+        purpose: 'PRIMERO ENTIÉNDELO',
+        how: 'Cl@ve es un sistema para identificarte online en servicios públicos. Si no la tienes, puedes hacer casi todo igualmente. Cuando ya tengas NUSS (te lo dan con la comunicación de inicio), podrás solicitarla en oficinas de la Agencia Tributaria, Tesorería o SEPE.',
+      },
+      {
+        icon: '🌐',
+        name: 'Web infoext2',
+        purpose: 'CONSULTAR ESTADO',
+        how: 'Entra en <code>sede.administracionespublicas.gob.es/infoext2</code> → <strong>Entrar con formulario</strong>. Solo NIE + fecha de presentación + año de nacimiento.',
+      },
+      {
+        icon: '📱',
+        name: 'SMS al 600 124 377',
+        purpose: 'CONSULTAR ESTADO POR MÓVIL',
+        how: 'Envía: <code>NIE [tu número]</code>. Gratuito por la Administración; el SMS lo factura tu operador.',
+      },
+      {
+        icon: '🏤',
+        name: 'Cualquier oficina de Correos',
+        purpose: 'SUBSANAR UN REQUERIMIENTO',
+        how: 'Cualquiera de las <strong>383 oficinas habilitadas, SIN cita previa</strong>.',
+      },
+    ],
+  },
+};
+
+const RESOURCES_BASE = [
+  { title: 'Portal oficial de la Regularización', url: 'inclusion.gob.es/regularizacion', href: 'https://www.inclusion.gob.es/regularizacion' },
+  { title: 'Consultar estado del expediente (sin certificado)', url: 'sede.administracionespublicas.gob.es/infoext2', href: 'https://sede.administracionespublicas.gob.es/infoext2/' },
+  { title: 'Buscar notificaciones por NIE en el BOE (TEU)', url: 'boe.es/diario_boe/notificaciones.php', href: 'https://www.boe.es/diario_boe/notificaciones.php' },
+  { title: 'Gestiona Seguro · Guía completa', url: 'gestionaseguroweb.com', href: 'https://gestionaseguroweb.com' },
+];
+
+const RESOURCES_LEGAL = [
+  { title: 'Colegio de Abogados de Madrid (verificar colegiación)', url: 'icam.es', href: 'https://www.icam.es' },
+  { title: 'Turno de oficio de extranjería', url: 'icam.es/turno-oficio', href: 'https://www.icam.es' },
+];
+
+const RESOURCES_SOS = [
+  { title: 'Teléfono 060 (información oficial · NO gratuito)', url: 'Coste según tu operador. L-V 09:00-19:00', href: 'tel:060' },
+  { title: 'SMS al 600 124 377 (servicio gratuito de la Administración)', url: 'Tu operador puede facturar el SMS según tu tarifa. Envía: NIE [tu número]', href: 'sms:600124377' },
+];
+
+/* =========================================================
+   CONSTRUCCIÓN DEL RESULTADO
+========================================================= */
+function buildResult(state) {
+  const base = FASE_BASE[state.fase];
+  const via = VIA_CONTEXT[state.via];
+  const channel = CLAVE_CHANNELS[state.clave];
+
+  // Acciones base + ajustes según vía y clave
+  const actions = [...base.actions];
+
+  // Si tiene representante, añadimos una acción específica al principio (excepto si es ok/ko/silencio donde el contacto con el rep ya es el tema)
+  if ((state.via === 'abogado' || state.via === 'recex') && (state.fase === 'justif' || state.fase === 'utex' || state.fase === 'req')) {
+    actions.unshift({
+      titulo: 'Mantén contacto activo con quien te tramitó',
+      desc: 'Pídele copia del expediente y dile que te avise por WhatsApp/llamada cada vez que reciba algo. Las notificaciones le llegan a él, no a ti.',
+    });
+  }
+
+  // Alertas combinadas
+  const alerts = [...base.alerts];
+  if (state.via === 'abogado' || state.via === 'recex') {
+    alerts.unshift('Las notificaciones de tu expediente NO te llegan a ti directamente. Le llegan a quien te representó. Si pierdes contacto con esa persona, podrías perder un plazo crítico sin enterarte.');
+  }
+  if (state.clave === 'no' && state.fase === 'req') {
+    alerts.unshift('Aunque no tengas Cl@ve, puedes subsanar el requerimiento yendo a <strong>cualquier oficina de Correos habilitada SIN cita previa</strong>. Es lo más rápido en tu caso.');
+  }
+
+  return {
+    tag: base.tag,
+    title: base.title,
+    summary: base.summary,
+    actions,
+    plazos: base.plazos,
+    notif: { icon: via.notif_icon, headline: via.notif_headline, detail: via.notif_detail },
+    canal: { title: channel.title, channels: channel.channels },
+    alerts,
+    resources: getResources(state),
+    showCitaGuide: state.fase === 'ok',
+  };
+}
+
+function getResources(state) {
+  const res = [...RESOURCES_BASE];
+  if (state.fase === 'ko') res.push(...RESOURCES_LEGAL);
+  if (state.clave === 'no' || state.clave === 'duda') res.push(...RESOURCES_SOS);
+  return res;
+}
+
+/* =========================================================
+   RENDERIZADO
+========================================================= */
+const state = { paso: 0, via: null, fase: null, clave: null };
+const $content = document.getElementById('content');
+const $progress = document.getElementById('progressBar');
+
+function updateProgress() {
+  const steps = $progress.querySelectorAll('.progress-step');
+  steps.forEach((s, i) => {
+    s.classList.remove('active', 'current');
+    if (i < state.paso) s.classList.add('active');
+    if (i === state.paso) s.classList.add('current');
+  });
+  $progress.setAttribute('aria-valuenow', state.paso + 1);
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[state.paso];
+  // Hero solo en la primera pantalla
+  const hero = document.getElementById('hero');
+  if (hero) hero.style.display = state.paso === 0 ? '' : 'none';
+  $content.innerHTML = `
+    <article class="question-card">
+      <p class="question-num">${q.num}</p>
+      <h2 class="question-text">${q.title}</h2>
+      <p class="question-help">${q.help}</p>
+      <div class="options" role="radiogroup" aria-label="${q.title}">
+        ${q.options.map((opt, i) => `
+          <button class="option" data-value="${opt.value}" role="radio" aria-checked="false">
+            <span class="option-icon" aria-hidden="true">${opt.icon}</span>
+            <span class="option-text">
+              <span class="option-title">${opt.title}</span>
+              <span class="option-sub">${opt.sub}</span>
+            </span>
+          </button>
+        `).join('')}
+      </div>
+    </article>
+    <div class="nav-row">
+      <button class="nav-btn" id="backBtn" ${state.paso === 0 ? 'disabled' : ''}>← Atrás</button>
+      <span class="progress-label">Paso ${state.paso + 1} / 3</span>
+    </div>
+  `;
+
+  // Event listeners
+  $content.querySelectorAll('.option').forEach(btn => {
+    btn.addEventListener('click', () => selectAnswer(q.id, btn.dataset.value));
+  });
+  document.getElementById('backBtn').addEventListener('click', goBack);
+
+  updateProgress();
+  scrollUp();
+}
+
+function selectAnswer(questionId, value) {
+  state[questionId] = value;
+  state.paso += 1;
+  if (state.paso < QUESTIONS.length) {
+    renderQuestion();
+  } else {
+    renderResult();
+  }
+}
+
+function goBack() {
+  if (state.paso > 0) {
+    state.paso -= 1;
+    renderQuestion();
+  }
+}
+
+function renderResult() {
+  const r = buildResult(state);
+  // Ocultar hero en el resultado
+  const hero = document.getElementById('hero');
+  if (hero) hero.style.display = 'none';
+  // Progreso al 100%
+  state.paso = 3;
+  updateProgress();
+  // El último segmento del progress es el resultado
+  $progress.querySelectorAll('.progress-step').forEach((s, i) => {
+    s.classList.remove('current');
+    s.classList.add('active');
+  });
+
+  $content.innerHTML = `
+    <section class="result">
+
+      <header class="result-header">
+        <div class="result-tag">${r.tag}</div>
+        <h2 class="result-title">${r.title}</h2>
+        <p class="result-summary">${r.summary}</p>
+      </header>
+
+      ${r.plazos && r.plazos.length ? `
+      <div class="section is-deadline">
+        <h3 class="section-title"><span class="section-title-icon" aria-hidden="true">⏱</span> Plazos críticos</h3>
+        <div class="deadlines">
+          ${r.plazos.map(p => `
+            <div class="deadline ${p.critical ? 'critical' : ''}">
+              <span class="deadline-label">${p.label}</span>
+              <span class="deadline-time">${p.time}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      ` : ''}
+
+      <div class="section">
+        <h3 class="section-title"><span class="section-title-icon" aria-hidden="true">✓</span> Qué hacer ahora</h3>
+        <ol class="actions">
+          ${r.actions.map((a, i) => `
+            <li class="action">
+              <span class="action-num" aria-hidden="true">${i + 1}</span>
+              <div class="action-content">
+                <p class="action-title">${a.titulo}</p>
+                <p class="action-desc">${a.desc}</p>
+              </div>
+            </li>
+          `).join('')}
+        </ol>
+      </div>
+
+      <div class="section is-channel">
+        <h3 class="section-title"><span class="section-title-icon" aria-hidden="true">📡</span> Quién recibe las notificaciones</h3>
+
+        <div class="notif-card">
+          <div class="notif-card-icon" aria-hidden="true">${r.notif.icon}</div>
+          <div class="notif-card-body">
+            <p class="notif-card-headline">${r.notif.headline}</p>
+            <p class="notif-card-detail">${r.notif.detail}</p>
+          </div>
+        </div>
+
+        <p class="notif-types-label">Los 3 tipos de mensaje que puedes recibir</p>
+        <div class="notif-types">
+          <div class="notif-type notif-type-official">
+            <div class="notif-type-head">
+              <span class="notif-type-icon" aria-hidden="true">📜</span>
+              <span class="notif-type-tag">NOTIFICACIÓN OFICIAL</span>
+            </div>
+            <p class="notif-type-desc">
+              <strong>Tiene valor legal y plazos.</strong> Es lo importante: comunicación
+              de inicio, requerimientos, resolución. Llega por correo postal o por DEHú/Carpeta
+              Ciudadana, según tu vía.
+            </p>
+          </div>
+          <div class="notif-type notif-type-aviso">
+            <div class="notif-type-head">
+              <span class="notif-type-icon" aria-hidden="true">📧</span>
+              <span class="notif-type-tag">AVISO POR EMAIL</span>
+            </div>
+            <p class="notif-type-desc">
+              <strong>NO es notificación oficial.</strong> Solo te avisa de que tienes
+              una notificación esperándote en otro sitio. Si no lo abres, los plazos
+              siguen corriendo igual (Ley 39/2015, art. 41).
+            </p>
+          </div>
+          <div class="notif-type notif-type-info">
+            <div class="notif-type-head">
+              <span class="notif-type-icon" aria-hidden="true">📋</span>
+              <span class="notif-type-tag">COMUNICACIONES PUNTUALES</span>
+            </div>
+            <p class="notif-type-desc">
+              Por ejemplo, el <strong>cuestionario sociolaboral</strong>. Llega por
+              email a quienes lo facilitaron. No tiene plazo crítico, pero conviene
+              contestarlo.
+            </p>
+          </div>
+        </div>
+
+        <p class="notif-types-label">Cómo consultar tu expediente</p>
+        <p class="canal-intro">${r.canal.title}</p>
+        <div class="canal-list">
+          ${r.canal.channels.map(c => `
+            <div class="canal-card">
+              <div class="canal-card-icon" aria-hidden="true">${c.icon}</div>
+              <div class="canal-card-body">
+                <p class="canal-card-name">${c.name}</p>
+                <span class="canal-card-tag">${c.purpose}</span>
+                <p class="canal-card-how">${c.how}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      ${renderVigilancia()}
+
+      ${r.alerts && r.alerts.length ? `
+      <div class="section is-warning">
+        <h3 class="section-title"><span class="section-title-icon" aria-hidden="true">⚠</span> Importante: vigila esto</h3>
+        <ul class="alerts">
+          ${r.alerts.map(a => `<li class="alert">${a}</li>`).join('')}
+        </ul>
+      </div>
+      ` : ''}
+
+      ${r.showCitaGuide ? renderCitaGuide() : ''}
+
+      <div class="section is-resources">
+        <h3 class="section-title"><span class="section-title-icon" aria-hidden="true">🔗</span> Recursos útiles</h3>
+        <div class="resources">
+          ${r.resources.map(res => `
+            <a class="resource" href="${res.href}" target="_blank" rel="noopener">
+              <div class="resource-info">
+                <p class="resource-title">${res.title}</p>
+                <p class="resource-url">${res.url}</p>
+              </div>
+              <span class="resource-arrow" aria-hidden="true">→</span>
+            </a>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="result-cta">
+        <button class="btn secondary" id="restartBtn">↺ Empezar de nuevo</button>
+        <a class="btn" href="https://gestionaseguroweb.com" target="_blank" rel="noopener">Ir a Gestiona Seguro</a>
+      </div>
+
+    </section>
+  `;
+
+  document.getElementById('restartBtn').addEventListener('click', restart);
+  // Listeners de la guía de citas (solo existen si la fase es 'ok')
+  const copyBtn = document.getElementById('copyTplBtn');
+  const printBtn = document.getElementById('printTplBtn');
+  if (copyBtn) copyBtn.addEventListener('click', copyTemplate);
+  if (printBtn) printBtn.addEventListener('click', printTemplate);
+  scrollUp();
+}
+
+/* =========================================================
+   VIGILANCIA ACTIVA DEL EXPEDIENTE
+   Infografía del flujo + 5 hábitos en acordeón (details/summary).
+   Aparece en todas las combinaciones del resultado.
+========================================================= */
+function renderVigilancia() {
+  return `
+    <section class="vigilancia">
+      <p class="vigilancia-eyebrow">No pierdas tu expediente</p>
+      <h3 class="vigilancia-title">Cómo vigilar que te llegan las notificaciones</h3>
+      <p class="vigilancia-pitch">
+        <strong>Si no te enteras de una carta o publicación oficial, los plazos siguen
+        corriendo igual.</strong> Mira primero cómo te llegan las notificaciones, y luego
+        revisa los 5 hábitos que te protegen.
+      </p>
+
+      <p class="vigilancia-section-label">El recorrido de una notificación</p>
+      <div class="flujo" aria-label="Diagrama del flujo de una notificación administrativa">
+
+        <div class="flujo-paso inicio">
+          <div class="flujo-icon" aria-hidden="true">✉️</div>
+          <div class="flujo-text">
+            <strong>1. Te envían una carta certificada</strong>
+            <span>Al domicilio que pusiste en tu solicitud</span>
+          </div>
+        </div>
+
+        <div class="flujo-arrow" aria-hidden="true">▼</div>
+
+        <div class="flujo-split">
+          <div class="flujo-split-line"></div>
+          <div class="flujo-split-label">¿Te la entregan?</div>
+          <div class="flujo-split-line"></div>
+        </div>
+
+        <div class="flujo-paso ok">
+          <div class="flujo-icon" aria-hidden="true">✅</div>
+          <div class="flujo-text">
+            <strong>SÍ: la recibes</strong>
+            <span>Tú o alguien mayor de 14 años en tu casa firma el acuse</span>
+          </div>
+        </div>
+
+        <div class="flujo-paso alerta">
+          <div class="flujo-icon" aria-hidden="true">📰</div>
+          <div class="flujo-text">
+            <strong>NO: la publican en el BOE</strong>
+            <span>En el Tablón Edictal Único (TEU). Los plazos corren igual</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="vigilancia-section-label">5 hábitos para no perdértela</p>
+      <div class="habitos-list">
+
+        <details class="habito-card">
+          <summary>
+            <span class="habito-icon" aria-hidden="true">📬</span>
+            <span class="habito-summary-text">Vigila tu buzón 2-3 veces por semana</span>
+            <span class="habito-toggle" aria-hidden="true">+</span>
+          </summary>
+          <div class="habito-content">
+            La notificación oficial llega como <strong>carta certificada con acuse de
+            recibo</strong>. Si no estás cuando viene el cartero, deja un aviso y vuelve un
+            segundo día. Si tampoco estás, la carta queda en la oficina de Correos
+            <strong>15 días naturales</strong>. Pasado ese plazo, vuelve al remitente.
+            Asegúrate de que tu nombre esté visible en el buzón, sobre todo si vives en
+            piso compartido.
+          </div>
+        </details>
+
+        <details class="habito-card">
+          <summary>
+            <span class="habito-icon" aria-hidden="true">👥</span>
+            <span class="habito-summary-text">Si te ausentas, deja a alguien al cuidado</span>
+            <span class="habito-toggle" aria-hidden="true">+</span>
+          </summary>
+          <div class="habito-content">
+            La Ley 39/2015 (art. 42.2) permite que <strong>cualquier persona mayor de 14
+            años</strong> que esté en tu domicilio y se identifique pueda recoger la carta
+            certificada. Pareja, hijo/a mayor de 14, compañero/a de piso de confianza.
+            Avísale de que estás esperando algo importante de extranjería.
+          </div>
+        </details>
+
+        <details class="habito-card">
+          <summary>
+            <span class="habito-icon" aria-hidden="true">📱</span>
+            <span class="habito-summary-text">Consulta el estado cada semana</span>
+            <span class="habito-toggle" aria-hidden="true">+</span>
+          </summary>
+          <div class="habito-content">
+            Por SMS al <code>600 124 377</code> o en la web
+            <code>infoext2</code> con formulario (solo NIE + fecha de presentación + año
+            de nacimiento). Si pasa de <em>"En trámite"</em> a <em>"Resuelto"</em> sin
+            haber recibido carta, suena la alarma: ve cuanto antes a la Oficina de
+            Extranjería a preguntar.
+          </div>
+        </details>
+
+        <details class="habito-card">
+          <summary>
+            <span class="habito-icon" aria-hidden="true">🔎</span>
+            <span class="habito-summary-text">Busca tu NIE en el BOE cada 15 días</span>
+            <span class="habito-toggle" aria-hidden="true">+</span>
+          </summary>
+          <div class="habito-content">
+            Entra en el Tablón Edictal Único del BOE
+            (<code>boe.es/diario_boe/notificaciones.php</code>) e introduce tu NIE en
+            el buscador. <strong>No necesitas Cl@ve.</strong> Si aparece un anuncio a tu
+            nombre, descárgalo de inmediato: ya estás notificado y los plazos están
+            corriendo. Base legal: art. 44 Ley 39/2015.
+          </div>
+        </details>
+
+        <details class="habito-card">
+          <summary>
+            <span class="habito-icon" aria-hidden="true">🏠</span>
+            <span class="habito-summary-text">Si te mudas, comunícalo por escrito</span>
+            <span class="habito-toggle" aria-hidden="true">+</span>
+          </summary>
+          <div class="habito-content">
+            Cambiar el empadronamiento <strong>no basta</strong>: la Administración no
+            se entera automáticamente. Tienes que presentar un escrito de comunicación
+            de cambio de domicilio en una oficina de Correos, oficina de asistencia al
+            ciudadano o sede electrónica. Indica el número de expediente y tu nuevo
+            domicilio a efectos de notificación.
+          </div>
+        </details>
+
+      </div>
+
+      <a class="vigilancia-cta" href="https://www.boe.es/diario_boe/notificaciones.php" target="_blank" rel="noopener">
+        <div class="vigilancia-cta-text">
+          <strong>Buscar mi NIE en el BOE</strong>
+          <span>Tablón Edictal Único · Acceso libre y gratuito</span>
+        </div>
+        <span class="vigilancia-cta-arrow" aria-hidden="true">→</span>
+      </a>
+
+    </section>
+  `;
+}
+function renderCitaGuide() {
+  return `
+    <section class="guide-cita" id="citaGuide">
+      <p class="guide-cita-eyebrow">Si la web dice "no hay citas disponibles"</p>
+      <h3 class="guide-cita-title">¿Y si no consigues cita?</h3>
+      <p class="guide-cita-intro">
+        Las citas para toma de huellas en Madrid están agotadas durante semanas y hay
+        redes organizadas que las acaparan con bots para venderlas entre 50 y 500 €.
+        El trámite es <strong>gratuito</strong> y existen alternativas oficiales. Esta es la guía:
+      </p>
+
+      <div class="guide-tabs">
+
+        <div class="guide-block">
+          <div class="guide-block-head">
+            <span class="guide-block-num">1</span>
+            <h4 class="guide-block-title">Hora dorada: revisa entre las 8:00 y las 9:00</h4>
+          </div>
+          <p class="guide-block-body">
+            Es cuando se vuelcan las cancelaciones del día anterior. Otros momentos buenos:
+            <strong>viernes por la tarde</strong> (citas para la semana siguiente) y
+            <strong>de madrugada</strong> (cargas automáticas del sistema). En la sede,
+            marca <strong>"Cualquier oficina"</strong> en el desplegable para multiplicar opciones.
+          </p>
+        </div>
+
+        <div class="guide-block">
+          <div class="guide-block-head">
+            <span class="guide-block-num">2</span>
+            <h4 class="guide-block-title">Comisarías alternativas dentro de Madrid</h4>
+          </div>
+          <p class="guide-block-body">
+            Las centrales (Moratalaz, Canillejas, Vallecas, Aluche) están saturadas.
+            Las comisarías de las coronas metropolitanas suelen tener más hueco:
+          </p>
+          <ul class="chip-list">
+            <li>Alcobendas</li>
+            <li>Getafe</li>
+            <li>Móstoles</li>
+            <li>Alcalá de Henares</li>
+            <li>Valdemoro</li>
+            <li>Leganés</li>
+          </ul>
+        </div>
+
+        <div class="guide-block">
+          <div class="guide-block-head">
+            <span class="guide-block-num">3</span>
+            <h4 class="guide-block-title">Provincias cercanas con buena disponibilidad</h4>
+          </div>
+          <p class="guide-block-body">
+            Para autorizaciones iniciales tramitadas por UTEX (regularización 2026), muchas
+            comisarías de provincias cercanas atienden sin problema porque el expediente no es
+            provincial. <strong>Llama antes</strong> a la comisaría de destino para confirmar disponibilidad.
+          </p>
+          <ul class="chip-list">
+            <li>Toledo · 30 min en AVE</li>
+            <li>Guadalajara · 55 min en Cercanías</li>
+            <li>Segovia · 27 min en AVE</li>
+          </ul>
+        </div>
+
+        <div class="guide-block">
+          <div class="guide-block-head">
+            <span class="guide-block-num">4</span>
+            <h4 class="guide-block-title">Documenta todos los intentos fallidos</h4>
+          </div>
+          <p class="guide-block-body">
+            Haz <strong>capturas de pantalla con fecha y hora visibles</strong> cada vez que
+            entres a buscar cita y veas "no hay disponibilidad". Una al día como mínimo.
+            Estas capturas son la prueba clave para acreditar lo que en derecho administrativo se
+            llama <strong>"imposibilidad manifiesta"</strong> de cumplir el plazo por causa ajena a tu voluntad.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="legal-box">
+        <p class="legal-eyebrow">COBERTURA LEGAL · LEY 39/2015</p>
+        <h4 class="legal-title">Si el plazo de 1 mes vence sin cita, no pierdes el derecho</h4>
+        <p class="legal-text">
+          El <strong>artículo 32 de la Ley 39/2015</strong> permite la ampliación de los
+          plazos administrativos cuando la imposibilidad de cumplirlos sea por causa imputable
+          a la propia Administración. Tienes que <strong>presentar un escrito formal</strong>
+          comunicando la imposibilidad y solicitando la ampliación. Lo puedes meter en cualquier
+          registro público: <strong>Correos, oficinas de asistencia al ciudadano o sede electrónica</strong>.
+          Si después consigues cita, lleva todo impreso a la comisaría.
+        </p>
+      </div>
+
+      <div class="template-box">
+        <div class="template-header">
+          <h4 class="template-header-title">📄 Plantilla de escrito de imposibilidad</h4>
+          <div class="template-actions-row">
+            <button class="template-btn" id="copyTplBtn">Copiar</button>
+            <button class="template-btn" id="printTplBtn">Imprimir</button>
+          </div>
+        </div>
+        <div class="template-body" id="templateBody">A la Brigada Provincial de Extranjería y Documentación de Madrid
+
+D./Dña. <span class="template-fill">[Nombre y apellidos]</span>, con NIE <span class="template-fill">[número de NIE]</span>, domicilio en <span class="template-fill">[dirección completa]</span>, teléfono <span class="template-fill">[teléfono]</span>, ante esta Brigada comparezco y, como mejor proceda en Derecho,
+
+<strong>EXPONE</strong>
+
+PRIMERO. Que mediante resolución de fecha <span class="template-fill">[fecha de la notificación de concesión]</span>, dictada en el expediente nº <span class="template-fill">[número de expediente]</span> por la Dirección General de Gestión Migratoria, se concedió la autorización de residencia y trabajo al amparo del Real Decreto 316/2026, de 14 de abril, de regularización extraordinaria.
+
+SEGUNDO. Que desde la notificación de la citada resolución, he intentado de forma reiterada y sin éxito obtener cita previa para toma de huellas en el sistema oficial de Cita Previa de Extranjería (icp.administracionelectronica.gob.es), tal y como acreditan las capturas de pantalla que se adjuntan al presente escrito, correspondientes a los días <span class="template-fill">[detallar fechas y horas de los intentos]</span>.
+
+TERCERO. Que el plazo reglamentario de un mes para solicitar la Tarjeta de Identidad de Extranjero está próximo a vencer (o ha vencido) por causa exclusivamente imputable a la Administración, dada la saturación estructural del sistema de citas y la imposibilidad material de obtener una.
+
+CUARTO. Que el artículo 32 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas, permite la ampliación de los plazos cuando concurran circunstancias que así lo aconsejen y no se perjudiquen derechos de tercero.
+
+Por todo lo expuesto,
+
+<strong>SOLICITA</strong>
+
+PRIMERO. Que se tenga por presentado este escrito a los efectos de acreditar la imposibilidad manifiesta de cumplir el plazo del artículo 210 del Real Decreto 1155/2024, por causa ajena a mi voluntad e imputable a la Administración.
+
+SEGUNDO. La ampliación del referido plazo conforme al artículo 32 de la Ley 39/2015.
+
+TERCERO. Que la presente comparecencia se entienda como solicitud expresa de cita para toma de huellas en la primera fecha disponible.
+
+CUARTO. Que se me comunique fecha y hora de cita por el medio más rápido posible, al teléfono y correo electrónico que figuran al inicio del presente escrito.
+
+En <span class="template-fill">[lugar]</span>, a <span class="template-fill">[fecha]</span>.
+
+Firmado: <span class="template-fill">[nombre y firma]</span>
+
+—————————————————
+DOCUMENTOS QUE SE ADJUNTAN:
+1. Copia de la resolución favorable de concesión.
+2. Capturas de pantalla del sistema de citas con indicación de fecha y hora.
+3. Copia del pasaporte y empadronamiento.</div>
+      </div>
+
+    </section>
+  `;
+}
+
+/* Copiar la plantilla al portapapeles */
+function copyTemplate() {
+  const body = document.getElementById('templateBody');
+  if (!body) return;
+  // Texto plano sin etiquetas HTML
+  const text = body.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyTplBtn');
+    if (!btn) return;
+    const original = btn.textContent;
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(() => {
+    // Fallback con selección manual
+    const range = document.createRange();
+    range.selectNodeContents(body);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    try { document.execCommand('copy'); } catch (e) {}
+    sel.removeAllRanges();
+  });
+}
+
+/* Imprimir solo la guía (truco CSS) */
+function printTemplate() {
+  window.print();
+}
+
+function restart() {
+  state.paso = 0;
+  state.via = null;
+  state.fase = null;
+  state.clave = null;
+  // Reset progress
+  $progress.querySelectorAll('.progress-step').forEach((s, i) => {
+    s.classList.remove('active', 'current');
+    if (i === 0) s.classList.add('current');
+  });
+  renderQuestion();
+}
+
+function scrollUp() {
+  // Pequeño scroll-up para que el usuario vea el principio del nuevo contenido
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Init
+renderQuestion();
+</script>
+
+</body>
+</html>
