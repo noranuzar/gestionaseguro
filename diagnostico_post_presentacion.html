@@ -1405,12 +1405,11 @@ const FASE_BASE = {
     summary: 'Tu solicitud está registrada pero el procedimiento aún no se ha iniciado oficialmente. La Unidad de Tramitación de Expedientes de Extranjería (UTEX) te enviará una comunicación de inicio cuando reciba tu expediente. Hasta entonces, no puedes trabajar todavía.',
     actions: [
       { titulo: 'Guarda tu justificante de presentación', desc: 'Es la prueba de que metiste la solicitud en plazo. Hazle foto, escanéalo y mándatelo por email para tenerlo siempre a mano.' },
-      { titulo: 'Espera la comunicación de inicio de UTEX', desc: 'Es un documento <strong>distinto del justificante</strong>. Suele llegar entre 2 y 6 semanas después. Te asigna número de expediente y NUSS de oficio, y te habilita para trabajar legalmente.' },
-      { titulo: 'Revisa cada semana tus canales de notificación', desc: 'Email, correo postal y, si la marcaste, la DEHú (Dirección Electrónica Habilitada Única). Las notificaciones electrónicas se entienden notificadas a los 10 días aunque no las hayas abierto.' },
+{ titulo: 'Espera la comunicación de inicio de UTEX', desc: 'Es un documento <strong>distinto del justificante</strong>. Como referencia orientativa suele llegar en unas semanas (no es un plazo legal, depende de la carga de tramitación). Te asigna número de expediente y NUSS de oficio, y te habilita para trabajar legalmente.' },      { titulo: 'Revisa cada semana tus canales de notificación', desc: 'Email, correo postal y, si la marcaste, la DEHú (Dirección Electrónica Habilitada Única). Las notificaciones electrónicas se entienden notificadas a los 10 días aunque no las hayas abierto.' },
       { titulo: 'No firmes contratos de trabajo aún', desc: 'Hasta que no recibas la comunicación de inicio, no estás habilitado para trabajar legalmente. Firmar antes puede complicarte el expediente.' },
     ],
     plazos: [
-      { label: 'Estimación de llegada de la comunicación', time: '2-6 semanas', critical: false },
+      { label: 'Llegada de la comunicación (orientativo, no es plazo legal)', time: '2-6 semanas aprox.', critical: false },
     ],
     alerts: [
       'Si pasan más de 2 meses sin recibir nada, consulta el estado de tu expediente. Puede que haya un retraso o una incidencia.',
@@ -1421,8 +1420,7 @@ const FASE_BASE = {
     title: '¡Tu procedimiento ya está activo!',
     summary: 'Importante: tener número de expediente o la comunicación de inicio NO significa que ya te hayan concedido la autorización. Es el inicio formal del procedimiento. La resolución (concesión o denegación) llegará después. Eso sí, la comunicación de inicio de UTEX ya activa derechos importantes: estás habilitado para trabajar en todo el territorio nacional y en cualquier sector, tienes NUSS asignado de oficio y derecho a asistencia sanitaria. Ahora toca esperar la resolución, que debe llegar como máximo 3 meses desde que UTEX recibió tu expediente.',
     actions: [
-      { titulo: 'Ve a tu centro de salud con la comunicación de UTEX', desc: 'Te tienen que dar la <strong>tarjeta sanitaria</strong>. Lleva también tu pasaporte y empadronamiento.' },
-      { titulo: 'Apúntate al SEPE como demandante de empleo', desc: 'Aunque ya tengas trabajo, estar inscrito te ayuda y es gratis. Necesitarás cita previa.' },
+{ titulo: 'Solicita la tarjeta sanitaria en tu centro de salud', desc: 'Con la comunicación de UTEX puedes solicitar la <strong>tarjeta sanitaria</strong>. El acceso y los requisitos dependen de tu comunidad autónoma. Lleva pasaporte y empadronamiento, y pregunta en tu centro de salud qué necesitan en tu caso.' },      { titulo: 'Apúntate al SEPE como demandante de empleo', desc: 'Aunque ya tengas trabajo, estar inscrito te ayuda y es gratis. Necesitarás cita previa.' },
       { titulo: 'Si firmas un contrato, asegúrate del alta en Seguridad Social', desc: 'Tu empresa debe darte de alta. El alta es obligatoria desde el primer día. Si no te dan de alta, no firmes.' },
       { titulo: 'Vigila tus notificaciones', desc: 'La resolución puede llegar en cualquier momento (favorable, denegatoria o requerimiento). Revisa email y buzón cada pocos días.' },
     ],
@@ -1439,7 +1437,7 @@ const FASE_BASE = {
     summary: 'Te han enviado un requerimiento de subsanación. Esto NO significa que vayan a denegarte la solicitud, es una segunda oportunidad para corregir o completar el expediente. Pero tienes un plazo máximo de 15 días. Si no contestas a tiempo, se entiende que desistes y archivan tu expediente.',
     actions: [
       { titulo: 'Lee con calma exactamente qué te están pidiendo', desc: 'No improvises. El requerimiento describe los documentos concretos que necesitan. Aporta SOLO lo que piden, ni más ni menos. Si no entiendes algo, pide ayuda a una entidad RECEX o a un abogado.' },
-      { titulo: 'Cuenta los días', desc: 'El plazo es de <strong>15 días naturales</strong> desde la notificación. Si lo recibiste por correo postal, cuenta desde el día siguiente al sello de Correos. Si fue electrónico, desde que lo abriste (o a los 10 días aunque no lo abrieras).' },
+      { titulo: 'Cuenta los días', desc: 'El plazo es de <strong>15 días </strong> desde la notificación. Si lo recibiste por correo postal, cuenta desde el día siguiente al sello de Correos. Si fue electrónico, desde que lo abriste (o a los 10 días aunque no lo abrieras).' },
       { titulo: 'Prepara los documentos pedidos', desc: 'Si te piden traducciones o legalizaciones, son lentas. Empieza ya. Si te piden un documento que ya aportaste, vuelve a aportarlo (no des por hecho que lo tienen).' },
       { titulo: 'Entrega la documentación en plazo', desc: 'Mira la siguiente sección "Canal recomendado" para saber por dónde aportarla en tu caso.' },
     ],
@@ -1581,8 +1579,7 @@ const CLAVE_CHANNELS = {
         icon: '🏤',
         name: 'Cualquier oficina de Correos',
         purpose: 'SUBSANAR UN REQUERIMIENTO',
-        how: 'Ve a una de las <strong>383 oficinas de Correos habilitadas, SIN cita previa</strong>. Confirmado por la Secretaría de Estado de Migraciones el 22 de mayo de 2026.',
-      },
+how: 'Ve a una de las <strong>oficinas de Correos habilitadas, SIN cita previa</strong> (383 según la Secretaría de Estado de Migraciones, 22 de mayo de 2026; el número puede variar, confirma en Correos).',      },
     ],
   },
   duda: {
@@ -1610,8 +1607,7 @@ const CLAVE_CHANNELS = {
         icon: '🏤',
         name: 'Cualquier oficina de Correos',
         purpose: 'SUBSANAR UN REQUERIMIENTO',
-        how: 'Cualquiera de las <strong>383 oficinas habilitadas, SIN cita previa</strong>.',
-      },
+how: 'Cualquiera de las <strong>oficinas de Correos habilitadas, SIN cita previa</strong> (unas 383; el número puede variar, confirma en Correos).',      },
     ],
   },
 };
@@ -1981,7 +1977,7 @@ function renderVigilancia() {
             La notificación oficial llega como <strong>carta certificada con acuse de
             recibo</strong>. Si no estás cuando viene el cartero, deja un aviso y vuelve un
             segundo día. Si tampoco estás, la carta queda en la oficina de Correos
-            <strong>15 días naturales</strong>. Pasado ese plazo, vuelve al remitente.
+            <strong>15 días </strong>. Pasado ese plazo, vuelve al remitente.
             Asegúrate de que tu nombre esté visible en el buzón, sobre todo si vives en
             piso compartido.
           </div>
