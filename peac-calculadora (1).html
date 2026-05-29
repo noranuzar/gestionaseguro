@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Puedo acceder al PEAC? — Autodiagnóstico</title>
+<style>
+/* ============================================
+   PEAC AUTODIAGNÓSTICO — Calculadora Web
+   Hazlo Tú Mismo (@hazlotumismo_adm)
+   ============================================ */
+
+/* --- RESET & BASE --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* --- Paleta Nature Tech --- */
+  --color-bg: #F5F0E8;              /* Crema cálido */
+  --color-surface: #FFFDF7;          /* Blanco cálido para cards */
+  --color-text: #36454F;             /* Charcoal */
+  --color-text-soft: #6B7B82;        /* Charcoal suave */
+  --color-accent: #8A9A6D;           /* Sage (botones, barra progreso) */
+  --color-accent-hover: #748557;     /* Sage oscuro */
+  --color-green: #6B8F4E;            /* Verde apto */
+  --color-green-bg: #EFF5E8;         /* Fondo verde suave */
+  --color-green-border: #C5D9AB;     /* Borde verde */
+  --color-yellow: #A07830;           /* Ámbar cálido (vía formativa) */
+  --color-yellow-bg: #FDF6E8;        /* Fondo ámbar suave */
+  --color-yellow-border: #E5CFA0;    /* Borde ámbar */
+  --color-red: #C27E5D;              /* Clay / terracota suave */
+  --color-red-bg: #FDF0EA;           /* Fondo terracota suave */
+  --color-red-border: #E4B89E;       /* Borde terracota */
+  --color-border: #DDD8CE;           /* Borde general crema */
+  --color-info-bg: #EEF2E8;          /* Info box verde suave */
+  --color-info-border: #C5D4B5;      /* Borde info */
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow-card: 0 3px 16px rgba(54,69,79,0.06);
+  --shadow-button: 0 3px 10px rgba(54,69,79,0.10);
+  --font-body: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  --transition: 0.25s ease;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* --- LAYOUT --- */
+.app-wrapper {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+  min-height: 100vh;
+}
+
+/* --- HEADER --- */
+.app-header {
+  text-align: center;
+  margin-bottom: 28px;
+  padding-top: 12px;
+}
+
+.app-header__badge {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.app-header h1 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.app-header p {
+  font-size: 0.92rem;
+  color: var(--color-text-soft);
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* --- PROGRESS BAR --- */
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 3px;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+
+/* --- STEP COUNTER --- */
+.step-counter {
+  font-size: 0.78rem;
+  color: var(--color-text-soft);
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* --- CARD (cada pantalla) --- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-card);
+  animation: fadeSlideIn 0.35s ease;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card__question {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.card__help {
+  font-size: 0.86rem;
+  color: var(--color-text-soft);
+  margin-bottom: 24px;
+  line-height: 1.55;
+}
+
+.card__help strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* --- INFO BOX (dentro de preguntas) --- */
+.info-box {
+  background: var(--color-info-bg);
+  border: 1px solid var(--color-info-border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.info-box__icon {
+  margin-right: 6px;
+}
+
+/* --- BUTTONS --- */
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: left;
+  line-height: 1.4;
+}
+
+.btn:hover {
+  border-color: var(--color-accent);
+  background: var(--color-info-bg);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+  text-align: center;
+  box-shadow: var(--shadow-button);
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.btn--small {
+  font-size: 0.88rem;
+  padding: 10px 16px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.btn--back {
+  background: transparent;
+  border: none;
+  color: var(--color-text-soft);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 0;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 12px;
+  font-family: var(--font-body);
+}
+
+.btn--back:hover {
+  color: var(--color-text);
+}
+
+/* --- INPUT NUMÉRICO --- */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-text-soft);
+  margin-bottom: 8px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition);
+  -webkit-appearance: none;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.input-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6560' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+/* --- RESULTADO FINAL --- */
+.result {
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  animation: fadeSlideIn 0.4s ease;
+}
+
+.result--green {
+  background: var(--color-green-bg);
+  border: 2px solid var(--color-green-border);
+}
+
+.result--yellow {
+  background: var(--color-yellow-bg);
+  border: 2px solid var(--color-yellow-border);
+}
+
+.result--red {
+  background: var(--color-red-bg);
+  border: 2px solid var(--color-red-border);
+}
+
+.result__icon {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.result__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.result--green .result__title { color: var(--color-green); }
+.result--yellow .result__title { color: var(--color-yellow); }
+.result--red .result__title { color: var(--color-red); }
+
+.result__body {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.result__body p {
+  margin-bottom: 12px;
+}
+
+.result__body strong {
+  font-weight: 700;
+}
+
+.result__next {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(255,255,255,0.7);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.result__next-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  color: var(--color-text-soft);
+}
+
+.result__next ol {
+  padding-left: 20px;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.result__next ol li {
+  margin-bottom: 4px;
+}
+
+/* --- FOOTER --- */
+.app-footer {
+  text-align: center;
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.78rem;
+  color: var(--color-text-soft);
+  line-height: 1.6;
+}
+
+.app-footer a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- HIDDEN --- */
+.hidden {
+  display: none !important;
+}
+
+/* --- RESPONSIVE --- */
+@media (min-width: 600px) {
+  .app-wrapper {
+    padding: 40px 24px 60px;
+  }
+  .app-header h1 {
+    font-size: 1.75rem;
+  }
+  .card {
+    padding: 36px 32px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="app-wrapper" id="app">
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <span class="app-header__badge"><strong>Autodiagnóstico gratuito</strong> </span>
+    <h1>¡Tu experiencia merece un <em>reconocimiento oficial</em>!</h1>
+    <p>Acredita las <strong>Unidades de Competencia</strong> que ya dominas con el PEAC de la Comunidad de Madrid. En 2 minutos sabrás si cumples los requisitos.</p>
+  </header>
+
+  <!-- BARRA DE PROGRESO -->
+  <div class="progress-bar">
+    <div class="progress-bar__fill" id="progressFill"></div>
+  </div>
+
+  <!-- CONTADOR DE PASO -->
+  <div class="step-counter" id="stepCounter"></div>
+
+  <!-- CONTENEDOR DE PANTALLAS -->
+  <div id="screenContainer"></div>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <p>Esta herramienta es orientativa. No sustituye el asesoramiento profesional.</p>
+    <p style="margin-top:6px;">
+      Hazlo Tú Mismo — <a href="https://www.instagram.com/hazlotumismo_adm/" target="_blank" rel="noopener">@hazlotumismo_adm</a>
+    </p>
+    <p style="margin-top:4px;">Paso a paso contigo, sin complicarte.</p>
+  </footer>
+</div>
+
+<script>
+/* ============================================
+   PEAC AUTODIAGNÓSTICO — Lógica principal
+   ============================================ */
+
+(function() {
+  'use strict';
+
+  // ---- ESTADO ----
+  const state = {
+    currentStep: 0,
+    history: [],     // pila para el botón "Atrás"
+    answers: {},     // respuestas del usuario
+    totalSteps: 7    // estimación para la barra (se ajusta dinámicamente)
+  };
+
+  // ---- REFERENCIAS DOM ----
+  const container = document.getElementById('screenContainer');
+  const progressFill = document.getElementById('progressFill');
+  const stepCounter = document.getElementById('stepCounter');
+
+  // ---- UTILIDADES ----
+  function updateProgress(step, total) {
+    const pct = Math.min(Math.round((step / total) * 100), 100);
+    progressFill.style.width = pct + '%';
+    if (step > 0 && step <= total) {
+      stepCounter.textContent = 'Paso ' + step + ' de ' + total;
+      stepCounter.classList.remove('hidden');
+    } else {
+      stepCounter.classList.add('hidden');
+    }
+  }
+
+  function render(html, step, total) {
+    container.innerHTML = '';
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    container.appendChild(div);
+    if (step !== undefined && total !== undefined) {
+      updateProgress(step, total);
+    }
+  }
+
+  function goBack() {
+    if (state.history.length > 0) {
+      const prev = state.history.pop();
+      prev();
+    }
+  }
+
+  function backButton() {
+    if (state.history.length > 0) {
+      return '<button class="btn--back" onclick="window.__peac_back()">← Atrás</button>';
+    }
+    return '';
+  }
+
+  // Exponer función de "atrás" globalmente
+  window.__peac_back = goBack;
+
+  // ---- PANTALLA 0: INTRO ----
+  function showIntro() {
+    state.history = [];
+    state.answers = {};
+    updateProgress(0, 1);
+    stepCounter.classList.add('hidden');
+
+    render(`
+      <div class="card">
+        <p class="card__question">¡Tu experiencia merece un reconocimiento oficial!</p>
+        <div class="card__help">
+          <p>El <strong>PEAC</strong> te permite acreditar oficialmente las <strong>Unidades de Competencia (UC)</strong> que has adquirido por tu experiencia laboral o por formación no formal.</p>
+          <p style="margin-top:10px;">Con esas UC acreditadas puedes después obtener un <strong>Certificado de Profesionalidad</strong> o un <strong>Título de Formación Profesional</strong> (cuando acredites todas las unidades de una cualificación).</p>
+          <p style="margin-top:10px;">Solo <strong>2 minutos</strong> y te digo si ya puedes solicitarlo. Sin perder el tiempo. Sin solicitudes denegadas.</p>
+        </div>
+        <button class="btn btn--primary" onclick="window.__peac_step_territory()">¡Vamos allá! →</button>
+      </div>
+    `);
+  }
+
+  // ---- PASO 0.5: FILTRO TERRITORIAL (COMUNIDAD DE MADRID) ----
+  window.__peac_step_territory = function() {
+    state.history.push(showIntro);
+    render(`
+      <div class="card">
+        <p class="card__question">¿Resides o trabajas actualmente en la Comunidad de Madrid?</p>
+        <div class="card__help">Este simulador está basado en la normativa de la Comunidad de Madrid. Cada comunidad autónoma gestiona el PEAC de forma independiente.</div>
+        <div class="btn-group">
+          <button class="btn" onclick="window.__peac_territory(true)">Sí, vivo o trabajo en Madrid</button>
+          <button class="btn" onclick="window.__peac_territory(false)">No, estoy en otra comunidad</button>
+        </div>
+        ${backButton()}
+      </div>
+    `, 1, 9);
+  };
+
+  window.__peac_territory = function(isMadrid) {
+    state.answers.isMadrid = isMadrid;
+    if (!isMadrid) {
+      showResultNotMadrid();
+    } else {
+      window.__peac_step_specialty();
+    }
+  };
+
+  function showResultNotMadrid() {
+    state.history.push(window.__peac_step_territory);
+    updateProgress(9, 9);
+    stepCounter.classList.add('hidden');
+    render(`
+      <div class="result result--yellow">
+        <div class="result__icon">📍</div>
+        <div class="result__title">Este simulador es solo para la Comunidad de Madrid</div>
+        <div class="result__body">
+          <p>Cada comunidad autónoma tiene su propia convocatoria PEAC con requisitos y plazos que pueden variar.</p>
+          <p>Los requisitos generales son parecidos, pero los detalles (dónde presentar, documentación, familias profesionales disponibles) cambian de una comunidad a otra.</p>
+          <div class="result__next">
+            <div class="result__next-title">¿Qué puedes hacer?</div>
+            <ol>
+              <li>Busca "PEAC + tu comunidad autónoma" en Google para encontrar la convocatoria de tu zona.</li>
+              <li>Consulta la web del SEPE o del Ministerio de Educación para ver el estado de las convocatorias.</li>
+              <li>Si te mudas a Madrid o trabajas aquí, vuelve y repite el diagnóstico.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn--small" onclick="window.__peac_restart()" style="margin-top:16px;">Volver a empezar</button>
+    `);
+  }
+
+  // ---- PASO 2: ESPECIALIDAD / FAMILIA PROFESIONAL ----
+  window.__peac_step_specialty = function() {
+    state.history.push(window.__peac_step_territory);
+    render(`
+      <div class="card">
+        <p class="card__question">¿En qué quieres acreditarte?</p>
+        <div class="card__help">
+          Elige tu <strong>familia profesional</strong>. Son las cualificaciones más solicitadas del PEAC en Madrid. A partir de aquí, todo el cálculo será específico para ese oficio.
+        </div>
+        <div class="btn-group">
+          <button class="btn" onclick="window.__peac_specialty('hosteleria')">
+            <div style="font-weight:700;">🍳 Hostelería</div>
+            <div style="font-size:0.82rem; color:var(--color-text-soft); margin-top:3px; font-weight:400;">Cocina · Camarero/a · Bar · Cafetería · Pastelería</div>
+          </button>
+
+          <button class="btn" onclick="window.__peac_specialty('sociosanitario')">
+            <div style="font-weight:700;">🏥 Atención Sociosanitaria</div>
+            <div style="font-size:0.82rem; color:var(--color-text-soft); margin-top:3px; font-weight:400;">Cuidado a domicilio · Residencias · Personas dependientes</div>
+          </button>
+
+          <button class="btn" onclick="window.__peac_specialty('imagen')">
+            <div style="font-weight:700;">💅 Imagen Personal</div>
+            <div style="font-size:0.82rem; color:var(--color-text-soft); margin-top:3px; font-weight:400;">Peluquería · Estética · Uñas · Maquillaje · Depilación</div>
+          </button>
+
+          <button class="btn" onclick="window.__peac_specialty('admin')">
+            <div style="font-weight:700;">📊 Administración y Gestión</div>
+            <div style="font-size:0.82rem; color:var(--color-text-soft); margin-top:3px; font-weight:400;">Recepción · Atención al cliente · Gestión administrativa</div>
+          </button>
+
+          <button class="btn" onclick="window.__peac_specialty('comercio')">
+            <div style="font-weight:700;">🛍️ Comercio y Ventas</div>
+            <div style="font-size:0.82rem; color:var(--color-text-soft); margin-top:3px; font-weight:400;">Dependiente/a · Caja · Reposición · Atención al cliente</div>
+          </button>
+
+          <button class="btn" onclick="window.__peac_specialty('almacen')">
+            <div style="font-weight:700;">📦 Almacén y Logística</div>
+            <div style="font-size:0.82rem; color:var(--color-text-soft); margin-top:3px; font-weight:400;">Carretillero/a · Mozo/a de almacén · Preparación pedidos</div>
+          </button>
+
+          <button class="btn" onclick="window.__peac_specialty('limpieza')">
+            <div style="font-weight:700;">🧹 Limpieza y Empleo Doméstico</div>
+            <div style="font-size:0.82rem; color:var(--color-text-soft); margin-top:3px; font-weight:400;">Limpieza de edificios · Empleo del hogar · Lavandería</div>
+          </button>
+
+          <button class="btn" onclick="window.__peac_specialty('educacion')">
+            <div style="font-weight:700;">👶 Servicios a la Comunidad</div>
+            <div style="font-size:0.82rem; color:var(--color-text-soft); margin-top:3px; font-weight:400;">Educación infantil · Tiempo libre · Mediación</div>
+          </button>
+
+          <button class="btn" onclick="window.__peac_specialty('otro')">
+            <div style="font-weight:700;">🔧 Otra familia profesional</div>
+            <div style="font-size:0.82rem; color:var(--color-text-soft); margin-top:3px; font-weight:400;">Agricultura · Construcción · Mecánica · Informática · etc.</div>
+          </button>
+        </div>
+        ${backButton()}
+      </div>
+    `, 2, 9);
+  };
+
+  window.__peac_specialty = function(val) {
+    state.answers.specialty = val;
+    const labels = {
+      hosteleria: 'Hostelería',
+      sociosanitario: 'Atención Sociosanitaria',
+      imagen: 'Imagen Personal (Peluquería / Estética)',
+      admin: 'Administración y Gestión',
+      comercio: 'Comercio y Ventas',
+      almacen: 'Almacén y Logística',
+      limpieza: 'Limpieza y Empleo Doméstico',
+      educacion: 'Servicios a la Comunidad',
+      otro: 'tu familia profesional'
+    };
+    state.answers.specialtyLabel = labels[val] || 'tu familia profesional';
+    window.__peac_step_age();
+  };
+
+  // ---- PASO 3: EDAD ----
+  window.__peac_step_age = function() {
+    state.history.push(window.__peac_step_specialty);
+    const total = 8;
+    render(`
+      <div class="card">
+        <p class="card__question">¿Tienes 18 años o más?</p>
+        <div class="card__help">Es el requisito mínimo de edad para acceder al PEAC.</div>
+        <div class="btn-group">
+          <button class="btn" onclick="window.__peac_age(true)">Sí, tengo 18 o más</button>
+          <button class="btn" onclick="window.__peac_age(false)">No, tengo menos de 18</button>
+        </div>
+        ${backButton()}
+      </div>
+    `, 3, total);
+  };
+
+  window.__peac_age = function(is18) {
+    state.answers.isAdult = is18;
+    if (!is18) {
+      showResultNotAdult();
+    } else {
+      window.__peac_step_nationality();
+    }
+  };
+
+  function showResultNotAdult() {
+    state.history.push(window.__peac_step_age);
+    updateProgress(9, 9);
+    stepCounter.classList.add('hidden');
+    render(`
+      <div class="result result--red">
+        <div class="result__icon">🔴</div>
+        <div class="result__title">Todavía no puedes acceder</div>
+        <div class="result__body">
+          <p>Para el PEAC necesitas tener al menos <strong>18 años</strong> (o 16 para cualificaciones de nivel 1, en algunos casos).</p>
+          <p>Pero eso no significa que no puedas prepararte. Mientras tanto puedes formarte y acumular horas que te servirán más adelante.</p>
+          <div class="result__next">
+            <div class="result__next-title">¿Qué puedes hacer ahora?</div>
+            <ol>
+              <li>Buscar cursos relacionados con tu profesión (aunque sean no formales, con certificado y horas).</li>
+              <li>Guardar todos los certificados que obtengas — los vas a necesitar.</li>
+              <li>Cuando cumplas la edad, volver aquí y comprobar si ya cumples.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn--small" onclick="window.__peac_restart()" style="margin-top:16px;">Volver a empezar</button>
+    `);
+  }
+
+  // ---- PASO 2: NACIONALIDAD / SITUACIÓN ----
+  window.__peac_step_nationality = function() {
+    state.history.push(window.__peac_step_age);
+    render(`
+      <div class="card">
+        <p class="card__question">¿Tienes permiso de residencia o nacionalidad española/UE?</p>
+        <div class="card__help">Necesitas estar en situación regular en España para presentar la solicitud. Si tienes NIE (con permiso de trabajo o residencia), cuenta.</div>
+        <div class="btn-group">
+          <button class="btn" onclick="window.__peac_nat(true)">Sí, tengo permiso de residencia o nacionalidad</button>
+          <button class="btn" onclick="window.__peac_nat(false)">No, estoy en situación irregular</button>
+          <button class="btn" onclick="window.__peac_nat('unsure')">No estoy seguro/a</button>
+        </div>
+        ${backButton()}
+      </div>
+    `, 4, 9);
+  };
+
+  window.__peac_nat = function(val) {
+    state.answers.hasResidence = val;
+    if (val === false) {
+      showResultIrregular();
+    } else if (val === 'unsure') {
+      showResidenceUnsure();
+    } else {
+      window.__peac_step_entry_path();
+    }
+  };
+
+  // ---- PASO 5: VÍA DE ENTRADA (informativo) ----
+  window.__peac_step_entry_path = function() {
+    state.history.push(window.__peac_step_nationality);
+    render(`
+      <div class="card">
+        <p class="card__question">Hay <em>tres formas</em> de entrar al PEAC 👇</p>
+        <div class="card__help">
+          <p>No te preocupes por elegir ahora — las vamos a comprobar todas. Solo quiero que sepas cómo funciona:</p>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
+          <div style="padding:14px 16px; background:var(--color-info-bg); border:1px solid var(--color-info-border); border-radius:var(--radius-sm);">
+            <div style="font-weight:700; color:var(--color-text); margin-bottom:4px;">💼 Vía 1 — Por Experiencia Laboral</div>
+            <div style="font-size:0.85rem; color:var(--color-text-soft);">Si llevas <strong>años trabajando</strong> en el sector (con contrato y cotización).</div>
+          </div>
+
+          <div style="padding:14px 16px; background:var(--color-info-bg); border:1px solid var(--color-info-border); border-radius:var(--radius-sm);">
+            <div style="font-weight:700; color:var(--color-text); margin-bottom:4px;">📚 Vía 2 — Por Formación No Formal</div>
+            <div style="font-size:0.85rem; color:var(--color-text-soft);">Si tienes <strong>cursos certificados</strong> del sector (más de 10 horas cada uno).</div>
+          </div>
+
+          <div style="padding:14px 16px; background:var(--color-green-bg); border:2px solid var(--color-green-border); border-radius:var(--radius-sm);">
+            <div style="font-weight:700; color:var(--color-green); margin-bottom:4px;">⭐ Vía 3 — Por AMBAS (la ideal)</div>
+            <div style="font-size:0.85rem; color:var(--color-text);">Si tienes experiencia <strong>Y</strong> formación. Este es el perfil <strong>más sólido</strong> y el que tiene más garantías.</div>
+          </div>
+        </div>
+
+        <button class="btn btn--primary" onclick="window.__peac_step_experience_where()">Un paso más →</button>
+        ${backButton()}
+      </div>
+    `, 5, 9);
+  };
+
+  function showResidenceUnsure() {
+    state.history.push(window.__peac_step_nationality);
+    updateProgress(9, 9);
+    stepCounter.classList.add('hidden');
+    render(`
+      <div class="result result--yellow">
+        <div class="result__icon">🟡</div>
+        <div class="result__title">Primero aclara tu situación</div>
+        <div class="result__body">
+          <p>Si no tienes claro si estás en situación regular, lo más importante es que lo verifiques antes de dar ningún paso con el PEAC.</p>
+          <div class="result__next">
+            <div class="result__next-title">¿Qué puedes hacer?</div>
+            <ol>
+              <li>Revisa si tienes un NIE con permiso de residencia o trabajo vigente.</li>
+              <li>Si tienes dudas, acude a una oficina de extranjería o a una asociación de apoyo a migrantes.</li>
+              <li>Si estás pendiente de la regularización extraordinaria de 2025, infórmate bien antes de iniciar otros trámites.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn--small" onclick="window.__peac_restart()" style="margin-top:16px;">Volver a empezar</button>
+    `);
+  }
+
+  function showResultIrregular() {
+    state.history.push(window.__peac_step_nationality);
+    updateProgress(9, 9);
+    stepCounter.classList.add('hidden');
+    render(`
+      <div class="result result--red">
+        <div class="result__icon">🔴</div>
+        <div class="result__title">Ahora mismo no puedes presentar la solicitud</div>
+        <div class="result__body">
+          <p>Para acceder al PEAC necesitas estar en situación regular en España (tener permiso de residencia o trabajo).</p>
+          <p>Esto no significa que tu experiencia no valga. Significa que primero hay que resolver tu situación administrativa.</p>
+          <div class="result__next">
+            <div class="result__next-title">¿Qué puedes hacer?</div>
+            <ol>
+              <li>Infórmate sobre las vías de regularización disponibles (arraigo, reagrupación, la regularización extraordinaria si aplica).</li>
+              <li>Mientras tanto, guarda toda tu documentación: contratos, certificados, vida laboral de tu país de origen.</li>
+              <li>Cuando regularices tu situación, vuelve aquí. El PEAC es una convocatoria permanente — no caduca.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn--small" onclick="window.__peac_restart()" style="margin-top:16px;">Volver a empezar</button>
+    `);
+  }
+
+  // ---- PASO 6: ¿DÓNDE HA SIDO TU EXPERIENCIA? ----
+  window.__peac_step_experience_where = function() {
+    state.history.push(window.__peac_step_entry_path);
+    render(`
+      <div class="card">
+        <p class="card__question">Tu experiencia laboral, ¿dónde ha sido?</p>
+        <div class="card__help">
+          <p>⚠️ <strong>Recuerda:</strong> solo cuenta el trabajo realizado en el sector de <strong>${state.answers.specialtyLabel || 'tu especialidad'}</strong>. Otros empleos no suman para esta cualificación.</p>
+        </div>
+        <div class="info-box">
+          <span class="info-box__icon">📋</span>
+          Solo es válida la experiencia cotizada en España o en países con <strong>convenio de reciprocidad</strong> reconocido (ej: Ecuador, con validación consular previa). La experiencia no documentada oficialmente no se puede usar.
+        </div>
+        <div class="btn-group">
+          <button class="btn" onclick="window.__peac_where('spain')">En España (con contrato y cotización a la Seguridad Social)</button>
+          <button class="btn" onclick="window.__peac_where('abroad_conv')">En el extranjero, en un país con convenio (ej: Ecuador)</button>
+          <button class="btn" onclick="window.__peac_where('abroad_no')">En el extranjero, sin convenio o sin papeles que lo demuestren</button>
+          <button class="btn" onclick="window.__peac_where('autonomo')">Soy autónomo/a en España</button>
+          <button class="btn" onclick="window.__peac_where('none')">No tengo experiencia laboral</button>
+        </div>
+        ${backButton()}
+      </div>
+    `, 6, 9);
+  };
+
+  window.__peac_where = function(val) {
+    state.answers.experienceWhere = val;
+    if (val === 'spain' || val === 'autonomo' || val === 'abroad_conv') {
+      window.__peac_step_experience_years();
+    } else if (val === 'abroad_no') {
+      showExperienceAbroadWarning();
+    } else {
+      // Sin experiencia → vía formativa directamente
+      state.answers.experienceYears = 0;
+      window.__peac_step_qualification_level();
+    }
+  };
+
+  function showExperienceAbroadWarning() {
+    state.history.push(window.__peac_step_experience_where);
+    render(`
+      <div class="card">
+        <p class="card__question">Tu experiencia en el extranjero no se puede usar directamente en el PEAC</p>
+        <div class="info-box">
+          <span class="info-box__icon">⚠️</span>
+          Si tu experiencia fue en un país <strong>sin convenio con España</strong>, o no tienes documentación oficial que la respalde, no cuenta para este procedimiento. No es que no valga — es que el sistema no la reconoce así.
+        </div>
+        <div class="card__help">
+          <p>Pero hay otra vía: la <strong>vía formativa</strong>. Si tienes certificados de cursos o formación relacionada (aunque sean cursos no formales), puedes acceder por ahí.</p>
+          <p style="margin-top:8px;">¿Quieres que veamos si cumples por formación?</p>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn--primary" onclick="window.__peac_abroad_to_training()">Sí, vamos a comprobarlo</button>
+          <button class="btn" onclick="window.__peac_abroad_exit()">No tengo formación tampoco</button>
+        </div>
+        ${backButton()}
+      </div>
+    `, 7, 9);
+  }
+
+  window.__peac_abroad_to_training = function() {
+    state.answers.experienceYears = 0;
+    state.answers.experienceValid = false;
+    window.__peac_step_qualification_level();
+  };
+
+  window.__peac_abroad_exit = function() {
+    state.history.push(function() { showExperienceAbroadWarning(); });
+    showResultNotYet_NoExperienceNoTraining();
+  };
+
+  function showResultNotYet_NoExperienceNoTraining() {
+    updateProgress(9, 9);
+    stepCounter.classList.add('hidden');
+    render(`
+      <div class="result result--red">
+        <div class="result__icon">🔴</div>
+        <div class="result__title">Todavía no cumples los requisitos</div>
+        <div class="result__body">
+          <p>Tu experiencia en el extranjero no se puede usar para el PEAC en Madrid, y tampoco tienes formación certificada que pueda servir como vía alternativa.</p>
+          <p>Pero esto tiene solución. El PEAC es una convocatoria permanente — no caduca, no se acaba.</p>
+          <div class="result__next">
+            <div class="result__next-title">¿Qué puedes hacer ahora?</div>
+            <ol>
+              <li>Empieza a formarte: busca cursos de <strong>más de 10 horas</strong> relacionados con tu profesión (SEPE, ayuntamientos, centros de adultos, ONGs, academias con certificado).</li>
+              <li>Guarda <strong>todos los certificados</strong> — que incluyan horas, fecha y entidad.</li>
+              <li>Necesitarás al menos <strong>200 horas</strong> (nivel 1) o <strong>300 horas</strong> (nivel 2 y 3) para acceder por la vía formativa.</li>
+              <li>Cuando acumules las horas, vuelve aquí y compruébalo.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn--small" onclick="window.__peac_restart()" style="margin-top:16px;">Volver a empezar</button>
+    `);
+  }
+
+  // ---- PASO 4: AÑOS DE EXPERIENCIA ----
+  window.__peac_step_experience_years = function() {
+    state.history.push(window.__peac_step_experience_where);
+    const helpExtra = state.answers.experienceWhere === 'autonomo'
+      ? `<div class="info-box" style="margin-top:12px;">
+          <span class="info-box__icon">📑</span>
+          <strong>Autónomo/a — Documentación imprescindible:</strong><br>
+          Para este perfil necesitas aportar la <strong>Declaración Responsable de funciones</strong> realizadas y el <strong>alta en el IAE (modelo 036/037)</strong> con un epígrafe relacionado con lo que quieres acreditar.
+        </div>`
+      : '';
+    const helpConvenio = state.answers.experienceWhere === 'abroad_conv'
+      ? '<p style="margin-top:8px;"><strong>Experiencia con convenio:</strong> necesitarás validación consular previa. Asegúrate de tener la documentación apostillada o legalizada.</p>'
+      : '';
+
+    render(`
+      <div class="card">
+        <p class="card__question">¿Cuántos años de experiencia tienes en el área que quieres acreditar?</p>
+        <div class="card__help">
+          Cuenta solo la experiencia <strong>cotizada</strong> (que aparece en tu Vida Laboral o equivalente oficial).
+          ${helpExtra}
+          ${helpConvenio}
+        </div>
+        <div class="input-group">
+          <label for="yearsInput">Años de experiencia</label>
+          <select id="yearsInput">
+            <option value="">Selecciona...</option>
+            <option value="0">Menos de 1 año</option>
+            <option value="1">1 año</option>
+            <option value="2">2 años</option>
+            <option value="3">3 años</option>
+            <option value="4">4 años</option>
+            <option value="5">5 años o más</option>
+          </select>
+        </div>
+        <button class="btn btn--primary" onclick="window.__peac_years_submit()">Ya casi está →</button>
+        ${backButton()}
+      </div>
+    `, 7, 9);
+  };
+
+  window.__peac_years_submit = function() {
+    const sel = document.getElementById('yearsInput');
+    const val = sel.value;
+    if (val === '') return; // no seleccionó nada
+    state.answers.experienceYears = parseInt(val, 10);
+    window.__peac_step_qualification_level();
+  };
+
+  // ---- PASO 5: NIVEL DE CUALIFICACIÓN ----
+  window.__peac_step_qualification_level = function() {
+    state.history.push(
+      state.answers.experienceYears > 0
+        ? window.__peac_step_experience_years
+        : (state.answers.experienceWhere === 'abroad_no' ? function(){ showExperienceAbroadWarning(); } : window.__peac_step_experience_where)
+    );
+
+    render(`
+      <div class="card">
+        <p class="card__question">¿Qué nivel de cualificación quieres acreditar?</p>
+        <div class="card__help">
+          <p>Si no estás seguro/a, te doy pistas:</p>
+          <p style="margin-top:6px;"><strong>Nivel 1:</strong> Tareas sencillas y repetitivas (ej: limpieza, operaciones básicas).</p>
+          <p><strong>Nivel 2:</strong> Tareas con cierta autonomía (ej: peluquería, cocina, atención sociosanitaria, soldadura).</p>
+          <p><strong>Nivel 3:</strong> Tareas complejas, con responsabilidad técnica (ej: educación infantil, dietética, administración).</p>
+        </div>
+        <div class="btn-group">
+          <button class="btn" onclick="window.__peac_level(1)">Nivel 1</button>
+          <button class="btn" onclick="window.__peac_level(2)">Nivel 2</button>
+          <button class="btn" onclick="window.__peac_level(3)">Nivel 3</button>
+          <button class="btn" onclick="window.__peac_level(0)">No tengo ni idea</button>
+        </div>
+        ${backButton()}
+      </div>
+    `, 8, 9);
+  };
+
+  window.__peac_level = function(lvl) {
+    state.answers.level = lvl;
+    if (lvl === 0) {
+      // No sabe el nivel → dar orientación general
+      state.answers.level = 2; // asumimos nivel 2 como el más común
+    }
+    window.__peac_step_training();
+  };
+
+  // ---- PASO 6: FORMACIÓN ----
+  window.__peac_step_training = function() {
+    state.history.push(window.__peac_step_qualification_level);
+    const level = state.answers.level;
+    const hoursNeeded = level === 1 ? 200 : 300;
+
+    render(`
+      <div class="card">
+        <p class="card__question">¿Tienes formación relacionada con lo que quieres acreditar?</p>
+        <div class="card__help">
+          <p>⚠️ <strong>Recuerda:</strong> solo cuentan los cursos del sector de <strong>${state.answers.specialtyLabel || 'tu especialidad'}</strong>. Un curso de informática no sirve para acreditar peluquería.</p>
+          <p style="margin-top:8px;">Cuentan cursos, talleres, seminarios... incluso si no son "oficiales". Lo importante es que tengas un <strong>certificado con las horas y la fecha</strong>.</p>
+          <p style="margin-top:8px;">Solo cuentan cursos de <strong>más de 10 horas</strong> cada uno.</p>
+        </div>
+        <div class="info-box">
+          <span class="info-box__icon">📋</span>
+          Para el nivel ${level} necesitas al menos <strong>${hoursNeeded} horas</strong> de formación si vas por la vía formativa.
+        </div>
+        <div class="input-group">
+          <label for="hoursInput">¿Cuántas horas de formación acumulada tienes (aproximadamente)?</label>
+          <select id="hoursInput">
+            <option value="">Selecciona...</option>
+            <option value="0">No tengo formación</option>
+            <option value="50">Menos de 100 horas</option>
+            <option value="150">Entre 100 y 200 horas</option>
+            <option value="250">Entre 200 y 300 horas</option>
+            <option value="350">Más de 300 horas</option>
+          </select>
+        </div>
+        <button class="btn btn--primary" onclick="window.__peac_training_submit()">Ver mi resultado ✨</button>
+        ${backButton()}
+      </div>
+    `, 9, 9);
+  };
+
+  window.__peac_training_submit = function() {
+    const sel = document.getElementById('hoursInput');
+    const val = sel.value;
+    if (val === '') return;
+    state.answers.trainingHours = parseInt(val, 10);
+    evaluateResult();
+  };
+
+  // ---- EVALUACIÓN FINAL ----
+  function evaluateResult() {
+    const a = state.answers;
+    const level = a.level || 2;
+
+    // Requisitos por experiencia
+    const expYearsNeeded = level === 1 ? 2 : 3;
+    const experienceValid = (
+      (a.experienceWhere === 'spain' || a.experienceWhere === 'autonomo' || a.experienceWhere === 'abroad_conv')
+      && a.experienceYears >= expYearsNeeded
+    );
+
+    // Requisitos por formación
+    const hoursNeeded = level === 1 ? 200 : 300;
+    const trainingValid = a.trainingHours >= hoursNeeded;
+
+    if (experienceValid) {
+      showResultGreen(level, expYearsNeeded, trainingValid);
+    } else if (trainingValid) {
+      showResultYellow(level, hoursNeeded, experienceValid);
+    } else {
+      showResultRed(level, expYearsNeeded, hoursNeeded, a);
+    }
+  }
+
+  // ---- RESULTADO VERDE ----
+  function showResultGreen(level, yearsNeeded, hasBothPaths) {
+    state.history.push(window.__peac_step_training);
+    updateProgress(9, 9);
+    stepCounter.classList.add('hidden');
+
+    const specialty = state.answers.specialtyLabel || 'tu especialidad';
+
+    const autoWarning = state.answers.experienceWhere === 'autonomo'
+      ? '<p><strong>Recuerda:</strong> como autónomo/a, deberás aportar tu <strong>Declaración Responsable de funciones</strong> y el <strong>alta en el IAE (modelo 036/037)</strong> con un epígrafe directamente relacionado con la Cualificación Profesional que quieres acreditar.</p>'
+      : '';
+    const convWarning = state.answers.experienceWhere === 'abroad_conv'
+      ? '<p><strong>Recuerda:</strong> tu experiencia en el extranjero necesita validación consular previa. Asegúrate de tener los documentos apostillados.</p>'
+      : '';
+
+    // Mensaje especial si tiene DOBLE VÍA (experiencia + formación)
+    const doublePathBanner = hasBothPaths
+      ? `<div style="background:var(--color-accent); color:#fff; padding:14px 18px; border-radius:var(--radius-sm); margin-bottom:16px; text-align:center; box-shadow:var(--shadow-button);">
+          <div style="font-size:1.05rem; font-weight:800; margin-bottom:4px;">⭐ ¡Perfil muy sólido!</div>
+          <div style="font-size:0.88rem; opacity:0.95;">Tienes <strong>doble vía de entrada</strong>: experiencia laboral Y formación. Este es el perfil con más garantías.</div>
+        </div>`
+      : '';
+
+    render(`
+      <div class="result result--green">
+        <div class="result__icon">🎉</div>
+        <div class="result__title">¡Perfil apto para solicitar el PEAC!</div>
+        <div class="result__body">
+          ${doublePathBanner}
+          <p>Con lo que me cuentas, tienes <strong>experiencia suficiente</strong> para presentar tu solicitud al PEAC en la familia de <strong>${specialty}</strong> (nivel ${level}).</p>
+          <p>Recuerda: el PEAC acredita <strong>Unidades de Competencia (UC)</strong>. Con las UC que te reconozcan, podrás después obtener un <strong>Certificado de Profesionalidad</strong> o avanzar hacia un <strong>Título de FP</strong>.</p>
+          ${autoWarning}
+          ${convWarning}
+          <div class="result__next">
+            <div class="result__next-title">Tus próximos pasos</div>
+            <ol>
+              <li>Descarga tu <strong>Vida Laboral</strong> actualizada (por SMS o en la sede electrónica de la Seguridad Social).</li>
+              <li>Identifica la <strong>Cualificación Profesional</strong> exacta que quieres acreditar en el catálogo del INCUAL. Ahí verás las UC concretas que la componen.</li>
+              <li>Prepara tu solicitud en la web de la <strong>Comunidad de Madrid</strong> (sección "Acreditación de Competencias Profesionales").</li>
+              <li>Es una <strong>convocatoria abierta permanente</strong>. No hay prisa, pero tampoco lo dejes para mañana.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn--small" onclick="window.__peac_restart()" style="margin-top:16px;">Volver a empezar</button>
+      ${backButton()}
+    `);
+  }
+
+  // ---- RESULTADO AMARILLO ----
+  function showResultYellow(level, hoursNeeded) {
+    state.history.push(window.__peac_step_training);
+    updateProgress(9, 9);
+    stepCounter.classList.add('hidden');
+
+    const expReason = state.answers.experienceWhere === 'abroad_no'
+      ? 'Tu experiencia en el extranjero no se puede usar directamente para el PEAC en Madrid porque no hay convenio reconocido (o no tienes documentación que lo respalde).'
+      : 'No tienes suficiente experiencia laboral cotizada para cumplir por la vía de experiencia.';
+
+    render(`
+      <div class="result result--yellow">
+        <div class="result__icon">📚</div>
+        <div class="result__title">¡Perfil apto por Vía Formativa!</div>
+        <div class="result__body">
+          <p>${expReason}</p>
+          <p>Pero la buena noticia es rotunda: <strong>tus horas de formación son suficientes</strong> (al menos ${hoursNeeded}h para nivel ${level}) para acceder por la vía formativa en ${state.answers.specialtyLabel || 'tu especialidad'}.</p>
+          <div class="result__next">
+            <div class="result__next-title">Tus próximos pasos</div>
+            <ol>
+              <li>Recopila <strong>todos tus certificados de formación</strong>. Asegúrate de que incluyen: nombre del curso, horas, fecha y entidad que lo impartió.</li>
+              <li>Solo cuentan cursos de <strong>más de 10 horas</strong> y del sector que quieres acreditar.</li>
+              <li>Busca la <strong>Cualificación Profesional</strong> que quieres acreditar en el catálogo del INCUAL. El objetivo es obtener tu <strong>Certificado de Profesionalidad</strong>.</li>
+              <li>Presenta tu solicitud en la web de la <strong>Comunidad de Madrid</strong>.</li>
+              <li>La convocatoria está <strong>abierta permanentemente</strong>. Prepara bien la documentación y adelante.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn--small" onclick="window.__peac_restart()" style="margin-top:16px;">Volver a empezar</button>
+      ${backButton()}
+    `);
+  }
+
+  // ---- RESULTADO ROJO ----
+  function showResultRed(level, yearsNeeded, hoursNeeded, answers) {
+    state.history.push(window.__peac_step_training);
+    updateProgress(9, 9);
+    stepCounter.classList.add('hidden');
+
+    const expYears = answers.experienceYears || 0;
+    const trainHours = answers.trainingHours || 0;
+
+    let expGap = '';
+    if (answers.experienceWhere === 'abroad_no') {
+      expGap = 'Tu experiencia en el extranjero no cuenta para el PEAC en Madrid sin convenio reconocido.';
+    } else if (expYears < yearsNeeded) {
+      const falta = yearsNeeded - expYears;
+      expGap = `Te faltan aproximadamente <strong>${falta} año${falta > 1 ? 's' : ''}</strong> de experiencia cotizada para llegar a los ${yearsNeeded} años que pide el nivel ${level}.`;
+    }
+
+    let trainGap = '';
+    if (trainHours < hoursNeeded) {
+      const faltaH = hoursNeeded - trainHours;
+      trainGap = `En formación te faltan unas <strong>${faltaH} horas</strong> para llegar a las ${hoursNeeded}h que necesita el nivel ${level}.`;
+    }
+
+    render(`
+      <div class="result result--red">
+        <div class="result__icon">🔴</div>
+        <div class="result__title">Todavía no cumples los requisitos</div>
+        <div class="result__body">
+          <p>Con lo que me cuentas, ahora mismo no merece la pena que presentes la solicitud. Te explico por qué:</p>
+          ${expGap ? '<p>' + expGap + '</p>' : ''}
+          ${trainGap ? '<p>' + trainGap + '</p>' : ''}
+          <p>Pero esto tiene solución. El PEAC es una convocatoria permanente — no caduca, no se acaba. Cuando cumplas los requisitos, ahí va a estar.</p>
+          <div class="result__next">
+            <div class="result__next-title">¿Qué puedes hacer ahora?</div>
+            <ol>
+              ${answers.experienceWhere === 'abroad_no'
+                ? '<li>Tu experiencia internacional vale, pero el sistema no la reconoce. Céntrate en la <strong>vía formativa</strong>: acumula cursos con certificado.</li>'
+                : `<li>Sigue trabajando y cotizando. Cada mes cuenta para acercarte a los ${yearsNeeded} años.</li>`
+              }
+              <li>Haz <strong>cursos con certificado</strong> (de más de 10 horas) relacionados con tu profesión. Cada curso suma horas para la vía formativa.</li>
+              <li>Busca formación en: SEPE, ayuntamientos, centros de adultos, plataformas públicas, ONGs, academias con certificado.</li>
+              <li>Guarda <strong>todos los certificados</strong>. Que tengan horas, fecha y entidad.</li>
+              <li>Cuando acumules lo que necesitas, vuelve aquí y compruébalo.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn--small" onclick="window.__peac_restart()" style="margin-top:16px;">Volver a empezar</button>
+      ${backButton()}
+    `);
+  }
+
+  // ---- REINICIAR ----
+  window.__peac_restart = function() {
+    showIntro();
+  };
+
+  // ---- ARRANCAR ----
+  showIntro();
+
+})();
+</script>
+</body>
+</html>
