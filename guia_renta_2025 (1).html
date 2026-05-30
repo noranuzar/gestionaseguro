@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Renta 2025 — Trámites Verificados</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --brand:#1B4F72;--brand-l:#2E86C1;--brand-soft:#EBF5FB;
+  --accent:#F39C12;--accent-soft:#FEF9E7;
+  --green:#27AE60;--green-soft:#EAFAF1;
+  --red:#E74C3C;--red-soft:#FDEDEC;
+  --surface:#F7FAFC;--card:#FFF;--text:#1A252F;--text-m:#4A5568;--text-l:#7F8C8D;
+  --border:#E2E8F0;--r:18px;--rs:12px;
+  --ff:'DM Sans',system-ui,sans-serif;--fd:'Fraunces',Georgia,serif;
+}
+body{font-family:var(--ff);background:var(--surface);color:var(--text);-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px 60px}
+
+/* ─ Hero ─ */
+.hero{
+  background:linear-gradient(135deg,var(--brand) 0%,var(--brand-l) 60%,#3498DB 100%);
+  color:#fff;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden;
+  border-radius:0 0 32px 32px;margin-bottom:32px;
+}
+.hero::before{content:'';position:absolute;top:-60px;right:-40px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-30px;width:260px;height:260px;background:rgba(255,255,255,.04);border-radius:50%}
+.hero__brand{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;opacity:.7;margin-bottom:16px}
+.hero__title{font-family:var(--fd);font-size:clamp(28px,6vw,38px);font-weight:800;line-height:1.15;margin-bottom:12px}
+.hero__sub{font-size:16px;opacity:.85;line-height:1.5;max-width:440px;margin:0 auto 20px}
+.hero__dates{
+  display:inline-block;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);
+  padding:14px 24px;border-radius:var(--rs);font-size:14px;line-height:1.6;
+  border:1px solid rgba(255,255,255,.2);
+}
+.hero__dates strong{color:var(--accent)}
+
+/* ─ Section ─ */
+.section{margin-bottom:28px}
+.section__tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--brand-l);margin-bottom:10px;
+}
+.section__title{font-family:var(--fd);font-size:22px;font-weight:700;color:var(--brand);line-height:1.25;margin-bottom:6px}
+.section__intro{font-size:15px;color:var(--text-m);line-height:1.6;margin-bottom:16px}
+
+/* ─ Cards ─ */
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:22px 20px;margin-bottom:14px;position:relative;overflow:hidden;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,79,114,.08)}
+.card__stripe{position:absolute;top:0;left:0;right:0;height:4px}
+.card__stripe--blue{background:linear-gradient(90deg,var(--brand-l),var(--brand))}
+.card__stripe--green{background:linear-gradient(90deg,var(--green),#2ECC71)}
+.card__stripe--orange{background:linear-gradient(90deg,var(--accent),#E67E22)}
+.card__stripe--red{background:linear-gradient(90deg,var(--red),#C0392B)}
+
+.card__header{display:flex;align-items:flex-start;gap:14px;margin-bottom:10px}
+.card__emoji{font-size:32px;flex-shrink:0;line-height:1}
+.card__title{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--text);line-height:1.3}
+.card__amount{
+  display:inline-block;background:var(--green-soft);color:var(--green);
+  font-weight:700;font-size:13px;padding:3px 10px;border-radius:20px;margin-top:4px;
+}
+.card__amount--warn{background:var(--accent-soft);color:#D68910}
+.card__body{font-size:14px;line-height:1.6;color:var(--text-m)}
+.card__body strong{color:var(--text)}
+.card__req{
+  margin-top:10px;padding:10px 14px;background:var(--brand-soft);
+  border-radius:var(--rs);font-size:13px;line-height:1.55;color:var(--text-m);
+}
+.card__req strong{color:var(--brand)}
+
+/* ─ Obligation box ─ */
+.oblig{
+  background:var(--card);border:2px solid var(--brand-l);border-radius:var(--r);
+  padding:24px 20px;margin-bottom:28px;
+}
+.oblig__title{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--brand);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.oblig__row{
+  display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);
+  align-items:flex-start;
+}
+.oblig__row:last-child{border-bottom:none}
+.oblig__icon{font-size:20px;flex-shrink:0;width:28px;text-align:center;padding-top:1px}
+.oblig__text{font-size:14px;line-height:1.55;color:var(--text-m)}
+.oblig__text strong{color:var(--text)}
+
+/* ─ Steps ─ */
+.steps{counter-reset:step}
+.step{
+  display:flex;gap:16px;margin-bottom:20px;
+  animation:fadeUp .4s ease both;
+}
+.step:nth-child(1){animation-delay:.05s}
+.step:nth-child(2){animation-delay:.1s}
+.step:nth-child(3){animation-delay:.15s}
+.step:nth-child(4){animation-delay:.2s}
+.step:nth-child(5){animation-delay:.25s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.step__num{
+  counter-increment:step;flex-shrink:0;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--brand);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:15px;
+}
+.step__num::before{content:counter(step)}
+.step__content{flex:1}
+.step__title{font-weight:700;font-size:15px;margin-bottom:3px;color:var(--text)}
+.step__desc{font-size:14px;line-height:1.55;color:var(--text-m)}
+
+/* ─ Alert banner ─ */
+.alert{
+  border-radius:var(--r);padding:18px 20px;margin-bottom:20px;
+  font-size:14px;line-height:1.6;
+}
+.alert--warn{background:var(--accent-soft);border-left:4px solid var(--accent);color:var(--text)}
+.alert--green{background:var(--green-soft);border-left:4px solid var(--green);color:var(--text)}
+.alert--red{background:var(--red-soft);border-left:4px solid var(--red);color:var(--text)}
+.alert strong{font-weight:700}
+
+/* ─ CTA ─ */
+.cta-group{display:flex;flex-direction:column;gap:10px;margin:24px 0}
+.cta{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:16px 24px;border-radius:var(--rs);font-family:var(--ff);
+  font-size:15px;font-weight:600;text-decoration:none;
+  transition:all .2s ease;border:none;cursor:pointer;
+}
+.cta--primary{background:var(--brand);color:#fff;box-shadow:0 4px 14px rgba(27,79,114,.25)}
+.cta--primary:hover{background:var(--brand-l);transform:translateY(-1px)}
+.cta--secondary{background:var(--brand-soft);color:var(--brand);border:1.5px solid var(--brand-l)}
+.cta--secondary:hover{background:var(--card)}
+
+/* ─ Glossary ─ */
+.glossary{
+  display:grid;grid-template-columns:1fr;gap:8px;
+}
+@media(min-width:480px){.glossary{grid-template-columns:1fr 1fr}}
+.glossary__item{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--rs);
+  padding:12px 14px;
+}
+.glossary__term{font-weight:700;font-size:13px;color:var(--brand);margin-bottom:2px}
+.glossary__def{font-size:12px;line-height:1.5;color:var(--text-m)}
+
+/* ─ Footer ─ */
+.footer{
+  text-align:center;margin-top:40px;padding-top:24px;
+  border-top:1px solid var(--border);
+}
+.footer__brand{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--brand);margin-bottom:4px}
+.footer__slogan{font-size:13px;color:var(--text-l);margin-bottom:12px}
+.footer__legal{font-size:11px;color:var(--text-l);line-height:1.5;max-width:460px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <div class="hero__brand">Trámites Verificados</div>
+  <h1 class="hero__title">Guía de la Renta 2025<br>para migrantes en Madrid</h1>
+  <p class="hero__sub">Lo que necesitas saber, sin rodeos y en tu idioma. Paso a paso contigo.</p>
+  <div class="hero__dates">
+    📅 <strong>Por internet:</strong> 8 abril – 30 junio 2026<br>
+    📞 <strong>Por teléfono:</strong> 6 mayo – 30 junio<br>
+    🏢 <strong>En oficina:</strong> 1 – 30 junio
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══════════ QUÉ ES ═══════════ -->
+<section class="section">
+  <div class="section__tag">📌 Lo básico</div>
+  <h2 class="section__title">¿Qué es "hacer la Renta"?</h2>
+  <p class="section__intro">Es contarle a Hacienda cuánto ganaste en 2025 para ver si pagaste los impuestos justos. Si te quitaron de más en la nómina, <strong>te devuelven dinero</strong>. Si te quitaron de menos, toca pagar la diferencia. Así de simple.</p>
+</section>
+
+<!-- ═══════════ ¿ESTOY OBLIGADO? ═══════════ -->
+<div class="oblig">
+  <div class="oblig__title">🤔 ¿Estoy obligado a declarar?</div>
+  
+  <div class="oblig__row">
+    <div class="oblig__icon">1️⃣</div>
+    <div class="oblig__text"><strong>Una sola empresa todo el año:</strong> solo estás obligado si ganaste más de <strong>22.000€ brutos</strong>.</div>
+  </div>
+  
+  <div class="oblig__row">
+    <div class="oblig__icon">🔄</div>
+    <div class="oblig__text"><strong>Dos o más empresas (o paro + trabajo):</strong> el límite baja a <strong>15.876€</strong> si del segundo pagador cobraste más de 1.500€.</div>
+  </div>
+  
+  <div class="oblig__row">
+    <div class="oblig__icon">💡</div>
+    <div class="oblig__text"><strong>¿Y si no estoy obligado?</strong> Puede convenirte declarar de todas formas. Si te retuvieron algo de IRPF durante el año, Hacienda te lo devuelve. No cuesta nada y puedes ganar.</div>
+  </div>
+</div>
+
+<!-- ═══════════ ETT Y RETENCIONES ═══════════ -->
+<div class="alert alert--warn">
+  <strong>⚠️ Si trabajaste por ETT o con muchos contratos cortos:</strong> esas empresas suelen retener solo el 2% de IRPF (muy poco). Eso no significa que vayas a pagar más: depende de cuánto ganaste en total. Si no llegas al mínimo obligatorio, puede que incluso te devuelvan. <strong>Pide tu borrador y compruébalo antes de asustarte.</strong>
+</div>
+
+<!-- ═══════════ DEDUCCIONES MADRID ═══════════ -->
+<section class="section">
+  <div class="section__tag">💰 Lo que puedes ahorrarte</div>
+  <h2 class="section__title">Deducciones en Madrid que te interesan</h2>
+  <p class="section__intro">Estas son ayudas fiscales que reducen lo que pagas. Viven en la Comunidad de Madrid y no siempre aparecen automáticamente en tu borrador. <strong>Tú tienes que buscarlas.</strong></p>
+</section>
+
+<!-- Deducción rentas bajas -->
+<div class="card">
+  <div class="card__stripe card__stripe--green"></div>
+  <div class="card__header">
+    <div class="card__emoji">💶</div>
+    <div>
+      <div class="card__title">Si ganas poco: deducción por rentas bajas</div>
+      <div class="card__amount">Hasta 340€</div>
+    </div>
+  </div>
+  <div class="card__body">
+    Si tu sueldo bruto en 2025 estuvo entre <strong>16.576€ y 18.276€</strong> (zona del salario mínimo), tienes una deducción de hasta 340€. Cuanto más cerca del mínimo, mayor es la ayuda. Es una deducción <strong>estatal</strong> (aplica en toda España).
+  </div>
+  <div class="card__req">
+    <strong>📎 Importante:</strong> Esta deducción puede no aparecer sola en tu borrador. Búscala en la sección de rendimientos del trabajo.
+  </div>
+</div>
+
+<!-- Alquiler -->
+<div class="card">
+  <div class="card__stripe card__stripe--blue"></div>
+  <div class="card__header">
+    <div class="card__emoji">🏠</div>
+    <div>
+      <div class="card__title">Si pagas alquiler y tienes menos de 40 años</div>
+      <div class="card__amount">Hasta 1.237€</div>
+    </div>
+  </div>
+  <div class="card__body">
+    Madrid te permite deducir el <strong>30% de lo que pagas de alquiler</strong>, con un máximo de 1.237€ al año. Antes era solo hasta los 35, pero desde 2024 se amplió a menores de 40.
+  </div>
+  <div class="card__req">
+    <strong>📎 Necesitas:</strong> Que tus ingresos no superen 26.414€ (individual). Tener copia del resguardo del depósito de fianza en la Agencia de Vivienda Social de Madrid. Que el alquiler supere el 20% de tu base imponible.
+  </div>
+</div>
+
+<!-- Hijos nacimiento -->
+<div class="card">
+  <div class="card__stripe card__stripe--orange"></div>
+  <div class="card__header">
+    <div class="card__emoji">👶</div>
+    <div>
+      <div class="card__title">Si tienes hijos</div>
+      <div class="card__amount">721,70€ por hijo + extras según edad</div>
+    </div>
+  </div>
+  <div class="card__body">
+    <strong>Por nacimiento/adopción (desde 2023):</strong> 721,70€ por hijo. Se aplica el año que nace y los 2 siguientes.<br><br>
+    <strong>Hijo menor de 3 años:</strong> genera un beneficio extra importante en el mínimo por descendientes (unos 300-500€ adicionales de ahorro), más posible deducción por guardería (hasta 1.000€) o empleada del hogar (hasta 463€).<br><br>
+    <strong>Hijo en edad escolar:</strong> puedes deducir el 15% de escolaridad en colegios privados, idiomas extraescolares y el 5% de uniformes. Límite entre 412€ y 1.031€ por hijo.<br><br>
+    <strong>3 o más hijos:</strong> posible familia numerosa. Cat. general: 50% de la cuota. Cat. especial: 100%. Un ahorro enorme.
+  </div>
+  <div class="card__req">
+    <strong>📎 Requisitos comunes:</strong> Convivir con los hijos. Ingresos no superiores a 30.930€ (individual). Guardar todas las facturas de colegios, idiomas y uniformes.
+  </div>
+</div>
+
+<!-- Gastos educativos tabla rápida -->
+<div class="card">
+  <div class="card__stripe card__stripe--blue"></div>
+  <div class="card__header">
+    <div class="card__emoji">📚</div>
+    <div>
+      <div class="card__title">Resumen: gastos educativos</div>
+    </div>
+  </div>
+  <div class="card__body">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:4px">
+      <tr style="background:var(--brand-soft)">
+        <td style="padding:8px 10px;font-weight:600;border-radius:8px 0 0 0">Tipo de gasto</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:600">%</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:600;border-radius:0 8px 0 0">Máximo/hijo</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:8px 10px">Solo idiomas y/o uniforme</td>
+        <td style="padding:8px 10px;text-align:center">15% / 5%</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:600;color:var(--green)">412€</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:8px 10px">Escolaridad privada + idiomas</td>
+        <td style="padding:8px 10px;text-align:center">15% / 5%</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:600;color:var(--green)">928€</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 10px">Guardería (0-3 años)</td>
+        <td style="padding:8px 10px;text-align:center">15% / 5%</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:600;color:var(--green)">1.031€</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════ LEY MBAPPÉ ═══════════ -->
+<div class="card">
+  <div class="card__stripe card__stripe--orange"></div>
+  <div class="card__header">
+    <div class="card__emoji">⚽</div>
+    <div>
+      <div class="card__title">"Ley Mbappé": ¿me aplica?</div>
+      <div class="card__amount card__amount--warn">Solo para inversores extranjeros</div>
+    </div>
+  </div>
+  <div class="card__body">
+    Has podido oír hablar de esta ley. Es una deducción del 20% sobre inversiones en valores financieros (acciones, bonos) para personas que trasladan su residencia fiscal a Madrid desde fuera de España. <strong>NO es un descuento general para extranjeros.</strong> Exige no haber vivido en España 5 años antes, invertir en valores (no en inmuebles) y mantener residencia e inversión 6 años. Si trabajas por cuenta ajena, probablemente <strong>no es para ti</strong>.
+  </div>
+</div>
+
+<!-- ═══════════ CÓMO DECLARAR ═══════════ -->
+<section class="section">
+  <div class="section__tag">🚀 Paso a paso</div>
+  <h2 class="section__title">Cómo presentar tu declaración</h2>
+</section>
+
+<div class="steps">
+  <div class="step">
+    <div class="step__num"></div>
+    <div class="step__content">
+      <div class="step__title">Consigue acceso</div>
+      <div class="step__desc">Necesitas <strong>Cl@ve</strong>, certificado digital o número de referencia. El más rápido: ve a <strong>sede.agenciatributaria.gob.es</strong> → Renta 2025 → Obtener referencia. Te piden tu NIE y la casilla 505 de la Renta anterior (o tu IBAN).</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step__num"></div>
+    <div class="step__content">
+      <div class="step__title">Revisa tu borrador (NO lo confirmes todavía)</div>
+      <div class="step__desc">Hacienda prepara un borrador con los datos que tiene. Entra, míralo, pero <strong>no le des a confirmar</strong> sin leerlo. Muchas deducciones de Madrid NO aparecen solas.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step__num"></div>
+    <div class="step__content">
+      <div class="step__title">Comprueba tus datos personales</div>
+      <div class="step__desc">Estado civil, hijos a cargo, dirección. Si cambiaste de domicilio o tuviste un hijo, debe estar reflejado. Si tuviste varios trabajos, comprueba que aparecen todos.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step__num"></div>
+    <div class="step__content">
+      <div class="step__title">Busca las deducciones de Madrid</div>
+      <div class="step__desc">Ve a la sección <strong>"Deducciones autonómicas de la Comunidad de Madrid"</strong>. Alquiler, hijos, gastos educativos, familia numerosa… todo lo de esta guía. Ten preparados los justificantes.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step__num"></div>
+    <div class="step__content">
+      <div class="step__title">Resultado y presenta</div>
+      <div class="step__desc"><strong>A devolver:</strong> Hacienda te ingresa el dinero. <strong>A pagar:</strong> puedes fraccionar en 2 plazos sin intereses (60% ahora, 40% en noviembre). Confirma, presenta y guarda el justificante.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ ERRORES ═══════════ -->
+<section class="section">
+  <div class="section__tag">🚫 Evita estos errores</div>
+  <h2 class="section__title">Lo que más dinero te hace perder</h2>
+</section>
+
+<div class="alert alert--red">
+  <strong>❌ Confirmar el borrador sin revisarlo.</strong> Hacienda no pone todas las deducciones. Si no las buscas tú, las pierdes.
+</div>
+<div class="alert alert--red">
+  <strong>❌ No declarar porque "me va a salir a pagar".</strong> Si no estás obligado, puede que te devuelvan. Compruébalo antes de decidir.
+</div>
+<div class="alert alert--red">
+  <strong>❌ Olvidar que el SEPE cuenta como pagador.</strong> Si cobraste desempleo + trabajaste, tuviste 2 pagadores. Eso cambia las reglas.
+</div>
+<div class="alert alert--red">
+  <strong>❌ No guardar facturas de colegios, idiomas y uniformes.</strong> Sin justificantes, no puedes reclamar deducciones educativas.
+</div>
+<div class="alert alert--red">
+  <strong>❌ Pensar que por ser migrante no tienes derechos.</strong> Si eres residente fiscal en Madrid, tienes las mismas deducciones que cualquier persona. La nacionalidad no importa.
+</div>
+
+<!-- ═══════════ GLOSARIO ═══════════ -->
+<section class="section">
+  <div class="section__tag">📖 Mini-diccionario</div>
+  <h2 class="section__title">Palabras que vas a ver</h2>
+</section>
+
+<div class="glossary">
+  <div class="glossary__item"><div class="glossary__term">IRPF</div><div class="glossary__def">El impuesto que grava tus ingresos anuales.</div></div>
+  <div class="glossary__item"><div class="glossary__term">Retención</div><div class="glossary__def">Lo que tu empresa te quita de la nómina cada mes y paga a Hacienda por ti.</div></div>
+  <div class="glossary__item"><div class="glossary__term">Borrador</div><div class="glossary__def">La propuesta que Hacienda prepara con tus datos. Siempre hay que revisarlo.</div></div>
+  <div class="glossary__item"><div class="glossary__term">Deducción</div><div class="glossary__def">Dinero que se resta de lo que debes pagar. Reduce tu factura fiscal.</div></div>
+  <div class="glossary__item"><div class="glossary__term">Base imponible</div><div class="glossary__def">La cantidad sobre la que se calcula el impuesto (tus ingresos menos reducciones).</div></div>
+  <div class="glossary__item"><div class="glossary__term">Pagador</div><div class="glossary__def">Cada empresa, ETT o entidad que te pagó. El SEPE (paro) también cuenta.</div></div>
+  <div class="glossary__item"><div class="glossary__term">SMI</div><div class="glossary__def">Salario Mínimo Interprofesional. En 2025: 16.576€/año.</div></div>
+  <div class="glossary__item"><div class="glossary__term">Tributación conjunta</div><div class="glossary__def">Cuando un matrimonio presenta una sola declaración juntos.</div></div>
+</div>
+
+<!-- ═══════════ CTAs ═══════════ -->
+<div class="cta-group">
+  <a href="https://sede.agenciatributaria.gob.es" target="_blank" rel="noopener" class="cta cta--primary">🏛️ Ir a la Agencia Tributaria</a>
+  <a href="calculadora_renta_v2.html" class="cta cta--secondary">🧮 Usa nuestra calculadora de deducciones</a>
+</div>
+
+<!-- ═══════════ DISCLAIMER ═══════════ -->
+<div class="alert alert--green">
+  <strong>💡 Último consejo:</strong> Si es tu primera vez, pide <strong>cita presencial</strong> en la Agencia Tributaria (1-30 junio). Es gratis, te ayudan paso a paso y evitas errores. Llama al <strong>91 554 87 70</strong> o pide cita en su web.
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div class="footer">
+  <div class="footer__brand">Trámites Verificados</div>
+  <div class="footer__slogan">Paso a paso contigo, sin complicarte</div>
+  <div class="footer__legal">
+    Información verificada a abril 2026. Esta guía es orientativa y no sustituye al asesoramiento fiscal profesional. Consulta siempre fuentes oficiales de la Agencia Tributaria y la Comunidad de Madrid.
+  </div>
+</div>
+
+</div>
+</body>
+</html>
