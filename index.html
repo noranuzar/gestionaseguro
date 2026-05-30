@@ -1980,6 +1980,17 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
     </div>
   </div>
  </header>
+  <!-- ============ BANNER RENTA (temporal, se oculta tras 30-jun) ============ -->
+<div class="alerta-rd" id="banner-renta" style="background:var(--terracota-bg); border-bottom-color:var(--terracota);">
+  <div class="container alerta-inner">
+    <div>
+      <span class="alerta-badge-rd" style="background:var(--terracota);">⏰ Campaña Renta 2025</span>
+      <div class="alerta-titulo">¿Sabes si tienes que hacer la declaración o si te devuelven dinero?</div>
+      <p class="alerta-texto">El plazo termina el <strong>30 de junio</strong>. Si cobraste paro, eres autónomo/a o tuviste dos pagadores, puede que estés obligado/a — o que Hacienda te deba dinero. <strong id="renta-dias"></strong></p>
+    </div>
+    <a href="guia_renta_2025.html" class="alerta-boton" style="background:var(--terracota);">Ver guía y calculadora →</a>
+  </div>
+</div>
  <!-- ============ ÁREAS HOME ============ -->
 <section class="areas-home container reveal" id="areas">
  <div class="areas-home-header">
@@ -2352,17 +2363,35 @@ function switchTab(btn, panelId) {
       cta.onclick = null;
   cta.textContent = 'Consultar →';
 }
-    // Contador días
+   // Contador días + Banner/Tarjeta Renta (misma fecha, se auto-ocultan)
     (function() {
       const fin = new Date('2026-06-30T23:59:59');
       const hoy = new Date();
       const dias = Math.max(0, Math.ceil((fin - hoy) / (1000 * 60 * 60 * 24)));
+      const finPasado = hoy > fin;
+
+      // Contador existente
       const els = document.querySelectorAll('.contador');
       if (dias > 0) {
         els.forEach(el => el.textContent = '(' + dias + ' días restantes)');
       } else {
         els.forEach(el => el.textContent = '(plazo finalizado)');
       }
+
+      // Banner Renta
+      const banner = document.getElementById('banner-renta');
+      if (banner) {
+        if (finPasado) {
+          banner.style.display = 'none';
+        } else {
+          const elDias = document.getElementById('renta-dias');
+          if (elDias) elDias.textContent = dias === 0 ? 'Último día: ¡hoy!' : 'Quedan ' + dias + ' días.';
+        }
+      }
+
+      // Tarjeta Renta
+      const card = document.getElementById('card-renta');
+      if (card && finPasado) card.style.display = 'none';
     })();
   </script>
 
