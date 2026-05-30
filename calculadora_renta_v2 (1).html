@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Cuánto puedes ahorrarte en la Renta? | Trámites Verificados</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #1B4F72;
+    --brand-light: #2E86C1;
+    --brand-soft: #EBF5FB;
+    --accent: #F39C12;
+    --accent-warm: #F8C471;
+    --green: #27AE60;
+    --green-soft: #EAFAF1;
+    --red: #E74C3C;
+    --red-soft: #FDEDEC;
+    --orange-soft: #FEF9E7;
+    --surface: #FAFCFE;
+    --card: #FFFFFF;
+    --text: #1A252F;
+    --text-mid: #4A5568;
+    --text-light: #7F8C8D;
+    --border: #E2E8F0;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 2px 12px rgba(27,79,114,0.08);
+    --shadow-lg: 0 8px 32px rgba(27,79,114,0.12);
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--surface);
+    color: var(--text);
+    min-height: 100vh;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .calc-wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+  }
+
+  /* ─── Header ─── */
+  .calc-header { text-align: center; padding: 24px 0 20px; }
+  .calc-header__brand {
+    font-family: var(--font-body); font-size: 11px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase; color: var(--brand-light); margin-bottom: 12px;
+  }
+  .calc-header__title {
+    font-family: var(--font-display); font-size: 26px; font-weight: 700;
+    line-height: 1.2; color: var(--brand); margin-bottom: 8px;
+  }
+  .calc-header__sub {
+    font-size: 15px; color: var(--text-mid); line-height: 1.5;
+    max-width: 400px; margin: 0 auto;
+  }
+
+  /* ─── Progress ─── */
+  .progress { margin: 20px 0 24px; }
+  .progress__label {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 8px; font-size: 13px; color: var(--text-light); font-weight: 500;
+  }
+  .progress__bar { height: 6px; background: var(--border); border-radius: 20px; overflow: hidden; }
+  .progress__fill {
+    height: 100%; background: linear-gradient(90deg, var(--brand-light), var(--brand));
+    border-radius: 20px; transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .progress__dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+  .progress__dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all var(--transition);
+  }
+  .progress__dot.active { background: var(--brand); transform: scale(1.2); }
+  .progress__dot.done { background: var(--green); }
+
+  /* ─── Card ─── */
+  .step-card {
+    background: var(--card); border-radius: var(--radius);
+    padding: 28px 24px 24px; box-shadow: var(--shadow);
+    border: 1px solid var(--border); position: relative; overflow: hidden;
+    animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .step-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 4px; background: linear-gradient(90deg, var(--brand-light), var(--accent));
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .step-card.exit { animation: slideOut 0.25s ease-in both; }
+  @keyframes slideOut { to { opacity: 0; transform: translateY(-16px) scale(0.97); } }
+
+  .step-card__emoji { font-size: 36px; margin-bottom: 12px; display: block; }
+  .step-card__question {
+    font-family: var(--font-display); font-size: 20px; font-weight: 600;
+    line-height: 1.3; color: var(--text); margin-bottom: 6px;
+  }
+  .step-card__hint {
+    font-size: 14px; color: var(--text-light); line-height: 1.5; margin-bottom: 20px;
+  }
+
+  /* ─── Options ─── */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option-btn {
+    display: flex; align-items: center; gap: 12px; width: 100%;
+    padding: 16px 18px; border: 2px solid var(--border); border-radius: var(--radius-sm);
+    background: var(--card); font-family: var(--font-body); font-size: 15px;
+    font-weight: 500; color: var(--text); cursor: pointer; transition: all var(--transition);
+    text-align: left; line-height: 1.4; -webkit-tap-highlight-color: transparent;
+  }
+  .option-btn:hover {
+    border-color: var(--brand-light); background: var(--brand-soft);
+    transform: translateY(-1px); box-shadow: 0 4px 12px rgba(46,134,193,0.12);
+  }
+  .option-btn:active { transform: scale(0.98); }
+  .option-btn.selected {
+    border-color: var(--brand); background: var(--brand-soft);
+    box-shadow: 0 0 0 3px rgba(27,79,114,0.12);
+  }
+  .option-btn__icon { font-size: 22px; flex-shrink: 0; width: 32px; text-align: center; }
+  .option-btn__text { flex: 1; }
+  .option-btn__label { display: block; }
+  .option-btn__detail { font-size: 12px; color: var(--text-light); font-weight: 400; margin-top: 2px; display: block; }
+
+  /* ─── Sub-question ─── */
+  .sub-section {
+    margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border);
+    animation: fadeUp 0.3s ease both;
+  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .sub-section__label {
+    font-size: 14px; font-weight: 600; color: var(--text-mid); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .sub-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sub-grid .option-btn {
+    flex: 1; min-width: calc(50% - 4px); padding: 12px 14px;
+    font-size: 14px; justify-content: center; text-align: center;
+  }
+  .sub-grid .option-btn__icon { display: none; }
+
+  /* Multi-select chips (for kid ages) */
+  .chip-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip-btn {
+    padding: 10px 16px; border: 2px solid var(--border); border-radius: 50px;
+    background: var(--card); font-family: var(--font-body); font-size: 14px;
+    font-weight: 500; color: var(--text); cursor: pointer; transition: all var(--transition);
+    -webkit-tap-highlight-color: transparent; white-space: nowrap;
+  }
+  .chip-btn:hover { border-color: var(--brand-light); background: var(--brand-soft); }
+  .chip-btn.selected { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); }
+
+  /* ─── Inline alert ─── */
+  .inline-alert {
+    margin-top: 14px; padding: 12px 14px; border-radius: var(--radius-sm);
+    font-size: 13px; line-height: 1.5; animation: fadeUp 0.3s ease both;
+  }
+  .inline-alert--warn { background: var(--orange-soft); border-left: 3px solid var(--accent); color: var(--text); }
+  .inline-alert--danger { background: var(--red-soft); border-left: 3px solid var(--red); color: var(--text); }
+  .inline-alert--info { background: var(--brand-soft); border-left: 3px solid var(--brand-light); color: var(--text); }
+  .inline-alert strong { font-weight: 600; }
+
+  /* ─── Nav ─── */
+  .nav-row { display: flex; gap: 10px; margin-top: 20px; }
+  .nav-btn {
+    flex: 1; padding: 14px 20px; border: none; border-radius: var(--radius-sm);
+    font-family: var(--font-body); font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all var(--transition); -webkit-tap-highlight-color: transparent;
+  }
+  .nav-btn--back {
+    background: var(--surface); color: var(--text-mid); border: 1.5px solid var(--border);
+    flex: 0 0 auto; padding: 14px 18px;
+  }
+  .nav-btn--back:hover { background: var(--border); }
+  .nav-btn--next {
+    background: var(--brand); color: white; box-shadow: 0 4px 14px rgba(27,79,114,0.25);
+  }
+  .nav-btn--next:hover { background: var(--brand-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,79,114,0.3); }
+  .nav-btn--next:active { transform: scale(0.98); }
+  .nav-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+
+  /* ─── Results ─── */
+  .result { animation: resultIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes resultIn { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+
+  .result__hero {
+    text-align: center; padding: 32px 20px 28px;
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+    border-radius: var(--radius); color: white; margin-bottom: 20px;
+    position: relative; overflow: hidden;
+  }
+  .result__hero::after {
+    content: ''; position: absolute; top: -40%; right: -20%;
+    width: 200px; height: 200px; background: rgba(255,255,255,0.06); border-radius: 50%;
+  }
+  .result__hero-label { font-size: 13px; font-weight: 500; opacity: 0.85; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .result__hero-amount { font-family: var(--font-display); font-size: 38px; font-weight: 700; line-height: 1.1; margin-bottom: 8px; }
+  .result__hero-note { font-size: 14px; opacity: 0.8; line-height: 1.4; }
+
+  .result__card {
+    background: var(--card); border-radius: var(--radius); padding: 22px 20px;
+    box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 14px;
+  }
+  .result__card-title {
+    font-family: var(--font-display); font-size: 16px; font-weight: 600;
+    color: var(--brand); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+  }
+
+  .deduction-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 10px 0; border-bottom: 1px solid var(--border); gap: 12px;
+  }
+  .deduction-row:last-child { border-bottom: none; }
+  .deduction-row__label { font-size: 14px; color: var(--text); line-height: 1.4; flex: 1; }
+  .deduction-row__label small { font-size: 12px; color: var(--text-light); display: block; margin-top: 2px; }
+  .deduction-row__amount { font-weight: 600; font-size: 14px; color: var(--green); white-space: nowrap; flex-shrink: 0; }
+  .deduction-row__amount.zero { color: var(--text-light); font-weight: 400; }
+
+  .result__alert-card {
+    background: var(--red-soft); border-radius: var(--radius); padding: 18px 20px;
+    border: 1px solid #F5B7B1; margin-bottom: 14px;
+  }
+  .result__alert-card h3 {
+    font-family: var(--font-display); font-size: 15px; font-weight: 600;
+    color: var(--red); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+  .result__alert-card p { font-size: 14px; line-height: 1.6; color: var(--text); }
+
+  .result__message { font-size: 15px; line-height: 1.6; color: var(--text-mid); }
+  .result__message strong { color: var(--text); }
+
+  .result__tip {
+    background: var(--green-soft); border-left: 3px solid var(--green);
+    padding: 14px 16px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 14px; line-height: 1.5; color: var(--text); margin-top: 16px;
+  }
+  .result__tip strong { color: var(--green); }
+
+  .result__actions { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+  .result__action {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 16px 20px; border-radius: var(--radius-sm); font-family: var(--font-body);
+    font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer;
+    transition: all var(--transition); border: none; -webkit-tap-highlight-color: transparent;
+  }
+  .result__action--primary { background: var(--brand); color: white; box-shadow: 0 4px 14px rgba(27,79,114,0.25); }
+  .result__action--primary:hover { background: var(--brand-light); transform: translateY(-1px); }
+  .result__action--secondary { background: var(--brand-soft); color: var(--brand); border: 1.5px solid var(--brand-light); }
+  .result__action--secondary:hover { background: var(--card); border-color: var(--brand); }
+  .result__action--restart { background: transparent; color: var(--text-light); font-weight: 500; font-size: 14px; padding: 10px; }
+  .result__action--restart:hover { color: var(--text-mid); }
+
+  .disclaimer {
+    text-align: center; margin-top: 28px; padding: 16px; background: var(--brand-soft);
+    border-radius: var(--radius-sm); font-size: 12px; line-height: 1.5; color: var(--text-light);
+  }
+  .disclaimer strong { color: var(--text-mid); }
+
+  .calc-footer {
+    text-align: center; margin-top: 24px; font-size: 12px; color: var(--text-light); line-height: 1.5;
+  }
+  .calc-footer a { color: var(--brand-light); text-decoration: none; font-weight: 500; }
+
+  .hidden { display: none !important; }
+
+  .celebration { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; overflow: hidden; }
+  .celebration span {
+    position: absolute; width: 6px; height: 6px; border-radius: 50%;
+    animation: confettiFall 1.5s ease-out forwards; opacity: 0;
+  }
+  @keyframes confettiFall {
+    0% { opacity: 1; transform: translateY(-20px) scale(0); }
+    50% { opacity: 1; transform: translateY(40px) scale(1); }
+    100% { opacity: 0; transform: translateY(80px) scale(0.5); }
+  }
+</style>
+</head>
+<body>
+
+<div class="calc-wrapper" id="app">
+  <header class="calc-header">
+    <div class="calc-header__brand">Trámites Verificados</div>
+    <h1 class="calc-header__title">¿Cuánto puedes ahorrarte en la Renta?</h1>
+    <p class="calc-header__sub">Responde unas preguntas sencillas y te damos una orientación sobre posibles deducciones en Madrid.</p>
+  </header>
+
+  <div class="progress" id="progress-section">
+    <div class="progress__label">
+      <span id="progress-text">Pregunta 1 de 7</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress__bar"><div class="progress__fill" id="progress-fill"></div></div>
+    <div class="progress__dots" id="progress-dots"></div>
+  </div>
+
+  <div id="steps-container"></div>
+  <div id="results-container" class="hidden"></div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ═══════════════════════════════════════
+  // QUESTIONS CONFIG
+  // ═══════════════════════════════════════
+  const questions = [
+    {
+      id: 'income',
+      emoji: '💰',
+      question: '¿Cuánto ganaste en 2025, más o menos?',
+      hint: 'Piensa en tu sueldo bruto anual (antes de impuestos). Lo que dice tu contrato o la suma de todos tus trabajos del año.',
+      type: 'single',
+      options: [
+        { value: 'below_smi', icon: '📋', label: 'Menos de 16.576€', detail: 'Por debajo del salario mínimo' },
+        { value: 'smi_zone', icon: '📊', label: 'Entre 16.576€ y 18.276€', detail: 'Zona del salario mínimo' },
+        { value: 'low_mid', icon: '💼', label: 'Entre 18.276€ y 26.000€', detail: '' },
+        { value: 'mid', icon: '📈', label: 'Entre 26.000€ y 35.000€', detail: '' },
+        { value: 'high', icon: '🏢', label: 'Más de 35.000€', detail: '' },
+      ]
+    },
+    {
+      id: 'employers',
+      emoji: '🏭',
+      question: '¿Cuántas empresas te pagaron en 2025?',
+      hint: 'Cuenta cada empresa distinta, ETT o periodo de desempleo (el SEPE también cuenta como pagador).',
+      type: 'single',
+      options: [
+        { value: 'one', icon: '1️⃣', label: 'Solo una empresa', detail: 'Todo el año en el mismo sitio' },
+        { value: 'two_plus', icon: '🔄', label: 'Dos o más (incluido paro)', detail: 'Cambié de trabajo, tuve ETT o cobré desempleo' },
+      ],
+      alerts: {
+        'two_plus': {
+          type: 'info',
+          text: '<strong>ℹ️ Dato útil:</strong> Con dos o más pagadores, el umbral para estar obligado a declarar baja a 15.876€. Pero si no llegas a esa cantidad, no tienes obligación. Y si te retuvieron IRPF durante el año, puede que te convenga declarar voluntariamente para que te lo devuelvan. Sigue respondiendo y te orientamos.'
+        }
+      }
+    },
+    {
+      id: 'contract',
+      emoji: '📄',
+      question: '¿Cómo fue tu situación laboral en 2025?',
+      hint: 'Esto nos ayuda a saber si tus retenciones fueron correctas o si puede haber sorpresas.',
+      type: 'single',
+      options: [
+        { value: 'stable', icon: '✅', label: 'Contrato fijo todo el año', detail: 'Mismo trabajo, misma empresa' },
+        { value: 'temp', icon: '📋', label: 'Contratos temporales o por ETT', detail: '' },
+        { value: 'mixed', icon: '🔀', label: 'Mezcla: algo de paro, algo de trabajo', detail: '' },
+        { value: 'new', icon: '🆕', label: 'Empecé a trabajar a mitad de año', detail: 'Llegué a España durante 2025 o empecé tarde' },
+      ],
+      alerts: {
+        'temp': {
+          type: 'info',
+          text: '<strong>ℹ️ Dato sobre las ETT:</strong> Las empresas de trabajo temporal suelen retener solo el 2% de IRPF, menos de lo que correspondería. Eso no significa automáticamente que te salga a pagar: depende de cuánto ganaste en total y si estás obligado a declarar. Si no estás obligado, podría incluso convenirte hacerla para recuperar lo que te retuvieron. Te lo aclaramos al final.'
+        },
+        'mixed': {
+          type: 'info',
+          text: '<strong>ℹ️ Nota:</strong> Cuando mezclas desempleo y trabajo, cada pagador retiene poco porque solo ve "su trozo" del salario. Eso puede afectar al resultado, pero también puede haber deducciones que compensen. Sigue respondiendo.'
+        },
+        'new': {
+          type: 'info',
+          text: '<strong>ℹ️ Nota:</strong> Si trabajaste solo parte del año, tus retenciones fueron calculadas para pocos meses. Eso puede jugarte a favor o en contra según el total. Merece la pena revisar bien.'
+        }
+      }
+    },
+    {
+      id: 'rent',
+      emoji: '🏠',
+      question: '¿Pagas alquiler por tu vivienda en Madrid?',
+      hint: 'Si vives de alquiler, podrías deducir parte de lo que pagas (depende de tu edad e ingresos).',
+      type: 'single',
+      options: [
+        { value: 'yes', icon: '✅', label: 'Sí, pago alquiler', detail: '' },
+        { value: 'no', icon: '❌', label: 'No', detail: 'Vivienda propia, vivo con familiares u otra situación' },
+      ],
+      subQuestion: {
+        trigger: 'yes',
+        label: '¿Cuánto pagas al mes, más o menos?',
+        options: [
+          { value: 'r_low', label: 'Menos de 500€' },
+          { value: 'r_mid', label: '500€ – 800€' },
+          { value: 'r_high', label: '800€ – 1.200€' },
+          { value: 'r_vhigh', label: 'Más de 1.200€' },
+        ]
+      }
+    },
+    {
+      id: 'age',
+      emoji: '🎂',
+      question: '¿Qué edad tienes?',
+      hint: 'Tu edad influye en la deducción por alquiler y en algunas otras.',
+      type: 'single',
+      options: [
+        { value: 'under35', icon: '🧑', label: 'Menos de 35 años', detail: '' },
+        { value: '35to39', icon: '🧑‍💼', label: 'Entre 35 y 39 años', detail: '' },
+        { value: 'over40', icon: '👤', label: '40 años o más', detail: '' },
+      ]
+    },
+    {
+      id: 'kids',
+      emoji: '👶',
+      question: '¿Tienes hijos que vivan contigo?',
+      hint: 'Incluye hijos menores de 25 años que dependan económicamente de ti y convivan contigo.',
+      type: 'single',
+      options: [
+        { value: 'none', icon: '🙅', label: 'No tengo hijos', detail: '' },
+        { value: 'has_kids', icon: '👨‍👧‍👦', label: 'Sí, tengo hijos', detail: '' },
+      ],
+      subQuestion: {
+        trigger: 'has_kids',
+        label: '¿Qué edades tienen? (marca todas las que apliquen)',
+        multiSelect: true,
+        options: [
+          { value: 'baby', label: '👶 Menor de 3 años' },
+          { value: 'preschool', label: '🧒 De 3 a 5 años' },
+          { value: 'school', label: '📚 De 6 a 17 años' },
+          { value: 'young_adult', label: '🎓 De 18 a 24 años' },
+        ]
+      },
+      subQuestion2: {
+        trigger: 'has_kids',
+        label: '¿Cuántos hijos en total?',
+        options: [
+          { value: '1', label: '1 hijo' },
+          { value: '2', label: '2 hijos' },
+          { value: '3plus', label: '3 o más' },
+        ]
+      }
+    },
+    {
+      id: 'first_time',
+      emoji: '📝',
+      question: '¿Es tu primera declaración de la Renta en España?',
+      hint: 'Si llevas poco tiempo, puede ser tu primera vez. No pasa nada, estamos para ayudarte.',
+      type: 'single',
+      options: [
+        { value: 'first', icon: '🆕', label: 'Sí, es la primera vez', detail: '' },
+        { value: 'not_first', icon: '✔️', label: 'No, ya he declarado antes', detail: '' },
+        { value: 'unsure', icon: '🤷', label: 'No estoy seguro/a', detail: '' },
+      ]
+    },
+  ];
+
+  const TOTAL_STEPS = questions.length;
+  let currentStep = 0;
+  let answers = {};
+
+  const stepsContainer = document.getElementById('steps-container');
+  const resultsContainer = document.getElementById('results-container');
+  const progressSection = document.getElementById('progress-section');
+  const progressText = document.getElementById('progress-text');
+  const progressPct = document.getElementById('progress-pct');
+  const progressFill = document.getElementById('progress-fill');
+  const progressDots = document.getElementById('progress-dots');
+
+  // Init dots
+  for (let i = 0; i < TOTAL_STEPS; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'progress__dot';
+    progressDots.appendChild(dot);
+  }
+
+  // ═══════════════════════════════════════
+  // RENDER STEP
+  // ═══════════════════════════════════════
+  function renderStep() {
+    const q = questions[currentStep];
+    const existing = stepsContainer.querySelector('.step-card');
+    if (existing) {
+      existing.classList.add('exit');
+      setTimeout(() => buildStep(q), 250);
+    } else {
+      buildStep(q);
+    }
+    updateProgress();
+  }
+
+  function buildStep(q) {
+    stepsContainer.innerHTML = '';
+    const card = document.createElement('div');
+    card.className = 'step-card';
+
+    const optionsHTML = q.options.map(opt => {
+      const sel = answers[q.id] === opt.value ? ' selected' : '';
+      const det = opt.detail ? `<span class="option-btn__detail">${opt.detail}</span>` : '';
+      return `<button class="option-btn${sel}" data-value="${opt.value}" data-qid="${q.id}">
+        <span class="option-btn__icon">${opt.icon}</span>
+        <span class="option-btn__text"><span class="option-btn__label">${opt.label}</span>${det}</span>
+      </button>`;
+    }).join('');
+
+    card.innerHTML = `
+      <span class="step-card__emoji">${q.emoji}</span>
+      <h2 class="step-card__question">${q.question}</h2>
+      <p class="step-card__hint">${q.hint}</p>
+      <div class="options" id="main-options">${optionsHTML}</div>
+      <div id="alert-area"></div>
+      <div id="sub-area"></div>
+      <div id="sub-area-2"></div>
+      <div class="nav-row">
+        ${currentStep > 0 ? '<button class="nav-btn nav-btn--back" id="btn-back">← Atrás</button>' : ''}
+        <button class="nav-btn nav-btn--next" id="btn-next" disabled>${currentStep === TOTAL_STEPS - 1 ? 'Ver mi resultado 🎯' : 'Siguiente →'}</button>
+      </div>
+    `;
+
+    stepsContainer.appendChild(card);
+
+    // Bind main options
+    card.querySelectorAll('#main-options .option-btn').forEach(btn => {
+      btn.addEventListener('click', () => handleMainOption(btn, q));
+    });
+
+    // Nav
+    const btnNext = card.querySelector('#btn-next');
+    const btnBack = card.querySelector('#btn-back');
+    if (btnBack) btnBack.addEventListener('click', () => { currentStep--; renderStep(); });
+    btnNext.addEventListener('click', () => {
+      if (currentStep < TOTAL_STEPS - 1) { currentStep++; renderStep(); } else { showResults(); }
+    });
+
+    // Restore state if going back
+    if (answers[q.id]) {
+      if (q.alerts && q.alerts[answers[q.id]]) showAlert(q.alerts[answers[q.id]]);
+      if (q.subQuestion && answers[q.id] === q.subQuestion.trigger) {
+        showSubQuestion(q);
+        if (q.subQuestion2 && answers[q.id] === q.subQuestion2.trigger) showSubQuestion2(q);
+      }
+    }
+    updateNextBtn();
+  }
+
+  function handleMainOption(btn, q) {
+    const value = btn.dataset.value;
+    answers[q.id] = value;
+
+    btn.closest('.options').querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+
+    // Alert
+    const alertArea = document.getElementById('alert-area');
+    alertArea.innerHTML = '';
+    if (q.alerts && q.alerts[value]) showAlert(q.alerts[value]);
+
+    // Sub questions
+    const subArea = document.getElementById('sub-area');
+    const subArea2 = document.getElementById('sub-area-2');
+    subArea.innerHTML = '';
+    subArea2.innerHTML = '';
+
+    if (q.subQuestion) {
+      if (value === q.subQuestion.trigger) {
+        showSubQuestion(q);
+        if (q.subQuestion2) showSubQuestion2(q);
+      } else {
+        delete answers[q.id + '_sub'];
+        delete answers[q.id + '_sub2'];
+        delete answers[q.id + '_ages'];
+      }
+    }
+
+    updateNextBtn();
+  }
+
+  function showAlert(alertConfig) {
+    const alertArea = document.getElementById('alert-area');
+    alertArea.innerHTML = `<div class="inline-alert inline-alert--${alertConfig.type}">${alertConfig.text}</div>`;
+  }
+
+  function showSubQuestion(q) {
+    const sub = q.subQuestion;
+    const subArea = document.getElementById('sub-area');
+
+    if (sub.multiSelect) {
+      // Chip-style multi-select (for kid ages)
+      const selectedAges = answers[q.id + '_ages'] || [];
+      const chips = sub.options.map(opt => {
+        const sel = selectedAges.includes(opt.value) ? ' selected' : '';
+        return `<button class="chip-btn${sel}" data-age="${opt.value}">${opt.label}</button>`;
+      }).join('');
+      subArea.innerHTML = `<div class="sub-section"><div class="sub-section__label">👶 ${sub.label}</div><div class="chip-grid">${chips}</div></div>`;
+
+      subArea.querySelectorAll('.chip-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.classList.toggle('selected');
+          const ages = [];
+          subArea.querySelectorAll('.chip-btn.selected').forEach(b => ages.push(b.dataset.age));
+          answers[q.id + '_ages'] = ages;
+          updateNextBtn();
+        });
+      });
+    } else {
+      // Single select sub-options
+      const opts = sub.options.map(opt => {
+        const sel = answers[q.id + '_sub'] === opt.value ? ' selected' : '';
+        return `<button class="option-btn${sel}" data-subval="${opt.value}">${opt.label}</button>`;
+      }).join('');
+      subArea.innerHTML = `<div class="sub-section"><div class="sub-section__label">💬 ${sub.label}</div><div class="sub-grid">${opts}</div></div>`;
+
+      subArea.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          answers[q.id + '_sub'] = btn.dataset.subval;
+          subArea.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          updateNextBtn();
+        });
+      });
+    }
+  }
+
+  function showSubQuestion2(q) {
+    const sub2 = q.subQuestion2;
+    const subArea2 = document.getElementById('sub-area-2');
+    const opts = sub2.options.map(opt => {
+      const sel = answers[q.id + '_sub2'] === opt.value ? ' selected' : '';
+      return `<button class="option-btn${sel}" data-sub2val="${opt.value}">${opt.label}</button>`;
+    }).join('');
+    subArea2.innerHTML = `<div class="sub-section"><div class="sub-section__label">🔢 ${sub2.label}</div><div class="sub-grid">${opts}</div></div>`;
+
+    subArea2.querySelectorAll('.option-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        answers[q.id + '_sub2'] = btn.dataset.sub2val;
+        subArea2.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        updateNextBtn();
+      });
+    });
+  }
+
+  function updateNextBtn() {
+    const q = questions[currentStep];
+    const btn = document.getElementById('btn-next');
+    if (!btn) return;
+
+    let ok = !!answers[q.id];
+
+    if (q.subQuestion && answers[q.id] === q.subQuestion.trigger) {
+      if (q.subQuestion.multiSelect) {
+        ok = ok && (answers[q.id + '_ages'] || []).length > 0;
+      } else {
+        ok = ok && !!answers[q.id + '_sub'];
+      }
+    }
+    if (q.subQuestion2 && answers[q.id] === q.subQuestion2.trigger) {
+      ok = ok && !!answers[q.id + '_sub2'];
+    }
+
+    btn.disabled = !ok;
+  }
+
+  function updateProgress() {
+    const pct = Math.round((currentStep / TOTAL_STEPS) * 100);
+    progressText.textContent = `Pregunta ${currentStep + 1} de ${TOTAL_STEPS}`;
+    progressPct.textContent = `${pct}%`;
+    progressFill.style.width = `${pct}%`;
+    progressDots.querySelectorAll('.progress__dot').forEach((dot, i) => {
+      dot.className = 'progress__dot';
+      if (i < currentStep) dot.classList.add('done');
+      if (i === currentStep) dot.classList.add('active');
+    });
+  }
+
+  // ═══════════════════════════════════════
+  // CALCULATION ENGINE
+  // ═══════════════════════════════════════
+  function calculate() {
+    const deductions = [];
+    const warnings = [];
+    let totalMin = 0, totalMax = 0;
+
+    const income = answers.income;
+    const employers = answers.employers;
+    const contract = answers.contract;
+    const rent = answers.rent;
+    const rentSub = answers.rent_sub;
+    const age = answers.age;
+    const kids = answers.kids;
+    const kidAges = answers.kids_ages || [];
+    const kidCount = answers.kids_sub2;
+    const firstTime = answers.first_time;
+
+    // ─── 0. OBLIGATION LOGIC ───
+    // Determine if the person is likely obligated to file
+    // One employer: obligated if > 22,000€
+    // Two+ employers: obligated if > 15,876€ (when 2nd+ paid > 1,500€)
+    // We can only approximate with our income ranges
+
+    let obligationType = 'unknown'; // 'obligated', 'not_obligated', 'borderline', 'unknown'
+    const isLowRetention = contract === 'temp' || contract === 'mixed';
+
+    if (employers === 'one') {
+      if (income === 'below_smi' || income === 'smi_zone') {
+        obligationType = 'not_obligated';
+      } else if (income === 'low_mid') {
+        obligationType = 'borderline'; // 18,276-26,000 — could be either side of 22,000
+      } else {
+        obligationType = 'obligated';
+      }
+    } else { // two_plus
+      if (income === 'below_smi') {
+        obligationType = 'not_obligated'; // < 16,576 < 15,876 threshold
+      } else {
+        // smi_zone (16,576-18,276), low_mid, mid, high — all above 15,876
+        obligationType = 'obligated';
+      }
+    }
+
+    // ─── 1. OBLIGATION + RETENTION WARNINGS ───
+    if (obligationType === 'not_obligated') {
+      // Great news! Not obligated. But might benefit from filing voluntarily.
+      if (isLowRetention || employers === 'two_plus') {
+        warnings.push({
+          type: 'positive',
+          text: '<strong>Buena noticia:</strong> Con tus ingresos, probablemente <strong>no estás obligado/a a declarar</strong>. Pero si te retuvieron algo de IRPF durante el año (aunque fuera poco), puede convenirte presentar la declaración voluntariamente: Hacienda te devolvería lo retenido. Comprueba tus nóminas o pide tu borrador para verlo.'
+        });
+      } else {
+        warnings.push({
+          type: 'positive',
+          text: '<strong>Buena noticia:</strong> Con tus ingresos y un solo pagador, probablemente <strong>no estás obligado/a a declarar</strong>. Aun así, puede interesarte hacerla si te retuvieron IRPF durante el año, porque te lo devolverían.'
+        });
+      }
+    } else if (obligationType === 'obligated' && isLowRetention) {
+      // Obligated AND low retention — this is where it can hurt
+      if (contract === 'temp') {
+        warnings.push({
+          type: 'caution',
+          text: '<strong>⚠️ Dato importante:</strong> Con tus ingresos estás obligado/a a declarar, y las ETT suelen retener solo un 2% de IRPF, menos de lo que correspondería. Eso significa que es posible que te salga <strong>a pagar</strong> algo, porque durante el año te retuvieron poco. No te asustes: puedes fraccionarlo en dos plazos (60% al presentar y 40% en noviembre), y las deducciones de abajo pueden reducir esa cantidad.'
+        });
+      } else {
+        warnings.push({
+          type: 'caution',
+          text: '<strong>⚠️ Dato importante:</strong> Con tus ingresos y varios pagadores, estás obligado/a a declarar. Como cada pagador retuvo por su cuenta (viendo solo su parte), es posible que la suma total de retenciones se quede corta. La Renta podría salir a pagar, pero las deducciones de abajo pueden ayudar a compensarlo. Y si sale a pagar, puedes fraccionarlo en dos plazos sin intereses.'
+        });
+      }
+    } else if (obligationType === 'obligated' && !isLowRetention) {
+      // Obligated but stable retention — normal situation
+      // No special warning needed
+    } else if (obligationType === 'borderline') {
+      warnings.push({
+        type: 'neutral',
+        text: '<strong>ℹ️ Tu caso:</strong> Con tus ingresos, podrías estar justo en el límite de obligación (22.000€ con un pagador). Si no estás obligado y te retuvieron IRPF, te conviene declarar para que te devuelvan. Si estás obligado, las retenciones de un contrato fijo suelen estar bien ajustadas. Revisa tu borrador para salir de dudas.'
+      });
+    }
+
+    // ─── 2. Deducción estatal: rentas bajas (ejercicio 2025) ───
+    if (income === 'below_smi') {
+      deductions.push({
+        label: 'Deducción por rentas bajas',
+        note: 'Si ganaste menos del SMI (16.576€), puedes tener la deducción máxima de 340€. Si te retuvieron poco o nada, puede que no haya cuota que reducir, pero al declarar podrían devolverte las retenciones.',
+        min: 100, max: 340
+      });
+    } else if (income === 'smi_zone') {
+      deductions.push({
+        label: 'Deducción por rentas del trabajo (zona SMI)',
+        note: 'Con ingresos entre 16.576€ y 18.276€, tienes una deducción de entre 50€ y 340€, según tu salario exacto. Cuanto más cerca del SMI, mayor es la deducción.',
+        min: 50, max: 340
+      });
+    }
+
+    // ─── 3. Deducción alquiler (CM - menores de 40) ───
+    if (rent === 'yes') {
+      const canDeductRent = age === 'under35' || age === '35to39';
+      const incomeBlocks = (income === 'mid' || income === 'high');
+
+      if (!canDeductRent) {
+        deductions.push({
+          label: 'Deducción por alquiler',
+          note: 'Con 40 años o más, esta deducción de Madrid no aplica (el límite es menor de 40). Si estás en desempleo con familiares a cargo, podría haber excepciones. Consulta.',
+          min: 0, max: 0
+        });
+      } else if (incomeBlocks) {
+        deductions.push({
+          label: 'Deducción por alquiler',
+          note: 'Tus ingresos probablemente superan el límite de 26.414€ (individual). Si tributas en conjunta el límite sube a 37.322€. Revísalo.',
+          min: 0, max: 0
+        });
+      } else {
+        let rMin = 0, rMax = 0;
+        if (rentSub === 'r_low')   { rMin = 90;  rMax = 180; }
+        if (rentSub === 'r_mid')   { rMin = 180; rMax = 360; }
+        if (rentSub === 'r_high')  { rMin = 290; rMax = 580; }
+        if (rentSub === 'r_vhigh') { rMin = 430; rMax = 1237; }
+
+        deductions.push({
+          label: 'Deducción por alquiler (menores de 40)',
+          note: 'Hasta el 30% de lo que pagas, máximo 1.237€/año. Necesitas el resguardo del depósito de fianza en la Agencia de Vivienda Social de Madrid.',
+          min: rMin, max: rMax
+        });
+      }
+    }
+
+    // ─── 4. Hijos: deducción por nacimiento + mínimos por descendientes ───
+    if (kids === 'has_kids' && kidCount) {
+      const numKids = kidCount === '3plus' ? 3 : parseInt(kidCount);
+      const hasBaby = kidAges.includes('baby');
+      const hasPreschool = kidAges.includes('preschool');
+      const hasSchool = kidAges.includes('school');
+      const incomeOk = income !== 'high' && income !== 'mid';
+
+      // a) Mínimo por descendientes (ahorro real en cuota)
+      let minDescMin = 0, minDescMax = 0;
+      if (numKids >= 1) { minDescMin += 250; minDescMax += 350; }
+      if (numKids >= 2) { minDescMin += 280; minDescMax += 400; }
+      if (numKids >= 3) { minDescMin += 450; minDescMax += 650; }
+
+      // Extra for kids under 3: additional 2,800€ minimum = ~350-500€ tax saving
+      if (hasBaby) {
+        minDescMin += 300;
+        minDescMax += 500;
+      }
+
+      deductions.push({
+        label: `Mínimo por descendientes (${numKids} hijo${numKids > 1 ? 's' : ''})`,
+        note: `Hacienda ya tiene en cuenta a tus hijos para calcular menos impuestos. ${hasBaby ? 'Un hijo menor de 3 años genera un beneficio extra importante.' : ''} Esto suele estar en tu borrador, pero compruébalo.`,
+        min: minDescMin, max: minDescMax
+      });
+
+      // b) Deducción autonómica CM por nacimiento/adopción (721,70€ desde 2023)
+      if (hasBaby || hasPreschool) {
+        const recentKids = (hasBaby && hasPreschool) ? Math.min(numKids, 2) : 1;
+        deductions.push({
+          label: 'Deducción por nacimiento/adopción (Madrid)',
+          note: `721,70€ por hijo nacido/adoptado desde 2023 (el año del nacimiento y los 2 siguientes). Si tu hijo tiene menos de 3 años, casi seguro aplica. Límite de renta: 30.930€ individual.`,
+          min: 360 * recentKids, max: 722 * recentKids
+        });
+      }
+
+      // c) Gastos educativos
+      if ((hasPreschool || hasSchool) && incomeOk) {
+        let eduMin = 80, eduMax = 412;
+        if (hasSchool) { eduMax = 928; }
+        if (hasBaby) { eduMax = 1031; }
+
+        deductions.push({
+          label: 'Gastos educativos (colegios, idiomas, uniformes)',
+          note: '15% de escolaridad e idiomas, 5% de uniformes. Solo centros privados no concertados. Guarda facturas. Límite entre 412€ y 1.031€ por hijo.',
+          min: eduMin * Math.min(numKids, 2),
+          max: eduMax
+        });
+      }
+
+      // d) Guardería / cuidado menores 3 años
+      if (hasBaby) {
+        deductions.push({
+          label: 'Guardería o cuidado de menores de 3 años',
+          note: 'Si pagas guardería autorizada o tienes empleada del hogar para cuidar al bebé, puedes deducir hasta 1.000€ (estatal por guardería) + 463,95€ (autonómica por empleada de hogar). Consulta requisitos.',
+          min: 200, max: 1000
+        });
+      }
+
+      // e) Familia numerosa
+      if (numKids >= 3) {
+        deductions.push({
+          label: 'Familia numerosa',
+          note: 'Con 3+ hijos puedes ser familia numerosa. Cat. general: 50% de la cuota autonómica (hasta 6.186€). Cat. especial (5+ hijos): 100% (hasta 12.372€). Además 1.200€/año estatal. Necesitas el título oficial.',
+          min: 600, max: 3000
+        });
+      }
+    }
+
+    // ─── 5. Tips ───
+    let extraTips = [];
+    if (firstTime === 'first' || firstTime === 'unsure') {
+      extraTips.push('Como es tu primera declaración (o no estás seguro), te recomendamos pedir <strong>cita presencial</strong> en la Agencia Tributaria. Es gratis, te ayudan paso a paso y evitas errores. Plazo: 1-30 de junio de 2026.');
+    }
+    if (employers === 'two_plus') {
+      extraTips.push('Con varios pagadores, <strong>no aceptes el borrador sin revisarlo</strong>. Comprueba que todos los pagadores y retenciones están reflejados.');
+    }
+    if (obligationType === 'not_obligated') {
+      extraTips.push('Aunque no estés obligado/a, <strong>pide tu borrador</strong> en la web de la Agencia Tributaria. Si te retuvieron algo de IRPF, te lo devuelven al declarar. Es gratis y no tiene riesgo.');
+    }
+    if (obligationType === 'obligated' && isLowRetention) {
+      extraTips.push('Si te sale a pagar, recuerda que puedes <strong>fraccionar en 2 plazos</strong> sin intereses: 60% al presentar y 40% en noviembre.');
+    }
+
+    // Totals
+    deductions.forEach(d => { totalMin += d.min; totalMax += d.max; });
+    totalMin = Math.round(totalMin / 5) * 5;
+    totalMax = Math.round(totalMax / 5) * 5;
+
+    return { deductions, warnings, totalMin, totalMax, extraTips, obligationType, isLowRetention };
+  }
+
+  // ═══════════════════════════════════════
+  // SHOW RESULTS
+  // ═══════════════════════════════════════
+  function showResults() {
+    progressSection.classList.add('hidden');
+    stepsContainer.classList.add('hidden');
+    resultsContainer.classList.remove('hidden');
+
+    const { deductions, warnings, totalMin, totalMax, extraTips, obligationType, isLowRetention } = calculate();
+
+    // Hero
+    let heroAmount, heroNote;
+    if (totalMax === 0) {
+      heroAmount = 'Sin deducciones claras';
+      heroNote = 'Pero revisa tu borrador: puede haber cosas que esta calculadora no capta.';
+    } else if (totalMin >= totalMax - 20) {
+      heroAmount = `Hasta ${totalMax}€`;
+      heroNote = obligationType === 'not_obligated'
+        ? 'Posible devolución si presentas la declaración voluntariamente'
+        : 'Ahorro orientativo en tu declaración';
+    } else {
+      heroAmount = `${totalMin}€ – ${totalMax}€`;
+      heroNote = obligationType === 'not_obligated'
+        ? 'Posible devolución si presentas la declaración voluntariamente'
+        : 'Rango orientativo de posible ahorro';
+    }
+
+    // Warning cards — now with type-based styling
+    const warningColors = {
+      positive: { bg: '#EAFAF1', border: '#27AE60', icon: '✅' },
+      caution: { bg: '#FEF9E7', border: '#F39C12', icon: '⚠️' },
+      neutral: { bg: '#EBF5FB', border: '#2E86C1', icon: 'ℹ️' },
+    };
+    const warningHTML = warnings.map(w => {
+      const c = warningColors[w.type] || warningColors.neutral;
+      return `
+        <div class="result__card" style="background:${c.bg};border-color:${c.border}">
+          <div class="result__card-title" style="color:${c.border}">${c.icon} Tu situación fiscal</div>
+          <p class="result__message">${w.text}</p>
+        </div>
+      `;
+    }).join('');
+
+    // Deduction rows
+    const activeDeductions = deductions.filter(d => d.max > 0);
+    const inactiveDeductions = deductions.filter(d => d.max === 0);
+
+    const activeHTML = activeDeductions.map(d => `
+      <div class="deduction-row">
+        <div class="deduction-row__label">${d.label}<small>${d.note}</small></div>
+        <div class="deduction-row__amount">${d.min}€ – ${d.max}€</div>
+      </div>
+    `).join('');
+
+    const inactiveHTML = inactiveDeductions.map(d => `
+      <div class="deduction-row">
+        <div class="deduction-row__label">${d.label}<small>${d.note}</small></div>
+        <div class="deduction-row__amount zero">No aplica</div>
+      </div>
+    `).join('');
+
+    // Message
+    let msg = '';
+    if (obligationType === 'not_obligated' && totalMax > 0) {
+      msg = `<strong>Probablemente no estás obligado/a a declarar</strong>, pero eso no significa que debas quedarte de brazos cruzados. Si durante el año te retuvieron algo de IRPF (aunque fuera poco), al presentar la declaración voluntariamente Hacienda te devolvería esas retenciones, más las deducciones de arriba. <strong>Pide tu borrador y compruébalo: no pierdes nada y puedes ganar.</strong>`;
+    } else if (obligationType === 'obligated' && isLowRetention && totalMax > 0) {
+      msg = `Estás obligado/a a declarar y es posible que te retuvieran poco durante el año. Las deducciones de arriba pueden <strong>reducir lo que tengas que pagar o incluso compensarlo</strong>. Revisa tu borrador con calma y aplica todo lo que te corresponda antes de confirmar.`;
+    } else if (totalMax > 1000) {
+      msg = `<strong>Buena noticia:</strong> según tus respuestas, podrías ahorrarte una cantidad importante. Merece la pena revisar bien tu declaración y no dejar dinero sobre la mesa.`;
+    } else if (totalMax > 300) {
+      msg = `<strong>Hay opciones para ti.</strong> No es una fortuna, pero cada euro cuenta. Revisa bien tu borrador y asegúrate de que las deducciones de Madrid están aplicadas.`;
+    } else if (totalMax > 0) {
+      msg = `El ahorro puede ser modesto, pero <strong>no confirmes el borrador sin revisarlo</strong>. A veces Hacienda no incluye automáticamente las deducciones autonómicas.`;
+    } else {
+      msg = `Con los datos que nos das, no vemos deducciones claras. Pero <strong>eso no significa que no tengas derecho a nada</strong>. Tu situación puede tener matices. Te recomendamos revisar tu borrador o pedir cita.`;
+    }
+
+    // Tips
+    const tipsHTML = extraTips.length > 0 ? extraTips.map(t =>
+      `<div class="result__tip"><strong>💡 Consejo:</strong> ${t}</div>`
+    ).join('') : '';
+
+    resultsContainer.innerHTML = `
+      <div class="result">
+        <div class="result__hero" id="result-hero">
+          <div class="celebration" id="celebration"></div>
+          <div class="result__hero-label">Tu ahorro orientativo</div>
+          <div class="result__hero-amount">${heroAmount}</div>
+          <div class="result__hero-note">${heroNote}</div>
+        </div>
+
+        ${warningHTML}
+
+        ${activeHTML || inactiveHTML ? `
+        <div class="result__card">
+          <div class="result__card-title">📋 Desglose por concepto</div>
+          ${activeHTML}
+          ${inactiveHTML}
+        </div>` : ''}
+
+        <div class="result__card">
+          <div class="result__card-title">💬 Nuestra recomendación</div>
+          <p class="result__message">${msg}</p>
+          ${tipsHTML}
+        </div>
+
+        <div class="result__actions">
+          <a href="https://sede.agenciatributaria.gob.es" target="_blank" rel="noopener" class="result__action result__action--primary">
+            🏛️ Ir a la Agencia Tributaria
+          </a>
+          <a href="#guia" class="result__action result__action--secondary" onclick="alert('Enlaza aquí tu guía paso a paso de Trámites Verificados'); return false;">
+            📖 Ver guía paso a paso
+          </a>
+          <button class="result__action result__action--restart" onclick="restartCalc()">
+            ↻ Volver a empezar
+          </button>
+        </div>
+
+        <div class="disclaimer">
+          <strong>⚠️ Importante:</strong> Esta calculadora da una orientación aproximada.
+          No sustituye al asesoramiento fiscal profesional. Los importes reales dependen de tu situación exacta.
+          Consulta siempre tu borrador en la Agencia Tributaria.
+        </div>
+
+        <div class="calc-footer">
+          <strong>Trámites Verificados</strong><br>
+          Paso a paso contigo, sin complicarte<br>
+          <a href="#">tramitesverificados.com</a>
+        </div>
+      </div>
+    `;
+
+    // Celebration
+    if (totalMax > 200) {
+      const celeb = document.getElementById('celebration');
+      const cols = ['#F39C12','#27AE60','#2E86C1','#E74C3C','#9B59B6'];
+      for (let i = 0; i < 20; i++) {
+        const s = document.createElement('span');
+        s.style.left = `${Math.random()*100}%`;
+        s.style.top = `${Math.random()*40}%`;
+        s.style.background = cols[Math.floor(Math.random()*cols.length)];
+        s.style.animationDelay = `${Math.random()*0.5}s`;
+        celeb.appendChild(s);
+      }
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ─── Restart ───
+  window.restartCalc = function() {
+    currentStep = 0;
+    answers = {};
+    progressSection.classList.remove('hidden');
+    stepsContainer.classList.remove('hidden');
+    resultsContainer.classList.add('hidden');
+    resultsContainer.innerHTML = '';
+    renderStep();
+  };
+
+  // ─── Boot ───
+  renderStep();
+})();
+</script>
+</body>
+</html>
