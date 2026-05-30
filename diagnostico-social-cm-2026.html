@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico Social Comunidad de Madrid 2026</title>
+<style>
+  :root{
+    --oliva:#6b7f4a;
+    --oliva-osc:#4f5f37;
+    --terracota:#b4654a;
+    --arena:#e8dfc8;
+    --arena-cl:#f5f0e1;
+    --tinta:#2a2a2a;
+    --gris:#6b6b6b;
+    --gris-cl:#d4d4d4;
+    --apto:#3b6e3b;
+    --apto-bg:#e2efd9;
+    --cond:#a66d00;
+    --cond-bg:#fbf2d8;
+    --excl:#9a2a1d;
+    --excl-bg:#f5dad4;
+    --balanza-rojo-bg:#fbe9e4;
+    --balanza-rojo:#8a2418;
+    --balanza-verde-bg:#dfeed3;
+    --balanza-verde:#365a25;
+    --balanza-borde:#c4901c;
+    --blanco:#fdfbf6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--tinta);background:var(--arena-cl);line-height:1.5;font-size:15px}
+  .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 80px}
+  header.intro{margin-bottom:24px;padding-bottom:18px;border-bottom:2px solid var(--oliva)}
+  header.intro h1{font-size:1.6rem;color:var(--oliva-osc);margin-bottom:6px;letter-spacing:-.5px}
+  header.intro .sub{color:var(--gris);font-size:.9rem}
+  header.intro .version{display:inline-block;background:var(--oliva);color:white;font-size:.7rem;padding:2px 8px;border-radius:3px;margin-left:8px;vertical-align:middle}
+  .panel{background:var(--blanco);border:1px solid var(--gris-cl);border-radius:8px;padding:20px;margin-bottom:18px}
+
+  /* LEYENDA EXPLICATIVA */
+  .leyenda{
+    background:#fdfaf2;
+    border:1px solid var(--arena);
+    border-left:4px solid var(--oliva);
+    border-radius:8px;
+    margin-bottom:18px;
+    overflow:hidden;
+  }
+  .leyenda summary{
+    cursor:pointer;
+    padding:14px 18px;
+    font-weight:600;
+    color:var(--oliva-osc);
+    font-size:.95rem;
+    list-style:none;
+    user-select:none;
+  }
+  .leyenda summary::-webkit-details-marker{display:none}
+  .leyenda summary::after{content:' ▾';color:var(--oliva);font-size:.85rem}
+  .leyenda[open] summary::after{content:' ▴'}
+  .leyenda summary:hover{background:rgba(107,127,74,.05)}
+  .leyenda-cont{padding:0 18px 18px 18px;font-size:.88rem;line-height:1.65;color:var(--tinta)}
+  .leyenda-cont h5{color:var(--oliva-osc);font-size:.95rem;margin-top:14px;margin-bottom:6px;font-weight:700}
+  .leyenda-cont h5:first-child{margin-top:0}
+  .leyenda-cont p{margin-bottom:8px}
+  .leyenda-cont ul{margin:6px 0 8px 22px}
+  .leyenda-cont li{margin-bottom:3px}
+  .leyenda-cont .destacado{background:rgba(180,101,74,.08);border-left:3px solid var(--terracota);padding:8px 12px;margin:8px 0;border-radius:4px;font-size:.85rem}
+  .leyenda-cont .destacado strong{color:var(--terracota)}
+  .leyenda-cont code{background:var(--arena-cl);padding:1px 6px;border-radius:3px;font-size:.85rem}
+
+  /* BLOQUE DESTACADO: RÉGIMEN DE VIVIENDA */
+  .regimen-vivienda{
+    background:#eef4ec;
+    border:2px solid var(--oliva);
+    border-radius:8px;
+    padding:18px 20px;
+    margin-bottom:18px;
+  }
+  .regimen-vivienda h3{
+    font-size:1.05rem;
+    color:var(--oliva-osc);
+    margin-bottom:6px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .regimen-vivienda .sub{font-size:.86rem;color:var(--gris);margin-bottom:14px}
+  .regimen-vivienda .opciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+  .regimen-vivienda .opcion{
+    flex:1;
+    min-width:170px;
+    background:white;
+    border:2px solid var(--gris-cl);
+    border-radius:6px;
+    padding:12px 14px;
+    cursor:pointer;
+    transition:all .15s;
+    text-align:center;
+  }
+  .regimen-vivienda .opcion:hover{border-color:var(--oliva)}
+  .regimen-vivienda .opcion.seleccionada{
+    border-color:var(--oliva);
+    background:var(--oliva);
+    color:white;
+  }
+  .regimen-vivienda .opcion .titulo{font-weight:600;font-size:.95rem;margin-bottom:3px}
+  .regimen-vivienda .opcion .extra{font-size:.78rem;opacity:.85}
+  .aviso-propiedad{
+    background:#f6efd9;
+    border-left:4px solid var(--terracota);
+    padding:12px 14px;
+    margin-top:14px;
+    border-radius:5px;
+    font-size:.88rem;
+    line-height:1.55;
+  }
+  .aviso-propiedad strong{color:var(--terracota)}
+  .panel h2{font-size:1.05rem;color:var(--oliva-osc);margin-bottom:14px;border-bottom:1px solid var(--arena);padding-bottom:8px}
+  .panel h2 .num{display:inline-block;background:var(--oliva);color:white;width:24px;height:24px;border-radius:50%;text-align:center;font-size:.85rem;line-height:24px;margin-right:8px;vertical-align:middle}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  label{display:block;font-size:.82rem;color:var(--gris);margin-bottom:4px;font-weight:500}
+  label .help{display:inline-block;background:var(--arena);color:var(--tinta);font-size:.7rem;border-radius:50%;width:14px;height:14px;text-align:center;line-height:14px;cursor:help;margin-left:4px}
+  input[type="text"],input[type="number"],input[type="date"],select{
+    width:100%;padding:8px 10px;border:1px solid var(--gris-cl);border-radius:5px;font-size:.95rem;
+    background:white;color:var(--tinta);font-family:inherit
+  }
+  input:focus,select:focus{outline:none;border-color:var(--oliva);box-shadow:0 0 0 2px rgba(107,127,74,.15)}
+  .row-edades{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .row-edades .edad-box{display:flex;align-items:center;gap:6px;background:var(--arena-cl);padding:6px 8px;border-radius:4px;border:1px solid var(--arena)}
+  .row-edades .edad-box label{margin:0;font-size:.75rem;color:var(--oliva-osc)}
+  .row-edades .edad-box input,.row-edades .edad-box select{width:auto;min-width:60px;padding:4px 6px;font-size:.85rem}
+  .checkbox-row{display:flex;align-items:center;gap:8px;margin-top:8px}
+  .checkbox-row input{width:auto}
+  .checkbox-row label{margin:0;font-size:.85rem;color:var(--tinta)}
+  .subpanel{background:var(--arena-cl);border:1px dashed var(--arena);padding:12px;border-radius:6px;margin-top:12px}
+  .subpanel h4{font-size:.9rem;color:var(--oliva-osc);margin-bottom:8px;font-weight:600}
+  .actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+  button{
+    padding:11px 22px;border:none;border-radius:5px;font-size:.95rem;font-weight:600;
+    cursor:pointer;font-family:inherit;letter-spacing:.2px
+  }
+  .btn-primary{background:var(--oliva);color:white}
+  .btn-primary:hover{background:var(--oliva-osc)}
+  .btn-secondary{background:transparent;color:var(--oliva-osc);border:1px solid var(--oliva)}
+  .btn-secondary:hover{background:var(--arena-cl)}
+  #resultado{display:none;margin-top:30px}
+  #resultado.visible{display:block}
+  .res-bloque{border-radius:8px;padding:18px;margin-bottom:14px;border-left:5px solid}
+  .res-bloque h3{font-size:1.05rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .res-bloque .icono{font-size:1.3rem}
+  .res-bloque.apto{background:var(--apto-bg);border-color:var(--apto)}
+  .res-bloque.apto h3{color:var(--apto)}
+  .res-bloque.cond{background:var(--cond-bg);border-color:var(--cond)}
+  .res-bloque.cond h3{color:var(--cond)}
+  .res-bloque.excl{background:var(--excl-bg);border-color:var(--excl)}
+  .res-bloque.excl h3{color:var(--excl)}
+  .res-item{background:rgba(255,255,255,.55);padding:11px 13px;border-radius:5px;margin-bottom:8px;font-size:.92rem}
+  .res-item:last-child{margin-bottom:0}
+  .res-item strong{display:block;margin-bottom:3px;font-size:.95rem}
+  .res-item .cuantia{color:var(--apto);font-weight:600;font-size:1.05rem;margin:4px 0}
+  .res-item .motivo{color:var(--gris);font-size:.85rem;margin-top:4px}
+  .res-item .fuente{font-size:.75rem;color:var(--gris);font-style:italic;margin-top:6px;display:block}
+  .resumen-total{background:var(--oliva-osc);color:white;padding:16px;border-radius:8px;margin-bottom:14px;text-align:center}
+  .resumen-total .label{font-size:.85rem;opacity:.85}
+  .resumen-total .total{font-size:1.6rem;font-weight:700;margin:4px 0}
+  .resumen-total .desglose{font-size:.8rem;opacity:.85}
+  .disclaimer{background:var(--arena);border-left:4px solid var(--terracota);padding:14px 16px;border-radius:5px;margin-top:20px;font-size:.83rem;color:var(--tinta)}
+  .disclaimer strong{color:var(--terracota);display:block;margin-bottom:4px}
+
+  .aviso-fiscal{
+    background:#e8f0f7;
+    border:1px solid #5a8bb5;
+    border-left:4px solid #5a8bb5;
+    border-radius:6px;
+    padding:14px 16px;
+    margin-bottom:14px;
+    font-size:.88rem;
+    color:#1f3a52;
+  }
+  .aviso-fiscal strong{color:#1f3a52;display:block;margin-bottom:4px;font-size:.95rem}
+  .aviso-fiscal .pista{margin-top:8px;background:rgba(255,255,255,.5);padding:8px 10px;border-radius:4px;font-size:.83rem}
+
+  /* BALANZA TRANSICIÓN 18 AÑOS */
+  .balanza-wrap{
+    background:linear-gradient(180deg, #fff8e6 0%, var(--arena-cl) 100%);
+    border:2px solid var(--balanza-borde);
+    border-radius:10px;
+    padding:22px;
+    margin-bottom:18px;
+    box-shadow:0 2px 12px rgba(196,144,28,.15);
+  }
+  .balanza-wrap > h3{font-size:1.15rem;color:#6b5400;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  .balanza-wrap > .subtit{color:#856b1f;font-size:.88rem;margin-bottom:18px;font-style:italic}
+  .balanza-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative}
+  .balanza-grid::before{
+    content:'⚖';
+    position:absolute;left:50%;top:-2px;transform:translateX(-50%);
+    font-size:1.6rem;color:var(--balanza-borde);background:#fff8e6;padding:0 6px;z-index:1;
+  }
+  .balanza-col{border-radius:8px;padding:16px;border:1px solid}
+  .balanza-col.izq{background:var(--balanza-rojo-bg);border-color:#d4a299}
+  .balanza-col.der{background:var(--balanza-verde-bg);border-color:#a8c490}
+  .balanza-col h4{font-size:.95rem;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,.1);display:flex;align-items:center;gap:6px}
+  .balanza-col.izq h4{color:var(--balanza-rojo)}
+  .balanza-col.der h4{color:var(--balanza-verde)}
+  .bal-item{background:rgba(255,255,255,.65);border-radius:5px;padding:10px 12px;margin-bottom:8px;font-size:.88rem}
+  .bal-item:last-child{margin-bottom:0}
+  .bal-item strong{display:block;margin-bottom:3px;font-size:.92rem}
+  .balanza-col.izq .bal-item strong{color:var(--balanza-rojo)}
+  .balanza-col.der .bal-item strong{color:var(--balanza-verde)}
+  .bal-item .cifra{font-weight:700;font-size:1rem;margin:4px 0}
+  .balanza-col.izq .cifra{color:var(--balanza-rojo)}
+  .balanza-col.der .cifra{color:var(--balanza-verde)}
+  .bal-item .detalle{color:var(--gris);font-size:.82rem;margin-top:4px}
+  .bal-item .fuente{display:block;font-size:.72rem;color:var(--gris);font-style:italic;margin-top:6px}
+  .saldo-neto{margin-top:16px;background:var(--blanco);border:2px solid var(--balanza-borde);border-radius:8px;padding:14px;text-align:center}
+  .saldo-neto .label{font-size:.82rem;color:var(--gris)}
+  .saldo-neto .cifra-grande{font-size:1.4rem;font-weight:700;margin-top:4px}
+  .saldo-neto.negativo .cifra-grande{color:var(--balanza-rojo)}
+  .saldo-neto.positivo .cifra-grande{color:var(--balanza-verde)}
+  .saldo-neto .nota{font-size:.78rem;color:var(--gris);margin-top:6px}
+
+  /* COMPARATIVA CAPI vs DEDUCCIÓN MATERNIDAD */
+  .comp-maternidad{
+    background:linear-gradient(180deg,#fdf6f0 0%,var(--arena-cl) 100%);
+    border:2px solid var(--terracota);
+    border-radius:10px;
+    padding:22px;
+    margin-bottom:18px;
+  }
+  .comp-maternidad > h3{
+    font-size:1.15rem;
+    color:var(--terracota);
+    margin-bottom:6px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .comp-maternidad > .subtit{
+    color:#856b1f;
+    font-size:.88rem;
+    margin-bottom:18px;
+    font-style:italic;
+  }
+  .comp-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-bottom:14px;
+  }
+  .comp-col{
+    background:white;
+    border:1px solid var(--gris-cl);
+    border-radius:8px;
+    padding:14px 16px;
+  }
+  .comp-col h4{
+    font-size:.95rem;
+    margin-bottom:8px;
+    color:var(--oliva-osc);
+    border-bottom:1px solid var(--arena);
+    padding-bottom:6px;
+  }
+  .comp-col .imp-cuantia{
+    font-size:1.3rem;
+    font-weight:700;
+    color:var(--apto);
+    margin:8px 0;
+  }
+  .comp-col.no-aplica .imp-cuantia{color:var(--excl)}
+  .comp-col.no-aplica{opacity:.65}
+  .comp-col p{font-size:.83rem;color:var(--gris);margin-bottom:6px;line-height:1.5}
+  .comp-recomendacion{
+    background:var(--oliva-osc);
+    color:white;
+    padding:14px 16px;
+    border-radius:8px;
+    font-size:.92rem;
+    line-height:1.6;
+  }
+  .comp-recomendacion strong{color:#f5e6c8}
+  @media (max-width:680px){
+    .comp-grid{grid-template-columns:1fr}
+  }
+
+  details.fuentes{margin-top:18px;font-size:.85rem;color:var(--gris)}
+  details.fuentes summary{cursor:pointer;color:var(--oliva-osc);font-weight:600;padding:6px 0}
+  details.fuentes ul{margin:8px 0 0 18px;line-height:1.6}
+  details.fuentes li{margin-bottom:3px}
+  .footer-info{text-align:center;color:var(--gris);font-size:.78rem;margin-top:30px;padding-top:18px;border-top:1px solid var(--gris-cl)}
+  .hidden{display:none}
+  @media (max-width:680px){
+    .balanza-grid{grid-template-columns:1fr;gap:24px}
+    .balanza-grid::before{display:none}
+  }
+  @media print{
+    body{background:white}
+    .actions, header.intro .sub, button{display:none}
+    .panel:not(#bloque-resultado){display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="intro">
+    <h1>Diagnóstico Social Comunidad de Madrid 2026 <span class="version">v2.2</span></h1>
+    <div class="sub">Herramienta orientativa para saber a qué ayudas puedes acceder. Rellena tus datos y obtendrás un informe personalizado.</div>
+  </header>
+
+  <details class="leyenda">
+    <summary>📖 ¿Qué significan estos términos? Léeme antes de empezar</summary>
+    <div class="leyenda-cont">
+
+      <h5>¿Qué es la "Unidad de Convivencia" (UC)?</h5>
+      <p>Es el conjunto de personas que viven contigo y están unidas a ti por matrimonio, pareja de hecho o parentesco hasta segundo grado (padres, hijos, hermanos, abuelos, nietos). Tu UC puede ser solo tú, tú y tu pareja, tú con tus hijos, etc.</p>
+      <div class="destacado">
+        <strong>Importante:</strong> un compañero/a de piso con quien NO tienes vínculo familiar NO forma parte de tu UC, aunque viva en tu casa y estéis empadronados juntos.
+      </div>
+
+      <h5>¿Qué pongo en "Ingresos computables IMV/CAPI"?</h5>
+      <p>Es lo que ganaron entre toda tu UC el año pasado (2025) en <strong>neto</strong>. Suma:</p>
+      <ul>
+        <li>Sueldos netos (después de impuestos y Seguridad Social)</li>
+        <li>Prestaciones públicas que cobraste (paro, pensión, etc.)</li>
+        <li>Alquileres que cobraste si subarriendas o tienes inmuebles alquilados</li>
+        <li>Rendimientos de cuentas, fondos, dividendos</li>
+      </ul>
+      <p><strong>No sumes:</strong> becas, prestaciones por hijo a cargo del IMV, indemnizaciones por despido, ayudas exentas de IRPF.</p>
+
+      <div class="destacado">
+        <strong>¿Tus ingresos no son una nómina normal?</strong> Consulta qué cuenta y qué no:
+        <ul style="margin-top:6px">
+          <li><strong>Si estás de baja médica:</strong> lo que cobras durante la baja (los primeros días la empresa, después la SS) <strong>SÍ cuenta</strong>. Es prestación contributiva.</li>
+          <li><strong>Si estás de baja maternal/paternal (prestación por nacimiento):</strong> <strong>SÍ cuenta</strong>. Es sustitutivo del salario.</li>
+          <li><strong>Si cobras el paro (contributivo o subsidio):</strong> <strong>SÍ cuenta</strong>.</li>
+          <li><strong>Si cobras pensión de alimentos por sentencia:</strong> <strong>SÍ cuenta</strong>, salvo que la sentencia la declare exenta. Si te corresponden por sentencia pero la otra parte no paga, NO cuentas lo que no recibes.</li>
+          <li><strong>Si recibes pensión compensatoria del excónyuge:</strong> <strong>SÍ cuenta</strong>.</li>
+          <li><strong>Si cobras pensión de viudedad, jubilación o incapacidad:</strong> <strong>SÍ cuenta</strong>.</li>
+          <li><strong>Si tienes ingresos por autónoma:</strong> <strong>SÍ cuentan</strong> los rendimientos netos de tu actividad (ingresos menos gastos).</li>
+          <li><strong>Si cobras una beca de estudios reglados:</strong> <strong>NO cuenta</strong>. Está exenta.</li>
+          <li><strong>Si has recibido una indemnización por despido:</strong> <strong>NO cuenta</strong> hasta el límite exento de IRPF. Lo que supere ese límite sí cuenta.</li>
+          <li><strong>Si recibes una ayuda asistencial autonómica o municipal por emergencia social:</strong> <strong>NO cuenta</strong>.</li>
+          <li><strong>Si cobras una prestación de la dependencia:</strong> <strong>NO cuenta</strong>.</li>
+          <li><strong>Si cobras el propio IMV o CAPI:</strong> <strong>NO cuenta</strong> (lógicamente).</li>
+        </ul>
+        <p style="margin-top:8px;font-size:.82rem"><strong>Si tu caso no encaja en ninguno de los anteriores</strong> o no estás segura, pon una estimación aproximada y consulta antes de presentar la solicitud.</p>
+      </div>
+
+      <h5>¿Qué pongo en "Ingresos UC Plan Vivienda" y en "Base Imponible IRPF"?</h5>
+      <p>Las dos casillas piden lo mismo: la <strong>base imponible</strong> de tu IRPF. Es básicamente tu sueldo bruto anual menos las cotizaciones a la Seguridad Social y otros gastos deducibles.</p>
+      <ul>
+        <li>Si ya hiciste la Renta 2024 (presentada en 2025): suma las casillas <code>0435</code> y <code>0460</code> de tu declaración.</li>
+        <li>Si todavía no has hecho la Renta de 2025: una estimación válida es <code>sueldo bruto anual − cotizaciones SS</code>. Lo verás aproximado en el certificado de retenciones que te dan en el trabajo.</li>
+        <li>Si no estás obligada a declarar Renta: pon tu sueldo bruto del año.</li>
+      </ul>
+
+      <h5>¿Qué es "Patrimonio neto sin vivienda habitual"?</h5>
+      <p>Es lo que tienes ahorrado y en bienes, sin contar la casa donde vives. Suma:</p>
+      <ul>
+        <li>Saldo de cuentas bancarias y depósitos</li>
+        <li>Acciones, fondos de inversión, planes de pensiones</li>
+        <li>Valor de tu coche y otros vehículos</li>
+        <li>Otros inmuebles que tengas (que NO sean tu vivienda habitual): trastero, garaje, segunda residencia, piso en el pueblo, local</li>
+        <li>Criptomonedas, joyas, obras de arte</li>
+      </ul>
+      <div class="destacado">
+        <strong>Tu vivienda habitual NO entra en este cálculo</strong>, ni siquiera si la tienes en propiedad. Y por tanto la hipoteca de tu vivienda habitual tampoco descuenta.<br><br>
+        <strong>¿Y si tengo otro inmueble con hipoteca?</strong> Solo cuenta la parte que ya es tuya. Ejemplo: si tienes un piso de inversión que vale 150.000 € y aún debes 100.000 € de hipoteca, tu patrimonio por ese piso es <code>150.000 − 100.000 = 50.000 €</code>.
+      </div>
+
+      <h5>¿Qué pongo en "Importe anual satisfecho por alquiler"?</h5>
+      <p>Lo que pagaste de alquiler durante todo el año 2025 (renta mensual × 12 meses, o las mensualidades que efectivamente pagaste). Esto solo se usa para las deducciones de la Renta, no para las ayudas directas.</p>
+
+      <h5>¿Y si vivo de habitación, no de piso entero?</h5>
+      <p>En el bloque 2, marca "Habitación". Las ayudas siguen estando disponibles, pero con topes de alquiler más bajos (300 €/mes en general, 450 €/mes en Madrid Capital).</p>
+
+      <h5>¿Esta calculadora me da derecho a recibir las ayudas?</h5>
+      <p>No. Es una <strong>estimación</strong>. Te dice si <em>encajas en los baremos numéricos</em>. La concesión efectiva depende de aportar la documentación correcta, de los plazos de cada convocatoria y de la disponibilidad de presupuesto público. Si el resultado te interesa, conviene que un profesional revise tu caso concreto antes de tramitar.</p>
+
+    </div>
+  </details>
+
+  <section class="regimen-vivienda">
+    <h3>🏠 Antes de empezar: ¿cuál es la situación de tu vivienda?</h3>
+    <div class="sub">Esto NO te excluye de ninguna ayuda. Solo nos sirve para mostrarte las que aplican a tu caso.</div>
+    <div class="opciones">
+      <div class="opcion seleccionada" data-regimen="alquiler" onclick="seleccionarRegimen('alquiler')">
+        <div class="titulo">🔑 Vivo de alquiler</div>
+        <div class="extra">Piso entero o habitación</div>
+      </div>
+      <div class="opcion" data-regimen="propiedad" onclick="seleccionarRegimen('propiedad')">
+        <div class="titulo">🏡 Vivienda en propiedad</div>
+        <div class="extra">Con o sin hipoteca</div>
+      </div>
+      <div class="opcion" data-regimen="cesion" onclick="seleccionarRegimen('cesion')">
+        <div class="titulo">🤝 Cesión gratuita</div>
+        <div class="extra">Casa de familiares, etc.</div>
+      </div>
+    </div>
+    <div id="avisoPropiedad" class="aviso-propiedad" style="display:none">
+      <strong>Importante:</strong> Tener tu vivienda habitual en propiedad <strong>NO te excluye del CAPI ni del IMV</strong>, aunque estés pagando hipoteca. La Seguridad Social <strong>excluye expresamente</strong> el valor de la vivienda habitual del cómputo de patrimonio (art. 18 Ley 19/2021). Si tu vivienda vale 300.000 € y debes 290.000 € de hipoteca, en esta calculadora pones <strong>0 €</strong> en el campo de patrimonio por ese concepto. Solo cuenta lo que tengas <em>fuera</em> de la vivienda habitual: ahorros, otros inmuebles, vehículos.
+    </div>
+    <div id="avisoCesion" class="aviso-propiedad" style="display:none">
+      <strong>Importante:</strong> Vivir en una vivienda cedida (de familiares, amigos, etc.) <strong>NO te excluye del CAPI ni del IMV</strong>. Las ayudas al alquiler sí requieren contrato registrado, así que esas no aplicarán; pero las prestaciones de la Seguridad Social funcionan con normalidad. Si la cesión es gratuita, no rellenes los campos de alquiler.
+    </div>
+  </section>
+
+  <input type="hidden" id="regimenVivienda" value="alquiler">
+
+  <section class="panel">
+    <h2><span class="num">1</span>Composición del hogar</h2>
+    <div class="grid">
+      <div>
+        <label>Tipo de unidad de convivencia</label>
+        <select id="tipoUnidad">
+          <option value="biparental">Pareja con hijos (biparental)</option>
+          <option value="monoparental">Familia monoparental con custodia total</option>
+          <option value="pareja_sin_hijos">Pareja sin hijos</option>
+          <option value="persona_sola">Persona sola sin cargas familiares</option>
+        </select>
+      </div>
+      <div>
+        <label>Nº adultos en la unidad</label>
+        <input type="number" id="numAdultos" min="1" max="4" value="2">
+      </div>
+      <div>
+        <label>Nº hijos menores de 18 (a 1/1/2026)</label>
+        <input type="number" id="numMenores" min="0" max="6" value="0">
+      </div>
+      <div>
+        <label>Familia numerosa</label>
+        <select id="familiaNumerosa">
+          <option value="no">No</option>
+          <option value="general">Categoría general</option>
+          <option value="especial">Categoría especial</option>
+        </select>
+      </div>
+      <div>
+        <label>Situación laboral del declarante principal
+          <span class="help" title="Si en el hogar hay varias personas trabajando, indica la situación de quien va a solicitar las ayudas. Se usa para detectar acceso a subsidios del SEPE.">?</span>
+        </label>
+        <select id="situacionLaboral">
+          <option value="trabaja_cuenta_ajena">Trabaja por cuenta ajena</option>
+          <option value="autonoma">Autónoma / por cuenta propia</option>
+          <option value="paro_con_prestacion">En paro con prestación contributiva</option>
+          <option value="paro_sin_prestacion">En paro sin prestación o agotada</option>
+          <option value="pensionista">Pensionista</option>
+          <option value="estudia">Estudia (sin ingresos del trabajo)</option>
+          <option value="otra">Otra / no especificar</option>
+        </select>
+      </div>
+    </div>
+    <div id="edadesAdultos" class="row-edades"></div>
+    <div id="edadesMenores" class="row-edades"></div>
+
+    <div class="subpanel">
+      <h4>Hijos mayores de edad que conviven y dependen económicamente (18–25 años)</h4>
+      <div class="grid">
+        <div>
+          <label>Nº de hijos mayores en la UC</label>
+          <input type="number" id="numMayores" min="0" max="6" value="0">
+        </div>
+      </div>
+      <div id="datosMayores"></div>
+    </div>
+
+    <div class="subpanel" id="bloqueDedMaternidad" style="display:none;border-left:3px solid var(--terracota)">
+      <h4>👶 Tienes un menor de 3 años: análisis adicional</h4>
+      <p style="font-size:.85rem;color:var(--gris);margin-bottom:10px">
+        Si tu hijo/a tiene menos de 3 años, además del CAPI puede haber otra ayuda: la <strong>Deducción por Maternidad de la AEAT</strong> (100 €/mes, hasta 1.200 €/año por menor). <strong>Importante: CAPI y Deducción por Maternidad son INCOMPATIBLES desde 2023</strong> — solo puedes cobrar una de las dos. Para saber cuál te conviene, dinos:
+      </p>
+      <div class="grid">
+        <div>
+          <label>¿Hay en tu UC alguien que cumpla requisitos para la Deducción por Maternidad?
+            <span class="help" title="Requisitos AEAT: mujer con hijo menor de 3 años, dada de alta en la Seguridad Social o mutualidad, O cotizando como autónoma, O cobrando prestación contributiva o asistencial de desempleo, O que haya cotizado al menos 30 días tras el nacimiento.">?</span>
+          </label>
+          <select id="dedMaternidadCumple">
+            <option value="no">No (la madre no trabaja ni cotiza, ni cobra paro contributivo)</option>
+            <option value="madre_trabaja">Sí: madre trabajadora por cuenta ajena, autónoma o con prestación de paro</option>
+            <option value="caso_especial">Caso especial (adopción doble, tutela, dos padres del mismo sexo)</option>
+          </select>
+        </div>
+        <div>
+          <label>¿El menor está en guardería autorizada?
+            <span class="help" title="Si está en guardería autorizada y la madre trabaja, hay un incremento adicional de la deducción de hasta 1.000 €/año por menor.">?</span>
+          </label>
+          <select id="dedMaternidadGuarderia">
+            <option value="no">No</option>
+            <option value="si">Sí, guardería autorizada</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="discapacidad33">
+      <label for="discapacidad33">Algún miembro tiene discapacidad reconocida ≥ 33%</label>
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="discapacidadSevera">
+      <label for="discapacidadSevera">Discapacidad severa (≥ 65% o movilidad reducida acreditada)</label>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2><span class="num">2</span>Vivienda y contrato de arrendamiento</h2>
+    <div class="grid">
+      <div>
+        <label>Modalidad</label>
+        <select id="modalidad">
+          <option value="completa">Vivienda completa</option>
+          <option value="habitacion">Habitación (alquiler/cesión)</option>
+        </select>
+      </div>
+      <div>
+        <label>Ubicación
+          <span class="help" title="Madrid Capital y municipios donde la Comisión de Seguimiento del Plan Estatal acepta tope ampliado de 900€.">?</span>
+        </label>
+        <select id="ubicacion">
+          <option value="capital">Madrid Capital (tope alquiler ampliado)</option>
+          <option value="resto">Resto de la región</option>
+        </select>
+      </div>
+      <div>
+        <label>Renta mensual del contrato (€)</label>
+        <input type="number" id="renta" min="0" step="1" value="0">
+      </div>
+      <div>
+        <label>Fecha de firma del contrato</label>
+        <input type="date" id="fechaContrato" value="2026-01-01">
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2><span class="num">3</span>Datos económicos de la unidad de convivencia (UC)</h2>
+    <div class="grid">
+      <div>
+        <label>Ingresos computables IMV/CAPI (€/año, netos)
+          <span class="help" title="Suma de los ingresos NETOS del año pasado (2025) de toda tu UC: sueldos netos + prestaciones públicas + alquileres cobrados + rendimientos de capital. Si no estás segura, abre el desplegable verde arriba '¿Qué significan estos términos?'.">?</span>
+        </label>
+        <input type="number" id="ingresosIMV" min="0" step="100" value="0">
+      </div>
+      <div>
+        <label>Ingresos UC Plan Vivienda (€/año)
+          <span class="help" title="Suma de bases imponibles del IRPF (general + ahorro) de toda la UC. Aprox: sueldo bruto anual − cotizaciones a Seguridad Social.">?</span>
+        </label>
+        <input type="number" id="ingresosVivienda" min="0" step="100" value="0">
+      </div>
+      <div>
+        <label>Base imponible IRPF — casillas 0435+0460 (€)
+          <span class="help" title="Si ya hiciste la Renta: suma casillas 0435 + 0460. Si todavía no la has hecho: pon estimación de sueldo bruto anual menos cotizaciones SS.">?</span>
+        </label>
+        <input type="number" id="baseIRPF" min="0" step="100" value="0">
+      </div>
+      <div>
+        <label>Tipo de declaración IRPF</label>
+        <select id="tipoDeclaracion">
+          <option value="individual">Individual</option>
+          <option value="conjunta">Conjunta (pareja)</option>
+          <option value="conjunta_mono">Conjunta modalidad 2 (familia monoparental)</option>
+        </select>
+      </div>
+      <div>
+        <label>Patrimonio neto SIN tu vivienda habitual (€)
+          <span class="help" title="Ahorros + acciones + fondos + planes de pensiones + valor de tu coche + otros inmuebles que NO sean tu vivienda habitual. Si un inmueble distinto a tu vivienda tiene hipoteca, resta lo que queda por pagar. Tu vivienda habitual NO se incluye aunque la tengas en propiedad.">?</span>
+        </label>
+        <input type="number" id="patrimonio" min="0" step="500" value="0">
+      </div>
+      <div>
+        <label>Importe anual pagado por alquiler en 2025 (€)
+          <span class="help" title="Renta mensual × meses pagados durante 2025. Solo se usa para calcular las deducciones de la Renta.">?</span>
+        </label>
+        <input type="number" id="alquilerAnual" min="0" step="100" value="0">
+      </div>
+      <div>
+        <label>Estado fiscal del declarante principal
+          <span class="help" title="Las ayudas directas (CAPI, alquiler, Bono Joven) NO exigen tener la Renta presentada. Las deducciones IRPF solo se materializan al declarar.">?</span>
+        </label>
+        <select id="estadoFiscal">
+          <option value="presentada">Renta 2025 ya presentada</option>
+          <option value="pendiente">Pendiente de presentar (proyección)</option>
+          <option value="no_obligada">No obligada a declarar</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <div class="actions">
+    <button class="btn-primary" onclick="diagnosticar()">Realizar diagnóstico</button>
+    <button class="btn-secondary" onclick="window.print()">Imprimir / PDF</button>
+    <button class="btn-secondary" onclick="limpiar()">Limpiar campos</button>
+  </div>
+
+  <section id="resultado">
+    <div id="bloque-resultado">
+
+      <div id="compMaternidad" class="comp-maternidad hidden"></div>
+
+      <div id="balanzaTransicion" class="balanza-wrap hidden">
+        <h3>🔎 Alerta de transición por mayoría de edad</h3>
+        <div class="subtit" id="balanzaSubtit"></div>
+        <div class="balanza-grid">
+          <div class="balanza-col izq">
+            <h4>📉 Derechos extinguidos / Riesgos fiscales</h4>
+            <div id="balanzaIzq"></div>
+          </div>
+          <div class="balanza-col der">
+            <h4>📈 Nuevos derechos / Vías de financiación</h4>
+            <div id="balanzaDer"></div>
+          </div>
+        </div>
+        <div id="saldoNeto" class="saldo-neto hidden">
+          <div class="label">Saldo neto estimado del cambio (impacto anual cuantificable)</div>
+          <div class="cifra-grande" id="saldoCifra">—</div>
+          <div class="nota" id="saldoNota"></div>
+        </div>
+      </div>
+
+      <div id="avisoFiscal" class="aviso-fiscal hidden"></div>
+
+      <div id="resumenTotal" class="resumen-total hidden">
+        <div class="label">Ayudas directas potencialmente compatibles (estimación mensual)</div>
+        <div class="total" id="totalMensual">—</div>
+        <div class="desglose" id="totalAnual">—</div>
+      </div>
+
+      <div class="res-bloque apto" id="bloqueApto">
+        <h3><span class="icono">🟢</span> APTO — Cumple baremo</h3>
+        <div id="listaApto"></div>
+      </div>
+
+      <div class="res-bloque cond" id="bloqueCond">
+        <h3><span class="icono">🟡</span> CONDICIONADO — Cumple baremo, requiere documentación o concurrencia</h3>
+        <div id="listaCond"></div>
+      </div>
+
+      <div class="res-bloque excl" id="bloqueExcl">
+        <h3><span class="icono">🔴</span> EXCLUIDO — No cumple algún requisito</h3>
+        <div id="listaExcl"></div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Aviso profesional</strong>
+        Este diagnóstico es una estimación de elegibilidad basada en los datos introducidos y en los baremos publicados a la fecha de emisión. No constituye una resolución administrativa ni garantiza la concesión de las ayudas. La concesión efectiva depende del cumplimiento documental, de la disponibilidad presupuestaria y del análisis individualizado del expediente por la administración competente.
+      </div>
+
+      <details class="fuentes">
+        <summary>Marco normativo de referencia y fuentes</summary>
+        <ul>
+          <li><strong>IPREM 2026:</strong> 600 €/mes · 8.400 €/año (14 pagas). Ley 31/2022 PGE prorrogada.</li>
+          <li><strong>CAPI:</strong> art. 11.6 y D.A. 10ª Ley 19/2021 IMV. Cuantías y umbrales 2026 tras RDL 3/2026 (+11,4%). <strong>Tabla oficial Seguridad Social verificada</strong> en sede.seg-social.gob.es (mayo 2026).</li>
+          <li><strong>Deducción por Maternidad:</strong> art. 81 LIRPF. Incompatibilidad con CAPI: Ley 31/2022 (PGE 2023), vigente desde 01/01/2023.</li>
+          <li><strong>Ayuda alquiler:</strong> RD 42/2022 (Plan Estatal 2022-2025). Orden 22/10/2025 BOCM nº 257.</li>
+          <li><strong>Bono Alquiler Joven:</strong> Título I RD 42/2022.</li>
+          <li><strong>Deducción autonómica IRPF alquiler:</strong> art. 8 D.Lgs. 1/2010 CM, modif. Ley 5/2024.</li>
+          <li><strong>Deducción estatal transitoria:</strong> D.T. 15ª Ley 35/2006 IRPF.</li>
+          <li><strong>Mínimo por descendiente:</strong> art. 58 LIRPF — hasta 25 años con requisitos de convivencia y rentas &lt; 8.000 €.</li>
+          <li><strong>Declaración conjunta modalidad 2 (monoparental):</strong> art. 84.2.4º LIRPF — reducción 2.150 €/año en BI.</li>
+          <li><strong>Incentivo al empleo IMV:</strong> nueva fórmula desde marzo 2026 — 6.000 € exentos · 50% del resto (55% monoparental/discapacidad).</li>
+          <li><strong>Becas MEC:</strong> RD anual umbrales — Ministerio de Educación, FP y Deportes.</li>
+          <li><strong>Pendiente:</strong> despliegue Plan Estatal Vivienda 2026-2030 (RD 326/2026) por la CM.</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <div class="footer-info">
+    Versión 2.2 · 17 mayo 2026 · Tabla CAPI verificada SS · Módulo CAPI vs Deducción Maternidad · Régimen de vivienda
+  </div>
+</div>
+
+<script>
+// CONSTANTES 2026
+const IPREM_MENSUAL = 600;
+const IPREM_ANUAL_14 = 8400;
+const IMV_RG_BASE_ANUAL = 8803.20;
+const IMV_INC_POR_MIEMBRO = 0.30;
+const IMV_TOPE_INCREMENTO = 2.20;
+const IMV_COMPL_MONOPARENTAL = 0.22;
+
+// CAPI - cuantías mensuales por menor según tramo de edad
+const CAPI_CUANTIA = { tramo1: 115.00, tramo2: 80.50, tramo3: 57.50 };
+
+// TABLA OFICIAL SEGURIDAD SOCIAL 2026 - Umbrales de renta CAPI
+// Verificado: tabla oficial sede.seg-social.gob.es, 17 mayo 2026
+// Clave = "adultos_menores" (ej: "1_1" = 1 adulto + 1 menor)
+// Valores en €/año (mensuales × 12)
+const CAPI_UMBRAL_RENTA = {
+  "1_1": 34332.48,
+  "1_2": 42255.36,
+  "1_3": 50178.24,
+  "1_4_o_mas": 58101.12,
+  "2_1": 42255.36,
+  "2_2": 50178.24,
+  "2_3_o_mas": 58101.12,
+  "3_1": 50178.24,
+  "3_2_o_mas": 58101.12,
+  "4_1_o_mas": 58101.12,
+  "otros": 58101.12
+};
+
+// IMV - Umbral de renta (mismo formato, valores oficiales)
+const IMV_UMBRAL_RENTA = {
+  "1_1": 11444.16,
+  "1_2": 14085.12,
+  "1_3": 16726.08,
+  "1_4_o_mas": 19367.04,
+  "2_1": 14085.12,
+  "2_2": 16726.08,
+  "2_3_o_mas": 19367.04,
+  "3_1": 16726.08,
+  "3_2_o_mas": 19367.04,
+  "4_1_o_mas": 19367.04,
+  "otros": 19367.04
+};
+
+// TABLA OFICIAL SS 2026 - Umbrales de patrimonio CAPI (€)
+// Verificado: tabla oficial sede.seg-social.gob.es, 17 mayo 2026
+// Nota: vivienda habitual EXCLUIDA del cómputo. Test de activos hasta el doble del límite.
+const CAPI_PATRIMONIO = {
+  "1_1": 55460,
+  "1_2": 71306,
+  "1_3": 87152,
+  "1_4_o_mas": 102997,
+  "2_1": 71306,
+  "2_2": 87152,
+  "2_3_o_mas": 102997,
+  "3_1": 87152,
+  "3_2_o_mas": 102997,
+  "4_1_o_mas": 102997,
+  "otros": 102997
+};
+
+// Deducción por Maternidad (AEAT, art. 81 LIRPF)
+const DED_MATERNIDAD_MENSUAL = 100;
+const DED_MATERNIDAD_ANUAL_MAX = 1200;
+const DED_MATERNIDAD_EDAD_MAX_MENOR = 3;
+const ALQUILER_TOPE_RENTA = {
+  general: { completa: 600, habitacion: 300 },
+  capital: { completa: 900, habitacion: 450 }
+};
+const ALQUILER_TOPE_INGRESOS_IPREM = {
+  general: 3, numerosa_general: 4, discapacidad_33: 4,
+  numerosa_especial: 5, discapacidad_severa: 5
+};
+const ALQUILER_PORCENTAJE = 0.50;
+const BONO_JOVEN_EDAD_MAX = 35;
+const BONO_JOVEN_CUANTIA = 250;
+const BONO_JOVEN_MESES = 24;
+const DED_AUTON_EDAD_MAX = 40;
+const DED_AUTON_PORC = 0.30;
+const DED_AUTON_MAX = 1237.20;
+const DED_AUTON_BI_IND = 26414.22;
+const DED_AUTON_BI_CONJ = 37322.20;
+const DED_AUTON_PORC_RENTA = 0.20;
+const DED_ESTATAL_FECHA_LIMITE = new Date('2015-01-01');
+const DED_ESTATAL_PORC = 0.1005;
+const DED_ESTATAL_BI_MAX = 24107.20;
+const LIRPF_LIMITE_RENTAS_DESCENDIENTE = 8000;
+const LIRPF_REDUCCION_MONO_CONJUNTA = 2150;
+const LIRPF_TIPO_MEDIO_EFECTIVO = 0.19;
+const LIRPF_MIN_DESCENDIENTE_PRIMERO = 2400;
+const IMV_INCENTIVO_EXENTO_ANUAL = 6000;
+const IMV_INCENTIVO_PORC_RESTO = 0.50;
+const IMV_INCENTIVO_PORC_RESTO_MONO = 0.55;
+
+// UI dinámica
+function seleccionarRegimen(regimen){
+  document.getElementById('regimenVivienda').value = regimen;
+  document.querySelectorAll('.regimen-vivienda .opcion').forEach(o => {
+    o.classList.toggle('seleccionada', o.dataset.regimen === regimen);
+  });
+  document.getElementById('avisoPropiedad').style.display = regimen === 'propiedad' ? 'block' : 'none';
+  document.getElementById('avisoCesion').style.display = regimen === 'cesion' ? 'block' : 'none';
+  // Si no es alquiler, los campos de alquiler quedan a 0 y no se evalúan
+  const camposAlquiler = ['renta', 'alquilerAnual'];
+  const deshabilitar = regimen !== 'alquiler';
+  camposAlquiler.forEach(id => {
+    const el = document.getElementById(id);
+    if(el){
+      el.disabled = deshabilitar;
+      if(deshabilitar) el.value = 0;
+      el.style.opacity = deshabilitar ? '0.5' : '1';
+    }
+  });
+}
+
+// Mostrar/ocultar dinámicamente el bloque de Deducción por Maternidad según si hay menor <3
+function actualizarBloqueDeduccionMaternidad(){
+  const numMe = parseInt(document.getElementById('numMenores').value) || 0;
+  let hayMenor3 = false;
+  for(let i=0; i<numMe; i++){
+    const v = parseInt(document.getElementById('edadMe'+i)?.value);
+    if(!isNaN(v) && v < 3) hayMenor3 = true;
+  }
+  const bloque = document.getElementById('bloqueDedMaternidad');
+  if(bloque) bloque.style.display = hayMenor3 ? 'block' : 'none';
+}
+function renderEdades(){
+  const nAd = parseInt(document.getElementById('numAdultos').value) || 0;
+  const nMe = parseInt(document.getElementById('numMenores').value) || 0;
+  const boxAd = document.getElementById('edadesAdultos');
+  const boxMe = document.getElementById('edadesMenores');
+  boxAd.innerHTML = '';
+  boxMe.innerHTML = '';
+  for(let i=0;i<nAd;i++){
+    boxAd.innerHTML += `<div class="edad-box"><label>Edad adulto ${i+1}</label><input type="number" min="18" max="99" value="40" id="edadAd${i}"></div>`;
+  }
+  for(let i=0;i<nMe;i++){
+    boxMe.innerHTML += `<div class="edad-box"><label>Edad menor ${i+1}</label><input type="number" min="0" max="17" value="8" id="edadMe${i}" onchange="actualizarBloqueDeduccionMaternidad()"></div>`;
+  }
+  actualizarBloqueDeduccionMaternidad();
+}
+function renderMayores(){
+  const n = parseInt(document.getElementById('numMayores').value) || 0;
+  const box = document.getElementById('datosMayores');
+  box.innerHTML = '';
+  for(let i=0;i<n;i++){
+    box.innerHTML += `
+      <div class="row-edades" style="margin-top:8px">
+        <div class="edad-box">
+          <label>Edad hijo mayor ${i+1}</label>
+          <input type="number" min="18" max="25" value="18" id="edadMay${i}">
+        </div>
+        <div class="edad-box">
+          <label>Situación</label>
+          <select id="sitMay${i}">
+            <option value="estudia">Estudia (sin ingresos)</option>
+            <option value="fp_dual">FP Dual / contrato formativo</option>
+            <option value="trabaja">Trabaja por cuenta ajena</option>
+            <option value="ninguno">Ni estudia ni trabaja</option>
+          </select>
+        </div>
+        <div class="edad-box">
+          <label>Ingresos anuales propios (€)</label>
+          <input type="number" min="0" step="100" value="0" id="ingrMay${i}">
+        </div>
+      </div>`;
+  }
+}
+document.getElementById('numAdultos').addEventListener('change', renderEdades);
+document.getElementById('numMenores').addEventListener('change', renderEdades);
+document.getElementById('numMayores').addEventListener('change', renderMayores);
+document.getElementById('tipoUnidad').addEventListener('change', function(){
+  const t = this.value;
+  if(t === 'monoparental'){
+    document.getElementById('numAdultos').value = 1;
+  }
+  if(t === 'pareja_sin_hijos'){
+    document.getElementById('numAdultos').value = 2;
+    document.getElementById('numMenores').value = 0;
+    document.getElementById('numMayores').value = 0;
+    renderMayores();
+  }
+  if(t === 'persona_sola'){
+    document.getElementById('numAdultos').value = 1;
+    document.getElementById('numMenores').value = 0;
+    document.getElementById('numMayores').value = 0;
+    renderMayores();
+  }
+  if(t === 'biparental'){
+    document.getElementById('numAdultos').value = 2;
+  }
+  renderEdades();
+});
+renderEdades();
+renderMayores();
+
+// Construir clave para tablas según composición (adultos_menores)
+function clavePorComposicion(numAdultos, numMenores){
+  if(numMenores === 0) return null;
+  if(numAdultos === 1){
+    if(numMenores === 1) return "1_1";
+    if(numMenores === 2) return "1_2";
+    if(numMenores === 3) return "1_3";
+    return "1_4_o_mas";
+  }
+  if(numAdultos === 2){
+    if(numMenores === 1) return "2_1";
+    if(numMenores === 2) return "2_2";
+    return "2_3_o_mas";
+  }
+  if(numAdultos === 3){
+    if(numMenores === 1) return "3_1";
+    return "3_2_o_mas";
+  }
+  if(numAdultos >= 4) return "4_1_o_mas";
+  return "otros";
+}
+
+// Cuantía CAPI mensual según edades de los menores
+function cuantiaCAPI(edadesMenores){
+  let total = 0;
+  edadesMenores.forEach(e => {
+    if(e < 3) total += CAPI_CUANTIA.tramo1;
+    else if(e < 6) total += CAPI_CUANTIA.tramo2;
+    else if(e < 18) total += CAPI_CUANTIA.tramo3;
+  });
+  return total;
+}
+
+// Cálculo de la cuantía IMV individual (sí aplica complemento monoparentalidad)
+function calcularCuantiaIMV(numAdultos, numMenores, esMonoparental){
+  const miembrosTotales = numAdultos + numMenores;
+  let incremento = 1.0;
+  for(let i=1; i<miembrosTotales; i++) incremento += IMV_INC_POR_MIEMBRO;
+  if(incremento > IMV_TOPE_INCREMENTO) incremento = IMV_TOPE_INCREMENTO;
+  let cuantia = IMV_RG_BASE_ANUAL * incremento;
+  if(esMonoparental && numMenores > 0) cuantia += IMV_RG_BASE_ANUAL * IMV_COMPL_MONOPARENTAL;
+  return cuantia;
+}
+function coefAlquiler(familiaNumerosa, discapacidad33, discapacidadSevera){
+  if(familiaNumerosa === 'especial' || discapacidadSevera) return ALQUILER_TOPE_INGRESOS_IPREM.numerosa_especial;
+  if(familiaNumerosa === 'general' || discapacidad33) return ALQUILER_TOPE_INGRESOS_IPREM.numerosa_general;
+  return ALQUILER_TOPE_INGRESOS_IPREM.general;
+}
+function fmt(n, dec=2){ return n.toFixed(dec).replace('.',','); }
+function fmtMil(n){ return n.toLocaleString('es-ES'); }
+
+// MÓDULO TRANSICIÓN 18 AÑOS
+function calcularTransicion18Anos(ctx){
+  const { numAdultos, numMenores, edadesMenores, mayores, esMonoparental, ingresosIMV, baseIRPF, tipoDeclaracion } = ctx;
+  const menoresEnTransicion = edadesMenores.filter(e => e >= 17).length;
+  const mayoresExisten = mayores.length > 0;
+  if(menoresEnTransicion === 0 && !mayoresExisten) return null;
+
+  const izq = [];
+  const der = [];
+  let saldoNegativoAnual = 0;
+
+  // PÉRDIDAS
+  // 1. CAPI - desactivación al cumplir 18
+  if(menoresEnTransicion > 0){
+    const perdidaCAPI = CAPI_CUANTIA.tramo3 * menoresEnTransicion;
+    izq.push({
+      titulo: 'Desactivación CAPI al cumplir 18',
+      cifra: `−${fmt(perdidaCAPI)} €/mes · −${fmt(perdidaCAPI*12)} €/año`,
+      detalle: `Al cumplir 18 años, el/los hijo(s) deja(n) de generar derecho al CAPI. Tramo 6–17 años: ${CAPI_CUANTIA.tramo3} €/mes por menor. ${menoresEnTransicion} menor(es) en transición.`,
+      fuente: 'Art. 11.6 Ley 19/2021 IMV'
+    });
+    saldoNegativoAnual += perdidaCAPI * 12;
+  }
+
+  // 2. Complemento monoparentalidad IMV
+  if(esMonoparental && numMenores === 1 && menoresEnTransicion === 1){
+    const perdidaCompl = IMV_RG_BASE_ANUAL * IMV_COMPL_MONOPARENTAL;
+    izq.push({
+      titulo: 'Pérdida del complemento de monoparentalidad IMV',
+      cifra: `≈ −${fmt(perdidaCompl/12)} €/mes · −${fmt(perdidaCompl)} €/año`,
+      detalle: `El complemento de monoparentalidad del IMV (+22% sobre la cuantía individual) requiere al menos un menor en la UC. Si este hijo cumple 18 y no quedan más menores, se extingue. Solo aplica si la familia es beneficiaria efectiva del IMV.`,
+      fuente: 'Art. 10 Ley 19/2021 IMV'
+    });
+    // No sumo al saldo porque solo aplica si cobran IMV — se cuantifica condicional
+  }
+
+  // 3. Pérdida declaración conjunta modalidad 2
+  if(esMonoparental && tipoDeclaracion === 'conjunta_mono' && menoresEnTransicion > 0 && numMenores === menoresEnTransicion){
+    const ahorroFiscal = LIRPF_REDUCCION_MONO_CONJUNTA * LIRPF_TIPO_MEDIO_EFECTIVO;
+    izq.push({
+      titulo: 'Pérdida de declaración conjunta modalidad 2',
+      cifra: `≈ −${fmt(ahorroFiscal)} €/año (estimación)`,
+      detalle: `La modalidad 2 (familia monoparental) permite una reducción de 2.150 €/año en la base imponible. Si todos los hijos cumplen 18, no puede aplicarse. La cifra estima el ahorro fiscal real con tipo medio del 19%; el impacto exacto depende del tramo marginal.`,
+      fuente: 'Art. 84.2.4º LIRPF'
+    });
+    saldoNegativoAnual += ahorroFiscal;
+  }
+
+  // 4. Riesgo pérdida mínimo por descendiente
+  const mayoresConRiesgoMinimo = mayores.filter(m => (m.situacion === 'fp_dual' || m.situacion === 'trabaja') && m.ingresos > LIRPF_LIMITE_RENTAS_DESCENDIENTE);
+  if(mayoresConRiesgoMinimo.length > 0){
+    izq.push({
+      titulo: 'Pérdida del mínimo por descendiente',
+      cifra: `Hasta −${fmtMil(LIRPF_MIN_DESCENDIENTE_PRIMERO)} € de reducción en BI por hijo afectado`,
+      detalle: `${mayoresConRiesgoMinimo.length} hijo(s) con ingresos > 8.000 €/año. El art. 58 LIRPF NO permite aplicar el mínimo por descendiente en estos casos. Mínimos: 2.400 € (1º), 2.700 € (2º), 4.000 € (3º), 4.500 € (4º+). La pérdida en cuota depende del tramo marginal del declarante.`,
+      fuente: 'Art. 58 LIRPF'
+    });
+  } else if(mayores.some(m => m.situacion === 'fp_dual' || m.situacion === 'trabaja')){
+    izq.push({
+      titulo: 'Vigilar el límite de 8.000 €/año del descendiente',
+      cifra: 'Sin pérdida actual',
+      detalle: `Hijo(s) mayor(es) trabajando o en FP Dual remunerada pero sin superar el umbral. Si en algún momento del ejercicio sus ingresos superan los 8.000 € (excluidas exentas), se pierde el mínimo por descendiente para todo el ejercicio.`,
+      fuente: 'Art. 58 LIRPF'
+    });
+  }
+
+  // 5. Aclaración fiscal sobre mínimo descendiente (corrige una creencia común errónea)
+  if(menoresEnTransicion > 0 && mayoresConRiesgoMinimo.length === 0){
+    izq.push({
+      titulo: 'Aclaración: el mínimo por descendiente NO se extingue automáticamente a los 18',
+      cifra: 'Se mantiene hasta los 25 años',
+      detalle: `Es un error común. El art. 58 LIRPF permite seguir aplicando el mínimo por descendiente hasta que el hijo cumpla 25 años (o cualquier edad con discapacidad ≥33%), siempre que: (a) conviva o dependa económicamente, (b) no obtenga rentas > 8.000 €/año excluidas exentas, (c) no presente declaración propia con rentas > 1.800 €. Esta partida solo se pierde si se incumple alguno de los requisitos.`,
+      fuente: 'Art. 58 LIRPF'
+    });
+  }
+
+  // 6. Requisito procedimental: firma del hijo mayor
+  if(mayores.length > 0 || menoresEnTransicion > 0){
+    izq.push({
+      titulo: 'Nuevo requisito: autorización telemática del hijo de 18+',
+      cifra: 'Requisito procedimental',
+      detalle: `Como miembro de la UC mayor de edad, debe firmar individualmente la autorización para el cruce de datos con AEAT en cualquier solicitud o renovación de IMV/CAPI/ayudas al alquiler. Su falta paraliza el expediente. Requiere Cl@ve o certificado digital del hijo.`,
+      fuente: 'Art. 9 LOPDGDD · Art. 11 Ley 19/2021'
+    });
+  }
+
+  // GANANCIAS
+  const topeIngBono = 3 * IPREM_ANUAL_14;
+
+  // 1. Bono Alquiler Joven solicitado por el hijo
+  const mayoresAptos = mayores.filter(m => m.edad <= BONO_JOVEN_EDAD_MAX && (m.situacion === 'fp_dual' || m.situacion === 'trabaja') && m.ingresos > 0);
+  if(mayoresAptos.length > 0){
+    const aptosConIngresosOK = mayoresAptos.filter(m => m.ingresos <= topeIngBono);
+    if(aptosConIngresosOK.length > 0){
+      der.push({
+        titulo: 'Bono Alquiler Joven solicitado por el hijo',
+        cifra: `+${BONO_JOVEN_CUANTIA} €/mes · ${BONO_JOVEN_CUANTIA*BONO_JOVEN_MESES} € en 24 meses`,
+        detalle: `El hijo cumple los requisitos por su cuenta (≤35 años, ingresos ${fmtMil(aptosConIngresosOK[0].ingresos)} € ≤ 3 IPREM = ${fmtMil(topeIngBono)} €). ATENCIÓN: necesita ser titular o cotitular del contrato. Si la madre/padre es titular único, requiere subrogación, cotitularidad mediante novación o cambio de vivienda. NO es automático: implica reestructuración contractual.`,
+        fuente: 'Título I RD 42/2022'
+      });
+    } else {
+      der.push({
+        titulo: 'Bono Alquiler Joven: hijo supera umbral de ingresos',
+        cifra: 'No aplicable por ingresos',
+        detalle: `El hijo trabaja pero supera 3 IPREM (${fmtMil(topeIngBono)} €/año).`,
+        fuente: 'Título I RD 42/2022'
+      });
+    }
+  } else if(mayores.some(m => m.situacion === 'estudia')){
+    der.push({
+      titulo: 'Bono Joven: pendiente de fuente regular de ingresos',
+      cifra: 'Vía potencial futura',
+      detalle: `El hijo estudia sin ingresos propios. El Bono Joven exige capacidad económica para asumir el alquiler. Si en el futuro accede a FP Dual remunerada o contrato formativo y obtiene ingresos regulares, puede convertirse en solicitante con contrato propio.`,
+      fuente: 'Título I RD 42/2022'
+    });
+  }
+
+  // 2. Incentivo al empleo IMV
+  const hayHijoTrabajando = mayores.some(m => m.situacion === 'fp_dual' || m.situacion === 'trabaja');
+  if(hayHijoTrabajando && ingresosIMV > 0){
+    const porcResto = esMonoparental ? IMV_INCENTIVO_PORC_RESTO_MONO : IMV_INCENTIVO_PORC_RESTO;
+    der.push({
+      titulo: 'Escudo de incentivo al empleo IMV',
+      cifra: `Primeros ${fmtMil(IMV_INCENTIVO_EXENTO_ANUAL)} €/año exentos`,
+      detalle: `Si la familia cobra IMV y el hijo empieza a trabajar, los primeros 6.000 € de incremento de ingresos NO computan para recalcular el IMV durante 1 año. Del resto solo computa el ${fmt(porcResto*100,0)}% (régimen ${esMonoparental ? 'monoparental: 55%' : 'general: 50%'}). Evita la pérdida abrupta de la prestación.`,
+      fuente: 'Art. 11 bis Ley 19/2021 — fórmula vigente desde marzo 2026'
+    });
+  } else if(hayHijoTrabajando){
+    der.push({
+      titulo: 'Incentivo al empleo IMV (no activo)',
+      cifra: 'Aplicaría si solicitan IMV',
+      detalle: `Hay hijo mayor trabajando pero la familia no figura como beneficiaria actual del IMV. Si en algún momento solicitan IMV, los ingresos del hijo se beneficiarían del incentivo al empleo.`,
+      fuente: 'Art. 11 bis Ley 19/2021'
+    });
+  }
+
+  // 3. Becas MEC
+  if(mayores.some(m => m.situacion === 'estudia' || m.situacion === 'fp_dual') || menoresEnTransicion > 0){
+    der.push({
+      titulo: 'Becas MEC postobligatorias',
+      cifra: 'Cuantía fija + variable (anual)',
+      detalle: `Para Bachillerato, FP grado medio/superior y universidad. Compuesta por cuantía fija de matrícula + cuantía fija por renta familiar + cuantía variable según nota. La renta umbral familiar es INDEPENDIENTE de los umbrales IMV/CAPI: una familia que pierde el CAPI a los 18 puede entrar perfectamente en becas MEC. Convocatoria abierta cada agosto-septiembre.`,
+      fuente: 'RD anual de umbrales — Ministerio de Educación, FP y Deportes'
+    });
+  }
+
+  // 4. Posible emancipación / recálculo UC
+  if(mayoresAptos.length > 0 && ingresosIMV > 0){
+    der.push({
+      titulo: 'Vía estratégica: emancipación formal del hijo',
+      cifra: 'Recálculo familiar variable',
+      detalle: `Si el hijo se emancipa formalmente (empadronamiento independiente + medios económicos propios), sale de la UC. Sus ingresos dejan de computar para los umbrales IMV/CAPI del resto de la familia, lo que puede recuperar prestaciones perdidas. Requiere planificación: comunicación expresa a la Seguridad Social del cambio en la composición de la UC.`,
+      fuente: 'Art. 6 Ley 19/2021 — concepto de unidad de convivencia'
+    });
+  }
+
+  return { izq, der, saldoNegativoAnual, menoresEnTransicion, mayoresCount: mayores.length };
+}
+
+// DIAGNÓSTICO PRINCIPAL
+function diagnosticar(){
+  const numAdultos = parseInt(document.getElementById('numAdultos').value);
+  const numMenores = parseInt(document.getElementById('numMenores').value);
+  const numMayores = parseInt(document.getElementById('numMayores').value);
+  const tipoUnidad = document.getElementById('tipoUnidad').value;
+  const familiaNumerosa = document.getElementById('familiaNumerosa').value;
+  const situacionLaboral = document.getElementById('situacionLaboral').value;
+  const discapacidad33 = document.getElementById('discapacidad33').checked;
+  const discapacidadSevera = document.getElementById('discapacidadSevera').checked;
+  const modalidad = document.getElementById('modalidad').value;
+  const ubicacion = document.getElementById('ubicacion').value;
+  const renta = parseFloat(document.getElementById('renta').value) || 0;
+  const fechaContrato = new Date(document.getElementById('fechaContrato').value);
+  const ingresosIMV = parseFloat(document.getElementById('ingresosIMV').value) || 0;
+  const ingresosVivienda = parseFloat(document.getElementById('ingresosVivienda').value) || 0;
+  const baseIRPF = parseFloat(document.getElementById('baseIRPF').value) || 0;
+  const tipoDeclaracion = document.getElementById('tipoDeclaracion').value;
+  const patrimonio = parseFloat(document.getElementById('patrimonio').value) || 0;
+  const alquilerAnual = parseFloat(document.getElementById('alquilerAnual').value) || 0;
+  const estadoFiscal = document.getElementById('estadoFiscal').value;
+  const regimenVivienda = document.getElementById('regimenVivienda').value;
+  const dedMaternidadCumple = document.getElementById('dedMaternidadCumple')?.value || 'no';
+  const dedMaternidadGuarderia = document.getElementById('dedMaternidadGuarderia')?.value || 'no';
+
+  const edadesAdultos = [];
+  for(let i=0;i<numAdultos;i++){
+    const v = parseInt(document.getElementById('edadAd'+i)?.value);
+    if(!isNaN(v)) edadesAdultos.push(v);
+  }
+  const edadesMenores = [];
+  for(let i=0;i<numMenores;i++){
+    const v = parseInt(document.getElementById('edadMe'+i)?.value);
+    if(!isNaN(v)) edadesMenores.push(v);
+  }
+  const mayores = [];
+  for(let i=0;i<numMayores;i++){
+    const edad = parseInt(document.getElementById('edadMay'+i)?.value);
+    const sit = document.getElementById('sitMay'+i)?.value;
+    const ing = parseFloat(document.getElementById('ingrMay'+i)?.value) || 0;
+    if(!isNaN(edad)) mayores.push({ edad, situacion: sit, ingresos: ing });
+  }
+
+  const esMonoparental = tipoUnidad === 'monoparental';
+  const esPersonaSola = tipoUnidad === 'persona_sola';
+  const esParejaSinHijos = tipoUnidad === 'pareja_sin_hijos';
+  const sinCargasFamiliares = esPersonaSola || esParejaSinHijos;
+  const edadMinAdultos = edadesAdultos.length ? Math.min(...edadesAdultos) : 99;
+  const edadMaxAdultos = edadesAdultos.length ? Math.max(...edadesAdultos) : 0;
+
+  const resultados = { apto: [], cond: [], excl: [] };
+  let totalMensual = 0;
+
+  // CAPI
+  if(numMenores === 0){
+    resultados.excl.push({ nombre: 'CAPI', motivo: 'No hay menores de 18 años en la UC.', fuente: 'Art. 11.6 Ley 19/2021' });
+  } else {
+    const clave = clavePorComposicion(numAdultos, numMenores);
+    const umbralRenta = CAPI_UMBRAL_RENTA[clave];
+    const umbralPatrimonio = CAPI_PATRIMONIO[clave];
+    const cumpleRenta = ingresosIMV <= umbralRenta;
+    const cumplePatrimonio = patrimonio <= umbralPatrimonio;
+    const cuantia = cuantiaCAPI(edadesMenores);
+    const cuantiaAnual = cuantia * 12;
+    if(cumpleRenta && cumplePatrimonio){
+      const item = {
+        nombre: 'CAPI — Complemento de Ayuda Para la Infancia',
+        cuantia: `${fmt(cuantia)} €/mes (${fmt(cuantiaAnual)} €/año)`,
+        detalle: `Cumple los baremos oficiales para tu composición de UC. Umbral renta aplicable: ${fmt(umbralRenta)} €/año · Declarado: ${fmt(ingresosIMV)} €/año. Umbral patrimonio: ${fmtMil(umbralPatrimonio)} € (recuerda: tu vivienda habitual NO se cuenta para este límite, aunque tengas hipoteca).`,
+        fuente: 'Tabla oficial Seguridad Social 2026 — art. 11.6 y D.A. 10ª Ley 19/2021. Cuantías tras RDL 3/2026.'
+      };
+      if(esMonoparental){
+        item.documentacion = 'Acreditación monoparentalidad: sentencia divorcio / convenio regulador / título familia monoparental.';
+        resultados.cond.push(item);
+      } else {
+        resultados.apto.push(item);
+        totalMensual += cuantia;
+      }
+    } else {
+      const motivos = [];
+      if(!cumpleRenta) motivos.push(`Supera el umbral de renta: ${fmt(ingresosIMV)} €/año > ${fmt(umbralRenta)} €/año (tabla oficial SS para tu composición).`);
+      if(!cumplePatrimonio) motivos.push(`Supera el umbral de patrimonio: ${fmtMil(patrimonio)} € > ${fmtMil(umbralPatrimonio)} € (recuerda: tu vivienda habitual NO se incluye en este cómputo).`);
+      resultados.excl.push({ nombre: 'CAPI', motivo: motivos.join(' '), fuente: 'Tabla oficial Seguridad Social 2026 — Ley 19/2021' });
+    }
+  }
+
+  // Ayuda alquiler
+  if(regimenVivienda === 'propiedad'){
+    resultados.excl.push({
+      nombre: 'Ayudas al alquiler (Plan Estatal, Bono Joven)',
+      motivo: 'No aplicables: estas ayudas exigen contrato de arrendamiento. Como propietaria de tu vivienda habitual no encajas en ellas, pero esto NO te excluye del CAPI ni del IMV.',
+      fuente: 'RD 42/2022 — requisito de arrendamiento'
+    });
+  } else if(regimenVivienda === 'cesion'){
+    resultados.excl.push({
+      nombre: 'Ayudas al alquiler (Plan Estatal, Bono Joven)',
+      motivo: 'No aplicables: estas ayudas exigen contrato de arrendamiento registrado. Una cesión gratuita no encaja, pero esto NO te excluye del CAPI ni del IMV.',
+      fuente: 'RD 42/2022 — requisito de arrendamiento'
+    });
+  } else if(renta > 0){
+    const topeAlquiler = ALQUILER_TOPE_RENTA[ubicacion][modalidad];
+    const coefIPREM = coefAlquiler(familiaNumerosa, discapacidad33, discapacidadSevera);
+    const umbralIngresos = coefIPREM * IPREM_ANUAL_14;
+    if(renta > topeAlquiler){
+      resultados.excl.push({ nombre: 'Ayuda al alquiler (Plan Estatal)', motivo: `Renta ${renta} € > tope ${topeAlquiler} €/mes.`, fuente: 'RD 42/2022' });
+    } else if(ingresosVivienda > umbralIngresos){
+      resultados.excl.push({ nombre: 'Ayuda al alquiler (Plan Estatal)', motivo: `Ingresos UC ${fmt(ingresosVivienda)} € > ${coefIPREM} × IPREM (${fmtMil(umbralIngresos)} €).`, fuente: 'RD 42/2022' });
+    } else {
+      const ayudaMensual = renta * ALQUILER_PORCENTAJE;
+      resultados.cond.push({
+        nombre: 'Ayuda al alquiler (Plan Estatal 2022-2025)',
+        cuantia: `${fmt(ayudaMensual)} €/mes (${fmt(ayudaMensual*12)} €/año · 50% renta)`,
+        detalle: `Cumple tope alquiler y tope ingresos.`,
+        documentacion: 'Concurrencia competitiva: contrato registrado, empadronamiento, justificantes ingresos, IBAN.',
+        fuente: 'Orden 22/10/2025 BOCM nº 257'
+      });
+    }
+  } else {
+    resultados.excl.push({ nombre: 'Ayuda al alquiler', motivo: 'No se ha introducido renta del contrato.', fuente: 'RD 42/2022' });
+  }
+
+  // Bono Joven adulto (solo si régimen es alquiler)
+  if(regimenVivienda === 'alquiler' && renta > 0 && edadesAdultos.length > 0){
+    const todosBajo35 = edadesAdultos.every(e => e <= BONO_JOVEN_EDAD_MAX);
+    if(todosBajo35){
+      const topeAlqJoven = ubicacion === 'capital' ? 900 : 600;
+      const umbralJoven = 3 * IPREM_ANUAL_14;
+      if(renta > topeAlqJoven){
+        resultados.excl.push({ nombre: 'Bono Joven (adulto principal)', motivo: `Renta ${renta} € > ${topeAlqJoven} €.`, fuente: 'Título I RD 42/2022' });
+      } else if(ingresosVivienda > umbralJoven){
+        resultados.excl.push({ nombre: 'Bono Joven (adulto principal)', motivo: `Ingresos UC > 3 IPREM (${fmtMil(umbralJoven)} €).`, fuente: 'Título I RD 42/2022' });
+      } else {
+        resultados.cond.push({
+          nombre: 'Bono Alquiler Joven (adulto principal)',
+          cuantia: `${BONO_JOVEN_CUANTIA} €/mes · ${BONO_JOVEN_MESES} meses (máx. ${BONO_JOVEN_CUANTIA*BONO_JOVEN_MESES} €)`,
+          detalle: `Todos los adultos ≤ 35 años. Compatible con ayuda general alquiler.`,
+          documentacion: 'Verificar plazos en sede.comunidad.madrid.',
+          fuente: 'Título I RD 42/2022'
+        });
+      }
+    } else if(edadesAdultos.some(e => e <= BONO_JOVEN_EDAD_MAX)){
+      resultados.excl.push({
+        nombre: 'Bono Joven (adulto principal)',
+        motivo: `No todos los adultos ≤ 35 años (edades: ${edadesAdultos.join(', ')}). VER MÓDULO DE TRANSICIÓN: si hay hijo mayor con ingresos, puede ser solicitante alternativo.`,
+        fuente: 'Título I RD 42/2022'
+      });
+    }
+  }
+
+  // Deducción autonómica
+  if(alquilerAnual > 0){
+    const bajoLimiteEdad = edadMinAdultos < DED_AUTON_EDAD_MAX;
+    const topeBI = (tipoDeclaracion === 'conjunta' || tipoDeclaracion === 'conjunta_mono') ? DED_AUTON_BI_CONJ : DED_AUTON_BI_IND;
+    const cumpleBI = baseIRPF < topeBI;
+    const cumple20porc = alquilerAnual > (baseIRPF * DED_AUTON_PORC_RENTA);
+    if(!bajoLimiteEdad){
+      resultados.excl.push({ nombre: 'Deducción autonómica Madrid alquiler', motivo: `Excluido por edad: edad mínima adulto = ${edadMinAdultos} (requisito < 40).`, fuente: 'Ley 5/2024 CM' });
+    } else if(!cumpleBI){
+      resultados.excl.push({ nombre: 'Deducción autonómica Madrid alquiler', motivo: `BI ${fmt(baseIRPF)} € > tope ${fmt(topeBI)} €.`, fuente: 'Manual Renta 2025 AEAT' });
+    } else if(!cumple20porc){
+      resultados.excl.push({ nombre: 'Deducción autonómica Madrid alquiler', motivo: `Alquiler ${fmt(alquilerAnual)} € no supera 20% BI (${fmt(baseIRPF*0.20)} €).`, fuente: 'Art. 8 D.Lgs. 1/2010 CM' });
+    } else {
+      const deduccion = Math.min(alquilerAnual * DED_AUTON_PORC, DED_AUTON_MAX);
+      const nombreItem = 'Deducción autonómica Madrid por alquiler';
+      const detalleBase = `Adulto declarante < 40 · BI ${fmt(baseIRPF)} € < ${fmt(topeBI)} € · pagos > 20% BI.`;
+      const fuenteBase = 'Art. 8 D.Lgs. 1/2010 CM (Ley 5/2024)';
+
+      if(estadoFiscal === 'presentada'){
+        resultados.apto.push({
+          nombre: nombreItem,
+          cuantia: `${fmt(deduccion)} €/año en cuota autonómica (30%, máx. ${DED_AUTON_MAX} €)`,
+          detalle: detalleBase,
+          fuente: fuenteBase
+        });
+      } else if(estadoFiscal === 'pendiente'){
+        resultados.cond.push({
+          nombre: nombreItem + ' — PROYECCIÓN',
+          cuantia: `≈ ${fmt(deduccion)} €/año estimados (30%, máx. ${DED_AUTON_MAX} €)`,
+          detalle: detalleBase + ' Los datos económicos introducidos son provisionales hasta la presentación efectiva de la Renta 2025 (campaña abril-junio 2026).',
+          documentacion: 'Aplicar la deducción al cumplimentar la casilla de deducciones autonómicas en Renta WEB. Verificar contrato registrado y depósito de fianza en el IVIMA.',
+          fuente: fuenteBase
+        });
+      } else { // no_obligada
+        resultados.cond.push({
+          nombre: nombreItem + ' — REQUIERE DECLARACIÓN VOLUNTARIA',
+          cuantia: `Hasta ${fmt(deduccion)} €/año recuperables si se declara`,
+          detalle: detalleBase + ' El declarante no está obligado a presentar Renta, pero hacerlo voluntariamente permite acceder a esta deducción. La devolución efectiva depende de las retenciones soportadas durante el año: si hubo retenciones de IRPF (en nóminas, prestaciones, etc.), la deducción puede generar una devolución equivalente.',
+          documentacion: 'Verificar borrador en Renta WEB. Si el resultado es a devolver, conviene presentar. Si sale a pagar, evaluar si la deducción compensa. Plazo: hasta el 30 de junio de 2026.',
+          fuente: fuenteBase + ' · Obligación de declarar: art. 96 LIRPF'
+        });
+      }
+    }
+  }
+
+  // Deducción estatal transitoria
+  if(alquilerAnual > 0 && !isNaN(fechaContrato.getTime())){
+    if(fechaContrato < DED_ESTATAL_FECHA_LIMITE){
+      if(baseIRPF < DED_ESTATAL_BI_MAX){
+        const ded = alquilerAnual * DED_ESTATAL_PORC;
+        const detalleBase = `Contrato anterior a 01/01/2015 · BI ${fmt(baseIRPF)} € < 24.107,20 €.`;
+        const docBase = 'Acreditar continuidad del contrato. Si BI entre 17.707,20 € y 24.107,20 € hay reducción gradual.';
+
+        if(estadoFiscal === 'presentada'){
+          resultados.cond.push({
+            nombre: 'Deducción estatal transitoria por alquiler',
+            cuantia: `≈ ${fmt(ded)} €/año (10,05% con prorrateo por tramos BI)`,
+            detalle: detalleBase,
+            documentacion: docBase,
+            fuente: 'D.T. 15ª Ley 35/2006'
+          });
+        } else if(estadoFiscal === 'pendiente'){
+          resultados.cond.push({
+            nombre: 'Deducción estatal transitoria — PROYECCIÓN',
+            cuantia: `≈ ${fmt(ded)} €/año estimados (10,05% con prorrateo)`,
+            detalle: detalleBase + ' Estimación previa a presentar la Renta 2025.',
+            documentacion: docBase + ' Recordar marcar la casilla específica de deducción estatal transitoria en Renta WEB.',
+            fuente: 'D.T. 15ª Ley 35/2006'
+          });
+        } else { // no_obligada
+          resultados.cond.push({
+            nombre: 'Deducción estatal transitoria — REQUIERE DECLARACIÓN VOLUNTARIA',
+            cuantia: `Hasta ${fmt(ded)} €/año recuperables si se declara`,
+            detalle: detalleBase + ' Para beneficiarse de esta deducción es imprescindible presentar declaración aunque no se esté obligado.',
+            documentacion: docBase + ' La devolución efectiva depende de las retenciones soportadas.',
+            fuente: 'D.T. 15ª Ley 35/2006 · Obligación de declarar: art. 96 LIRPF'
+          });
+        }
+      } else {
+        resultados.excl.push({ nombre: 'Deducción estatal transitoria por alquiler', motivo: `BI ${fmt(baseIRPF)} € ≥ 24.107,20 €.`, fuente: 'D.T. 15ª Ley 35/2006' });
+      }
+    } else {
+      resultados.excl.push({ nombre: 'Deducción estatal transitoria por alquiler', motivo: `Contrato ${fechaContrato.toLocaleDateString('es-ES')} posterior a 01/01/2015 (suprimida por Ley 26/2014).`, fuente: 'D.T. 15ª Ley 35/2006' });
+    }
+  }
+
+  // Módulo transición
+  const ctxTransicion = {
+    numAdultos, numMenores, edadesMenores, mayores, esMonoparental,
+    ingresosIMV, baseIRPF, tipoDeclaracion
+  };
+  const transicion = calcularTransicion18Anos(ctxTransicion);
+
+  // ============ MÓDULO D: AVISOS COMPLEMENTARIOS SEGÚN PERFIL ============
+
+  // D1. IMV unipersonal o sin cargas (umbral muy bajo, pero conviene avisar si encaja)
+  if(sinCargasFamiliares){
+    const rgUnipersonal = IMV_RG_BASE_ANUAL; // 8.803,20 €/año aprox.
+    const umbralIMV = rgUnipersonal; // el IMV cubre hasta la renta garantizada
+    if(ingresosIMV > 0 && ingresosIMV <= umbralIMV * 1.1){
+      // umbral con cierto margen porque IMV tiene complementos
+      resultados.cond.push({
+        nombre: 'Ingreso Mínimo Vital (IMV) — verificar elegibilidad',
+        cuantia: `Hasta ${fmt(rgUnipersonal/12)} €/mes (cuantía base 2026)`,
+        detalle: `Los ingresos declarados (${fmt(ingresosIMV)} €/año) están cerca o por debajo del umbral del IMV unipersonal (${fmt(umbralIMV)} €). Para una persona sola, el IMV puede llegar hasta esta cuantía mensual. Requiere también cumplir el requisito de patrimonio máximo (${fmtMil(CAPI_PATRIMONIO['1a+1m'])} € aprox. para 1 adulto sin menores).`,
+        documentacion: 'Solicitud telemática en la sede de la Seguridad Social. Vida laboral, certificado de empadronamiento colectivo, cuenta bancaria.',
+        fuente: 'Art. 10 Ley 19/2021 IMV'
+      });
+    }
+  }
+
+  // D2. Plan Alquila / Plan Vive (siempre que haya alquiler, no requiere edad ni cargas)
+  if(renta > 0){
+    resultados.cond.push({
+      nombre: 'Plan Alquila Comunidad de Madrid',
+      cuantia: 'Intermediación gratuita + seguro de impago',
+      detalle: 'Programa de intermediación de la Comunidad de Madrid entre propietarios e inquilinos. NO es una ayuda económica directa, pero ofrece: vivienda a precio asequible, seguro de impago de hasta 10 mensualidades, asistencia jurídica gratuita, y se firma contrato directamente con el propietario con la Comunidad como avalista. Sin requisito de edad ni de cargas familiares. Útil especialmente para perfiles que no encajan en otras ayudas.',
+      documentacion: 'Inscripción en la bolsa de demandantes de Plan Alquila vía sede.comunidad.madrid.',
+      fuente: 'AVS — Agencia de Vivienda Social CM'
+    });
+  }
+
+  // D3. Subsidios SEPE según situación laboral y edad
+  if(situacionLaboral === 'paro_sin_prestacion'){
+    // Subsidio de agotamiento de prestación contributiva (sustituyó al de mayores 45)
+    if(edadMinAdultos >= 45 || numMenores > 0 || mayores.length > 0){
+      resultados.cond.push({
+        nombre: 'Subsidio por agotamiento de prestación contributiva (SEPE)',
+        cuantia: `95% IPREM los 6 primeros meses (${fmt(IPREM_MENSUAL*0.95)} €/mes) → 90% (${fmt(IPREM_MENSUAL*0.90)} €) → 80% (${fmt(IPREM_MENSUAL*0.80)} €)`,
+        detalle: `Desde noviembre de 2024 (RDL 2/2024) este subsidio absorbió el antiguo "subsidio para mayores de 45 años" y la "ayuda familiar". Acceso: ≥45 años habiendo agotado prestación, O cualquier edad con cargas familiares y prestación ≥360 días, O <45 sin cargas si prestación ≥360 días. Ingresos personales no superen el 75% del SMI (≈ 888 €/mes en 2026).`,
+        documentacion: 'Inscripción como demandante de empleo, certificado de cese, declaración responsable de rentas. Tramitación en sede.sepe.gob.es.',
+        fuente: 'RDL 2/2024 — Subsidio agotamiento prestación contributiva'
+      });
+    } else {
+      resultados.cond.push({
+        nombre: 'Subsidio por agotamiento de prestación (SEPE) — verificar',
+        cuantia: 'Verifica requisitos',
+        detalle: `Con menos de 45 años y sin cargas familiares, solo se accede al subsidio si la prestación contributiva agotada tuvo duración ≥ 360 días. Conviene verificar en sede.sepe.gob.es con tu historial concreto.`,
+        fuente: 'RDL 2/2024'
+      });
+    }
+
+    // Subsidio mayores 52 años (cotiza para jubilación)
+    if(edadMinAdultos >= 52){
+      resultados.cond.push({
+        nombre: 'Subsidio para mayores de 52 años (SEPE)',
+        cuantia: `${fmt(IPREM_MENSUAL*0.80)} €/mes (80% IPREM) hasta jubilación`,
+        detalle: `Especialmente relevante si has agotado prestación contributiva y tienes ≥52 años. ÚNICO subsidio que cotiza para la jubilación: el SEPE cotiza por el 125% de la base mínima durante todo el periodo, lo que mejora la futura pensión. Ingresos personales no deben superar el 75% del SMI.`,
+        documentacion: 'Demandante de empleo, declaración anual de rentas, certificados de cotización previos.',
+        fuente: 'RDL 2/2024 — Subsidio mayores 52'
+      });
+    }
+
+    // RAI - Renta Activa de Inserción
+    if(edadMinAdultos >= 45){
+      resultados.cond.push({
+        nombre: 'Renta Activa de Inserción (RAI)',
+        cuantia: `${fmt(IPREM_MENSUAL*0.80)} €/mes (80% IPREM), máx. 11 meses`,
+        detalle: `Para parados de larga duración mayores de 45 años inscritos como demandantes de empleo. También aplica a víctimas de violencia de género (sin requisito de edad) y a personas con discapacidad ≥33%. Se puede cobrar hasta 3 veces a lo largo de la vida, con un año de separación entre solicitudes.`,
+        documentacion: 'Inscripción ininterrumpida como demandante 12 meses (con tolerancia de 90 días), no haber rechazado oferta adecuada.',
+        fuente: 'RD 1369/2006 modificado'
+      });
+    }
+  }
+
+  // D4. Aviso adicional para persona sola (perfil típicamente desatendido)
+  if(esPersonaSola && totalMensual === 0 && resultados.apto.length === 0){
+    // Cuando el perfil queda con pocas opciones, ser honestos
+    let hayOpcionesEnCond = resultados.cond.length > 0;
+    if(!hayOpcionesEnCond){
+      resultados.excl.push({
+        nombre: 'Limitaciones del sistema de protección social para persona sola sin cargas',
+        motivo: `El sistema español de ayudas sociales está construido principalmente en torno a la familia con menores, la edad joven o la situación de paro. Una persona sola entre 35-44 años trabajando con ingresos medios queda fuera de la mayor parte de prestaciones directas: el IMV exige ingresos muy bajos, el Bono Joven exige ≤35 años, la deducción autonómica de alquiler exige <40 años. La ayuda al alquiler general y el Plan Alquila siguen siendo las vías más realistas en este perfil.`,
+        fuente: 'Sistema de prestaciones LGSS — Ley 19/2021 IMV — Plan Estatal Vivienda'
+      });
+    }
+  }
+
+  // ============ MÓDULO E: CAPI vs DEDUCCIÓN POR MATERNIDAD ============
+  // Solo se activa si hay menor de 3 años
+  const menoresBajo3 = edadesMenores.filter(e => e < 3).length;
+  let compMaternidad = null;
+  if(menoresBajo3 > 0){
+    // Calcular cuantía CAPI atribuible a los menores 0-3
+    const cuantiaCAPI_0_3_mes = CAPI_CUANTIA.tramo1 * menoresBajo3;
+    const cuantiaCAPI_0_3_anual = cuantiaCAPI_0_3_mes * 12;
+
+    // Calcular cuantía Deducción Maternidad
+    const cumpleDedMat = (dedMaternidadCumple === 'madre_trabaja' || dedMaternidadCumple === 'caso_especial');
+    let dedMatAnual = 0;
+    let incrementoGuarderia = 0;
+    if(cumpleDedMat){
+      dedMatAnual = DED_MATERNIDAD_ANUAL_MAX * menoresBajo3;
+      if(dedMaternidadGuarderia === 'si'){
+        // Hasta 1.000 €/año adicionales por menor en guardería autorizada
+        incrementoGuarderia = 1000 * menoresBajo3;
+      }
+    }
+    const dedMatTotal = dedMatAnual + incrementoGuarderia;
+
+    // ¿Cumple CAPI? (lo sabemos por si el módulo CAPI lo metió en apto o cond)
+    const cumpleCAPI = resultados.apto.concat(resultados.cond).some(r =>
+      r.nombre && r.nombre.includes('CAPI'));
+
+    compMaternidad = {
+      menoresBajo3,
+      cumpleCAPI,
+      cumpleDedMat,
+      cuantiaCAPI_anual: cuantiaCAPI_0_3_anual,
+      cuantiaCAPI_mes: cuantiaCAPI_0_3_mes,
+      dedMatAnual,
+      incrementoGuarderia,
+      dedMatTotal,
+      esMonoparental,
+      dedMaternidadCumple
+    };
+  }
+
+  pintarResultados(resultados, totalMensual, transicion, estadoFiscal, compMaternidad);
+}
+
+function pintarResultados(r, totalMensual, transicion, estadoFiscal, compMaternidad){
+  const resBox = document.getElementById('resultado');
+  resBox.classList.add('visible');
+
+  // BLOQUE COMPARATIVA CAPI vs DEDUCCIÓN MATERNIDAD
+  const compBox = document.getElementById('compMaternidad');
+  if(compMaternidad){
+    compBox.classList.remove('hidden');
+    pintarComparativaMaternidad(compMaternidad);
+  } else {
+    compBox.classList.add('hidden');
+    compBox.innerHTML = '';
+  }
+
+  // Aviso fiscal según estado de declaración
+  const avisoFiscal = document.getElementById('avisoFiscal');
+  if(estadoFiscal === 'pendiente'){
+    avisoFiscal.classList.remove('hidden');
+    avisoFiscal.innerHTML = `
+      <strong>📋 Renta 2025 pendiente de presentar — Diagnóstico en modo proyección</strong>
+      Las ayudas directas (CAPI, ayuda al alquiler, Bono Joven) <strong>se pueden solicitar igualmente</strong>: la Seguridad Social y la Comunidad de Madrid cruzan datos directamente con la AEAT del ejercicio fiscal anterior, sin necesidad de que el solicitante haya presentado la declaración. Las deducciones IRPF aparecen como proyección hasta la presentación efectiva (campaña abril–junio 2026).
+      <div class="pista"><strong>Documentación sustitutiva habitual:</strong> certificado de imputaciones AEAT del ejercicio anterior, vida laboral, certificados de retenciones de los pagadores, declaración responsable de ingresos.</div>
+    `;
+  } else if(estadoFiscal === 'no_obligada'){
+    avisoFiscal.classList.remove('hidden');
+    avisoFiscal.innerHTML = `
+      <strong>📋 No obligada a declarar IRPF — Ayudas directas accesibles, deducciones requieren declaración voluntaria</strong>
+      Las ayudas directas se pueden tramitar con normalidad aunque no haya obligación de declarar (criterio art. 96 LIRPF). Para acceder a las deducciones IRPF por alquiler debería presentarse declaración voluntaria.
+      <div class="pista"><strong>Recomendación:</strong> verificar el borrador en Renta WEB. Si las retenciones soportadas durante el año (en nóminas, prestaciones, paro, etc.) superan la cuota a pagar tras aplicar la deducción, la declaración voluntaria genera devolución. Si sale a pagar, no compensa declarar.</div>
+    `;
+  } else {
+    avisoFiscal.classList.add('hidden');
+    avisoFiscal.innerHTML = '';
+  }
+
+  const balanza = document.getElementById('balanzaTransicion');
+  if(transicion){
+    balanza.classList.remove('hidden');
+    let subtit;
+    if(transicion.menoresEnTransicion > 0 && transicion.mayoresCount > 0){
+      subtit = `${transicion.menoresEnTransicion} menor(es) próximo(s) a cumplir 18 + ${transicion.mayoresCount} hijo(s) mayor(es) en la UC.`;
+    } else if(transicion.menoresEnTransicion > 0){
+      subtit = `${transicion.menoresEnTransicion} menor(es) con 17 años (próximo cambio de tramo).`;
+    } else {
+      subtit = `${transicion.mayoresCount} hijo(s) mayor(es) de 18 conviviendo en la UC.`;
+    }
+    document.getElementById('balanzaSubtit').textContent = subtit;
+
+    const izq = document.getElementById('balanzaIzq');
+    const der = document.getElementById('balanzaDer');
+    const render = (lista, target, vacioMsg) => {
+      if(lista.length === 0){
+        target.innerHTML = `<div class="bal-item" style="opacity:.6"><em>${vacioMsg}</em></div>`;
+        return;
+      }
+      target.innerHTML = lista.map(it => `
+        <div class="bal-item">
+          <strong>${it.titulo}</strong>
+          ${it.cifra ? `<div class="cifra">${it.cifra}</div>` : ''}
+          ${it.detalle ? `<div class="detalle">${it.detalle}</div>` : ''}
+          ${it.fuente ? `<span class="fuente">${it.fuente}</span>` : ''}
+        </div>
+      `).join('');
+    };
+    render(transicion.izq, izq, 'No se detectan pérdidas cuantificables con los datos introducidos.');
+    render(transicion.der, der, 'No se detectan nuevas vías de financiación con los datos introducidos.');
+
+    const saldoBox = document.getElementById('saldoNeto');
+    if(transicion.saldoNegativoAnual > 0){
+      saldoBox.classList.remove('hidden', 'positivo');
+      saldoBox.classList.add('negativo');
+      document.getElementById('saldoCifra').textContent = `−${fmt(transicion.saldoNegativoAnual)} €/año`;
+      document.getElementById('saldoNota').textContent = 'Estimación de pérdidas cuantificables directas. Las vías de financiación de la columna derecha pueden compensar este saldo si se gestionan activamente (Bono Joven del hijo, becas MEC, incentivo al empleo IMV). Sus cuantías dependen de convocatoria y no se suman automáticamente.';
+    } else {
+      saldoBox.classList.add('hidden');
+    }
+  } else {
+    balanza.classList.add('hidden');
+  }
+
+  const resumen = document.getElementById('resumenTotal');
+  if(totalMensual > 0){
+    resumen.classList.remove('hidden');
+    document.getElementById('totalMensual').textContent = fmt(totalMensual) + ' €/mes';
+    document.getElementById('totalAnual').textContent = '≈ ' + fmt(totalMensual * 12) + ' €/año · No incluye deducciones IRPF';
+  } else {
+    resumen.classList.add('hidden');
+  }
+
+  const renderBloque = (lista, contenedorId, bloqueId) => {
+    const c = document.getElementById(contenedorId);
+    const b = document.getElementById(bloqueId);
+    if(lista.length === 0){ b.style.display = 'none'; return; }
+    b.style.display = 'block';
+    c.innerHTML = lista.map(item => {
+      let html = '<div class="res-item">';
+      html += `<strong>${item.nombre}</strong>`;
+      if(item.cuantia) html += `<div class="cuantia">${item.cuantia}</div>`;
+      if(item.detalle) html += `<div class="motivo">${item.detalle}</div>`;
+      if(item.documentacion) html += `<div class="motivo"><strong>Documentación:</strong> ${item.documentacion}</div>`;
+      if(item.motivo) html += `<div class="motivo">${item.motivo}</div>`;
+      if(item.fuente) html += `<span class="fuente">Fuente: ${item.fuente}</span>`;
+      html += '</div>';
+      return html;
+    }).join('');
+  };
+  renderBloque(r.apto, 'listaApto', 'bloqueApto');
+  renderBloque(r.cond, 'listaCond', 'bloqueCond');
+  renderBloque(r.excl, 'listaExcl', 'bloqueExcl');
+
+  resBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function pintarComparativaMaternidad(c){
+  const box = document.getElementById('compMaternidad');
+  const plural = c.menoresBajo3 > 1;
+  const txtMenor = plural ? `${c.menoresBajo3} menores de 3 años` : `menor de 3 años`;
+
+  // Recomendación según situación
+  let recomendacion = '';
+  if(c.cumpleCAPI && c.cumpleDedMat){
+    const diferencia = c.dedMatTotal - c.cuantiaCAPI_anual;
+    if(c.dedMatTotal > c.cuantiaCAPI_anual){
+      recomendacion = `<strong>En tu caso, parece que compensa más la Deducción por Maternidad</strong> (${fmt(c.dedMatTotal)} €/año frente a ${fmt(c.cuantiaCAPI_anual)} €/año del CAPI). Diferencia a favor de la deducción: ${fmt(diferencia)} €/año. <strong>Cuidado: solo puedes elegir UNA</strong>. La deducción la solicita la madre con Modelo 140 en la AEAT; el CAPI lo solicita cualquier progenitor en la sede de la Seguridad Social. Consulta con profesional antes de elegir: la cuantía real de la deducción está limitada por las cotizaciones efectivas de la madre.`;
+    } else if(c.cuantiaCAPI_anual > c.dedMatTotal){
+      const dif = c.cuantiaCAPI_anual - c.dedMatTotal;
+      recomendacion = `<strong>En tu caso, parece que compensa más el CAPI</strong> (${fmt(c.cuantiaCAPI_anual)} €/año frente a ${fmt(c.dedMatTotal)} €/año de la deducción). Diferencia a favor del CAPI: ${fmt(dif)} €/año. <strong>Cuidado: solo puedes elegir UNA</strong>. El CAPI exige acreditar la situación de la familia anualmente. La deducción es más estable mientras la madre siga trabajando.`;
+    } else {
+      recomendacion = `<strong>Las dos opciones dan cuantías muy similares</strong>. La elección depende de factores cualitativos: estabilidad laboral de la madre, planes de guardería, tolerancia a renovaciones anuales del CAPI. <strong>Solo puedes cobrar una de las dos</strong>.`;
+    }
+  } else if(!c.cumpleCAPI && c.cumpleDedMat){
+    recomendacion = `<strong>No cumples los baremos del CAPI, pero SÍ puedes acceder a la Deducción por Maternidad</strong> (${fmt(c.dedMatTotal)} €/año). Esta deducción NO exige umbrales de renta ni de patrimonio: cualquier madre trabajadora con hijo menor de 3 años tiene derecho. Para cobrarla mes a mes (100 €/mes por menor), presenta el Modelo 140 en la AEAT.`;
+  } else if(c.cumpleCAPI && !c.cumpleDedMat){
+    recomendacion = `<strong>Cumples CAPI pero no la Deducción por Maternidad</strong>. La deducción solo la cobran madres trabajadoras, autónomas o con prestación contributiva de paro. En tu caso, el CAPI (${fmt(c.cuantiaCAPI_anual)} €/año por los ${txtMenor}) es la única vía y ya aparece en tu listado de ayudas más arriba.`;
+  } else {
+    recomendacion = `<strong>En tu situación actual no cumples requisitos ni para CAPI ni para la Deducción por Maternidad por el/los ${txtMenor}.</strong> Si en algún momento alguien de la UC empieza a cotizar a la Seguridad Social, podrías acceder a la deducción (100 €/mes por menor). Si los ingresos de la UC bajan, podrías acceder al CAPI.`;
+  }
+
+  // Pintar HTML
+  box.innerHTML = `
+    <h3>👶 Tienes ${txtMenor}: dos ayudas posibles, una excluye a la otra</h3>
+    <div class="subtit">CAPI (Seguridad Social) y Deducción por Maternidad (AEAT) son INCOMPATIBLES desde el 1 de enero de 2023 — hay que elegir una.</div>
+
+    <div class="comp-grid">
+      <div class="comp-col ${c.cumpleCAPI ? '' : 'no-aplica'}">
+        <h4>CAPI — Seguridad Social</h4>
+        <div class="imp-cuantia">${c.cumpleCAPI ? fmt(c.cuantiaCAPI_anual)+' €/año' : 'No aplica'}</div>
+        <p>${c.cumpleCAPI
+          ? `Por los ${txtMenor}: ${CAPI_CUANTIA.tramo1} €/mes por menor.`
+          : 'Tu UC no cumple los baremos de renta o patrimonio del CAPI.'}</p>
+        <p><strong>Quién lo cobra:</strong> cualquier progenitor.</p>
+        <p><strong>Requiere:</strong> cumplir umbrales anuales de renta y patrimonio.</p>
+        <p><strong>Dónde se solicita:</strong> sede.seg-social.gob.es</p>
+      </div>
+
+      <div class="comp-col ${c.cumpleDedMat ? '' : 'no-aplica'}">
+        <h4>Deducción por Maternidad — AEAT</h4>
+        <div class="imp-cuantia">${c.cumpleDedMat ? fmt(c.dedMatTotal)+' €/año' : 'No aplica'}</div>
+        <p>${c.cumpleDedMat
+          ? `Base: ${fmt(c.dedMatAnual)} €/año por los ${txtMenor} (1.200 €/menor)${c.incrementoGuarderia > 0 ? ' + hasta '+fmt(c.incrementoGuarderia)+' €/año por guardería autorizada' : ''}.`
+          : (c.dedMaternidadCumple === 'no'
+              ? 'No hay madre trabajadora, autónoma o cobrando paro contributivo en la UC. Sin ese requisito no se accede.'
+              : 'Pendiente de confirmar el caso especial.')}</p>
+        <p><strong>Quién lo cobra:</strong> la madre (o casos especiales: adopción doble, dos padres, tutela).</p>
+        <p><strong>Requiere:</strong> estar cotizando o cobrando paro contributivo. SIN umbrales de renta ni patrimonio.</p>
+        <p><strong>Dónde se solicita:</strong> Modelo 140 en sede.agenciatributaria.gob.es</p>
+        ${c.cumpleDedMat ? '<p style="color:var(--terracota);font-size:.78rem"><strong>Aviso:</strong> la cuantía real está limitada por las cotizaciones efectivas de la madre. Si cotiza poco (jornada parcial, base mínima de autónomo), la deducción real puede ser menor que 1.200 €/año.</p>' : ''}
+      </div>
+    </div>
+
+    <div class="comp-recomendacion">${recomendacion}</div>
+  `;
+}
+
+function limpiar(){
+  if(!confirm('¿Borrar todos los datos introducidos?')) return;
+  document.querySelectorAll('input[type="number"]').forEach(i => i.value = '0');
+  document.querySelectorAll('input[type="checkbox"]').forEach(i => i.checked = false);
+  document.getElementById('numAdultos').value = 2;
+  document.getElementById('numMenores').value = 0;
+  document.getElementById('numMayores').value = 0;
+  document.getElementById('renta').value = 0;
+  document.getElementById('fechaContrato').value = '2026-01-01';
+  document.getElementById('tipoUnidad').value = 'biparental';
+  document.getElementById('familiaNumerosa').value = 'no';
+  document.getElementById('situacionLaboral').value = 'trabaja_cuenta_ajena';
+  document.getElementById('modalidad').value = 'completa';
+  document.getElementById('ubicacion').value = 'capital';
+  document.getElementById('tipoDeclaracion').value = 'individual';
+  document.getElementById('estadoFiscal').value = 'presentada';
+  if(document.getElementById('dedMaternidadCumple')) document.getElementById('dedMaternidadCumple').value = 'no';
+  if(document.getElementById('dedMaternidadGuarderia')) document.getElementById('dedMaternidadGuarderia').value = 'no';
+  seleccionarRegimen('alquiler');
+  renderEdades();
+  renderMayores();
+  document.getElementById('resultado').classList.remove('visible');
+}
+</script>
+</body>
+</html>
