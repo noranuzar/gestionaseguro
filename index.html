@@ -1945,7 +1945,7 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
           <circle cx="12" cy="12" r="10"/>
           <path d="M12 6v6l4 2"/>
         </svg>
-        <div className="legal-update">
+        <div class="legal-update">
   <span>Regularización Extraordinaria 2026</span>
 
   <p>
@@ -2037,10 +2037,7 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
      <a href="servicio-peac.html" class="area-card__cta">Ver acompañamiento PEAC ➔</a>    
     </div>
 
-    <!-- Herramientas -->
-    <div class="area-card area-card--herramientas">
-
-    <!-- Herramientas -->
+ <!-- Herramientas -->
     <div class="area-card area-card--herramientas">
       <div class="area-card__head">
         <div class="area-card__icon">🧰</div>
@@ -2343,14 +2340,7 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-// Pestañas tarjeta Trámites Electrónicos
-function switchTab(btn, panelId) {
-  const card = btn.closest('.');
-  card.querySelectorAll('.srv-tab-btn').forEach(b => b.classList.remove('active'));
-  card.querySelectorAll('.srv-tab-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
- document.getElementById('panel-' + panelId).classList.add('active');
-}
+
     function selectOption(el, ctaId, mensaje) {
   const selector = el.closest('.srv-option-selector');
   selector.querySelectorAll('.srv-option').forEach(o => o.classList.remove('selected'));
