@@ -1788,6 +1788,29 @@ object-position: 25% center;
   }
 }
    .cta-diagnostico:hover { background: var(--terracota-dark) !important; } 
+
+/* ── FRANJA BLOG ─────────────────────────── */
+.blog-franja { padding: 20px 0 60px; }
+.blog-franja-card { background: var(--arena-warm); border: 1px solid var(--arena-dark); border-radius: 24px; padding: 40px 38px; }
+.blog-franja-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-bottom: 26px; }
+.blog-franja-eyebrow { display: block; font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--terracota); margin-bottom: 8px; }
+.blog-franja-head h2 { font-size: var(--fs-h2); margin-bottom: 8px; }
+.blog-franja-head > div > p { font-size: var(--fs-sm); color: var(--texto-suave); max-width: 460px; line-height: var(--lh-normal); margin: 0; }
+.blog-franja-btn { background: var(--oliva); color: var(--arena); font-weight: 700; font-size: var(--fs-sm); padding: 13px 26px; border-radius: 50px; white-space: nowrap; transition: background var(--transicion); }
+.blog-franja-btn:hover { background: var(--oliva-dark); }
+.blog-franja-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.blog-mini { background: var(--blanco); border: 1.5px solid var(--arena-dark); border-radius: 16px; padding: 22px 24px; display: block; transition: transform var(--transicion), box-shadow var(--transicion); }
+.blog-mini:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(42,34,24,0.08); }
+.blog-mini-tag { display: block; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #8b6914; margin-bottom: 10px; }
+.blog-mini h3 { font-size: var(--fs-h4); margin-bottom: 8px; line-height: 1.25; }
+.blog-mini p { font-size: var(--fs-sm); color: var(--texto-suave); margin-bottom: 12px; line-height: var(--lh-normal); }
+.blog-mini-cta { font-size: var(--fs-sm); font-weight: 700; color: var(--oliva); }
+@media (max-width: 768px) {
+  .blog-franja-card { padding: 30px 24px; }
+  .blog-franja-grid { grid-template-columns: 1fr; }
+  .blog-franja-btn { width: 100%; text-align: center; }
+}
+  </style>
   </style>
 </head>
 <body>
@@ -2079,6 +2102,34 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
   </div>
 </section>
 <!-- ============ FIN ÁREAS HOME ============ -->
+  <!-- ============ FRANJA BLOG ============ -->
+<section class="blog-franja container reveal">
+  <div class="blog-franja-card">
+    <div class="blog-franja-head">
+      <div>
+        <span class="blog-franja-eyebrow">Blog · guías verificadas</span>
+        <h2>Aprende a hacerlo tú</h2>
+        <p>Explicamos los trámites como son, con fuentes oficiales y sin tecnicismos.</p>
+      </div>
+      <a href="blog.html" class="blog-franja-btn">Ver todas las guías →</a>
+    </div>
+    <div class="blog-franja-grid">
+      <a href="acceso-universidad-bachillerato-extranjero.html" class="blog-mini">
+        <span class="blog-mini-tag">Tu camino formativo</span>
+        <h3>Cómo acceder a la universidad con bachillerato extranjero</h3>
+        <p>Homologación, UNEDasiss, PCE, costes y plazos 2026.</p>
+        <span class="blog-mini-cta">Leer la guía →</span>
+      </a>
+      <a href="servicio-peac.html" class="blog-mini">
+        <span class="blog-mini-tag">PEAC</span>
+        <h3>Convierte tu experiencia laboral en un título oficial</h3>
+        <p>Si llevas años trabajando sin título, Madrid puede reconocerlo.</p>
+        <span class="blog-mini-cta">Ver cómo funciona →</span>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- ============ FIN FRANJA BLOG ============ -->
  <!-- ============ SERVICIOS ============ -->
 <section class="servicios-sec container reveal" id="servicios">
   <div class="servicios-header">
