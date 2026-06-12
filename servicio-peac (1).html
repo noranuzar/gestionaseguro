@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acreditar tu experiencia laboral (PEAC) — Gestiona Seguro</title>
+  <meta name="description" content="¿Años trabajando sin título? Te diagnosticamos qué puedes acreditar por el PEAC, te diseñamos tu ruta hacia un título oficial y te decimos qué formación necesitas. Primera consulta gratuita.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --oliva: #556B2F;
+      --oliva-light: #7d9448;
+      --oliva-dark: #3a4a1f;
+      --oliva-bg: #f0f3e8;
+      --arena: #F5F5DC;
+      --arena-warm: #f8f6ed;
+      --arena-dark: #e8e2c8;
+      --terracota: #E2725B;
+      --terracota-dark: #c45a42;
+      --terracota-bg: #fdf3f0;
+      --dorado: #c9922e;
+      --dorado-bg: #FEF9EC;
+      --texto: #2a2218;
+      --texto-suave: #5e5649;
+      --blanco: #fffdf8;
+      --fs-xs: 1rem;
+      --fs-sm: 1.0625rem;
+      --fs-base: 1.125rem;
+      --fs-md: 1.1875rem;
+      --fs-label: 0.8125rem;
+      --fs-h3: clamp(1.375rem, 2.5vw, 1.625rem);
+      --fs-h2: clamp(1.875rem, 4vw, 2.5rem);
+      --fs-h1: clamp(2.3rem, 5.5vw, 3.4rem);
+      --lh-tight: 1.3;
+      --lh-normal: 1.65;
+      --transicion: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --radio: 20px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      color: var(--texto);
+      background: var(--blanco);
+      font-size: var(--fs-sm);
+      line-height: var(--lh-normal);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'DM Serif Display', serif;
+      line-height: var(--lh-tight);
+      color: var(--oliva-dark);
+      font-weight: 400;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,253,248,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(85,107,47,0.1);
+    }
+    .navbar-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      height: 80px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; font-family: 'DM Serif Display', serif; font-size: 1.45rem; color: var(--oliva-dark); }
+    .logo img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+    .nav-back {
+      font-size: var(--fs-xs); font-weight: 600; color: var(--texto-suave);
+      padding: 10px 18px; border-radius: 50px; transition: all var(--transicion);
+    }
+    .nav-back:hover { color: var(--oliva-dark); background: var(--oliva-bg); }
+
+    /* HERO */
+    .peac-hero {
+      padding: 150px 24px 70px;
+      background: linear-gradient(180deg, var(--dorado-bg) 0%, var(--blanco) 100%);
+      text-align: center;
+    }
+    .peac-hero .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,146,46,0.12); color: #8b6914;
+      font-size: var(--fs-label); font-weight: 700;
+      padding: 8px 18px; border-radius: 50px; margin-bottom: 24px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .peac-hero h1 { font-size: var(--fs-h1); margin-bottom: 22px; max-width: 760px; margin-left: auto; margin-right: auto; }
+    .peac-hero h1 em { font-style: normal; color: var(--terracota); }
+    .peac-hero .sub {
+      font-size: var(--fs-md); color: var(--texto-suave);
+      max-width: 620px; margin: 0 auto 34px; line-height: var(--lh-normal);
+    }
+    .peac-hero .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 32px; border-radius: 50px;
+      font-weight: 700; font-size: var(--fs-base);
+      transition: transform var(--transicion), background var(--transicion);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn--oliva { background: var(--oliva); color: var(--arena); box-shadow: 0 10px 24px rgba(85,107,47,0.18); }
+    .btn--oliva:hover { background: var(--oliva-dark); }
+    .btn--ghost { background: var(--blanco); color: var(--oliva-dark); border: 2px solid var(--arena-dark); }
+    .btn--ghost:hover { border-color: var(--oliva-light); }
+
+    section { padding: 64px 0; }
+
+    /* PROBLEMA */
+    .problema { background: var(--arena-warm); }
+    .problema .lead {
+      font-size: var(--fs-md); color: var(--texto); max-width: 720px;
+      line-height: var(--lh-normal); text-align: center; margin: 0 auto;
+    }
+    .problema .lead strong { color: var(--oliva-dark); }
+
+    /* SECCIÓN TÍTULO */
+    .sec-head { text-align: center; margin-bottom: 44px; }
+    .sec-head .tag {
+      display: inline-block; font-size: var(--fs-label); font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--terracota); margin-bottom: 10px;
+    }
+    .sec-head h2 { font-size: var(--fs-h2); margin-bottom: 12px; }
+    .sec-head p { color: var(--texto-suave); font-size: var(--fs-base); max-width: 600px; margin: 0 auto; }
+
+    /* LAS 3 CAPAS */
+    .capas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .capa {
+      background: var(--blanco); border: 1.5px solid var(--arena-dark);
+      border-radius: var(--radio); padding: 32px 28px; position: relative;
+      transition: transform var(--transicion), box-shadow var(--transicion);
+    }
+    .capa:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(42,34,24,0.08); }
+    .capa__num {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--oliva); color: var(--arena);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 18px;
+    }
+    .capa h3 { font-size: var(--fs-h3); margin-bottom: 10px; }
+    .capa p { font-size: var(--fs-sm); color: var(--texto-suave); line-height: var(--lh-normal); }
+    .capa--destacada { border-color: var(--terracota); border-width: 2px; }
+    .capa--destacada .capa__num { background: var(--terracota); }
+    .capa__flag {
+      position: absolute; top: -12px; right: 20px;
+      background: var(--terracota); color: #fff;
+      font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 4px 12px; border-radius: 50px;
+    }
+
+    /* INCLUYE / NO INCLUYE */
+    .alcance { background: var(--oliva-bg); }
+    .alcance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .alcance-card { background: var(--blanco); border-radius: var(--radio); padding: 32px 30px; }
+    .alcance-card h3 { font-size: var(--fs-h3); margin-bottom: 18px; }
+    .alcance-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .alcance-card li { font-size: var(--fs-sm); color: var(--texto-suave); line-height: 1.5; padding-left: 30px; position: relative; }
+    .alcance-card--si li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--oliva); font-weight: 800; font-size: 1.05rem; }
+    .alcance-card--no li::before { content: "✕"; position: absolute; left: 0; top: 0; color: var(--terracota); font-weight: 800; font-size: 0.95rem; }
+    .alcance-card--no h3 { color: var(--terracota-dark); }
+
+    /* CALCULADORA CTA */
+    .calc-cta {
+      background: var(--dorado-bg); border: 2px dashed var(--dorado);
+      border-radius: 24px; padding: 44px 36px; text-align: center;
+      max-width: 760px; margin: 0 auto;
+    }
+    .calc-cta .ico { font-size: 2.6rem; margin-bottom: 14px; }
+    .calc-cta h2 { font-size: var(--fs-h2); color: #7d5b00; margin-bottom: 12px; }
+    .calc-cta p { font-size: var(--fs-base); color: var(--texto); margin-bottom: 26px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: var(--lh-normal); }
+    .btn--dorado { background: var(--dorado); color: #fff; box-shadow: 0 8px 20px rgba(201,146,46,0.28); }
+    .btn--dorado:hover { background: #b07f24; }
+    .calc-cta .nota { font-size: var(--fs-xs); color: var(--texto-suave); margin-top: 16px; }
+
+    /* CTA FINAL */
+    .cta-final { background: var(--oliva-dark); color: rgba(245,245,220,0.92); text-align: center; }
+    .cta-final h2 { color: var(--arena); font-size: var(--fs-h2); margin-bottom: 14px; }
+    .cta-final p { font-size: var(--fs-md); max-width: 580px; margin: 0 auto 30px; line-height: var(--lh-normal); }
+    .btn--arena { background: var(--terracota); color: #fff; box-shadow: 0 10px 24px rgba(0,0,0,0.2); }
+    .btn--arena:hover { background: var(--terracota-dark); }
+    .cta-final .micro { font-size: var(--fs-xs); margin-top: 16px; opacity: 0.8; }
+
+    /* FOOTER */
+    .footer { background: #2c3618; color: rgba(245,245,220,0.75); padding: 40px 0; text-align: center; }
+    .footer a { color: var(--arena); font-weight: 600; }
+    .footer .links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; font-size: var(--fs-xs); }
+    .footer .copy { font-size: 0.9rem; opacity: 0.7; }
+
+    @media (max-width: 768px) {
+      .capas { grid-template-columns: 1fr; }
+      .alcance-grid { grid-template-columns: 1fr; }
+      .nav-back { padding: 8px 14px; font-size: 0.95rem; }
+      .logo span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="logo">
+        <img src="logo-gestiona-seguro.png" alt="Gestiona Seguro">
+        <span>Gestiona Seguro</span>
+      </a>
+      <a href="/#areas" class="nav-back">← Volver al inicio</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="peac-hero">
+    <span class="badge">🎓 Estudios y formación</span>
+    <h1>Tu experiencia vale un título. <em>Te diseñamos el camino.</em></h1>
+    <p class="sub">Llevas años trabajando, pero sin un papel que lo demuestre. El PEAC convierte esa experiencia en un certificado oficial. Nosotras te decimos qué puedes acreditar, qué te falta y cómo llegar.</p>
+    <div class="actions">
+      <a href="peac-calculadora.html" class="btn btn--dorado">🧮 Comprobar si cumplo (gratis)</a>
+      <a href="#contacto" class="btn btn--ghost">💬 Primera consulta gratuita</a>
+    </div>
+  </header>
+
+  <!-- PROBLEMA -->
+  <section class="problema">
+    <div class="container">
+      <p class="lead">¿Te suena? <strong>Sabes hacer tu trabajo</strong> —cocina, cuidados, administración, construcción, informática— pero cada oferta te pide un título que no tienes. En España, sin papel, tu experiencia no cuenta. <strong>El PEAC existe para cambiar eso</strong>, pero el proceso es confuso y un error te puede costar meses. Para eso estamos.</p>
+    </div>
+  </section>
+
+  <!-- LAS 3 CAPAS -->
+  <section>
+    <div class="container">
+      <div class="sec-head">
+        <span class="tag">Cómo te acompañamos</span>
+        <h2>No te informamos. Te hacemos la ruta.</h2>
+        <p>La mayoría te dice "solicita el PEAC". Nosotras vamos un paso más allá: diseñamos tu itinerario completo, desde tu experiencia hasta el título.</p>
+      </div>
+      <div class="capas">
+        <div class="capa">
+          <div class="capa__num">1</div>
+          <h3>Diagnóstico de tu experiencia</h3>
+          <p>Analizamos tu vida laboral, contratos y formación para identificar qué unidades de competencia puedes acreditar y en qué nivel. Sin suposiciones: lo que dicen tus documentos.</p>
+        </div>
+        <div class="capa capa--destacada">
+          <span class="capa__flag">Lo que nadie hace</span>
+          <div class="capa__num">2</div>
+          <h3>Tu ruta personalizada</h3>
+          <p>Un documento con tu camino paso a paso: qué acreditas ahora, hacia qué certificado o título de FP te lleva, y un cronograma a corto, medio y largo plazo. Tu plan, por escrito.</p>
+        </div>
+        <div class="capa">
+          <div class="capa__num">3</div>
+          <h3>Formación puente</h3>
+          <p>Si tu experiencia aún no llega a los requisitos, te decimos qué tipo de formación no formal necesitas para alcanzarlos y poder acceder al PEAC. No te quedas a medio camino.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUYE / NO INCLUYE -->
+  <section class="alcance">
+    <div class="container">
+      <div class="sec-head">
+        <span class="tag">Claro desde el principio</span>
+        <h2>Qué incluye el acompañamiento</h2>
+        <p>Sin letra pequeña. Lo que hacemos y lo que no, para que sepas exactamente qué esperar.</p>
+      </div>
+      <div class="alcance-grid">
+        <div class="alcance-card alcance-card--si">
+          <h3>Sí incluye</h3>
+          <ul>
+            <li>Diagnóstico completo a partir de tu documentación (vida laboral, contratos, credenciales, cuestionario personalizado).</li>
+            <li>Hoja de ruta académica y profesional con cronograma a corto, medio y largo plazo.</li>
+            <li>Acompañamiento en la solicitud de admisión a centros públicos de FP (Comunidad de Madrid).</li>
+            <li>Coordinación y asesoramiento técnico para tu inscripción al PEAC en convocatoria abierta.</li>
+            <li>Revisión de la documentación necesaria para cada trámite.</li>
+            <li>Seguimiento de plazos, vencimientos y oportunidades de formación o becas.</li>
+          </ul>
+        </div>
+        <div class="alcance-card alcance-card--no">
+          <h3>No incluye</h3>
+          <ul>
+            <li>Homologación o equivalencia de títulos universitarios extranjeros ante el Ministerio (es un trámite aparte, con honorarios separados).</li>
+            <li>Representación en procedimientos contenciosos o judiciales.</li>
+            <li>Pago de tasas, matrículas, cursos privados, libros o materiales: esos gastos son a cargo del cliente.</li>
+            <li>Recomendación de centros o cursos concretos: orientamos sobre el tipo de formación, tú eliges dónde.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA -->
+  <section>
+    <div class="container">
+      <div class="calc-cta">
+        <div class="ico">🧮</div>
+        <h2>Empieza ahora, gratis</h2>
+        <p>Antes de escribirnos, haz el autodiagnóstico. En 2 minutos sabrás si cumples los requisitos del PEAC en Madrid y por dónde podrías empezar.</p>
+        <a href="peac-calculadora.html" class="btn btn--dorado">Abrir calculadora PEAC →</a>
+        <p class="nota">Gratuita y sin registro. Basada en la normativa vigente de la Comunidad de Madrid.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="contacto">
+    <div class="container">
+      <h2>¿Tienes experiencia y no sabes por dónde empezar?</h2>
+      <p>Cuéntanos tu caso. La primera consulta es gratuita: revisamos tu situación y te decimos con honestidad si el PEAC es para ti y qué camino tendría sentido.</p>
+      <a href="https://wa.me/34697154442?text=Hola%2C%20me%20interesa%20el%20acompa%C3%B1amiento%20PEAC%3A%20tengo%20experiencia%20laboral%20y%20quiero%20saber%20qu%C3%A9%20puedo%20acreditar." class="btn btn--arena" target="_blank" rel="noopener">💬 Cuéntanos tu caso</a>
+      <p class="micro">Primera consulta gratuita y sin compromiso · Respuesta en menos de 24 h</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="links">
+        <a href="/">Inicio</a>
+        <a href="peac-calculadora.html">Calculadora PEAC</a>
+        <a href="/#servicios">Servicios</a>
+        <a href="/#contacto">Contacto</a>
+      </div>
+      <p class="copy">© 2026 Gestiona Seguro · Información orientativa. No sustituye asesoría legal individual.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
