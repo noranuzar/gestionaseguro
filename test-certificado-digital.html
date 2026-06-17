@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>¿Puedo sacar el certificado digital? — Gestiona Seguro</title>
-<meta name="description" content="Descubre en 1 minuto qué camino te corresponde para obtener tu certificado digital según tu situación administrativa actual.">
+<meta name="description" content="Descubre en 1 minuto qué camino te corresponde para obtener tu certificado digital o tu Cl@ve según tu situación administrativa actual.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'Source Sans 3',system-ui,sans-serif;color:var(--texto);background:var(--arena-warm);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  h1,h2,h3{font-family:'DM Serif Display',serif;color:var(--oliva-dark);font-weight:400;line-height:1.25;}
+  h1,h2,h3{font-family:'DM Serif Display',serif;font-weight:400;color:var(--oliva-dark);line-height:1.25;}
   .wrap{max-width:760px;margin:0 auto;padding:48px 20px 80px;}
 
   .header{text-align:center;margin-bottom:36px;}
@@ -32,11 +32,6 @@
   }
   .header h1{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:10px;}
   .header p{color:var(--suave);font-size:var(--fs-base);max-width:560px;margin:0 auto;}
-
-  .progress{display:flex;gap:8px;justify-content:center;margin-bottom:36px;}
-  .progress span{width:36px;height:5px;border-radius:50px;background:var(--arena-dark);transition:background var(--tr);}
-  .progress span.active{background:var(--terracota);}
-  .progress span.done{background:var(--oliva);}
 
   .card{
     background:var(--blanco);border:1.5px solid var(--arena-dark);
@@ -74,8 +69,8 @@
     font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:.06em;
     padding:6px 14px;border-radius:50px;margin-bottom:16px;
   }
-  .badge--si{background:var(--oliva-bg);color:var(--oliva);}
   .badge--solo-presencial{background:var(--terra-bg);color:var(--terra-dark);}
+  .badge--clave{background:var(--oliva-bg);color:var(--oliva);}
   .badge--consulta{background:var(--ambar-bg);color:var(--ambar-dark);}
   .badge--no-todavia{background:#fbeaea;color:#9c3b3b;}
 
@@ -86,6 +81,7 @@
   .caja--info{background:var(--arena-warm);border:1.5px solid var(--arena-dark);}
   .caja--alerta{background:var(--terra-bg);border-left:4px solid var(--terracota);}
   .caja--ambar{background:var(--ambar-bg);border-left:4px solid var(--ambar);}
+  .caja--oliva{background:var(--oliva-bg);border-left:4px solid var(--oliva);}
   .caja h3{font-size:1rem;color:var(--oliva-dark);margin-bottom:10px;font-family:'Source Sans 3',sans-serif;font-weight:800;}
   .caja--alerta h3{color:var(--terra-dark);}
   .caja--ambar h3{color:var(--ambar-dark);}
@@ -141,12 +137,7 @@
   <div class="header">
     <span class="tag">🪪 Diagnóstico rápido</span>
     <h1>¿Puedo sacar el certificado digital?</h1>
-    <p>Responde 1 o 2 preguntas y te decimos exactamente qué camino te corresponde, qué llevar y cuánto cuesta. Sin rodeos.</p>
-  </div>
-
-  <div class="progress" id="progress">
-    <span class="active" data-step="1"></span>
-    <span data-step="2"></span>
+    <p>Responde 1 pregunta y te decimos exactamente qué camino te corresponde, qué llevar y cuánto cuesta. Sin rodeos.</p>
   </div>
 
   <div class="card">
@@ -193,37 +184,15 @@
       </div>
     </div>
 
-    <div class="step" id="step-2">
+    <div class="step" id="resultado-A">
       <span class="back-link" onclick="volverPaso1()">← Cambiar mi situación</span>
-      <h2>¿Qué tienes a mano?</h2>
-      <p class="step-sub">Los dos caminos son válidos. Esto solo decide cuál te conviene más.</p>
-      <div class="opciones">
-        <div class="opcion" onclick="elegirDispositivo('ordenador')">
-          <span class="icon">💻</span>
-          <div class="txt">
-            <strong>Ordenador o portátil</strong>
-            <span>Puedes hacerlo desde el navegador, en casa o en una oficina.</span>
-          </div>
-        </div>
-        <div class="opcion" onclick="elegirDispositivo('movil')">
-          <span class="icon">📱</span>
-          <div class="txt">
-            <strong>Solo el móvil</strong>
-            <span>Hay una app oficial pensada exactamente para esto.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step" id="resultado-A-ordenador">
-      <span class="back-link" onclick="volverPaso2()">← Cambiar respuesta</span>
       <div class="resultado">
-        <span class="resultado-badge badge--si">✓ Puedes sacarlo ya</span>
-        <h2>Tienes dos caminos, los dos válidos</h2>
-        <p class="lead">Como tu TIE está en vigor, puedes elegir el que más te convenga. La diferencia es dinero contra desplazamiento.</p>
+        <span class="resultado-badge badge--solo-presencial">Solo vía presencial</span>
+        <h2>Puedes sacarlo, pero solo de forma presencial</h2>
+        <p class="lead">Con NIE, la videollamada del certificado digital no es una opción para nadie — da igual el dispositivo que tengas ni que tu TIE esté en vigor. Es una restricción de la propia FNMT: la videoidentificación del certificado solo admite DNI.</p>
 
         <div class="caja caja--info">
-          <h3>🏢 Opción 1 — Presencial</h3>
+          <h3>🏢 Cómo hacerlo</h3>
           <div class="meta-row">
             <span class="meta-chip">💶 Gratis</span>
             <span class="meta-chip">⏱️ Certificado en ~1 hora</span>
@@ -235,52 +204,9 @@
           </ul>
         </div>
 
-        <div class="caja caja--info">
-          <h3>💻 Opción 2 — Videollamada desde el ordenador</h3>
-          <div class="meta-row">
-            <span class="meta-chip">💶 2,99€ + IVA</span>
-            <span class="meta-chip">⏱️ Aprobación en hasta 2 días hábiles</span>
-          </div>
-          <ul>
-            <li>Lo haces desde <strong>sede.fnmt.gob.es</strong>, con la cámara del ordenador</li>
-            <li>Pago único con tarjeta, no se cobra por minuto de llamada</li>
-            <li>Sin desplazamiento ni cita previa</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="step" id="resultado-A-movil">
-      <span class="back-link" onclick="volverPaso2()">← Cambiar respuesta</span>
-      <div class="resultado">
-        <span class="resultado-badge badge--si">✓ Puedes sacarlo ya</span>
-        <h2>Tienes dos caminos, los dos válidos</h2>
-        <p class="lead">Aunque solo tengas móvil, puedes elegir el camino que más te convenga.</p>
-
-        <div class="caja caja--info">
-          <h3>🏢 Opción 1 — Presencial</h3>
-          <div class="meta-row">
-            <span class="meta-chip">💶 Gratis</span>
-            <span class="meta-chip">⏱️ Certificado en ~1 hora</span>
-          </div>
-          <ul>
-            <li>Pides cita en una oficina de acreditación</li>
-            <li>Llevas tu TIE y el Código de Solicitud que recibes por email</li>
-            <li>Una hora después ya puedes descargar el certificado</li>
-          </ul>
-        </div>
-
-        <div class="caja caja--info">
-          <h3>📱 Opción 2 — Videollamada con la app móvil</h3>
-          <div class="meta-row">
-            <span class="meta-chip">💶 2,99€ + IVA</span>
-            <span class="meta-chip">⏱️ Aprobación en hasta 2 días hábiles</span>
-          </div>
-          <ul>
-            <li>Descargas la app oficial <strong>"Certificado Digital FNMT"</strong> (App Store / Google Play)</li>
-            <li>Todo se hace con la cámara del móvil: foto del documento y verificación facial</li>
-            <li>Pago único de 2,99€ + IVA con tarjeta, no por minuto de conexión</li>
-          </ul>
+        <div class="caja caja--alerta">
+          <h3>Por qué no vale la videollamada</h3>
+          <p>La FNMT confirma en su propia web que, con NIE, la videoidentificación del certificado no está disponible: solo se admite la solicitud presencial, sea desde el ordenador o desde la app. Esto no depende de tu situación ni de tu dispositivo — es así para cualquier persona con NIE.</p>
         </div>
       </div>
     </div>
@@ -288,26 +214,22 @@
     <div class="step" id="resultado-B">
       <span class="back-link" onclick="volverPaso1()">← Cambiar mi situación</span>
       <div class="resultado">
-        <span class="resultado-badge badge--solo-presencial">Solo vía presencial</span>
-        <h2>Puedes sacarlo, pero solo de forma presencial</h2>
-        <p class="lead">No necesitas esperar a tener la tarjeta física en la mano. La FNMT acepta el documento de concesión aunque la tarjeta todavía esté en trámite.</p>
+        <span class="resultado-badge badge--clave">Mejor camino: Cl@ve</span>
+        <h2>El certificado no es tu mejor camino todavía</h2>
+        <p class="lead">Sin la tarjeta física, el certificado digital suele bloquearse en la práctica. Lo que sí puedes conseguir ahora es <strong>Cl@ve</strong>, que te da acceso a tu Carpeta Ciudadana igualmente.</p>
 
-        <div class="caja caja--info">
-          <h3>🏢 Cómo hacerlo</h3>
-          <div class="meta-row">
-            <span class="meta-chip">💶 Gratis</span>
-            <span class="meta-chip">⏱️ Certificado en ~1 hora</span>
-          </div>
+        <div class="caja caja--oliva">
+          <h3>🔑 Por qué Cl@ve sí funciona</h3>
           <ul>
-            <li>Pides cita en una oficina de acreditación</li>
-            <li>Llevas tu <strong>documento oficial de concesión</strong> + tu pasaporte</li>
-            <li>Una hora después puedes descargar el certificado</li>
+            <li>Para registrarte en Cl@ve puedes usar tu documento de concesión como acreditación de residencia</li>
+            <li>Te permite entrar a la Carpeta Ciudadana y ver tus notificaciones igual que con un certificado</li>
+            <li>No necesitas esperar a tener la TIE física en la mano</li>
           </ul>
         </div>
 
         <div class="caja caja--alerta">
-          <h3>Por qué no vale la videollamada</h3>
-          <p>El sistema de videoidentificación pide escanear las dos caras de una tarjeta física vigente. Como todavía no tienes la TIE, ese camino no está disponible para ti ahora mismo — da igual el dispositivo que uses.</p>
+          <h3>Por qué el certificado se atasca en este caso</h3>
+          <p>Aunque la normativa de la FNMT contempla aceptar el documento de concesión, en la práctica real de las oficinas suele pedirse un dato vinculado a la tarjeta física que todavía no tienes, y eso bloquea la solicitud. Mejor no perder tiempo ahí: ve directamente a Cl@ve.</p>
         </div>
       </div>
     </div>
@@ -317,7 +239,7 @@
       <div class="resultado">
         <span class="resultado-badge badge--solo-presencial">Solo vía presencial</span>
         <h2>Puedes sacarlo, pero solo de forma presencial</h2>
-        <p class="lead">Aunque tu tarjeta esté caducada, tu residencia sigue siendo legal porque presentaste la renovación a tiempo. Eso te permite sacar el certificado, pero solo por un camino.</p>
+        <p class="lead">Aunque tu tarjeta esté caducada, tu residencia sigue siendo legal porque presentaste la renovación a tiempo. Eso te permite sacar el certificado, pero solo por la vía presencial — la videollamada no es una opción para nadie con NIE, ni siquiera con la tarjeta en vigor.</p>
 
         <div class="caja caja--info">
           <h3>🏢 Cómo hacerlo</h3>
@@ -330,11 +252,6 @@
             <li>Llevas tu TIE caducada + el <strong>resguardo de presentación de la renovación</strong></li>
             <li>Una hora después puedes descargar el certificado</li>
           </ul>
-        </div>
-
-        <div class="caja caja--alerta">
-          <h3>Por qué no vale la videollamada</h3>
-          <p>El sistema de videoidentificación rechaza automáticamente cualquier documento caducado, aunque tu residencia siga siendo legal de fondo. No hay forma de saltarse ese control: la única vía es la presencial.</p>
         </div>
       </div>
     </div>
@@ -369,8 +286,8 @@
 
     <div class="cta-servicio" id="cta-servicio" style="display:none">
       <span class="cta-tag">¿Prefieres que lo hagamos por ti?</span>
-      <h3>Te gestionamos la cita, presencial o por videollamada</h3>
-      <p>Sabemos que aunque la información esté clara, no todo el mundo quiere lidiar con citas, formularios y plazos. Si prefieres no ocuparte de nada, nosotras pedimos la cita, te decimos qué llevar y te acompañamos hasta que tengas el certificado en la mano.</p>
+      <h3>Te gestionamos la cita o el registro en Cl@ve</h3>
+      <p>Sabemos que aunque la información esté clara, no todo el mundo quiere lidiar con citas, formularios y plazos. Si prefieres no ocuparte de nada, nosotras lo gestionamos por ti hasta que tengas acceso a tu Carpeta Ciudadana.</p>
       <a href="#" id="cta-whatsapp" class="cta-btn" target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         <span id="cta-texto">Que lo gestionen por mí</span>
@@ -388,9 +305,8 @@
   const numero = '34697154442';
 
   const mensajes = {
-    'A-ordenador': 'Hola, hice el test del certificado digital. Soy residente con TIE en vigor y tengo ordenador. Quiero que gestionéis vosotras la cita.',
-    'A-movil': 'Hola, hice el test del certificado digital. Soy residente con TIE en vigor y solo tengo móvil. Quiero que gestionéis vosotras el trámite.',
-    'B': 'Hola, hice el test del certificado digital. Tengo la concesión pero aún no la TIE física. Quiero que me ayudéis a sacar el certificado.',
+    'A': 'Hola, hice el test del certificado digital. Soy residente con TIE en vigor. Quiero que gestionéis vosotras la cita presencial.',
+    'B': 'Hola, hice el test del certificado digital. Tengo la concesión pero aún no la TIE física. Quiero que me ayudéis a sacar mi Cl@ve.',
     'C': 'Hola, hice el test del certificado digital. Mi TIE está caducada y ya presenté la renovación. Quiero que me ayudéis a sacar el certificado.',
     'D': 'Hola, hice el test del certificado digital. Tengo una denegación con recurso pendiente y necesito que revisen mi caso antes de hacer nada.',
     'E': 'Hola, hice el test del certificado digital. Solo tengo pasaporte, sin NIE. Necesito orientación sobre qué vía me corresponde.'
@@ -398,15 +314,6 @@
 
   function ocultarTodos() {
     document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-  }
-
-  function actualizarProgreso(paso) {
-    document.querySelectorAll('#progress span').forEach(p => {
-      const n = parseInt(p.dataset.step);
-      p.classList.remove('active', 'done');
-      if (n < paso) p.classList.add('done');
-      if (n === paso) p.classList.add('active');
-    });
   }
 
   function mostrarCTA(clave) {
@@ -417,37 +324,15 @@
   }
 
   function elegirSituacion(valor) {
-    if (valor === 'A') {
-      ocultarTodos();
-      document.getElementById('step-2').classList.add('active');
-      actualizarProgreso(2);
-    } else {
-      ocultarTodos();
-      document.getElementById('resultado-' + valor).classList.add('active');
-      mostrarCTA(valor);
-      actualizarProgreso(2);
-    }
-  }
-
-  function elegirDispositivo(valor) {
     ocultarTodos();
-    const clave = 'A-' + valor;
-    document.getElementById('resultado-' + clave).classList.add('active');
-    mostrarCTA(clave);
+    document.getElementById('resultado-' + valor).classList.add('active');
+    mostrarCTA(valor);
   }
 
   function volverPaso1() {
     document.getElementById('cta-servicio').style.display = 'none';
     ocultarTodos();
     document.getElementById('step-1').classList.add('active');
-    actualizarProgreso(1);
-  }
-
-  function volverPaso2() {
-    document.getElementById('cta-servicio').style.display = 'none';
-    ocultarTodos();
-    document.getElementById('step-2').classList.add('active');
-    actualizarProgreso(2);
   }
 
   function reiniciar() {
