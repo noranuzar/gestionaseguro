@@ -1799,13 +1799,15 @@ object-position: 25% center;
 .blog-franja-head > div > p { font-size: var(--fs-sm); color: var(--texto-suave); max-width: 460px; line-height: var(--lh-normal); margin: 0; }
 .blog-franja-btn { background: var(--oliva); color: var(--arena); font-weight: 700; font-size: var(--fs-sm); padding: 13px 26px; border-radius: 50px; white-space: nowrap; transition: background var(--transicion); }
 .blog-franja-btn:hover { background: var(--oliva-dark); }
-.blog-franja-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.blog-franja-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .blog-mini { background: var(--blanco); border: 1.5px solid var(--arena-dark); border-radius: 16px; padding: 22px 24px; display: block; transition: transform var(--transicion), box-shadow var(--transicion); }
 .blog-mini:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(42,34,24,0.08); }
 .blog-mini-tag { display: block; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #8b6914; margin-bottom: 10px; }
 .blog-mini h3 { font-size: var(--fs-h4); margin-bottom: 8px; line-height: 1.25; }
 .blog-mini p { font-size: var(--fs-sm); color: var(--texto-suave); margin-bottom: 12px; line-height: var(--lh-normal); }
 .blog-mini-cta { font-size: var(--fs-sm); font-weight: 700; color: var(--oliva); }
+.blog-mini--destacado { border-color: var(--oliva); background: var(--oliva-bg); }
+.blog-mini--destacado .blog-mini-tag { color: var(--oliva-dark); }
 @media (max-width: 768px) {
   .blog-franja-card { padding: 30px 24px; }
   .blog-franja-grid { grid-template-columns: 1fr; }
@@ -1878,6 +1880,12 @@ object-position: 25% center;
               <a href="evaluador.html" class="dropdown-item" role="menuitem">
                 <strong>✓ Test de Aptitud</strong>
                 <span>¿Eres apto/a? En 2 minutos</span>
+              </a>
+            </li>
+            <li role="none">
+              <a href="test-certificado-digital.html" class="dropdown-item" role="menuitem">
+                <strong>🪪 Certificado digital</strong>
+                <span>¿Puedo sacarlo? Test de 1 minuto</span>
               </a>
             </li>
             <li role="none">
@@ -2112,6 +2120,12 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
       <a href="blog.html" class="blog-franja-btn">Ver todas las guías →</a>
     </div>
     <div class="blog-franja-grid">
+      <a href="guia-carpeta-ciudadana.html" class="blog-mini blog-mini--destacado">
+        <span class="blog-mini-tag">📂 Carpeta Ciudadana</span>
+        <h3>¿Sabes qué pasa si no abres una notificación a tiempo?</h3>
+        <p>Qué es, cómo entrar, el dato que más confunde y el test de 1 minuto para tu certificado digital.</p>
+        <span class="blog-mini-cta">Leer la guía →</span>
+      </a>
       <a href="acceso-universidad-bachillerato-extranjero.html" class="blog-mini">
         <span class="blog-mini-tag">Tu camino formativo</span>
         <h3>Cómo acceder a la universidad con bachillerato extranjero</h3>
@@ -2360,14 +2374,14 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
   </div>
 
   <!-- CAPA TRANSVERSAL: CARPETA CIUDADANA -->
-  <div class="srv2-transversal">
+  <a href="guia-carpeta-ciudadana.html" class="srv2-transversal">
     <span class="srv2-transversal__icon">📂</span>
     <div class="srv2-transversal__body">
       <strong>Carpeta Ciudadana · vigilancia de notificaciones</strong>
-      <span>Servicio transversal que afecta a todos los trámites. Empieza con una charla gratuita para que aprendas a configurarla tú.</span>
+      <span>Servicio transversal que afecta a todos los trámites. Aprende a configurarla tú, paso a paso.</span>
     </div>
-    <span class="srv2-transversal__badge">Próximamente charlas</span>
-  </div>
+    <span class="srv2-transversal__badge">Ver guía ➔</span>
+  </a>
 
 </section>
 <!-- ============ FIN MÓDULO SERVICIOS ============ -->
