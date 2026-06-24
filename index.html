@@ -2143,11 +2143,89 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
 </section>
 <!-- ============ FIN FRANJA BLOG ============ -->
 <!-- ============ SERVICIOS ============ -->
+<style>
+  .srv2-sec { padding: 0 0 80px; background: var(--blanco); }
+  .srv2-header { text-align: center; margin-bottom: 26px; }
+  .srv2-header .sec-label {
+    display: inline-block; font-size: var(--fs-label); font-weight: 800;
+    text-transform: uppercase; letter-spacing: .1em; color: var(--terracota);
+    margin-bottom: 10px;
+  }
+  .srv2-header h2 { margin-bottom: 10px; }
+  .srv2-header p {
+    color: var(--texto-suave); font-size: var(--fs-md);
+    max-width: 600px; margin: 0 auto; line-height: var(--lh-normal);
+  }
+  .srv2-leyenda {
+    display: flex; gap: 18px; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 26px;
+  }
+  .srv2-leyenda span {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: var(--fs-label); font-weight: 700;
+  }
+  .srv2-leyenda .lg-dot {
+    width: 14px; height: 14px; border-radius: 3px;
+  }
+  .srv2-leyenda .lg-gestion { color: var(--oliva-dark); }
+  .srv2-leyenda .lg-gestion .lg-dot { background: var(--oliva); }
+  .srv2-leyenda .lg-ruta { color: var(--terracota-dark); }
+  .srv2-leyenda .lg-ruta .lg-dot { background: var(--terracota); }
+
+  .srv2-transversal {
+    background: var(--arena-warm);
+    border: 1px solid var(--arena-dark);
+    border-left: 5px solid var(--oliva);
+    border-radius: 0 14px 14px 0;
+    padding: 22px 26px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    text-decoration: none; color: var(--texto);
+    transition: transform var(--transicion), box-shadow var(--transicion);
+  }
+  .srv2-transversal + .srv2-transversal { margin-top: 14px; }
+  .srv2-transversal:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(42,34,24,0.08);
+  }
+  .srv2-transversal__icon { font-size: 1.6rem; flex-shrink: 0; }
+  .srv2-transversal__body { flex: 1; min-width: 220px; }
+  .srv2-transversal__body strong {
+    display: block; font-size: var(--fs-sm); font-weight: 700;
+    color: var(--oliva-dark); margin-bottom: 4px;
+  }
+  .srv2-transversal__body span {
+    font-size: var(--fs-xs); color: var(--texto-suave); line-height: 1.5;
+  }
+  .srv2-transversal__badge {
+    background: var(--oliva-bg); color: var(--oliva-dark);
+    font-size: var(--fs-label); font-weight: 700;
+    padding: 7px 14px; border-radius: 50px; white-space: nowrap;
+  }
+  /* Variante RUTA (terracota) para PEAC */
+  .srv2-transversal--ruta {
+    background: var(--terracota-bg);
+    border-color: #f0d9d1;
+    border-left-color: var(--terracota);
+  }
+  .srv2-transversal--ruta .srv2-transversal__badge {
+    background: #fdeae4; color: var(--terracota-dark);
+  }
+  @media (max-width: 768px) {
+    .srv2-transversal { flex-direction: column; align-items: flex-start; }
+    .srv2-transversal__badge { width: 100%; text-align: center; }
+  }
+</style>
+
 <section class="srv2-sec container reveal" id="servicios">
   <div class="srv2-header">
     <span class="sec-label">Servicios profesionales</span>
     <h2>Nuestros paquetes de servicio</h2>
     <p>Precios claros y cerrados. Tú entregas la documentación y nosotras nos encargamos del trámite o te damos la ruta exacta para que lo hagas con seguridad.</p>
+  </div>
+
+  <div class="srv2-leyenda">
+    <span class="lg-gestion"><span class="lg-dot"></span>Lo tramitamos por ti</span>
+    <span class="lg-ruta"><span class="lg-dot"></span>Te damos la ruta</span>
   </div>
 
   <!-- Paquete 1 — Comunícate con la Administración -->
@@ -2161,7 +2239,7 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
   </a>
 
   <!-- Paquete 2 — Homologación de estudios -->
-  <a href="servicios-homologacion.html" class="srv2-transversal" style="margin-top:14px;">
+  <a href="servicios-homologacion.html" class="srv2-transversal">
     <span class="srv2-transversal__icon">🎓</span>
     <div class="srv2-transversal__body">
       <strong>Paquete "Homologa tus estudios" — desde 200€</strong>
@@ -2170,8 +2248,8 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
     <span class="srv2-transversal__badge">Ver paquete ➔</span>
   </a>
 
-  <!-- Paquete 3 — Ruta PEAC -->
-  <a href="servicio-peac.html" class="srv2-transversal" style="margin-top:14px;">
+  <!-- Paquete 3 — Ruta PEAC (variante terracota) -->
+  <a href="servicio-peac.html" class="srv2-transversal srv2-transversal--ruta">
     <span class="srv2-transversal__icon">🛠️</span>
     <div class="srv2-transversal__body">
       <strong>Paquete "Ruta PEAC" — desde 200€</strong>
