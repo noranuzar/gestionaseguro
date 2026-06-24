@@ -2142,251 +2142,46 @@ Información, herramientas útiles y acompañamiento práctico para avanzar con 
   </div>
 </section>
 <!-- ============ FIN FRANJA BLOG ============ -->
- <!-- ============ SERVICIOS ============ -->
-<!-- ============================================================ -->
-<!-- MÓDULO SERVICIOS — reemplaza tu <section id="servicios"> actual -->
-<!-- No toca Core (navbar, footer, tokens). Usa tus variables.      -->
-<!-- ============================================================ -->
-
-<style>
-  /* ── SERVICIOS v2 — arquitectura de 2 verbos ───────────── */
-  .srv2-sec { padding: 0 0 80px; background: var(--blanco); }
-  .srv2-header { text-align: center; margin-bottom: 32px; }
-  .srv2-header .sec-label {
-    display: inline-block; font-size: var(--fs-label); font-weight: 800;
-    text-transform: uppercase; letter-spacing: .1em; color: var(--terracota);
-    margin-bottom: 10px;
-  }
-  .srv2-header h2 { margin-bottom: 10px; }
-  .srv2-header p {
-    color: var(--texto-suave); font-size: var(--fs-md);
-    max-width: 600px; margin: 0 auto; line-height: var(--lh-normal);
-  }
-
-  /* Leyenda de alcance */
-  .srv2-leyenda {
-    display: flex; gap: 10px; justify-content: center;
-    flex-wrap: wrap; margin-bottom: 34px;
-  }
-  .srv2-alcance {
-    display: inline-flex; align-items: center; gap: 7px;
-    font-size: var(--fs-xs); font-weight: 700;
-    padding: 7px 15px; border-radius: 50px;
-  }
-  .srv2-alcance--gestion { background: var(--oliva-bg); color: var(--oliva-dark); }
-  .srv2-alcance--ruta    { background: var(--terracota-bg); color: var(--terracota-dark); }
-
-  /* Cabeza de cartel: Extranjería */
-  .srv2-destacado {
-    border: 2px solid var(--oliva);
-    border-radius: 24px;
-    padding: 34px 36px;
-    margin-bottom: 22px;
-    background: var(--oliva-bg);
-    display: block;
-    transition: transform var(--transicion), box-shadow var(--transicion);
-    color: var(--texto);
-  }
-  .srv2-destacado:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 40px rgba(85,107,47,0.12);
-  }
-  .srv2-destacado__top {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 14px; flex-wrap: wrap;
-  }
-  .srv2-destacado__icon { font-size: 2rem; line-height: 1; }
-  .srv2-destacado__tag {
-    font-size: var(--fs-label); font-weight: 800;
-    text-transform: uppercase; letter-spacing: .08em; color: var(--oliva);
-  }
-  .srv2-destacado__urgencia {
-    margin-left: auto;
-    background: var(--terracota); color: #fff;
-    font-size: var(--fs-label); font-weight: 700;
-    padding: 6px 14px; border-radius: 50px;
-    display: inline-flex; align-items: center; gap: 6px;
-  }
-  .srv2-destacado h3 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    margin-bottom: 8px; color: var(--oliva-dark);
-  }
-  .srv2-destacado > p {
-    font-size: var(--fs-base); color: var(--texto-suave);
-    line-height: var(--lh-normal); margin-bottom: 20px; max-width: 640px;
-  }
-  .srv2-destacado__cta {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--oliva); color: var(--arena);
-    font-weight: 700; font-size: var(--fs-btn);
-    padding: 14px 28px; border-radius: 50px;
-    transition: background var(--transicion), transform var(--transicion);
-  }
-  .srv2-destacado__cta:hover { background: var(--oliva-dark); transform: translateY(-1px); }
-
-  /* Segundo nivel: Estudios + Empleo */
-  .srv2-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 22px; margin-bottom: 22px;
-  }
-  .srv2-col {
-    background: var(--blanco);
-    border: 1.5px solid var(--arena-dark);
-    border-radius: 24px;
-    padding: 30px 28px;
-    transition: transform var(--transicion), box-shadow var(--transicion), border-color var(--transicion);
-  }
-  .srv2-col:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(42,34,24,0.08);
-    border-color: rgba(85,107,47,0.3);
-  }
-  .srv2-col__head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
-  .srv2-col__icon {
-    width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-  }
-  .srv2-col--estudios .srv2-col__icon { background: var(--oliva-bg); }
-  .srv2-col--empleo   .srv2-col__icon { background: var(--terracota-bg); }
-  .srv2-col__tag {
-    font-size: var(--fs-label); font-weight: 800;
-    text-transform: uppercase; letter-spacing: .08em;
-  }
-  .srv2-col--estudios .srv2-col__tag { color: var(--oliva); }
-  .srv2-col--empleo   .srv2-col__tag { color: var(--terracota-dark); }
-  .srv2-col h3 { font-size: var(--fs-h4); margin-bottom: 18px; color: var(--oliva-dark); }
-
-  .srv2-item {
-    display: block;
-    padding: 14px 16px; border-radius: 12px;
-    background: var(--arena-warm); border: 1px solid var(--arena-dark);
-    margin-bottom: 10px; color: var(--texto);
-    transition: background var(--transicion), border-color var(--transicion);
-  }
-  .srv2-item:last-child { margin-bottom: 0; }
-  .srv2-item:hover { background: var(--oliva-bg); border-color: rgba(85,107,47,0.25); }
-  .srv2-item strong {
-    display: block; font-size: var(--fs-sm); font-weight: 700;
-    color: var(--texto); margin-bottom: 5px;
-    font-family: 'Source Sans 3', sans-serif;
-  }
-  .srv2-item__alcance {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: var(--fs-label); font-weight: 700;
-  }
-  .srv2-item__alcance--gestion { color: var(--oliva); }
-  .srv2-item__alcance--ruta    { color: var(--terracota-dark); }
-
-  /* Capa transversal: Carpeta Ciudadana */
-  .srv2-transversal {
-    background: var(--arena-warm);
-    border: 1px solid var(--arena-dark);
-    border-left: 4px solid var(--oliva-light);
-    border-radius: 0 14px 14px 0;
-    padding: 22px 26px;
-    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  }
-  .srv2-transversal__icon { font-size: 1.6rem; flex-shrink: 0; }
-  .srv2-transversal__body { flex: 1; min-width: 220px; }
-  .srv2-transversal__body strong {
-    display: block; font-size: var(--fs-sm); font-weight: 700;
-    color: var(--oliva-dark); margin-bottom: 3px;
-  }
-  .srv2-transversal__body span {
-    font-size: var(--fs-xs); color: var(--texto-suave);
-  }
-  .srv2-transversal__badge {
-    background: var(--oliva-bg); color: var(--oliva-dark);
-    font-size: var(--fs-label); font-weight: 700;
-    padding: 7px 14px; border-radius: 50px; white-space: nowrap;
-  }
-
-  @media (max-width: 768px) {
-    .srv2-grid { grid-template-columns: 1fr; }
-    .srv2-destacado { padding: 28px 24px; }
-    .srv2-destacado__urgencia { margin-left: 0; }
-    .srv2-transversal { flex-direction: column; align-items: flex-start; }
-  }
-</style>
-
+<!-- ============ SERVICIOS ============ -->
 <section class="srv2-sec container reveal" id="servicios">
   <div class="srv2-header">
     <span class="sec-label">Servicios profesionales</span>
-    <h2>Te acompañamos cuando lo necesitas</h2>
-    <p>Más allá de los recursos gratuitos, Sara y Nora gestionan tu expediente o te damos la ruta para que lo hagas tú. Cada servicio te dice claramente hasta dónde llegamos.</p>
+    <h2>Nuestros paquetes de servicio</h2>
+    <p>Precios claros y cerrados. Tú entregas la documentación y nosotras nos encargamos del trámite o te damos la ruta exacta para que lo hagas con seguridad.</p>
   </div>
 
-  <!-- Leyenda de alcance -->
-  <div class="srv2-leyenda">
-    <span class="srv2-alcance srv2-alcance--gestion">🗂️ Lo tramitamos por ti</span>
-    <span class="srv2-alcance srv2-alcance--ruta">🧭 Te damos la ruta y te acompañamos</span>
-  </div>
-
-  <!-- CABEZA DE CARTEL: EXTRANJERÍA -->
-  <a href="proceso-2026.html" class="srv2-destacado">
-    <div class="srv2-destacado__top">
-      <span class="srv2-destacado__icon">🛂</span>
-      <span class="srv2-destacado__tag">Extranjería</span>
-      <span class="srv2-destacado__urgencia">⏰ Regularización hasta el 30 jun</span>
+  <!-- Paquete 1 — Comunícate con la Administración -->
+  <a href="paquete-comunicate-administracion.html" class="srv2-transversal">
+    <span class="srv2-transversal__icon">📦</span>
+    <div class="srv2-transversal__body">
+      <strong>Paquete "Comunícate con la Administración" — 100€</strong>
+      <span>Cita de identificación, número de Seguridad Social, NUSS y Carpeta Ciudadana — todo gestionado, con acompañamiento en cada paso.</span>
     </div>
-    <h3>Regularización 2026, renovaciones y nacionalidad</h3>
-    <p>Sara gestiona tu expediente de principio a fin. Tú entregas la documentación y nosotras tramitamos: regularización extraordinaria (RD 316/2026), renovaciones de residencia y nacionalidad española.</p>
-    <span class="srv2-destacado__cta">Ver cómo te ayudamos ➔</span>
+    <span class="srv2-transversal__badge">Ver paquete ➔</span>
   </a>
 
-  <!-- SEGUNDO NIVEL: ESTUDIOS + EMPLEO -->
-  <div class="srv2-grid">
-
-    <!-- Estudios -->
-    <div class="srv2-col srv2-col--estudios">
-      <div class="srv2-col__head">
-        <div class="srv2-col__icon">🎓</div>
-        <span class="srv2-col__tag">Estudios</span>
-      </div>
-      <h3>Estudios y homologación</h3>
-      <a href="servicios-homologacion.html" class="srv2-item">
-        <strong>Homologar secundaria y bachillerato</strong>
-        <span class="srv2-item__alcance srv2-item__alcance--gestion">🗂️ Lo tramitamos por ti</span>
-      </a>
-      <a href="servicio-peac.html" class="srv2-item">
-        <strong>Ruta académica + acompañamiento PEAC</strong>
-        <span class="srv2-item__alcance srv2-item__alcance--ruta">🧭 Te damos la ruta y te acompañamos</span>
-      </a>
+  <!-- Paquete 2 — Homologación de estudios -->
+  <a href="servicios-homologacion.html" class="srv2-transversal" style="margin-top:14px;">
+    <span class="srv2-transversal__icon">🎓</span>
+    <div class="srv2-transversal__body">
+      <strong>Paquete "Homologa tus estudios" — desde 200€</strong>
+      <span>Homologación de secundaria y bachillerato extranjeros: revisión de documentos, preparación del expediente, representación y seguimiento — servicio personalizado según tu país y caso.</span>
     </div>
+    <span class="srv2-transversal__badge">Ver paquete ➔</span>
+  </a>
 
-    <!-- Empleo -->
-    <div class="srv2-col srv2-col--empleo">
-      <div class="srv2-col__head">
-        <div class="srv2-col__icon">💼</div>
-        <span class="srv2-col__tag">Empleo</span>
-      </div>
-      <h3>Acceso al empleo público</h3>
-      <a href="#" class="srv2-item">
-        <strong>Adaptador de CV</strong>
-        <span class="srv2-item__alcance srv2-item__alcance--ruta">🧭 Te damos la ruta y te acompañamos</span>
-      </a>
-      <a href="#" class="srv2-item">
-        <strong>Entrenamiento de entrevistas</strong>
-        <span class="srv2-item__alcance srv2-item__alcance--ruta">🧭 Te damos la ruta y te acompañamos</span>
-      </a>
+  <!-- Paquete 3 — Ruta PEAC -->
+  <a href="servicio-peac.html" class="srv2-transversal" style="margin-top:14px;">
+    <span class="srv2-transversal__icon">🛠️</span>
+    <div class="srv2-transversal__body">
+      <strong>Paquete "Ruta PEAC" — desde 200€</strong>
+      <span>Acreditación de tu experiencia laboral como título oficial: diagnóstico de tu perfil, preparación del expediente de evidencias y acompañamiento durante todo el procedimiento.</span>
     </div>
-
-  </div>
-
-  <!-- CAPA TRANSVERSAL: CARPETA CIUDADANA -->
-  <a href="paquete-comunicate-administracion.html" class="srv2-transversal">
-  <span class="srv2-transversal__icon">📦</span>
-  <div class="srv2-transversal__body">
-    <strong>Paquete "Comunícate con la Administración" — 100€</strong>
-    <span>Cita de identificación, número de Seguridad Social, NUSS y Carpeta Ciudadana — todo gestionado, con acompañamiento en cada paso.</span>
-  </div>
-  <span class="srv2-transversal__badge">Ver paquete ➔</span>
-</a>
+    <span class="srv2-transversal__badge">Ver paquete ➔</span>
+  </a>
 
 </section>
-<!-- ============ FIN MÓDULO SERVICIOS ============ -->
-
-
+<!-- ============ FIN SERVICIOS ============ -->
 <!-- ============================================================ -->
 <!-- MÓDULO CHARLAS — colócalo en la home justo DESPUÉS de        -->
 <!-- <!-- ============ FIN MÓDULO SERVICIOS ============ -->       -->
