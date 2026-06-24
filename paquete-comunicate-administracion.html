@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paquete: Comunícate con la Administración — Gestiona Seguro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --oliva:#556B2F; --oliva-light:#7d9448; --oliva-dark:#3a4a1f; --oliva-bg:#f0f3e8;
+    --arena-warm:#f8f6ed; --arena-dark:#e8e2c8;
+    --terracota:#E2725B; --terra-dark:#c45a42; --terra-bg:#fdf3f0;
+    --texto:#2a2218; --suave:#5e5649; --blanco:#fffdf8;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Source Sans 3',sans-serif;background:var(--arena-warm);color:var(--texto);}
+  .hoja{
+    max-width:680px;margin:0 auto;background:var(--blanco);
+    box-shadow:0 30px 70px rgba(42,34,24,0.12);
+  }
+
+  /* CABECERA */
+  .cab{background:var(--oliva-dark);padding:48px 44px 40px;text-align:center;position:relative;overflow:hidden;}
+  .cab::before{
+    content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;
+    background:radial-gradient(circle,rgba(245,245,220,0.08),transparent 70%);
+  }
+  .cab-tag{
+    display:inline-flex;align-items:center;gap:7px;
+    background:rgba(245,245,220,0.12);color:var(--arena-warm);
+    font-size:0.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;
+    padding:7px 16px;border-radius:50px;margin-bottom:20px;
+  }
+  .cab h1{
+    font-family:'DM Serif Display',serif;font-weight:400;color:var(--arena-warm);
+    font-size:2.1rem;line-height:1.15;margin-bottom:12px;
+  }
+  .cab p{color:rgba(245,245,220,0.78);font-size:1.05rem;max-width:440px;margin:0 auto;line-height:1.55;}
+  .precio-badge{
+    display:inline-flex;align-items:baseline;gap:9px;
+    background:var(--terracota);color:white;
+    font-family:'DM Serif Display',serif;font-size:1.7rem;
+    padding:12px 26px;border-radius:50px;margin-top:24px;
+    box-shadow:0 8px 20px rgba(226,114,91,0.35);
+  }
+  .precio-badge span{
+    font-family:'Source Sans 3',sans-serif;font-size:0.78rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.06em;opacity:0.9;
+  }
+
+  /* RESULTADO DESTACADO */
+  .resultado-top{
+    background:var(--terracota);color:white;text-align:center;
+    padding:16px 24px;font-size:0.95rem;font-weight:700;
+  }
+
+  /* PASOS */
+  .pasos{padding:44px 44px 10px;}
+  .paso{
+    display:flex;gap:20px;align-items:flex-start;
+    padding-bottom:34px;position:relative;
+  }
+  .paso:not(:last-child)::before{
+    content:'';position:absolute;left:25px;top:54px;bottom:0;
+    width:2px;background:var(--arena-dark);
+  }
+  .paso-num{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--oliva-bg);border:2px solid var(--oliva);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--oliva-dark);
+    flex-shrink:0;z-index:1;
+  }
+  .paso-body{padding-top:6px;}
+  .paso-body .icon-tag{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;
+    color:var(--terra-dark);margin-bottom:6px;
+  }
+  .paso-body h3{
+    font-family:'DM Serif Display',serif;font-weight:400;color:var(--oliva-dark);
+    font-size:1.25rem;margin-bottom:6px;
+  }
+  .paso-body p{color:var(--suave);font-size:0.96rem;line-height:1.55;}
+
+  /* RESULTADO FINAL */
+  .resultado-final{
+    margin:8px 44px 44px;background:var(--oliva-bg);
+    border:1.5px solid rgba(85,107,47,0.2);border-radius:18px;
+    padding:28px 30px;
+  }
+  .resultado-final .tag{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:0.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--oliva);margin-bottom:10px;
+  }
+  .resultado-final h3{
+    font-family:'DM Serif Display',serif;font-weight:400;color:var(--oliva-dark);
+    font-size:1.3rem;margin-bottom:10px;
+  }
+  .resultado-final ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .resultado-final li{
+    font-size:0.95rem;color:var(--texto);padding-left:24px;position:relative;line-height:1.45;
+  }
+  .resultado-final li::before{
+    content:"✓";position:absolute;left:0;top:0;color:var(--oliva);font-weight:800;
+  }
+
+  /* PIE / CTA */
+  .pie{
+    background:var(--terra-bg);padding:32px 44px;text-align:center;
+    border-top:1px solid var(--arena-dark);
+  }
+  .pie p{color:var(--suave);font-size:0.92rem;margin-bottom:18px;}
+  .cta-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--terracota);color:white;font-weight:800;font-size:1rem;
+    padding:15px 32px;border-radius:50px;margin-bottom:18px;
+    box-shadow:0 6px 18px rgba(226,114,91,0.3);transition:transform 0.2s,background 0.2s;
+  }
+  .cta-btn:hover{background:var(--terra-dark);transform:translateY(-1px);}
+  .pie .marca{
+    display:block;font-family:'DM Serif Display',serif;color:var(--terra-dark);font-size:1.1rem;
+  }
+
+  @media(max-width:560px){
+    .cab{padding:36px 26px 32px;}
+    .cab h1{font-size:1.7rem;}
+    .pasos{padding:34px 26px 6px;}
+    .paso{gap:14px;}
+    .resultado-final{margin:8px 26px 36px;padding:22px 22px;}
+    .pie{padding:26px 26px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hoja">
+
+  <div class="cab">
+    <span class="cab-tag">📦 Paquete de servicios</span>
+    <h1>Comunícate con la Administración</h1>
+    <p>Todo lo que necesitas para quedar identificado, registrado y conectado con cualquier organismo público — de una sola vez.</p>
+    <div class="precio-badge">100€ <span>paquete completo</span></div>
+  </div>
+
+  <div class="resultado-top">✓ Al terminar, ya puedes relacionarte con la Administración sin depender de nadie</div>
+
+  <div class="pasos">
+
+    <div class="paso">
+      <div class="paso-num">1</div>
+      <div class="paso-body">
+        <span class="icon-tag">🗓️ Identificación</span>
+        <h3>Cita para tu identificación oficial</h3>
+        <p>Te gestionamos la cita presencial para acreditar tu identidad y obtener tu certificado digital o Cl@ve, según tu situación exacta.</p>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">2</div>
+      <div class="paso-body">
+        <span class="icon-tag">🏥 Seguridad Social</span>
+        <h3>Tu Número de Seguridad Social</h3>
+        <p>Tramitamos tu número de afiliación, el documento que te identifica ante la Seguridad Social para trabajar y acceder a prestaciones.</p>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">3</div>
+      <div class="paso-body">
+        <span class="icon-tag">🔐 Acceso online</span>
+        <h3>Tu NUSS — usuario digital de la Seguridad Social</h3>
+        <p>Activamos tu Número de Usuario de la Seguridad Social, para que puedas entrar a la Sede Electrónica y hacer tus gestiones sin colas.</p>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">4</div>
+      <div class="paso-body">
+        <span class="icon-tag">📂 Notificaciones</span>
+        <h3>Apertura de tu Carpeta Ciudadana</h3>
+        <p>Configuramos tu acceso para que veas en un solo sitio tus notificaciones de cualquier Administración — y no se te archive nada por no enterarte a tiempo.</p>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">5</div>
+      <div class="paso-body">
+        <span class="icon-tag">🤝 Acompañamiento</span>
+        <h3>Orientación constante durante todo el proceso</h3>
+        <p>No te dejamos solo en ningún momento: te explicamos cada paso antes de darlo, respondemos tus dudas y te avisamos si algo necesita tu atención.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="resultado-final">
+    <span class="tag">Al final del proceso</span>
+    <h3>Quedas completamente conectado</h3>
+    <ul>
+      <li>Identidad digital activa (certificado o Cl@ve)</li>
+      <li>Número de Seguridad Social tramitado</li>
+      <li>Acceso online a la Seguridad Social (NUSS)</li>
+      <li>Carpeta Ciudadana abierta y vigilando tus notificaciones</li>
+      <li>Acompañamiento y orientación en cada paso, sin sentirte sola/o</li>
+    </ul>
+  </div>
+
+  <div class="pie">
+    <p>Nosotras nos ocupamos de las citas, el papeleo y los plazos.</p>
+    <a href="https://wa.me/34697154442?text=Hola%2C%20quiero%20contratar%20el%20paquete%20%22Com%C3%BAnicate%20con%20la%20Administraci%C3%B3n%22%20por%20100%E2%82%AC." target="_blank" rel="noopener" class="cta-btn">Quiero este paquete →</a>
+    <span class="marca">Gestiona Seguro</span>
+  </div>
+
+</div>
+
+</body>
+</html>
