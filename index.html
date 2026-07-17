@@ -1326,134 +1326,42 @@ object-position: 25% center;
       .vias-grid { grid-template-columns: 1fr !important; }
       .via-card--menores { max-width: 100%; }
     }
-    /* ── ÁREAS HOME ─────────────────────────────────────────── */
-.areas-home {
-  padding: 60px 0 72px;
-  background: var(--blanco);
-}
-.areas-home-header {
-  text-align: center;
-  margin-bottom: 44px;
-}
-.areas-home-header h2 { margin-bottom: 10px; }
-.areas-home-header p {
-  color: var(--texto-suave);
-  font-size: var(--fs-md);
-  max-width: 640px;
-  margin: 0 auto;
-  line-height: var(--lh-normal);
-}
-.areas-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-.area-card {
-  border-radius: 24px;
-  padding: 40px 36px;
-  display: flex;
-  flex-direction: column;
-  transition: transform var(--transicion), box-shadow var(--transicion);
-  text-decoration: none;
-  color: var(--texto);
-}
-.area-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 44px rgba(42, 34, 24, 0.09);
-}
-.area-card--proceso      { background: var(--oliva-bg);    border: 2px solid rgba(85,107,47,0.15); }
-.area-card--herramientas { background: var(--terracota-bg); border: 2px solid rgba(226,114,91,0.15); }
-.area-card--recursos     { background: #FEF9EC;             border: 2px solid rgba(201,146,46,0.2); }
-.area-card--equipo       { background: var(--arena-warm);   border: 2px solid var(--arena-dark); }
-.area-card__head {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-.area-card__icon {
-  width: 52px; height: 52px;
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; flex-shrink: 0;
-}
-.area-card--proceso      .area-card__icon { background: rgba(85,107,47,0.12); }
-.area-card--herramientas .area-card__icon { background: rgba(226,114,91,0.12); }
-.area-card--recursos     .area-card__icon { background: rgba(201,146,46,0.12); }
-.area-card--equipo       .area-card__icon { background: rgba(85,107,47,0.08); }
-.area-card__tag {
-  font-size: var(--fs-label);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-.area-card--proceso      .area-card__tag { color: var(--oliva); }
-.area-card--herramientas .area-card__tag { color: var(--terracota-dark); }
-.area-card--recursos     .area-card__tag { color: #8b6914; }
-.area-card--equipo       .area-card__tag { color: var(--oliva-dark); }
-.area-card h3 {
-  font-size: clamp(1.4rem, 2.5vw, 1.75rem);
-  margin-bottom: 10px;
-  line-height: 1.2;
-  color: var(--oliva-dark);
-}
-.area-card > p {
-  font-size: var(--fs-sm);
-  color: var(--texto-suave);
-  line-height: var(--lh-normal);
-  margin-bottom: 22px;
-}
-.area-card__links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 26px;
-  flex-grow: 1;
-}
-.area-card__links li a {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  transition: gap var(--transicion);
-}
-.area-card--proceso      .area-card__links li a { color: var(--oliva-dark); }
-.area-card--herramientas .area-card__links li a { color: var(--terracota-dark); }
-.area-card--recursos     .area-card__links li a { color: #8b6914; }
-.area-card--equipo       .area-card__links li a { color: var(--oliva-dark); }
-.area-card__links li a:hover { gap: 12px; }
-.area-card__links li a::before { content: '→'; font-weight: 700; opacity: 0.6; }
-.area-card__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: var(--fs-sm);
-  padding: 12px 22px;
-  border-radius: 50px;
-  margin-top: auto;
-  width: fit-content;
-  transition: gap var(--transicion), opacity var(--transicion);
-}
-.area-card--proceso      .area-card__cta { background: var(--oliva);      color: var(--arena); }
-.area-card--herramientas .area-card__cta { background: var(--terracota);  color: #fff; }
-.area-card--recursos     .area-card__cta { background: #c9922e;           color: #fff; }
-.area-card--equipo       .area-card__cta { background: var(--oliva-dark); color: var(--arena); }
-.area-card:hover .area-card__cta { opacity: 0.88; gap: 13px; }
-.area-soon {
-  font-size: 0.75rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.07em;
-  background: rgba(94,86,73,0.1); color: var(--texto-suave);
-  padding: 2px 8px; border-radius: 20px;
-  margin-left: 4px; vertical-align: middle;
-}
-@media (max-width: 768px) {
-  .areas-grid { grid-template-columns: 1fr; }
-  .area-card  { padding: 30px 24px; }
-}
-/* ── FIN ÁREAS HOME ─────────────────────────────────────── */
+ /* ── SELECTOR MOMENTO (HOME) ── */
+.selector-momento { padding: 60px 0 40px; background: var(--blanco); }
+.sm-header { text-align: center; margin-bottom: 40px; }
+.sm-eyebrow { display:inline-block; font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--terracota); margin-bottom: 8px; }
+.sm-header h2 { margin-bottom: 10px; }
+.sm-header p { color: var(--texto-suave); font-size: var(--fs-md); max-width: 560px; margin: 0 auto; line-height: var(--lh-normal); }
+.sm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.sm-card { background: var(--blanco); border: 1.5px solid var(--arena-dark); border-top: 4px solid var(--oliva); border-radius: 18px; padding: 26px 24px; display: flex; flex-direction: column; text-decoration: none; color: var(--texto); transition: transform var(--transicion), box-shadow var(--transicion), border-color var(--transicion); }
+.sm-card:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(42,34,24,0.09); }
+.sm-icon { width: 50px; height: 50px; border-radius: 13px; background: var(--oliva-bg); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 14px; }
+.sm-card h3 { font-size: 1.25rem; color: var(--oliva-dark); margin-bottom: 8px; line-height: 1.25; }
+.sm-card p { font-size: var(--fs-sm); color: var(--texto-suave); line-height: var(--lh-normal); margin-bottom: 18px; flex-grow: 1; }
+.sm-cta { font-size: var(--fs-sm); font-weight: 700; color: var(--oliva); margin-top: auto; }
+.sm-card--t { border-top-color: var(--terracota); }
+.sm-card--t .sm-icon { background: var(--terracota-bg); }
+.sm-card--t .sm-cta { color: var(--terracota-dark); }
+.sm-card--e { border-top-color: #c9922e; }
+.sm-card--e .sm-icon { background: #fef9ec; }
+.sm-card--e .sm-cta { color: #a8791f; }
+
+/* ── HERRAMIENTAS Y RECURSOS (HOME) ── */
+.herr-rec { padding: 20px 0 72px; background: var(--blanco); }
+.hr-header { text-align: center; margin-bottom: 36px; }
+.hr-eyebrow { display:inline-block; font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--oliva); margin-bottom: 8px; }
+.hr-header h2 { margin-bottom: 10px; }
+.hr-header p { color: var(--texto-suave); font-size: var(--fs-md); max-width: 600px; margin: 0 auto; line-height: var(--lh-normal); }
+.hr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.hr-card { background: var(--arena-warm); border: 1px solid var(--arena-dark); border-radius: 20px; padding: 30px 28px; }
+.hr-icon { width: 50px; height: 50px; border-radius: 13px; background: var(--oliva-bg); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 14px; }
+.hr-card h3 { font-size: 1.3rem; color: var(--oliva-dark); margin-bottom: 14px; }
+.hr-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.hr-links li a { display: inline-flex; align-items: center; gap: 7px; font-size: var(--fs-sm); font-weight: 600; color: var(--oliva-dark); transition: gap var(--transicion); }
+.hr-links li a::before { content: '→'; font-weight: 700; opacity: 0.6; }
+.hr-links li a:hover { gap: 12px; }
+@media (max-width: 1024px) { .sm-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 768px) { .sm-grid { grid-template-columns: 1fr; } .hr-grid { grid-template-columns: 1fr; } }
     /* ── TARJETA CON PESTAÑAS ─────────────────────── */
 .srv-card--tabs .srv-cta { margin-top: 0; }
 .srv-card-info-link {
@@ -2009,88 +1917,83 @@ object-position: 25% center;
     <a href="guia_renta_2025.html" class="alerta-boton" style="background:var(--terracota);">Ver guía y calculadora →</a>
   </div>
 </div>
- <!-- ============ ÁREAS HOME ============ -->
-<section class="areas-home container reveal" id="areas">
- <div class="areas-home-header">
-    <h2>¿Qué necesitas hoy?</h2>
-    <p>Tres áreas para tres momentos de tu vida en España: <strong>extranjería</strong>, <strong>estudios</strong> y <strong>empleo</strong>. Elige por dónde empezar.</p>
+<!-- ============ INICIO MÓDULO SELECTOR MOMENTO ============ -->
+<section class="selector-momento container reveal" id="areas">
+  <div class="sm-header">
+    <span class="sm-eyebrow">Encuentra tu punto de partida</span>
+    <h2>¿En qué momento estás?</h2>
+    <p>Elige tu situación y te llevamos directo a los pasos que te toca dar ahora.</p>
   </div>
-
-  <div class="areas-grid">
-
-  <!-- Extranjería -->
-    <div class="area-card area-card--proceso">
-      <div class="area-card__head">
-        <div class="area-card__icon">🛂</div>
-        <span class="area-card__tag">Extranjería</span>
-      </div>
-      <h3>Extranjería</h3>
-      <p>Tu residencia, paso a paso. Desde la regularización 2026 hasta renovaciones, estudios, familia y nacionalidad.</p>
-      <ul class="area-card__links">
-        <li><a href="proceso-2026.html" style="font-weight: 700; color: var(--oliva-dark);">Regularización 2026 (RD 316/2026)</a></li>
-        <li><a href="diagnostico_post_presentacion.html">Diagnóstico de expediente</a></li>
-        <li><a href="#">Renovaciones de residencia <span class="area-soon">Próximamente</span></a></li>       
-        <li><a href="#">Reagrupación familiar <span class="area-soon">Próximamente</span></a></li>
-        <li><a href="#">Nacionalidad española <span class="area-soon">Próximamente</span></a></li>
-        <li><a href="#">Arraigos y TIE <span class="area-soon">Próximamente</span></a></li>
-      </ul>
-    <a href="proceso-2026.html" class="area-card__cta">Explorar extranjería ➔</a>
-  </div>
-
-    <!-- Estudios -->
-    <div class="area-card area-card--recursos">
-      <div class="area-card__head">
-        <div class="area-card__icon">🎓</div>
-        <span class="area-card__tag">Estudios y formación</span>
-      </div>
-      <h3>Estudios y formación</h3>
-      <p>¿Sabías que tu experiencia laboral puede convertirse en un título oficial? Homologamos tus estudios y te acompañamos en el PEAC.</p>
-      <ul class="area-card__links">
-        <li><a href="servicios-homologacion.html">Homologar secundaria y bachillerato</a></li>
-        <li><a href="servicio-peac.html">Acreditar experiencia laboral (PEAC)</a></li>    
-        <li><a href="#">Homologar título universitario <span class="area-soon">Próximamente</span></a></li>
-        <li><a href="#">Acceso a FP y universidad <span class="area-soon">Próximamente</span></a></li>
-      </ul>
-     <a href="servicio-peac.html" class="area-card__cta">Ver acompañamiento PEAC ➔</a>    
-    </div>
-
- <!-- Herramientas -->
-    <div class="area-card area-card--herramientas">
-      <div class="area-card__head">
-        <div class="area-card__icon">🧰</div>
-        <span class="area-card__tag">Herramientas</span>
-      </div>
-      <h3>Herramientas Prácticas</h3>
-      <p>Aprende a gestionar tus documentos y trámites digitales de forma autónoma, sin pagar a terceros.</p>
-      <ul class="area-card__links">
-        <li><a href="guia-escanear-gratis.html">Escanear documentos gratis</a></li>
-        <li><a href="guia-firma-digital.html">Firma digital con AutoFirma</a></li>
-       <li><a href="test-certificado-digital.html">Certificado digital: ¿puedo sacarlo?</a></li>
-       <li><a href="#">Manejar PDFs desde el móvil <span class="area-soon">Próximamente</span></a></li>
-             </ul>
- <a href="guia-escanear-gratis.html" class="area-card__cta">Ver herramientas ➔</a>
-    </div>
-
-    <!-- Recursos -->
- <div class="area-card area-card--recursos">
-      <div class="area-card__head">
-        <div class="area-card__icon">📂</div>
-        <span class="area-card__tag">Recursos gratuitos</span>
-      </div>
-      <h3>Formularios y Guías</h3>
-      <p>Documentos oficiales y guías descargables sin coste. Lo que es público y gratuito, aquí lo encontrarás.</p>
-      <ul class="area-card__links">
-        <li><a href="modelo-precontrato-regularizacion-2026.pdf" target="_blank" rel="noopener">Modelo pre-contrato (vía laboral)</a></li>
-        <li><a href="formulario-vulnerabilidad-EX32.pdf" target="_blank" rel="noopener">Formulario EX-32 (vulnerabilidad)</a></li>
-        <li><a href="mapa-madrid-2026.html">Ruta Informe de Vulnerabilidad Madrid</a></li>
-        <li><a href="https://www.inclusion.gob.es/documents/d/guest/entidades-colaboradoras-150426-1" target="_blank" rel="noopener">Entidades colaboradoras oficiales</a></li>
-      </ul>
-     <a href="proceso-2026.html#recursos" class="area-card__cta">Ver todos los recursos ➔</a>
-  </div>
-         
+  <div class="sm-grid">
+    <a href="https://wa.me/34697154442?text=Hola%2C%20acabo%20de%20llegar%20a%20Espa%C3%B1a%20y%20quiero%20orientaci%C3%B3n%20con%20mis%20primeros%20tr%C3%A1mites." target="_blank" rel="noopener" class="sm-card">
+      <div class="sm-icon">🛬</div>
+      <h3>Acabo de llegar</h3>
+      <p>Empadronamiento, NIE, número de la Seguridad Social y primeros trámites.</p>
+      <span class="sm-cta">Escríbenos →</span>
+    </a>
+    <a href="extranjeria.html#arraigo" class="sm-card sm-card--t">
+      <div class="sm-icon">🕒</div>
+      <h3>Llevo un tiempo aquí</h3>
+      <p>Arraigo, regularización y renovaciones de residencia. Ordena tu situación.</p>
+      <span class="sm-cta">Ver mis opciones →</span>
+    </a>
+    <a href="servicios-homologacion.html" class="sm-card sm-card--e">
+      <div class="sm-icon">🎓</div>
+      <h3>Quiero estudiar u homologar</h3>
+      <p>Homologa tu título, acredita tu experiencia (PEAC) o accede a estudios.</p>
+      <span class="sm-cta">Ver estudios →</span>
+    </a>
+    <a href="https://wa.me/34697154442?text=Hola%2C%20busco%20trabajo%20y%20quiero%20orientaci%C3%B3n." target="_blank" rel="noopener" class="sm-card sm-card--e">
+      <div class="sm-icon">💼</div>
+      <h3>Busco trabajo</h3>
+      <p>Permisos de trabajo, alta como autónomo y orientación para tu empleo.</p>
+      <span class="sm-cta">Ver empleo →</span>
+    </a>
+    <a href="extranjeria.html#familia" class="sm-card sm-card--t">
+      <div class="sm-icon">👨‍👩‍👧</div>
+      <h3>Quiero traer a mi familia</h3>
+      <p>Reagrupación familiar y trámites para tus hijos y personas a tu cargo.</p>
+      <span class="sm-cta">Ver reagrupación →</span>
+    </a>
+    <a href="extranjeria.html#larga-duracion" class="sm-card">
+      <div class="sm-icon">📗</div>
+      <h3>Ya tengo residencia</h3>
+      <p>Renovaciones, larga duración y camino hacia la nacionalidad española.</p>
+      <span class="sm-cta">Ver siguientes pasos →</span>
+    </a>
   </div>
 </section>
-<!-- ============ FIN ÁREAS HOME ============ -->
+<!-- ============ FIN MÓDULO SELECTOR MOMENTO ============ -->
+
+<!-- ============ INICIO MÓDULO HERRAMIENTAS Y RECURSOS ============ -->
+<section class="herr-rec container reveal" id="herramientas">
+  <div class="hr-header">
+    <span class="hr-eyebrow">Aprende a hacerlo tú · gratis</span>
+    <h2>Herramientas y recursos</h2>
+    <p>Guías prácticas y documentos oficiales para que gestiones tus trámites por tu cuenta, sin pagar a terceros.</p>
+  </div>
+  <div class="hr-grid">
+    <div class="hr-card">
+      <div class="hr-icon">🧰</div>
+      <h3>Herramientas prácticas</h3>
+      <ul class="hr-links">
+        <li><a href="guia-escanear-gratis.html">Escanear documentos gratis</a></li>
+        <li><a href="guia-firma-digital.html">Firma digital con AutoFirma</a></li>
+        <li><a href="test-certificado-digital.html">Certificado digital: ¿puedo sacarlo?</a></li>
+      </ul>
+    </div>
+    <div class="hr-card">
+      <div class="hr-icon">📂</div>
+      <h3>Formularios y guías</h3>
+      <ul class="hr-links">
+        <li><a href="mapa-madrid-2026.html">Ruta Informe de Vulnerabilidad Madrid</a></li>
+        <li><a href="https://www.inclusion.gob.es/documents/d/guest/entidades-colaboradoras-150426-1" target="_blank" rel="noopener">Entidades colaboradoras oficiales</a></li>
+        <li><a href="guia-carpeta-ciudadana.html">Guía Carpeta Ciudadana</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- ============ FIN MÓDULO HERRAMIENTAS Y RECURSOS ============ -->
   <!-- ============ FRANJA BLOG ============ -->
 <section class="blog-franja container reveal">
   <div class="blog-franja-card">
