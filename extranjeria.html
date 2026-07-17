@@ -404,23 +404,16 @@
     .disclaimer-legal strong { color: var(--oliva-dark); }
 
     /* ── FOOTER (Core) ── */
-    .footer { background: var(--oliva-dark); color: rgba(245,245,220,0.8); padding: 80px 0 40px; margin-top: 40px; }
-    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 90px; margin-bottom: 44px; align-items: start; }
-    .footer .logo { color: var(--arena); margin-bottom: 16px; }
-    .footer-logo img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; display: block; }
-    .footer-brand p { font-size: 1.08rem; line-height: 1.7; max-width: 360px; }
-    .footer h4 { font-size: 1rem; color: var(--arena); margin-bottom: 16px; font-family: 'Source Sans 3', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-links a { font-size: 1.05rem; line-height: 1.6; transition: color var(--transicion); }
-    .footer-links a:hover { color: var(--arena); }
-    .footer-bottom { padding-top: 28px; border-top: 1px solid rgba(245,245,220,0.1); display: flex; justify-content: space-between; align-items: center; gap: 40px; font-size: 0.98rem; line-height: 1.5; color: rgba(245,245,220,0.78); }
-    .footer-contacto { max-width: 420px; justify-self: end; }
-    .footer-social { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(245,245,220,0.14); }
-    .footer-social-title { margin-top: 0; margin-bottom: 10px; font-size: 1rem; color: var(--arena); font-family: 'Source Sans 3', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
-    .footer-social-text { font-size: 1.05rem; line-height: 1.65; color: rgba(245,245,220,0.78); margin-bottom: 14px; max-width: 330px; }
-    .footer-social-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-    .footer-social-buttons a { display: inline-flex; align-items: center; justify-content: center; padding: 8px 13px; border-radius: 999px; background: rgba(245,245,220,0.12); color: var(--arena); font-size: 1rem; font-weight: 700; transition: background var(--transicion), transform var(--transicion); }
-    .footer-social-buttons a:hover { background: rgba(245,245,220,0.22); transform: translateY(-1px); }
+    .footer { background: var(--arena-warm); border-top: 3px solid var(--oliva); padding: 34px 0 22px; margin-top: 60px; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; padding-bottom: 22px; border-bottom: 1px solid var(--arena-dark); }
+    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-contact a { font-size: var(--fs-sm); color: var(--oliva-dark); transition: color var(--transicion); }
+    .footer-contact a:hover { color: var(--terracota); }
+    .footer-social { display: flex; gap: 8px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 50%; background: var(--oliva-bg); display: flex; align-items: center; justify-content: center; color: var(--oliva); font-size: 1.05rem; transition: background var(--transicion), transform var(--transicion); }
+    .footer-social a:hover { background: var(--arena-dark); transform: translateY(-2px); }
+    .footer-bottom { padding-top: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .footer-bottom span { font-size: var(--fs-xs); color: #8a8575; }
 
     /* ── ANIMACIONES ── */
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
@@ -462,9 +455,8 @@
       .momento-grid { grid-template-columns: 1fr; }
       .tramite { padding: 28px 24px; }
       .servicio-card { padding: 32px 24px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-contacto { max-width: 100%; justify-self: stretch; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .footer-top { flex-direction: column; gap: 18px; }
+      .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
     }
   </style>
 </head>
@@ -847,33 +839,20 @@
   <!-- ════════════════════════════════════════ -->
   <footer class="footer" id="contacto">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo footer-logo">
-            <span>Gestiona Seguro</span>
-          </div>
-          <p>Traduciendo la burocracia en oportunidades reales para el colectivo migrante en España.</p>
-        </div>
-        <div class="footer-contacto">
-          <h4>Contacto</h4>
-          <ul class="footer-links footer-contact-list">
-            <li><a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a></li>
-            <li><a href="tel:+34644416479">+34 644 416 479</a></li>
-            <li><a href="tel:+34697154442">+34 697 154 442</a></li>
-          </ul>
-          <div class="footer-social">
-            <h4 class="footer-social-title">Nuestras redes</h4>
-            <p class="footer-social-text">Guías, avisos y explicaciones claras para tus trámites.</p>
-            <div class="footer-social-buttons">
-              <a href="https://www.youtube.com/channel/UCyjRDvnjNXxBO2S2V-0adbA" target="_blank" rel="noopener">YouTube</a>
-              <a href="https://www.instagram.com/gestionaseguroweb/" target="_blank" rel="noopener">Instagram</a>
-              <a href="https://www.tiktok.com/@gestionaseguroweb" target="_blank" rel="noopener">TikTok</a>
-            </div>
-          </div>
+      <div class="footer-top">
+        <ul class="footer-contact">
+          <li><a href="mailto:info@gestionaseguro.com">✉ info@gestionaseguro.com</a></li>
+          <li><a href="https://wa.me/34697154442" target="_blank" rel="noopener">💬 +34 697 154 442</a></li>
+        </ul>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/channel/UCyjRDvnjNXxBO2S2V-0adbA" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+          <a href="https://www.instagram.com/gestionaseguroweb/" target="_blank" rel="noopener" aria-label="Instagram">◉</a>
+          <a href="https://www.tiktok.com/@gestionaseguroweb" target="_blank" rel="noopener" aria-label="TikTok">♪</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Gestiona Seguro. Información orientativa. No sustituye asesoría legal individual.</p>
+        <span>&copy; 2026 Gestiona Seguro. Información orientativa, no sustituye asesoría legal individual.</span>
+        <span>Madrid, España</span>
       </div>
     </div>
   </footer>
