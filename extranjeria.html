@@ -176,37 +176,10 @@
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
     .hamburger span { width: 24px; height: 2px; background: var(--oliva-dark); border-radius: 2px; transition: var(--transicion); }
 
-    /* ── AVISO REGULARIZACIÓN FINALIZADA ── */
-    .aviso-regularizacion {
-      margin-top: 80px;
-      background: var(--arena-warm);
-      border-bottom: 1px solid var(--arena-dark);
-    }
-    .aviso-regularizacion-inner {
-      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
-      padding: 18px 24px;
-    }
-    .aviso-regularizacion .ar-icon {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: var(--oliva-bg); color: var(--oliva-dark);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; flex-shrink: 0;
-    }
-    .aviso-regularizacion .ar-texto { flex: 1; min-width: 260px; }
-    .aviso-regularizacion .ar-texto strong { color: var(--oliva-dark); }
-    .aviso-regularizacion .ar-texto p { font-size: var(--fs-sm); color: var(--texto-suave); line-height: 1.55; margin: 0; }
-    .aviso-regularizacion .ar-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--oliva); color: var(--arena);
-      font-weight: 700; font-size: var(--fs-xs);
-      padding: 11px 20px; border-radius: 50px; white-space: nowrap;
-      transition: background var(--transicion);
-    }
-    .aviso-regularizacion .ar-btn:hover { background: var(--oliva-dark); }
-
+    
     /* ── HERO DE PÁGINA ── */
     .hero-pagina {
-      padding: 56px 24px 60px;
+     padding: 120px 24px 60px;
       background: linear-gradient(180deg, #fffdf8 0%, #f0f3e8 100%);
       text-align: center;
     }
@@ -463,7 +436,6 @@
       .servicio-card { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
-      .aviso-regularizacion { margin-top: 80px; }
       .hero-pagina { padding: 40px 20px 48px; }
       .momento-grid { grid-template-columns: 1fr; }
       .tramite { padding: 28px 24px; }
@@ -509,18 +481,6 @@
     </div>
   </nav>
 
-  <!-- ════════════════════════════════════════ -->
-  <!-- AVISO: REGULARIZACIÓN EXTRAORDINARIA FINALIZADA -->
-  <!-- ════════════════════════════════════════ -->
-  <div class="aviso-regularizacion">
-    <div class="container aviso-regularizacion-inner">
-      <div class="ar-icon">📌</div>
-      <div class="ar-texto">
-        <p><strong>¿Presentaste tu solicitud de la Regularización Extraordinaria 2026 (RD 316/2026)?</strong> El plazo de presentación finalizó el 30 de junio de 2026. Si ya la entregaste y esperas resolución, revisa qué hacer mientras tanto.</p>
-      </div>
-      <a href="diagnostico_post_presentacion.html" class="ar-btn">Diagnóstico de mi expediente →</a>
-    </div>
-  </div>
 
   <!-- ════════════════════════════════════════ -->
   <!-- HERO DE PÁGINA -->
