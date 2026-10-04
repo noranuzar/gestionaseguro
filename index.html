@@ -295,8 +295,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--oliva-bg);
-      color: var(--oliva);
+     background: var(--azul-light);
+     color: var(--azul-principal);
       font-size: var(--fs-label);
       font-weight: 700;
       padding: 8px 18px;
@@ -304,12 +304,12 @@
       margin-bottom: 28px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      border: 1px solid rgba(85,107,47,0.12);
+      border: 1px solid rgba(3,47,94,0.12);
       animation: fadeDown 0.6s ease-out both;
     }
     .hero-badge .pulse {
       width: 8px; height: 8px;
-      background: var(--oliva);
+     background: var(--amarillo);
       border-radius: 50%;
       animation: pulse 2s ease-in-out infinite;
     }
@@ -379,7 +379,7 @@
 /* ============================================================ */
 .hero-home {
   padding: 150px 24px 70px;
-  background: linear-gradient(180deg, #fffdf8 0%, #f8f6ed 100%);
+ background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F3 100%);
   text-align: left;
 }
 
@@ -393,11 +393,11 @@
   border-radius: 32px;
   overflow: hidden;
   box-shadow: 0 24px 60px rgba(42, 34, 24, 0.10);
-  background: var(--arena-warm);
+  background: var(--blanco);
 }
 
 .hero-home-card {
-  background: rgba(248, 246, 237, 0.96);
+  background: var(--blanco);
   padding: 56px 48px;
   display: flex;
   flex-direction: column;
@@ -423,7 +423,7 @@
   font-family: 'DM Serif Display', serif;
   font-style: normal;
   font-weight: 400;
-  color: var(--oliva-dark);
+  color: var(--azul-principal);
 }
 
 .hero-accent-line {
@@ -433,7 +433,26 @@
   border-radius: 20px;
   margin: 0 0 26px;
 }
-
+/* ===== Botones del hero: azul sólido + azul contorno ===== */
+.hero-home-card .hero-cta-bloque .cta-grande {
+  box-shadow: 0 10px 25px rgba(3, 47, 94, 0.15);
+}
+.hero-home-card .hero-cta-bloque .cta-primario {
+  background: var(--azul-principal) !important;
+  color: #FFFFFF !important;
+}
+.hero-home-card .hero-cta-bloque .cta-primario:hover {
+  background: var(--azul-secundario) !important;
+}
+.hero-home-card .hero-cta-bloque .cta-secundario {
+  background: transparent !important;
+  color: var(--azul-principal) !important;
+  border: 2px solid var(--azul-principal) !important;
+  box-shadow: none !important;
+}
+.hero-home-card .hero-cta-bloque .cta-secundario:hover {
+  background: var(--azul-light) !important;
+}
 .hero-home-card .hero-sub {
   max-width: 520px;
   margin: 0 0 26px;
@@ -1780,15 +1799,15 @@ object-position: 25% center;
         Guías paso a paso, herramientas gratuitas y acompañamiento cercano para que avances con seguridad en tus trámites de extranjería, estudios y empleo. Tú decides: <strong>aprende a hacerlo</strong> o deja que <strong>te acompañemos</strong>.
       </p>
       <div class="hero-cta-bloque">
-        <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%; margin-top: 6px;">
-          <a href="#areas" class="nav-cta cta-grande" style="flex: 1; min-width: 220px; justify-content: center;">
-            Ver qué necesito ➔
-          </a>
-          <a href="blog.html" class="nav-cta cta-grande cta-diagnostico" style="flex: 1; min-width: 220px; justify-content: center; background: var(--terracota) !important;">
-            Leer el blog ➔
-          </a>
-        </div>
-      </div>
+  <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%; margin-top: 6px;">
+    <a href="#areas" class="nav-cta cta-grande cta-primario" style="flex: 1; min-width: 220px; justify-content: center;">
+      Ver qué necesito ➔
+    </a>
+    <a href="blog.html" class="nav-cta cta-grande cta-secundario" style="flex: 1; min-width: 220px; justify-content: center;">
+      Leer el blog ➔
+    </a>
+  </div>
+</div>
     </div>
     <div class="hero-home-image">
       <img
