@@ -29,18 +29,17 @@
     /* ============================================================ */
     /* TOKENS UNIFICADOS — UNA SOLA FUENTE DE VERDAD                 */
     /* ============================================================ */
-    :root {
+   :root {
       /* Colores */
-      --oliva: #556B2F;
-      --oliva-light: #7d9448;
-      --oliva-dark: #3a4a1f;
-      --oliva-bg: #f0f3e8;
-      --arena: #F5F5DC;
-      --arena-warm: #f8f6ed;
-      --arena-dark: #e8e2c8;
-      --terracota: #E2725B;
-      --terracota-dark: #c45a42;
-      --terracota-bg: #fdf3f0;
+      --azul-principal: #032F5E;
+      --azul-secundario: #054782;
+      --azul-light: #E8EEF7;
+      --rojo-principal: #C3122C;
+      --amarillo: #F2A91D;
+      --fondo-claro: #FAF8F3;
+      --blanco: #FFFFFF;
+      --texto-principal: #2B2F33;
+      --texto-secundario: #666666;
       --texto: #2a2218;
       --texto-suave: #5e5649;
       --blanco: #fffdf8;
@@ -98,7 +97,7 @@
     h1, h2, h3, h4 {
       font-family: 'DM Serif Display', serif;
       line-height: var(--lh-tight);
-      color: var(--oliva-dark);
+      color: #032F5E;
       margin-bottom: 1.2rem;
       font-weight: 400;
     }
@@ -416,7 +415,7 @@
   font-size: clamp(2.6rem, 5vw, 4.4rem);
   line-height: 1.05;
   margin-bottom: 22px;
-  color: var(--oliva-dark);
+  color: #032F5E;
   animation: fadeDown 0.7s ease-out 0.1s both;
 }
 
@@ -430,7 +429,7 @@
 .hero-accent-line {
   width: 72px;
   height: 5px;
-  background: var(--terracota);
+  background: linear-gradient(90deg, #C3122C 0%, #F2A91D 100%);
   border-radius: 20px;
   margin: 0 0 26px;
 }
