@@ -427,6 +427,10 @@
 }
 
 .hero-accent-line {
+  /* Líneas de confianza del hero */
+.hero-trust { display: flex; flex-direction: column; gap: 10px; margin: 4px 0 26px; }
+.hero-trust .t { display: flex; align-items: center; gap: 10px; font-size: var(--fs-sm); color: var(--texto); font-weight: 600; line-height: 1.4; }
+.hero-trust .t .ic { width: 28px; height: 28px; border-radius: 50%; background: var(--azul-light, #E8EEF7); color: var(--azul-principal, #032F5E); display: flex; align-items: center; justify-content: center; font-size: .9rem; flex-shrink: 0; }
   width: 72px;
   height: 5px;
   background: linear-gradient(90deg, #C3122C 0%, #F2A91D 100%);
@@ -1791,28 +1795,34 @@ object-position: 25% center;
   <div class="hero-home-wrap">
     <div class="hero-home-card">
       <div class="hero-badge">
-        <span class="pulse"></span> Información verificada
+        <span class="pulse"></span> Acompañamiento para residir en España
       </div>
-      <h1>Tu guía para<br><em>tramitar en España</em></h1>
+      <h1>Tu nueva vida en España,<br>paso a paso</h1>
       <div class="hero-accent-line"></div>
       <p class="hero-sub">
-        Guías paso a paso, herramientas gratuitas y acompañamiento cercano para que avances con seguridad en tus trámites de extranjería, estudios y empleo. Tú decides: <strong>aprende a hacerlo</strong> o deja que <strong>te acompañemos</strong>.
+        Te acompañamos a conseguir tu residencia —por estudios, trabajo o familia— y, una vez aquí, <strong>te enseñamos a moverte en la burocracia española</strong>. Tú decides cuánto hacemos por ti.
       </p>
+
+      <div class="hero-trust">
+        <div class="t"><span class="ic">🏛️</span> 30 años viviendo en España, dentro de la Administración desde 2007 (UC3M)</div>
+        <div class="t"><span class="ic">⚖️</span> Abogada de extranjería colegiada (ICAM)</div>
+      </div>
+
       <div class="hero-cta-bloque">
-  <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%; margin-top: 6px;">
-    <a href="#areas" class="nav-cta cta-grande cta-primario" style="flex: 1; min-width: 220px; justify-content: center;">
-      Ver qué necesito ➔
-    </a>
-    <a href="blog.html" class="nav-cta cta-grande cta-secundario" style="flex: 1; min-width: 220px; justify-content: center;">
-      Leer el blog ➔
-    </a>
-  </div>
-</div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%; margin-top: 6px;">
+          <a href="#areas" class="nav-cta cta-grande cta-primario" style="flex: 1; min-width: 220px; justify-content: center;">
+            Empieza tu residencia ➔
+          </a>
+          <a href="blog.html" class="nav-cta cta-grande cta-secundario" style="flex: 1; min-width: 220px; justify-content: center;">
+            Aprende a hacerlo tú ➔
+          </a>
+        </div>
+      </div>
     </div>
     <div class="hero-home-image">
       <img
         src="hero-acompanamiento-espana.png"
-        alt="Acompañamiento cercano y profesional para tus trámites ante la Administración Pública en España"
+        alt="Acompañamiento para residir y estudiar en España"
       >
     </div>
   </div>
