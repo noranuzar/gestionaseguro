@@ -431,13 +431,36 @@
   height: 5px;
   background: linear-gradient(90deg, #C3122C 0%, #F2A91D 100%);
   border-radius: 20px;
-  margin: 0 0 26px;
+  margin: 0 0 22px;
 }
-
-/* Líneas de confianza del hero */
-.hero-trust { display: flex; flex-direction: column; gap: 10px; margin: 4px 0 26px; }
-.hero-trust .t { display: flex; align-items: center; gap: 10px; font-size: var(--fs-sm); color: var(--texto); font-weight: 600; line-height: 1.4; }
-.hero-trust .t .ic { width: 28px; height: 28px; border-radius: 50%; background: var(--azul-light, #E8EEF7); color: var(--azul-principal, #032F5E); display: flex; align-items: center; justify-content: center; font-size: .9rem; flex-shrink: 0; }
+/* ===== Chips de autoridad en el hero ===== */
+.hero-trust {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 4px 0 26px;
+}
+.hero-trust .t {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-sm);
+  color: var(--texto);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.hero-trust .t .ic {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--azul-light, #E8EEF7);
+  color: var(--azul-principal, #032F5E);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  flex-shrink: 0;
+}
 /* ===== Botones del hero: azul sólido + azul contorno ===== */
 .hero-home-card .hero-cta-bloque .cta-grande {
   box-shadow: 0 10px 25px rgba(3, 47, 94, 0.15);
@@ -1770,7 +1793,7 @@ object-position: 25% center;
         <li class="nav-item"><a href="extranjeria.html">Extranjería</a></li>
         <li class="nav-item"><a href="servicios-homologacion.html">Estudios</a></li>
         <li class="nav-item"><a href="empleo.html">Empleo</a></li>
-        <li class="nav-item"><a href="blog.html">Blog</a></li>
+        <li class="nav-item"><a href="blog.html">Recursos gratuitos</a></li>
         <li class="nav-item has-dropdown">
           <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
             Nosotros
@@ -1798,24 +1821,19 @@ object-position: 25% center;
       <div class="hero-badge">
         <span class="pulse"></span> Acompañamiento para residir en España
       </div>
-      <h1>Tu nueva vida en España,<br>paso a paso</h1>
+      <h1>Tu nueva vida en España,<br><em>paso a paso</em></h1>
       <div class="hero-accent-line"></div>
       <p class="hero-sub">
         Te acompañamos a conseguir tu residencia —por estudios, trabajo o familia— y, una vez aquí, <strong>te enseñamos a moverte en la burocracia española</strong>. Tú decides cuánto hacemos por ti.
       </p>
-
       <div class="hero-trust">
         <div class="t"><span class="ic">🏛️</span> 30 años viviendo en España, dentro de la Administración desde 2007 (UC3M)</div>
         <div class="t"><span class="ic">⚖️</span> Abogada de extranjería colegiada (ICAM)</div>
       </div>
-
       <div class="hero-cta-bloque">
         <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%; margin-top: 6px;">
-          <a href="#areas" class="nav-cta cta-grande cta-primario" style="flex: 1; min-width: 220px; justify-content: center;">
+          <a href="#etapas" class="nav-cta cta-grande cta-primario" style="min-width: 240px; justify-content: center;">
             Empieza tu residencia ➔
-          </a>
-          <a href="blog.html" class="nav-cta cta-grande cta-secundario" style="flex: 1; min-width: 220px; justify-content: center;">
-            Aprende a hacerlo tú ➔
           </a>
         </div>
       </div>
@@ -1828,391 +1846,112 @@ object-position: 25% center;
     </div>
   </div>
 </header>
-  <!-- ============ BANNER RENTA (temporal, se oculta tras 30-jun) ============ -->
-<div class="alerta-rd" id="banner-renta" style="background:var(--terracota-bg); border-bottom-color:var(--terracota);">
-  <div class="container alerta-inner">
-    <div>
-      <span class="alerta-badge-rd" style="background:var(--terracota);">⏰ Campaña Renta 2025</span>
-      <div class="alerta-titulo">¿Sabes si tienes que hacer la declaración o si te devuelven dinero?</div>
-      <p class="alerta-texto">El plazo termina el <strong>30 de junio</strong>. Si cobraste paro, eres autónomo/a o tuviste dos pagadores, puede que estés obligado/a — o que Hacienda te deba dinero. <strong id="renta-dias"></strong></p>
-    </div>
-    <a href="guia_renta_2025.html" class="alerta-boton" style="background:var(--terracota);">Ver guía y calculadora →</a>
-  </div>
-</div>
-<!-- ============ INICIO MÓDULO SELECTOR MOMENTO ============ -->
-<section class="selector-momento container reveal" id="areas">
-  <div class="sm-header">
-    <span class="sm-eyebrow">Encuentra tu punto de partida</span>
-    <h2>¿En qué momento estás?</h2>
-    <p>Elige tu situación y te llevamos directo a los pasos que te toca dar ahora.</p>
-  </div>
-  <div class="sm-grid">
-    <a href="https://wa.me/34697154442?text=Hola%2C%20acabo%20de%20llegar%20a%20Espa%C3%B1a%20y%20quiero%20orientaci%C3%B3n%20con%20mis%20primeros%20tr%C3%A1mites." target="_blank" rel="noopener" class="sm-card">
-      <div class="sm-icon">🛬</div>
-      <h3>Acabo de llegar</h3>
-      <p>Empadronamiento, NIE, número de la Seguridad Social y primeros trámites.</p>
-      <span class="sm-cta">Escríbenos →</span>
-    </a>
-    <a href="extranjeria.html#arraigo" class="sm-card sm-card--t">
-      <div class="sm-icon">🕒</div>
-      <h3>Llevo un tiempo aquí</h3>
-      <p>Arraigo, regularización y renovaciones de residencia. Ordena tu situación.</p>
-      <span class="sm-cta">Ver mis opciones →</span>
-    </a>
-    <a href="servicios-homologacion.html" class="sm-card sm-card--e">
-      <div class="sm-icon">🎓</div>
-      <h3>Quiero estudiar</h3>
-      <p>¿Llevas años trabajando en España pero no tienes un título que reconozca lo que sabes hacer?.</p>
-      <span class="sm-cta">Ver →</span>
-    </a>
-    <a href="https://wa.me/34697154442?text=Hola%2C%20busco%20trabajo%20y%20quiero%20orientaci%C3%B3n." target="_blank" rel="noopener" class="sm-card sm-card--e">
-      <div class="sm-icon">💼</div>
-      <h3>Busco trabajo</h3>
-      <p>Permisos de trabajo, alta como autónomo y orientación para tu empleo.</p>
-      <span class="sm-cta">Ver empleo →</span>
-    </a>
-    <a href="extranjeria.html#familia" class="sm-card sm-card--t">
-      <div class="sm-icon">👨‍👩‍👧</div>
-      <h3>Quiero traer a mi familia</h3>
-      <p>Reagrupación familiar y trámites para tus hijos y personas a tu cargo.</p>
-      <span class="sm-cta">Ver reagrupación →</span>
-    </a>
-    <a href="extranjeria.html#larga-duracion" class="sm-card">
-      <div class="sm-icon">📗</div>
-      <h3>Ya tengo residencia</h3>
-      <p>Renovaciones, larga duración y camino hacia la nacionalidad española.</p>
-      <span class="sm-cta">Ver siguientes pasos →</span>
-    </a>
-  </div>
-</section>
-<!-- ============ FIN MÓDULO SELECTOR MOMENTO ============ -->
-
-<!-- ============ INICIO MÓDULO HERRAMIENTAS Y RECURSOS ============ -->
-<section class="herr-rec container reveal" id="herramientas">
-  <div class="hr-header">
-    <span class="hr-eyebrow">Aprende a hacerlo tú · gratis</span>
-    <h2>Herramientas y recursos</h2>
-    <p>Guías prácticas y documentos oficiales para que gestiones tus trámites por tu cuenta, sin pagar a terceros.</p>
-  </div>
-  <div class="hr-grid">
-    <div class="hr-card">
-      <div class="hr-icon">🧰</div>
-      <h3>Herramientas prácticas</h3>
-      <ul class="hr-links">
-        <li><a href="guia-escanear-gratis.html">Escanear documentos gratis</a></li>
-        <li><a href="guia-firma-digital.html">Firma digital con AutoFirma</a></li>
-        <li><a href="test-certificado-digital.html">Certificado digital: ¿puedo sacarlo?</a></li>
-      </ul>
-    </div>
-    <div class="hr-card">
-      <div class="hr-icon">📂</div>
-      <h3>Formularios y guías</h3>
-      <ul class="hr-links">
-        <li><a href="mapa-madrid-2026.html">Ruta Informe de Vulnerabilidad Madrid</a></li>
-        <li><a href="https://www.inclusion.gob.es/documents/d/guest/entidades-colaboradoras-150426-1" target="_blank" rel="noopener">Entidades colaboradoras oficiales</a></li>
-        <li><a href="guia-carpeta-ciudadana.html">Guía Carpeta Ciudadana</a></li>
-      </ul>
-    </div>
-  </div>
-</section>
-<!-- ============ FIN MÓDULO HERRAMIENTAS Y RECURSOS ============ -->
-  <!-- ============ FRANJA BLOG ============ -->
-<section class="blog-franja container reveal">
-  <div class="blog-franja-card">
-    <div class="blog-franja-head">
-      <div>
-        <span class="blog-franja-eyebrow">Blog · guías verificadas</span>
-        <h2>Aprende a hacerlo tú</h2>
-        <p>Explicamos los trámites como son, con fuentes oficiales y sin tecnicismos.</p>
-      </div>
-      <a href="blog.html" class="blog-franja-btn">Ver todas las guías →</a>
-    </div>
-    <div class="blog-franja-grid">
-      <a href="guia-carpeta-ciudadana.html" class="blog-mini blog-mini--destacado">
-        <span class="blog-mini-tag">📂 Carpeta Ciudadana</span>
-        <h3>¿Sabes qué pasa si no abres una notificación a tiempo?</h3>
-        <p>Qué es, cómo entrar, el dato que más confunde y el test de 1 minuto para tu certificado digital.</p>
-        <span class="blog-mini-cta">Leer la guía →</span>
-      </a>
-      <a href="acceso-universidad-bachillerato-extranjero.html" class="blog-mini">
-        <span class="blog-mini-tag">Tu camino formativo</span>
-        <h3>Cómo acceder a la universidad con bachillerato extranjero</h3>
-        <p>Homologación, UNEDasiss, PCE, costes y plazos 2026.</p>
-        <span class="blog-mini-cta">Leer la guía →</span>
-      </a>
-      <a href="servicio-peac.html" class="blog-mini">
-        <span class="blog-mini-tag">PEAC</span>
-        <h3>Convierte tu experiencia laboral en un título oficial</h3>
-        <p>Si llevas años trabajando sin título, Madrid puede reconocerlo.</p>
-        <span class="blog-mini-cta">Ver cómo funciona →</span>
-      </a>
-    </div>
-  </div>
-</section>
-<!-- ============ FIN FRANJA BLOG ============ -->
-<!-- ============ SERVICIOS ============ -->
+<!-- ============ INICIO MÓDULO RUTA / ETAPAS ============ -->
 <style>
-  .srv2-sec { padding: 0 0 80px; background: var(--blanco); }
-  .srv2-header { text-align: center; margin-bottom: 26px; }
-  .srv2-header .sec-label {
+  /* ── RUTA / ETAPAS — el router del viaje ──────────────── */
+  .etapas-sec { padding: 64px 0 40px; background: var(--blanco); }
+  .etapas-head { text-align: center; max-width: 640px; margin: 0 auto 36px; }
+  .etapas-eyebrow {
     display: inline-block; font-size: var(--fs-label); font-weight: 800;
-    text-transform: uppercase; letter-spacing: .1em; color: var(--terracota);
-    margin-bottom: 10px;
+    text-transform: uppercase; letter-spacing: .1em;
+    color: var(--azul-principal); margin-bottom: 10px;
   }
-  .srv2-header h2 { margin-bottom: 10px; }
-  .srv2-header p {
-    color: var(--texto-suave); font-size: var(--fs-md);
-    max-width: 600px; margin: 0 auto; line-height: var(--lh-normal);
-  }
-  .srv2-leyenda {
-    display: flex; gap: 18px; justify-content: center;
-    flex-wrap: wrap; margin-bottom: 26px;
-  }
-  .srv2-leyenda span {
-    display: inline-flex; align-items: center; gap: 7px;
-    font-size: var(--fs-label); font-weight: 700;
-  }
-  .srv2-leyenda .lg-dot {
-    width: 14px; height: 14px; border-radius: 3px;
-  }
-  .srv2-leyenda .lg-gestion { color: var(--oliva-dark); }
-  .srv2-leyenda .lg-gestion .lg-dot { background: var(--oliva); }
-  .srv2-leyenda .lg-ruta { color: var(--terracota-dark); }
-  .srv2-leyenda .lg-ruta .lg-dot { background: var(--terracota); }
+  .etapas-head h2 { margin-bottom: 10px; }
+  .etapas-head p { font-size: var(--fs-sm); color: var(--texto-suave); line-height: var(--lh-normal); margin: 0; }
 
-  .srv2-transversal {
-    background: var(--arena-warm);
-    border: 1px solid var(--arena-dark);
-    border-left: 5px solid var(--oliva);
-    border-radius: 0 14px 14px 0;
-    padding: 22px 26px;
-    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  .etapas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+  .etapa__tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 20px; }
+  .etapa__tags span {
+    font-size: var(--fs-label); font-weight: 700;
+    background: var(--azul-light); color: var(--azul-secundario);
+    padding: 6px 12px; border-radius: 50px;
+  }
+  .etapa--destacada .etapa__tags span { background: rgba(255,255,255,.16); color: #fff; }
+  .etapa {
+    position: relative; display: flex; flex-direction: column;
+    background: var(--blanco); border: 1.5px solid var(--arena-dark);
+    border-radius: 18px; padding: 26px 22px 22px;
     text-decoration: none; color: var(--texto);
-    transition: transform var(--transicion), box-shadow var(--transicion);
+    transition: transform var(--transicion), box-shadow var(--transicion), border-color var(--transicion);
   }
-  .srv2-transversal + .srv2-transversal { margin-top: 14px; }
-  .srv2-transversal:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(42,34,24,0.08);
+  .etapa:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(3,47,94,.10); border-color: var(--azul-secundario); }
+  .etapa__num {
+    font-family: 'DM Serif Display', serif; font-size: 1.1rem;
+    color: var(--azul-light); position: absolute; top: 16px; right: 20px;
   }
-  .srv2-transversal__icon { font-size: 1.6rem; flex-shrink: 0; }
-  .srv2-transversal__body { flex: 1; min-width: 220px; }
-  .srv2-transversal__body strong {
-    display: block; font-size: var(--fs-sm); font-weight: 700;
-    color: var(--oliva-dark); margin-bottom: 4px;
+  .etapa__icon { font-size: 2rem; margin-bottom: 14px; }
+  .etapa h3 { font-size: 1.2rem; color: var(--azul-principal); margin-bottom: 8px; line-height: 1.25; }
+  .etapa p { font-size: var(--fs-label); color: var(--texto-suave); line-height: 1.5; margin-bottom: 18px; flex-grow: 1; }
+  .etapa__cta { font-size: var(--fs-label); font-weight: 800; color: var(--azul-secundario); margin-top: auto; }
+
+  /* Tarjeta central destacada: estancia por estudios */
+  .etapa--destacada {
+    border: none;
+    background: linear-gradient(160deg, var(--azul-principal), var(--azul-secundario));
+    color: #fff; box-shadow: 0 20px 44px rgba(3,47,94,.22);
   }
-  .srv2-transversal__body span {
-    font-size: var(--fs-xs); color: var(--texto-suave); line-height: 1.5;
+  .etapa--destacada .etapa__num { color: rgba(255,255,255,.28); }
+  .etapa--destacada h3 { color: #fff; }
+  .etapa--destacada p { color: rgba(255,255,255,.9); }
+  .etapa--destacada .etapa__cta { color: var(--amarillo); }
+  .etapa--destacada:hover { transform: translateY(-7px); box-shadow: 0 26px 54px rgba(3,47,94,.30); }
+  .etapa__badge {
+    position: absolute; top: -11px; left: 22px;
+    background: var(--amarillo); color: var(--texto);
+    font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+    padding: 5px 12px; border-radius: 50px;
   }
-  .srv2-transversal__badge {
-    background: var(--oliva-bg); color: var(--oliva-dark);
-    font-size: var(--fs-label); font-weight: 700;
-    padding: 7px 14px; border-radius: 50px; white-space: nowrap;
-  }
-  /* Variante RUTA (terracota) para PEAC */
-  .srv2-transversal--ruta {
-    background: var(--terracota-bg);
-    border-color: #f0d9d1;
-    border-left-color: var(--terracota);
-  }
-  .srv2-transversal--ruta .srv2-transversal__badge {
-    background: #fdeae4; color: var(--terracota-dark);
-  }
-  @media (max-width: 768px) {
-    .srv2-transversal { flex-direction: column; align-items: flex-start; }
-    .srv2-transversal__badge { width: 100%; text-align: center; }
-  }
+
+  @media (max-width: 900px) { .etapas-grid { grid-template-columns: 1fr; } }
 </style>
 
-<section class="srv2-sec container reveal" id="servicios">
-  <div class="srv2-header">
-    <span class="sec-label">Servicios profesionales</span>
-    <h2>Nuestros paquetes de servicio</h2>
-    <p>Precios claros y cerrados. Tú entregas la documentación y nosotras nos encargamos del trámite o te damos la ruta exacta para que lo hagas con seguridad.</p>
+<section class="etapas-sec container reveal" id="etapas">
+  <div class="etapas-head">
+    <span class="etapas-eyebrow">Dinos qué necesitas</span>
+    <h2>¿Qué quieres hacer en España?</h2>
+    <p>Elige tu caso y te llevamos directo a lo que toca ahora. Estés donde estés, te acompañamos.</p>
   </div>
+  <div class="etapas-grid">
 
-  <div class="srv2-leyenda">
-    <span class="lg-gestion"><span class="lg-dot"></span>Lo tramitamos por ti</span>
-    <span class="lg-ruta"><span class="lg-dot"></span>Te damos la ruta</span>
-  </div>
-
-  <!-- Paquete 1 — Comunícate con la Administración -->
-  <a href="paquete-comunicate-administracion.html" class="srv2-transversal">
-    <span class="srv2-transversal__icon">📦</span>
-    <div class="srv2-transversal__body">
-    <strong>Paquete "Comunícate con la Administración" — consulta tu caso</strong>
-      <span>Cita de identificación, número de Seguridad Social, NUSS y Carpeta Ciudadana — todo gestionado, con acompañamiento en cada paso.</span>
-    </div>
-    <span class="srv2-transversal__badge">Ver paquete ➔</span>
-  </a>
-
-  <!-- Paquete 2 — Homologación de estudios -->
-  <a href="servicios-homologacion.html" class="srv2-transversal">
-    <span class="srv2-transversal__icon">🎓</span>
-    <div class="srv2-transversal__body">
-      <s<strong>Paquete "Homologa tus estudios" — cuéntanos tu caso</strong>
-      <span>Homologación de secundaria y bachillerato extranjeros: revisión de documentos, preparación del expediente, representación y seguimiento — servicio personalizado según tu país y caso.</span>
-    </div>
-    <span class="srv2-transversal__badge">Ver paquete ➔</span>
-  </a>
-
-  <!-- Paquete 3 — Ruta PEAC (variante terracota) -->
-  <a href="servicio-peac.html" class="srv2-transversal srv2-transversal--ruta">
-    <span class="srv2-transversal__icon">🛠️</span>
-    <div class="srv2-transversal__body">
-      <strong>Paquete "Ruta PEAC" — valoramos tu experiencia</strong>
-      <span>Acreditación de tu experiencia laboral como título oficial: diagnóstico de tu perfil, preparación del expediente de evidencias y acompañamiento durante todo el procedimiento.</span>
-    </div>
-    <span class="srv2-transversal__badge">Ver paquete ➔</span>
-  </a>
-
-</section>
-<!-- ============ FIN SERVICIOS ============ -->
-<!-- ============================================================ -->
-<!-- MÓDULO CHARLAS — colócalo en la home justo DESPUÉS de        -->
-<!-- <!-- ============ FIN MÓDULO SERVICIOS ============ -->       -->
-<!-- No toca Core (navbar, footer, tokens). Usa tus variables.     -->
-<!-- ============================================================ -->
-
-<style>
-  /* ── CHARLAS — el puente entre enseñar y acompañar ──────── */
-  .charlas-sec { padding: 0 0 80px; background: var(--blanco); }
-  .charlas-card {
-    background: var(--oliva-bg);
-    border: 1px solid rgba(85,107,47,0.18);
-    border-radius: 24px;
-    padding: 44px 40px;
-  }
-  .charlas-head {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    gap: 18px; flex-wrap: wrap; margin-bottom: 30px;
-  }
-  .charlas-eyebrow {
-    display: block; font-size: var(--fs-label); font-weight: 800;
-    text-transform: uppercase; letter-spacing: 0.1em;
-    color: var(--terracota); margin-bottom: 8px;
-  }
-  .charlas-head h2 { margin-bottom: 8px; }
-  .charlas-head > div > p {
-    font-size: var(--fs-sm); color: var(--texto-suave);
-    max-width: 480px; line-height: var(--lh-normal); margin: 0;
-  }
-  .charlas-cta-info {
-    background: var(--oliva); color: var(--arena);
-    font-weight: 700; font-size: var(--fs-sm);
-    padding: 13px 26px; border-radius: 50px; white-space: nowrap;
-    transition: background var(--transicion), transform var(--transicion);
-  }
-  .charlas-cta-info:hover { background: var(--oliva-dark); transform: translateY(-1px); }
-
-  .charlas-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-  }
-  .charla {
-    background: var(--blanco);
-    border: 1.5px solid var(--arena-dark);
-    border-radius: 16px;
-    padding: 24px 24px 22px;
-    display: flex; flex-direction: column;
-    position: relative;
-  }
-  .charla__estado {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 0.78rem; font-weight: 800;
-    text-transform: uppercase; letter-spacing: 0.06em;
-    padding: 4px 12px; border-radius: 50px;
-    margin-bottom: 14px; width: fit-content;
-  }
-  .charla__estado--hecha {
-    background: var(--oliva-bg); color: var(--oliva-dark);
-  }
-  .charla__estado--proxima {
-    background: var(--terracota-bg); color: var(--terracota-dark);
-  }
-  .charla__fecha {
-    font-size: var(--fs-label); font-weight: 700;
-    color: var(--texto-suave); margin-bottom: 6px;
-    text-transform: uppercase; letter-spacing: 0.04em;
-  }
-  .charla h3 {
-    font-size: var(--fs-h4); line-height: 1.25;
-    margin-bottom: 8px; color: var(--oliva-dark);
-  }
-  .charla__lugar {
-    display: flex; align-items: center; gap: 6px;
-    font-size: var(--fs-xs); font-weight: 600;
-    color: var(--oliva); margin-bottom: 12px;
-  }
-  .charla p {
-    font-size: var(--fs-sm); color: var(--texto-suave);
-    line-height: var(--lh-normal); margin: 0;
-  }
-  .charla--proxima {
-    border-style: dashed;
-    border-color: var(--terracota);
-    background: var(--terracota-bg);
-  }
-
-  @media (max-width: 900px) {
-    .charlas-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 768px) {
-    .charlas-card { padding: 32px 24px; }
-    .charlas-cta-info { width: 100%; text-align: center; }
-  }
-</style>
-
-<section class="charlas-sec container reveal" id="charlas">
-  <div class="charlas-card">
-
-    <div class="charlas-head">
-      <div>
-        <span class="charlas-eyebrow">Charlas y talleres · presenciales</span>
-        <h2>Enseñamos en tu barrio</h2>
-        <p>Vamos a bibliotecas, centros y asociaciones a explicar los trámites de forma clara y gratuita. Sin tecnicismos, con fuentes oficiales.</p>
+    <a href="extranjeria.html" class="etapa">
+      <div class="etapa__icon">🏛️</div>
+      <h3>Quiero vivir o trabajar aquí</h3>
+      <div class="etapa__tags">
+        <span>No lucrativa</span><span>Nómada digital</span><span>Trabajo</span><span>Reagrupación</span>
       </div>
-      <a href="https://wa.me/34697154442?text=Hola%2C%20me%20gustar%C3%ADa%20organizar%20o%20asistir%20a%20una%20charla%20de%20Gestiona%20Seguro."
-         target="_blank" rel="noopener" class="charlas-cta-info">¿Quieres una charla? →</a>
-    </div>
+      <p>Las vías para residir y trabajar legalmente en España, desde tu país o ya aquí.</p>
+      <span class="etapa__cta">Ver mis opciones →</span>
+    </a>
 
-    <div class="charlas-grid">
-
-      <!-- Charla 1: Orcasur, marzo 2026 -->
-      <div class="charla">
-        <span class="charla__estado charla__estado--hecha">✓ Realizada</span>
-        <div class="charla__fecha">Marzo 2026</div>
-        <h3>Regularización 2026: información clara entre tanto rumor</h3>
-        <div class="charla__lugar">📍 Orcasur, Madrid</div>
-        <p>Cuando el proceso aún estaba en borrador y circulaba mucha desinformación, explicamos lo que de verdad se sabía y con qué fuentes.</p>
+    <a href="estancia-estudios.html" class="etapa etapa--destacada">
+      <span class="etapa__badge">★ Nuestro foco</span>
+      <div class="etapa__icon">🎓</div>
+      <h3>Quiero estudiar en España</h3>
+      <div class="etapa__tags">
+        <span>Desde tu país</span><span>Ya en España</span>
       </div>
+      <p>Estancia por estudios para ti o para tus hijos: viaje, seguro, alojamiento y tarjeta, de principio a fin.</p>
+      <span class="etapa__cta">Ver acompañamiento →</span>
+    </a>
 
-      <!-- Charla 2: Biblioteca Iván de Vargas, 28 mayo 2026 -->
-      <div class="charla">
-        <span class="charla__estado charla__estado--hecha">✓ Realizada</span>
-        <div class="charla__fecha">28 mayo 2026</div>
-        <h3>Qué hacer después de presentar tu solicitud</h3>
-        <div class="charla__lugar">📍 Biblioteca Iván de Vargas, Madrid</div>
-        <p>El proceso de regularización tras la entrega (RD 316/2026): plazos, notificaciones y cómo no perder el hilo de tu expediente.</p>
+    <a href="extranjeria.html" class="etapa">
+      <div class="etapa__icon">🕐</div>
+      <h3>Ya llevo tiempo en España</h3>
+      <div class="etapa__tags">
+        <span>Arraigo</span><span>Regularización</span><span>Renovaciones</span><span>Larga duración</span><span>Nacionalidad</span>
       </div>
+      <p>Ordena tu situación y da el siguiente paso, lleves el tiempo que lleves aquí.</p>
+      <span class="etapa__cta">Ver siguientes pasos →</span>
+    </a>
 
-      <!-- Charla 3: Carpeta Ciudadana, en preparación -->
-      <div class="charla charla--proxima">
-        <span class="charla__estado charla__estado--proxima">◷ En preparación</span>
-        <div class="charla__fecha">Próximamente</div>
-        <h3>Carpeta Ciudadana: que no se te archive nada</h3>
-        <div class="charla__lugar">📍 Madrid · fecha por confirmar</div>
-        <p>Aprende a configurar tu Carpeta Ciudadana y a no perderte una notificación. Estamos cerrando fecha y lugar.</p>
-      </div>
-
-    </div>
   </div>
 </section>
-<!-- ============ FIN MÓDULO CHARLAS ============ -->
-<!-- ============ FIN SERVICIOS ============ -->
-  <!-- ============ EQUIPO ============ -->
+<!-- ============ FIN MÓDULO RUTA / ETAPAS ============ -->
+
+<!-- ============ EQUIPO / QUIÉNES SOMOS ============ -->
   <section class="equipo reveal" id="equipo">
     <h2>Quiénes somos</h2>
-    <p>Ex-migrantes que hoy servimos al colectivo con rigor profesional y empatía.</p>
+    <p>Autoridad real y trato cercano: conocemos la Administración desde dentro y el derecho de extranjería por dentro de la norma.</p>
     <div class="equipo-grid">
       <div class="persona">
          <img
@@ -2234,12 +1973,13 @@ object-position: 25% center;
   >
   <div class="persona__name">Nora Núñez Zárate</div>
   <div class="persona__role persona__role--normal">Licenciada en Ciencias de la Documentación (UC3M).</div>
-  <p class="persona__destacado-rojo">Asesora y evaluadora PEAC habilitada por la Comunidad de Madrid.</p>
-  <p class="persona__destacado-negro">Especialista en acompañamiento académico y profesional para personas migrantes.</p>
-  <p class="persona__tragsatec">Traduce la burocracia a pasos claros. Su misión: que puedas hacer los trámites tú mismo, sin depender de nadie.</p>
+  <p class="persona__destacado-rojo">30 años viviendo en España y trabajando en la Administración Pública desde 2007.</p>
+  <p class="persona__destacado-negro">Asesora y evaluadora PEAC habilitada por la Comunidad de Madrid.</p>
+  <p class="persona__tragsatec">Traduce la burocracia a pasos claros y te acompaña en cada trámite, desde tu país o ya en España.</p>
 </div>
     </div>
   </section>
+<!-- ============ FIN EQUIPO ============ -->
  <!-- ============ FOOTER COMUNIDAD ============ -->
 <footer class="footer footer-comunidad" id="contacto">
   <div class="container">
