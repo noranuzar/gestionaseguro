@@ -138,7 +138,7 @@
     }
     .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
     .navbar-inner {
-      height: 80px;
+      height: 92px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -162,7 +162,7 @@
       font-size: 1.1rem;
     }
     .logo-header img {
-  height: 54px;
+  height: 68px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -170,7 +170,7 @@
 
 .logo-header .brand-word {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.7rem;
+  font-size: 2.05rem;
   line-height: 1;
   letter-spacing: .2px;
   white-space: nowrap;
@@ -392,7 +392,7 @@
 /* HERO CON IMAGEN PRINCIPAL                                    */
 /* ============================================================ */
 .hero-home {
-  padding: 150px 24px 70px;
+  padding: 120px 24px 60px;
  background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F3 100%);
   text-align: left;
 }
@@ -530,7 +530,7 @@
 }
 
 .hero-home-image {
-  min-height: 620px;
+  min-height: 460px;
   position: relative;
   overflow: hidden;
 }
@@ -1316,13 +1316,29 @@ object-position: 25% center;
     @media (max-width: 768px) {
       .hero { padding: 140px 20px 80px; }
       .hero-home {
-  padding: 120px 24px 60px;
+  padding: 120px 18px 56px;
 }
+
+/* Logo compacto en móvil para que la barra no desborde */
+.navbar-inner { height: 74px; }
+.logo-header img { height: 46px; }
+.logo-header .brand-word { font-size: 1.45rem; }
 
 .hero-home-wrap {
   grid-template-columns: 1fr;
   border-radius: 24px;
 }
+
+/* Evitar que el hero se salga por la derecha en móvil */
+.hero-home-wrap { min-width: 0; max-width: 100%; }
+.hero-home-card { min-width: 0; max-width: 100%; }
+.hero-home-card .hero-badge { white-space: normal; max-width: 100%; }
+.hero-home-card h1 { overflow-wrap: anywhere; }
+.hero-home-card .hero-sub { overflow-wrap: anywhere; }
+
+/* Centrar los datos de autoridad en móvil */
+.hero-home-card .hero-trust { align-items: center; max-width: 100%; }
+.hero-home-card .hero-trust .t { justify-content: center; text-align: left; }
 
 .hero-home-card {
   padding: 34px 26px;
