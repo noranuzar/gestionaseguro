@@ -44,6 +44,17 @@
       --texto-suave: #5e5649;
       --blanco: #fffdf8;
 
+      /* ===== PUENTE: nombres antiguos → nueva paleta azul ===== */
+      --oliva:         #054782;  /* azul-secundario (fondos sólidos, botones) */
+      --oliva-dark:    #032F5E;  /* azul-principal (fondos oscuros, footer, títulos) */
+      --oliva-bg:      #E8EEF7;  /* azul-light (tintes claros, badges) */
+      --terracota:     #C3122C;  /* rojo-principal (acento) */
+      --terracota-dark:#9E0F23;  /* rojo oscuro */
+      --terracota-bg:  #FBE9EC;  /* tinte rojo claro */
+      --arena:         #FAF8F3;  /* crema claro (texto sobre fondos oscuros) */
+      --arena-warm:    #FFFDF8;  /* fondo cálido claro (tarjetas) */
+      --arena-dark:    #ECE9E2;  /* bordes claros */
+
       /* ============================================ */
       /* ESCALA TIPOGRÁFICA — ÚNICA Y COHERENTE        */
       /* Todos los tamaños del sitio salen de aquí    */
@@ -1833,7 +1844,7 @@ object-position: 25% center;
       <div class="hero-cta-bloque">
         <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%; margin-top: 6px;">
           <a href="#etapas" class="nav-cta cta-grande cta-primario" style="min-width: 240px; justify-content: center;">
-            Empieza tu residencia ➔
+            Empieza con tu residencia aquí ➔
           </a>
         </div>
       </div>
@@ -1849,7 +1860,7 @@ object-position: 25% center;
 <!-- ============ INICIO MÓDULO RUTA / ETAPAS ============ -->
 <style>
   /* ── RUTA / ETAPAS — el router del viaje ──────────────── */
-  .etapas-sec { padding: 64px 0 40px; background: var(--blanco); }
+  .etapas-sec { padding: 64px 0 72px; background: var(--blanco); }
   .etapas-head { text-align: center; max-width: 640px; margin: 0 auto 36px; }
   .etapas-eyebrow {
     display: inline-block; font-size: var(--fs-label); font-weight: 800;
@@ -1862,9 +1873,9 @@ object-position: 25% center;
   .etapas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
   .etapa__tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 20px; }
   .etapa__tags span {
-    font-size: var(--fs-label); font-weight: 700;
+    font-size: var(--fs-xs); font-weight: 700;
     background: var(--azul-light); color: var(--azul-secundario);
-    padding: 6px 12px; border-radius: 50px;
+    padding: 6px 13px; border-radius: 50px;
   }
   .etapa--destacada .etapa__tags span { background: rgba(255,255,255,.16); color: #fff; }
   .etapa {
@@ -1881,8 +1892,8 @@ object-position: 25% center;
   }
   .etapa__icon { font-size: 2rem; margin-bottom: 14px; }
   .etapa h3 { font-size: 1.2rem; color: var(--azul-principal); margin-bottom: 8px; line-height: 1.25; }
-  .etapa p { font-size: var(--fs-label); color: var(--texto-suave); line-height: 1.5; margin-bottom: 18px; flex-grow: 1; }
-  .etapa__cta { font-size: var(--fs-label); font-weight: 800; color: var(--azul-secundario); margin-top: auto; }
+  .etapa p { font-size: var(--fs-sm); color: var(--texto-suave); line-height: 1.55; margin-bottom: 18px; flex-grow: 1; }
+  .etapa__cta { font-size: var(--fs-sm); font-weight: 800; color: var(--azul-secundario); margin-top: auto; }
 
   /* Tarjeta central destacada: estancia por estudios */
   .etapa--destacada {
@@ -1896,10 +1907,10 @@ object-position: 25% center;
   .etapa--destacada .etapa__cta { color: var(--amarillo); }
   .etapa--destacada:hover { transform: translateY(-7px); box-shadow: 0 26px 54px rgba(3,47,94,.30); }
   .etapa__badge {
-    position: absolute; top: -11px; left: 22px;
+    position: absolute; top: -13px; left: 22px;
     background: var(--amarillo); color: var(--texto);
-    font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
-    padding: 5px 12px; border-radius: 50px;
+    font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+    padding: 6px 14px; border-radius: 50px;
   }
 
   @media (max-width: 900px) { .etapas-grid { grid-template-columns: 1fr; } }
@@ -1909,7 +1920,7 @@ object-position: 25% center;
   <div class="etapas-head">
     <span class="etapas-eyebrow">Dinos qué necesitas</span>
     <h2>¿Qué quieres hacer en España?</h2>
-    <p>Elige tu caso y te llevamos directo a lo que toca ahora. Estés donde estés, te acompañamos.</p>
+    <p>Elige tu caso y te llevamos directo a lo que toca ahora. Estés donde estés, te acompañamos en el camino.</p>
   </div>
   <div class="etapas-grid">
 
@@ -1980,8 +1991,65 @@ object-position: 25% center;
     </div>
   </section>
 <!-- ============ FIN EQUIPO ============ -->
+
+<!-- ============ FRANJA CONTACTO DIRECTO ============ -->
+<style>
+  .contacto-directo { padding: 10px 0 40px; background: var(--blanco); }
+  .cd-card {
+    background: linear-gradient(135deg, var(--azul-principal), var(--azul-secundario));
+    border-radius: 24px; padding: 44px 46px; color: #fff;
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 42px; align-items: center;
+    box-shadow: 0 24px 54px rgba(3,47,94,.22);
+  }
+  .cd-card h2 { color: #fff; font-size: var(--fs-h2); margin-bottom: 10px; }
+  .cd-card .cd-sub { color: rgba(255,255,255,.88); font-size: var(--fs-sm); max-width: 430px; }
+  .cd-accent { width: 64px; height: 5px; border-radius: 20px; background: linear-gradient(90deg, var(--rojo-principal), var(--amarillo)); margin: 14px 0 18px; }
+  .cd-vias { display: flex; flex-direction: column; gap: 12px; }
+  .cd-via {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
+    border-radius: 14px; padding: 14px 18px; text-decoration: none; color: #fff;
+    transition: background var(--transicion);
+  }
+  .cd-via:hover { background: rgba(255,255,255,.18); }
+  .cd-via .ic { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,.16); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+  .cd-via .tx b { display: block; font-size: var(--fs-sm); font-weight: 700; }
+  .cd-via .tx span { font-size: var(--fs-xs); color: rgba(255,255,255,.8); }
+  .cd-via--wa { background: #25D366; border-color: #25D366; }
+  .cd-via--wa:hover { background: #1fb85a; }
+  .cd-via--wa .ic { background: rgba(255,255,255,.25); }
+  @media (max-width: 820px) {
+    .cd-card { grid-template-columns: 1fr; gap: 26px; padding: 32px 24px; }
+  }
+</style>
+
+<section class="contacto-directo container reveal" id="contacto">
+  <div class="cd-card">
+    <div>
+      <h2>Hablemos de tu caso</h2>
+      <div class="cd-accent"></div>
+      <p class="cd-sub">Te atendemos de persona a persona. Escríbenos o llámanos y te decimos el siguiente paso, sin compromiso.</p>
+    </div>
+    <div class="cd-vias">
+      <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20gestionaseguroweb.com%20y%20quiero%20informaci%C3%B3n%20sobre%20mi%20caso." target="_blank" rel="noopener" class="cd-via cd-via--wa">
+        <span class="ic">💬</span>
+        <span class="tx"><b>WhatsApp directo</b><span>Respuesta rápida · +34 697 154 442</span></span>
+      </a>
+      <a href="tel:+34697154442" class="cd-via">
+        <span class="ic">📞</span>
+        <span class="tx"><b>+34 697 154 442</b><span>Nora · tramitación y acompañamiento</span></span>
+      </a>
+      <a href="tel:+34644416479" class="cd-via">
+        <span class="ic">⚖️</span>
+        <span class="tx"><b>+34 644 416 479</b><span>Sara · abogada de extranjería</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- ============ FIN FRANJA CONTACTO DIRECTO ============ -->
+
  <!-- ============ FOOTER COMUNIDAD ============ -->
-<footer class="footer footer-comunidad" id="contacto">
+<footer class="footer footer-comunidad" id="footer-info">
   <div class="container">
    <div class="footer-comunidad-inner">
   <div class="footer-comunidad-info">
