@@ -168,11 +168,15 @@
   display: block;
 }
 
-.logo-header span {
+.logo-header .brand-word {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.45rem;
-  color: var(--oliva-dark);
+  font-size: 1.7rem;
+  line-height: 1;
+  letter-spacing: .2px;
+  white-space: nowrap;
 }
+.logo-header .brand-word .g1 { color: var(--azul-principal); }
+.logo-header .brand-word .g2 { color: var(--rojo-principal); }
 
     .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
     .nav-item { position: relative; }
@@ -1798,7 +1802,7 @@ object-position: 25% center;
     <div class="container navbar-inner">
       <a href="/" class="logo logo-header">
         <img src="logo-emblema.png" alt="Gestiona Seguro — Estudia y trabaja en España">
-        <span>Gestiona Seguro</span>
+        <span class="brand-word"><span class="g1">Gestiona</span> <span class="g2">Seguro</span></span>
       </a>
       <ul class="nav-links" id="navLinks">
         <li class="nav-item"><a href="extranjeria.html">Extranjería</a></li>
