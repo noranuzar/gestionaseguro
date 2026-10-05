@@ -119,7 +119,7 @@
     }
     .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
     .navbar-inner {
-      height: 80px; display: flex; align-items: center;
+      height: 92px; display: flex; align-items: center;
       justify-content: space-between; gap: 24px;
     }
     .logo {
@@ -127,8 +127,10 @@
       font-family: 'DM Serif Display', serif;
       font-size: 1.5rem; color: var(--oliva-dark); flex-shrink: 0;
     }
-    .logo-header img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; display: block; }
-    .logo-header span { font-family: 'DM Serif Display', serif; font-size: 1.45rem; color: var(--oliva-dark); }
+    .logo-header img { height: 68px; width: auto; object-fit: contain; display: block; }
+    .logo-header .brand-word { font-family: 'DM Serif Display', serif; font-size: 2.05rem; line-height: 1; letter-spacing: .2px; white-space: nowrap; }
+    .logo-header .brand-word .g1 { color: var(--azul-principal); }
+    .logo-header .brand-word .g2 { color: var(--rojo-principal); }
     .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
     .nav-item  { position: relative; }
     .nav-trigger,
@@ -212,6 +214,33 @@
       padding: 38px 40px; box-shadow: 0 16px 40px rgba(3,47,94,0.08);
     }
     .bloque-card--trabajo { border-top-color: var(--rojo-principal); }
+
+    /* ★ Estancia por estudios — bloque destacado (el foco) */
+    .bloque-card--estudios {
+      position: relative;
+      border: none;
+      background: linear-gradient(160deg, var(--azul-principal), var(--azul-secundario));
+      color: #fff;
+      box-shadow: 0 26px 56px rgba(3,47,94,0.28);
+    }
+    .bloque-card--estudios h2 { color: #fff; }
+    .bloque-card--estudios .bloque-eyebrow.eb-amarillo { color: var(--amarillo); }
+    .bloque-card.bloque-card--estudios .lead { color: rgba(255,255,255,0.92); }
+    .bloque-card.bloque-card--estudios .lead strong { color: #fff; }
+    .bloque-foco {
+      position: absolute; top: -14px; left: 40px;
+      background: var(--amarillo); color: var(--texto);
+      font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 7px 16px; border-radius: 50px; box-shadow: 0 8px 18px rgba(3,47,94,0.22);
+    }
+    /* vías sobre el fondo azul */
+    .bloque-card--estudios .via { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); }
+    .bloque-card--estudios .via:hover { box-shadow: 0 12px 26px rgba(0,0,0,0.18); }
+    .bloque-card--estudios .via h3 { color: #fff; }
+    .bloque-card--estudios .via p { color: rgba(255,255,255,0.85); }
+    .bloque-card--estudios .via .via-link { color: var(--amarillo); }
+    .bloque-card--estudios .via--espana { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); }
+    .bloque-card--estudios .bloque-accent { background: linear-gradient(90deg, #FFFFFF, var(--amarillo)); }
     .bloque-eyebrow { display: inline-block; font-size: var(--fs-label); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
     .eb-amarillo { color: var(--amarillo); }
     .eb-rojo { color: var(--rojo-principal); }
@@ -249,7 +278,7 @@
     .chev { color: var(--azul-principal); font-size: 1.2rem; transition: transform .25s; }
     .acc.open .chev { transform: rotate(180deg); }
     .panel { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-    .acc.open .panel { max-height: 460px; }
+    .acc.open .panel { max-height: 680px; }
     .panel-in { padding: 0 16px 16px 72px; }
     .panel-in p { font-size: var(--fs-xs); color: var(--texto-suave); line-height: 1.55; margin-bottom: 10px; }
     .panel-in p strong { color: var(--texto); }
@@ -258,6 +287,61 @@
     .acc--pronto .chev { display: none; }
     .fila--pronto .ic { background: var(--fondo-claro); }
     .pronto { font-size: .62rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--texto-suave); background: var(--fondo-claro); padding: 3px 8px; border-radius: 20px; margin-left: 6px; }
+
+    /* ── SUBSECCIONES dentro de Residencia y trabajo ── */
+    .subsec { margin-top: 20px; border: 1px solid var(--arena-dark); border-radius: 16px; overflow: hidden; }
+    .subsec:first-of-type { margin-top: 10px; }
+    .subsec-head {
+      display: flex; align-items: center; gap: 11px;
+      background: var(--azul-light); padding: 14px 20px;
+      border-left: 5px solid var(--azul-principal);
+      cursor: pointer; user-select: none;
+      transition: background var(--transicion);
+    }
+    .subsec-head:hover { background: #dce7f6; }
+    .subsec-head .subsec-ic { font-size: 1.3rem; line-height: 1; }
+    .subsec-head h3 { font-size: 1.15rem; color: var(--azul-principal); margin: 0; }
+    .subsec-head h3 small { font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: var(--fs-xs); color: var(--azul-secundario); }
+    .subsec-head::after { content: '⌄'; margin-left: auto; color: var(--azul-principal); font-size: 1.4rem; line-height: 1; transition: transform .28s ease; }
+    .subsec.open .subsec-head::after { transform: rotate(180deg); }
+    /* cuerpo plegable del grupo */
+    .subsec .lista { border: none; border-radius: 0; max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .subsec.open .lista { max-height: 2200px; }
+
+    /* ── Hueco de PAQUETE (preparado, se rellena luego) ── */
+    .paquete-slot {
+      margin-top: 12px; padding: 14px 16px;
+      border: 1px dashed #c3d2e6; border-radius: 12px; background: var(--azul-light);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+    }
+    .paquete-slot .sc-alcance {
+      display: inline-block; background: var(--azul-principal); color: #fff; margin: 0;
+      font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+      padding: 4px 12px; border-radius: 50px;
+    }
+    .paquete-slot .pq-msg { font-size: var(--fs-xs); color: var(--texto-suave); }
+    .paquete-slot .pq-msg em { font-style: normal; font-weight: 700; color: var(--azul-secundario); }
+    .paquete-slot .mini-cta { margin-left: auto; }
+
+    /* ── Franja fina de autoridad (Sara) ── */
+    .sara-band { padding: 10px 0 60px; }
+    .sara-band-inner {
+      background: var(--oliva-bg); border: 1px solid rgba(3,47,94,0.14);
+      border-radius: 18px; padding: 24px 30px;
+      display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap;
+    }
+    .sara-band-inner .sb-text { flex: 1; min-width: 280px; }
+    .sara-band-inner .sb-text h3 { font-size: 1.3rem; margin-bottom: 6px; }
+    .sara-band-inner .sb-text p { font-size: var(--fs-sm); color: var(--texto-suave); margin: 0; line-height: 1.55; }
+    .sara-band-inner .sb-text strong { color: var(--azul-principal); }
+    .sara-band-inner .sb-btn {
+      display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+      background: var(--azul-principal); color: #fff; font-weight: 700; font-size: var(--fs-btn);
+      padding: 15px 28px; border-radius: 50px; box-shadow: 0 8px 20px rgba(3,47,94,0.22);
+      transition: background var(--transicion), transform var(--transicion);
+    }
+    .sara-band-inner .sb-btn:hover { background: var(--azul-secundario); transform: translateY(-2px); }
+    @media (max-width: 768px) { .sara-band-inner { flex-direction: column; align-items: stretch; text-align: center; } .sara-band-inner .sb-btn { justify-content: center; } }
 
     /* ── BLOQUE SERVICIO (regla de Jason) ── */
     .servicio-extranjeria { padding: 30px 0 70px; }
@@ -341,6 +425,9 @@
     }
     @media (max-width: 768px) {
       .hero-pagina { padding: 110px 20px 44px; }
+      .navbar-inner { height: 74px; }
+      .logo-header img { height: 46px; }
+      .logo-header .brand-word { font-size: 1.45rem; }
       .bloque-card { padding: 28px 22px; }
       .vias { grid-template-columns: 1fr; }
       .panel-in { padding-left: 16px; }
@@ -362,13 +449,14 @@
   <nav class="navbar" id="navbar">
     <div class="container navbar-inner">
       <a href="/" class="logo logo-header">
-        <span>Gestiona Seguro</span>
+        <img src="logo-emblema.png" alt="Gestiona Seguro — Estudia y trabaja en España">
+        <span class="brand-word"><span class="g1">Gestiona</span> <span class="g2">Seguro</span></span>
       </a>
       <ul class="nav-links" id="navLinks">
         <li class="nav-item"><a href="extranjeria.html">Extranjería</a></li>
         <li class="nav-item"><a href="servicios-homologacion.html">Estudios</a></li>
         <li class="nav-item"><a href="empleo.html">Empleo</a></li>
-        <li class="nav-item"><a href="blog.html">Blog</a></li>
+        <li class="nav-item"><a href="blog.html">Recursos gratuitos</a></li>
         <li class="nav-item has-dropdown">
           <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
             Nosotros
@@ -407,7 +495,8 @@
   <!-- ════════════════════════════════════════ -->
   <section class="bloque-sec container reveal">
     <div class="bloque-card bloque-card--estudios">
-      <span class="bloque-eyebrow eb-amarillo">★ Estudiar en España</span>
+      <span class="bloque-foco">★ Nuestro foco</span>
+      <span class="bloque-eyebrow eb-amarillo">Estudiar en España</span>
       <h2>Estancia por estudios</h2>
       <div class="bloque-accent bloque-accent--estudios"></div>
       <p class="lead">¿Vienes a estudiar a España? Conseguimos y gestionamos tu <strong>autorización de estancia por estudios</strong> de principio a fin, estés en tu país o ya aquí.</p>
@@ -434,84 +523,180 @@
       <span class="bloque-eyebrow eb-rojo">Vivir y trabajar en España</span>
       <h2>Residencia y trabajo</h2>
       <div class="bloque-accent"></div>
-      <p class="lead">Elige tu situación. Te explicamos el trámite y lo tramitamos por ti.</p>
+      <p class="lead">Elige tu situación. Te explicamos el trámite y preparamos tu acompañamiento.</p>
 
-      <div class="lista">
+      <!-- Subsección 1: Llegar a España -->
+      <div class="subsec open">
+        <div class="subsec-head"><span class="subsec-ic">🌍</span><h3>Llegar a España <small>· desde tu país</small></h3></div>
+        <div class="lista">
 
-        <div class="acc">
-          <button class="fila" aria-expanded="false">
-            <div class="ic">🌍</div>
-            <div class="body"><strong>Residencia y trabajo desde origen</strong><span>Entrar a España con tu permiso ya en marcha</span></div>
-            <div class="chev">⌄</div>
-          </button>
-          <div class="panel"><div class="panel-in">
-            <p>Consigues tu visado y autorización <strong>antes de viajar</strong>: por cuenta ajena (con oferta de empleo) o por cuenta propia. Lo preparamos y presentamos por ti.</p>
-            <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Residencia%20y%20trabajo%20desde%20origen%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
-          </div></div>
+          <div class="acc">
+            <button class="fila" aria-expanded="false">
+              <div class="ic">💼</div>
+              <div class="body"><strong>Trabajo por cuenta ajena</strong><span>Con oferta de empleo, desde origen</span></div>
+              <div class="chev">⌄</div>
+            </button>
+            <div class="panel"><div class="panel-in">
+              <p>Visado y autorización de residencia y trabajo <strong>antes de viajar</strong>, con una oferta de empleo en España. Lo preparamos y presentamos por ti.</p>
+              <div class="paquete-slot">
+                <span class="sc-alcance">Lo tramitamos por ti</span>
+                <span class="pq-msg">Paquete de acompañamiento · <em>próximamente</em></span>
+                <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Trabajo%20por%20cuenta%20ajena%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="acc">
+            <button class="fila" aria-expanded="false">
+              <div class="ic">🧰</div>
+              <div class="body"><strong>Trabajo por cuenta propia</strong><span>Montar tu actividad como autónomo/a</span></div>
+              <div class="chev">⌄</div>
+            </button>
+            <div class="panel"><div class="panel-in">
+              <p>Autorización para desarrollar tu <strong>propio negocio o actividad</strong> en España. Plan de viabilidad, requisitos y expediente, preparados contigo.</p>
+              <div class="paquete-slot">
+                <span class="sc-alcance">Lo tramitamos por ti</span>
+                <span class="pq-msg">Paquete de acompañamiento · <em>próximamente</em></span>
+                <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Trabajo%20por%20cuenta%20propia%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="acc">
+            <button class="fila" aria-expanded="false">
+              <div class="ic">💻</div>
+              <div class="body"><strong>Nómada digital</strong><span>Teletrabajo para empresas de fuera</span></div>
+              <div class="chev">⌄</div>
+            </button>
+            <div class="panel"><div class="panel-in">
+              <p>Para quien <strong>teletrabaja para empresas extranjeras</strong>. Residir en España manteniendo tu empleo o tus clientes de fuera. Revisamos tu encaje y lo tramitamos.</p>
+              <div class="paquete-slot">
+                <span class="sc-alcance">Lo tramitamos por ti</span>
+                <span class="pq-msg">Paquete de acompañamiento · <em>próximamente</em></span>
+                <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20N%C3%B3mada%20digital%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="acc">
+            <button class="fila" aria-expanded="false">
+              <div class="ic">🏡</div>
+              <div class="body"><strong>Residencia no lucrativa</strong><span>Residir sin trabajar, con medios propios</span></div>
+              <div class="chev">⌄</div>
+            </button>
+            <div class="panel"><div class="panel-in">
+              <p>Residir en España <strong>sin realizar actividad laboral</strong>, acreditando medios económicos suficientes y seguro médico. Preparamos el expediente por ti.</p>
+              <div class="paquete-slot">
+                <span class="sc-alcance">Lo tramitamos por ti</span>
+                <span class="pq-msg">Paquete de acompañamiento · <em>próximamente</em></span>
+                <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Residencia%20no%20lucrativa%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
+              </div>
+            </div></div>
+          </div>
+
         </div>
+      </div>
 
-        <div class="acc">
-          <button class="fila" aria-expanded="false">
-            <div class="ic">🔄</div>
-            <div class="body"><strong>Renovar</strong><span>Prolongar tu residencia o trabajo</span></div>
-            <div class="chev">⌄</div>
-          </button>
-          <div class="panel"><div class="panel-in">
-            <p>Renovar es prolongar lo que ya tienes. La clave: <strong>presentar a tiempo</strong> y acreditar bien tus medios. En plazo, sigues regular hasta que resuelvan.</p>
-            <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Renovaci%C3%B3n%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
-          </div></div>
+      <!-- Subsección 2: Regularizar tu situación -->
+      <div class="subsec">
+        <div class="subsec-head"><span class="subsec-ic">🌱</span><h3>Regularizar tu situación <small>· ya en España</small></h3></div>
+        <div class="lista">
+
+          <div class="acc">
+            <button class="fila" aria-expanded="false">
+              <div class="ic">🌱</div>
+              <div class="body"><strong>Arraigo</strong><span>Llevas tiempo aquí sin papeles</span></div>
+              <div class="chev">⌄</div>
+            </button>
+            <div class="panel"><div class="panel-in">
+              <p>El arraigo es tu vía ordinaria para regularizarte (social, sociolaboral, socioformativo, familiar o de segunda oportunidad). Elegimos <strong>la modalidad que encaja contigo</strong> y reunimos la prueba.</p>
+              <div class="paquete-slot">
+                <span class="sc-alcance">Lo tramitamos por ti</span>
+                <span class="pq-msg">Paquete de acompañamiento · <em>próximamente</em></span>
+                <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Arraigo%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
+              </div>
+            </div></div>
+          </div>
+
         </div>
+      </div>
 
-        <div class="acc">
-          <button class="fila" aria-expanded="false">
-            <div class="ic">🔀</div>
-            <div class="body"><strong>Cambiar de permiso</strong><span>Modificar tu autorización</span></div>
-            <div class="chev">⌄</div>
-          </button>
-          <div class="panel"><div class="panel-in">
-            <p>Pasar de un permiso a otro (estudios → trabajo, arraigo → residencia y trabajo). El <strong>encaje correcto</strong> evita una denegación evitable.</p>
-            <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Modificaci%C3%B3n%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
-          </div></div>
+      <!-- Subsección 3: Mantener y avanzar -->
+      <div class="subsec">
+        <div class="subsec-head"><span class="subsec-ic">🔄</span><h3>Mantener y avanzar</h3></div>
+        <div class="lista">
+
+          <div class="acc">
+            <button class="fila" aria-expanded="false">
+              <div class="ic">🔄</div>
+              <div class="body"><strong>Renovar</strong><span>Prolongar tu residencia o trabajo</span></div>
+              <div class="chev">⌄</div>
+            </button>
+            <div class="panel"><div class="panel-in">
+              <p>Renovar es prolongar lo que ya tienes. La clave: <strong>presentar a tiempo</strong> y acreditar bien tus medios. En plazo, sigues regular hasta que resuelvan.</p>
+              <div class="paquete-slot">
+                <span class="sc-alcance">Lo tramitamos por ti</span>
+                <span class="pq-msg">Paquete de acompañamiento · <em>próximamente</em></span>
+                <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Renovaci%C3%B3n%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="acc">
+            <button class="fila" aria-expanded="false">
+              <div class="ic">🔀</div>
+              <div class="body"><strong>Cambiar de permiso</strong><span>Modificar tu autorización</span></div>
+              <div class="chev">⌄</div>
+            </button>
+            <div class="panel"><div class="panel-in">
+              <p>Pasar de un permiso a otro (estudios → trabajo, arraigo → residencia y trabajo). El <strong>encaje correcto</strong> evita una denegación evitable.</p>
+              <div class="paquete-slot">
+                <span class="sc-alcance">Lo tramitamos por ti</span>
+                <span class="pq-msg">Paquete de acompañamiento · <em>próximamente</em></span>
+                <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Modificaci%C3%B3n%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="acc acc--pronto">
+            <button class="fila fila--pronto" aria-disabled="true">
+              <div class="ic">📗</div>
+              <div class="body"><strong>Larga duración <span class="pronto">Pronto</span></strong><span>Asentar tu residencia</span></div>
+            </button>
+          </div>
+
+          <div class="acc acc--pronto">
+            <button class="fila fila--pronto" aria-disabled="true">
+              <div class="ic">🇪🇸</div>
+              <div class="body"><strong>Nacionalidad <span class="pronto">Pronto</span></strong><span>Por residencia</span></div>
+            </button>
+          </div>
+
         </div>
+      </div>
 
-        <div class="acc">
-          <button class="fila" aria-expanded="false">
-            <div class="ic">🌱</div>
-            <div class="body"><strong>Regularizar mi situación</strong><span>Arraigo</span></div>
-            <div class="chev">⌄</div>
-          </button>
-          <div class="panel"><div class="panel-in">
-            <p>¿Llevas tiempo aquí sin papeles? El arraigo es tu vía ordinaria. Elegimos <strong>la modalidad que encaja contigo</strong> y reunimos la prueba.</p>
-            <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Arraigo%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
-          </div></div>
+      <!-- Subsección 4: Tu familia -->
+      <div class="subsec">
+        <div class="subsec-head"><span class="subsec-ic">👨‍👩‍👧</span><h3>Tu familia</h3></div>
+        <div class="lista">
+
+          <div class="acc">
+            <button class="fila" aria-expanded="false">
+              <div class="ic">👨‍👩‍👧</div>
+              <div class="body"><strong>Reagrupación familiar</strong><span>Traer a tu cónyuge, hijos o personas a tu cargo</span></div>
+              <div class="chev">⌄</div>
+            </button>
+            <div class="panel"><div class="panel-in">
+              <p>Acreditar el <strong>vínculo y los medios</strong> es lo que más frena la reagrupación: lo dejamos listo por ti, paso a paso.</p>
+              <div class="paquete-slot">
+                <span class="sc-alcance">Lo tramitamos por ti</span>
+                <span class="pq-msg">Paquete de acompañamiento · <em>próximamente</em></span>
+                <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Reagrupaci%C3%B3n%20familiar%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
+              </div>
+            </div></div>
+          </div>
+
         </div>
-
-        <div class="acc">
-          <button class="fila" aria-expanded="false">
-            <div class="ic">👨‍👩‍👧</div>
-            <div class="body"><strong>Traer a mi familia</strong><span>Reagrupación familiar</span></div>
-            <div class="chev">⌄</div>
-          </button>
-          <div class="panel"><div class="panel-in">
-            <p>Trae a tu cónyuge, hijos o personas a tu cargo. Acreditar el <strong>vínculo y los medios</strong> es lo que más frena: lo dejamos listo por ti.</p>
-            <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20Extranjer%C3%ADa%20%E2%80%94%20Reagrupaci%C3%B3n%20familiar%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noopener" class="mini-cta">Consulta gratuita →</a>
-          </div></div>
-        </div>
-
-        <div class="acc acc--pronto">
-          <button class="fila fila--pronto" aria-disabled="true">
-            <div class="ic">📗</div>
-            <div class="body"><strong>Larga duración <span class="pronto">Pronto</span></strong><span>Asentar tu residencia</span></div>
-          </button>
-        </div>
-
-        <div class="acc acc--pronto">
-          <button class="fila fila--pronto" aria-disabled="true">
-            <div class="ic">🇪🇸</div>
-            <div class="body"><strong>Nacionalidad <span class="pronto">Pronto</span></strong><span>Por residencia</span></div>
-          </button>
-        </div>
-
       </div>
     </div>
   </section>
@@ -519,26 +704,16 @@
   <!-- ════════════════════════════════════════ -->
   <!-- BLOQUE SERVICIO (regla de Jason) -->
   <!-- ════════════════════════════════════════ -->
-  <section class="servicio-extranjeria container reveal">
-    <div class="servicio-card">
-      <div>
-        <span class="sc-alcance">Lo tramitamos por ti</span>
-        <h2>¿Prefieres no hacerlo solo?</h2>
-        <p>Sara Altamirano, abogada de extranjería colegiada (ICAM nº 143312), estudia tu caso y prepara tu expediente de principio a fin. Tú entregas la documentación; nosotras nos encargamos del trámite.</p>
-        <ul class="sc-lista">
-          <li>Analizamos tu situación y te decimos qué vía te conviene.</li>
-          <li>Preparamos y revisamos toda la documentación.</li>
-          <li>Presentamos y hacemos seguimiento de tu expediente.</li>
-          <li>Te avisamos de plazos, requerimientos y siguientes pasos.</li>
-        </ul>
+  <section class="sara-band container reveal">
+    <div class="sara-band-inner">
+      <div class="sb-text">
+        <h3>¿No encuentras tu caso?</h3>
+        <p>Cada situación es distinta. Lo estudia <strong>Sara Altamirano, abogada de extranjería colegiada (ICAM nº 143312)</strong>, y te decimos la vía que te conviene. Primera valoración sin compromiso.</p>
       </div>
-      <div class="servicio-cta-box">
-        <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20de%20Extranjer%C3%ADa%20y%20quiero%20que%20estudi%C3%A9is%20mi%20caso." target="_blank" rel="noopener" class="sc-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.85-1.45A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.15l-.3-.2-3.05.9.9-2.95-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>
-          Consultar mi caso
-        </a>
-        <p class="sc-nota">Primera valoración sin compromiso</p>
-      </div>
+      <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20de%20Extranjer%C3%ADa%20y%20quiero%20que%20estudi%C3%A9is%20mi%20caso." target="_blank" rel="noopener" class="sb-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.85-1.45A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.15l-.3-.2-3.05.9.9-2.95-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>
+        Consultar mi caso
+      </a>
     </div>
   </section>
 
@@ -638,6 +813,11 @@
         hamburger.setAttribute('aria-expanded', 'false');
         document.querySelectorAll('.nav-item.active').forEach(item => item.classList.remove('active'));
       });
+    });
+
+    // Cabeceras de grupo plegables (subsecciones)
+    document.querySelectorAll('.subsec-head').forEach(head => {
+      head.addEventListener('click', () => head.closest('.subsec').classList.toggle('open'));
     });
 
     // Acordeón (Residencia y trabajo)
