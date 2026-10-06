@@ -1,329 +1,992 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W5F4Q6RP');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6RFNSSL254"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6RFNSSL254');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acreditar tu experiencia laboral (PEAC) — Gestiona Seguro</title>
-  <meta name="description" content="¿Años trabajando sin título? Te diagnosticamos qué puedes acreditar por el PEAC, te diseñamos tu ruta hacia un título oficial y te decimos qué formación necesitas. Primera consulta gratuita.">
+  <title>Estudios en España: homologación, acceso y PEAC — Gestiona Seguro</title>
+  <meta name="description" content="Entiende la formación en España: oficial vs propia, homologación de títulos extranjeros, acceso a la universidad y acreditación de tu experiencia por PEAC. Sitúate y te acompañamos.">
+  <link rel="canonical" href="https://gestionaseguroweb.com/servicios-homologacion.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
+    /* ============================================================ */
+    /* TOKENS UNIFICADOS — copiados del Core sin modificación       */
+    /* ============================================================ */
     :root {
-      --oliva: #556B2F;
-      --oliva-light: #7d9448;
-      --oliva-dark: #3a4a1f;
-      --oliva-bg: #f0f3e8;
-      --arena: #F5F5DC;
-      --arena-warm: #f8f6ed;
-      --arena-dark: #e8e2c8;
-      --terracota: #E2725B;
-      --terracota-dark: #c45a42;
-      --terracota-bg: #fdf3f0;
-      --dorado: #c9922e;
-      --dorado-bg: #FEF9EC;
-      --texto: #2a2218;
-      --texto-suave: #5e5649;
-      --blanco: #fffdf8;
+      /* ===== PALETA NUEVA (institucional) ===== */
+      --azul-principal: #032F5E;
+      --azul-secundario: #054782;
+      --azul-light: #E8EEF7;
+      --rojo-principal: #C3122C;
+      --rojo-dark: #9E0F23;
+      --amarillo: #F2A91D;
+      --fondo-claro: #FAF8F3;
+      --blanco: #FFFFFF;
+      --texto-principal: #2B2F33;
+      --texto-secundario: #666666;
+
+      /* ===== PUENTE: nombres viejos → colores nuevos ===== */
+      --oliva:          #032F5E;
+      --oliva-light:    #054782;
+      --oliva-dark:     #032F5E;
+      --oliva-bg:       #E8EEF7;
+      --terracota:      #C3122C;
+      --terracota-dark: #9E0F23;
+      --terracota-bg:   #FDECEE;
+      --arena:          #FFFFFF;
+      --arena-warm:     #FAF8F3;
+      --arena-dark:     #ECE9E2;
+      --texto:          #2B2F33;
+      --texto-suave:    #666666;
+
+      /* escala tipográfica */
       --fs-xs: 1rem;
       --fs-sm: 1.0625rem;
       --fs-base: 1.125rem;
       --fs-md: 1.1875rem;
+      --fs-lg: 1.3125rem;
       --fs-label: 0.8125rem;
+      --fs-tag: 0.875rem;
+      --fs-h4: 1.25rem;
       --fs-h3: clamp(1.375rem, 2.5vw, 1.625rem);
       --fs-h2: clamp(1.875rem, 4vw, 2.5rem);
-      --fs-h1: clamp(2.3rem, 5.5vw, 3.4rem);
+      --fs-h1: clamp(2.5rem, 6vw, 3.8rem);
+      --fs-btn: 1.0625rem;
+      --fs-btn-lg:1.125rem;
       --lh-tight: 1.3;
       --lh-normal: 1.65;
+      --lh-relaxed:1.75;
       --transicion: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       --radio: 20px;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
+
     body {
       font-family: 'Source Sans 3', system-ui, sans-serif;
       color: var(--texto);
       background: var(--blanco);
       font-size: var(--fs-sm);
       line-height: var(--lh-normal);
+      font-weight: 400;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
+
     h1, h2, h3, h4 {
       font-family: 'DM Serif Display', serif;
       line-height: var(--lh-tight);
       color: var(--oliva-dark);
+      margin-bottom: 1.2rem;
       font-weight: 400;
     }
-    a { color: inherit; text-decoration: none; }
-    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    h1 { font-size: var(--fs-h1); }
+    h2 { font-size: var(--fs-h2); }
+    h3 { font-size: var(--fs-h3); }
+    h4 { font-size: var(--fs-h4); }
+    p  { font-size: 1.0625rem; line-height: 1.65; }
+    a  { color: inherit; text-decoration: none; }
 
-    /* NAVBAR */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAVBAR (Core) ── */
     .navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,253,248,0.95);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(85,107,47,0.1);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(3,47,94,0.1);
+      transition: all var(--transicion);
     }
+    .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
     .navbar-inner {
-      max-width: 1120px; margin: 0 auto; padding: 0 24px;
-      height: 80px; display: flex; align-items: center; justify-content: space-between;
+      height: 92px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
     }
-    .logo { display: flex; align-items: center; gap: 12px; font-family: 'DM Serif Display', serif; font-size: 1.45rem; color: var(--oliva-dark); }
-    .logo img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
-    .nav-back {
+    .logo {
+      display: flex; align-items: center; gap: 12px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem; color: var(--oliva-dark); flex-shrink: 0;
+    }
+    .logo-header img { height: 68px; width: auto; object-fit: contain; display: block; }
+    .logo-header .brand-word { font-family: 'DM Serif Display', serif; font-size: 2.05rem; line-height: 1; letter-spacing: .2px; white-space: nowrap; }
+    .logo-header .brand-word .g1 { color: var(--azul-principal); }
+    .logo-header .brand-word .g2 { color: var(--rojo-principal); }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-item  { position: relative; }
+    .nav-trigger,
+    .nav-item > a:not(.nav-cta):not(.nav-cta-secundario) {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Source Sans 3', system-ui, sans-serif;
       font-size: var(--fs-xs); font-weight: 600; color: var(--texto-suave);
-      padding: 10px 18px; border-radius: 50px; transition: all var(--transicion);
+      padding: 10px 14px; border-radius: 10px;
+      transition: all var(--transicion); white-space: nowrap;
     }
-    .nav-back:hover { color: var(--oliva-dark); background: var(--oliva-bg); }
+    .nav-trigger:hover,
+    .nav-item > a:not(.nav-cta):not(.nav-cta-secundario):hover,
+    .nav-item.active .nav-trigger { color: var(--oliva-dark); background: var(--oliva-bg); }
+    .nav-trigger .chevron { width: 12px; height: 12px; transition: transform var(--transicion); flex-shrink: 0; }
+    .nav-item.active .chevron { transform: rotate(180deg); }
+    .dropdown {
+      position: absolute; top: calc(100% + 10px); left: 0;
+      min-width: 290px; background: var(--blanco);
+      border: 1px solid rgba(3,47,94,0.12); border-radius: 16px; padding: 10px;
+      box-shadow: 0 12px 32px rgba(3,47,94,0.12), 0 2px 6px rgba(3,47,94,0.05);
+      list-style: none; opacity: 0; visibility: hidden; transform: translateY(-8px);
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0.22s; z-index: 110;
+    }
+    .nav-item.active .dropdown {
+      opacity: 1; visibility: visible; transform: translateY(0);
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0s;
+    }
+    .dropdown::before {
+      content: ''; position: absolute; top: -6px; left: 24px;
+      width: 12px; height: 12px; background: var(--blanco);
+      border-top: 1px solid rgba(3,47,94,0.12); border-left: 1px solid rgba(3,47,94,0.12);
+      transform: rotate(45deg);
+    }
+    .dropdown-item { display: block; padding: 12px 14px; border-radius: 10px; transition: background var(--transicion); }
+    .dropdown-item:hover { background: var(--oliva-bg); }
+    .dropdown-item strong { display: block; font-size: var(--fs-xs); font-weight: 700; color: var(--oliva-dark); margin-bottom: 2px; font-family: 'Source Sans 3', sans-serif; }
+    .dropdown-item span { display: block; font-size: 0.9375rem; font-weight: 400; color: var(--texto-suave); line-height: 1.45; }
+    .nav-cta {
+      background: var(--oliva) !important; color: #fff !important;
+      padding: 12px 24px; border-radius: 50px; font-weight: 700 !important; font-size: var(--fs-xs);
+      transition: background var(--transicion), transform var(--transicion); white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--oliva-dark) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { width: 24px; height: 2px; background: var(--oliva-dark); border-radius: 2px; transition: var(--transicion); }
 
-    /* HERO */
-    .peac-hero {
-      padding: 150px 24px 70px;
-      background: linear-gradient(180deg, var(--dorado-bg) 0%, var(--blanco) 100%);
+    /* ── HERO DE PÁGINA ── */
+    .hero-pagina {
+      padding: 120px 24px 56px;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--fondo-claro) 100%);
       text-align: center;
     }
-    .peac-hero .badge {
+    .hero-pagina .breadcrumb {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: var(--fs-xs); color: var(--texto-suave); margin-bottom: 18px;
+    }
+    .hero-pagina .breadcrumb a { color: var(--azul-principal); font-weight: 600; }
+    .hero-pagina .breadcrumb a:hover { text-decoration: underline; }
+    .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(201,146,46,0.12); color: #8b6914;
+      background: var(--azul-light); color: var(--azul-principal);
       font-size: var(--fs-label); font-weight: 700;
-      padding: 8px 18px; border-radius: 50px; margin-bottom: 24px;
-      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 8px 18px; border-radius: 50px; margin-bottom: 20px;
+      letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(3,47,94,0.12);
     }
-    .peac-hero h1 { font-size: var(--fs-h1); margin-bottom: 22px; max-width: 760px; margin-left: auto; margin-right: auto; }
-    .peac-hero h1 em { font-style: normal; color: var(--terracota); }
-    .peac-hero .sub {
+    .hero-badge .pulse { width: 8px; height: 8px; background: var(--amarillo); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+    .hero-pagina h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin-bottom: 16px; }
+    .hero-pagina h1 .rojo { color: var(--rojo-principal); }
+    .hero-pagina .hero-sub {
       font-size: var(--fs-md); color: var(--texto-suave);
-      max-width: 620px; margin: 0 auto 34px; line-height: var(--lh-normal);
+      max-width: 620px; margin: 0 auto 8px; line-height: var(--lh-normal);
     }
-    .peac-hero .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 16px 32px; border-radius: 50px;
-      font-weight: 700; font-size: var(--fs-base);
-      transition: transform var(--transicion), background var(--transicion);
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn--oliva { background: var(--oliva); color: var(--arena); box-shadow: 0 10px 24px rgba(85,107,47,0.18); }
-    .btn--oliva:hover { background: var(--oliva-dark); }
-    .btn--ghost { background: var(--blanco); color: var(--oliva-dark); border: 2px solid var(--arena-dark); }
-    .btn--ghost:hover { border-color: var(--oliva-light); }
+    .hero-accent-line { width: 72px; height: 5px; background: linear-gradient(90deg, var(--rojo-principal), var(--amarillo)); border-radius: 20px; margin: 22px auto 0; }
 
-    section { padding: 64px 0; }
+    /* ── BLOQUES PEER (Estudios / Residencia y trabajo) ── */
+    .bloque-sec { padding: 26px 0; }
+    .bloque-card {
+      background: var(--blanco); border: 1px solid var(--borde, #ECE9E2);
+      border-top: 6px solid var(--azul-principal); border-radius: 22px;
+      padding: 38px 40px; box-shadow: 0 16px 40px rgba(3,47,94,0.08);
+    }
+    .bloque-card--trabajo { border-top-color: var(--rojo-principal); }
 
-    /* PROBLEMA */
-    .problema { background: var(--arena-warm); }
-    .problema .lead {
-      font-size: var(--fs-md); color: var(--texto); max-width: 720px;
-      line-height: var(--lh-normal); text-align: center; margin: 0 auto;
+    /* ★ Estancia por estudios — bloque destacado (el foco) */
+    .bloque-card--estudios {
+      position: relative;
+      border: none;
+      background: linear-gradient(160deg, var(--azul-principal), var(--azul-secundario));
+      color: #fff;
+      box-shadow: 0 26px 56px rgba(3,47,94,0.28);
     }
-    .problema .lead strong { color: var(--oliva-dark); }
+    .bloque-card--estudios h2 { color: #fff; }
+    .bloque-card--estudios .bloque-eyebrow.eb-amarillo { color: var(--amarillo); }
+    .bloque-card.bloque-card--estudios .lead { color: rgba(255,255,255,0.92); }
+    .bloque-card.bloque-card--estudios .lead strong { color: #fff; }
+    .bloque-foco {
+      position: absolute; top: -14px; left: 40px;
+      background: var(--amarillo); color: var(--texto);
+      font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 7px 16px; border-radius: 50px; box-shadow: 0 8px 18px rgba(3,47,94,0.22);
+    }
+    /* vías sobre el fondo azul */
+    .bloque-card--estudios .via { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); }
+    .bloque-card--estudios .via:hover { box-shadow: 0 12px 26px rgba(0,0,0,0.18); }
+    .bloque-card--estudios .via h3 { color: #fff; }
+    .bloque-card--estudios .via p { color: rgba(255,255,255,0.85); }
+    .bloque-card--estudios .via .via-link { color: var(--amarillo); }
+    .bloque-card--estudios .via--espana { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); }
+    .bloque-card--estudios .bloque-accent { background: linear-gradient(90deg, #FFFFFF, var(--amarillo)); }
+    .bloque-eyebrow { display: inline-block; font-size: var(--fs-label); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .eb-amarillo { color: var(--amarillo); }
+    .eb-rojo { color: var(--rojo-principal); }
+    .bloque-card h2 { font-size: clamp(1.7rem, 3.6vw, 2.3rem); margin-bottom: 4px; }
+    .bloque-accent { width: 72px; height: 5px; border-radius: 20px; background: linear-gradient(90deg, var(--rojo-principal), var(--amarillo)); margin: 8px 0 18px; }
+    .bloque-accent--estudios { background: linear-gradient(90deg, var(--azul-principal), var(--amarillo)); }
+    .bloque-card .lead { font-size: 1.08rem; color: var(--texto-suave); max-width: 720px; margin-bottom: 24px; }
+    .bloque-card .lead strong { color: var(--texto); }
 
-    /* SECCIÓN TÍTULO */
-    .sec-head { text-align: center; margin-bottom: 44px; }
-    .sec-head .tag {
-      display: inline-block; font-size: var(--fs-label); font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.1em; color: var(--terracota); margin-bottom: 10px;
-    }
-    .sec-head h2 { font-size: var(--fs-h2); margin-bottom: 12px; }
-    .sec-head p { color: var(--texto-suave); font-size: var(--fs-base); max-width: 600px; margin: 0 auto; }
+    /* vías estudios */
+    .vias { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .via { background: var(--azul-light); border: 1px solid #d7e2f0; border-radius: 16px; padding: 22px; transition: transform .2s, box-shadow .2s; }
+    .via:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(3,47,94,0.1); }
+    .via .via-h { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .via .via-emoji { font-size: 1.5rem; }
+    .via h3 { font-size: 1.15rem; color: var(--azul-principal); margin-bottom: 0; }
+    .via p { font-size: var(--fs-xs); color: var(--texto-suave); line-height: 1.5; margin-bottom: 12px; }
+    .via .via-link { font-size: var(--fs-xs); font-weight: 800; color: var(--azul-principal); text-decoration: none; }
+    .via--origen { position: relative; overflow: hidden; }
+    .via--origen::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(to right, var(--azul-principal), var(--azul-secundario), var(--azul-light)); }
+    .via--espana { background: #FFF8EC; border-color: #F0DDAE; position: relative; overflow: hidden; }
+    .via--espana::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(to right, var(--rojo-principal) 0 25%, var(--amarillo) 25% 75%, var(--rojo-principal) 75% 100%); }
 
-    /* LAS 3 CAPAS */
-    .capas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .capa {
-      background: var(--blanco); border: 1.5px solid var(--arena-dark);
-      border-radius: var(--radio); padding: 32px 28px; position: relative;
-      transition: transform var(--transicion), box-shadow var(--transicion);
+    /* acordeón (residencia y trabajo) */
+    .lista { border: 1px solid #ECE9E2; border-radius: 14px; overflow: hidden; }
+    .acc { border-bottom: 1px solid #ECE9E2; }
+    .acc:last-child { border-bottom: none; }
+    .fila { width: 100%; font-family: inherit; border: none; background: none; text-align: left; padding: 15px 16px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: background .2s; }
+    .fila:hover { background: var(--azul-light); }
+    .acc.open > .fila { background: var(--azul-light); }
+    .fila .ic { width: 42px; height: 42px; border-radius: 11px; background: var(--azul-light); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+    .fila .body { flex: 1; }
+    .fila .body strong { display: block; color: var(--azul-principal); font-size: var(--fs-sm); }
+    .fila .body span { font-size: var(--fs-xs); color: var(--texto-suave); }
+    .chev { color: var(--azul-principal); font-size: 1.2rem; transition: transform .25s; }
+    .acc.open .chev { transform: rotate(180deg); }
+    .panel { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .acc.open .panel { max-height: 680px; }
+    .panel-in { padding: 0 16px 16px 72px; }
+    .panel-in p { font-size: var(--fs-xs); color: var(--texto-suave); line-height: 1.55; margin-bottom: 10px; }
+    .panel-in p strong { color: var(--texto); }
+    .mini-cta { display: inline-block; font-size: var(--fs-xs); font-weight: 800; color: var(--azul-principal); text-decoration: none; }
+    .fila--pronto { opacity: .55; cursor: default; }
+    .acc--pronto .chev { display: none; }
+    .fila--pronto .ic { background: var(--fondo-claro); }
+    .pronto { font-size: .62rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--texto-suave); background: var(--fondo-claro); padding: 3px 8px; border-radius: 20px; margin-left: 6px; }
+
+    /* ── SUBSECCIONES dentro de Residencia y trabajo ── */
+    .subsec { margin-top: 20px; border: 1px solid var(--arena-dark); border-radius: 16px; overflow: hidden; }
+    .subsec:first-of-type { margin-top: 10px; }
+    .subsec-head {
+      display: flex; align-items: center; gap: 11px;
+      background: var(--azul-light); padding: 14px 20px;
+      border-left: 5px solid var(--azul-principal);
+      cursor: pointer; user-select: none;
+      transition: background var(--transicion);
     }
-    .capa:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(42,34,24,0.08); }
-    .capa__num {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--oliva); color: var(--arena);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 18px;
+    .subsec-head:hover { background: #dce7f6; }
+    .subsec-head .subsec-ic { font-size: 1.3rem; line-height: 1; }
+    .subsec-head h3 { font-size: 1.15rem; color: var(--azul-principal); margin: 0; }
+    .subsec-head h3 small { font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: var(--fs-xs); color: var(--azul-secundario); }
+    .subsec-head::after { content: '⌄'; margin-left: auto; color: var(--azul-principal); font-size: 1.4rem; line-height: 1; transition: transform .28s ease; }
+    .subsec.open .subsec-head::after { transform: rotate(180deg); }
+    /* cuerpo plegable del grupo */
+    .subsec .lista { border: none; border-radius: 0; max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .subsec.open .lista { max-height: 2200px; }
+
+    /* ── Hueco de PAQUETE (preparado, se rellena luego) ── */
+    .paquete-slot {
+      margin-top: 12px; padding: 14px 16px;
+      border: 1px dashed #c3d2e6; border-radius: 12px; background: var(--azul-light);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
     }
-    .capa h3 { font-size: var(--fs-h3); margin-bottom: 10px; }
-    .capa p { font-size: var(--fs-sm); color: var(--texto-suave); line-height: var(--lh-normal); }
-    .capa--destacada { border-color: var(--terracota); border-width: 2px; }
-    .capa--destacada .capa__num { background: var(--terracota); }
-    .capa__flag {
-      position: absolute; top: -12px; right: 20px;
-      background: var(--terracota); color: #fff;
-      font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+    .paquete-slot .sc-alcance {
+      display: inline-block; background: var(--azul-principal); color: #fff; margin: 0;
+      font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
       padding: 4px 12px; border-radius: 50px;
     }
+    .paquete-slot .pq-msg { font-size: var(--fs-xs); color: var(--texto-suave); }
+    .paquete-slot .pq-msg em { font-style: normal; font-weight: 700; color: var(--azul-secundario); }
+    .paquete-slot .mini-cta { margin-left: auto; }
 
-    /* INCLUYE / NO INCLUYE */
-    .alcance { background: var(--oliva-bg); }
-    .alcance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .alcance-card { background: var(--blanco); border-radius: var(--radio); padding: 32px 30px; }
-    .alcance-card h3 { font-size: var(--fs-h3); margin-bottom: 18px; }
-    .alcance-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .alcance-card li { font-size: var(--fs-sm); color: var(--texto-suave); line-height: 1.5; padding-left: 30px; position: relative; }
-    .alcance-card--si li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--oliva); font-weight: 800; font-size: 1.05rem; }
-    .alcance-card--no li::before { content: "✕"; position: absolute; left: 0; top: 0; color: var(--terracota); font-weight: 800; font-size: 0.95rem; }
-    .alcance-card--no h3 { color: var(--terracota-dark); }
-
-    /* CALCULADORA CTA */
-    .calc-cta {
-      background: var(--dorado-bg); border: 2px dashed var(--dorado);
-      border-radius: 24px; padding: 44px 36px; text-align: center;
-      max-width: 760px; margin: 0 auto;
+    /* ── Franja fina de autoridad (Sara) ── */
+    .sara-band { padding: 10px 0 60px; }
+    .sara-band-inner {
+      background: var(--oliva-bg); border: 1px solid rgba(3,47,94,0.14);
+      border-radius: 18px; padding: 24px 30px;
+      display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap;
     }
-    .calc-cta .ico { font-size: 2.6rem; margin-bottom: 14px; }
-    .calc-cta h2 { font-size: var(--fs-h2); color: #7d5b00; margin-bottom: 12px; }
-    .calc-cta p { font-size: var(--fs-base); color: var(--texto); margin-bottom: 26px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: var(--lh-normal); }
-    .btn--dorado { background: var(--dorado); color: #fff; box-shadow: 0 8px 20px rgba(201,146,46,0.28); }
-    .btn--dorado:hover { background: #b07f24; }
-    .calc-cta .nota { font-size: var(--fs-xs); color: var(--texto-suave); margin-top: 16px; }
+    .sara-band-inner .sb-text { flex: 1; min-width: 280px; }
+    .sara-band-inner .sb-text h3 { font-size: 1.3rem; margin-bottom: 6px; }
+    .sara-band-inner .sb-text p { font-size: var(--fs-sm); color: var(--texto-suave); margin: 0; line-height: 1.55; }
+    .sara-band-inner .sb-text strong { color: var(--azul-principal); }
+    .sara-band-inner .sb-btn {
+      display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+      background: var(--azul-principal); color: #fff; font-weight: 700; font-size: var(--fs-btn);
+      padding: 15px 28px; border-radius: 50px; box-shadow: 0 8px 20px rgba(3,47,94,0.22);
+      transition: background var(--transicion), transform var(--transicion);
+    }
+    .sara-band-inner .sb-btn:hover { background: var(--azul-secundario); transform: translateY(-2px); }
+    @media (max-width: 768px) { .sara-band-inner { flex-direction: column; align-items: stretch; text-align: center; } .sara-band-inner .sb-btn { justify-content: center; } }
 
-    /* CTA FINAL */
-    .cta-final { background: var(--oliva-dark); color: rgba(245,245,220,0.92); text-align: center; }
-    .cta-final h2 { color: var(--arena); font-size: var(--fs-h2); margin-bottom: 14px; }
-    .cta-final p { font-size: var(--fs-md); max-width: 580px; margin: 0 auto 30px; line-height: var(--lh-normal); }
-    .btn--arena { background: var(--terracota); color: #fff; box-shadow: 0 10px 24px rgba(0,0,0,0.2); }
-    .btn--arena:hover { background: var(--terracota-dark); }
-    .cta-final .micro { font-size: var(--fs-xs); margin-top: 16px; opacity: 0.8; }
+    /* ── BLOQUE SERVICIO (regla de Jason) ── */
+    .servicio-extranjeria { padding: 30px 0 70px; }
+    .servicio-card {
+      background: var(--oliva-bg); border: 1px solid rgba(3,47,94,0.18);
+      border-radius: 24px; padding: 44px 40px;
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center;
+    }
+    .servicio-card .sc-alcance {
+      display: inline-block; background: var(--oliva); color: #fff;
+      font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 5px 14px; border-radius: 50px; margin-bottom: 14px;
+    }
+    .servicio-card h2 { margin-bottom: 12px; }
+    .servicio-card p { font-size: var(--fs-sm); color: var(--texto-suave); line-height: var(--lh-relaxed); margin-bottom: 8px; }
+    .servicio-card .sc-lista { list-style: none; margin: 14px 0 0; display: flex; flex-direction: column; gap: 8px; }
+    .servicio-card .sc-lista li { font-size: var(--fs-sm); color: var(--texto-suave); padding-left: 24px; position: relative; }
+    .servicio-card .sc-lista li::before { content: '✓'; position: absolute; left: 0; color: var(--oliva); font-weight: 800; }
+    .servicio-cta-box { text-align: center; }
+    .servicio-cta-box .sc-btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--azul-principal); color: #fff; font-weight: 700; font-size: var(--fs-btn);
+      padding: 16px 30px; border-radius: 50px; box-shadow: 0 8px 20px rgba(3,47,94,0.22);
+      transition: background var(--transicion), transform var(--transicion); margin-bottom: 10px;
+    }
+    .servicio-cta-box .sc-btn:hover { background: var(--azul-secundario); transform: translateY(-2px); }
+    .servicio-cta-box .sc-nota { font-size: var(--fs-xs); color: var(--texto-suave); }
 
-    /* FOOTER */
-    .footer { background: #2c3618; color: rgba(245,245,220,0.75); padding: 40px 0; text-align: center; }
-    .footer a { color: var(--arena); font-weight: 600; }
-    .footer .links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; font-size: var(--fs-xs); }
-    .footer .copy { font-size: 0.9rem; opacity: 0.7; }
+    /* ── DISCLAIMER LEGAL ── */
+    .disclaimer-legal { max-width: 900px; margin: 0 auto; padding: 0 24px 60px; }
+    .disclaimer-legal-inner { background: var(--arena-warm); border: 1px solid var(--arena-dark); border-radius: 14px; padding: 22px 26px; }
+    .disclaimer-legal p { font-size: var(--fs-xs); color: var(--texto-suave); line-height: 1.6; margin: 0; }
+    .disclaimer-legal strong { color: var(--oliva-dark); }
 
+    /* ── FOOTER (Core, unificado con el home) ── */
+    .footer { background: var(--oliva-dark); color: rgba(245,245,220,0.8); padding: 80px 0 40px; margin-top: 40px; }
+    .footer-comunidad { padding: 44px 0 28px; margin-top: 50px; }
+    .footer-comunidad-inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; align-items: start; padding-bottom: 22px; border-bottom: 1px solid rgba(245,245,220,0.14); }
+    .footer-comunidad h4 { color: var(--arena); margin-bottom: 8px; font-family: 'Source Sans 3', sans-serif; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
+    .footer-comunidad p { color: rgba(245,245,220,0.82); font-size: 1rem; line-height: 1.6; margin: 0; max-width: 430px; }
+    .footer-comunidad-contacto { display: flex; flex-direction: column; gap: 8px; }
+    .footer-comunidad-contacto a { color: var(--arena); font-weight: 700; font-size: 0.98rem; }
+    .footer-comunidad-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+    .footer-comunidad-links a { display: inline-flex; align-items: center; justify-content: center; padding: 8px 13px; border-radius: 999px; background: rgba(245,245,220,0.12); color: var(--arena); font-weight: 700; font-size: 0.95rem; }
+    .footer-comunidad-links a:hover { background: rgba(245,245,220,0.22); }
+    .footer-comunidad .footer-bottom { padding-top: 18px; border-top: none; justify-content: center; text-align: center; }
+    .footer-comunidad .footer-bottom p { font-size: 0.95rem; max-width: none; color: rgba(245,245,220,0.78); }
+
+    /* ── ANIMACIONES ── */
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
+    .reveal { opacity: 0; transform: translateY(28px); transition: 0.8s all ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column; align-items: stretch;
+        position: absolute; top: 80px; left: 0; right: 0;
+        background: rgba(255,255,255,0.98); backdrop-filter: blur(12px);
+        padding: 16px 20px 24px; gap: 4px;
+        border-bottom: 1px solid rgba(3,47,94,0.08);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        max-height: calc(100vh - 80px); overflow-y: auto;
+      }
+      .nav-links.open .nav-item { width: 100%; }
+      .nav-links.open .nav-trigger,
+      .nav-links.open .nav-item > a:not(.nav-cta):not(.nav-cta-secundario) { width: 100%; justify-content: space-between; padding: 15px 16px; font-size: var(--fs-sm); }
+      .nav-links.open .dropdown {
+        position: static; opacity: 1; visibility: visible; transform: none;
+        box-shadow: none; border: none; background: var(--oliva-bg);
+        padding: 0 6px; margin: 0; border-radius: 12px; max-height: 0; overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+      }
+      .nav-links.open .dropdown::before { display: none; }
+      .nav-links.open .nav-item.active .dropdown { max-height: 500px; padding: 8px 6px; margin: 4px 0 8px; }
+      .nav-links.open .nav-cta { margin-top: 12px; text-align: center; display: flex; justify-content: center; }
+      .servicio-card { grid-template-columns: 1fr; }
+    }
     @media (max-width: 768px) {
-      .capas { grid-template-columns: 1fr; }
-      .alcance-grid { grid-template-columns: 1fr; }
-      .nav-back { padding: 8px 14px; font-size: 0.95rem; }
-      .logo span { display: none; }
+      .hero-pagina { padding: 110px 20px 44px; }
+      .navbar-inner { height: 74px; }
+      .logo-header img { height: 46px; }
+      .logo-header .brand-word { font-size: 1.45rem; }
+      .bloque-card { padding: 28px 22px; }
+      .vias { grid-template-columns: 1fr; }
+      .panel-in { padding-left: 16px; }
+      .servicio-card { padding: 32px 24px; }
+      .footer-comunidad-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-comunidad-contacto { align-items: center; }
+      .footer-comunidad-links { justify-content: center; }
     }
+
+    /* ═══ MAPA DE LA FORMACIÓN (apartado Estudios) ═══ */
+    .est-head{text-align:center;max-width:640px;margin:0 auto 22px;}
+    .est-flagline{width:120px;height:6px;border-radius:20px;margin:16px auto 0;background:linear-gradient(90deg,var(--rojo-principal) 0 30%,var(--amarillo) 30% 70%,var(--rojo-principal) 70% 100%);}
+    .est-hint{text-align:center;color:var(--texto-suave);font-size:.95rem;margin-bottom:16px;}
+    .validez{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px;align-items:start;}
+    .vcard{border-radius:20px;overflow:hidden;box-shadow:0 16px 38px rgba(3,47,94,.09);}
+    .vhead{padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+    .vhead h3{font-size:1.2rem;margin:0;color:#fff;}
+    .vhead .pill{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:5px 11px;border-radius:50px;white-space:nowrap;}
+    .vcard--of .vhead{background:linear-gradient(120deg,var(--azul-principal),var(--azul-secundario));}
+    .vcard--of .vhead .pill{background:rgba(255,255,255,.2);color:#fff;}
+    .vcard--pr .vhead{background:linear-gradient(120deg,var(--amarillo),#e6960f);}
+    .vcard--pr .vhead h3{color:#3d2a00;}
+    .vcard--pr .vhead .pill{background:rgba(61,42,0,.16);color:#3d2a00;}
+    .vbody{background:#fff;padding:18px 18px 20px;}
+    .grp{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-suave);margin:4px 0 9px;}
+    .grp.mt{margin-top:16px;}
+    .lvl{border:1.5px solid #ECE9E2;border-radius:12px;margin-bottom:8px;overflow:hidden;background:#fff;transition:border-color .2s;}
+    .lvl-h{width:100%;border:none;background:#fff;cursor:pointer;font-family:inherit;text-align:left;display:flex;align-items:center;gap:11px;padding:12px 14px;transition:background .2s;}
+    .lvl-h:hover{background:var(--fondo-claro);}
+    .lvl-h .e{font-size:1.2rem;flex-shrink:0;filter:grayscale(.2);transition:filter .2s;}
+    .lvl-h .nm{font-weight:800;color:var(--texto);font-size:.96rem;flex:1;transition:color .2s;}
+    .lvl-h .cz{color:var(--texto-suave);transition:transform .25s;font-size:1.05rem;flex-shrink:0;}
+    .lvl.open .lvl-h .cz{transform:rotate(180deg);}
+    .lvl.open .lvl-h .e{filter:none;}
+    .lvl-p{max-height:0;overflow:hidden;transition:max-height .32s ease;}
+    .lvl.open .lvl-p{max-height:280px;}
+    .lvl-in{padding:2px 16px 14px 45px;}
+    .lvl-in p{font-size:.9rem;color:var(--texto-suave);margin:0 0 9px;line-height:1.45;}
+    .lvl-in .donde{font-size:.85rem;color:var(--texto);background:var(--fondo-claro);border-radius:9px;padding:9px 11px;}
+    .lvl-in .donde strong{color:var(--azul-principal);}
+    .lvl-in .chk{font-size:.85rem;font-weight:700;color:var(--azul-secundario);margin-top:9px;display:inline-block;}
+    .lvl.azul.open{border-color:var(--azul-principal);} .lvl.azul.open .lvl-h{background:var(--azul-light);} .lvl.azul.open .nm{color:var(--azul-principal);}
+    .lvl.amber.open{border-color:var(--amarillo);} .lvl.amber.open .lvl-h{background:#FEF4DF;} .lvl.amber.open .nm{color:#9a6a08;}
+    .lvl.rojo.open{border-color:var(--rojo-principal);} .lvl.rojo.open .lvl-h{background:#FDECEE;} .lvl.rojo.open .nm{color:var(--rojo-dark);}
+    .lvl.amber .lvl-in .chk{color:#9a6a08;} .lvl.amber .lvl-in .donde strong{color:#9a6a08;}
+    .aviso-sutil{display:flex;align-items:flex-start;gap:12px;background:#FDECEE;border:1px solid #f3cdd3;border-left:5px solid var(--rojo-principal);border-radius:12px;padding:14px 18px;margin-bottom:16px;}
+    .aviso-sutil .ic{font-size:1.2rem;line-height:1.4;flex-shrink:0;}
+    .aviso-sutil p{font-size:.95rem;color:var(--texto);margin:0;line-height:1.5;}
+    .aviso-sutil a{color:var(--rojo-dark);font-weight:800;}
+    .puente{background:#fff;color:var(--texto);border:1px solid #ECE9E2;border-left:6px solid var(--amarillo);border-radius:16px;padding:20px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:0 12px 30px rgba(3,47,94,.07);}
+    .puente .pl{display:flex;align-items:center;gap:13px;flex:1;min-width:260px;}
+    .puente .ico{width:50px;height:50px;border-radius:15px;background:#FEF4DF;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;}
+    .puente .tag{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#9a6a08;}
+    .puente h3{color:var(--azul-principal);font-size:1.25rem;margin:2px 0 0;}
+    .puente .flecha{display:flex;align-items:center;gap:12px;background:var(--fondo-claro);border:1px solid #ECE9E2;border-radius:14px;padding:12px 16px;font-size:.92rem;color:var(--texto-suave);}
+    .puente .flecha b{color:var(--texto);}
+    .puente .flecha .ar{color:var(--amarillo);font-size:1.3rem;font-weight:800;}
+    .puente .flecha .of{background:var(--azul-light);color:var(--azul-principal);font-weight:800;padding:4px 10px;border-radius:50px;font-size:.78rem;}
+    .cam-head{text-align:center;margin:36px 0 18px;}
+    .cam-head h2{font-size:clamp(1.5rem,3vw,2rem);}
+    .caminos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+    .camino{background:#fff;border:1px solid #ECE9E2;border-top:4px solid var(--azul-principal);border-radius:18px;padding:22px;box-shadow:0 12px 30px rgba(3,47,94,.06);display:flex;flex-direction:column;position:relative;transition:transform .2s,box-shadow .2s;}
+    .camino:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(3,47,94,.1);}
+    .camino.b{border-top-color:var(--amarillo);} .camino.c{border-top-color:var(--rojo-principal);}
+    .camino .top{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+    .camino .chip{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:var(--azul-light);}
+    .camino.b .chip{background:#FEF4DF;} .camino.c .chip{background:#FDECEE;}
+    .camino .top h3{margin:0;color:var(--azul-principal);font-size:1.08rem;}
+    .camino .meta{font-size:.86rem;color:var(--texto-suave);}
+    .camino p{font-size:.93rem;color:var(--texto);flex-grow:1;margin:0 0 14px;}
+    .camino .go{font-weight:800;font-size:.92rem;}
+    .camino.a .go{color:var(--azul-secundario);} .camino.b .go{color:#9a6a08;} .camino.c .go{color:var(--rojo-dark);}
+    .foco{position:absolute;top:-11px;right:16px;background:var(--amarillo);color:#3d2a00;font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:5px 11px;border-radius:50px;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.12);}
+    /* Nuestra formación (placeholder) */
+    .nf{background:var(--azul-light);border:1px dashed var(--azul-secundario);border-radius:18px;padding:30px 28px;text-align:center;}
+    .nf h2{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:8px;}
+    .nf p{color:var(--texto-suave);max-width:620px;margin:0 auto;}
+    .nf .badge-wip{display:inline-block;background:var(--amarillo);color:#3d2a00;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:5px 12px;border-radius:50px;margin-bottom:12px;}
+    @media(max-width:820px){.validez{grid-template-columns:1fr;}.caminos{grid-template-columns:1fr;}}
+
+    /* ═══ RECORRIDO (línea de tiempo) ═══ */
+    .recorrido-sec{padding:10px 0 10px;}
+    .recorrido-sec .r-head{text-align:center;max-width:640px;margin:0 auto 26px;}
+    .recorrido-sec .r-eyebrow{display:inline-block;font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#fff;background:linear-gradient(90deg,var(--azul-principal),var(--azul-secundario));padding:7px 16px;border-radius:50px;margin-bottom:12px;}
+    .recorrido-sec .r-head h2{font-size:clamp(1.7rem,3.6vw,2.3rem);margin-bottom:8px;}
+    .recorrido-sec .r-head p{color:var(--texto-suave);}
+    .recorrido-sec .r-flag{width:120px;height:6px;border-radius:20px;margin:16px auto 0;background:linear-gradient(90deg,var(--rojo-principal) 0 30%,var(--amarillo) 30% 70%,var(--rojo-principal) 70% 100%);}
+    .recorrido-sec .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:30px;}
+    .recorrido-sec .step{position:relative;padding:0 10px;}
+    .recorrido-sec .step::before{content:'';position:absolute;top:28px;left:0;right:0;height:4px;background:#ECE9E2;z-index:0;}
+    .recorrido-sec .step:first-child::before{left:50%;}
+    .recorrido-sec .step:last-child::before{right:50%;}
+    .recorrido-sec .dot{position:relative;z-index:1;width:58px;height:58px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:#fff;border:3px solid var(--azul-principal);box-shadow:0 8px 20px rgba(3,47,94,.12);}
+    .recorrido-sec .step.s2 .dot{border-color:var(--azul-secundario);} .recorrido-sec .step.s3 .dot{border-color:var(--amarillo);} .recorrido-sec .step.s4 .dot{border-color:var(--rojo-principal);} .recorrido-sec .step.s5 .dot{border-color:var(--azul-principal);}
+    .recorrido-sec .num{position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;background:var(--azul-principal);color:#fff;font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+    .recorrido-sec .step.s4 .num{background:var(--rojo-principal);}
+    .recorrido-sec .rcard{background:#fff;border:1px solid #ECE9E2;border-top:4px solid var(--azul-principal);border-radius:14px;padding:16px 15px;min-height:188px;}
+    .recorrido-sec .step.s2 .rcard{border-top-color:var(--azul-secundario);} .recorrido-sec .step.s3 .rcard{border-top-color:var(--amarillo);} .recorrido-sec .step.s4 .rcard{border-top-color:var(--rojo-principal);box-shadow:0 14px 32px rgba(195,18,44,.12);} .recorrido-sec .step.s5 .rcard{border-top-color:var(--azul-principal);}
+    .recorrido-sec .rcard h3{font-size:1rem;color:var(--azul-principal);margin-bottom:6px;}
+    .recorrido-sec .rcard p{font-size:.86rem;color:var(--texto-suave);line-height:1.45;}
+    .recorrido-sec .rtag{display:inline-block;margin-top:10px;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:4px 9px;border-radius:50px;background:var(--azul-light);color:var(--azul-principal);}
+    .recorrido-sec .step.s3 .rtag{background:#FEF4DF;color:#9a6a08;} .recorrido-sec .step.s4 .rtag{background:#FDECEE;color:var(--rojo-dark);}
+    .recorrido-sec .rfoco{display:inline-block;margin-left:6px;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;background:var(--amarillo);color:#3d2a00;padding:3px 8px;border-radius:50px;}
+    .recorrido-sec .quien{display:flex;align-items:center;gap:7px;margin-top:10px;font-size:.78rem;color:var(--texto);font-weight:700;}
+    .recorrido-sec .quien .avs{display:flex;}
+    .recorrido-sec .quien .av{width:26px;height:26px;border-radius:50%;color:#fff;font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid #fff;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.12);}
+    .recorrido-sec .quien .av img{width:100%;height:100%;object-fit:cover;display:block;}
+    .recorrido-sec .quien .av.nora{background:var(--azul-principal);} .recorrido-sec .quien .av.sara{background:var(--rojo-principal);}
+    .recorrido-sec .quien .av+.av{margin-left:-8px;}
+    .recorrido-sec .casos{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:.74rem;font-weight:800;color:#9a6a08;background:#FEF4DF;padding:5px 11px;border-radius:50px;}
+    .recorrido-sec .caveats{margin-top:28px;background:var(--azul-light);border:1px solid #cfe0f5;border-left:5px solid var(--azul-principal);border-radius:12px;padding:16px 20px;}
+    .recorrido-sec .caveats p{font-size:.86rem;color:var(--texto-suave);margin:0;line-height:1.55;}
+    .recorrido-sec .caveats strong{color:var(--texto);}
+    @media(max-width:860px){.recorrido-sec .timeline{grid-template-columns:1fr;gap:14px;} .recorrido-sec .step{display:grid;grid-template-columns:72px 1fr;align-items:start;padding:0;} .recorrido-sec .step::before{top:0;bottom:0;left:28px;right:auto;width:4px;height:auto;} .recorrido-sec .step:first-child::before,.recorrido-sec .step:last-child::before{left:28px;top:0;} .recorrido-sec .dot{margin:0;} .recorrido-sec .rcard{min-height:0;}}
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5F4Q6RP"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <nav class="navbar">
-    <div class="navbar-inner">
-      <a href="/" class="logo">
-        <img src="logo-gestiona-seguro.png" alt="Gestiona Seguro">
-        <span>Gestiona Seguro</span>
+  <!-- ════════════════════════════════════════ -->
+  <!-- NAVBAR (Core) -->
+  <!-- ════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="logo logo-header">
+        <img src="logo-emblema.png" alt="Gestiona Seguro — Estudia y trabaja en España">
+        <span class="brand-word"><span class="g1">Gestiona</span> <span class="g2">Seguro</span></span>
       </a>
-      <a href="/#areas" class="nav-back">← Volver al inicio</a>
+      <ul class="nav-links" id="navLinks">
+        <li class="nav-item"><a href="extranjeria.html">Extranjería</a></li>
+        <li class="nav-item"><a href="servicios-homologacion.html">Estudios</a></li>
+        <li class="nav-item"><a href="empleo.html">Empleo</a></li>
+        <li class="nav-item"><a href="blog.html">Recursos gratuitos</a></li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+            Nosotros
+            <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l5 5 5-5"/></svg>
+          </button>
+          <ul class="dropdown" role="menu">
+            <li role="none"><a href="/#equipo" class="dropdown-item" role="menuitem"><strong>👥 Quiénes somos</strong><span>Sara y Nora: equipo humano</span></a></li>
+            <li role="none"><a href="/#contacto" class="dropdown-item" role="menuitem"><strong>✉ Contacto</strong><span>Email y teléfonos directos</span></a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="/#contacto" class="nav-cta">Contactar</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="peac-hero">
-    <span class="badge">🎓 Estudios y formación</span>
-    <h1>Tu experiencia vale un título. <em>Te diseñamos el camino.</em></h1>
-    <p class="sub">Llevas años trabajando, pero sin un papel que lo demuestre. El PEAC convierte esa experiencia en un certificado oficial. Nosotras te decimos qué puedes acreditar, qué te falta y cómo llegar.</p>
-    <div class="actions">
-      <a href="peac-calculadora.html" class="btn btn--dorado">🧮 Comprobar si cumplo (gratis)</a>
-      <a href="#contacto" class="btn btn--ghost">💬 Primera consulta gratuita</a>
+  <!-- ════════════════════════════════════════ -->
+  <!-- HERO DE PÁGINA -->
+  <!-- ════════════════════════════════════════ -->
+  <header class="hero-pagina">
+    <div class="breadcrumb">
+      <a href="/">Inicio</a><span>›</span><span>Estudios</span>
     </div>
+    <div class="hero-badge"><span class="pulse"></span> Estudios y formación en España</div>
+    <h1>Estudios en España:<br><span class="rojo">sitúate y da el paso</span></h1>
+    <p class="hero-sub">
+      Antes de dar un paso, entiende cómo funciona la formación en España y dónde encajas según lo que ya traes. Y cuando toque, te acompañamos.
+    </p>
+    <div class="hero-accent-line"></div>
   </header>
 
-  <!-- PROBLEMA -->
-  <section class="problema">
-    <div class="container">
-      <p class="lead">¿Te suena? <strong>Sabes hacer tu trabajo</strong> —cocina, cuidados, administración, construcción, informática— pero cada oferta te pide un título que no tienes. En España, sin papel, tu experiencia no cuenta. <strong>El PEAC existe para cambiar eso</strong>, pero el proceso es confuso y un error te puede costar meses. Para eso estamos.</p>
+  <!-- ════════════════════════════════════════ -->
+  <!-- MAPA DE LA FORMACIÓN -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="bloque-sec container reveal">
+    <div class="est-head">
+      <h2 style="font-size:clamp(1.7rem,3.6vw,2.3rem);margin-bottom:8px;">Tu mapa de la formación en España</h2>
+      <p style="color:var(--texto-suave);">Lo primero que debes saber: hay formación <strong>oficial</strong> y formación <strong>propia</strong>. No es lo mismo.</p>
+      <div class="est-flagline"></div>
     </div>
-  </section>
+    <p class="est-hint">👆 Pulsa cada nivel para ver qué es, dónde se estudia y su validez.</p>
 
-  <!-- LAS 3 CAPAS -->
-  <section>
-    <div class="container">
-      <div class="sec-head">
-        <span class="tag">Cómo te acompañamos</span>
-        <h2>No te informamos. Te hacemos la ruta.</h2>
-        <p>La mayoría te dice "solicita el PEAC". Nosotras vamos un paso más allá: diseñamos tu itinerario completo, desde tu experiencia hasta el título.</p>
+    <div class="validez">
+      <div class="vcard vcard--of">
+        <div class="vhead"><h3>Formación oficial</h3><span class="pill">✓ Vale en todo el Estado</span></div>
+        <div class="vbody">
+          <div class="grp">Académica · da título</div>
+          <div class="lvl azul">
+            <button class="lvl-h"><span class="e">📘</span><span class="nm">ESO</span><span class="cz">⌄</span></button>
+            <div class="lvl-p"><div class="lvl-in"><p>Educación Secundaria Obligatoria (hasta los 16). Da el título de Graduado en ESO.</p><div class="donde"><strong>Dónde:</strong> institutos públicos y colegios concertados o privados.</div></div></div>
+          </div>
+          <div class="lvl amber">
+            <button class="lvl-h"><span class="e">🎓</span><span class="nm">Bachillerato</span><span class="cz">⌄</span></button>
+            <div class="lvl-p"><div class="lvl-in"><p>Dos años tras la ESO. Prepara para el acceso a la universidad.</p><div class="donde"><strong>Dónde:</strong> institutos públicos, concertados y privados.</div></div></div>
+          </div>
+          <div class="lvl azul">
+            <button class="lvl-h"><span class="e">🔧</span><span class="nm">FP · Grado Medio y Superior</span><span class="cz">⌄</span></button>
+            <div class="lvl-p"><div class="lvl-in"><p>Formación Profesional orientada a un oficio, con prácticas en empresa.</p><div class="donde"><strong>Dónde:</strong> centros públicos de FP y centros privados con FP oficial autorizada.</div></div></div>
+          </div>
+          <div class="lvl azul">
+            <button class="lvl-h"><span class="e">🏛️</span><span class="nm">Universidad</span><span class="cz">⌄</span></button>
+            <div class="lvl-p"><div class="lvl-in"><p>Estudios superiores: Grado, Máster y Doctorado (títulos oficiales).</p><div class="donde"><strong>Dónde:</strong> universidades públicas y privadas.</div></div></div>
+          </div>
+          <div class="grp mt">Profesional · para el empleo</div>
+          <div class="lvl rojo">
+            <button class="lvl-h"><span class="e">📄</span><span class="nm">Certificados de profesionalidad</span><span class="cz">⌄</span></button>
+            <div class="lvl-p"><div class="lvl-in"><p>Acreditan oficialmente competencias para un empleo. Se desarrollan en la sección Empleo.</p><div class="donde"><strong>Dónde:</strong> centros acreditados por el SEPE y las comunidades autónomas.</div></div></div>
+          </div>
+        </div>
       </div>
-      <div class="capas">
-        <div class="capa">
-          <div class="capa__num">1</div>
-          <h3>Diagnóstico de tu experiencia</h3>
-          <p>Analizamos tu vida laboral, contratos y formación para identificar qué unidades de competencia puedes acreditar y en qué nivel. Sin suposiciones: lo que dicen tus documentos.</p>
-        </div>
-        <div class="capa capa--destacada">
-          <span class="capa__flag">Lo que nadie hace</span>
-          <div class="capa__num">2</div>
-          <h3>Tu ruta personalizada</h3>
-          <p>Un documento con tu camino paso a paso: qué acreditas ahora, hacia qué certificado o título de FP te lleva, y un cronograma a corto, medio y largo plazo. Tu plan, por escrito.</p>
-        </div>
-        <div class="capa">
-          <div class="capa__num">3</div>
-          <h3>Formación puente</h3>
-          <p>Si tu experiencia aún no llega a los requisitos, te decimos qué tipo de formación no formal necesitas para alcanzarlos y poder acceder al PEAC. No te quedas a medio camino.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- INCLUYE / NO INCLUYE -->
-  <section class="alcance">
-    <div class="container">
-      <div class="sec-head">
-        <span class="tag">Claro desde el principio</span>
-        <h2>Qué incluye el acompañamiento</h2>
-        <p>Sin letra pequeña. Lo que hacemos y lo que no, para que sepas exactamente qué esperar.</p>
-      </div>
-      <div class="alcance-grid">
-        <div class="alcance-card alcance-card--si">
-          <h3>Sí incluye</h3>
-          <ul>
-            <li>Diagnóstico completo a partir de tu documentación (vida laboral, contratos, credenciales, cuestionario personalizado).</li>
-            <li>Hoja de ruta académica y profesional con cronograma a corto, medio y largo plazo.</li>
-            <li>Acompañamiento en la solicitud de admisión a centros públicos de FP (Comunidad de Madrid).</li>
-            <li>Coordinación y asesoramiento técnico para tu inscripción al PEAC en convocatoria abierta.</li>
-            <li>Revisión de la documentación necesaria para cada trámite.</li>
-            <li>Seguimiento de plazos, vencimientos y oportunidades de formación o becas.</li>
-          </ul>
-        </div>
-        <div class="alcance-card alcance-card--no">
-          <h3>No incluye</h3>
-          <ul>
-            <li>Homologación o equivalencia de títulos universitarios extranjeros ante el Ministerio (es un trámite aparte, con honorarios separados).</li>
-            <li>Representación en procedimientos contenciosos o judiciales.</li>
-            <li>Pago de tasas, matrículas, cursos privados, libros o materiales: esos gastos son a cargo del cliente.</li>
-            <li>Recomendación de centros o cursos concretos: orientamos sobre el tipo de formación, tú eliges dónde.</li>
-          </ul>
+      <div class="vcard vcard--pr">
+        <div class="vhead"><h3>Formación propia</h3><span class="pill">Validez oficial · consúltala</span></div>
+        <div class="vbody">
+          <div class="grp">Títulos propios y formación privada</div>
+          <div class="lvl amber">
+            <button class="lvl-h"><span class="e">🏫</span><span class="nm">Títulos propios</span><span class="cz">⌄</span></button>
+            <div class="lvl-p"><div class="lvl-in"><p>Títulos de universidades y centros privados. Certifican y sirven (por ejemplo, para la estancia por estudios). ¿Equivalen a un título oficial? Depende del caso.</p><div class="donde"><strong>Dónde:</strong> universidades (como títulos propios) y academias o centros privados.</div><span class="chk">→ Te decimos qué validez tiene el tuyo</span></div></div>
+          </div>
+          <div class="lvl amber">
+            <button class="lvl-h"><span class="e">⚡</span><span class="nm">Cursos de formación no reglada</span><span class="cz">⌄</span></button>
+            <div class="lvl-p"><div class="lvl-in"><p>Cursos privados que suman competencias. No son un título oficial por sí solos, pero esas competencias pueden acreditarse como oficiales por PEAC.</p><div class="donde"><strong>Dónde:</strong> academias y plataformas privadas.</div><span class="chk">→ Mira cómo oficializarlas (PEAC)</span></div></div>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="aviso-sutil">
+      <span class="ic">💡</span>
+      <p>¿Vas a formarte para <strong>trabajar aquí</strong>? Algunas profesiones (por ejemplo, <strong>sociosanitario</strong>) piden título <strong>oficial</strong> para ejercer. Antes de matricularte, confirma si tu formación te sirve — <a href="#contacto">lo revisamos contigo</a>.</p>
+    </div>
+
+    <div class="puente" id="peac">
+      <div class="pl">
+        <div class="ico">🧰</div>
+        <div><span class="tag">El puente · instrumento oficial</span><h3>PEAC</h3></div>
+      </div>
+      <div class="flecha">
+        <span>Tu <b>experiencia</b> + <b>formación no formal</b> → acredita tus competencias</span>
+        <span class="ar">→</span>
+        <span class="of">Certificado de profesionalidad o título de FP (oficial)</span>
+      </div>
+    </div>
+
+    <div class="cam-head"><h2>¿Por dónde entras tú?</h2></div>
+    <div class="caminos">
+      <a href="#homologacion" class="camino a" style="text-decoration:none;">
+        <div class="top"><div class="chip">🎓</div><div><h3>Traigo un título</h3><div class="meta">De otro país</div></div></div>
+        <p>¿Para ejercer o para estudiar? Te decimos si necesitas <strong>homologar</strong> (profesión regulada) o <strong>equivalencia</strong> (no regulada).</p>
+        <span class="go">Ver homologación →</span>
+      </a>
+      <a href="#acceso" class="camino b" style="text-decoration:none;">
+        <div class="top"><div class="chip">📚</div><div><h3>Quiero estudiar aquí</h3><div class="meta">Empezar o seguir</div></div></div>
+        <p>Credencial de acceso (<strong>UNEDasiss</strong>) para entrar en la universidad o en la Formación Profesional.</p>
+        <span class="go">Ver acceso →</span>
+      </a>
+      <a href="#peac" class="camino c" style="text-decoration:none;">
+        <span class="foco">★ Nuestro foco</span>
+        <div class="top"><div class="chip">🧰</div><div><h3>Experiencia o formación</h3><div class="meta">Estando ya en España</div></div></div>
+        <p>Cuenta tu <strong>experiencia en España</strong> o tu <strong>formación no formal</strong>. Analizamos tu caso y te acompañamos a entrar en el <strong>PEAC</strong>.</p>
+        <span class="go">Ver PEAC →</span>
+      </a>
+    </div>
   </section>
 
-  <!-- CALCULADORA -->
-  <section>
-    <div class="container">
-      <div class="calc-cta">
-        <div class="ico">🧮</div>
-        <h2>Empieza ahora, gratis</h2>
-        <p>Antes de escribirnos, haz el autodiagnóstico. En 2 minutos sabrás si cumples los requisitos del PEAC en Madrid y por dónde podrías empezar.</p>
-        <a href="peac-calculadora.html" class="btn btn--dorado">Abrir calculadora PEAC →</a>
-        <p class="nota">Gratuita y sin registro. Basada en la normativa vigente de la Comunidad de Madrid.</p>
+  <!-- ════════════════════════════════════════ -->
+  <!-- RECORRIDO (línea de tiempo) -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="recorrido-sec container reveal">
+    <div class="r-head">
+      <span class="r-eyebrow">🧭 Tu recorrido</span>
+      <h2>De tu formación al título oficial</h2>
+      <p>Compras una formación y vienes a España. ¿Y después? Este es el camino, paso a paso — y te acompañamos en cada tramo.</p>
+      <div class="r-flag"></div>
+    </div>
+    <div class="timeline">
+      <div class="step s1"><div class="dot">🎓<span class="num">1</span></div><div class="rcard">
+        <h3>Eliges tu formación</h3>
+        <p>Un <strong>abanico de formaciones</strong> de centros con convenio. Abren puertas y <strong>valen para la estancia por estudios</strong>.</p>
+        <a href="#nuestra-formacion" style="display:inline-block;font-size:.82rem;font-weight:800;color:var(--azul-secundario);margin:8px 0 2px;">Ver formaciones disponibles →</a>
+        <span class="rtag">Estudios</span>
+        <div class="quien"><span class="avs"><span class="av nora"><img src="nora-comunidad-madrid.png" alt="Nora"></span></span> Te orienta Nora</div>
+      </div></div>
+      <div class="step s2"><div class="dot">✈️<span class="num">2</span></div><div class="rcard">
+        <h3>Vienes a España</h3>
+        <p>Tramitamos tu <strong>estancia por estudios</strong> y tu documentación.</p>
+        <span class="rtag">Extranjería</span>
+        <div class="quien"><span class="avs"><span class="av sara"><img src="Sara banderas.png" alt="Sara"></span></span> Lo lleva Sara (abogada)</div>
+      </div></div>
+      <div class="step s3"><div class="dot">🇪🇸<span class="num">3</span></div><div class="rcard">
+        <h3>Ya estás aquí</h3>
+        <p>Te guiamos en lo que toca hacer. Tu formación y experiencia <strong>suman competencias</strong>.</p>
+        <span class="rtag">Ya en España</span>
+        <div class="quien"><span class="avs"><span class="av sara"><img src="Sara banderas.png" alt="Sara"></span><span class="av nora"><img src="nora-comunidad-madrid.png" alt="Nora"></span></span> Sara y Nora</div>
+      </div></div>
+      <div class="step s4"><div class="dot">🧰<span class="num">4</span></div><div class="rcard">
+        <h3>Las acreditas por PEAC <span class="rfoco">★ foco</span></h3>
+        <p>Convertimos esas competencias en un <strong>certificado o título de FP oficial</strong>.</p>
+        <span class="rtag">PEAC</span>
+        <div class="quien"><span class="avs"><span class="av nora"><img src="nora-comunidad-madrid.png" alt="Nora"></span></span> Lo lleva Nora</div>
+      </div></div>
+      <div class="step s5"><div class="dot">💼<span class="num">5</span></div><div class="rcard">
+        <h3>Mejor empleo y residencia</h3>
+        <p>Con tu título oficial, <strong>más opciones de trabajo</strong> y de asentar tu residencia.</p>
+        <span class="rtag">Empleo</span>
+        <div class="casos">📣 Casos de éxito · próximamente</div>
+      </div></div>
+    </div>
+    <div class="caveats">
+      <p>🤝 <strong>Siempre con transparencia:</strong> te decimos qué formación es oficial y cuál no, qué requisitos pide el PEAC y qué competencias podemos acreditar — con claridad y sin prometerte lo que no depende de nosotras. <span style="opacity:.75;">Información orientativa.</span></p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- RUTA: HOMOLOGACIÓN -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="bloque-sec container reveal" id="homologacion">
+    <div class="bloque-card bloque-card--trabajo">
+      <span class="bloque-eyebrow eb-rojo">Traes un título de fuera</span>
+      <h2>Homologación, equivalencia o convalidación</h2>
+      <div class="bloque-accent"></div>
+      <p class="lead">No empieces por la palabra: empieza por tu meta. Según lo que quieras hacer, el trámite es distinto.</p>
+      <div class="lista">
+        <div class="acc">
+          <button class="fila" aria-expanded="false">
+            <div class="ic">⚖️</div>
+            <div class="body"><strong>Quiero ejercer mi profesión</strong><span>Homologación o equivalencia</span></div>
+            <div class="chev">⌄</div>
+          </button>
+          <div class="panel"><div class="panel-in">
+            <p>Si tu profesión está <strong>regulada</strong> (médico, abogado/a, ingeniero/a, profesor/a…), necesitas <strong>homologación</strong>. Si <strong>no</strong> está regulada, suele bastar la <strong>equivalencia</strong>. Lo tramita el Ministerio competente (Universidades o Educación y FP).</p>
+            <a href="#contacto" class="mini-cta">Consulta tu caso →</a>
+          </div></div>
+        </div>
+        <div class="acc">
+          <button class="fila" aria-expanded="false">
+            <div class="ic">📚</div>
+            <div class="body"><strong>Quiero seguir estudiando</strong><span>Convalidación / acceso</span></div>
+            <div class="chev">⌄</div>
+          </button>
+          <div class="panel"><div class="panel-in">
+            <p>Para continuar estudios, se <strong>convalidan asignaturas</strong> (lo decide la universidad) o se tramita el <strong>acceso</strong> (ver más abajo). La homologación del título previo solo si te la piden.</p>
+            <a href="#acceso" class="mini-cta">Ver acceso →</a>
+          </div></div>
+        </div>
+      </div>
+      <p style="font-size:var(--fs-xs);color:var(--texto-suave);margin-top:14px;">Te decimos exactamente qué vía te toca y preparamos el expediente contigo.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- RUTA: ACCESO A ESTUDIAR AQUÍ -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="bloque-sec container reveal" id="acceso">
+    <div class="bloque-card bloque-card--estudios">
+      <span class="bloque-foco">★ Para estudiar aquí</span>
+      <span class="bloque-eyebrow eb-amarillo">Empezar o seguir estudiando</span>
+      <h2>Acceso a la universidad y a la FP</h2>
+      <div class="bloque-accent bloque-accent--estudios"></div>
+      <p class="lead">¿Con un título extranjero quieres estudiar en España? Te orientamos sobre la <strong>credencial de acceso (UNEDasiss)</strong> y la matrícula en universidad o Formación Profesional.</p>
+      <div class="vias">
+        <div class="via via--origen">
+          <div class="via-h"><span class="via-emoji">🎓</span><h3>Universidad</h3></div>
+          <p>Credencial UNEDasiss y, si procede, pruebas de competencias específicas (PCE).</p>
+          <a href="#contacto" class="via-link">Consultar →</a>
+        </div>
+        <div class="via via--espana">
+          <div class="via-h"><span class="via-emoji">🔧</span><h3>Formación Profesional</h3></div>
+          <p>Requisitos de acceso a Grado Medio o Superior y admisión en centros.</p>
+          <a href="#contacto" class="via-link">Consultar →</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA FINAL -->
-  <section class="cta-final" id="contacto">
-    <div class="container">
-      <h2>¿Tienes experiencia y no sabes por dónde empezar?</h2>
-      <p>Cuéntanos tu caso. La primera consulta es gratuita: revisamos tu situación y te decimos con honestidad si el PEAC es para ti y qué camino tendría sentido.</p>
-      <a href="https://wa.me/34697154442?text=Hola%2C%20me%20interesa%20el%20acompa%C3%B1amiento%20PEAC%3A%20tengo%20experiencia%20laboral%20y%20quiero%20saber%20qu%C3%A9%20puedo%20acreditar." class="btn btn--arena" target="_blank" rel="noopener">💬 Cuéntanos tu caso</a>
-      <p class="micro">Primera consulta gratuita y sin compromiso · Respuesta en menos de 24 h</p>
+  <!-- ════════════════════════════════════════ -->
+  <!-- RUTA: PEAC (detalle con requisitos) -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="bloque-sec container reveal">
+    <div class="bloque-card">
+      <span class="bloque-eyebrow eb-rojo">Acredita lo que ya sabes hacer</span>
+      <h2>PEAC · tu experiencia o formación → título oficial</h2>
+      <div class="bloque-accent"></div>
+      <p class="lead">El PEAC es un procedimiento <strong>oficial</strong> de la Comunidad de Madrid (convocatoria abierta permanente). Acredita tus competencias por <strong>experiencia laboral en España</strong> o por <strong>formación no formal</strong>, y te lleva a un certificado de profesionalidad o a módulos de un título de FP. Nosotras analizamos tu caso y te acompañamos a entrar; tú lo defiendes ante los evaluadores oficiales.</p>
+      <div style="margin:0 0 18px;">
+        <a href="peac-calculadora.html" style="display:inline-flex;align-items:center;gap:9px;background:var(--amarillo);color:#3d2a00;font-weight:800;font-size:var(--fs-btn);padding:14px 26px;border-radius:50px;box-shadow:0 8px 20px rgba(242,169,29,.3);transition:transform var(--transicion);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">🧮 Comprobar si cumplo — calculadora gratis →</a>
+      </div>
+      <div class="lista">
+        <div class="acc">
+          <button class="fila" aria-expanded="false">
+            <div class="ic">📋</div>
+            <div class="body"><strong>¿Cumplo los requisitos?</strong><span>Edad, experiencia u horas de formación</span></div>
+            <div class="chev">⌄</div>
+          </button>
+          <div class="panel"><div class="panel-in">
+            <p><strong>Nivel 1:</strong> desde 18 años · 2 años y 1.000 h de experiencia (últimos 15 años) <strong>o</strong> 200 h de formación no formal (últimos 10).</p>
+            <p><strong>Niveles 2 y 3:</strong> desde 20 años · 3 años y 2.000 h de experiencia <strong>o</strong> 300 h de formación no formal.</p>
+            <p>Además: estar empadronado/a y con residencia en vigor. La experiencia de fuera de España, en general, no cuenta (salvo convenio bilateral). <strong>Te lo confirmamos en tu consulta.</strong></p>
+            <a href="#contacto" class="mini-cta">Comprobar mi caso →</a>
+          </div></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;background:var(--azul-light);border-left:5px solid var(--azul-principal);border-radius:12px;padding:16px 18px;margin-top:18px;">
+        <div style="width:46px;height:46px;border-radius:50%;background:var(--azul-principal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'DM Serif Display',serif;font-size:1.15rem;flex-shrink:0;">N</div>
+        <div>
+          <strong style="display:block;color:var(--azul-principal);">Tu PEAC lo lleva Nora Núñez Zárate</strong>
+          <span style="font-size:var(--fs-xs);color:var(--texto-suave);line-height:1.5;">Asesora PEAC habilitada por la Comunidad de Madrid · licenciada en Documentación (UC3M). Analiza tu experiencia y formación, busca la equivalencia con las familias profesionales y te acompaña a entrar en el procedimiento.</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="links">
-        <a href="/">Inicio</a>
-        <a href="peac-calculadora.html">Calculadora PEAC</a>
-        <a href="/#servicios">Servicios</a>
-        <a href="/#contacto">Contacto</a>
+  <!-- ════════════════════════════════════════ -->
+  <!-- NUESTRA FORMACIÓN (comercial · pendiente) -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="bloque-sec container reveal" id="nuestra-formacion">
+    <div class="nf">
+      <span class="badge-wip">Próximamente</span>
+      <h2>Nuestra formación</h2>
+      <p>Aquí irán nuestros cursos y los centros con los que tenemos convenio — formación práctica, válida para la estancia por estudios y cuyas competencias te ayudamos a oficializar por PEAC. (Sección en preparación.)</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- BLOQUE SERVICIO (regla de Jason) -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="sara-band container reveal">
+    <div class="sara-band-inner">
+      <div class="sb-text">
+        <h3>¿No encuentras tu caso?</h3>
+        <p>Cada situación es distinta. Lo estudia <strong>Sara Altamirano, abogada de extranjería colegiada (ICAM nº 143312)</strong>, y te decimos la vía que te conviene. Primera valoración sin compromiso.</p>
       </div>
-      <p class="copy">© 2026 Gestiona Seguro · Información orientativa. No sustituye asesoría legal individual.</p>
+      <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20de%20Extranjer%C3%ADa%20y%20quiero%20que%20estudi%C3%A9is%20mi%20caso." target="_blank" rel="noopener" class="sb-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.85-1.45A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.15l-.3-.2-3.05.9.9-2.95-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>
+        Consultar mi caso
+      </a>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- DISCLAIMER LEGAL -->
+  <!-- ════════════════════════════════════════ -->
+  <div class="disclaimer-legal reveal">
+    <div class="disclaimer-legal-inner">
+      <p><strong>Aviso:</strong> esta página ofrece información general y orientativa sobre trámites de extranjería en España (LO 4/2000 y Reglamento aprobado por el RD 1155/2024). No sustituye el asesoramiento jurídico individual: cada situación es distinta y los requisitos exactos dependen de tu caso concreto. Para una valoración de tu expediente, consúltanos.</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- FOOTER (Core, unificado con el home) -->
+  <!-- ════════════════════════════════════════ -->
+  <footer class="footer footer-comunidad" id="contacto">
+    <div class="container">
+      <div class="footer-comunidad-inner">
+        <div class="footer-comunidad-info">
+          <h4>Comunidad Gestiona Seguro</h4>
+          <p>Guías, avisos y explicaciones claras para ayudarte con tus trámites en España.</p>
+        </div>
+        <div class="footer-comunidad-contacto">
+          <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a>
+          <a href="tel:+34644416479">+34 644 416 479</a>
+          <a href="tel:+34697154442">+34 697 154 442</a>
+          <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20gestionaseguroweb.com%20y%20necesito%20informaci%C3%B3n%20sobre%20un%20tr%C3%A1mite." target="_blank" rel="noopener" style="color:var(--arena);font-weight:700;font-size:0.98rem;">💬 WhatsApp directo</a>
+        </div>
+        <div class="footer-comunidad-links">
+          <a href="https://www.youtube.com/channel/UCyjRDvnjNXxBO2S2V-0adbA" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://www.instagram.com/gestionaseguroweb/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@gestionaseguroweb" target="_blank" rel="noopener">TikTok</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Gestiona Seguro. Información orientativa. No sustituye asesoría legal individual.</p>
+      </div>
     </div>
   </footer>
 
+  <!-- ════════════════════════════════════════ -->
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <!-- ════════════════════════════════════════ -->
+  <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20de%20Extranjer%C3%ADa%20de%20gestionaseguroweb.com."
+     target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"
+     style="position:fixed;bottom:22px;right:22px;z-index:999;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.2);transition:transform 0.2s;"
+     onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff">
+      <path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.25-.1-.45-.15-.65.15s-.75.95-.9 1.15c-.15.2-.35.2-.65.05-1.7-.85-2.8-1.5-3.9-3.4-.3-.5.3-.5.85-1.6.1-.2.05-.35-.025-.5-.075-.15-.65-1.6-.9-2.15-.25-.55-.5-.5-.65-.5h-.55c-.2 0-.5.075-.75.35-.25.3-1 .95-1 2.35s1.025 2.7 1.15 2.9c.15.2 2 3.05 4.85 4.25.7.3 1.25.5 1.65.65.7.2 1.35.2 1.85.1.55-.075 1.7-.7 1.95-1.35.25-.65.25-1.2.15-1.35-.075-.1-.275-.15-.575-.3z"/>
+      <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.85-1.45A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.15l-.3-.2-3.05.9.9-2.95-.2-.3A8.3 8.3 0 1 1 12 20.3z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+    // Dropdowns
+    document.querySelectorAll('.has-dropdown .nav-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const item = trigger.closest('.nav-item');
+        const wasActive = item.classList.contains('active');
+        document.querySelectorAll('.nav-item.active').forEach(active => {
+          if (active !== item) { active.classList.remove('active'); active.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false'); }
+        });
+        item.classList.toggle('active');
+        trigger.setAttribute('aria-expanded', String(!wasActive));
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item')) {
+        document.querySelectorAll('.nav-item.active').forEach(item => {
+          item.classList.remove('active'); item.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.nav-item.active').forEach(item => {
+          item.classList.remove('active'); item.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.querySelectorAll('.nav-item.active').forEach(item => item.classList.remove('active'));
+      });
+    });
+
+    // Cabeceras de grupo plegables (subsecciones)
+    document.querySelectorAll('.subsec-head').forEach(head => {
+      head.addEventListener('click', () => head.closest('.subsec').classList.toggle('open'));
+    });
+
+    // Barras del mapa de formación (encender al pulsar)
+    document.querySelectorAll('.lvl-h').forEach(h => {
+      h.addEventListener('click', () => h.closest('.lvl').classList.toggle('open'));
+    });
+
+    // Acordeón (Residencia y trabajo)
+    document.querySelectorAll('.acc .fila').forEach(fila => {
+      fila.addEventListener('click', () => {
+        const acc = fila.closest('.acc');
+        if (acc.classList.contains('acc--pronto')) return;
+        const abierto = acc.classList.toggle('open');
+        fila.setAttribute('aria-expanded', String(abierto));
+      });
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
