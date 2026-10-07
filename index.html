@@ -1964,15 +1964,19 @@ object-position: 25% center;
   @media (max-width: 900px) { .etapas-grid { grid-template-columns: 1fr; } }
 </style>
 
-<!-- ============ CALCULADORA · CONSTRUYE TU PROYECTO ============ -->
+<!-- ============ CALCULADORA FLOTANTE · CONSTRUYE TU PROYECTO ============ -->
 <style>
-  .gc-sec{padding:56px 0 64px;background:#fff;}
-  .gc{max-width:680px;margin:0 auto;background:#fff;border:1px solid #ECE9E2;border-radius:22px;box-shadow:0 20px 48px rgba(3,47,94,.10);padding:32px 34px 28px;}
+  .gc-overlay{position:fixed;inset:0;z-index:1000;display:none;background:rgba(3,47,94,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);padding:40px 16px;overflow-y:auto;}
+  .gc-overlay.gc-show{display:flex;align-items:flex-start;justify-content:center;}
+  .gc{position:relative;max-width:640px;width:100%;margin:0 auto;background:#fff;border:1px solid #ECE9E2;border-radius:22px;box-shadow:0 30px 70px rgba(3,47,94,.35);padding:34px 36px 30px;animation:gcPop .25s ease-out;}
+  @keyframes gcPop{from{opacity:0;transform:translateY(14px) scale(.98);}to{opacity:1;transform:none;}}
+  .gc-close{position:absolute;top:14px;right:16px;width:38px;height:38px;border-radius:50%;border:none;background:#E8EEF7;color:#032F5E;font-size:1.1rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+  .gc-close:hover{background:#d4e0f0;}
   .gc-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:#fff;background:linear-gradient(90deg,#032F5E,#054782);padding:8px 16px 8px 13px;border-radius:50px;}
   .gc-eyebrow svg{width:17px;height:17px;}
   .gc-prog{height:5px;background:#E8EEF7;border-radius:20px;margin:16px 0 24px;overflow:hidden;}
   .gc-prog i{display:block;height:100%;background:linear-gradient(90deg,#C3122C,#F2A91D);border-radius:20px;transition:width .35s ease;}
-  .gc-q{font-family:'DM Serif Display',serif;color:#032F5E;font-weight:400;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.12;margin:0 0 20px;}
+  .gc-q{font-family:'DM Serif Display',serif;color:#032F5E;font-weight:400;font-size:clamp(1.4rem,3vw,1.8rem);line-height:1.12;margin:0 0 20px;padding-right:30px;}
   .gc-opts{display:flex;flex-direction:column;gap:11px;}
   .gc-opt{display:flex;align-items:center;gap:15px;width:100%;text-align:left;background:#fff;border:1.5px solid #ECE9E2;border-radius:15px;padding:15px 18px;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s;font-family:inherit;}
   .gc-opt:hover{border-color:#054782;transform:translateY(-2px);box-shadow:0 10px 24px rgba(3,47,94,.08);}
@@ -1990,7 +1994,7 @@ object-position: 25% center;
   .gc-rhead .gc-ic{flex-shrink:0;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);color:#F2A91D;}
   .gc-rhead .gc-ic svg{width:26px;height:26px;}
   .gc-rhead .gc-lbl{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:#F2A91D;}
-  .gc-rhead h3{font-family:'DM Serif Display',serif;color:#fff;font-weight:400;font-size:1.45rem;margin:3px 0 0;line-height:1.14;}
+  .gc-rhead h3{font-family:'DM Serif Display',serif;color:#fff;font-weight:400;font-size:1.4rem;margin:3px 0 0;line-height:1.14;}
   .gc-toggle{display:inline-flex;background:#E8EEF7;border-radius:50px;padding:4px;margin-bottom:18px;}
   .gc-toggle button{border:none;background:none;font-family:inherit;font-weight:800;font-size:.9375rem;color:#054782;padding:8px 17px;border-radius:50px;cursor:pointer;}
   .gc-toggle button.gc-on{background:#fff;color:#032F5E;box-shadow:0 2px 8px rgba(3,47,94,.12);}
@@ -2013,9 +2017,11 @@ object-position: 25% center;
   .gc-link{font-weight:800;font-size:.9375rem;color:#054782;text-decoration:none;}
   .gc-link:hover{text-decoration:underline;}
   .gc-hide{display:none;}
+  @media(max-width:560px){.gc{padding:28px 22px 26px;border-radius:18px;}.gc-overlay{padding:16px 10px;}}
 </style>
-<section class="gc-sec container reveal" id="etapas">
-  <div class="gc">
+<div class="gc-overlay" id="gcOverlay" onclick="gcBackdrop(event)">
+  <div class="gc" role="dialog" aria-modal="true" aria-label="Construye tu proyecto">
+    <button class="gc-close" onclick="gcClose()" aria-label="Cerrar">✕</button>
     <span class="gc-eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.6 8.4-2 5.2-5.2 2 2-5.2 5.2-2Z"/></svg>Vamos a construir tu proyecto</span>
     <div class="gc-prog"><i id="gcBar" style="width:50%"></i></div>
 
@@ -2024,7 +2030,7 @@ object-position: 25% center;
       <div class="gc-opts">
         <button class="gc-opt gc-foco" onclick="gcResult('estudios')">
           <span class="gc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 11.8V17c0 1.1 2.7 2.4 6 2.4s6-1.3 6-2.4v-5.2"/><path d="M22 10v4.3"/></svg></span>
-          <span class="gc-tx"><b>Estudiar</b></span>
+          <span class="gc-tx"><b>Estudiar</span>
           <span class="gc-star">★ Nuestro foco</span>
         </button>
         <button class="gc-opt" onclick="gcResult('trabajar')">
@@ -2076,7 +2082,7 @@ object-position: 25% center;
       <button class="gc-back" onclick="gcStep1()">← Empezar de nuevo</button>
     </div>
   </div>
-</section>
+</div>
 <script>
 (function(){
   var IC={
@@ -2094,6 +2100,10 @@ object-position: 25% center;
   function id(x){return document.getElementById(x);}
   function show(which){['gcS1','gcRes'].forEach(function(x){id(x).classList.add('gc-hide');});id(which).classList.remove('gc-hide');}
   function bar(w){id('gcBar').style.width=w+'%';}
+  window.gcOpen=function(){id('gcOverlay').classList.add('gc-show');document.body.style.overflow='hidden';gcStep1();};
+  window.gcClose=function(){id('gcOverlay').classList.remove('gc-show');document.body.style.overflow='';};
+  window.gcBackdrop=function(e){if(e.target===id('gcOverlay'))gcClose();};
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')gcClose();});
   window.gcStep1=function(){show('gcS1');bar(50);};
   window.gcResult=function(key){
     var d=DATA[key];show('gcRes');bar(100);
@@ -2113,7 +2123,7 @@ object-position: 25% center;
   };
 })();
 </script>
-<!-- ============ FIN CALCULADORA ============ -->
+<!-- ============ FIN CALCULADORA FLOTANTE ============ -->
 
 <!-- ============ FIN MÓDULO RUTA / ETAPAS ============ -->
 
