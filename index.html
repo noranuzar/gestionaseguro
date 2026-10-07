@@ -1967,128 +1967,90 @@ object-position: 25% center;
 <!-- ============ CALCULADORA · CONSTRUYE TU PROYECTO ============ -->
 <style>
   .gc-sec{padding:56px 0 64px;background:#fff;}
-  .gc{max-width:720px;margin:0 auto;background:#fff;border:1px solid #ECE9E2;border-radius:22px;box-shadow:0 20px 48px rgba(3,47,94,.10);padding:34px 36px 30px;}
-  .gc-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:#fff;background:linear-gradient(90deg,#032F5E,#054782);padding:7px 15px;border-radius:50px;}
-  .gc-prog{height:5px;background:#E8EEF7;border-radius:20px;margin:16px 0 22px;overflow:hidden;}
-  .gc-prog i{display:block;height:100%;background:linear-gradient(90deg,#C3122C,#F2A91D);border-radius:20px;transition:width .3s;}
-  .gc-q{font-family:'DM Serif Display',serif;color:#032F5E;font-weight:400;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.14;margin-bottom:18px;}
-  .gc-opts{display:flex;flex-direction:column;gap:12px;}
-  .gc-opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fff;border:1.5px solid #ECE9E2;border-radius:14px;padding:16px 18px;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s;font-family:inherit;}
+  .gc{max-width:680px;margin:0 auto;background:#fff;border:1px solid #ECE9E2;border-radius:22px;box-shadow:0 20px 48px rgba(3,47,94,.10);padding:32px 34px 28px;}
+  .gc-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:#fff;background:linear-gradient(90deg,#032F5E,#054782);padding:8px 16px 8px 13px;border-radius:50px;}
+  .gc-eyebrow svg{width:17px;height:17px;}
+  .gc-prog{height:5px;background:#E8EEF7;border-radius:20px;margin:16px 0 24px;overflow:hidden;}
+  .gc-prog i{display:block;height:100%;background:linear-gradient(90deg,#C3122C,#F2A91D);border-radius:20px;transition:width .35s ease;}
+  .gc-q{font-family:'DM Serif Display',serif;color:#032F5E;font-weight:400;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.12;margin:0 0 20px;}
+  .gc-opts{display:flex;flex-direction:column;gap:11px;}
+  .gc-opt{display:flex;align-items:center;gap:15px;width:100%;text-align:left;background:#fff;border:1.5px solid #ECE9E2;border-radius:15px;padding:15px 18px;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s;font-family:inherit;}
   .gc-opt:hover{border-color:#054782;transform:translateY(-2px);box-shadow:0 10px 24px rgba(3,47,94,.08);}
-  .gc-opt .gc-ic{font-size:1.7rem;flex-shrink:0;}
-  .gc-opt .gc-tx b{display:block;font-size:1.05rem;color:#032F5E;font-weight:700;}
+  .gc-opt .gc-ic{flex-shrink:0;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#E8EEF7;color:#054782;}
+  .gc-opt .gc-ic svg{width:25px;height:25px;}
+  .gc-opt .gc-tx{flex:1;}
+  .gc-opt .gc-tx b{display:block;font-size:1.0625rem;color:#032F5E;font-weight:700;line-height:1.2;}
   .gc-opt .gc-tx span{font-size:.9375rem;color:#5e5649;}
   .gc-opt.gc-foco{border-color:#F2A91D;background:#FEF4DF;}
-  .gc-opt .gc-star{margin-left:auto;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;background:#F2A91D;color:#3d2a00;padding:4px 10px;border-radius:50px;white-space:nowrap;}
-  .gc-back{margin-top:18px;background:none;border:none;color:#5e5649;font-weight:700;font-size:.9375rem;cursor:pointer;font-family:inherit;}
+  .gc-opt.gc-foco .gc-ic{background:#F2A91D;color:#fff;}
+  .gc-opt .gc-star{margin-left:auto;align-self:flex-start;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;background:#F2A91D;color:#3d2a00;padding:4px 10px;border-radius:50px;white-space:nowrap;}
+  .gc-back{margin-top:20px;background:none;border:none;color:#5e5649;font-weight:700;font-size:.9375rem;cursor:pointer;font-family:inherit;}
   .gc-back:hover{color:#032F5E;}
-  .gc-rhead{display:flex;align-items:flex-start;gap:14px;background:linear-gradient(135deg,#032F5E,#054782);color:#fff;border-radius:16px;padding:20px 22px;margin-bottom:18px;}
-  .gc-rhead .gc-ic{font-size:2rem;}
-  .gc-rhead .gc-lbl{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#F2A91D;}
-  .gc-rhead h3{font-family:'DM Serif Display',serif;color:#fff;font-weight:400;font-size:1.5rem;margin-top:2px;line-height:1.14;}
-  .gc-toggle{display:inline-flex;background:#E8EEF7;border-radius:50px;padding:4px;margin-bottom:16px;}
-  .gc-toggle button{border:none;background:none;font-family:inherit;font-weight:800;font-size:.9375rem;color:#054782;padding:8px 16px;border-radius:50px;cursor:pointer;}
+  .gc-rhead{display:flex;align-items:center;gap:15px;background:linear-gradient(135deg,#032F5E,#054782);color:#fff;border-radius:16px;padding:19px 22px;margin-bottom:20px;}
+  .gc-rhead .gc-ic{flex-shrink:0;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);color:#F2A91D;}
+  .gc-rhead .gc-ic svg{width:26px;height:26px;}
+  .gc-rhead .gc-lbl{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:#F2A91D;}
+  .gc-rhead h3{font-family:'DM Serif Display',serif;color:#fff;font-weight:400;font-size:1.45rem;margin:3px 0 0;line-height:1.14;}
+  .gc-toggle{display:inline-flex;background:#E8EEF7;border-radius:50px;padding:4px;margin-bottom:18px;}
+  .gc-toggle button{border:none;background:none;font-family:inherit;font-weight:800;font-size:.9375rem;color:#054782;padding:8px 17px;border-radius:50px;cursor:pointer;}
   .gc-toggle button.gc-on{background:#fff;color:#032F5E;box-shadow:0 2px 8px rgba(3,47,94,.12);}
-  .gc-blk{margin-bottom:16px;}
-  .gc-blk h4{font-family:'Source Sans 3',sans-serif;font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#5e5649;margin-bottom:9px;}
-  .gc-blk ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;}
-  .gc-blk li{font-size:.9375rem;color:#2a2218;position:relative;padding-left:22px;}
-  .gc-blk li::before{content:"✓";color:#054782;font-weight:800;position:absolute;left:0;}
+  .gc-blk{margin-bottom:18px;}
+  .gc-blk h4{font-family:'Source Sans 3',sans-serif;font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#5e5649;margin:0 0 10px;}
+  .gc-blk ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+  .gc-blk li{font-size:.9375rem;line-height:1.45;color:#2a2218;position:relative;padding-left:26px;}
+  .gc-blk li svg{position:absolute;left:0;top:2px;width:17px;height:17px;color:#12A150;}
   .gc-bud{border:1px solid #ECE9E2;border-radius:14px;overflow:hidden;}
-  .gc-bud .gc-brow{display:flex;justify-content:space-between;gap:12px;padding:11px 16px;font-size:.9375rem;border-bottom:1px solid #ECE9E2;}
+  .gc-bud .gc-brow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;font-size:.9375rem;border-bottom:1px solid #ECE9E2;}
   .gc-bud .gc-brow:last-child{border-bottom:none;}
   .gc-bud .gc-brow b{color:#032F5E;font-weight:700;}
-  .gc-bud .gc-brow .gc-v{color:#2a2218;font-weight:700;white-space:nowrap;}
-  .gc-bud .gc-brow small{display:block;color:#5e5649;font-weight:400;font-style:italic;}
-  .gc-avi{font-size:.82rem;color:#5e5649;font-style:italic;margin-top:8px;}
-  .gc-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;align-items:center;}
-  .gc-g{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#34D17A,#12A150);color:#fff;font-weight:800;font-size:1.0625rem;padding:15px 26px;border-radius:50px;text-decoration:none;box-shadow:0 10px 24px rgba(18,161,80,.3);}
-  .gc-g .gc-gfree{background:#F2A91D;color:#3d2a00;font-size:.72rem;font-weight:800;padding:3px 9px;border-radius:50px;}
+  .gc-bud .gc-brow .gc-v{color:#2a2218;font-weight:800;white-space:nowrap;}
+  .gc-bud .gc-brow small{display:block;color:#5e5649;font-weight:400;font-style:italic;margin-top:1px;}
+  .gc-avi{font-size:.82rem;color:#5e5649;font-style:italic;margin-top:9px;}
+  .gc-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;align-items:center;}
+  .gc-g{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#34D17A,#12A150);color:#fff;font-weight:800;font-size:1.0625rem;padding:15px 26px;border-radius:50px;text-decoration:none;box-shadow:0 10px 24px rgba(18,161,80,.3);}
+  .gc-g svg{width:19px;height:19px;}
+  .gc-g .gc-gfree{background:#F2A91D;color:#3d2a00;font-size:.72rem;font-weight:800;padding:3px 9px;border-radius:50px;letter-spacing:.03em;}
   .gc-link{font-weight:800;font-size:.9375rem;color:#054782;text-decoration:none;}
+  .gc-link:hover{text-decoration:underline;}
   .gc-hide{display:none;}
 </style>
-<!-- ============ CALCULADORA FLOTANTE · CONSTRUYE TU PROYECTO ============ -->
-<style>
-  .gc-overlay{position:fixed;inset:0;z-index:1000;display:none;background:rgba(3,47,94,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);padding:40px 16px;overflow-y:auto;}
-  .gc-overlay.gc-show{display:flex;align-items:flex-start;justify-content:center;}
-  .gc{position:relative;max-width:640px;width:100%;margin:0 auto;background:#fff;border:1px solid #ECE9E2;border-radius:22px;box-shadow:0 30px 70px rgba(3,47,94,.35);padding:34px 36px 30px;animation:gcPop .25s ease-out;}
-  @keyframes gcPop{from{opacity:0;transform:translateY(14px) scale(.98);}to{opacity:1;transform:none;}}
-  .gc-close{position:absolute;top:14px;right:16px;width:38px;height:38px;border-radius:50%;border:none;background:#E8EEF7;color:#032F5E;font-size:1.1rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;}
-  .gc-close:hover{background:#d4e0f0;}
-  .gc-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:#fff;background:linear-gradient(90deg,#032F5E,#054782);padding:7px 15px;border-radius:50px;}
-  .gc-prog{height:5px;background:#E8EEF7;border-radius:20px;margin:16px 0 22px;overflow:hidden;}
-  .gc-prog i{display:block;height:100%;background:linear-gradient(90deg,#C3122C,#F2A91D);border-radius:20px;transition:width .3s;}
-  .gc-q{font-family:'DM Serif Display',serif;color:#032F5E;font-weight:400;font-size:clamp(1.4rem,3vw,1.8rem);line-height:1.14;margin:0 0 18px;padding-right:30px;}
-  .gc-opts{display:flex;flex-direction:column;gap:12px;}
-  .gc-opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fff;border:1.5px solid #ECE9E2;border-radius:14px;padding:16px 18px;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s;font-family:inherit;}
-  .gc-opt:hover{border-color:#054782;transform:translateY(-2px);box-shadow:0 10px 24px rgba(3,47,94,.08);}
-  .gc-opt .gc-ic{font-size:1.7rem;flex-shrink:0;}
-  .gc-opt .gc-tx b{display:block;font-size:1.05rem;color:#032F5E;font-weight:700;}
-  .gc-opt .gc-tx span{font-size:.9375rem;color:#5e5649;}
-  .gc-opt.gc-foco{border-color:#F2A91D;background:#FEF4DF;}
-  .gc-opt .gc-star{margin-left:auto;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;background:#F2A91D;color:#3d2a00;padding:4px 10px;border-radius:50px;white-space:nowrap;}
-  .gc-back{margin-top:18px;background:none;border:none;color:#5e5649;font-weight:700;font-size:.9375rem;cursor:pointer;font-family:inherit;}
-  .gc-back:hover{color:#032F5E;}
-  .gc-rhead{display:flex;align-items:flex-start;gap:14px;background:linear-gradient(135deg,#032F5E,#054782);color:#fff;border-radius:16px;padding:20px 22px;margin-bottom:18px;}
-  .gc-rhead .gc-ic{font-size:2rem;}
-  .gc-rhead .gc-lbl{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#F2A91D;}
-  .gc-rhead h3{font-family:'DM Serif Display',serif;color:#fff;font-weight:400;font-size:1.4rem;margin-top:2px;line-height:1.14;}
-  .gc-toggle{display:inline-flex;background:#E8EEF7;border-radius:50px;padding:4px;margin-bottom:16px;}
-  .gc-toggle button{border:none;background:none;font-family:inherit;font-weight:800;font-size:.9375rem;color:#054782;padding:8px 16px;border-radius:50px;cursor:pointer;}
-  .gc-toggle button.gc-on{background:#fff;color:#032F5E;box-shadow:0 2px 8px rgba(3,47,94,.12);}
-  .gc-blk{margin-bottom:16px;}
-  .gc-blk h4{font-family:'Source Sans 3',sans-serif;font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#5e5649;margin-bottom:9px;}
-  .gc-blk ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;}
-  .gc-blk li{font-size:.9375rem;color:#2a2218;position:relative;padding-left:22px;}
-  .gc-blk li::before{content:"✓";color:#054782;font-weight:800;position:absolute;left:0;}
-  .gc-bud{border:1px solid #ECE9E2;border-radius:14px;overflow:hidden;}
-  .gc-bud .gc-brow{display:flex;justify-content:space-between;gap:12px;padding:11px 16px;font-size:.9375rem;border-bottom:1px solid #ECE9E2;}
-  .gc-bud .gc-brow:last-child{border-bottom:none;}
-  .gc-bud .gc-brow b{color:#032F5E;font-weight:700;}
-  .gc-bud .gc-brow .gc-v{color:#2a2218;font-weight:700;white-space:nowrap;}
-  .gc-bud .gc-brow small{display:block;color:#5e5649;font-weight:400;font-style:italic;}
-  .gc-avi{font-size:.82rem;color:#5e5649;font-style:italic;margin-top:8px;}
-  .gc-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;align-items:center;}
-  .gc-g{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#34D17A,#12A150);color:#fff;font-weight:800;font-size:1.0625rem;padding:15px 26px;border-radius:50px;text-decoration:none;box-shadow:0 10px 24px rgba(18,161,80,.3);}
-  .gc-g .gc-gfree{background:#F2A91D;color:#3d2a00;font-size:.72rem;font-weight:800;padding:3px 9px;border-radius:50px;}
-  .gc-link{font-weight:800;font-size:.9375rem;color:#054782;text-decoration:none;}
-  .gc-hide{display:none;}
-  @media(max-width:560px){.gc{padding:28px 22px 26px;border-radius:18px;}.gc-overlay{padding:16px 10px;}}
-</style>
-<div class="gc-overlay" id="gcOverlay" onclick="gcBackdrop(event)">
-  <div class="gc" role="dialog" aria-modal="true" aria-label="Construye tu proyecto">
-    <button class="gc-close" onclick="gcClose()" aria-label="Cerrar">✕</button>
-    <span class="gc-eyebrow">🧭 Vamos a construir tu proyecto</span>
-    <div class="gc-prog"><i id="gcBar" style="width:33%"></i></div>
+<section class="gc-sec container reveal" id="etapas">
+  <div class="gc">
+    <span class="gc-eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.6 8.4-2 5.2-5.2 2 2-5.2 5.2-2Z"/></svg>Vamos a construir tu proyecto</span>
+    <div class="gc-prog"><i id="gcBar" style="width:50%"></i></div>
 
     <div id="gcS1">
       <h3 class="gc-q">¿Qué quieres hacer en España?</h3>
       <div class="gc-opts">
-        <button class="gc-opt gc-foco" onclick="gcGo('estudiar')"><span class="gc-ic">🎓</span><span class="gc-tx"><b>Estudiar</b><span>Para ti o para tu hijo/a</span></span><span class="gc-star">★ Nuestro foco</span></button>
-        <button class="gc-opt" onclick="gcGo('trabajar')"><span class="gc-ic">💼</span><span class="gc-tx"><b>Trabajar o vivir</b><span>Por cuenta ajena, propia o sin actividad</span></span></button>
-        <button class="gc-opt" onclick="gcGo('familia')"><span class="gc-ic">👨‍👩‍👧</span><span class="gc-tx"><b>Venir con mi familia</b><span>Reagrupación o venir juntos</span></span></button>
-        <button class="gc-opt" onclick="gcGo('yaaqui')"><span class="gc-ic">🇪🇸</span><span class="gc-tx"><b>Ya estoy en España</b><span>Regularizar, renovar o nacionalidad</span></span></button>
+        <button class="gc-opt gc-foco" onclick="gcResult('estudios')">
+          <span class="gc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 11.8V17c0 1.1 2.7 2.4 6 2.4s6-1.3 6-2.4v-5.2"/><path d="M22 10v4.3"/></svg></span>
+          <span class="gc-tx"><b>Estudiar</b><span>Para ti o para tu hijo/a</span></span>
+          <span class="gc-star">★ Nuestro foco</span>
+        </button>
+        <button class="gc-opt" onclick="gcResult('trabajar')">
+          <span class="gc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7.5" width="19" height="12" rx="2.2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M2.5 12.6h19"/></svg></span>
+          <span class="gc-tx"><b>Trabajar o vivir</b><span>Por cuenta ajena, propia o sin actividad</span></span>
+        </button>
+        <button class="gc-opt" onclick="gcResult('familia')">
+          <span class="gc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.8" cy="8" r="3"/><path d="M3.4 19a5.4 5.4 0 0 1 10.8 0"/><path d="M16 6.2a3 3 0 0 1 0 6"/><path d="M16.8 14.1a5.4 5.4 0 0 1 3.8 4.9"/></svg></span>
+          <span class="gc-tx"><b>Venir con mi familia</b><span>Reagrupación o venir juntos</span></span>
+        </button>
+        <button class="gc-opt" onclick="gcResult('yaaqui')">
+          <span class="gc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11a7 7 0 0 0-14 0c0 4.9 7 11 7 11Z"/><path d="m9.3 10.2 1.9 1.9 3.5-3.7"/></svg></span>
+          <span class="gc-tx"><b>Ya estoy en España</b><span>Recién llegado/a o con residencia que dar continuidad</span></span>
+        </button>
       </div>
-    </div>
-
-    <div id="gcS2" class="gc-hide">
-      <h3 class="gc-q">¿Para quién es el proyecto?</h3>
-      <div class="gc-opts">
-        <button class="gc-opt" onclick="gcResult('estudiarMi')"><span class="gc-ic">🧑</span><span class="gc-tx"><b>Para mí</b><span>Quiero estudiar y vivir en España</span></span></button>
-        <button class="gc-opt" onclick="gcResult('estudiarHijo')"><span class="gc-ic">🧑‍🎓</span><span class="gc-tx"><b>Para mi hijo/a</b><span>Quiero que estudie y resida en España</span></span></button>
-      </div>
-      <button class="gc-back" onclick="gcStep1()">← Volver</button>
     </div>
 
     <div id="gcRes" class="gc-hide">
-      <div class="gc-rhead"><span class="gc-ic" id="gcIc">🎓</span><div><span class="gc-lbl">Tu vía</span><h3 id="gcTitle"></h3></div></div>
+      <div class="gc-rhead"><span class="gc-ic" id="gcIc"></span><div><span class="gc-lbl">Tu vía</span><h3 id="gcTitle"></h3></div></div>
       <div class="gc-toggle" id="gcToggle">
         <button id="gcReady" class="gc-on" onclick="gcMode('ready')">Quiero venir ya</button>
         <button id="gcPlanBtn" onclick="gcMode('plan')">Lo estoy planificando</button>
       </div>
       <div class="gc-blk"><h4>Qué te piden</h4><ul id="gcPiden"></ul></div>
       <div class="gc-blk" id="gcBud">
-        <h4>Lo que supone, orientativo</h4>
+        <h4>Lo que supone · orientativo</h4>
         <div class="gc-bud">
           <div class="gc-brow"><div><b>Medios económicos</b><small>100% IPREM 2026 · o 300 € si el alojamiento está pagado</small></div><span class="gc-v">600 €/mes</span></div>
           <div class="gc-brow"><div><b>Seguro médico</b><small>orientativo</small></div><span class="gc-v">~400–600 €/año</span></div>
@@ -2101,42 +2063,42 @@ object-position: 25% center;
       <div class="gc-blk" id="gcPlan" style="display:none;">
         <h4>Tu plan de ahorro</h4>
         <ul>
-          <li>Reúne la prueba de medios (IPREM × meses del curso)</li>
-          <li>Presupuesta matrícula + 6-12 meses de alojamiento</li>
-          <li>Prepara documentos del país (apostilla, traducción)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Reúne la prueba de medios (IPREM × meses del curso)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Presupuesta matrícula + 6–12 meses de alojamiento</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Prepara documentos del país (apostilla y traducción)</li>
         </ul>
       </div>
       <p class="gc-avi" id="gcNote" style="display:none;"></p>
       <div class="gc-cta">
-        <a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener" class="gc-g">📅 Consúltalo <span class="gc-gfree">GRATIS</span></a>
+        <a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener" class="gc-g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17"/><path d="M8 3v4M16 3v4"/></svg>Consúltalo <span class="gc-gfree">GRATIS</span></a>
         <a id="gcLink" href="#" class="gc-link"></a>
       </div>
       <button class="gc-back" onclick="gcStep1()">← Empezar de nuevo</button>
     </div>
   </div>
-</div>
+</section>
 <script>
 (function(){
+  var IC={
+    estudios:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 11.8V17c0 1.1 2.7 2.4 6 2.4s6-1.3 6-2.4v-5.2"/><path d="M22 10v4.3"/></svg>',
+    trabajar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7.5" width="19" height="12" rx="2.2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M2.5 12.6h19"/></svg>',
+    familia:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.8" cy="8" r="3"/><path d="M3.4 19a5.4 5.4 0 0 1 10.8 0"/><path d="M16 6.2a3 3 0 0 1 0 6"/><path d="M16.8 14.1a5.4 5.4 0 0 1 3.8 4.9"/></svg>',
+    yaaqui:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11a7 7 0 0 0-14 0c0 4.9 7 11 7 11Z"/><path d="m9.3 10.2 1.9 1.9 3.5-3.7"/></svg>'
+  };
   var DATA={
-    estudiarMi:{ic:'🎓',title:'Estancia por estudios',budget:true,piden:['Admisión en un centro (universidad, FP, instituto o idioma)','Medios económicos demostrables (se calculan con el IPREM)','Seguro médico y alojamiento'],link:'estancia-estudios.html',linkLabel:'Ver estancia por estudios →'},
-    estudiarHijo:{ic:'🎓',title:'Estancia por estudios — para tu hijo/a',budget:true,piden:['Admisión en un centro (universidad, FP, instituto o idioma)','Medios económicos demostrables (se calculan con el IPREM)','Seguro médico y alojamiento','Si es menor: autorización de los padres y un responsable en España'],link:'estancia-estudios.html',linkLabel:'Ver estancia por estudios →'},
-    trabajar:{ic:'💼',title:'Trabajar o vivir en España',budget:false,piden:['La vía depende de tu modalidad: por cuenta ajena, por cuenta propia o residencia no lucrativa','Según el caso: oferta/contrato, plan de negocio o medios económicos propios','Seguro médico'],note:'El presupuesto depende de tu modalidad; lo calculamos contigo en la consulta.',link:'extranjeria.html',linkLabel:'Ver extranjería →'},
-    familia:{ic:'👨‍👩‍👧',title:'Venir con tu familia',budget:false,piden:['Reagrupación familiar o venir juntos, según vuestro caso','Vínculo familiar acreditado, vivienda adecuada y medios económicos','Documentación del país (apostilla y traducción)'],note:'El presupuesto depende de cuántos sois y de la vía; lo vemos en la consulta.',link:'extranjeria.html',linkLabel:'Ver extranjería →'},
-    yaaqui:{ic:'🇪🇸',title:'Ya en España: regularizar, renovar o nacionalidad',budget:false,piden:['Según tu situación: arraigo, renovación, larga duración o nacionalidad','Tiempo de estancia, empadronamiento y documentación que corresponda'],note:'Cada situación es distinta; definimos tu siguiente paso en la consulta.',link:'extranjeria.html',linkLabel:'Ver extranjería →'}
+    estudios:{title:'Estancia por estudios',budget:true,piden:['Admisión en un centro: universidad, FP, instituto o escuela de idiomas','Medios económicos demostrables (se calculan con el IPREM)','Seguro médico y alojamiento','Si es para un/a menor: autorización de los padres y un responsable en España'],link:'estancia-estudios.html',linkLabel:'Ver estancia por estudios →'},
+    trabajar:{title:'Trabajar o vivir en España',budget:false,piden:['La vía depende de tu modalidad: por cuenta ajena, por cuenta propia o residencia no lucrativa','Según el caso: oferta/contrato, plan de negocio o medios económicos propios','Seguro médico'],note:'El presupuesto depende de tu modalidad; lo calculamos contigo en la consulta.',link:'extranjeria.html',linkLabel:'Ver extranjería →'},
+    familia:{title:'Venir con tu familia',budget:false,piden:['Reagrupación familiar o venir juntos, según vuestro caso','Vínculo familiar acreditado, vivienda adecuada y medios económicos','Documentación del país (apostilla y traducción)'],note:'El presupuesto depende de cuántos sois y de la vía; lo vemos en la consulta.',link:'extranjeria.html',linkLabel:'Ver extranjería →'},
+    yaaqui:{title:'Ya en España: dale continuidad a tu estancia',budget:false,piden:['Si acabas de llegar, hay un plazo corto para formalizar tu estancia por estudios — conviene no dejarlo pasar','Si ya resides: renovación, larga duración, arraigo o nacionalidad, según tu caso','Empadronamiento y la documentación que corresponda a tu situación'],note:'Cada situación tiene sus plazos; definimos tu siguiente paso en la consulta.',link:'extranjeria.html',linkLabel:'Ver extranjería →'}
   };
   function id(x){return document.getElementById(x);}
-  function show(which){['gcS1','gcS2','gcRes'].forEach(function(x){id(x).classList.add('gc-hide');});id(which).classList.remove('gc-hide');}
+  function show(which){['gcS1','gcRes'].forEach(function(x){id(x).classList.add('gc-hide');});id(which).classList.remove('gc-hide');}
   function bar(w){id('gcBar').style.width=w+'%';}
-  window.gcOpen=function(){id('gcOverlay').classList.add('gc-show');document.body.style.overflow='hidden';gcStep1();};
-  window.gcClose=function(){id('gcOverlay').classList.remove('gc-show');document.body.style.overflow='';};
-  window.gcBackdrop=function(e){if(e.target===id('gcOverlay'))gcClose();};
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')gcClose();});
-  window.gcStep1=function(){show('gcS1');bar(33);};
-  window.gcGo=function(opt){if(opt==='estudiar'){show('gcS2');bar(66);}else{gcResult(opt);}};
+  window.gcStep1=function(){show('gcS1');bar(50);};
   window.gcResult=function(key){
     var d=DATA[key];show('gcRes');bar(100);
-    id('gcIc').textContent=d.ic;id('gcTitle').textContent=d.title;
-    id('gcPiden').innerHTML=d.piden.map(function(p){return '<li>'+p+'</li>';}).join('');
+    id('gcIc').innerHTML=IC[key];id('gcTitle').textContent=d.title;
+    id('gcPiden').innerHTML=d.piden.map(function(p){return '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg>'+p+'</li>';}).join('');
     id('gcBud').style.display=d.budget?'block':'none';
     id('gcToggle').style.display=d.budget?'inline-flex':'none';
     id('gcPlan').style.display='none';
@@ -2151,7 +2113,7 @@ object-position: 25% center;
   };
 })();
 </script>
-<!-- ============ FIN CALCULADORA FLOTANTE ============ -->
+<!-- ============ FIN CALCULADORA ============ -->
 
 <!-- ============ FIN MÓDULO RUTA / ETAPAS ============ -->
 
