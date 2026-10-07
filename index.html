@@ -1838,7 +1838,7 @@ object-position: 25% center;
             <li role="none"><a href="#contacto" class="dropdown-item" role="menuitem"><strong>✉ Contacto</strong><span>Email y teléfonos directos</span></a></li>
           </ul>
         </li>
-        <li class="nav-item"><a href="#contacto" class="nav-cta">Contactar</a></li>
+              <li class="nav-item"><a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener" class="nav-cta">Reserva gratis</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -2082,26 +2082,35 @@ object-position: 25% center;
   }
 </style>
 
-<section class="contacto-directo container reveal" id="contacto">
-  <div class="cd-card">
-    <div>
-      <h2>Hablemos de tu caso</h2>
-      <div class="cd-accent"></div>
-      <p class="cd-sub">Te atendemos de persona a persona. Escríbenos o llámanos y te decimos el siguiente paso, sin compromiso.</p>
-    </div>
-    <div class="cd-vias">
-      <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20gestionaseguroweb.com%20y%20quiero%20informaci%C3%B3n%20sobre%20mi%20caso." target="_blank" rel="noopener" class="cd-via cd-via--wa">
-        <span class="ic">💬</span>
-        <span class="tx"><b>WhatsApp directo</b><span>Respuesta rápida · +34 697 154 442</span></span>
-      </a>
-      <a href="tel:+34697154442" class="cd-via">
-        <span class="ic">📞</span>
-        <span class="tx"><b>+34 697 154 442</b><span>Nora · tramitación y acompañamiento</span></span>
-      </a>
-      <a href="tel:+34644416479" class="cd-via">
-        <span class="ic">⚖️</span>
-        <span class="tx"><b>+34 644 416 479</b><span>Sara · abogada de extranjería</span></span>
-      </a>
+<!-- ============ CONSULTORÍA GRATUITA (bloque de cierre reutilizable) ============ -->
+<style>
+  .cons-sec{padding:40px 24px 60px;background:#FAF8F3;}
+  .cons{position:relative;overflow:hidden;max-width:1120px;margin:0 auto;background:linear-gradient(135deg,#032F5E,#054782);border-radius:26px;padding:44px 48px;color:#fff;box-shadow:0 24px 56px rgba(3,47,94,.22);}
+  .cons::after{content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;background:rgba(242,169,29,.14);}
+  .cons-in{position:relative;z-index:1;max-width:760px;}
+  .cons .kick{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;font-size:.8125rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;padding:8px 16px;border-radius:50px;margin-bottom:18px;}
+  .cons h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.8rem,3.6vw,2.4rem);line-height:1.12;margin-bottom:16px;color:#fff;}
+  .cons h2 em{font-style:normal;color:#F2A91D;}
+  .cons p{font-size:1.0625rem;color:rgba(255,255,255,.92);line-height:1.6;margin-bottom:12px;max-width:680px;}
+  .cons .hl-free{background:rgba(242,169,29,.25);color:#fff;font-weight:800;padding:1px 6px;border-radius:5px;}
+  .cons-cta{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:800;font-size:1.0625rem;padding:16px 30px;border-radius:50px;text-decoration:none;box-shadow:0 12px 28px rgba(37,211,102,.32);margin-top:14px;transition:transform .15s;}
+  .cons-cta:hover{transform:translateY(-2px);}
+  .cons-cta .gfree{background:#F2A91D;color:#3d2a00;font-size:.78rem;font-weight:800;letter-spacing:.04em;padding:3px 10px;border-radius:50px;}
+  .cons-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+  .cons-tags span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);color:#fff;font-size:.9375rem;font-weight:700;padding:7px 14px;border-radius:50px;}
+  @media(max-width:600px){.cons{padding:30px 24px;}}
+</style>
+<section class="cons-sec reveal" id="contacto">
+  <div class="cons">
+    <div class="cons-in">
+      <span class="kick">🎯 Tu primer paso con nosotras</span>
+      <h2>Cuéntanos tu proyecto. <em>Nosotros te ayudamos a darle forma.</em></h2>
+      <p>Te ofrecemos una <span class="hl-free">consultoría gratuita de 1 hora</span> para conocer tu caso, resolver tus dudas y orientarte sobre las opciones que mejor encajan contigo — por estudios, trabajo o familia.</p>
+      <p>Queremos que tengas <strong>claridad antes de tomar decisiones importantes</strong>.</p>
+      <a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener" class="cons-cta">📅 Reserva tu consultoría <span class="gfree">GRATIS</span></a>
+      <div class="cons-tags">
+        <span>✓ 1 hora</span><span>✓ Sin compromiso</span><span>✓ Con nuestra consultora</span>
+      </div>
     </div>
   </div>
 </section>
@@ -2117,10 +2126,8 @@ object-position: 25% center;
   </div>
 
   <div class="footer-comunidad-contacto">
-    <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a>
-    <a href="tel:+34644416479">+34 644 416 479</a>
-    <a href="tel:+34697154442">+34 697 154 442</a>
-    <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20gestionaseguroweb.com%20y%20necesito%20informaci%C3%B3n%20sobre%20un%20tr%C3%A1mite." target="_blank" rel="noopener" style="color:var(--arena);font-weight:700;font-size:0.98rem;">💬 WhatsApp directo</a>
+     <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a>
+    <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20gestionaseguroweb.com%20y%20necesito%20informaci%C3%B3n%20sobre%20un%20tr%C3%A1mite."
   </div>
 
   <div class="footer-comunidad-links">
