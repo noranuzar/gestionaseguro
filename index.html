@@ -174,7 +174,7 @@
     .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
     .nav-item { position: relative; }
 
-    .nav-trigger,
+    
     .nav-item > a:not(.nav-cta):not(.nav-cta-secundario) {
       display: inline-flex;
       align-items: center;
@@ -186,79 +186,15 @@
       font-size: var(--fs-xs);
       font-weight: 600;
       color: var(--texto-suave);
-      padding: 10px 14px;
+      padding: 10px 12px;
       border-radius: 10px;
       transition: all var(--transicion);
       white-space: nowrap;
     }
-    .nav-trigger:hover,
-    .nav-item > a:not(.nav-cta):not(.nav-cta-secundario):hover,
-    .nav-item.active .nav-trigger {
+    
+    .nav-item > a:not(.nav-cta):not(.nav-cta-secundario):hover {
       color: var(--oliva-dark);
       background: var(--oliva-bg);
-    }
-    .nav-trigger .chevron {
-      width: 12px; height: 12px;
-      transition: transform var(--transicion);
-      flex-shrink: 0;
-    }
-    .nav-item.active .chevron { transform: rotate(180deg); }
-
-    .dropdown {
-      position: absolute;
-      top: calc(100% + 10px);
-      left: 0;
-      min-width: 290px;
-      background: var(--blanco);
-      border: 1px solid rgba(85,107,47,0.12);
-      border-radius: 16px;
-      padding: 10px;
-      box-shadow: 0 12px 32px rgba(42,34,24,0.12), 0 2px 6px rgba(42,34,24,0.05);
-      list-style: none;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-8px);
-      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0.22s;
-      z-index: 110;
-    }
-    .nav-item.active .dropdown {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0s;
-    }
-    .dropdown::before {
-      content: '';
-      position: absolute;
-      top: -6px;
-      left: 24px;
-      width: 12px; height: 12px;
-      background: var(--blanco);
-      border-top: 1px solid rgba(85,107,47,0.12);
-      border-left: 1px solid rgba(85,107,47,0.12);
-      transform: rotate(45deg);
-    }
-    .dropdown-item {
-      display: block;
-      padding: 12px 14px;
-      border-radius: 10px;
-      transition: background var(--transicion);
-    }
-    .dropdown-item:hover { background: var(--oliva-bg); }
-    .dropdown-item strong {
-      display: block;
-      font-size: var(--fs-xs);
-      font-weight: 700;
-      color: var(--oliva-dark);
-      margin-bottom: 2px;
-      font-family: 'Source Sans 3', sans-serif;
-    }
-    .dropdown-item span {
-      display: block;
-      font-size: 0.9375rem;      /* 15px */
-      font-weight: 400;
-      color: var(--texto-suave);
-      line-height: 1.45;
     }
 
     .nav-cta {
@@ -272,8 +208,8 @@
       white-space: nowrap;
     }
     .nav-cta:hover { background: var(--oliva-dark) !important; transform: translateY(-1px); }
-         .nav-cta--reserva { background: linear-gradient(135deg,#34D17A,#12A150) !important; color:#fff !important; box-shadow:0 8px 20px rgba(18,161,80,.32); }
-    .nav-cta--reserva:hover { background: linear-gradient(135deg,#2DBE6B,#0E8F46) !important; }
+    .nav-cta--ruta { background: transparent !important; color: var(--azul-principal) !important; border: 2px solid var(--azul-principal); padding: 11px 20px; }
+    .nav-cta--ruta:hover { background: var(--azul-principal) !important; color: #fff !important; }
 
     .hamburger {
       display: none;
@@ -672,7 +608,7 @@
     /* ============================================================ */
 
     /* Tablets y pantallas medianas */
-    @media (max-width: 1024px) {
+    @media (max-width: 1120px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
 
@@ -693,33 +629,12 @@
         overflow-y: auto;
       }
       .nav-links.open .nav-item { width: 100%; }
-      .nav-links.open .nav-trigger,
+      
       .nav-links.open .nav-item > a:not(.nav-cta):not(.nav-cta-secundario) {
         width: 100%;
         justify-content: space-between;
         padding: 15px 16px;
         font-size: var(--fs-sm);
-      }
-      .nav-links.open .dropdown {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        border: none;
-        background: var(--oliva-bg);
-        padding: 0 6px;
-        margin: 0;
-        border-radius: 12px;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease, padding 0.3s ease, margin 0.3s ease;
-      }
-      .nav-links.open .dropdown::before { display: none; }
-      .nav-links.open .nav-item.active .dropdown {
-        max-height: 500px;
-        padding: 8px 6px;
-        margin: 4px 0 8px;
       }
       .nav-links.open .nav-cta {
         margin-top: 12px;
@@ -862,23 +777,11 @@
         <span class="brand-word"><span class="g1">Gestiona</span> <span class="g2">Seguro</span></span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li class="nav-item"><a href="extranjeria.html">Extranjería</a></li>
         <li class="nav-item"><a href="servicios-homologacion.html">Estudios</a></li>
-        <li class="nav-item"><a href="empleo.html">Empleo</a></li>
+        <li class="nav-item"><a href="extranjeria.html">Extranjería</a></li>
+        <li class="nav-item"><a href="servicio-peac.html">Acreditar experiencia</a></li>
         <li class="nav-item"><a href="blog.html">Recursos gratuitos</a></li>
-        <li class="nav-item has-dropdown">
-          <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
-            Nosotros
-            <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 8l5 5 5-5"/>
-            </svg>
-          </button>
-          <ul class="dropdown" role="menu">
-            <li role="none"><a href="#equipo" class="dropdown-item" role="menuitem"><strong>👥 Quiénes somos</strong><span>Sara y Nora: equipo humano</span></a></li>
-            <li role="none"><a href="#contacto" class="dropdown-item" role="menuitem"><strong>✉ Contacto</strong><span>Email y teléfonos directos</span></a></li>
-          </ul>
-        </li>
-              <li class="nav-item"><a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener" class="nav-cta nav-cta--reserva">Reserva tu consulta gratis</a></li>
+        <li class="nav-item"><a href="#" onclick="gcOpen();return false;" role="button" class="nav-cta nav-cta--ruta">Encuentra tu ruta</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1379,55 +1282,8 @@
       hamburger.setAttribute('aria-expanded', String(isOpen));
     });
 
-    // ========= DROPDOWNS =========
-    document.querySelectorAll('.has-dropdown .nav-trigger').forEach(trigger => {
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const item = trigger.closest('.nav-item');
-        const wasActive = item.classList.contains('active');
-
-        document.querySelectorAll('.nav-item.active').forEach(active => {
-          if (active !== item) {
-            active.classList.remove('active');
-            active.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
-          }
-        });
-
-        item.classList.toggle('active');
-        trigger.setAttribute('aria-expanded', String(!wasActive));
-      });
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.nav-item')) {
-        document.querySelectorAll('.nav-item.active').forEach(item => {
-          item.classList.remove('active');
-          item.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
-        });
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.nav-item.active').forEach(item => {
-          item.classList.remove('active');
-          item.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
-        });
-      }
-    });
-
-    document.querySelectorAll('.dropdown-item').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.querySelectorAll('.nav-item.active').forEach(item => {
-          item.classList.remove('active');
-        });
-      });
-    });
-
     // Cierra menú móvil al click en enlaces simples
-    navLinks.querySelectorAll('a:not(.dropdown-item)').forEach(link => {
+    navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
