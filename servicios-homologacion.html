@@ -500,7 +500,37 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 .es-case-k{margin:0 0 4px;font-size:.875rem;font-weight:800;color:var(--azul-secundario)}
 .es-case h3,.es-plan h3,.es-goal h3{margin:0 0 12px;font-size:1.3125rem}
 .es-case p,.es-goal p{font-size:1.0625rem;margin:0 0 12px}
-.es-progs{display:grid;gap:10px;align-items:start;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.es--sep{border-top:1px solid #ECE9E2}
+.es-fam-note{font-size:.9375rem;color:#595959;margin:0 0 32px;max-width:640px}
+.es-areas{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.es-area{display:flex;flex-direction:column;gap:8px;text-align:left;font:inherit;color:inherit;background:#fff;border:1px solid #ECE9E2;border-radius:20px;padding:22px;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;min-width:0}
+.es-area:hover{border-color:var(--azul-secundario);box-shadow:0 12px 26px rgba(3,47,94,.08);transform:translateY(-2px)}
+.es-area:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
+.es-area[aria-expanded="true"]{border:2px solid var(--azul-principal);padding:21px}
+.es-area-ic{width:44px;height:44px;border-radius:12px;background:var(--azul-light);color:var(--azul-principal);display:grid;place-items:center}
+.es-area-ic svg{width:22px;height:22px}
+.es-area-t{font-family:'DM Serif Display',serif;font-size:1.4375rem;line-height:1.2;color:var(--azul-principal)}
+.es-area-n{font-size:.9375rem;font-weight:700;color:var(--rojo-principal)}
+.es-area-fam{font-size:.875rem;line-height:1.45;color:#595959}
+.es-area-go{margin-top:auto;padding-top:6px;font-weight:800;font-size:1rem;color:var(--azul-secundario);display:flex;align-items:center;gap:6px}
+.es-area-go svg{width:16px;height:16px;transition:transform .2s}
+.es-area[aria-expanded="true"] .es-area-go svg{transform:rotate(180deg)}
+.es-panel{margin-top:20px;background:#fff;border:1px solid #ECE9E2;border-radius:20px;padding:28px;scroll-margin-top:90px}
+.es-panel h3{margin:0 0 4px;font-family:'DM Serif Display',serif;font-weight:400;font-size:1.625rem}
+.es-panel-meta{margin:0 0 18px;font-size:.9375rem;color:#595959}
+.es-fichas{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.es-ficha{background:#FAF8F3;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.es-ficha-n{font-weight:700;color:var(--azul-principal);line-height:1.35}
+.es-chips{display:flex;flex-wrap:wrap;gap:6px}
+.es-chip{font-size:.8125rem;font-weight:700;color:var(--azul-principal);background:var(--azul-light);border-radius:50px;padding:3px 10px}
+.es-chip--propia{background:#FEF4DF;color:#6b4500}
+.es-ficha a{margin-top:auto;font-size:.9375rem;font-weight:800;text-decoration:none;color:var(--azul-secundario)}
+.es-ficha a:hover{text-decoration:underline}
+.es-ficha a:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
+.es-panel-extra{margin:16px 0 0;font-size:1rem;color:#4a4f55}
+#programas-y-planes .es-notice--w{margin:32px 0 0}
+@media(max-width:600px){.es-areas{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.es-area{padding:16px;border-radius:16px}.es-area[aria-expanded="true"]{padding:15px}.es-area-t{font-size:1.1875rem}.es-area-fam{display:none}.es-panel{padding:20px}}
+@media(max-width:340px){.es-areas{grid-template-columns:1fr}}
 .es-plan{display:flex;flex-direction:column;gap:10px;position:relative}
 .es-plan h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem}
 .es-plan p{margin:0;color:#4a4f55}
@@ -650,31 +680,147 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
   </div>
 </section>
 
-<!-- BLOQUE 5 · PROGRAMAS Y PLANES -->
+<!-- BLOQUE 5a · CATÁLOGO DE FORMACIÓN -->
 <section class="es es--w" id="programas-y-planes" aria-labelledby="es-pp">
   <div class="es-in">
     <span class="es-tag es-tag--r">Para quien viene a estudiar o ya vive en España · Rutas 1 y 2</span>
-    <h2 id="es-pp">Elige qué estudiar y cómo quieres que te acompañemos</h2>
-    <p class="es-sub">Primero el programa, después el plan. El precio exacto te lo damos en la consulta.</p>
+    <h2 id="es-pp">Encuentra una formación para tu futuro</h2>
+    <p class="es-sub" style="margin-bottom:12px">Explora las áreas, mira qué programas hay en cada una y cuéntanos cuál te interesa. Lo revisamos contigo antes de que te matricules.</p>
+    <p class="es-fam-note">Ordenadas por familias profesionales del Catálogo Nacional de Cualificaciones (INCUAL). La familia indica el sector; no significa que el programa dé un título oficial.</p>
 
-    <h3 style="margin-top:0">Programas · curso 2026–2027</h3>
-    <div class="es-progs">
-      <details><summary>Estética y barbería · 8 programas</summary><ul><li>Máster Europeo en Beauty Therapy (Grado Estética)</li><li>Estética integral, nivel 2 + prácticas</li><li>Estética avanzada, nivel 3 + prácticas</li><li>Máster Formador/a de Estética + prácticas</li><li>Máster Management Estético + prácticas</li><li>Máster Auxiliar de Medicina Estética + prácticas</li><li>Máster Dual de Estética + especialidad</li><li>Barbería avanzada + prácticas</li></ul></details>
-      <details><summary>Empresa, marketing y comercio · 8 programas</summary><ul><li>Marketing y ventas</li><li>Planificación y dirección comercial</li><li>Gestión de proyectos empresariales</li><li>Emprendimiento y gestión de empresas</li><li>Gestión de actividades de comercio y marketing</li><li>Marketing digital</li><li>Gestión de logística comercial</li><li>Operaciones administrativas y servicios generales</li></ul></details>
-      <details><summary>Hostelería y turismo · 3 programas</summary><ul><li>Aprovisionamiento y cocina</li><li>Operaciones de restaurante y bar</li><li>Gestión de alojamientos y turismo</li></ul></details>
-      <details><summary>Salud, cuidados y deporte · 3 programas</summary><ul><li>Entrenador personal</li><li>Dietética y nutrición</li><li>Atención a personas dependientes en instituciones</li></ul><p>Algunas profesiones de cuidados exigen título oficial para ejercer. <a href="#formacion-oficial-y-propia">Ver la diferencia →</a></p></details>
-      <details><summary>Tecnología, construcción y docencia · 3 programas</summary><ul><li>Ciberseguridad empresarial</li><li>Control de proyectos y obras de construcción</li><li>Emprendimiento para docencia y formación</li></ul></details>
-      <details><summary>Experto universitario · 3 programas</summary><p>Títulos propios universitarios · 650 h · 26 ECTS · modalidad híbrida</p><ul><li>Gestión Empresarial · 7 meses</li><li>Comunicación Estratégica y Oratoria en Entornos Profesionales · 6 meses</li><li>Gestión y Servicio en Hostelería (Atención Integral al Cliente) · 7 meses</li></ul></details>
+    <div class="es-areas" id="es-areas">
+      <button class="es-area" type="button" aria-expanded="false" aria-controls="p-estetica">
+        <span class="es-area-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></span>
+        <span class="es-area-t">Estética y barbería</span>
+        <span class="es-area-n">8 programas</span>
+        <span class="es-area-fam">Familia: Imagen Personal</span>
+        <span class="es-area-go">Ver programas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+      </button>
+      <button class="es-area" type="button" aria-expanded="false" aria-controls="p-empresa">
+        <span class="es-area-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></span>
+        <span class="es-area-t">Empresa, marketing y comercio</span>
+        <span class="es-area-n">8 programas</span>
+        <span class="es-area-fam">Familias: Comercio y Marketing · Administración y Gestión</span>
+        <span class="es-area-go">Ver programas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+      </button>
+      <button class="es-area" type="button" aria-expanded="false" aria-controls="p-hosteleria">
+        <span class="es-area-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v8a3 3 0 0 0 3 3v7M10 3v8a3 3 0 0 1-3 3M7 3v5M17 21V3c-2 1-3 4-3 7s1 4 3 4"/></svg></span>
+        <span class="es-area-t">Hostelería y turismo</span>
+        <span class="es-area-n">3 programas</span>
+        <span class="es-area-fam">Familia: Hostelería y Turismo</span>
+        <span class="es-area-go">Ver programas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+      </button>
+      <button class="es-area" type="button" aria-expanded="false" aria-controls="p-salud">
+        <span class="es-area-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 21.5l8.8-8.8a5 5 0 0 0 0-7.1Z"/><path d="M3.5 12h4l2-3 3 6 2-3h6"/></svg></span>
+        <span class="es-area-t">Salud, cuidados y deporte</span>
+        <span class="es-area-n">3 programas</span>
+        <span class="es-area-fam">Familias: Actividades Físicas y Deportivas · Sanidad · Servicios Socioculturales y a la Comunidad</span>
+        <span class="es-area-go">Ver programas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+      </button>
+      <button class="es-area" type="button" aria-expanded="false" aria-controls="p-tecnologia">
+        <span class="es-area-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+        <span class="es-area-t">Tecnología, construcción y docencia</span>
+        <span class="es-area-n">3 programas</span>
+        <span class="es-area-fam">Familias: Informática y Comunicaciones · Edificación y Obra Civil · Servicios Socioculturales y a la Comunidad</span>
+        <span class="es-area-go">Ver programas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+      </button>
+      <button class="es-area" type="button" aria-expanded="false" aria-controls="p-expertos">
+        <span class="es-area-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
+        <span class="es-area-t">Expertos universitarios</span>
+        <span class="es-area-n">3 programas</span>
+        <span class="es-area-fam">Títulos propios universitarios (fuera del catálogo INCUAL)</span>
+        <span class="es-area-go">Ver programas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+      </button>
     </div>
-    <p class="es-notice es-notice--w"><strong aria-hidden="true">⚠</strong><span><strong>Matricularte no garantiza la estancia por estudios:</strong> la decide la Administración, según la formación, el centro, la modalidad y la carga lectiva. Las palabras «máster» o «experto» en un catálogo no significan por sí solas un título oficial. Antes de pagar, revisamos el programa contigo. <a href="#formacion-oficial-y-propia">Formación oficial y propia →</a></span></p>
 
-    <h3>Planes de acompañamiento</h3>
+    <!-- Paneles: visibles sin JavaScript; el script los convierte en desplegables -->
+    <div class="es-panel" id="p-estetica" role="region" aria-label="Programas de Estética y barbería">
+      <h3>Estética y barbería</h3>
+      <p class="es-panel-meta">8 programas · curso 2026–2027</p>
+      <ul class="es-fichas">
+        <li class="es-ficha"><span class="es-ficha-n">Máster Europeo en Beauty Therapy (Grado Estética)</span><a href="#primera-consulta" aria-label="Consultar Máster Europeo en Beauty Therapy">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Estética integral, nivel 2 + prácticas</span><a href="#primera-consulta" aria-label="Consultar Estética integral, nivel 2">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Estética avanzada, nivel 3 + prácticas</span><a href="#primera-consulta" aria-label="Consultar Estética avanzada, nivel 3">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Máster Formador/a de Estética + prácticas</span><a href="#primera-consulta" aria-label="Consultar Máster Formador/a de Estética">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Máster Management Estético + prácticas</span><a href="#primera-consulta" aria-label="Consultar Máster Management Estético">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Máster Auxiliar de Medicina Estética + prácticas</span><a href="#primera-consulta" aria-label="Consultar Máster Auxiliar de Medicina Estética">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Máster Dual de Estética + especialidad</span><a href="#primera-consulta" aria-label="Consultar Máster Dual de Estética">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Barbería avanzada + prácticas</span><a href="#primera-consulta" aria-label="Consultar Barbería avanzada">Consultar →</a></li>
+      </ul>
+    </div>
+
+    <div class="es-panel" id="p-empresa" role="region" aria-label="Programas de Empresa, marketing y comercio">
+      <h3>Empresa, marketing y comercio</h3>
+      <p class="es-panel-meta">8 programas · curso 2026–2027</p>
+      <ul class="es-fichas">
+        <li class="es-ficha"><span class="es-ficha-n">Marketing y ventas</span><a href="#primera-consulta" aria-label="Consultar Marketing y ventas">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Planificación y dirección comercial</span><a href="#primera-consulta" aria-label="Consultar Planificación y dirección comercial">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Gestión de proyectos empresariales</span><a href="#primera-consulta" aria-label="Consultar Gestión de proyectos empresariales">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Emprendimiento y gestión de empresas</span><a href="#primera-consulta" aria-label="Consultar Emprendimiento y gestión de empresas">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Gestión de actividades de comercio y marketing</span><a href="#primera-consulta" aria-label="Consultar Gestión de actividades de comercio y marketing">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Marketing digital</span><a href="#primera-consulta" aria-label="Consultar Marketing digital">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Gestión de logística comercial</span><a href="#primera-consulta" aria-label="Consultar Gestión de logística comercial">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Operaciones administrativas y servicios generales</span><a href="#primera-consulta" aria-label="Consultar Operaciones administrativas y servicios generales">Consultar →</a></li>
+      </ul>
+    </div>
+
+    <div class="es-panel" id="p-hosteleria" role="region" aria-label="Programas de Hostelería y turismo">
+      <h3>Hostelería y turismo</h3>
+      <p class="es-panel-meta">3 programas · curso 2026–2027</p>
+      <ul class="es-fichas">
+        <li class="es-ficha"><span class="es-ficha-n">Aprovisionamiento y cocina</span><a href="#primera-consulta" aria-label="Consultar Aprovisionamiento y cocina">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Operaciones de restaurante y bar</span><a href="#primera-consulta" aria-label="Consultar Operaciones de restaurante y bar">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Gestión de alojamientos y turismo</span><a href="#primera-consulta" aria-label="Consultar Gestión de alojamientos y turismo">Consultar →</a></li>
+      </ul>
+    </div>
+
+    <div class="es-panel" id="p-salud" role="region" aria-label="Programas de Salud, cuidados y deporte">
+      <h3>Salud, cuidados y deporte</h3>
+      <p class="es-panel-meta">3 programas · curso 2026–2027</p>
+      <ul class="es-fichas">
+        <li class="es-ficha"><span class="es-ficha-n">Entrenador personal</span><a href="#primera-consulta" aria-label="Consultar Entrenador personal">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Dietética y nutrición</span><a href="#primera-consulta" aria-label="Consultar Dietética y nutrición">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Atención a personas dependientes en instituciones</span><a href="#primera-consulta" aria-label="Consultar Atención a personas dependientes en instituciones">Consultar →</a></li>
+      </ul>
+      <p class="es-panel-extra">Algunas profesiones de cuidados exigen título oficial para ejercer.</p>
+    </div>
+
+    <div class="es-panel" id="p-tecnologia" role="region" aria-label="Programas de Tecnología, construcción y docencia">
+      <h3>Tecnología, construcción y docencia</h3>
+      <p class="es-panel-meta">3 programas · curso 2026–2027</p>
+      <ul class="es-fichas">
+        <li class="es-ficha"><span class="es-ficha-n">Ciberseguridad empresarial</span><a href="#primera-consulta" aria-label="Consultar Ciberseguridad empresarial">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Control de proyectos y obras de construcción</span><a href="#primera-consulta" aria-label="Consultar Control de proyectos y obras de construcción">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Emprendimiento para docencia y formación</span><a href="#primera-consulta" aria-label="Consultar Emprendimiento para docencia y formación">Consultar →</a></li>
+      </ul>
+    </div>
+
+    <div class="es-panel" id="p-expertos" role="region" aria-label="Programas de Expertos universitarios">
+      <h3>Expertos universitarios</h3>
+      <p class="es-panel-meta">3 programas · curso 2026–2027</p>
+      <ul class="es-fichas">
+        <li class="es-ficha"><span class="es-ficha-n">Gestión Empresarial</span><span class="es-chips"><span class="es-chip es-chip--propia">Título propio universitario</span><span class="es-chip">7 meses</span><span class="es-chip">650 h · 26 ECTS</span><span class="es-chip">Híbrida</span></span><a href="#primera-consulta" aria-label="Consultar Gestión Empresarial">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Comunicación Estratégica y Oratoria en Entornos Profesionales</span><span class="es-chips"><span class="es-chip es-chip--propia">Título propio universitario</span><span class="es-chip">6 meses</span><span class="es-chip">650 h · 26 ECTS</span><span class="es-chip">Híbrida</span></span><a href="#primera-consulta" aria-label="Consultar Comunicación Estratégica y Oratoria">Consultar →</a></li>
+        <li class="es-ficha"><span class="es-ficha-n">Gestión y Servicio en Hostelería (Atención Integral al Cliente)</span><span class="es-chips"><span class="es-chip es-chip--propia">Título propio universitario</span><span class="es-chip">7 meses</span><span class="es-chip">650 h · 26 ECTS</span><span class="es-chip">Híbrida</span></span><a href="#primera-consulta" aria-label="Consultar Gestión y Servicio en Hostelería">Consultar →</a></li>
+      </ul>
+      <p class="es-panel-extra">Modalidad híbrida: una parte presencial en la Comunidad de Madrid y otra online.</p>
+    </div>
+
+    <p class="es-notice es-notice--w"><strong aria-hidden="true">⚠</strong><span><strong>Matricularte no garantiza la estancia por estudios.</strong> La decide la Administración según el programa y tu situación, así que revisamos las condiciones de cada caso antes de que pagues. <a href="#formacion-oficial-y-propia">Formación oficial y propia →</a></span></p>
+  </div>
+</section>
+
+<!-- BLOQUE 5b · PLANES DE ACOMPAÑAMIENTO -->
+<section class="es es--w es--sep" id="planes" aria-labelledby="es-planes">
+  <div class="es-in">
+    <h2 id="es-planes">Planes de acompañamiento</h2>
+    <p class="es-sub">Primero revisamos el programa y tu situación; después te explicamos qué acompañamiento necesitas.</p>
     <div class="es-grid" style="align-items:stretch">
       <div class="es-card es-plan">
         <h3>Básico</h3>
         <p>Tu expediente bien preparado desde el inicio.</p>
         <ul><li>Asesoría inicial personalizada</li><li>Orientación para elegir tus estudios</li><li>Orientación para la carta de admisión</li><li>Preparación y revisión documental</li><li>Asesoramiento para el visado de estudios</li><li>Presentación por nuestra abogada, cuando proceda</li><li>Seguimiento hasta la resolución</li></ul>
-        <a class="es-btn es-btn--sec" href="#primera-consulta">Consultar este plan</a>
+        <a class="es-btn es-btn--sec" href="#primera-consulta" aria-label="Consultar el plan Básico">Consultar este plan</a>
       </div>
       <div class="es-card es-plan es-plan--star">
         <span class="es-star">★ Recomendado</span>
@@ -682,20 +828,40 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
         <p>Todo el proceso, de principio a fin.</p>
         <p class="es-plus">Todo el Básico, y además:</p>
         <ul><li>Gestión completa de tu solicitud, de principio a fin</li><li>Asesoramiento completo de tu documentación, con lista personalizada</li><li>Asesoramiento académico sobre programas y centros</li><li>Coordinación con tu centro educativo para la admisión</li><li>Escritos de aclaración o subsanación dentro de tu solicitud</li><li>Asesoramiento para elegir un seguro médico válido para el trámite</li><li>Acompañamiento previo a tu llegada</li></ul>
-        <a class="es-btn es-btn--pri" href="#primera-consulta">Consultar este plan</a>
+        <a class="es-btn es-btn--pri" href="#primera-consulta" aria-label="Consultar el plan Global">Consultar este plan</a>
       </div>
       <div class="es-card es-plan">
         <h3>Premium</h3>
         <p>Más acompañamiento en tu solicitud y tu llegada.</p>
         <p class="es-plus">Todo el Global, y además:</p>
         <ul><li>Atención a los requerimientos de la Administración durante tu solicitud</li><li>Orientación personalizada para empadronarte al llegar</li><li>Ayuda para pedir tu cita de la TIE</li><li>Información práctica para incorporarte a tu centro</li><li>Te avisamos de cualquier incidencia hasta la resolución</li></ul>
-        <a class="es-btn es-btn--sec" href="#primera-consulta">Consultar este plan</a>
+        <a class="es-btn es-btn--sec" href="#primera-consulta" aria-label="Consultar el plan Premium">Consultar este plan</a>
       </div>
     </div>
     <p class="es-price">Te damos el precio exacto en tu consulta gratuita.</p>
     <p class="es-excl">Los planes no incluyen tasas administrativas o consulares, matrícula, seguro, traducciones ni apostillas.</p>
   </div>
 </section>
+<script>
+(function(){
+  var grid=document.getElementById('es-areas');if(!grid)return;
+  var btns=[].slice.call(grid.querySelectorAll('.es-area[aria-controls]'));
+  var panels=btns.map(function(b){return document.getElementById(b.getAttribute('aria-controls'));});
+  panels.forEach(function(p){p.hidden=true;});
+  btns.forEach(function(b,i){
+    b.addEventListener('click',function(){
+      var open=b.getAttribute('aria-expanded')==='true';
+      btns.forEach(function(o,j){o.setAttribute('aria-expanded','false');panels[j].hidden=true;});
+      if(!open){
+        b.setAttribute('aria-expanded','true');
+        var p=panels[i];p.hidden=false;grid.after(p);
+        var r=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        p.scrollIntoView({behavior:r?'auto':'smooth',block:'nearest'});
+      }
+    });
+  });
+})();
+</script>
 
 <!-- BLOQUE 6 · RUTA 3 -->
 <section class="es" id="titulo-extranjero" aria-labelledby="es-r3">
