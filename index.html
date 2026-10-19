@@ -848,7 +848,7 @@
 <!-- ============ TARJETAS DE ÁREAS ============ -->
 <style>
 .areas-sec{position:relative;z-index:4;padding:0 24px 64px;margin-top:-52px;}
-  .areas-grid{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .areas-grid{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
   .area{--c:var(--azul-secundario);--t:var(--azul-light);position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--arena-dark);border-radius:20px;padding:22px 18px 18px;text-decoration:none;color:var(--texto);overflow:hidden;box-shadow:0 14px 34px rgba(3,47,94,.08);transition:transform .2s,box-shadow .2s;}
   .area::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--c);}
   .area:hover{transform:translateY(-5px);box-shadow:0 22px 44px rgba(3,47,94,.16);}
@@ -860,7 +860,6 @@
   .area__go i{width:30px;height:30px;border-radius:50%;background:var(--t);display:flex;align-items:center;justify-content:center;font-style:normal;transition:background .2s,color .2s,transform .2s;}
   .area:hover .area__go i{background:var(--c);color:#fff;transform:translateX(3px);}
   .area--ext{--c:var(--rojo-principal);--t:#FBE9EC;}
-  .area--emp{--c:var(--azul-secundario);--t:var(--azul-light);}
   .area--peac{--c:#A86B00;--t:#FEF4DF;}
   .area--tra{--c:var(--azul-principal);--t:#E3E8F0;}
   .area--dest{--c:var(--amarillo);--t:rgba(255,255,255,.14);background:linear-gradient(160deg,var(--azul-principal),var(--azul-secundario));border-color:transparent;box-shadow:0 22px 46px rgba(3,47,94,.30);}
@@ -868,7 +867,7 @@
   .area--dest p{color:rgba(255,255,255,.88);}
   .area--dest:hover .area__go i{color:#2a2218;}
   .area__tag{position:absolute;top:16px;right:14px;font-size:.6875rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;background:var(--amarillo);color:#2a2218;padding:4px 9px;border-radius:50px;}
-  @media(max-width:1024px){.areas-sec{margin-top:-40px;}.areas-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:1024px){.areas-sec{margin-top:-40px;}.areas-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:768px){.areas-sec{margin-top:0;padding:18px 14px 48px;}}
   @media(max-width:640px){.areas-grid{grid-template-columns:1fr;gap:10px;}.area{display:grid;grid-template-columns:50px 1fr;column-gap:14px;padding:18px 16px 16px;}.area__ic{margin:0;grid-row:span 3;}.area p{margin-bottom:8px;}.area__go{justify-content:flex-start;gap:8px;}.area__go i{width:24px;height:24px;}.area--dest{padding-top:44px;}.area__tag{top:14px;left:80px;right:auto;}}
 </style>
@@ -886,12 +885,6 @@
       <h2>Ya vivo en España</h2>
       <p>Renovar, cambiar de autorización o regularizar tu situación.</p>
       <span class="area__go">Ver mis opciones <i aria-hidden="true">→</i></span>
-    </a>
-    <a href="empleo.html" class="area area--emp">
-      <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7.5" width="19" height="12" rx="2.2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5M2.5 12.6h19"/></svg></span>
-      <h2>Busco trabajo</h2>
-      <p>Orientación para encontrar empleo y crecer profesionalmente.</p>
-      <span class="area__go">Ver cómo empezar <i aria-hidden="true">→</i></span>
     </a>
     <a href="servicio-peac.html" class="area area--peac">
       <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="m9 13.5-1.5 7.5 4.5-2.5 4.5 2.5-1.5-7.5"/></svg></span>
