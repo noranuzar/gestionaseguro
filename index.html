@@ -4,7 +4,7 @@
    <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=Consultora comercial y de desarrollo de negocio
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-W5F4Q6RP');</script>
   <!-- End Google Tag Manager -->
@@ -2046,46 +2046,124 @@
     </div>
   </nav>
 
-<!-- ============ HERO ============ -->
-<header class="hero-home">
-  <div class="hero-home-wrap">
-    <div class="hero-home-card">
-      <div class="hero-badge">
-        <span class="pulse"></span> De Latinoamérica a España
+<!-- ============ HERO HORIZONTAL ============ -->
+<style>
+  .hero-h{padding:116px 24px 0;background:linear-gradient(180deg,#FFFFFF 0%,#FAF8F3 100%);}
+  .hero-h-wrap{position:relative;max-width:1120px;margin:0 auto;min-height:500px;border-radius:32px;overflow:hidden;box-shadow:0 24px 60px rgba(42,34,24,.10);background:var(--blanco);display:flex;align-items:center;}
+  .hero-h-bg{position:absolute;inset:0;margin:0;}
+  .hero-h-bg img{width:100%;height:100%;object-fit:cover;object-position:right 30%;display:block;}
+  .hero-h-wrap::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#fffdf8 0%,#fffdf8 40%,rgba(255,253,248,.9) 52%,rgba(255,253,248,0) 70%);}
+  .hero-h-in{position:relative;z-index:2;max-width:660px;padding:44px 48px;}
+  .hero-h-eyebrow{font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azul-secundario);margin:0 0 16px;}
+  .hero-h h1{font-family:'Source Sans 3',system-ui,sans-serif;font-size:clamp(2.4rem,4.4vw,3.6rem);font-weight:800;line-height:1.04;color:var(--azul-principal);margin:0 0 18px;}
+  .hero-h h1 span{display:block;font-family:'DM Serif Display',serif;font-weight:400;font-size:.82em;line-height:1.1;margin-top:4px;}
+  .hero-h-sub{font-size:var(--fs-md);color:var(--texto-suave);line-height:var(--lh-normal);margin:0 0 26px;max-width:500px;}
+  .hero-h-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;}
+  .hero-h-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:54px;padding:0 26px;border-radius:14px;font-weight:800;font-size:1.0625rem;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;}
+  .hero-h-btn svg{width:20px;height:20px;flex-shrink:0;}
+  .hero-h-btn--pri{background:var(--amarillo);color:#2a2218;box-shadow:0 10px 24px rgba(242,169,29,.32);}
+  .hero-h-btn--pri:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(242,169,29,.38);}
+  .hero-h-btn--sec{background:#fff;color:var(--azul-principal);border:1.5px solid #c9d6e8;}
+  .hero-h-btn--sec:hover{background:var(--azul-light);}
+  .hero-h-btn:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px;}
+  .hero-h-ben{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;max-width:540px;}
+  .hero-h-ben li{display:flex;align-items:center;gap:8px;font-size:var(--fs-sm);font-weight:600;color:var(--azul-principal);}
+  .hero-h-ben svg{width:20px;height:20px;color:var(--azul-secundario);flex-shrink:0;}
+  @media(max-width:1024px) and (min-width:769px){.hero-h-wrap::before{background:linear-gradient(90deg,#fffdf8 0%,#fffdf8 52%,rgba(255,253,248,.85) 64%,rgba(255,253,248,0) 82%);}.hero-h-bg img{object-position:78% 30%;}}
+  @media(max-width:768px){
+    .hero-h{padding:96px 16px 0;}
+    .hero-h-wrap{display:block;min-height:0;border-radius:24px;}
+    .hero-h-wrap::before{display:none;}
+    .hero-h-bg{position:relative;height:230px;}
+    .hero-h-bg img{object-position:center 25%;}
+    .hero-h-in{max-width:none;padding:26px 22px 28px;}
+    .hero-h-btn{width:100%;}
+    .hero-h-ben{flex-direction:column;gap:8px;}
+  }
+</style>
+<header class="hero-h">
+  <div class="hero-h-wrap">
+    <picture class="hero-h-bg">
+      <source media="(max-width: 768px)" srcset="hero-estudiante-espana-movil.webp" width="800" height="601">
+      <img src="hero-estudiante-espana.webp" alt="Estudiante latinoamericana con su mochila y sus libros en una plaza de una ciudad española" width="1536" height="1024" fetchpriority="high">
+    </picture>
+    <div class="hero-h-in">
+      <p class="hero-h-eyebrow">Estancia por estudios · Extranjería · Empleo</p>
+      <h1>Estudia en España <span>con una ruta clara</span></h1>
+      <p class="hero-h-sub">Te ayudamos a preparar tu estancia por estudios desde tu país: qué te piden, cuánto supone y cómo hacerlo paso a paso.</p>
+      <div class="hero-h-ctas">
+        <a href="#" onclick="gcOpen();return false;" role="button" class="hero-h-btn hero-h-btn--pri">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.6 8.4-2 5.2-5.2 2 2-5.2 5.2-2Z"/></svg>
+          Encuentra tu ruta →
+        </a>
+        <a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener" class="hero-h-btn hero-h-btn--sec">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+          Primera consulta gratuita
+        </a>
       </div>
-      <h1>
-        Estudia y trabaja en España,
-        <span class="hero-title-secondary">
-          con una ruta clara y <em>cada plazo bajo control.</em>
-        </span>
-      </h1>
-      <div class="hero-accent-line"></div>
-      <p class="hero-manifiesto">Estudias, puedes trabajar mientras estudias y, al terminar, decides si quedarte.</p>
-      <p class="hero-sub">
-        Conocemos la Administración española desde dentro: sabemos qué te van a pedir, cuándo y cómo prepararlo desde tu país. <strong>Tú decides cuánto hacemos por ti.</strong>
-      </p>
-      <div class="hero-cta-bloque">
-        <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%; margin-top: 6px;">
-          <a href="#" onclick="gcOpen();return false;" class="nav-cta cta-grande cta-primario" style="min-width: 240px; justify-content: center;">
-            Descubre tu ruta ➔
-          </a>
-        </div>
-        <p class="hero-wa">Y si quieres hablarlo, tu <strong>primera consulta es gratis</strong>: 1 hora, sin compromiso.</p>
-      </div>
-    </div>
-       <div class="hero-home-image">
-      <picture>
-        <source media="(min-width: 601px) and (max-width: 768px)" srcset="programa-universitario.jpg" width="900" height="600">
-        <img
-          src="hero-pasillo-vertical.jpg"
-          alt="Dos estudiantes latinoamericanos conversando en el pasillo de un edificio académico de Madrid"
-          width="1024" height="1536"
-          fetchpriority="high"
-        >
-      </picture>
+      <ul class="hero-h-ben">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg>Guías gratuitas y actualizadas</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20.5l1.5-5A8 8 0 1 1 21 12Z"/></svg>Explicado sin lenguaje burocrático</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m9 12 2 2 4-4"/></svg>Acompañamiento cuando lo necesites</li>
+      </ul>
     </div>
   </div>
 </header>
+
+<!-- ============ TARJETAS DE ÁREAS ============ -->
+<style>
+  .areas-sec{padding:28px 24px 64px;background:#FAF8F3;}
+  .areas-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .area{display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--arena-dark);border-radius:18px;padding:22px 18px 18px;text-decoration:none;color:var(--texto);transition:transform var(--transicion),box-shadow var(--transicion),border-color var(--transicion);}
+  .area:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(3,47,94,.10);border-color:var(--azul-secundario);}
+  .area:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px;}
+  .area__ic{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--azul-light);color:var(--azul-secundario);margin-bottom:14px;}
+  .area__ic svg{width:24px;height:24px;}
+  .area h2{font-family:'Source Sans 3',sans-serif;font-size:1.125rem;font-weight:800;color:var(--azul-principal);margin:0 0 6px;line-height:1.2;}
+  .area p{font-size:var(--fs-xs);color:var(--texto-suave);line-height:1.45;margin:0 0 14px;flex-grow:1;}
+  .area__go{font-size:var(--fs-xs);font-weight:800;color:var(--azul-secundario);}
+  .area--dest{background:linear-gradient(160deg,var(--azul-principal),var(--azul-secundario));border-color:transparent;color:#fff;box-shadow:0 18px 40px rgba(3,47,94,.22);}
+  .area--dest .area__ic{background:rgba(255,255,255,.14);color:var(--amarillo);}
+  .area--dest h2{color:#fff;}
+  .area--dest p{color:rgba(255,255,255,.88);}
+  .area--dest .area__go{color:var(--amarillo);}
+  @media(max-width:1024px){.areas-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:640px){.areas-sec{padding:20px 16px 48px;}.areas-grid{grid-template-columns:1fr;gap:10px;}.area{display:grid;grid-template-columns:44px 1fr;column-gap:14px;padding:16px;}.area__ic{width:44px;height:44px;margin:0;grid-row:span 3;}.area p{margin-bottom:8px;}}
+</style>
+<section class="areas-sec" aria-label="Áreas en las que te ayudamos">
+  <div class="areas-grid">
+    <a href="servicios-homologacion.html" class="area area--dest">
+      <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 11.8V17c0 1.1 2.7 2.4 6 2.4s6-1.3 6-2.4v-5.2"/></svg></span>
+      <h2>Estudios</h2>
+      <p>Estancia por estudios, homologación y acceso a la universidad.</p>
+      <span class="area__go">Ver estudios →</span>
+    </a>
+    <a href="extranjeria.html" class="area">
+      <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/></svg></span>
+      <h2>Extranjería</h2>
+      <p>Visados, autorizaciones, renovaciones y arraigo.</p>
+      <span class="area__go">Ver extranjería →</span>
+    </a>
+    <a href="empleo.html" class="area">
+      <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7.5" width="19" height="12" rx="2.2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5M2.5 12.6h19"/></svg></span>
+      <h2>Empleo</h2>
+      <p>Búsqueda de trabajo y desarrollo profesional.</p>
+      <span class="area__go">Ver empleo →</span>
+    </a>
+    <a href="servicio-peac.html" class="area">
+      <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="m9 13.5-1.5 7.5 4.5-2.5 4.5 2.5-1.5-7.5"/></svg></span>
+      <h2>Acreditar experiencia</h2>
+      <p>Convierte tu experiencia laboral en un certificado oficial (PEAC).</p>
+      <span class="area__go">Ver acreditación →</span>
+    </a>
+    <a href="servicios-tramites-electronicos.html" class="area">
+      <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="m9.5 10 2 2 3.5-3.5"/></svg></span>
+      <h2>Trámites electrónicos</h2>
+      <p>Certificado digital, Cl@ve y Carpeta Ciudadana.</p>
+      <span class="area__go">Ver trámites →</span>
+    </a>
+  </div>
+</section>
 
 <!-- ============ BARRA DE CONFIANZA ============ -->
 <style>
@@ -2233,7 +2311,7 @@
       <div class="gc-opts">
         <button class="gc-opt gc-foco" onclick="gcResult('estudios')">
           <span class="gc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 11.8V17c0 1.1 2.7 2.4 6 2.4s6-1.3 6-2.4v-5.2"/><path d="M22 10v4.3"/></svg></span>
-          <span class="gc-tx"><b>Estudiar</span>
+          <span class="gc-tx"><b>Estudiar</b><span>Universidad, FP, máster o idiomas</span></span>
           <span class="gc-star">★ Nuestro foco</span>
         </button>
         <button class="gc-opt" onclick="gcResult('trabajar')">
@@ -2295,7 +2373,7 @@
     yaaqui:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11a7 7 0 0 0-14 0c0 4.9 7 11 7 11Z"/><path d="m9.3 10.2 1.9 1.9 3.5-3.7"/></svg>'
   };
   var DATA={
-    estudios:{title:'Estancia por estudios',budget:true,piden:['Admisión en un centro: universidad, FP, instituto o escuela de idiomas','Medios económicos demostrables (se calculan con el IPREM)','Seguro médico y alojamiento','Si es para un/a menor: autorización de los padres y un responsable en España'],link:'estancia-estudios.html',linkLabel:'Ver estancia por estudios →'},
+    estudios:{title:'Estancia por estudios',budget:true,piden:['Admisión en un centro: universidad, FP, instituto o escuela de idiomas','Medios económicos demostrables (se calculan con el IPREM)','Seguro médico y alojamiento','Si es para un/a menor: autorización de los padres y un responsable en España'],link:'',linkLabel:''},
     trabajar:{title:'Trabajar o vivir en España',budget:false,piden:['La vía depende de tu modalidad: por cuenta ajena, por cuenta propia o residencia no lucrativa','Según el caso: oferta/contrato, plan de negocio o medios económicos propios','Seguro médico'],note:'El presupuesto depende de tu modalidad; lo calculamos contigo en la consulta.',link:'extranjeria.html',linkLabel:'Ver extranjería →'},
     familia:{title:'Venir con tu familia',budget:false,piden:['Reagrupación familiar o venir juntos, según vuestro caso','Vínculo familiar acreditado, vivienda adecuada y medios económicos','Documentación del país (apostilla y traducción)'],note:'El presupuesto depende de cuántos sois y de la vía; lo vemos en la consulta.',link:'extranjeria.html',linkLabel:'Ver extranjería →'},
     yaaqui:{title:'Ya en España: dale continuidad a tu estancia',budget:false,piden:['Si acabas de llegar, hay un plazo corto para formalizar tu estancia por estudios — conviene no dejarlo pasar','Si ya resides: renovación, larga duración, arraigo o nacionalidad, según tu caso','Empadronamiento y la documentación que corresponda a tu situación'],note:'Cada situación tiene sus plazos; definimos tu siguiente paso en la consulta.',link:'extranjeria.html',linkLabel:'Ver extranjería →'}
@@ -2317,7 +2395,7 @@
     id('gcPlan').style.display='none';
     id('gcReady').classList.add('gc-on');id('gcPlanBtn').classList.remove('gc-on');
     var n=id('gcNote');if(d.note){n.textContent=d.note;n.style.display='block';}else{n.style.display='none';}
-    var lk=id('gcLink');lk.href=d.link;lk.textContent=d.linkLabel;
+    var lk=id('gcLink');lk.href=d.link||'#';lk.textContent=d.linkLabel;lk.style.display=d.link?'':'none';
   };
   window.gcMode=function(m){
     id('gcReady').classList.toggle('gc-on',m==='ready');
@@ -2401,7 +2479,7 @@
 
 <div class="equipo-manifiesto">
   <p>Porque no basta con conocer la norma.</p>
-  <p>hay que saber cómo contar nuetra historia con documentos.</p>
+  <p>Hay que saber contar nuestra historia con documentos.</p>
 </div>
 
 
@@ -2415,7 +2493,7 @@
         <div class="persona__name">Sara Altamirano Mauricci</div>
         <div class="persona__role">Abogada de extranjería, (ICAM nº 143312)</div>
         <p>Especialista en derecho migratorio. Ancla cada información en la norma y el BOE para que sepas exactamente dónde pisas.</p>
-        <p class="persona__tragsatec">Abogada laboralista defensora de los derechos de los trabajadores migrantes en españa. Mediadora judicial Civil, familiar y mercantil en España.</p>
+        <p class="persona__tragsatec">Abogada laboralista defensora de los derechos de los trabajadores migrantes en España. Mediadora judicial Civil, familiar y mercantil en España.</p>
 
       </div>
     <div class="persona">
@@ -2510,7 +2588,7 @@
 
   <div class="footer-comunidad-contacto">
      <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a>
-    <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20gestionaseguroweb.com%20y%20necesito%20informaci%C3%B3n%20sobre%20un%20tr%C3%A1mite."
+    <a href="https://wa.me/34697154442?text=Hola%2C%20vengo%20de%20gestionaseguroweb.com%20y%20necesito%20informaci%C3%B3n%20sobre%20un%20tr%C3%A1mite." target="_blank" rel="noopener">WhatsApp: +34 697 154 442</a>
   </div>
 
   <div class="footer-comunidad-links">
