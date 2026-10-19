@@ -197,20 +197,6 @@
       background: var(--oliva-bg);
     }
 
-    .nav-cta {
-      background: var(--oliva) !important;
-      color: var(--arena) !important;
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-weight: 700 !important;
-      font-size: var(--fs-xs);
-      transition: background var(--transicion), transform var(--transicion);
-      white-space: nowrap;
-    }
-    .nav-cta:hover { background: var(--oliva-dark) !important; transform: translateY(-1px); }
-    .nav-cta--ruta { background: transparent !important; color: var(--azul-principal) !important; border: 2px solid var(--azul-principal); padding: 11px 20px; }
-    .nav-cta--ruta:hover { background: var(--azul-principal) !important; color: #fff !important; }
-
     .hamburger {
       display: none;
       flex-direction: column;
@@ -608,7 +594,7 @@
     /* ============================================================ */
 
     /* Tablets y pantallas medianas */
-    @media (max-width: 1120px) {
+    @media (max-width: 1024px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
 
@@ -635,12 +621,6 @@
         justify-content: space-between;
         padding: 15px 16px;
         font-size: var(--fs-sm);
-      }
-      .nav-links.open .nav-cta {
-        margin-top: 12px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
       }
     }
 
@@ -781,7 +761,6 @@
         <li class="nav-item"><a href="extranjeria.html">Extranjería</a></li>
         <li class="nav-item"><a href="servicio-peac.html">Acreditar experiencia</a></li>
         <li class="nav-item"><a href="blog.html">Recursos gratuitos</a></li>
-        <li class="nav-item"><a href="#" onclick="gcOpen();return false;" role="button" class="nav-cta nav-cta--ruta">Encuentra tu ruta</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
