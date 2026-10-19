@@ -482,7 +482,6 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 .es-notice{display:flex;gap:12px;align-items:flex-start;background:var(--azul-light);border-radius:14px;padding:16px 20px;font-size:1.0625rem;line-height:1.55;color:var(--azul-principal);margin:0 0 8px}
 .es-notice--w{background:#FEF4DF;color:#2a2218;margin:20px 0 48px}
 .es details{background:#fff;border:1px solid #ECE9E2;border-radius:14px;padding:0 22px}
-.es-faq{display:flex;flex-direction:column;gap:10px}
 .es summary{cursor:pointer;padding:18px 0;font-weight:700;font-size:1.125rem;color:var(--azul-principal);list-style-position:outside}
 .es summary:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
 .es details p,.es details li{font-size:1.0625rem;line-height:1.65;color:var(--texto-principal)}
@@ -512,9 +511,6 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 .es-star{position:absolute;top:-14px;left:24px;background:var(--rojo-principal);color:#fff;font-size:.8125rem;font-weight:800;padding:4px 12px;border-radius:50px}
 .es-price{margin:28px 0 4px;font-size:1.1875rem;font-weight:800;color:var(--azul-principal);text-align:center}
 .es-excl{margin:0;font-size:1rem;color:#595959;text-align:center}
-.es-what{margin-top:20px;background:var(--azul-light);border-color:var(--azul-light)}
-.es-what h3{margin:0 0 8px;font-size:1.25rem}
-.es-what p{margin:0}
 .es-table{overflow-x:auto;border:1px solid #ECE9E2;border-radius:16px}
 .es-table table{width:100%;min-width:620px;border-collapse:collapse;font-size:1.0625rem}
 .es-table thead th{background:var(--azul-principal);color:#fff;text-align:left;padding:16px 20px}
@@ -540,14 +536,8 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 .es-book-cta{flex:0 1 320px;display:flex;flex-direction:column;gap:10px}
 .es-book-cta .es-btn{min-height:56px;font-size:1.125rem}
 .es-book-cta p{margin:0;text-align:center;font-size:.9375rem;color:#595959}
-/* Marcas de revisión: se eliminan al validar, antes de publicar */
-.gs-rev{display:inline-block;font-size:.8125rem;font-weight:800;line-height:1.5;border-radius:6px;padding:2px 8px;margin:4px 6px 0 0;vertical-align:middle;color:#7a1020;background:#FBE9EC;border:1px dashed var(--rojo-principal)}
-.gs-rev--n{color:#6b4500;background:#FEF4DF;border-color:#A86B00}
-.gs-rev-bar{background:#FEF4DF;border-bottom:2px dashed #A86B00;padding:10px 24px;font-size:.9375rem;text-align:center;color:#2a2218}
 @media(max-width:600px){.es{padding:56px 16px}.es-card{padding:22px}.es-btn{width:100%}.es-book{padding:24px}}
 </style>
-
-<div class="gs-rev-bar" role="note"><strong>Borrador en revisión.</strong> <span class="gs-rev">Revisión jurídica · Sara</span> <span class="gs-rev gs-rev--n">Confirmar · Nora</span> Estas marcas se quitan antes de publicar.</div>
 
 <!-- BLOQUE 2 · ENCUENTRA TU RUTA -->
 <section class="es" id="rutas" aria-labelledby="es-rutas">
@@ -577,7 +567,7 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
       <div class="es-card es-route es-route--4">
         <small>RUTA 4 · Acreditar experiencia</small>
         <strong>Tengo experiencia profesional y quiero acreditarla</strong>
-        <span>El PEAC permite acreditar oficialmente competencias de tu experiencia laboral o formación no formal, si cumples los requisitos de acceso. <span class="gs-rev">Revisión · Sara</span></span>
+        <span>El PEAC permite acreditar oficialmente competencias de tu experiencia laboral o formación no formal, si cumples los requisitos de acceso.</span>
         <span class="es-links">
           <a class="es-go" href="peac-calculadora.html">Comprobar si cumplo los requisitos →</a>
           <a class="es-go" href="servicio-peac.html">Ver el servicio PEAC →</a>
@@ -616,16 +606,7 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
       <ul><li>Antecedentes penales, si procede, apostillados</li><li>Certificado médico, si lo exige el consulado</li><li>Documentos de estado civil o filiación, cuando se necesiten</li><li>Menores: autorización de progenitores o tutores</li><li>Traducción jurada al castellano</li><li>Apostilla de La Haya o legalización consular</li><li>Tasa administrativa y su justificante, si procede</li></ul>
       <p class="es-grp">5 · Revisión antes de presentar</p>
       <ul><li>Los nombres coinciden en todos los documentos</li><li>Fechas, vigencia del pasaporte y duración del programa</li><li>El seguro cubre todo el periodo</li><li>Extractos bancarios recientes y legibles</li><li>Copias escaneadas nítidas y completas</li></ul>
-      <p><span class="gs-rev">Revisión jurídica · Sara: lista completa</span></p>
     </details>
-
-    <h3>Preguntas de esta ruta</h3>
-    <div class="es-faq">
-      <details><summary>¿Cuánto dinero necesito demostrar?</summary><p>Por regla general, una cantidad mensual vinculada al IPREM por cada mes de estancia (en 2026, el 100 % del IPREM: 600 € al mes). Si tienes el alojamiento pagado por adelantado, ese pago se tiene en cuenta. El cálculo exacto depende de tu caso y del consulado. <span class="gs-rev">Revisión jurídica · Sara</span></p></details>
-      <details><summary>¿Qué seguro médico necesito?</summary><p>Un seguro con cobertura completa en España durante toda tu estancia. Habitualmente se exige sin copagos ni carencias. Antes de contratarlo, comprobamos que la póliza cumple. <span class="gs-rev">Revisión jurídica · Sara</span></p></details>
-      <details><summary>¿Podré trabajar mientras estudio?</summary><p>Depende de lo que estudies. En estudios superiores y formación profesional, la normativa actual permite compatibilizarlo con un límite de horas semanales (hasta 30). En otros programas, como los cursos de idiomas, las condiciones son distintas. <span class="gs-rev">Revisión jurídica · Sara</span></p></details>
-      <details><summary>¿Cuándo pido la TIE?</summary><p>Si tu estancia supera los seis meses, en el plazo de un mes desde tu entrada en España. Te recomendamos pedir la cita en cuanto llegues, porque puede tardar. <span class="gs-rev">Revisión jurídica · Sara</span></p></details>
-    </div>
 
     <div class="es-ctas">
       <a class="es-btn es-btn--pri" href="#programas-y-planes">Ver programas y planes →</a>
@@ -646,28 +627,20 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
         <p class="es-case-k">CASO A</p>
         <h3>Tengo permiso de residencia</h3>
         <p>Puedes acceder a la FP o a la universidad. Si tus estudios previos son de otro país, normalmente necesitarás homologarlos o una credencial de acceso.</p>
-        <span class="gs-rev">Revisión jurídica · Sara</span>
         <p class="es-links" style="margin-top:16px"><a class="es-go" href="acceso-universidad-bachillerato-extranjero.html">Cómo acceder a la universidad →</a><a class="es-go" href="#titulo-extranjero">Homologar tu título →</a></p>
       </div>
       <div class="es-card es-case">
         <p class="es-case-k">CASO B</p>
         <h3>Estoy como turista o sin autorización</h3>
         <p>En algunos casos se puede pedir la estancia por estudios sin salir de España, y en otros no. Antes de matricularte o pagar un curso, revisamos tu caso.</p>
-        <span class="gs-rev">Revisión jurídica · Sara</span>
         <p style="margin-top:16px"><a class="es-go" href="#primera-consulta">Revisar mi caso en la consulta →</a></p>
       </div>
       <div class="es-card es-case">
         <p class="es-case-k">CASO C</p>
         <h3>Ya tengo estancia por estudios</h3>
         <p>Si quieres seguir estudiando, puede prorrogarse. Si quieres pasar a trabajar, existe la modificación a residencia y trabajo. Cada opción tiene sus plazos y requisitos.</p>
-        <span class="gs-rev">Revisión jurídica · Sara</span>
-        <p style="margin-top:16px"><a class="es-go" href="extranjeria.html">Ver renovaciones y cambios de permiso →</a><br><span class="gs-rev gs-rev--n">Falta ancla en Extranjería</span></p>
+        <p style="margin-top:16px"><a class="es-go" href="extranjeria.html">Ver renovaciones y cambios de permiso →</a></p>
       </div>
-    </div>
-    <h3>Preguntas de esta ruta</h3>
-    <div class="es-faq">
-      <details><summary>¿Puedo pedir la estancia por estudios sin salir de España?</summary><p>Depende de tu situación: cómo y cuándo entraste y si tu estancia actual es regular. No se puede contestar con un sí o un no general, así que lo revisamos antes de que te matricules o pagues nada. <span class="gs-rev">Revisión jurídica · Sara</span></p></details>
-      <details><summary>¿Necesito homologar mi bachillerato para estudiar FP?</summary><p>Para Grado Medio o Superior te piden un título de acceso. Si tus estudios son de otro país, normalmente hay que homologarlos. Mientras se resuelve, en algunos casos puedes matricularte con el volante de inscripción condicional. <a href="acceso-universidad-bachillerato-extranjero.html#volante">Ver la guía →</a> <span class="gs-rev">Revisión jurídica · Sara</span></p></details>
     </div>
     <div class="es-ctas">
       <a class="es-btn es-btn--pri" href="#primera-consulta">Revisar mi caso en la primera consulta</a>
@@ -693,7 +666,6 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
       <details><summary>Tecnología, construcción y docencia · 3 programas</summary><ul><li>Ciberseguridad empresarial</li><li>Control de proyectos y obras de construcción</li><li>Emprendimiento para docencia y formación</li></ul></details>
       <details><summary>Experto universitario · 3 programas</summary><p>Títulos propios universitarios · 650 h · 26 ECTS · modalidad híbrida</p><ul><li>Gestión Empresarial · 7 meses</li><li>Comunicación Estratégica y Oratoria en Entornos Profesionales · 6 meses</li><li>Gestión y Servicio en Hostelería (Atención Integral al Cliente) · 7 meses</li></ul></details>
     </div>
-    <p style="margin:12px 0 0"><span class="gs-rev gs-rev--n">Confirmar · Nora: catálogo vigente 2026–2027</span></p>
     <p class="es-notice es-notice--w"><strong aria-hidden="true">⚠</strong><span><strong>Matricularte no garantiza la estancia por estudios:</strong> la decide la Administración, según la formación, el centro, la modalidad y la carga lectiva. Las palabras «máster» o «experto» en un catálogo no significan por sí solas un título oficial. Antes de pagar, revisamos el programa contigo. <a href="#formacion-oficial-y-propia">Formación oficial y propia →</a></span></p>
 
     <h3>Planes de acompañamiento</h3>
@@ -722,7 +694,6 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
     </div>
     <p class="es-price">Te damos el precio exacto en tu consulta gratuita.</p>
     <p class="es-excl">Los planes no incluyen tasas administrativas o consulares, matrícula, seguro, traducciones ni apostillas.</p>
-    <p class="es-excl"><span class="gs-rev gs-rev--n">Confirmar · Nora: ¿los planes cubren la ruta 2 (solicitud desde España)?</span></p>
   </div>
 </section>
 
@@ -736,23 +707,12 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
       <div class="es-card es-goal">
         <h3>Quiero trabajar con mi título</h3>
         <p>Si tu profesión está <strong>regulada</strong> (medicina, abogacía, ingeniería, docencia…) necesitas homologación. Si no lo está, suele bastar la equivalencia, o incluso ningún trámite: depende de quién te contrate.</p>
-        <span class="gs-rev">Revisión jurídica · Sara</span>
       </div>
       <div class="es-card es-goal">
         <h3>Quiero seguir estudiando</h3>
         <p>Para entrar en FP o en la universidad, normalmente se homologa tu Bachiller o ESO, o se tramita la credencial de acceso. Si tus estudios universitarios quedaron a medias, se pueden convalidar asignaturas.</p>
-        <span class="gs-rev">Revisión jurídica · Sara</span>
         <p style="margin-top:14px"><a class="es-go" href="acceso-universidad-bachillerato-extranjero.html">Leer la guía de acceso a la universidad →</a></p>
       </div>
-    </div>
-    <div class="es-card es-what">
-      <h3>Qué hacemos nosotras</h3>
-      <p><span class="gs-rev gs-rev--n">Confirmar · Nora: descripción del servicio de homologación, su alcance (ESO/Bachiller, universitarios) y si es un servicio aparte</span></p>
-    </div>
-    <h3>Preguntas de esta ruta</h3>
-    <div class="es-faq">
-      <details><summary>¿Necesito apostilla?</summary><p>Normalmente, los documentos extranjeros deben estar legalizados: con la Apostilla de La Haya si tu país forma parte del Convenio, o por vía diplomática o consular si no. Lo que se exige depende del país y del documento. <span class="gs-rev">Revisión jurídica · Sara</span></p></details>
-      <details><summary>¿Necesito traducción jurada?</summary><p>Si tus documentos no están en castellano, normalmente sí: una traducción jurada o la que admita el organismo. Si están en castellano, en general no hace falta. <span class="gs-rev">Revisión jurídica · Sara</span></p></details>
     </div>
     <div class="es-ctas"><a class="es-btn es-btn--pri" href="#primera-consulta">Revisar mi título en la primera consulta</a></div>
     <a class="es-back" href="#rutas">↑ Volver a las rutas</a>
@@ -776,8 +736,6 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
         </tbody>
       </table>
     </div>
-    <p style="margin:10px 0 0"><span class="gs-rev">Revisión jurídica · Sara: filas «Para trabajar» y «Estancia por estudios»</span></p>
-    <details style="margin-top:24px"><summary>¿Un título propio sirve para la estancia por estudios?</summary><p>Puede servir, pero depende de la formación, el centro, la modalidad y la carga lectiva. Por eso revisamos cada programa contigo antes de que te matricules. <span class="gs-rev">Revisión jurídica · Sara</span></p></details>
     <p style="margin:18px 0 0">Si tienes dudas, <a href="#primera-consulta">revisamos el programa contigo en la consulta</a>.</p>
   </div>
 </section>
@@ -792,16 +750,13 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
       <div class="es-person"><img src="equipo-sara.webp" alt="Sara Altamirano Mauricci" width="96" height="96" loading="lazy"><p><b>Sara Altamirano Mauricci</b>Abogada de extranjería (ICAM nº 143312)</p></div>
       <div class="es-person"><img src="equipo-nora.webp" alt="Nora Núñez Zárate" width="96" height="96" loading="lazy"><p><b>Nora Núñez Zárate</b>Documentalista con experiencia en la Administración pública</p></div>
     </div>
-    <p style="margin:-12px 0 24px"><span class="gs-rev gs-rev--n">Confirmar · Sara y Nora: línea de credenciales</span></p>
     <div class="es-book">
       <div>
         <h3>Cómo es la primera consulta</h3>
         <ul>
           <li>Revisamos tu situación y lo que quieres conseguir.</li>
           <li>Te decimos qué camino encaja contigo y qué plan te conviene, con su precio exacto.</li>
-          <li>Qué conviene tener a mano: <span class="gs-rev gs-rev--n">Confirmar · Nora</span></li>
         </ul>
-        <p style="margin:10px 0 0"><span class="gs-rev gs-rev--n">Confirmar · Nora: formato y duración</span></p>
       </div>
       <div class="es-book-cta">
         <a class="es-btn es-btn--pri" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Reservar mi primera consulta gratuita</a>
