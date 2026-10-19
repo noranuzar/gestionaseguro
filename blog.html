@@ -12,9 +12,6 @@
   <meta property="og:description" content="Cómo acceder a la universidad, acreditar tu experiencia, homologar estudios y avanzar profesionalmente en España. Verificado con fuentes oficiales.">
   <meta property="og:url" content="https://gestionaseguroweb.com/blog.html">
   <meta property="og:locale" content="es_ES">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --oliva: #556B2F; --oliva-light: #7d9448; --oliva-dark: #3a4a1f; --oliva-bg: #f0f3e8;
@@ -85,15 +82,26 @@
       .logo span { display: none; }
     }
   </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/gs-layout.css">
 </head>
 <body>
 
-  <nav class="navbar">
-    <div class="navbar-inner">
-      <a href="/" class="logo"><img src="logo-gestiona-seguro.png" alt="Gestiona Seguro"><span>Gestiona Seguro</span></a>
-      <a href="/" class="nav-back">← Volver al inicio</a>
-    </div>
-  </nav>
+<!-- ============ BARRA SUPERIOR COMÚN ============ -->
+<nav class="gs-nav" id="navbar" aria-label="Principal">
+  <div class="gs-nav-in">
+    <a href="/" class="gs-logo"><img src="logo-emblema-nav.webp" alt="Gestiona Seguro" width="181" height="136"><span>Gestiona <em>Seguro</em></span></a>
+    <ul class="gs-links" id="navLinks">
+      <li><a href="servicios-homologacion.html">Estudios</a></li>
+      <li><a href="extranjeria.html">Extranjería</a></li>
+      <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
+      <li><a href="blog.html" aria-current="page">Recursos gratuitos</a></li>
+    </ul>
+    <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
   <header class="blog-hero">
     <span class="eyebrow">Blog · información verificada</span>
@@ -211,5 +219,6 @@
     </div>
   </footer>
 
+<script src="js/gs-layout.js" defer></script>
 </body>
 </html>

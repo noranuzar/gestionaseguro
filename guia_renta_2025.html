@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guía Renta 2025 — Trámites Verificados</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -14,7 +13,7 @@
   --red:#E74C3C;--red-soft:#FDEDEC;
   --surface:#F7FAFC;--card:#FFF;--text:#1A252F;--text-m:#4A5568;--text-l:#7F8C8D;
   --border:#E2E8F0;--r:18px;--rs:12px;
-  --ff:'DM Sans',system-ui,sans-serif;--fd:'Fraunces',Georgia,serif;
+  --ff:'Source Sans 3',system-ui,sans-serif;--fd:'DM Serif Display',Georgia,serif;
 }
 body{font-family:var(--ff);background:var(--surface);color:var(--text);-webkit-font-smoothing:antialiased}
 .wrap{max-width:680px;margin:0 auto;padding:0 16px 60px}
@@ -160,9 +159,28 @@ body{font-family:var(--ff);background:var(--surface);color:var(--text);-webkit-f
 .footer__slogan{font-size:13px;color:var(--text-l);margin-bottom:12px}
 .footer__legal{font-size:11px;color:var(--text-l);line-height:1.5;max-width:460px;margin:0 auto}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/gs-layout.css">
 </head>
 <body>
 
+
+<!-- ============ BARRA SUPERIOR COMÚN ============ -->
+<nav class="gs-nav" id="navbar" aria-label="Principal">
+  <div class="gs-nav-in">
+    <a href="/" class="gs-logo"><img src="logo-emblema-nav.webp" alt="Gestiona Seguro" width="181" height="136"><span>Gestiona <em>Seguro</em></span></a>
+    <ul class="gs-links" id="navLinks">
+      <li><a href="servicios-homologacion.html">Estudios</a></li>
+      <li><a href="extranjeria.html">Extranjería</a></li>
+      <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
+      <li><a href="blog.html">Recursos gratuitos</a></li>
+    </ul>
+    <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="gs-nav-pad" aria-hidden="true"></div>
 <!-- ═══════════ HERO ═══════════ -->
 <div class="hero">
   <div class="hero__brand">Trámites Verificados</div>
@@ -427,5 +445,6 @@ body{font-family:var(--ff);background:var(--surface);color:var(--text);-webkit-f
 </div>
 
 </div>
+<script src="js/gs-layout.js" defer></script>
 </body>
 </html>

@@ -14,9 +14,6 @@
   <meta property="og:description" content="Homologación, UNEDasiss, PCE, costes reales y plazos 2026. Las vías reales explicadas con claridad y fuentes oficiales.">
   <meta property="og:url" content="https://gestionaseguroweb.com/acceso-universidad-bachillerato-extranjero.html">
   <meta property="og:locale" content="es_ES">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -120,15 +117,26 @@
 
     @media (max-width: 768px) { .logo span { display: none; } .tabla { font-size: 0.95rem; } .tabla th, .tabla td { padding: 9px 8px; } }
   </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/gs-layout.css">
 </head>
 <body>
 
-  <nav class="navbar">
-    <div class="navbar-inner">
-      <a href="/" class="logo"><img src="logo-gestiona-seguro.png" alt="Gestiona Seguro"><span>Gestiona Seguro</span></a>
-      <a href="blog.html" class="nav-back">← Volver al blog</a>
-    </div>
-  </nav>
+<!-- ============ BARRA SUPERIOR COMÚN ============ -->
+<nav class="gs-nav" id="navbar" aria-label="Principal">
+  <div class="gs-nav-in">
+    <a href="/" class="gs-logo"><img src="logo-emblema-nav.webp" alt="Gestiona Seguro" width="181" height="136"><span>Gestiona <em>Seguro</em></span></a>
+    <ul class="gs-links" id="navLinks">
+      <li><a href="servicios-homologacion.html">Estudios</a></li>
+      <li><a href="extranjeria.html">Extranjería</a></li>
+      <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
+      <li><a href="blog.html">Recursos gratuitos</a></li>
+    </ul>
+    <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
   <article class="article">
     <nav class="breadcrumb"><a href="/">Inicio</a> &rsaquo; <a href="blog.html">Blog</a> &rsaquo; <span>Acceso a la universidad</span></nav>
@@ -284,5 +292,6 @@
     </div>
   </footer>
 
+<script src="js/gs-layout.js" defer></script>
 </body>
 </html>

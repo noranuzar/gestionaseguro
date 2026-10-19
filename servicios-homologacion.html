@@ -22,9 +22,6 @@
   <title>Estudios en España: homologación, acceso y PEAC — Gestiona Seguro</title>
   <meta name="description" content="Entiende la formación en España: oficial vs propia, homologación de títulos extranjeros, acceso a la universidad y acreditación de tu experiencia por PEAC. Sitúate y te acompañamos.">
   <link rel="canonical" href="https://gestionaseguroweb.com/servicios-homologacion.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================================ */
@@ -545,6 +542,10 @@
     .recorrido-sec .caveats strong{color:var(--texto);}
     @media(max-width:860px){.recorrido-sec .timeline{grid-template-columns:1fr;gap:14px;} .recorrido-sec .step{display:grid;grid-template-columns:72px 1fr;align-items:start;padding:0;} .recorrido-sec .step::before{top:0;bottom:0;left:28px;right:auto;width:4px;height:auto;} .recorrido-sec .step:first-child::before,.recorrido-sec .step:last-child::before{left:28px;top:0;} .recorrido-sec .dot{margin:0;} .recorrido-sec .rcard{min-height:0;}}
   </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/gs-layout.css">
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -554,34 +555,19 @@
   <!-- ════════════════════════════════════════ -->
   <!-- NAVBAR (Core) -->
   <!-- ════════════════════════════════════════ -->
-  <nav class="navbar" id="navbar">
-    <div class="container navbar-inner">
-      <a href="/" class="logo logo-header">
-        <img src="logo-emblema.png" alt="Gestiona Seguro — Estudia y trabaja en España">
-        <span class="brand-word"><span class="g1">Gestiona</span> <span class="g2">Seguro</span></span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li class="nav-item"><a href="extranjeria.html">Extranjería</a></li>
-        <li class="nav-item"><a href="servicios-homologacion.html">Estudios</a></li>
-        <li class="nav-item"><a href="empleo.html">Empleo</a></li>
-        <li class="nav-item"><a href="blog.html">Recursos gratuitos</a></li>
-        <li class="nav-item has-dropdown">
-          <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
-            Nosotros
-            <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l5 5 5-5"/></svg>
-          </button>
-          <ul class="dropdown" role="menu">
-            <li role="none"><a href="/#equipo" class="dropdown-item" role="menuitem"><strong>👥 Quiénes somos</strong><span>Sara y Nora: equipo humano</span></a></li>
-            <li role="none"><a href="/#contacto" class="dropdown-item" role="menuitem"><strong>✉ Contacto</strong><span>Email y teléfonos directos</span></a></li>
-          </ul>
-        </li>
-        <li class="nav-item"><a href="/#contacto" class="nav-cta">Contactar</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+<!-- ============ BARRA SUPERIOR COMÚN ============ -->
+<nav class="gs-nav" id="navbar" aria-label="Principal">
+  <div class="gs-nav-in">
+    <a href="/" class="gs-logo"><img src="logo-emblema-nav.webp" alt="Gestiona Seguro" width="181" height="136"><span>Gestiona <em>Seguro</em></span></a>
+    <ul class="gs-links" id="navLinks">
+      <li><a href="servicios-homologacion.html" aria-current="page">Estudios</a></li>
+      <li><a href="extranjeria.html">Extranjería</a></li>
+      <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
+      <li><a href="blog.html">Recursos gratuitos</a></li>
+    </ul>
+    <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
   <!-- ════════════════════════════════════════ -->
   <!-- HERO DE PÁGINA -->

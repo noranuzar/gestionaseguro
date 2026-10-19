@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>¿Puedo sacar el certificado digital? — Gestiona Seguro</title>
 <meta name="description" content="Descubre en 1 minuto qué camino te corresponde para obtener tu certificado digital o tu Cl@ve según tu situación administrativa actual.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --oliva:#556B2F; --oliva-light:#7d9448; --oliva-dark:#3a4a1f; --oliva-bg:#f0f3e8;
@@ -129,9 +126,28 @@
     .card{padding:26px 22px;border-radius:20px;}
   }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/gs-layout.css">
 </head>
 <body>
 
+
+<!-- ============ BARRA SUPERIOR COMÚN ============ -->
+<nav class="gs-nav" id="navbar" aria-label="Principal">
+  <div class="gs-nav-in">
+    <a href="/" class="gs-logo"><img src="logo-emblema-nav.webp" alt="Gestiona Seguro" width="181" height="136"><span>Gestiona <em>Seguro</em></span></a>
+    <ul class="gs-links" id="navLinks">
+      <li><a href="servicios-homologacion.html">Estudios</a></li>
+      <li><a href="extranjeria.html">Extranjería</a></li>
+      <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
+      <li><a href="blog.html">Recursos gratuitos</a></li>
+    </ul>
+    <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="gs-nav-pad" aria-hidden="true"></div>
 <div class="wrap">
 
   <div class="header">
@@ -343,5 +359,6 @@
   }
 </script>
 
+<script src="js/gs-layout.js" defer></script>
 </body>
 </html>

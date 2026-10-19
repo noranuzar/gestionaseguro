@@ -14,8 +14,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Evaluador Regularización 2026 | Gestiona Seguro</title>
 <meta name="description" content="Descubre en 2 minutos si encajas en la Regularización Extraordinaria 2026. Evaluación gratuita y confidencial por Gestiona Seguro. RD 316/2026.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --oliva: #556B2F;
@@ -169,9 +167,28 @@
     .result-card h2 { font-size: 1.4rem; }
   }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/gs-layout.css">
 </head>
 <body>
 
+
+<!-- ============ BARRA SUPERIOR COMÚN ============ -->
+<nav class="gs-nav" id="navbar" aria-label="Principal">
+  <div class="gs-nav-in">
+    <a href="/" class="gs-logo"><img src="logo-emblema-nav.webp" alt="Gestiona Seguro" width="181" height="136"><span>Gestiona <em>Seguro</em></span></a>
+    <ul class="gs-links" id="navLinks">
+      <li><a href="servicios-homologacion.html">Estudios</a></li>
+      <li><a href="extranjeria.html">Extranjería</a></li>
+      <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
+      <li><a href="blog.html">Recursos gratuitos</a></li>
+    </ul>
+    <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="gs-nav-pad" aria-hidden="true"></div>
 <header class="header">
   <a href="/" class="brand-link">
        <img src="logo-gestiona-seguro.png" alt="Gestiona Seguro" class="brand-logo">
@@ -717,6 +734,7 @@ var waIdMap = { 'viable': 'whatsappViable', 'revisar': 'whatsappRevisar', 'abier
   updateProgress();
 </script>
 
+<script src="js/gs-layout.js" defer></script>
 </body>
 </html>
 

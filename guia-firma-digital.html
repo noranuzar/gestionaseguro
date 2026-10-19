@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clase Interactiva: Aprende a firmar digitalmente | Gestiona Seguro</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --oliva: #556B2F;
@@ -29,7 +26,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Nunito', system-ui, sans-serif;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
     background: var(--fondo);
     color: var(--texto);
     line-height: 1.6;
@@ -57,14 +54,14 @@
   }
 
   .logo-clase {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'DM Serif Display', cursive;
     color: var(--oliva);
     font-size: 1.05rem;
     line-height: 1.2;
   }
   .logo-clase small {
     display: block;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     font-weight: 600;
     color: var(--texto-suave);
     font-size: 0.7rem;
@@ -77,7 +74,7 @@
     border: none;
     padding: 8px 14px;
     border-radius: 20px;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     font-weight: 700;
     font-size: 0.85rem;
     cursor: pointer;
@@ -132,7 +129,7 @@
     margin-bottom: 35px;
   }
   .intro h1 {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'DM Serif Display', cursive;
     font-size: clamp(1.8rem, 5vw, 2.6rem);
     color: var(--oliva);
     margin-bottom: 12px;
@@ -175,7 +172,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'DM Serif Display', cursive;
     font-size: 1.2rem;
     flex-shrink: 0;
   }
@@ -183,7 +180,7 @@
     background: var(--verde-ok);
   }
   .leccion-titulo {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'DM Serif Display', cursive;
     font-size: 1.35rem;
     color: var(--oliva);
     line-height: 1.2;
@@ -212,7 +209,7 @@
     line-height: 1;
   }
   .caja h4 {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'DM Serif Display', cursive;
     font-size: 1.05rem;
     margin-bottom: 8px;
     letter-spacing: 0.3px;
@@ -252,7 +249,7 @@
     border: 1px solid var(--borde);
   }
   .comp-item h5 {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'DM Serif Display', cursive;
     color: var(--oliva);
     margin-bottom: 6px;
     font-size: 0.95rem;
@@ -286,7 +283,7 @@
     margin-bottom: 8px;
   }
   .sistema-card h4 {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'DM Serif Display', cursive;
     color: var(--oliva);
     font-size: 1.1rem;
     margin-bottom: 6px;
@@ -329,7 +326,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'DM Serif Display', cursive;
     font-size: 0.85rem;
   }
 
@@ -360,7 +357,7 @@
     letter-spacing: 1px;
   }
   .firma-nombre {
-    font-family: 'Arial Black', sans-serif;
+    font-family: 'DM Serif Display', sans-serif;
     font-size: clamp(1rem, 3.5vw, 1.4rem);
     color: #222;
     line-height: 1.15;
@@ -403,7 +400,7 @@
     color: #fff;
     border: none;
     border-radius: 14px;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     font-weight: 800;
     font-size: 1rem;
     cursor: pointer;
@@ -439,7 +436,7 @@
     margin-bottom: 24px;
   }
   .quiz-header h2 {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'DM Serif Display', cursive;
     font-size: 1.8rem;
     margin-bottom: 6px;
   }
@@ -470,7 +467,7 @@
     border: 2px solid transparent;
     padding: 11px 14px;
     border-radius: 10px;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
@@ -514,7 +511,7 @@
   }
   .resultado-final.mostrar { display: block; }
   .resultado-final h3 {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'DM Serif Display', cursive;
     color: var(--oliva);
     font-size: 1.6rem;
     margin-bottom: 10px;
@@ -550,9 +547,28 @@
   .leccion.completada .leccion-numero { animation: pop 0.4s ease-out; }
 
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/gs-layout.css">
 </head>
 <body>
 
+
+<!-- ============ BARRA SUPERIOR COMÚN ============ -->
+<nav class="gs-nav" id="navbar" aria-label="Principal">
+  <div class="gs-nav-in">
+    <a href="/" class="gs-logo"><img src="logo-emblema-nav.webp" alt="Gestiona Seguro" width="181" height="136"><span>Gestiona <em>Seguro</em></span></a>
+    <ul class="gs-links" id="navLinks">
+      <li><a href="servicios-homologacion.html">Estudios</a></li>
+      <li><a href="extranjeria.html">Extranjería</a></li>
+      <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
+      <li><a href="blog.html">Recursos gratuitos</a></li>
+    </ul>
+    <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="gs-nav-pad" aria-hidden="true"></div>
 <!-- ========== BARRA FIJA ========== -->
 <header class="barra-fija">
   <div class="barra-top">
@@ -883,5 +899,6 @@
   }
 </script>
 
+<script src="js/gs-layout.js" defer></script>
 </body>
 </html>

@@ -22,9 +22,6 @@
   <title>Empleo para personas migrantes en España — Gestiona Seguro</title>
   <meta name="description" content="Orientación laboral para personas migrantes en España: permisos de trabajo, alta como autónomo y acceso al empleo. Estamos preparando esta sección.">
   <link rel="canonical" href="https://gestionaseguroweb.com/empleo.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -117,39 +114,29 @@
       .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
     }
   </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/gs-layout.css">
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5F4Q6RP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- ============ NAVBAR MAESTRO — IDÉNTICO EN TODAS LAS PÁGINAS ============ -->
-  <nav class="navbar" id="navbar">
-    <div class="container navbar-inner">
-      <a href="/" class="logo logo-header">
-        <span>Gestiona Seguro</span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li class="nav-item"><a href="extranjeria.html">Extranjería</a></li>
-        <li class="nav-item"><a href="servicios-homologacion.html">Estudios</a></li>
-        <li class="nav-item"><a href="empleo.html">Empleo</a></li>
-        <li class="nav-item"><a href="blog.html">Blog</a></li>
-        <li class="nav-item has-dropdown">
-          <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
-            Nosotros
-            <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l5 5 5-5"/></svg>
-          </button>
-          <ul class="dropdown" role="menu">
-            <li role="none"><a href="/#equipo" class="dropdown-item" role="menuitem"><strong>👥 Quiénes somos</strong><span>Sara y Nora: equipo humano</span></a></li>
-            <li role="none"><a href="/#contacto" class="dropdown-item" role="menuitem"><strong>✉ Contacto</strong><span>Email y teléfonos directos</span></a></li>
-          </ul>
-        </li>
-        <li class="nav-item"><a href="/#contacto" class="nav-cta">Contactar</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+<!-- ============ BARRA SUPERIOR COMÚN ============ -->
+<nav class="gs-nav" id="navbar" aria-label="Principal">
+  <div class="gs-nav-in">
+    <a href="/" class="gs-logo"><img src="logo-emblema-nav.webp" alt="Gestiona Seguro" width="181" height="136"><span>Gestiona <em>Seguro</em></span></a>
+    <ul class="gs-links" id="navLinks">
+      <li><a href="servicios-homologacion.html">Estudios</a></li>
+      <li><a href="extranjeria.html">Extranjería</a></li>
+      <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
+      <li><a href="blog.html">Recursos gratuitos</a></li>
+    </ul>
+    <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
   <!-- ============ EN CONSTRUCCIÓN ============ -->
   <main class="construccion">

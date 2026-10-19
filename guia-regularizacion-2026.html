@@ -15,8 +15,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:description" content="¿Puedes regularizar tu situación en España? Guía clara con requisitos, plazos y documentación. Plazo hasta el 30 de junio de 2026.">
 <meta property="og:type" content="article">
 <title>Guía Regularización 2026 — Gestiona Seguro</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
   :root {
     --warm-bg: #FBF7F2;
@@ -46,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   html { font-size: 19px; }
 
   body {
-    font-family: 'DM Sans', -apple-system, sans-serif;
+    font-family: 'Source Sans 3', -apple-system, sans-serif;
     background: var(--warm-bg);
     color: var(--text-main);
     line-height: 1.75;
@@ -447,17 +445,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .contador { font-weight: 700; opacity: 1; }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/gs-layout.css">
 </head>
 <body>
-  <nav class="navbar" id="navbar" style="position: sticky; top: 0; background: white; z-index: 1000; border-bottom: 1px solid #E8E2DA; width: 100%;">
-  <div class="container" style="max-width: 640px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px;">
-    <a href="index.html" style="font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: #2E7D6F; text-decoration: none; font-weight: 400;">⚓ Gestiona Seguro</a>
-    <ul style="display: flex; gap: 20px; list-style: none; font-weight: 600; font-size: 0.85rem;">
-      <li><a href="guia-regularizacion-2026.html" style="text-decoration: none; color: #444;">Vías</a></li>
-      <li><a href="index.html#contacto" style="background: #2E7D6F; color: white; padding: 8px 16px; border-radius: 50px; text-decoration: none;">Contacto</a></li>
+<!-- ============ BARRA SUPERIOR COMÚN ============ -->
+<nav class="gs-nav" id="navbar" aria-label="Principal">
+  <div class="gs-nav-in">
+    <a href="/" class="gs-logo"><img src="logo-emblema-nav.webp" alt="Gestiona Seguro" width="181" height="136"><span>Gestiona <em>Seguro</em></span></a>
+    <ul class="gs-links" id="navLinks">
+      <li><a href="servicios-homologacion.html">Estudios</a></li>
+      <li><a href="extranjeria.html">Extranjería</a></li>
+      <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
+      <li><a href="blog.html">Recursos gratuitos</a></li>
     </ul>
+    <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div class="gs-nav-pad" aria-hidden="true"></div>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5F4Q6RP"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -549,12 +556,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     border: 1px solid var(--gs-borde);
     max-width: 860px;
     margin: 40px auto;
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Source Sans 3', -apple-system, sans-serif;
     color: var(--gs-texto);
     line-height: 1.6;
   }
   .gs-guia h2 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 26px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -583,14 +590,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     position: absolute;
     top: 14px;
     right: 20px;
-    font-family: 'Playfair Display', serif;
+    font-family: 'DM Serif Display', serif;
     font-size: 56px;
     font-weight: 800;
     line-height: 1;
     opacity: 0.12;
   }
   .gs-guia .gs-card h4 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 14px;
@@ -618,7 +625,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .gs-guia .gs-card-naranja .gs-dato-label { color: var(--gs-naranja); }
   .gs-guia .gs-dato-valor strong { color: var(--gs-verde-oscuro); }
   .gs-guia .gs-comp-titulo {
-    font-family: 'Playfair Display', serif;
+    font-family: 'DM Serif Display', serif;
     font-size: 20px;
     font-weight: 700;
     color: var(--gs-verde-oscuro);
@@ -647,7 +654,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     margin-bottom: 6px;
   }
   .gs-guia .gs-jornada-horas {
-    font-family: 'Playfair Display', serif;
+    font-family: 'DM Serif Display', serif;
     font-size: 28px;
     font-weight: 800;
     color: var(--gs-verde-oscuro);
@@ -658,7 +665,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     font-size: 14px;
     font-weight: 500;
     color: var(--gs-texto-suave);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     display: block;
     margin-top: 4px;
   }
@@ -676,7 +683,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     margin-bottom: 4px;
   }
   .gs-guia .gs-smi-valor {
-    font-family: 'Playfair Display', serif;
+    font-family: 'DM Serif Display', serif;
     font-size: 20px;
     font-weight: 800;
     color: var(--gs-verde-oscuro);
@@ -705,7 +712,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     margin-top: 8px;
   }
   .gs-guia .gs-recomendacion h4 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     color: white;
     font-size: 20px;
     margin-bottom: 14px;
@@ -755,13 +762,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     align-items: center;
     justify-content: center;
     color: white;
-    font-family: 'Playfair Display', serif;
+    font-family: 'DM Serif Display', serif;
     font-size: 26px;
     font-weight: 800;
   }
   .gs-guia .gs-descarga-texto { flex: 1; }
   .gs-guia .gs-descarga-titulo {
-    font-family: 'Playfair Display', serif;
+    font-family: 'DM Serif Display', serif;
     font-size: 18px;
     font-weight: 700;
     color: var(--gs-verde-oscuro);
@@ -1200,6 +1207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 })();
 </script>
+<script src="js/gs-layout.js" defer></script>
 </body>
 </html>
 

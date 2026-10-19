@@ -6,9 +6,6 @@
 <meta name="description" content="Diagnóstico post-presentación de la Regularización Extraordinaria 2026. Sabe qué hacer con tu expediente según tu situación.">
 <meta name="theme-color" content="#5C6E3F">
 <title>¿Y ahora qué? · Diagnóstico de tu expediente · Gestiona Seguro</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 /* =========================================================
@@ -52,7 +49,7 @@
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   line-height: 1.55;
   color: var(--texto);
@@ -146,7 +143,7 @@ a:hover { text-decoration: underline; }
   opacity: 0.08;
 }
 .hero-eyebrow {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 2px;
@@ -259,7 +256,7 @@ a:hover { text-decoration: underline; }
   border: 2px solid transparent;
   border-radius: var(--radius-md);
   padding: 16px 18px;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-weight: 700;
   font-size: 15px;
   color: var(--texto);
@@ -587,7 +584,7 @@ a:hover { text-decoration: underline; }
 }
 
 .notif-types-label {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -794,7 +791,7 @@ a:hover { text-decoration: underline; }
   border: none;
   padding: 14px 20px;
   border-radius: var(--radius-pill);
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-weight: 800;
   font-size: 15px;
   letter-spacing: 0.3px;
@@ -993,7 +990,7 @@ a:hover { text-decoration: underline; }
   border: none;
   padding: 6px 12px;
   border-radius: var(--radius-pill);
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-weight: 700;
   font-size: 12px;
   cursor: pointer;
@@ -1003,7 +1000,7 @@ a:hover { text-decoration: underline; }
 .template-btn.copied { background: var(--verde); color: var(--blanco); }
 .template-body {
   padding: 18px 18px;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 13px;
   line-height: 1.7;
   color: var(--texto);
@@ -1059,7 +1056,7 @@ a:hover { text-decoration: underline; }
 .vigilancia-pitch strong { color: var(--rojo); }
 
 .vigilancia-section-label {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -1170,7 +1167,7 @@ a:hover { text-decoration: underline; }
   align-items: center;
   gap: 12px;
   list-style: none;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-weight: 700;
   color: var(--texto);
   font-size: 14px;
@@ -1300,9 +1297,28 @@ a:hover { text-decoration: underline; }
   clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/gs-layout.css">
 </head>
 <body>
 
+
+<!-- ============ BARRA SUPERIOR COMÚN ============ -->
+<nav class="gs-nav" id="navbar" aria-label="Principal">
+  <div class="gs-nav-in">
+    <a href="/" class="gs-logo"><img src="logo-emblema-nav.webp" alt="Gestiona Seguro" width="181" height="136"><span>Gestiona <em>Seguro</em></span></a>
+    <ul class="gs-links" id="navLinks">
+      <li><a href="servicios-homologacion.html">Estudios</a></li>
+      <li><a href="extranjeria.html">Extranjería</a></li>
+      <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
+      <li><a href="blog.html">Recursos gratuitos</a></li>
+    </ul>
+    <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="gs-nav-pad" aria-hidden="true"></div>
 <div class="app">
 
   <!-- HEADER -->
@@ -2249,5 +2265,6 @@ function scrollUp() {
 renderQuestion();
 </script>
 
+<script src="js/gs-layout.js" defer></script>
 </body>
 </html>
