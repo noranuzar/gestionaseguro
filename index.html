@@ -2048,37 +2048,50 @@
 
 <!-- ============ HERO HORIZONTAL ============ -->
 <style>
-  .hero-h{padding:116px 24px 0;background:linear-gradient(180deg,#FFFFFF 0%,#FAF8F3 100%);}
-  .hero-h-wrap{position:relative;max-width:1120px;margin:0 auto;min-height:500px;border-radius:32px;overflow:hidden;box-shadow:0 24px 60px rgba(42,34,24,.10);background:var(--blanco);display:flex;align-items:center;}
-  .hero-h-bg{position:absolute;inset:0;margin:0;}
-  .hero-h-bg img{width:100%;height:100%;object-fit:cover;object-position:right 30%;display:block;}
-  .hero-h-wrap::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#fffdf8 0%,#fffdf8 40%,rgba(255,253,248,.9) 52%,rgba(255,253,248,0) 70%);}
-  .hero-h-in{position:relative;z-index:2;max-width:660px;padding:44px 48px;}
-  .hero-h-eyebrow{font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azul-secundario);margin:0 0 16px;}
-  .hero-h h1{font-family:'Source Sans 3',system-ui,sans-serif;font-size:clamp(2.4rem,4.4vw,3.6rem);font-weight:800;line-height:1.04;color:var(--azul-principal);margin:0 0 18px;}
-  .hero-h h1 span{display:block;font-family:'DM Serif Display',serif;font-weight:400;font-size:.82em;line-height:1.1;margin-top:4px;}
-  .hero-h-sub{font-size:var(--fs-md);color:var(--texto-suave);line-height:var(--lh-normal);margin:0 0 26px;max-width:500px;}
-  .hero-h-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;}
-  .hero-h-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:54px;padding:0 26px;border-radius:14px;font-weight:800;font-size:1.0625rem;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;}
+  .hero-h{padding:116px 24px 0;background:radial-gradient(1200px 500px at 85% 0%,#E8EEF7 0%,rgba(232,238,247,0) 60%),linear-gradient(180deg,#FFFFFF 0%,#FAF8F3 100%);}
+  .hero-h-wrap{position:relative;max-width:1120px;margin:0 auto;min-height:580px;border-radius:32px;overflow:hidden;box-shadow:0 30px 70px rgba(3,47,94,.12);background:#fffdf8;}
+  .hero-h-wrap::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;z-index:3;background:linear-gradient(90deg,var(--rojo-principal),var(--amarillo));}
+  .hero-h-bg{position:absolute;top:0;bottom:0;right:0;left:40%;margin:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 24%);mask-image:linear-gradient(90deg,transparent 0,#000 24%);}
+  .hero-h-bg img{width:100%;height:100%;object-fit:cover;object-position:62% 28%;display:block;}
+  .hero-h-in{position:relative;z-index:2;max-width:596px;padding:58px 0 96px 56px;}
+  .hero-h-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azul-principal);background:var(--azul-light);padding:8px 15px;border-radius:50px;margin:0 0 22px;}
+  .hero-h-eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--rojo-principal);box-shadow:0 0 0 4px rgba(195,18,44,.15);}
+  .hero-h h1{font-family:'Source Sans 3',system-ui,sans-serif;font-size:clamp(2.7rem,5.2vw,4.25rem);font-weight:800;line-height:.98;letter-spacing:-.025em;color:var(--azul-principal);margin:0 0 20px;}
+  .hero-h h1 mark{background:linear-gradient(transparent 62%,rgba(242,169,29,.55) 62%,rgba(242,169,29,.55) 92%,transparent 92%);color:inherit;padding:0 .04em;}
+  .hero-h h1 span{display:block;font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:0;font-size:.8em;line-height:1.08;margin-top:8px;color:var(--rojo-principal);}
+  .hero-h-sub{font-size:1.1875rem;color:var(--texto-suave);line-height:1.55;margin:0 0 30px;max-width:25em;}
+  .hero-h-sub b{color:var(--azul-principal);font-weight:700;}
+  .hero-h-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px;}
+  .hero-h-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:0 24px;border-radius:16px;font-weight:800;font-size:1.0625rem;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;}
   .hero-h-btn svg{width:20px;height:20px;flex-shrink:0;}
-  .hero-h-btn--pri{background:var(--amarillo);color:#2a2218;box-shadow:0 10px 24px rgba(242,169,29,.32);}
-  .hero-h-btn--pri:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(242,169,29,.38);}
-  .hero-h-btn--sec{background:#fff;color:var(--azul-principal);border:1.5px solid #c9d6e8;}
-  .hero-h-btn--sec:hover{background:var(--azul-light);}
-  .hero-h-btn:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px;}
-  .hero-h-ben{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;max-width:540px;}
-  .hero-h-ben li{display:flex;align-items:center;gap:8px;font-size:var(--fs-sm);font-weight:600;color:var(--azul-principal);}
-  .hero-h-ben svg{width:20px;height:20px;color:var(--azul-secundario);flex-shrink:0;}
-  @media(max-width:1024px) and (min-width:769px){.hero-h-wrap::before{background:linear-gradient(90deg,#fffdf8 0%,#fffdf8 52%,rgba(255,253,248,.85) 64%,rgba(255,253,248,0) 82%);}.hero-h-bg img{object-position:78% 30%;}}
+  .hero-h-btn--pri{background:var(--amarillo);color:#2a2218;box-shadow:0 12px 28px rgba(242,169,29,.38),inset 0 -3px 0 rgba(0,0,0,.08);}
+  .hero-h-btn--pri:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(242,169,29,.45),inset 0 -3px 0 rgba(0,0,0,.08);}
+  .hero-h-btn--sec{background:#fff;color:var(--azul-principal);border:2px solid var(--azul-principal);}
+  .hero-h-btn--sec:hover{background:var(--azul-principal);color:#fff;}
+  .hero-h-btn:focus-visible,.area:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px;}
+  .hero-h-team{display:flex;align-items:center;gap:14px;}
+  .hero-h-avs{display:flex;flex-shrink:0;}
+  .hero-h-avs img{width:46px;height:46px;border-radius:50%;border:3px solid #fffdf8;box-shadow:0 4px 12px rgba(3,47,94,.15);object-fit:cover;}
+  .hero-h-avs img+img{margin-left:-12px;}
+  .hero-h-team p{margin:0;font-size:.9375rem;line-height:1.4;color:var(--texto-suave);max-width:23em;}
+  .hero-h-team b{color:var(--azul-principal);}
+  .hero-h-card{position:absolute;z-index:2;right:28px;bottom:84px;width:262px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:18px;padding:18px 20px;box-shadow:0 18px 40px rgba(3,47,94,.18);}
+  .hero-h-card p{margin:0 0 10px;font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--rojo-principal);}
+  .hero-h-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+  .hero-h-card li{display:flex;gap:10px;align-items:flex-start;font-size:.9375rem;font-weight:700;line-height:1.3;color:var(--azul-principal);}
+  .hero-h-card li svg{width:20px;height:20px;flex-shrink:0;color:#12A150;}
+  @media(max-width:1024px) and (min-width:769px){.hero-h-bg{left:44%;}.hero-h-in{max-width:520px;padding-left:40px;}.hero-h-card{display:none;}}
   @media(max-width:768px){
-    .hero-h{padding:96px 16px 0;}
-    .hero-h-wrap{display:block;min-height:0;border-radius:24px;}
-    .hero-h-wrap::before{display:none;}
-    .hero-h-bg{position:relative;height:230px;}
-    .hero-h-bg img{object-position:center 25%;}
-    .hero-h-in{max-width:none;padding:26px 22px 28px;}
+    .hero-h{padding:94px 14px 0;}
+    .hero-h-wrap{min-height:0;border-radius:24px;display:flex;flex-direction:column;}
+    .hero-h-bg{position:relative;left:auto;height:250px;-webkit-mask-image:none;mask-image:none;}
+    .hero-h-bg img{object-position:center 22%;}
+    .hero-h-in{max-width:none;padding:24px 22px 8px;}
+    .hero-h h1{font-size:2.5rem;}
     .hero-h-btn{width:100%;}
-    .hero-h-ben{flex-direction:column;gap:8px;}
+    .hero-h-team{align-items:flex-start;}
+    .hero-h-team p{max-width:none;}
+    .hero-h-card{position:relative;right:auto;bottom:auto;width:auto;margin:14px 22px 26px;background:var(--azul-light);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;}
   }
 </style>
 <header class="hero-h">
@@ -2088,9 +2101,9 @@
       <img src="hero-estudiante-espana.webp" alt="Estudiante latinoamericana con su mochila y sus libros en una plaza de una ciudad española" width="1536" height="1024" fetchpriority="high">
     </picture>
     <div class="hero-h-in">
-      <p class="hero-h-eyebrow">Estancia por estudios · Extranjería · Empleo</p>
-      <h1>Estudia en España <span>con una ruta clara</span></h1>
-      <p class="hero-h-sub">Te ayudamos a preparar tu estancia por estudios desde tu país: qué te piden, cuánto supone y cómo hacerlo paso a paso.</p>
+      <p class="hero-h-eyebrow"><i aria-hidden="true"></i>Estancia por estudios en España</p>
+      <h1>Estudia en <mark>España</mark> <span>con una ruta clara</span></h1>
+      <p class="hero-h-sub">Prepara tu estancia por estudios desde tu país: <b>qué te piden, cuánto supone y cómo hacerlo</b>, paso a paso.</p>
       <div class="hero-h-ctas">
         <a href="#" onclick="gcOpen();return false;" role="button" class="hero-h-btn hero-h-btn--pri">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.6 8.4-2 5.2-5.2 2 2-5.2 5.2-2Z"/></svg>
@@ -2101,10 +2114,17 @@
           Primera consulta gratuita
         </a>
       </div>
-      <ul class="hero-h-ben">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg>Guías gratuitas y actualizadas</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20.5l1.5-5A8 8 0 1 1 21 12Z"/></svg>Explicado sin lenguaje burocrático</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m9 12 2 2 4-4"/></svg>Acompañamiento cuando lo necesites</li>
+      <div class="hero-h-team">
+        <span class="hero-h-avs"><img src="avatar-sara.webp" alt="" width="160" height="160"><img src="avatar-nora.webp" alt="" width="160" height="160"></span>
+        <p><b>Sara</b>, abogada de extranjería, y <b>Nora</b>, documentalista con experiencia en la Administración pública. Revisamos cada expediente juntas.</p>
+      </div>
+    </div>
+    <div class="hero-h-card">
+      <p>En tu ruta verás</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Qué documentos te piden</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Un presupuesto orientativo</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Tu plan si aún lo estás preparando</li>
       </ul>
     </div>
   </div>
@@ -2112,55 +2132,63 @@
 
 <!-- ============ TARJETAS DE ÁREAS ============ -->
 <style>
-  .areas-sec{padding:28px 24px 64px;background:#FAF8F3;}
-  .areas-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
-  .area{display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--arena-dark);border-radius:18px;padding:22px 18px 18px;text-decoration:none;color:var(--texto);transition:transform var(--transicion),box-shadow var(--transicion),border-color var(--transicion);}
-  .area:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(3,47,94,.10);border-color:var(--azul-secundario);}
-  .area:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px;}
-  .area__ic{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--azul-light);color:var(--azul-secundario);margin-bottom:14px;}
-  .area__ic svg{width:24px;height:24px;}
-  .area h2{font-family:'Source Sans 3',sans-serif;font-size:1.125rem;font-weight:800;color:var(--azul-principal);margin:0 0 6px;line-height:1.2;}
-  .area p{font-size:var(--fs-xs);color:var(--texto-suave);line-height:1.45;margin:0 0 14px;flex-grow:1;}
-  .area__go{font-size:var(--fs-xs);font-weight:800;color:var(--azul-secundario);}
-  .area--dest{background:linear-gradient(160deg,var(--azul-principal),var(--azul-secundario));border-color:transparent;color:#fff;box-shadow:0 18px 40px rgba(3,47,94,.22);}
-  .area--dest .area__ic{background:rgba(255,255,255,.14);color:var(--amarillo);}
+  .areas-sec{position:relative;z-index:4;padding:0 24px 64px;margin-top:-52px;}
+  .areas-grid{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .area{--c:var(--azul-secundario);--t:var(--azul-light);position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--arena-dark);border-radius:20px;padding:22px 18px 18px;text-decoration:none;color:var(--texto);overflow:hidden;box-shadow:0 14px 34px rgba(3,47,94,.08);transition:transform .2s,box-shadow .2s;}
+  .area::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--c);}
+  .area:hover{transform:translateY(-5px);box-shadow:0 22px 44px rgba(3,47,94,.16);}
+  .area__ic{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--t);color:var(--c);margin-bottom:14px;}
+  .area__ic svg{width:25px;height:25px;}
+  .area h2{font-family:'Source Sans 3',sans-serif;font-size:1.125rem;font-weight:800;color:var(--azul-principal);margin:0 0 6px;line-height:1.2;letter-spacing:-.005em;}
+  .area p{font-size:.9375rem;color:var(--texto-suave);line-height:1.45;margin:0 0 16px;flex-grow:1;}
+  .area__go{display:flex;align-items:center;justify-content:space-between;font-size:.9375rem;font-weight:800;color:var(--c);}
+  .area__go i{width:30px;height:30px;border-radius:50%;background:var(--t);display:flex;align-items:center;justify-content:center;font-style:normal;transition:background .2s,color .2s,transform .2s;}
+  .area:hover .area__go i{background:var(--c);color:#fff;transform:translateX(3px);}
+  .area--ext{--c:var(--rojo-principal);--t:#FBE9EC;}
+  .area--emp{--c:var(--azul-secundario);--t:var(--azul-light);}
+  .area--peac{--c:#A86B00;--t:#FEF4DF;}
+  .area--tra{--c:var(--azul-principal);--t:#E3E8F0;}
+  .area--dest{--c:var(--amarillo);--t:rgba(255,255,255,.14);background:linear-gradient(160deg,var(--azul-principal),var(--azul-secundario));border-color:transparent;box-shadow:0 22px 46px rgba(3,47,94,.30);}
   .area--dest h2{color:#fff;}
   .area--dest p{color:rgba(255,255,255,.88);}
-  .area--dest .area__go{color:var(--amarillo);}
-  @media(max-width:1024px){.areas-grid{grid-template-columns:repeat(3,1fr);}}
-  @media(max-width:640px){.areas-sec{padding:20px 16px 48px;}.areas-grid{grid-template-columns:1fr;gap:10px;}.area{display:grid;grid-template-columns:44px 1fr;column-gap:14px;padding:16px;}.area__ic{width:44px;height:44px;margin:0;grid-row:span 3;}.area p{margin-bottom:8px;}}
+  .area--dest:hover .area__go i{color:#2a2218;}
+  .area__tag{position:absolute;top:16px;right:14px;font-size:.6875rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;background:var(--amarillo);color:#2a2218;padding:4px 9px;border-radius:50px;}
+  @media(max-width:1024px){.areas-sec{margin-top:-40px;}.areas-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:768px){.areas-sec{margin-top:0;padding:18px 14px 48px;}}
+  @media(max-width:640px){.areas-grid{grid-template-columns:1fr;gap:10px;}.area{display:grid;grid-template-columns:50px 1fr;column-gap:14px;padding:18px 16px 16px;}.area__ic{margin:0;grid-row:span 3;}.area p{margin-bottom:8px;}.area__go{justify-content:flex-start;gap:8px;}.area__go i{width:24px;height:24px;}}
 </style>
 <section class="areas-sec" aria-label="Áreas en las que te ayudamos">
   <div class="areas-grid">
     <a href="servicios-homologacion.html" class="area area--dest">
+      <span class="area__tag">Nuestro foco</span>
       <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 11.8V17c0 1.1 2.7 2.4 6 2.4s6-1.3 6-2.4v-5.2"/></svg></span>
       <h2>Estudios</h2>
       <p>Estancia por estudios, homologación y acceso a la universidad.</p>
-      <span class="area__go">Ver estudios →</span>
+      <span class="area__go">Ver estudios <i aria-hidden="true">→</i></span>
     </a>
-    <a href="extranjeria.html" class="area">
+    <a href="extranjeria.html" class="area area--ext">
       <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/></svg></span>
       <h2>Extranjería</h2>
       <p>Visados, autorizaciones, renovaciones y arraigo.</p>
-      <span class="area__go">Ver extranjería →</span>
+      <span class="area__go">Ver extranjería <i aria-hidden="true">→</i></span>
     </a>
-    <a href="empleo.html" class="area">
+    <a href="empleo.html" class="area area--emp">
       <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7.5" width="19" height="12" rx="2.2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5M2.5 12.6h19"/></svg></span>
       <h2>Empleo</h2>
       <p>Búsqueda de trabajo y desarrollo profesional.</p>
-      <span class="area__go">Ver empleo →</span>
+      <span class="area__go">Ver empleo <i aria-hidden="true">→</i></span>
     </a>
-    <a href="servicio-peac.html" class="area">
+    <a href="servicio-peac.html" class="area area--peac">
       <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="m9 13.5-1.5 7.5 4.5-2.5 4.5 2.5-1.5-7.5"/></svg></span>
       <h2>Acreditar experiencia</h2>
       <p>Convierte tu experiencia laboral en un certificado oficial (PEAC).</p>
-      <span class="area__go">Ver acreditación →</span>
+      <span class="area__go">Ver acreditación <i aria-hidden="true">→</i></span>
     </a>
-    <a href="servicios-tramites-electronicos.html" class="area">
+    <a href="servicios-tramites-electronicos.html" class="area area--tra">
       <span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="m9.5 10 2 2 3.5-3.5"/></svg></span>
       <h2>Trámites electrónicos</h2>
       <p>Certificado digital, Cl@ve y Carpeta Ciudadana.</p>
-      <span class="area__go">Ver trámites →</span>
+      <span class="area__go">Ver trámites <i aria-hidden="true">→</i></span>
     </a>
   </div>
 </section>
