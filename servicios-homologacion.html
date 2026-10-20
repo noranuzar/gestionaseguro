@@ -395,7 +395,8 @@
   .hero-h-wrap{position:relative;max-width:1120px;margin:0 auto;min-height:580px;border-radius:32px;overflow:hidden;box-shadow:0 30px 70px rgba(3,47,94,.12);background:#fffdf8;}
   .hero-h-wrap::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;z-index:3;background:linear-gradient(90deg,var(--rojo-principal),var(--amarillo));}
   .hero-h-bg{position:absolute;top:0;bottom:0;right:0;left:40%;margin:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 24%);mask-image:linear-gradient(90deg,transparent 0,#000 24%);}
-  .hero-h-bg img{width:100%;height:100%;object-fit:cover;object-position:62% 28%;display:block;}
+  .hero-h-bg img,.hero-h-bg video{width:100%;height:100%;object-fit:cover;object-position:62% 28%;display:block;}
+  .hero-h-bg video{object-position:38% 30%;}
   .hero-h-in{position:relative;z-index:2;max-width:596px;padding:58px 0 96px 56px;}
   .hero-h-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azul-principal);background:var(--azul-light);padding:8px 15px;border-radius:50px;margin:0 0 22px;}
   .hero-h-eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--rojo-principal);box-shadow:0 0 0 4px rgba(195,18,44,.15);}
@@ -419,7 +420,7 @@
     .hero-h{padding:94px 14px 0;}
     .hero-h-wrap{min-height:0;border-radius:24px;display:flex;flex-direction:column;}
     .hero-h-bg{position:relative;left:auto;height:250px;-webkit-mask-image:none;mask-image:none;}
-    .hero-h-bg img{object-position:center 22%;}
+    .hero-h-bg img,.hero-h-bg video{object-position:center 22%;}
     .hero-h-in{max-width:none;padding:24px 22px 8px;}
     .hero-h h1{font-size:2.5rem;}
     .hero-h-btn{width:100%;}
@@ -429,10 +430,18 @@
 </style>
 <header class="hero-h hero-h--int">
   <div class="hero-h-wrap">
-    <picture class="hero-h-bg">
-      <source media="(max-width: 768px)" srcset="hero-estudiante-espana-movil.webp" width="800" height="601">
-      <img src="hero-estudiante-espana.webp" alt="Estudiante latinoamericana con su mochila y sus libros en una plaza de una ciudad española" width="1536" height="1024" fetchpriority="high">
-    </picture>
+    <div class="hero-h-bg">
+      <video id="heroVideo" muted playsinline preload="metadata" poster="hero-estudios-poster.webp" width="768" height="512" aria-hidden="true">
+        <source src="hero-estudios.webm" type="video/webm">
+        <source src="hero-estudios.mp4" type="video/mp4">
+      </video>
+    </div>
+    <script>
+    /* Se reproduce una vez y se queda en el último fotograma. Sin movimiento si el sistema pide reducirlo. */
+    (function(){var v=document.getElementById('heroVideo');if(!v)return;
+      if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+      var p=v.play();if(p&&p.catch)p.catch(function(){});})();
+    </script>
     <div class="hero-h-in">
       <p class="hero-h-eyebrow"><i aria-hidden="true"></i>Estudios en España</p>
       <h1>Estudiar en España: <span>encuentra el camino que encaja contigo</span></h1>
