@@ -527,6 +527,28 @@
     .prog-pasos li::before{content:counter(p);display:block;font-family:'DM Serif Display',serif;font-size:1.8rem;line-height:1;color:var(--amarillo);margin-bottom:8px}
     .prog-aviso{margin:0 0 28px;font-size:var(--fs-sm);color:#fff;max-width:760px}
     .prog-aviso strong{color:var(--amarillo)}
+    .prog-elige{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:26px}
+    .prog-elige .prog-sub{margin:0 0 4px}
+    .prog-elige-sub{margin:0 0 18px;color:#E3E8F0;font-size:var(--fs-sm)}
+    .prog-opciones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .prog-op{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;font:inherit;cursor:pointer;background:#fff;color:var(--texto-principal);border:2px solid transparent;border-radius:16px;padding:18px 20px;min-height:44px;transition:transform .15s,border-color .15s,box-shadow .15s}
+    .prog-op:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.18)}
+    .prog-op:focus-visible{outline:3px solid var(--amarillo);outline-offset:3px}
+    .prog-op[aria-pressed="true"]{border-color:var(--amarillo);box-shadow:0 0 0 4px rgba(242,169,29,.35)}
+    .prog-op-k{font-size:var(--fs-label);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rojo-principal)}
+    .prog-op-t{font-family:'DM Serif Display',serif;font-size:1.35rem;line-height:1.2;color:var(--azul-principal)}
+    .prog-op-s{font-size:.9375rem;color:var(--texto-suave);line-height:1.4}
+    .prog-res{margin-top:18px}
+    .prog-elige.js .prog-res{display:none}
+    .prog-elige.js .prog-res.on{display:block;animation:progIn .3s ease}
+    @keyframes progIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    .prog-res-t{margin:0 0 8px;font-weight:800;color:#fff}
+    .prog-res ul{margin:0 0 18px;padding-left:20px;color:#E3E8F0}
+    .prog-res li{margin-bottom:4px}
+    .prog-nosure{margin:16px 0 0;font-size:.9375rem;color:#C9D3E0}
+    .prog-nosure a{color:#fff;font-weight:700}
+    @media (max-width:768px){.prog-opciones{grid-template-columns:1fr}.prog-elige{padding:20px}}
+    @media (prefers-reduced-motion:reduce){.prog-elige.js .prog-res.on{animation:none}}
     .prog-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
     .prog-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:12px 28px;border-radius:50px;background:var(--amarillo);color:#2a2218;font-weight:800;font-size:var(--fs-btn-lg);text-decoration:none;box-shadow:0 12px 28px rgba(242,169,29,.35);transition:transform .15s}
     .prog-btn:hover{transform:translateY(-2px)}
@@ -537,8 +559,6 @@
     .otros-head h2{font-size:clamp(1.5rem,3vw,2rem);margin:0 0 4px}
     .otros-head p{margin:0;color:var(--texto-suave)}
     .prog-link-nota{display:block;margin-top:10px;font-weight:700;color:var(--rojo-principal);text-decoration:none}
-    .rev{display:inline-block;font-size:.8125rem;font-weight:800;line-height:1.5;border-radius:6px;padding:2px 8px;margin:6px 6px 0 0;vertical-align:middle;color:#7a1020;background:#FBE9EC;border:1px dashed #C3122C}
-    .rev--n{color:#6b4500;background:#FEF4DF;border-color:#A86B00}
     @media (max-width:900px){.prog-pasos{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media (max-width:768px){.prog{padding:32px 22px;border-radius:22px}.prog-vias{grid-template-columns:1fr}.prog-btn{width:100%}}
     @media (max-width:420px){.prog-pasos{grid-template-columns:1fr}}
@@ -554,7 +574,7 @@
 
       <div class="prog-dato">
         <b>1 año</b>
-        <p>Es lo que dura la autorización concedida en la Regularización Extraordinaria 2026. Antes de que venza, hay que preparar el siguiente paso.<small>Real Decreto 316/2026</small><span class="rev">Validar · Sara: qué ocurre al vencer y desde qué fecha cuenta</span></p>
+        <p>Es lo que dura la autorización concedida en la Regularización Extraordinaria 2026. Antes de que venza, hay que preparar el siguiente paso.<small>Real Decreto 316/2026</small></p>
       </div>
       </div>
       <figure class="prog-media">
@@ -595,15 +615,13 @@
             <li><strong>De segunda oportunidad:</strong> porque ya tuviste un permiso que no pudiste renovar.</li>
           </ul>
           <p style="margin-top:10px;font-size:.9375rem">Cada tipo tiene su propio camino para renovar o modificar. Lo revisamos contigo.</p>
-          <span class="rev">Validar · Sara: descripción de cada tipo</span>
         </div>
       </div>
 
       <div class="prog-nota">
         <h3>Programa tu renovación con tiempo</h3>
-        <p>Te preparamos tu ruta, con los plazos y los requisitos que se aplican a tu situación, paso a paso. <span class="rev">Validar · Sara: plazos de presentación</span></p>
+        <p>Te preparamos tu ruta, con los plazos y los requisitos que se aplican a tu situación, paso a paso.</p>
         <p><strong>¿Todavía no has conseguido trabajo?</strong> Le pasa a muchas personas: con la autorización provisional no siempre es fácil que te contraten. No eres la única persona en esta situación. Si lo planificamos con tiempo, vemos juntos qué opciones tienes y qué puedes ir preparando desde ahora.</p>
-        <p><span class="rev rev--n">Confirmar · Nora: alcance del servicio y si presenta Sara</span></p>
       </div>
 
       <h3 class="prog-sub">Cómo te acompañamos</h3>
@@ -614,10 +632,61 @@
         <li>Presentamos la solicitud y hacemos el seguimiento.</li>
       </ol>
 
-      <div class="prog-ctas">
-        <a class="prog-btn" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Revisar mi permiso en la consulta gratuita</a>
-        <p>o escríbenos a <a class="prog-mail" href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a></p>
+      <div class="prog-elige" id="prog-elige">
+        <h3 class="prog-sub">¿Cómo conseguiste tu permiso?</h3>
+        <p class="prog-elige-sub">Elige tu caso y te decimos qué revisaremos contigo en la consulta gratuita.</p>
+        <div class="prog-opciones" role="group" aria-label="Elige tu vía">
+          <button type="button" class="prog-op" data-via="regularizacion" aria-pressed="false" aria-controls="prog-res-regularizacion">
+            <span class="prog-op-k">Vía 1</span>
+            <span class="prog-op-t">Por la Regularización 2026</span>
+            <span class="prog-op-s">Mi autorización es de un año</span>
+          </button>
+          <button type="button" class="prog-op" data-via="arraigo" aria-pressed="false" aria-controls="prog-res-arraigo">
+            <span class="prog-op-k">Vía 2</span>
+            <span class="prog-op-t">Por arraigo</span>
+            <span class="prog-op-s">Sociolaboral, social, socioformativo, familiar o de segunda oportunidad</span>
+          </button>
+        </div>
+
+        <div class="prog-res" id="prog-res-regularizacion" aria-live="polite">
+          <p class="prog-res-t">Vienes de la Regularización 2026. En tu consulta revisamos:</p>
+          <ul>
+            <li>La fecha en que vence tu autorización.</li>
+            <li>Lo que ya cuenta para tu renovación: meses trabajados, inscripción en el SEPE o contrato.</li>
+            <li>Tu plan, aunque todavía no hayas conseguido trabajo.</li>
+          </ul>
+          <div class="prog-ctas">
+            <a class="prog-btn" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Reservar mi consulta gratuita</a>
+            <p>o escríbenos a <a class="prog-mail" href="mailto:info@gestionaseguro.com?subject=Renovaci%C3%B3n%20%C2%B7%20V%C3%ADa%201%3A%20Regularizaci%C3%B3n%202026">info@gestionaseguro.com</a></p>
+          </div>
+        </div>
+
+        <div class="prog-res" id="prog-res-arraigo" aria-live="polite">
+          <p class="prog-res-t">Vienes de un arraigo. En tu consulta revisamos:</p>
+          <ul>
+            <li>Tu tipo de arraigo y la fecha en que vence tu autorización.</li>
+            <li>Si te corresponde renovar o pasar a residencia y trabajo.</li>
+            <li>Los documentos que conviene ir preparando desde ahora.</li>
+          </ul>
+          <div class="prog-ctas">
+            <a class="prog-btn" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Reservar mi consulta gratuita</a>
+            <p>o escríbenos a <a class="prog-mail" href="mailto:info@gestionaseguro.com?subject=Renovaci%C3%B3n%20%C2%B7%20V%C3%ADa%202%3A%20Arraigo">info@gestionaseguro.com</a></p>
+          </div>
+        </div>
+        <p class="prog-nosure">¿No estás seguro/a de tu vía? <a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Resérvala igualmente y lo vemos juntos →</a></p>
       </div>
+      <script>
+      (function(){var box=document.getElementById('prog-elige');if(!box)return;box.classList.add('js');
+        var ops=[].slice.call(box.querySelectorAll('.prog-op'));
+        ops.forEach(function(b){b.addEventListener('click',function(){
+          ops.forEach(function(o){o.setAttribute('aria-pressed','false');document.getElementById(o.getAttribute('aria-controls')).classList.remove('on');});
+          b.setAttribute('aria-pressed','true');document.getElementById(b.getAttribute('aria-controls')).classList.add('on');
+          var via=b.getAttribute('data-via');(window.dataLayer=window.dataLayer||[]).push({event:'programa_renovacion_via',via:via});
+          box.querySelectorAll('.prog-res.on .prog-btn').forEach(function(a){a.setAttribute('data-via',via);});
+        });});
+        box.addEventListener('click',function(e){var a=e.target.closest('.prog-res .prog-btn');if(a)(window.dataLayer=window.dataLayer||[]).push({event:'programa_renovacion_reserva',via:a.getAttribute('data-via')});});
+      })();
+      </script>
     </div>
   </section>
 
