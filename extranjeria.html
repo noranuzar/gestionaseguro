@@ -488,12 +488,151 @@
   </header>
 
   <!-- ════════════════════════════════════════ -->
+  <!-- PROGRAMA ESPECIAL: RENOVACIÓN Y MODIFICACIÓN -->
+  <!-- ════════════════════════════════════════ -->
+  <style>
+    .prog-sec{padding:8px 0 36px}
+    .prog-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:36px;align-items:center;margin-bottom:28px}
+    .prog-top .prog-dato{margin-bottom:0}
+    .prog-media{margin:0;border-radius:20px;overflow:hidden;aspect-ratio:3/2;box-shadow:0 18px 40px rgba(0,0,0,.25);background:#054782}
+    .prog-media video{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+    .prog-nota{background:#fff;color:var(--texto-principal);border-radius:18px;padding:24px 26px;margin:0 0 28px;border-left:6px solid var(--amarillo)}
+    .prog-nota h3{color:var(--azul-principal);font-size:1.3rem;margin:0 0 8px}
+    .prog-nota p{margin:0 0 10px;font-size:var(--fs-sm);line-height:1.6}
+    .prog-nota p:last-child{margin-bottom:0}
+    .prog-nota strong{color:var(--azul-principal)}
+    @media (max-width:900px){.prog-top{grid-template-columns:1fr;gap:22px}.prog-media{order:-1}}
+    .prog{position:relative;background:linear-gradient(135deg,#032F5E 0%,#054782 100%);color:#fff;border-radius:28px;padding:48px 52px;box-shadow:0 28px 60px rgba(3,47,94,.22);overflow:hidden}
+    .prog::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,var(--rojo-principal),var(--amarillo))}
+    .prog-badge{display:inline-flex;align-items:center;gap:8px;background:var(--amarillo);color:#2a2218;font-weight:800;font-size:var(--fs-tag);letter-spacing:.04em;padding:6px 14px;border-radius:50px;margin-bottom:16px}
+    .prog-eyebrow{display:block;font-size:var(--fs-label);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#F7C766;margin-bottom:10px}
+    .prog h2{color:#fff;margin:0 0 14px;max-width:760px}
+    .prog .prog-lead{font-size:var(--fs-md);line-height:1.6;color:#E3E8F0;max-width:720px;margin:0 0 26px}
+    .prog-dato{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px 20px;margin:0 0 28px;max-width:760px}
+    .prog-dato b{font-family:'DM Serif Display',serif;font-weight:400;font-size:2.2rem;line-height:1;color:var(--amarillo);flex-shrink:0}
+    .prog-dato p{margin:0;font-size:var(--fs-sm);line-height:1.5;color:#fff}
+    .prog-dato small{display:block;margin-top:4px;color:#C9D3E0;font-size:.875rem}
+    .prog-vias{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:30px}
+    .prog-via{background:#fff;color:var(--texto-principal);border-radius:18px;padding:24px}
+    .prog-via small{display:block;font-size:var(--fs-label);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rojo-principal);margin-bottom:6px}
+    .prog-via h3{font-size:1.3rem;color:var(--azul-principal);margin:0 0 10px}
+    .prog-via p{margin:0;font-size:var(--fs-sm);line-height:1.55}
+    .prog-cuenta-t{margin:14px 0 6px!important;font-weight:800;color:var(--azul-principal)}
+    .prog-cuenta{margin:0;padding-left:20px;font-size:var(--fs-xs);line-height:1.5}
+    .prog-cuenta li{margin-bottom:6px}
+    .prog-cuenta strong{color:var(--azul-principal)}
+    .prog h3.prog-sub{color:#fff;font-size:1.25rem;margin:0 0 14px}
+    .prog-pasos{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;counter-reset:p}
+    .prog-pasos li{counter-increment:p;background:rgba(255,255,255,.08);border-radius:14px;padding:16px;font-size:1rem;line-height:1.45;color:#fff}
+    .prog-pasos li::before{content:counter(p);display:block;font-family:'DM Serif Display',serif;font-size:1.8rem;line-height:1;color:var(--amarillo);margin-bottom:8px}
+    .prog-aviso{margin:0 0 28px;font-size:var(--fs-sm);color:#fff;max-width:760px}
+    .prog-aviso strong{color:var(--amarillo)}
+    .prog-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+    .prog-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:12px 28px;border-radius:50px;background:var(--amarillo);color:#2a2218;font-weight:800;font-size:var(--fs-btn-lg);text-decoration:none;box-shadow:0 12px 28px rgba(242,169,29,.35);transition:transform .15s}
+    .prog-btn:hover{transform:translateY(-2px)}
+    .prog-btn:focus-visible,.prog a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+    .prog-ctas p{margin:0;color:#E3E8F0;font-size:.9375rem}
+    .prog-ctas a.prog-mail{color:#fff;font-weight:700}
+    .otros-head{max-width:1120px;margin:20px auto 0;padding:0 24px}
+    .otros-head h2{font-size:clamp(1.5rem,3vw,2rem);margin:0 0 4px}
+    .otros-head p{margin:0;color:var(--texto-suave)}
+    .prog-link-nota{display:block;margin-top:10px;font-weight:700;color:var(--rojo-principal);text-decoration:none}
+    .rev{display:inline-block;font-size:.8125rem;font-weight:800;line-height:1.5;border-radius:6px;padding:2px 8px;margin:6px 6px 0 0;vertical-align:middle;color:#7a1020;background:#FBE9EC;border:1px dashed #C3122C}
+    .rev--n{color:#6b4500;background:#FEF4DF;border-color:#A86B00}
+    @media (max-width:900px){.prog-pasos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:768px){.prog{padding:32px 22px;border-radius:22px}.prog-vias{grid-template-columns:1fr}.prog-btn{width:100%}}
+    @media (max-width:420px){.prog-pasos{grid-template-columns:1fr}}
+  </style>
+  <section class="prog-sec container" id="renovacion-modificacion" aria-labelledby="prog-t">
+    <div class="prog">
+      <div class="prog-top">
+      <div class="prog-txt">
+      <span class="prog-badge">★ Programa especial</span>
+      <span class="prog-eyebrow">Para quien ya tiene permiso por arraigo o por la Regularización 2026</span>
+      <h2 id="prog-t">Renueva o modifica tu permiso a tiempo</h2>
+      <p class="prog-lead">Ya conseguiste tu autorización. Ahora toca mantenerla: renovarla o pasar al permiso que mejor encaje contigo, sin perder la situación regular que tanto te costó.</p>
+
+      <div class="prog-dato">
+        <b>1 año</b>
+        <p>Es lo que dura la autorización concedida en la Regularización Extraordinaria 2026. Antes de que venza, hay que preparar el siguiente paso.<small>Real Decreto 316/2026</small><span class="rev">Validar · Sara: qué ocurre al vencer y desde qué fecha cuenta</span></p>
+      </div>
+      </div>
+      <figure class="prog-media">
+        <video id="progVideo" muted loop playsinline preload="none" poster="extranjeria-programa-poster.webp" width="720" height="480" aria-hidden="true">
+          <source src="extranjeria-programa.mp4" type="video/mp4">
+        </video>
+      </figure>
+      </div>
+      <script>
+      (function(){var v=document.getElementById('progVideo');if(!v)return;
+        if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+        function go(){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+        if('IntersectionObserver' in window){var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){go();o.disconnect();}},{threshold:.4});o.observe(v);}else go();})();
+      </script>
+
+      <div class="prog-vias">
+        <div class="prog-via">
+          <small>Vía 1</small>
+          <h3>Vengo de la Regularización Extraordinaria 2026</h3>
+          <p>Antes de que venza tu autorización, revisamos qué opción te corresponde: renovarla o pasar a otro permiso de residencia y trabajo.</p>
+          <p class="prog-cuenta-t">Para la renovación cuentan:</p>
+          <ul class="prog-cuenta">
+            <li>Haber trabajado <strong>al menos 3 meses</strong> durante el año de tu autorización.</li>
+            <li>Estar <strong>inscrito/a en el SEPE</strong> como demandante de empleo.</li>
+            <li>Tener un <strong>contrato de trabajo</strong>. Puede ser de media jornada (20 horas), siempre que el sueldo llegue al salario mínimo de una jornada completa.</li>
+          </ul>
+        </div>
+        <div class="prog-via">
+          <small>Vía 2</small>
+          <h3>Vengo de un arraigo</h3>
+          <p>Cuando termina tu autorización por arraigo, revisamos si te corresponde renovar o modificar a residencia y trabajo, según tu situación.</p>
+          <p class="prog-cuenta-t">¿De qué arraigo vienes?</p>
+          <ul class="prog-cuenta">
+            <li><strong>Sociolaboral:</strong> lo conseguiste con un contrato de trabajo.</li>
+            <li><strong>Social:</strong> por tus vínculos familiares o tu integración en España.</li>
+            <li><strong>Socioformativo:</strong> mientras hacías una formación.</li>
+            <li><strong>Familiar:</strong> por tu vínculo con un familiar español.</li>
+            <li><strong>De segunda oportunidad:</strong> porque ya tuviste un permiso que no pudiste renovar.</li>
+          </ul>
+          <p style="margin-top:10px;font-size:.9375rem">Cada tipo tiene su propio camino para renovar o modificar. Lo revisamos contigo.</p>
+          <span class="rev">Validar · Sara: descripción de cada tipo</span>
+        </div>
+      </div>
+
+      <div class="prog-nota">
+        <h3>Programa tu renovación con tiempo</h3>
+        <p>Te preparamos tu ruta, con los plazos y los requisitos que se aplican a tu situación, paso a paso. <span class="rev">Validar · Sara: plazos de presentación</span></p>
+        <p><strong>¿Todavía no has conseguido trabajo?</strong> Le pasa a muchas personas: con la autorización provisional no siempre es fácil que te contraten. No eres la única persona en esta situación. Si lo planificamos con tiempo, vemos juntos qué opciones tienes y qué puedes ir preparando desde ahora.</p>
+        <p><span class="rev rev--n">Confirmar · Nora: alcance del servicio y si presenta Sara</span></p>
+      </div>
+
+      <h3 class="prog-sub">Cómo te acompañamos</h3>
+      <ol class="prog-pasos">
+        <li>Revisamos tu permiso y su fecha de vencimiento.</li>
+        <li>Te decimos qué vía encaja contigo: renovar o modificar.</li>
+        <li>Preparamos la documentación contigo.</li>
+        <li>Presentamos la solicitud y hacemos el seguimiento.</li>
+      </ol>
+
+      <div class="prog-ctas">
+        <a class="prog-btn" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Revisar mi permiso en la consulta gratuita</a>
+        <p>o escríbenos a <a class="prog-mail" href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="otros-head reveal">
+    <h2>Otros trámites de extranjería</h2>
+    <p>Estudios, residencia y trabajo, regularización y familia.</p>
+  </div>
+
+
+  <!-- ════════════════════════════════════════ -->
   <!-- BLOQUE 1: ESTANCIA POR ESTUDIOS (principal) -->
   <!-- ════════════════════════════════════════ -->
   <section class="bloque-sec container reveal">
-    <div class="bloque-card bloque-card--estudios">
-      <span class="bloque-foco">★ Nuestro foco</span>
-      <span class="bloque-eyebrow eb-amarillo">Estudiar en España</span>
+    <div class="bloque-card">
+      <span class="bloque-eyebrow eb-rojo">Estudiar en España</span>
       <h2>Estancia por estudios</h2>
       <div class="bloque-accent bloque-accent--estudios"></div>
       <p class="lead">¿Vienes a estudiar a España? Conseguimos y gestionamos tu <strong>autorización de estancia por estudios</strong> de principio a fin, estés en tu país o ya aquí.</p>
@@ -631,6 +770,7 @@
             </button>
             <div class="panel"><div class="panel-in">
               <p>Renovar es prolongar lo que ya tienes. La clave: <strong>presentar a tiempo</strong> y acreditar bien tus medios. En plazo, sigues regular hasta que resuelvan.</p>
+              <a class="prog-link-nota" href="#renovacion-modificacion">¿Vienes de un arraigo o de la Regularización 2026? Mira el programa especial ↑</a>
               <div class="paquete-slot">
                 <span class="sc-alcance">Lo tramitamos por ti</span>
                 <span class="pq-msg">Paquete de acompañamiento · <em>próximamente</em></span>
@@ -647,6 +787,7 @@
             </button>
             <div class="panel"><div class="panel-in">
               <p>Pasar de un permiso a otro (estudios → trabajo, arraigo → residencia y trabajo). El <strong>encaje correcto</strong> evita una denegación evitable.</p>
+              <a class="prog-link-nota" href="#renovacion-modificacion">¿Vienes de un arraigo o de la Regularización 2026? Mira el programa especial ↑</a>
               <div class="paquete-slot">
                 <span class="sc-alcance">Lo tramitamos por ti</span>
                 <span class="pq-msg">Paquete de acompañamiento · <em>próximamente</em></span>
