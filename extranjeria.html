@@ -176,32 +176,6 @@
     .hamburger span { width: 24px; height: 2px; background: var(--oliva-dark); border-radius: 2px; transition: var(--transicion); }
 
     /* ── HERO DE PÁGINA ── */
-    .hero-pagina {
-      padding: 120px 24px 56px;
-      background: linear-gradient(180deg, #FFFFFF 0%, var(--fondo-claro) 100%);
-      text-align: center;
-    }
-    .hero-pagina .breadcrumb {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: var(--fs-xs); color: var(--texto-suave); margin-bottom: 18px;
-    }
-    .hero-pagina .breadcrumb a { color: var(--azul-principal); font-weight: 600; }
-    .hero-pagina .breadcrumb a:hover { text-decoration: underline; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--azul-light); color: var(--azul-principal);
-      font-size: var(--fs-label); font-weight: 700;
-      padding: 8px 18px; border-radius: 50px; margin-bottom: 20px;
-      letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(3,47,94,0.12);
-    }
-    .hero-badge .pulse { width: 8px; height: 8px; background: var(--amarillo); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
-    .hero-pagina h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin-bottom: 16px; }
-    .hero-pagina h1 .rojo { color: var(--rojo-principal); }
-    .hero-pagina .hero-sub {
-      font-size: var(--fs-md); color: var(--texto-suave);
-      max-width: 620px; margin: 0 auto 8px; line-height: var(--lh-normal);
-    }
-    .hero-accent-line { width: 72px; height: 5px; background: linear-gradient(90deg, var(--rojo-principal), var(--amarillo)); border-radius: 20px; margin: 22px auto 0; }
 
     /* ── BLOQUES PEER (Estudios / Residencia y trabajo) ── */
     .bloque-sec { padding: 26px 0; }
@@ -389,7 +363,6 @@
 
     /* ── ANIMACIONES ── */
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
     .reveal { opacity: 0; transform: translateY(28px); transition: 0.8s all ease-out; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -421,7 +394,6 @@
       .servicio-card { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
-      .hero-pagina { padding: 110px 20px 44px; }
       .navbar-inner { height: 74px; }
       .logo-header img { height: 46px; }
       .logo-header .brand-word { font-size: 1.45rem; }
@@ -475,220 +447,198 @@
   <!-- ════════════════════════════════════════ -->
   <!-- HERO DE PÁGINA -->
   <!-- ════════════════════════════════════════ -->
-  <header class="hero-pagina">
-    <div class="breadcrumb">
-      <a href="/">Inicio</a><span>›</span><span>Extranjería</span>
+<style>
+.hero-h{padding:116px 24px 0;background:radial-gradient(1200px 500px at 85% 0%,#E8EEF7 0%,rgba(232,238,247,0) 60%),linear-gradient(180deg,#FFFFFF 0%,#FAF8F3 100%);}
+  .hero-h-wrap{position:relative;max-width:1120px;margin:0 auto;min-height:580px;border-radius:32px;overflow:hidden;box-shadow:0 30px 70px rgba(3,47,94,.12);background:#fffdf8;}
+  .hero-h-wrap::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;z-index:3;background:linear-gradient(90deg,var(--rojo-principal),var(--amarillo));}
+  .hero-h-bg{position:absolute;top:0;bottom:0;right:0;left:40%;margin:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 24%);mask-image:linear-gradient(90deg,transparent 0,#000 24%);}
+  .hero-h-bg img,.hero-h-bg video{width:100%;height:100%;object-fit:cover;object-position:62% 28%;display:block;}
+  .hero-h-bg video{object-position:38% 30%;}
+  .hero-h-in{position:relative;z-index:2;max-width:596px;padding:58px 0 96px 56px;}
+  .hero-h-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azul-principal);background:var(--azul-light);padding:8px 15px;border-radius:50px;margin:0 0 22px;}
+  .hero-h-eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--rojo-principal);box-shadow:0 0 0 4px rgba(195,18,44,.15);}
+  .hero-h h1{font-family:'Source Sans 3',system-ui,sans-serif;font-size:clamp(2.7rem,5.2vw,4.25rem);font-weight:800;line-height:.98;letter-spacing:-.025em;color:var(--azul-principal);margin:0 0 20px;}
+  .hero-h h1 span{display:block;font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:0;font-size:.8em;line-height:1.08;margin-top:8px;color:var(--rojo-principal);}
+  .hero-h-sub{font-size:1.1875rem;color:var(--texto-suave);line-height:1.55;margin:0 0 30px;max-width:25em;}
+  .hero-h-sub b{color:var(--azul-principal);font-weight:700;}
+  .hero-h-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px;}
+  .hero-h-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:0 24px;border-radius:16px;font-weight:800;font-size:1.0625rem;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;}
+  .hero-h-btn svg{width:20px;height:20px;flex-shrink:0;}
+  .hero-h-btn--pri{background:var(--amarillo);color:#2a2218;box-shadow:0 12px 28px rgba(242,169,29,.38),inset 0 -3px 0 rgba(0,0,0,.08);}
+  .hero-h-btn--pri:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(242,169,29,.45),inset 0 -3px 0 rgba(0,0,0,.08);}
+  .hero-h-btn--sec{background:#fff;color:var(--azul-principal);border:2px solid var(--azul-principal);}
+  .hero-h-btn--sec:hover{background:var(--azul-principal);color:#fff;}
+  .hero-h-btn:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px;}
+  .hero-h-team{display:flex;align-items:center;gap:14px;}
+  .hero-h-team p{margin:0;font-size:.9375rem;line-height:1.45;color:var(--texto-suave);max-width:27em;padding-left:14px;border-left:3px solid var(--amarillo);}
+  .hero-h-team b{color:var(--azul-principal);}
+  @media(max-width:1024px) and (min-width:769px){.hero-h-bg{left:44%;}.hero-h-in{max-width:520px;padding-left:40px;}}
+  @media(max-width:768px){
+    .hero-h{padding:94px 14px 0;}
+    .hero-h-wrap{min-height:0;border-radius:24px;display:flex;flex-direction:column;}
+    .hero-h-bg{position:relative;left:auto;height:250px;-webkit-mask-image:none;mask-image:none;}
+    .hero-h-bg img,.hero-h-bg video{object-position:center 22%;}
+    .hero-h-in{max-width:none;padding:24px 22px 8px;}
+    .hero-h h1{font-size:2.5rem;}
+    .hero-h-btn{width:100%;}
+    .hero-h-team{align-items:flex-start;}
+    .hero-h-team p{max-width:none;}
+  }
+.hero-h--int h1{font-size:clamp(2.3rem,4vw,3.2rem);}
+</style>
+<header class="hero-h hero-h--int">
+  <div class="hero-h-wrap">
+    <div class="hero-h-bg">
+      <video id="heroVideo" muted playsinline preload="metadata" poster="extranjeria-programa-poster.webp" width="960" height="640" aria-hidden="true">
+        <source src="extranjeria-programa.mp4" type="video/mp4">
+      </video>
     </div>
-    <div class="hero-badge"><span class="pulse"></span> Trámites de residencia, estudios y trabajo</div>
-    <h1>Extranjería:<br><span class="rojo">tu residencia, paso a paso</span></h1>
-    <p class="hero-sub">
-      Tu camino legal para vivir en España, estés en tu país o ya aquí. Te lo explicamos claro y lo tramitamos por ti.
-    </p>
-    <div class="hero-accent-line"></div>
-  </header>
+    <script>
+    (function(){var v=document.getElementById('heroVideo');if(!v)return;
+      if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+      var p=v.play();if(p&&p.catch)p.catch(function(){});})();
+    </script>
+    <div class="hero-h-in">
+      <p class="hero-h-eyebrow"><i aria-hidden="true"></i>Extranjería</p>
+      <h1>Extranjería: <span>tu residencia, paso a paso</span></h1>
+      <p class="hero-h-sub">Tu camino legal para vivir en España, estés en tu país o ya aquí. <b>Te lo explicamos claro y lo tramitamos por ti.</b></p>
+      <div class="hero-h-ctas">
+        <a href="#renovacion-modificacion" class="hero-h-btn hero-h-btn--pri">Renueva tu permiso ↓</a>
+        <a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener" class="hero-h-btn hero-h-btn--sec">Primera consulta gratuita</a>
+      </div>
+      <div class="hero-h-team">
+        <p><b>Sara</b>, abogada de extranjería, y <b>Nora</b>, documentalista con experiencia en la Administración pública. Revisamos cada expediente juntas.</p>
+      </div>
+    </div>
+  </div>
+</header>
 
   <!-- ════════════════════════════════════════ -->
   <!-- PROGRAMA ESPECIAL: RENOVACIÓN Y MODIFICACIÓN -->
   <!-- ════════════════════════════════════════ -->
   <style>
-    .prog-sec{padding:8px 0 36px}
-    .prog-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:36px;align-items:center;margin-bottom:28px}
-    .prog-top .prog-dato{margin-bottom:0}
-    .prog-media{margin:0;border-radius:20px;overflow:hidden;aspect-ratio:3/2;box-shadow:0 18px 40px rgba(0,0,0,.25);background:#054782}
-    .prog-media video{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
-    .prog-nota{background:#fff;color:var(--texto-principal);border-radius:18px;padding:24px 26px;margin:0 0 28px;border-left:6px solid var(--amarillo)}
-    .prog-nota h3{color:var(--azul-principal);font-size:1.3rem;margin:0 0 8px}
-    .prog-nota p{margin:0 0 10px;font-size:var(--fs-sm);line-height:1.6}
-    .prog-nota p:last-child{margin-bottom:0}
-    .prog-nota strong{color:var(--azul-principal)}
-    @media (max-width:900px){.prog-top{grid-template-columns:1fr;gap:22px}.prog-media{order:-1}}
-    .prog{position:relative;background:linear-gradient(135deg,#032F5E 0%,#054782 100%);color:#fff;border-radius:28px;padding:48px 52px;box-shadow:0 28px 60px rgba(3,47,94,.22);overflow:hidden}
+    /* Superficies: blanco = acción (vías); translúcido = información. Espaciado: 40 / 20 / 14 px */
+    .prog-sec{padding:40px 0 36px}
+    .prog{position:relative;background:linear-gradient(135deg,#032F5E 0%,#054782 100%);color:#fff;border-radius:28px;padding:48px;box-shadow:0 28px 60px rgba(3,47,94,.22);overflow:hidden}
     .prog::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,var(--rojo-principal),var(--amarillo))}
+    .prog-head{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:40px;align-items:end}
     .prog-badge{display:inline-flex;align-items:center;gap:8px;background:var(--amarillo);color:#2a2218;font-weight:800;font-size:var(--fs-tag);letter-spacing:.04em;padding:6px 14px;border-radius:50px;margin-bottom:16px}
-    .prog-eyebrow{display:block;font-size:var(--fs-label);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#F7C766;margin-bottom:10px}
-    .prog h2{color:#fff;margin:0 0 14px;max-width:760px}
-    .prog .prog-lead{font-size:var(--fs-md);line-height:1.6;color:#E3E8F0;max-width:720px;margin:0 0 26px}
-    .prog-dato{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px 20px;margin:0 0 28px;max-width:760px}
-    .prog-dato b{font-family:'DM Serif Display',serif;font-weight:400;font-size:2.2rem;line-height:1;color:var(--amarillo);flex-shrink:0}
-    .prog-dato p{margin:0;font-size:var(--fs-sm);line-height:1.5;color:#fff}
+    .prog-eyebrow{font-size:var(--fs-label);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#F7C766;margin:0 0 10px}
+    .prog h2{color:#fff;margin:0 0 14px;text-wrap:balance}
+    .prog-lead{font-size:var(--fs-md);line-height:1.6;color:#E3E8F0;margin:0}
+    .prog-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:18px 20px}
+    .prog-dato{display:flex;gap:16px;align-items:flex-start}
+    .prog-dato b{font-family:'DM Serif Display',serif;font-weight:400;font-size:2.4rem;line-height:1;color:var(--amarillo);flex-shrink:0}
+    .prog-dato p{margin:0;font-size:var(--fs-sm);line-height:1.5}
     .prog-dato small{display:block;margin-top:4px;color:#C9D3E0;font-size:.875rem}
-    .prog-vias{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:30px}
-    .prog-via{background:#fff;color:var(--texto-principal);border-radius:18px;padding:24px}
-    .prog-via small{display:block;font-size:var(--fs-label);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rojo-principal);margin-bottom:6px}
-    .prog-via h3{font-size:1.3rem;color:var(--azul-principal);margin:0 0 10px}
-    .prog-via p{margin:0;font-size:var(--fs-sm);line-height:1.55}
-    .prog-cuenta-t{margin:14px 0 6px!important;font-weight:800;color:var(--azul-principal)}
-    .prog-cuenta{margin:0;padding-left:20px;font-size:var(--fs-xs);line-height:1.5}
-    .prog-cuenta li{margin-bottom:6px}
-    .prog-cuenta strong{color:var(--azul-principal)}
-    .prog h3.prog-sub{color:#fff;font-size:1.25rem;margin:0 0 14px}
-    .prog-pasos{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;counter-reset:p}
-    .prog-pasos li{counter-increment:p;background:rgba(255,255,255,.08);border-radius:14px;padding:16px;font-size:1rem;line-height:1.45;color:#fff}
+    .prog-sub{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;color:#fff;margin:40px 0 6px}
+    .prog-sub-p{margin:0 0 20px;color:#C9D3E0;font-size:var(--fs-sm)}
+    .prog-vias{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    .prog-via{display:flex;flex-direction:column;background:#fff;color:var(--texto-principal);border-radius:18px;padding:26px}
+    .prog-via-k{font-size:var(--fs-label);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rojo-principal);margin:0 0 6px}
+    .prog-via h3{font-size:1.35rem;color:var(--azul-principal);margin:0 0 10px;line-height:1.25}
+    .prog-via p{margin:0 0 14px;font-size:var(--fs-sm);line-height:1.55}
+    .prog-via p.prog-via-t{font-weight:800;color:var(--azul-principal);margin:0 0 8px}
+    .prog-via ul{margin:0 0 20px;padding-left:20px;font-size:var(--fs-xs);line-height:1.5}
+    .prog-via li{margin-bottom:6px}
+    .prog-via li strong{color:var(--azul-principal)}
+    .prog-via-cta{margin-top:auto;padding-top:18px;border-top:1px solid #ECE9E2;display:flex;flex-direction:column;gap:8px}
+    .prog-btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:12px 24px;border-radius:50px;background:var(--rojo-principal);color:#fff;font-weight:800;font-size:var(--fs-btn);text-decoration:none;transition:background .15s,transform .15s}
+    .prog-btn:hover{background:var(--rojo-dark);color:#fff;transform:translateY(-2px)}
+    .prog-btn:focus-visible,.prog a:focus-visible{outline:3px solid var(--amarillo);outline-offset:3px}
+    .prog-via p.prog-mail{font-size:.9375rem;color:var(--texto-suave);text-align:center;margin:0}
+    .prog-mail a{color:var(--azul-secundario);font-weight:700}
+    .prog-nota{margin-top:20px;border-left:5px solid var(--amarillo)}
+    .prog-nota p{margin:0 0 8px;font-size:var(--fs-sm);line-height:1.6;color:#E3E8F0}
+    .prog-nota p:last-child{margin:0}
+    .prog-nota strong{color:#fff}
+    .prog-pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;counter-reset:p}
+    .prog-pasos li{counter-increment:p;font-size:1rem;line-height:1.45}
     .prog-pasos li::before{content:counter(p);display:block;font-family:'DM Serif Display',serif;font-size:1.8rem;line-height:1;color:var(--amarillo);margin-bottom:8px}
-    .prog-aviso{margin:0 0 28px;font-size:var(--fs-sm);color:#fff;max-width:760px}
-    .prog-aviso strong{color:var(--amarillo)}
-    .prog-elige{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:26px}
-    .prog-elige .prog-sub{margin:0 0 4px}
-    .prog-elige-sub{margin:0 0 18px;color:#E3E8F0;font-size:var(--fs-sm)}
-    .prog-opciones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .prog-op{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;font:inherit;cursor:pointer;background:#fff;color:var(--texto-principal);border:2px solid transparent;border-radius:16px;padding:18px 20px;min-height:44px;transition:transform .15s,border-color .15s,box-shadow .15s}
-    .prog-op:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.18)}
-    .prog-op:focus-visible{outline:3px solid var(--amarillo);outline-offset:3px}
-    .prog-op[aria-pressed="true"]{border-color:var(--amarillo);box-shadow:0 0 0 4px rgba(242,169,29,.35)}
-    .prog-op-k{font-size:var(--fs-label);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rojo-principal)}
-    .prog-op-t{font-family:'DM Serif Display',serif;font-size:1.35rem;line-height:1.2;color:var(--azul-principal)}
-    .prog-op-s{font-size:.9375rem;color:var(--texto-suave);line-height:1.4}
-    .prog-res{margin-top:18px}
-    .prog-elige.js .prog-res{display:none}
-    .prog-elige.js .prog-res.on{display:block;animation:progIn .3s ease}
-    @keyframes progIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-    .prog-res-t{margin:0 0 8px;font-weight:800;color:#fff}
-    .prog-res ul{margin:0 0 18px;padding-left:20px;color:#E3E8F0}
-    .prog-res li{margin-bottom:4px}
-    .prog-nosure{margin:16px 0 0;font-size:.9375rem;color:#C9D3E0}
-    .prog-nosure a{color:#fff;font-weight:700}
-    @media (max-width:768px){.prog-opciones{grid-template-columns:1fr}.prog-elige{padding:20px}}
-    @media (prefers-reduced-motion:reduce){.prog-elige.js .prog-res.on{animation:none}}
-    .prog-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
-    .prog-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:12px 28px;border-radius:50px;background:var(--amarillo);color:#2a2218;font-weight:800;font-size:var(--fs-btn-lg);text-decoration:none;box-shadow:0 12px 28px rgba(242,169,29,.35);transition:transform .15s}
-    .prog-btn:hover{transform:translateY(-2px)}
-    .prog-btn:focus-visible,.prog a:focus-visible{outline:3px solid #fff;outline-offset:3px}
-    .prog-ctas p{margin:0;color:#E3E8F0;font-size:.9375rem}
-    .prog-ctas a.prog-mail{color:#fff;font-weight:700}
+    .prog-final{margin:28px 0 0;text-align:center;color:#C9D3E0;font-size:var(--fs-xs)}
+    .prog-final a{color:#fff;font-weight:700}
     .otros-head{max-width:1120px;margin:20px auto 0;padding:0 24px}
     .otros-head h2{font-size:clamp(1.5rem,3vw,2rem);margin:0 0 4px}
     .otros-head p{margin:0;color:var(--texto-suave)}
     .prog-link-nota{display:block;margin-top:10px;font-weight:700;color:var(--rojo-principal);text-decoration:none}
-    @media (max-width:900px){.prog-pasos{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media (max-width:768px){.prog{padding:32px 22px;border-radius:22px}.prog-vias{grid-template-columns:1fr}.prog-btn{width:100%}}
+    @media (max-width:900px){.prog-head{grid-template-columns:1fr;gap:20px}.prog-pasos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:768px){.prog{padding:30px 20px;border-radius:22px}.prog-vias{grid-template-columns:1fr}.prog-sub{margin-top:32px}}
     @media (max-width:420px){.prog-pasos{grid-template-columns:1fr}}
   </style>
   <section class="prog-sec container" id="renovacion-modificacion" aria-labelledby="prog-t">
     <div class="prog">
-      <div class="prog-top">
-      <div class="prog-txt">
-      <span class="prog-badge">★ Programa especial</span>
-      <span class="prog-eyebrow">Para quien ya tiene permiso por arraigo o por la Regularización 2026</span>
-      <h2 id="prog-t">Renueva o modifica tu permiso a tiempo</h2>
-      <p class="prog-lead">Ya conseguiste tu autorización. Ahora toca mantenerla: renovarla o pasar al permiso que mejor encaje contigo, sin perder la situación regular que tanto te costó.</p>
+      <div class="prog-head">
+        <div>
+          <span class="prog-badge">★ Programa especial</span>
+          <p class="prog-eyebrow">Para quien ya tiene permiso por arraigo o por la Regularización 2026</p>
+          <h2 id="prog-t">Renueva o modifica tu permiso a tiempo</h2>
+          <p class="prog-lead">Ya conseguiste tu autorización. Ahora toca mantenerla: renovarla o pasar al permiso que mejor encaje contigo, sin perder la situación regular que tanto te costó.</p>
+        </div>
+        <div class="prog-box prog-dato">
+          <b>1 año</b>
+          <p>Es lo que dura la autorización concedida en la Regularización Extraordinaria 2026. Antes de que venza, hay que preparar el siguiente paso.<small>Real Decreto 316/2026</small></p>
+        </div>
+      </div>
 
-      <div class="prog-dato">
-        <b>1 año</b>
-        <p>Es lo que dura la autorización concedida en la Regularización Extraordinaria 2026. Antes de que venza, hay que preparar el siguiente paso.<small>Real Decreto 316/2026</small></p>
-      </div>
-      </div>
-      <figure class="prog-media">
-        <video id="progVideo" muted playsinline preload="none" poster="extranjeria-programa-poster.webp" width="720" height="480" aria-hidden="true">
-          <source src="extranjeria-programa.mp4" type="video/mp4">
-        </video>
-      </figure>
-      </div>
-      <script>
-      (function(){var v=document.getElementById('progVideo');if(!v)return;
-        if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-        function go(){var p=v.play();if(p&&p.catch)p.catch(function(){});}
-        if('IntersectionObserver' in window){var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){go();o.disconnect();}},{threshold:.4});o.observe(v);}else go();})();
-      </script>
-
+      <h3 class="prog-sub">Elige tu caso</h3>
+      <p class="prog-sub-p">Reserva tu consulta gratuita desde tu vía y llegamos con tu caso ya situado.</p>
       <div class="prog-vias">
-        <div class="prog-via">
-          <small>Vía 1</small>
+        <article class="prog-via">
+          <p class="prog-via-k">Vía 1</p>
           <h3>Vengo de la Regularización Extraordinaria 2026</h3>
           <p>Antes de que venza tu autorización, revisamos qué opción te corresponde: renovarla o pasar a otro permiso de residencia y trabajo.</p>
-          <p class="prog-cuenta-t">Para la renovación cuentan:</p>
-          <ul class="prog-cuenta">
+          <p class="prog-via-t">Para la renovación cuentan:</p>
+          <ul>
             <li>Haber trabajado <strong>al menos 3 meses</strong> durante el año de tu autorización.</li>
             <li>Estar <strong>inscrito/a en el SEPE</strong> como demandante de empleo.</li>
             <li>Tener un <strong>contrato de trabajo</strong>. Puede ser de media jornada (20 horas), siempre que el sueldo llegue al salario mínimo de una jornada completa.</li>
           </ul>
-        </div>
-        <div class="prog-via">
-          <small>Vía 2</small>
+          <div class="prog-via-cta">
+            <a class="prog-btn" data-via="regularizacion" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Reservar mi consulta · Vía 1</a>
+            <p class="prog-mail">o escríbenos a <a href="mailto:info@gestionaseguro.com?subject=Renovaci%C3%B3n%20%C2%B7%20V%C3%ADa%201%3A%20Regularizaci%C3%B3n%202026">info@gestionaseguro.com</a></p>
+          </div>
+        </article>
+        <article class="prog-via">
+          <p class="prog-via-k">Vía 2</p>
           <h3>Vengo de un arraigo</h3>
           <p>Cuando termina tu autorización por arraigo, revisamos si te corresponde renovar o modificar a residencia y trabajo, según tu situación.</p>
-          <p class="prog-cuenta-t">¿De qué arraigo vienes?</p>
-          <ul class="prog-cuenta">
+          <p class="prog-via-t">¿De qué arraigo vienes?</p>
+          <ul>
             <li><strong>Sociolaboral:</strong> lo conseguiste con un contrato de trabajo.</li>
             <li><strong>Social:</strong> por tus vínculos familiares o tu integración en España.</li>
             <li><strong>Socioformativo:</strong> mientras hacías una formación.</li>
             <li><strong>Familiar:</strong> por tu vínculo con un familiar español.</li>
             <li><strong>De segunda oportunidad:</strong> porque ya tuviste un permiso que no pudiste renovar.</li>
           </ul>
-          <p style="margin-top:10px;font-size:.9375rem">Cada tipo tiene su propio camino para renovar o modificar. Lo revisamos contigo.</p>
-        </div>
+          <div class="prog-via-cta">
+            <a class="prog-btn" data-via="arraigo" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Reservar mi consulta · Vía 2</a>
+            <p class="prog-mail">o escríbenos a <a href="mailto:info@gestionaseguro.com?subject=Renovaci%C3%B3n%20%C2%B7%20V%C3%ADa%202%3A%20Arraigo">info@gestionaseguro.com</a></p>
+          </div>
+        </article>
       </div>
 
-      <div class="prog-nota">
-        <h3>Programa tu renovación con tiempo</h3>
-        <p>Te preparamos tu ruta, con los plazos y los requisitos que se aplican a tu situación, paso a paso.</p>
+      <div class="prog-box prog-nota">
+        <p><strong>Programa tu renovación con tiempo.</strong> Te preparamos tu ruta, con los plazos y los requisitos que se aplican a tu situación, paso a paso.</p>
         <p><strong>¿Todavía no has conseguido trabajo?</strong> Le pasa a muchas personas: con la autorización provisional no siempre es fácil que te contraten. No eres la única persona en esta situación. Si lo planificamos con tiempo, vemos juntos qué opciones tienes y qué puedes ir preparando desde ahora.</p>
       </div>
 
       <h3 class="prog-sub">Cómo te acompañamos</h3>
+      <p class="prog-sub-p">Cada tipo de permiso tiene su propio camino. Lo recorremos contigo.</p>
       <ol class="prog-pasos">
-        <li>Revisamos tu permiso y su fecha de vencimiento.</li>
-        <li>Te decimos qué vía encaja contigo: renovar o modificar.</li>
-        <li>Preparamos la documentación contigo.</li>
-        <li>Presentamos la solicitud y hacemos el seguimiento.</li>
+        <li class="prog-box">Revisamos tu permiso y su fecha de vencimiento.</li>
+        <li class="prog-box">Te decimos qué vía encaja contigo: renovar o modificar.</li>
+        <li class="prog-box">Preparamos la documentación contigo.</li>
+        <li class="prog-box">Presentamos la solicitud y hacemos el seguimiento.</li>
       </ol>
 
-      <div class="prog-elige" id="prog-elige">
-        <h3 class="prog-sub">¿Cómo conseguiste tu permiso?</h3>
-        <p class="prog-elige-sub">Elige tu caso y te decimos qué revisaremos contigo en la consulta gratuita.</p>
-        <div class="prog-opciones" role="group" aria-label="Elige tu vía">
-          <button type="button" class="prog-op" data-via="regularizacion" aria-pressed="false" aria-controls="prog-res-regularizacion">
-            <span class="prog-op-k">Vía 1</span>
-            <span class="prog-op-t">Por la Regularización 2026</span>
-            <span class="prog-op-s">Mi autorización es de un año</span>
-          </button>
-          <button type="button" class="prog-op" data-via="arraigo" aria-pressed="false" aria-controls="prog-res-arraigo">
-            <span class="prog-op-k">Vía 2</span>
-            <span class="prog-op-t">Por arraigo</span>
-            <span class="prog-op-s">Sociolaboral, social, socioformativo, familiar o de segunda oportunidad</span>
-          </button>
-        </div>
-
-        <div class="prog-res" id="prog-res-regularizacion" aria-live="polite">
-          <p class="prog-res-t">Vienes de la Regularización 2026. En tu consulta revisamos:</p>
-          <ul>
-            <li>La fecha en que vence tu autorización.</li>
-            <li>Lo que ya cuenta para tu renovación: meses trabajados, inscripción en el SEPE o contrato.</li>
-            <li>Tu plan, aunque todavía no hayas conseguido trabajo.</li>
-          </ul>
-          <div class="prog-ctas">
-            <a class="prog-btn" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Reservar mi consulta gratuita</a>
-            <p>o escríbenos a <a class="prog-mail" href="mailto:info@gestionaseguro.com?subject=Renovaci%C3%B3n%20%C2%B7%20V%C3%ADa%201%3A%20Regularizaci%C3%B3n%202026">info@gestionaseguro.com</a></p>
-          </div>
-        </div>
-
-        <div class="prog-res" id="prog-res-arraigo" aria-live="polite">
-          <p class="prog-res-t">Vienes de un arraigo. En tu consulta revisamos:</p>
-          <ul>
-            <li>Tu tipo de arraigo y la fecha en que vence tu autorización.</li>
-            <li>Si te corresponde renovar o pasar a residencia y trabajo.</li>
-            <li>Los documentos que conviene ir preparando desde ahora.</li>
-          </ul>
-          <div class="prog-ctas">
-            <a class="prog-btn" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Reservar mi consulta gratuita</a>
-            <p>o escríbenos a <a class="prog-mail" href="mailto:info@gestionaseguro.com?subject=Renovaci%C3%B3n%20%C2%B7%20V%C3%ADa%202%3A%20Arraigo">info@gestionaseguro.com</a></p>
-          </div>
-        </div>
-        <p class="prog-nosure">¿No estás seguro/a de tu vía? <a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Resérvala igualmente y lo vemos juntos →</a></p>
-      </div>
-      <script>
-      (function(){var box=document.getElementById('prog-elige');if(!box)return;box.classList.add('js');
-        var ops=[].slice.call(box.querySelectorAll('.prog-op'));
-        ops.forEach(function(b){b.addEventListener('click',function(){
-          ops.forEach(function(o){o.setAttribute('aria-pressed','false');document.getElementById(o.getAttribute('aria-controls')).classList.remove('on');});
-          b.setAttribute('aria-pressed','true');document.getElementById(b.getAttribute('aria-controls')).classList.add('on');
-          var via=b.getAttribute('data-via');(window.dataLayer=window.dataLayer||[]).push({event:'programa_renovacion_via',via:via});
-          box.querySelectorAll('.prog-res.on .prog-btn').forEach(function(a){a.setAttribute('data-via',via);});
-        });});
-        box.addEventListener('click',function(e){var a=e.target.closest('.prog-res .prog-btn');if(a)(window.dataLayer=window.dataLayer||[]).push({event:'programa_renovacion_reserva',via:a.getAttribute('data-via')});});
-      })();
-      </script>
+      <p class="prog-final">¿No sabes por qué vía conseguiste tu permiso? <a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener" data-via="no-lo-se">Reserva igualmente y lo vemos juntos →</a></p>
     </div>
   </section>
+  <script>
+  (function(){var box=document.getElementById('renovacion-modificacion');
+    if(box)box.addEventListener('click',function(e){var a=e.target.closest('a[data-via]');if(a)(window.dataLayer=window.dataLayer||[]).push({event:'programa_renovacion_reserva',via:a.getAttribute('data-via')});});
+  })();
+  </script>
 
   <div class="otros-head reveal">
     <h2>Otros trámites de extranjería</h2>
