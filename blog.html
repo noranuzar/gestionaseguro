@@ -1,91 +1,378 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+   <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W5F4Q6RP');</script>
+  <!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RFNSSL254"></script>
+<script>
+   
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6RFNSSL254');
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — Guías verificadas de trámites, estudios y empleo | Gestiona Seguro</title>
-  <meta name="description" content="Guías claras y verificadas para personas migrantes en España: estudiar, homologar estudios, acreditar experiencia y trámites con la Administración.">
-  <link rel="canonical" href="https://gestionaseguroweb.com/blog.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Gestiona Seguro">
-  <meta property="og:title" content="Blog — Guías verificadas para tu vida en España">
-  <meta property="og:description" content="Cómo acceder a la universidad, acreditar tu experiencia, homologar estudios y avanzar profesionalmente en España. Verificado con fuentes oficiales.">
-  <meta property="og:url" content="https://gestionaseguroweb.com/blog.html">
-  <meta property="og:locale" content="es_ES">
+<title>Guías y herramientas gratuitas para tu vida en España | Gestiona Seguro</title>
+<meta name="description" content="Guías, tests y clases gratuitas para estudiar en España, acreditar tu experiencia, sacar el certificado digital y entrar en tu Carpeta Ciudadana.">
+<link rel="canonical" href="https://gestionaseguroweb.com/blog.html">
+
   <style>
-    :root {
-      --oliva: #556B2F; --oliva-light: #7d9448; --oliva-dark: #3a4a1f; --oliva-bg: #f0f3e8;
-      --arena: #F5F5DC; --arena-warm: #f8f6ed; --arena-dark: #e8e2c8;
-      --terracota: #E2725B; --terracota-dark: #c45a42; --terracota-bg: #fdf3f0;
-      --dorado: #c9922e; --dorado-bg: #FEF9EC;
-      --texto: #2a2218; --texto-suave: #5e5649; --blanco: #fffdf8;
-      --fs-xs: 1rem; --fs-sm: 1.0625rem; --fs-base: 1.125rem; --fs-md: 1.1875rem;
-      --fs-label: 0.8125rem;
-      --fs-h3: clamp(1.375rem, 2.5vw, 1.625rem);
-      --fs-h2: clamp(1.875rem, 4vw, 2.5rem);
-      --fs-h1: clamp(2.3rem, 5.5vw, 3.4rem);
-      --lh-tight: 1.3; --lh-normal: 1.65;
-      --transicion: 0.35s cubic-bezier(0.4, 0, 0.2, 1); --radio: 20px;
+/* ============================================================ */
+    /* TOKENS UNIFICADOS — UNA SOLA FUENTE DE VERDAD                 */
+    /* ============================================================ */
+   :root {
+      /* Colores */
+      --azul-principal: #032F5E;
+      --azul-secundario: #054782;
+      --azul-light: #E8EEF7;
+      --rojo-principal: #C3122C;
+      --amarillo: #F2A91D;
+      --fondo-claro: #FAF8F3;
+      --blanco: #FFFFFF;
+      --texto-principal: #2B2F33;
+      --texto-secundario: #666666;
+      --texto: #2a2218;
+      --texto-suave: #5e5649;
+      --blanco: #fffdf8;
+
+      /* ===== PUENTE: nombres antiguos → nueva paleta azul ===== */
+      --oliva:         #054782;  /* azul-secundario (fondos sólidos, botones) */
+      --oliva-dark:    #032F5E;  /* azul-principal (fondos oscuros, footer, títulos) */
+      --oliva-bg:      #E8EEF7;  /* azul-light (tintes claros, badges) */
+      --terracota:     #C3122C;  /* rojo-principal (acento) */
+      --terracota-dark:#9E0F23;  /* rojo oscuro */
+      --terracota-bg:  #FBE9EC;  /* tinte rojo claro */
+      --arena:         #FAF8F3;  /* crema claro (texto sobre fondos oscuros) */
+      --arena-warm:    #FFFDF8;  /* fondo cálido claro (tarjetas) */
+      --arena-dark:    #ECE9E2;  /* bordes claros */
+
+      /* ============================================ */
+      /* ESCALA TIPOGRÁFICA — ÚNICA Y COHERENTE        */
+      /* Todos los tamaños del sitio salen de aquí    */
+      /* ============================================ */
+
+      /* Cuerpo — tamaños de LECTURA (mínimo 16px) */
+      --fs-xs:    1rem;       /* 16px - mínimo absoluto, tarjetas, metadatos */
+      --fs-sm:    1.0625rem;  /* 17px - base de lectura cómoda */
+      --fs-base:  1.125rem;   /* 18px - párrafos principales */
+      --fs-md:    1.1875rem;  /* 19px - intros, sub-hero */
+      --fs-lg:    1.3125rem;  /* 21px - destacados, citas */
+
+      /* Etiquetas — SOLO para texto en mayúsculas, badges */
+      --fs-label: 0.8125rem;  /* 13px */
+      --fs-tag:   0.875rem;   /* 14px - tags de navegación */
+      --fs-cap:   0.9375rem;  /* 15px - textos secundarios / barra de confianza */
+
+      /* Títulos */
+      --fs-h4:    1.25rem;    /* 20px */
+      --fs-h3:    clamp(1.375rem, 2.5vw, 1.625rem);   /* 22-26px */
+      --fs-h2:    clamp(1.875rem, 4vw, 2.5rem);       /* 30-40px */
+      --fs-h1:    clamp(2.5rem, 6vw, 3.8rem);         /* 40-60px */
+
+      /* Botones */
+      --fs-btn:   1.0625rem;  /* 17px */
+      --fs-btn-lg:1.125rem;   /* 18px */
+
+      /* Line-heights */
+      --lh-tight:  1.3;
+      --lh-normal: 1.65;   /* lectura cómoda */
+      --lh-relaxed:1.75;   /* párrafos largos */
+
+      /* Otros */
+      --transicion: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --radio: 20px;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: 'Source Sans 3', system-ui, sans-serif; color: var(--texto); background: var(--blanco); font-size: var(--fs-sm); line-height: var(--lh-normal); -webkit-font-smoothing: antialiased; }
-    h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; line-height: var(--lh-tight); color: var(--oliva-dark); font-weight: 400; }
-    a { color: inherit; text-decoration: none; }
-    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
-    /* NAVBAR */
-    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,253,248,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(85,107,47,0.1); }
-    .navbar-inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; height: 80px; display: flex; align-items: center; justify-content: space-between; }
-    .logo { display: flex; align-items: center; gap: 12px; font-family: 'DM Serif Display', serif; font-size: 1.45rem; color: var(--oliva-dark); }
-    .logo img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
-    .nav-back { font-size: var(--fs-xs); font-weight: 600; color: var(--texto-suave); padding: 10px 18px; border-radius: 50px; transition: all var(--transicion); }
-    .nav-back:hover { color: var(--oliva-dark); background: var(--oliva-bg); }
-
-    /* HERO */
-    .blog-hero { padding: 140px 24px 50px; background: linear-gradient(180deg, var(--oliva-bg) 0%, var(--blanco) 100%); text-align: center; }
-    .blog-hero .eyebrow { display: inline-block; font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--terracota); margin-bottom: 12px; }
-    .blog-hero h1 { font-size: var(--fs-h1); margin-bottom: 18px; max-width: 720px; margin-left: auto; margin-right: auto; }
-    .blog-hero p { font-size: var(--fs-md); color: var(--texto-suave); max-width: 600px; margin: 0 auto; line-height: var(--lh-normal); }
-
-    /* CLÚSTER */
-    .cluster { padding: 56px 0; }
-    .cluster + .cluster { padding-top: 0; }
-    .cluster-head { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
-    .cluster-head .ico { font-size: 1.6rem; }
-    .cluster-head h2 { font-size: var(--fs-h2); margin: 0; }
-    .cluster-head .line { flex: 1; height: 2px; background: var(--arena-dark); border-radius: 2px; }
-
-    .posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .post-card { background: var(--blanco); border: 1.5px solid var(--arena-dark); border-radius: var(--radio); padding: 28px 26px; display: flex; flex-direction: column; transition: transform var(--transicion), box-shadow var(--transicion); }
-    .post-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(42,34,24,0.08); }
-    .post-card--madre { border-color: var(--terracota); border-width: 2px; background: var(--terracota-bg); grid-column: 1 / -1; }
-    .post-card__tag { font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; color: var(--oliva); margin-bottom: 10px; }
-    .post-card--madre .post-card__tag { color: var(--terracota-dark); }
-    .post-card h3 { font-size: var(--fs-h3); margin-bottom: 10px; }
-    .post-card p { font-size: var(--fs-sm); color: var(--texto-suave); line-height: var(--lh-normal); margin-bottom: 18px; flex-grow: 1; }
-    .post-card__cta { font-weight: 700; font-size: var(--fs-sm); color: var(--oliva); display: inline-flex; align-items: center; gap: 7px; transition: gap var(--transicion); }
-    .post-card:hover .post-card__cta { gap: 11px; }
-    .post-card--madre .post-card__cta { color: var(--terracota-dark); }
-    .post-card--soon { opacity: 0.66; }
-    .post-card--soon .post-card__cta { color: var(--texto-suave); }
-    .soon-badge { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; background: rgba(94,86,73,0.1); color: var(--texto-suave); padding: 2px 9px; border-radius: 20px; margin-left: 6px; }
-
-    /* FOOTER */
-    .footer { background: var(--oliva-dark); color: rgba(245,245,220,0.78); padding: 48px 0; text-align: center; margin-top: 40px; }
-    .footer a { color: var(--arena); font-weight: 600; }
-    .footer .links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; font-size: var(--fs-xs); }
-    .footer .copy { font-size: 0.9rem; opacity: 0.7; }
-
-    @media (max-width: 768px) {
-      .posts-grid { grid-template-columns: 1fr; }
-      .logo span { display: none; }
+    body {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      color: var(--texto);
+      background: var(--blanco);
+      font-size: var(--fs-sm);           /* 17px base */
+      line-height: var(--lh-normal);     /* 1.65 */
+      font-weight: 400;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
-  </style>
+
+    h1, h2, h3, h4 {
+      font-family: 'DM Serif Display', serif;
+      line-height: var(--lh-tight);
+      color: #032F5E;
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+    }
+    h1 { font-size: var(--fs-h1); }
+    h2 { font-size: var(--fs-h2); }
+    h3 { font-size: var(--fs-h3); }
+    h4 { font-size: var(--fs-h4); }
+
+   p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* ============================================================ */
+    /* NAVBAR — 3 BLOQUES CON DROPDOWNS                             */
+    /* ============================================================ */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,253,248,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(85,107,47,0.1);
+      transition: all var(--transicion);
+    }
+    .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      width: 24px; height: 2px;
+      background: var(--oliva-dark);
+      border-radius: 2px;
+      transition: var(--transicion);
+    }
+
+    /* ============================================================ */
+    /* HERO                                                         */
+    /* ============================================================ */
+/* ============================================================ */
+/* HERO CON IMAGEN PRINCIPAL                                    */
+/* ============================================================ */
+/* ===== Chips de autoridad en el hero ===== */
+/* ===== Botones del hero: azul sólido + azul contorno ===== */
+
+    /* ============================================================ */
+    /* ALERTA RD                                                    */
+    /* ============================================================ */
+
+  
+
+    /* ============================================================ */
+    /* BANNER OFERTA DE TRABAJO                                     */
+    /* ============================================================ */
+
+    /* ============================================================ */
+    /* BLOQUE JORNADA LABORAL                                       */
+    /* ============================================================ */
+
+    /* ============================================================ */
+    /* RECURSOS                                                     */
+    /* ============================================================ */
+
+    /* ============================================================ */
+    /* PILARES                                                      */
+    /* ============================================================ */
+
+    /* ============================================================ */
+    /* EQUIPO                                                       */
+    /* ============================================================ */
+   
+/* INTRODUCCIÓN VISUAL DE QUIÉNES SOMOS */
+
+/* Panel visual de marca, preparado para una futura foto real */
+
+/* Frase central de la marca */
+
+/* Adaptación de esta nueva introducción a móvil */
+  
+    /* ============================================================ */
+    /* BLOQUE CTA ESCANEAR                                          */
+    /* ============================================================ */
+
+    /* ============================================================ */
+    /* FOOTER                                                       */
+    /* ============================================================ */
+    .footer {
+      background: var(--oliva-dark);
+      color: rgba(245,245,220,0.8);
+      padding: 80px 0 40px;
+      margin-top: 40px;
+    }
+    .footer h4 {
+  font-size: 1rem;
+  color: var(--arena);
+  margin-bottom: 16px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+   .footer-bottom {
+  padding-top: 28px;
+  border-top: 1px solid rgba(245,245,220,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: rgba(245,245,220,0.78);
+  max-width: 100%;
+}
+    .footer-bottom span {
+  max-width: 420px;
+}
+    /* ============================================================ */
+    /* ANIMACIONES                                                  */
+    /* ============================================================ */
+    .reveal { opacity: 0; transform: translateY(28px); transition: 0.8s all ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================ */
+    /* RESPONSIVE                                                   */
+    /* ============================================================ */
+
+    /* Tablets y pantallas medianas */
+    @media (max-width: 1024px) {
+      .hamburger { display: flex; }
+    }
+
+    /* Móvil */
+    @media (max-width: 768px) {
+
+/* Logo compacto en móvil para que la barra no desborde */
+
+/* Evitar que el hero se salga por la derecha en móvil */
+
+/* Centrar los datos de autoridad en móvil */
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+ /* ── SELECTOR MOMENTO (HOME) ── */
+
+/* ── HERRAMIENTAS Y RECURSOS (HOME) ── */
+    /* ── TARJETA CON PESTAÑAS ─────────────────────── */
+    /* ── SELECTOR DE PAQUETES ─────────────────────── */
+.footer-comunidad {
+  padding: 44px 0 28px;
+  margin-top: 50px;
+}
+.footer-comunidad-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(245,245,220,0.14);
+}
+
+.footer-comunidad h4 {
+  color: var(--arena);
+  margin-bottom: 8px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.footer-comunidad p {
+  color: rgba(245,245,220,0.82);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 430px;
+}
+
+.footer-comunidad-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-comunidad-contacto a {
+  color: var(--arena);
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
+.footer-comunidad-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.footer-comunidad-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: rgba(245,245,220,0.12);
+  color: var(--arena);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.footer-comunidad-links a:hover {
+  background: rgba(245,245,220,0.22);
+}
+
+ /* ═══════════════════════════════════════
+   SERVICIOS — sección nueva
+═══════════════════════════════════════ */   
+
+.footer-comunidad .footer-bottom {
+  padding-top: 18px;
+  border-top: none;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-comunidad .footer-bottom p {
+  font-size: 0.95rem;
+  max-width: none;
+}
+
+@media (max-width: 768px) {
+  .footer-comunidad-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-comunidad-contacto {
+    align-items: center;
+  }
+
+  .footer-comunidad-links {
+    justify-content: center;
+  }
+} 
+
+/* ── FRANJA BLOG ─────────────────────────── */
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/gs-layout.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://gestionaseguroweb.com/"}, {"@type": "ListItem", "position": 2, "name": "Guías gratuitas", "item": "https://gestionaseguroweb.com/blog.html"}]}]}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gestiona Seguro">
+<meta property="og:title" content="Guías y herramientas gratuitas para tu vida en España | Gestiona Seguro">
+<meta property="og:description" content="Guías, tests y clases gratuitas para estudiar en España, acreditar tu experiencia, sacar el certificado digital y entrar en tu Carpeta Ciudadana.">
+<meta property="og:url" content="https://gestionaseguroweb.com/blog.html">
+<meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://gestionaseguroweb.com/og-gestiona-seguro.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -93,7 +380,12 @@
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5F4Q6RP"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
+<!-- ============ NAVBAR MAESTRO ============ -->
 <!-- ============ BARRA SUPERIOR COMÚN ============ -->
 <nav class="gs-nav" id="navbar" aria-label="Principal">
   <div class="gs-nav-in">
@@ -102,121 +394,271 @@
       <li><a href="servicios-homologacion.html">Estudios</a></li>
       <li><a href="extranjeria.html">Extranjería</a></li>
       <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
-      <li><a href="blog.html" aria-current="page">Recursos gratuitos</a></li>
+      <li><a href="blog.html" aria-current="page">Guías gratuitas</a></li>
     </ul>
     <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-  <header class="blog-hero">
-    <span class="eyebrow">Blog · información verificada</span>
-    <h1>Guías claras para avanzar en España</h1>
-    <p>Explicamos los trámites como son, con fuentes oficiales y sin tecnicismos. Aquí encontrarás el camino, paso a paso.</p>
-  </header>
-
-  <main>
-
-    <!-- CLÚSTER 1: CAMINO FORMATIVO -->
-    <section class="cluster container">
-      <div class="cluster-head">
-        <span class="ico">🎓</span>
-        <h2>Tu camino formativo</h2>
-        <span class="line"></span>
-      </div>
-      <div class="posts-grid">
-
-        <article class="post-card">
-          <span class="post-card__tag">Acceso universidad</span>
-          <h3>Cómo acceder a la universidad con bachillerato extranjero</h3>
-          <p>Las vías reales para estudiar en una universidad pública española siendo de fuera de la UE: PCE UNEDasiss, pruebas de mayores de 25 y la FP como puente. Con los plazos del curso vigente.</p>
-          <a href="acceso-universidad-bachillerato-extranjero.html" class="post-card__cta">Leer la guía →</a>
-        </article>
-
-        <article class="post-card">
-          <span class="post-card__tag">PEAC</span>
-          <h3>PEAC: acredita oficialmente tu experiencia laboral</h3>
-          <p>Si llevas años trabajando sin título, el PEAC permite acreditar oficialmente las competencias de tu experiencia. Te explicamos cómo funciona y vemos contigo si puedes acceder.</p>
-          <a href="servicio-peac.html" class="post-card__cta">Ver cómo funciona →</a>
-        </article>
-
-        <article class="post-card post-card--soon">
-          <span class="post-card__tag">Estudios</span>
-          <h3>Homologar tu título extranjero <span class="soon-badge">Próximamente</span></h3>
-          <p>ESO, bachillerato o secundaria de tu país: cómo conseguir que cuenten en España para estudiar o trabajar.</p>
-          <span class="post-card__cta">Disponible pronto</span>
-        </article>
-
-        <article class="post-card post-card--soon">
-          <span class="post-card__tag">Formación profesional</span>
-          <h3>Acceso a FP por experiencia o sin bachillerato <span class="soon-badge">Próximamente</span></h3>
-          <p>Las pruebas y vías para entrar a un ciclo de Formación Profesional cuando no tienes el bachillerato homologado.</p>
-          <span class="post-card__cta">Disponible pronto</span>
-        </article>
-
-        <article class="post-card post-card--soon">
-          <span class="post-card__tag">Máster</span>
-          <h3>Cómo acceder a un máster en España siendo extranjero <span class="soon-badge">Próximamente</span></h3>
-          <p>El último escalón del camino: requisitos para cursar un posgrado oficial con un título de fuera.</p>
-          <span class="post-card__cta">Disponible pronto</span>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- CLÚSTER 2: EXTRANJERÍA -->
-    <section class="cluster container">
-      <div class="cluster-head">
-        <span class="ico">🛂</span>
-        <h2>Extranjería</h2>
-        <span class="line"></span>
-      </div>
-      <div class="posts-grid">
-
-        <article class="post-card">
-          <span class="post-card__tag">Regularización 2026</span>
-          <h3>Regularización extraordinaria 2026: las vías de arraigo explicadas</h3>
-          <p>Quién puede solicitarla, qué documentos necesitas y cómo presentar la solicitud. El plazo termina el 30 de junio de 2026.</p>
-          <a href="proceso-2026.html" class="post-card__cta">Ver el proceso completo →</a>
-        </article>
-
-        <article class="post-card post-card--soon">
-          <span class="post-card__tag">Renovaciones</span>
-          <h3>Cómo renovar tu TIE o tarjeta de residencia <span class="soon-badge">Próximamente</span></h3>
-          <p>Plazos, documentos y pasos para renovar tu autorización sin perder tu situación legal.</p>
-          <span class="post-card__cta">Disponible pronto</span>
-        </article>
-
-        <article class="post-card post-card--soon">
-          <span class="post-card__tag">Nacionalidad</span>
-          <h3>Nacionalidad española por residencia: cómo solicitarla <span class="soon-badge">Próximamente</span></h3>
-          <p>Requisitos, años de residencia exigidos y el examen CCSE. Te explicamos el camino.</p>
-          <span class="post-card__cta">Disponible pronto</span>
-        </article>
-
-        <article class="post-card post-card--soon">
-          <span class="post-card__tag">Reagrupación</span>
-          <h3>Reagrupación familiar: requisitos y pasos <span class="soon-badge">Próximamente</span></h3>
-          <p>Cómo traer a tu familia a España: requisitos económicos, vivienda y documentación.</p>
-          <span class="post-card__cta">Disponible pronto</span>
-        </article>
-
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="links">
-        <a href="/">Inicio</a>
-        <a href="blog.html">Blog</a>
-        <a href="/#servicios">Servicios</a>
-        <a href="/#contacto">Contacto</a>
-      </div>
-      <p class="copy">© 2026 Gestiona Seguro · Información orientativa y verificada con fuentes oficiales. No sustituye asesoría legal individual.</p>
+<!-- ============ HERO ============ -->
+<style>
+.hero-h{padding:116px 24px 0;background:radial-gradient(1200px 500px at 85% 0%,#E8EEF7 0%,rgba(232,238,247,0) 60%),linear-gradient(180deg,#FFFFFF 0%,#FAF8F3 100%);}
+  .hero-h-wrap{position:relative;max-width:1120px;margin:0 auto;min-height:580px;border-radius:32px;overflow:hidden;box-shadow:0 30px 70px rgba(3,47,94,.12);background:#fffdf8;}
+  .hero-h-wrap::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;z-index:3;background:linear-gradient(90deg,var(--rojo-principal),var(--amarillo));}
+  .hero-h-bg{position:absolute;top:0;bottom:0;right:0;left:40%;margin:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 24%);mask-image:linear-gradient(90deg,transparent 0,#000 24%);}
+  .hero-h-bg img,.hero-h-bg video{width:100%;height:100%;object-fit:cover;object-position:62% 28%;display:block;}
+  .hero-h-bg video{object-position:38% 30%;}
+  .hero-h-in{position:relative;z-index:2;max-width:596px;padding:58px 0 96px 56px;}
+  .hero-h-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azul-principal);background:var(--azul-light);padding:8px 15px;border-radius:50px;margin:0 0 22px;}
+  .hero-h-eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--rojo-principal);box-shadow:0 0 0 4px rgba(195,18,44,.15);}
+  .hero-h h1{font-family:'Source Sans 3',system-ui,sans-serif;font-size:clamp(2.7rem,5.2vw,4.25rem);font-weight:800;line-height:.98;letter-spacing:-.025em;color:var(--azul-principal);margin:0 0 20px;}
+  .hero-h h1 span{display:block;font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:0;font-size:.8em;line-height:1.08;margin-top:8px;color:var(--rojo-principal);}
+  .hero-h-sub{font-size:1.1875rem;color:var(--texto-suave);line-height:1.55;margin:0 0 30px;max-width:25em;}
+  .hero-h-sub b{color:var(--azul-principal);font-weight:700;}
+  .hero-h-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px;}
+  .hero-h-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:0 24px;border-radius:16px;font-weight:800;font-size:1.0625rem;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;}
+  .hero-h-btn svg{width:20px;height:20px;flex-shrink:0;}
+  .hero-h-btn--pri{background:var(--amarillo);color:#2a2218;box-shadow:0 12px 28px rgba(242,169,29,.38),inset 0 -3px 0 rgba(0,0,0,.08);}
+  .hero-h-btn--pri:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(242,169,29,.45),inset 0 -3px 0 rgba(0,0,0,.08);}
+  .hero-h-btn--sec{background:#fff;color:var(--azul-principal);border:2px solid var(--azul-principal);}
+  .hero-h-btn--sec:hover{background:var(--azul-principal);color:#fff;}
+  .hero-h-btn:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px;}
+  .hero-h-team{display:flex;align-items:center;gap:14px;}
+  .hero-h-team p{margin:0;font-size:.9375rem;line-height:1.45;color:var(--texto-suave);max-width:27em;padding-left:14px;border-left:3px solid var(--amarillo);}
+  .hero-h-team b{color:var(--azul-principal);}
+  @media(max-width:1024px) and (min-width:769px){.hero-h-bg{left:44%;}.hero-h-in{max-width:520px;padding-left:40px;}}
+  @media(max-width:768px){
+    .hero-h{padding:94px 14px 0;}
+    .hero-h-wrap{min-height:0;border-radius:24px;display:flex;flex-direction:column;}
+    .hero-h-bg{position:relative;left:auto;height:250px;-webkit-mask-image:none;mask-image:none;}
+    .hero-h-bg img,.hero-h-bg video{object-position:center 22%;}
+    .hero-h-in{max-width:none;padding:24px 22px 8px;}
+    .hero-h h1{font-size:2.5rem;}
+    .hero-h-btn{width:100%;}
+    .hero-h-team{align-items:flex-start;}
+    .hero-h-team p{max-width:none;}
+  }
+</style>
+<header class="hero-h hero-h--int">
+  <div class="hero-h-wrap">
+    <div class="hero-h-bg">
+      <img src="extranjeria-programa-poster.webp" alt="Mujer latinoamericana sonriente en el parque del Retiro de Madrid" width="960" height="640" fetchpriority="high">
     </div>
-  </footer>
+    <div class="hero-h-in">
+      <p class="hero-h-eyebrow"><i aria-hidden="true"></i>Guías gratuitas</p>
+      <h1>Guías y herramientas gratuitas, <span>para avanzar a tu ritmo</span></h1>
+      <p class="hero-h-sub">Explicaciones claras, tests de un minuto y clases paso a paso para estudiar, acreditar tu experiencia y entenderte con la Administración. <b>Gratis y sin registro.</b></p>
+      <nav class="gg-chips" aria-label="Temas">
+        <a href="#estudiar">Estudiar, trabajar y ayudas</a><a href="#administracion">Administración online</a><a href="#regularizacion">Regularización 2026</a>
+      </nav>
+    </div>
+  </div>
+</header>
 
-<script src="js/gs-layout.js" defer></script>
+<!-- ============ GUÍAS · CONTENIDO ============ -->
+<style>
+  .hero-h--int h1{font-size:clamp(2.2rem,3.8vw,3rem);}
+  .hero-h-bg img{object-position:50% 30%;}
+  .gg-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+  .gg-chips a{display:inline-flex;align-items:center;min-height:40px;font-size:.9375rem;font-weight:700;color:var(--azul-principal);background:#fff;border:1.5px solid #d4e0f0;border-radius:50px;padding:6px 14px;text-decoration:none;transition:border-color .15s,background .15s}
+  .gg-chips a:hover{border-color:var(--azul-principal);background:var(--azul-light)}
+  .gg-sec{padding:44px 24px 8px;scroll-margin-top:80px}
+  .gg-in{max-width:1120px;margin:0 auto}
+  .gg-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid #ECE9E2}
+  .gg-head h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.1rem);color:var(--azul-principal);margin:0}
+  .gg-head p{margin:0;color:#4a4f55;font-size:1rem}
+  .gg-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+  .gg-grid--4{grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
+  .gg-card{display:flex;flex-direction:column;background:#fff;border:1px solid #ECE9E2;border-radius:18px;padding:24px;transition:transform .15s,box-shadow .15s}
+  .gg-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,.08)}
+  .gg-type{align-self:flex-start;font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:50px;padding:4px 10px;margin:0 0 12px}
+  .gg-type--guia{background:var(--azul-light);color:var(--azul-principal)}
+  .gg-type--herr{background:#FEF4DF;color:#6b4500}
+  .gg-type--clase{background:#FBE9EC;color:#9E0F23}
+  .gg-type--arch{background:#ECE9E2;color:#4a4f55}
+  .gg-card h3{font-family:'Source Sans 3',sans-serif;font-size:1.1875rem;font-weight:800;line-height:1.3;color:var(--azul-principal);margin:0 0 8px}
+  .gg-card p{margin:0 0 18px;font-size:1rem;line-height:1.55;color:#4a4f55}
+  .gg-go{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--rojo-principal);text-decoration:none}
+  .gg-go:hover{text-decoration:underline}
+  .gg-go:focus-visible,.gg-chips a:focus-visible,.gg-sec a:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
+  .gg-extra{margin:16px 0 0;font-size:1rem;color:#4a4f55}
+  .gg-extra a{color:var(--azul-secundario);font-weight:700}
+  .gg-card--prog{background:linear-gradient(135deg,#032F5E,#054782);border-color:transparent;color:#fff}
+  .gg-card--prog h3{color:#fff}
+  .gg-card--prog p{color:#E3E8F0}
+  .gg-card--prog .gg-go{color:var(--amarillo)}
+  .gg-card--prog .gg-type{background:var(--amarillo);color:#2a2218}
+  .gg-pronto{margin:36px auto 0;max-width:1120px;padding:0 24px;font-size:.9375rem;color:#666}
+  .gg-pronto strong{color:var(--azul-principal)}
+  .gg-cierre-sec{padding:40px 24px 56px}
+  .gg-cierre{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:24px;justify-content:space-between;background:var(--azul-light);border-radius:22px;padding:30px 34px}
+  .gg-cierre h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;color:var(--azul-principal);margin:0 0 6px}
+  .gg-cierre p{margin:0;color:#4a4f55;font-size:1.0625rem;max-width:620px}
+  .gg-cierre-cta{display:flex;flex-direction:column;gap:8px;align-items:center}
+  .gg-hablemos{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:12px 34px;border-radius:50px;background:var(--amarillo);color:#2a2218;font-weight:800;font-size:1.0625rem;text-decoration:none;box-shadow:0 12px 28px rgba(242,169,29,.35);transition:transform .15s}
+  .gg-hablemos:hover{transform:translateY(-2px)}
+  .gg-cierre-cta small{font-size:.9375rem;color:#4a4f55}
+  .gg-cierre-cta small a{color:var(--azul-secundario);font-weight:700}
+  @media (max-width:768px){.gg-sec{padding:36px 16px 4px}.gg-pronto{padding:0 16px}.gg-cierre-sec{padding:32px 16px 44px}.gg-cierre{padding:24px 20px}.gg-hablemos,.gg-cierre-cta{width:100%}}
+</style>
+
+<section class="gg-sec" id="estudiar" aria-labelledby="gg-est">
+  <div class="gg-in">
+    <div class="gg-head"><h2 id="gg-est">Estudiar, trabajar y ayudas</h2><p>Para entrar en la universidad, acreditar tu experiencia y saber a qué tienes derecho.</p></div>
+    <div class="gg-grid">
+      <article class="gg-card">
+        <span class="gg-type gg-type--guia">Guía</span>
+        <h3>Cómo acceder a la universidad con bachillerato extranjero</h3>
+        <p>Homologación, UNEDasiss, pruebas de acceso, costes y plazos del curso vigente, explicados paso a paso.</p>
+        <a class="gg-go" href="acceso-universidad-bachillerato-extranjero.html">Leer la guía →</a>
+      </article>
+      <article class="gg-card">
+        <span class="gg-type gg-type--herr">Herramienta</span>
+        <h3>¿Puedo acceder al PEAC?</h3>
+        <p>Comprueba en 2 minutos si cumples los requisitos en la Comunidad de Madrid y por dónde podrías empezar.</p>
+        <a class="gg-go" href="peac-calculadora.html">Hacer el test →</a>
+      </article>
+      <article class="gg-card">
+        <span class="gg-type gg-type--herr">Herramienta</span>
+        <h3>Diagnóstico social Comunidad de Madrid 2026</h3>
+        <p>Una herramienta orientativa para saber a qué ayudas podrías acceder. Rellenas tus datos y obtienes un informe personalizado.</p>
+        <a class="gg-go" href="diagnostico-social-cm-2026.html">Hacer el diagnóstico →</a>
+      </article>
+    </div>
+    <p class="gg-extra">¿Vienes a estudiar? <a href="servicios-homologacion.html#rutas">Encuentra tu ruta en Estudios →</a> · ¿Quieres saber más del PEAC? <a href="servicio-peac.html">Mira cómo funciona →</a></p>
+  </div>
+</section>
+
+<section class="gg-sec" id="administracion" aria-labelledby="gg-adm">
+  <div class="gg-in">
+    <div class="gg-head"><h2 id="gg-adm">Tu día a día con la Administración</h2><p>Identificarte, firmar y recibir tus notificaciones sin depender de nadie.</p></div>
+    <div class="gg-grid gg-grid--4">
+      <article class="gg-card">
+        <span class="gg-type gg-type--guia">Guía</span>
+        <h3>Carpeta Ciudadana: qué es y cómo entrar</h3>
+        <p>Tus notificaciones, expedientes y avisos en una sola web del Gobierno. Te llevamos paso a paso hasta entrar.</p>
+        <a class="gg-go" href="guia-carpeta-ciudadana.html">Leer la guía →</a>
+      </article>
+      <article class="gg-card">
+        <span class="gg-type gg-type--herr">Herramienta</span>
+        <h3>¿Puedo sacar el certificado digital?</h3>
+        <p>Responde una pregunta y te decimos qué camino te corresponde, qué llevar y cuánto cuesta.</p>
+        <a class="gg-go" href="test-certificado-digital.html">Hacer el test →</a>
+      </article>
+      <article class="gg-card">
+        <span class="gg-type gg-type--clase">Clase interactiva</span>
+        <h3>Aprende a firmar digitalmente</h3>
+        <p>Firma tus documentos oficiales desde casa, con seguridad y sin miedo a equivocarte.</p>
+        <a class="gg-go" href="guia-firma-digital.html">Empezar la clase →</a>
+      </article>
+      <article class="gg-card">
+        <span class="gg-type gg-type--clase">Clase interactiva</span>
+        <h3>Escanea tus documentos gratis</h3>
+        <p>Prepara tus papeles con el móvil, con buena calidad y sin pagar nada.</p>
+        <a class="gg-go" href="guia-escanear-gratis.html">Empezar la clase →</a>
+      </article>
+    </div>
+    <p class="gg-extra">¿Prefieres que lo hagamos contigo? <a href="paquete-comunicate-administracion.html">Paquete «Comunícate con la Administración» →</a></p>
+  </div>
+</section>
+
+<section class="gg-sec" id="regularizacion" aria-labelledby="gg-reg">
+  <div class="gg-in">
+    <div class="gg-head"><h2 id="gg-reg">Regularización 2026: si ya presentaste</h2><p>El plazo terminó el 30 de junio de 2026. Esto es para quien espera resolución o ya la tiene.</p></div>
+    <div class="gg-grid">
+      <article class="gg-card">
+        <span class="gg-type gg-type--arch">Archivo</span>
+        <h3>Regularización Extraordinaria 2026</h3>
+        <p>Qué hacer si ya presentaste tu solicitud y qué vías de extranjería siguen abiertas.</p>
+        <a class="gg-go" href="proceso-2026.html">Ver la página →</a>
+      </article>
+      <article class="gg-card">
+        <span class="gg-type gg-type--herr">Herramienta</span>
+        <h3>¿Y ahora qué hago con mi expediente?</h3>
+        <p>Responde tres preguntas y te decimos qué paso te toca ahora y por dónde puedes mover tu expediente.</p>
+        <a class="gg-go" href="diagnostico_post_presentacion.html">Hacer el diagnóstico →</a>
+      </article>
+      <article class="gg-card gg-card--prog">
+        <span class="gg-type">Programa especial</span>
+        <h3>¿Ya te concedieron la autorización?</h3>
+        <p>Dura un año. Prepara a tiempo tu renovación o el cambio a otro permiso.</p>
+        <a class="gg-go" href="extranjeria.html#renovacion-modificacion">Ver el programa →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<p class="gg-pronto"><strong>Próximamente:</strong> renovar tu TIE, nacionalidad por residencia, reagrupación familiar, homologación de estudios y acceso a FP y a un máster.</p>
+
+<section class="gg-cierre-sec" id="contacto" aria-labelledby="gg-cierre">
+  <div class="gg-cierre">
+    <div>
+      <h2 id="gg-cierre">¿No encuentras lo que buscas?</h2>
+      <p>Cuéntanos tu caso. La primera consulta es gratuita y te decimos qué camino tiene sentido para ti.</p>
+    </div>
+    <div class="gg-cierre-cta">
+      <a class="gg-hablemos" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Hablemos →</a>
+      <small>o escríbenos a <a href="mailto:info@gestionaseguro.com?subject=Gu%C3%ADas%20gratuitas">info@gestionaseguro.com</a></small>
+    </div>
+  </div>
+</section>
+
+ <!-- ============ FOOTER COMUNIDAD ============ -->
+<footer class="footer footer-comunidad" id="footer-info">
+  <div class="container">
+   <div class="footer-comunidad-inner">
+  <div class="footer-comunidad-info">
+    <h4>Comunidad Gestiona Seguro</h4>
+    <p>Guías, avisos y explicaciones claras para ayudarte con tus trámites en España.</p>
+  </div>
+
+  <div class="footer-comunidad-contacto">
+     <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a>
+  </div>
+
+  <div class="footer-comunidad-links">
+    <a href="https://www.youtube.com/channel/UCyjRDvnjNXxBO2S2V-0adbA" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.instagram.com/gestionaseguroweb/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.tiktok.com/@gestionaseguroweb" target="_blank" rel="noopener">TikTok</a>
+  </div>
+</div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Gestiona Seguro. Información orientativa. No sustituye asesoría legal individual.</p>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Cierra menú móvil al click en enlaces simples
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  </script>
 </body>
 </html>
