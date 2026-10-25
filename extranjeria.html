@@ -51,8 +51,8 @@
       --arena:          #FFFFFF;
       --arena-warm:     #FAF8F3;
       --arena-dark:     #ECE9E2;
-      --texto:          #2B2F33;
-      --texto-suave:    #666666;
+      --texto:          #2a2218;
+      --texto-suave:    #5e5649;
 
       /* escala tipográfica */
       --fs-xs: 1rem;
@@ -215,7 +215,7 @@
     .bloque-eyebrow { display: inline-block; font-size: var(--fs-label); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
     .eb-amarillo { color: var(--amarillo); }
     .eb-rojo { color: var(--rojo-principal); }
-    .bloque-card h2 { font-size: clamp(1.7rem, 3.6vw, 2.3rem); margin-bottom: 4px; }
+    .bloque-card h2 { font-size: clamp(1.75rem,3.4vw,2.5rem); margin-bottom: 4px; }
     .bloque-accent { width: 72px; height: 5px; border-radius: 20px; background: linear-gradient(90deg, var(--rojo-principal), var(--amarillo)); margin: 8px 0 18px; }
     .bloque-accent--estudios { background: linear-gradient(90deg, var(--azul-principal), var(--amarillo)); }
     .bloque-card .lead { font-size: 1.08rem; color: var(--texto-suave); max-width: 720px; margin-bottom: 24px; }
@@ -307,11 +307,11 @@
     .sara-band-inner .sb-text strong { color: var(--azul-principal); }
     .sara-band-inner .sb-btn {
       display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
-      background: var(--azul-principal); color: #fff; font-weight: 700; font-size: var(--fs-btn);
-      padding: 15px 28px; border-radius: 50px; box-shadow: 0 8px 20px rgba(3,47,94,0.22);
+      background: var(--amarillo); color: #2a2218; font-weight: 800; font-size: 1.0625rem;
+      padding: 15px 28px; border-radius: 50px; box-shadow: 0 12px 28px rgba(242,169,29,.35);
       transition: background var(--transicion), transform var(--transicion);
     }
-    .sara-band-inner .sb-btn:hover { background: var(--azul-secundario); transform: translateY(-2px); }
+    .sara-band-inner .sb-btn:hover { background: #E09A10; transform: translateY(-2px); }
     @media (max-width: 768px) { .sara-band-inner { flex-direction: column; align-items: stretch; text-align: center; } .sara-band-inner .sb-btn { justify-content: center; } }
 
     /* ── BLOQUE SERVICIO (regla de Jason) ── */
@@ -558,7 +558,7 @@
     .prog-final{margin:28px 0 0;text-align:center;color:#C9D3E0;font-size:var(--fs-xs)}
     .prog-final a{color:#fff;font-weight:700}
     .otros-head{max-width:1120px;margin:20px auto 0;padding:0 24px}
-    .otros-head h2{font-size:clamp(1.5rem,3vw,2rem);margin:0 0 4px}
+    .otros-head h2{font-size:clamp(1.75rem,3.4vw,2.5rem);margin:0 0 4px}
     .otros-head p{margin:0;color:var(--texto-suave)}
     .prog-link-nota{display:block;margin-top:10px;font-weight:700;color:var(--rojo-principal);text-decoration:none}
     @media (max-width:900px){.prog-head{grid-template-columns:1fr;gap:20px}.prog-pasos{grid-template-columns:repeat(2,minmax(0,1fr))}}
