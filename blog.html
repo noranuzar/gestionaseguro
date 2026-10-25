@@ -456,7 +456,7 @@
       <h1>Guías y herramientas gratuitas, <span>para avanzar a tu ritmo</span></h1>
       <p class="hero-h-sub">Explicaciones claras, tests de un minuto y clases paso a paso para estudiar, acreditar tu experiencia y entenderte con la Administración. <b>Gratis y sin registro.</b></p>
       <nav class="gg-chips" aria-label="Temas">
-        <a href="#estudiar">Estudiar, trabajar y ayudas</a><a href="#administracion">Administración online</a><a href="#regularizacion">Regularización 2026</a>
+        <a class="gg-c-azul" href="#estudiar"><i aria-hidden="true"></i>Estudiar, trabajar y ayudas</a><a class="gg-c-ambar" href="#administracion"><i aria-hidden="true"></i>Administración online</a><a class="gg-c-rojo" href="#regularizacion"><i aria-hidden="true"></i>Regularización 2026</a>
       </nav>
     </div>
   </div>
@@ -467,129 +467,173 @@
   .hero-h--int h1{font-size:clamp(2.2rem,3.8vw,3rem);}
   .hero-h-bg video{object-position:60% 40%;}
   .gg-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
-  .gg-chips a{display:inline-flex;align-items:center;min-height:40px;font-size:.9375rem;font-weight:700;color:var(--azul-principal);background:#fff;border:1.5px solid #d4e0f0;border-radius:50px;padding:6px 14px;text-decoration:none;transition:border-color .15s,background .15s}
+  .gg-chips a{display:inline-flex;align-items:center;gap:8px;min-height:40px;font-size:.9375rem;font-weight:700;color:var(--azul-principal);background:#fff;border:1.5px solid #d4e0f0;border-radius:50px;padding:6px 14px;text-decoration:none;transition:border-color .15s,background .15s}
+  .gg-chips a i{width:10px;height:10px;border-radius:50%;background:var(--c)}
   .gg-chips a:hover{border-color:var(--azul-principal);background:var(--azul-light)}
-  .gg-sec{padding:44px 24px 8px;scroll-margin-top:80px}
+  /* Colores por bloque (los mismos de las tarjetas de la portada) */
+  .gg-c-azul{--c:#054782;--t:#E8EEF7;--ink:#032F5E}
+  .gg-c-ambar{--c:#F2A91D;--t:#FEF4DF;--ink:#6b4500}
+  .gg-c-rojo{--c:#C3122C;--t:#FBE9EC;--ink:#9E0F23}
+  .gg-sec{padding:56px 24px;scroll-margin-top:80px}
+  .gg-sec--alt{background:#fff}
   .gg-in{max-width:1120px;margin:0 auto}
-  .gg-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid #ECE9E2}
-  .gg-head h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.1rem);color:var(--azul-principal);margin:0}
-  .gg-head p{margin:0;color:#4a4f55;font-size:1rem}
+  .gg-head{display:flex;align-items:center;gap:16px;margin:0 0 26px}
+  .gg-head-ic{width:56px;height:56px;border-radius:16px;background:var(--c);color:#fff;display:grid;place-items:center;flex-shrink:0;box-shadow:0 10px 22px rgba(3,47,94,.14)}
+  .gg-c-ambar .gg-head-ic{color:#2a2218}
+  .gg-head-ic svg{width:28px;height:28px}
+  .gg-head h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;color:var(--azul-principal);margin:0 0 2px}
+  .gg-head p{margin:0;color:#4a4f55;font-size:1.0625rem}
   .gg-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
   .gg-grid--4{grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
-  .gg-card{display:flex;flex-direction:column;background:#fff;border:1px solid #ECE9E2;border-radius:18px;padding:24px;transition:transform .15s,box-shadow .15s}
-  .gg-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,.08)}
-  .gg-type{align-self:flex-start;font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:50px;padding:4px 10px;margin:0 0 12px}
-  .gg-type--guia{background:var(--azul-light);color:var(--azul-principal)}
-  .gg-type--herr{background:#FEF4DF;color:#6b4500}
-  .gg-type--clase{background:#FBE9EC;color:#9E0F23}
-  .gg-type--arch{background:#ECE9E2;color:#4a4f55}
+  .gg-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #ECE9E2;border-top:5px solid var(--c);border-radius:18px;padding:24px;transition:transform .18s,box-shadow .18s}
+  .gg-sec--alt .gg-card{background:#FAF8F3}
+  .gg-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(3,47,94,.12)}
+  .gg-card:focus-within{box-shadow:0 0 0 3px var(--azul-secundario)}
+  .gg-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px}
+  .gg-ic{width:48px;height:48px;border-radius:14px;background:var(--t);color:var(--ink);display:grid;place-items:center}
+  .gg-ic svg{width:24px;height:24px}
+  .gg-type{white-space:nowrap;font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:50px;padding:4px 10px;background:var(--t);color:var(--ink)}
   .gg-card h3{font-family:'Source Sans 3',sans-serif;font-size:1.1875rem;font-weight:800;line-height:1.3;color:var(--azul-principal);margin:0 0 8px}
-  .gg-card p{margin:0 0 18px;font-size:1rem;line-height:1.55;color:#4a4f55}
-  .gg-go{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--rojo-principal);text-decoration:none}
-  .gg-go:hover{text-decoration:underline}
-  .gg-go:focus-visible,.gg-chips a:focus-visible,.gg-sec a:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
-  .gg-extra{margin:16px 0 0;font-size:1rem;color:#4a4f55}
+  .gg-card p{margin:0 0 14px;font-size:1rem;line-height:1.55;color:#4a4f55}
+  .gg-meta{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+  .gg-meta span{font-size:.8125rem;font-weight:700;color:#4a4f55;background:#F3F1EC;border-radius:6px;padding:3px 8px}
+  .gg-go{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--azul-principal);text-decoration:none}
+  .gg-go::after{content:"";position:absolute;inset:0;border-radius:18px}
+  .gg-go b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:1rem;transition:transform .18s}
+  .gg-c-ambar .gg-go b{color:#2a2218}
+  .gg-card:hover .gg-go b{transform:translateX(4px)}
+  .gg-go:focus-visible{outline:none}
+  /* Destacado */
+  .gg-feat{grid-column:span 2;background:linear-gradient(135deg,#032F5E,#054782)!important;border:0;border-top:0;color:#fff;padding:30px}
+  .gg-feat .gg-ic{background:rgba(255,255,255,.14);color:#fff}
+  .gg-feat .gg-type{background:var(--amarillo);color:#2a2218}
+  .gg-feat h3{color:#fff;font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem}
+  .gg-feat p{color:#E3E8F0;font-size:1.0625rem;max-width:520px}
+  .gg-feat .gg-meta span{background:rgba(255,255,255,.12);color:#fff}
+  .gg-feat .gg-go{color:#fff}
+  .gg-feat .gg-go b{background:var(--amarillo);color:#2a2218}
+  .gg-extra{margin:20px 0 0;font-size:1rem;color:#4a4f55}
   .gg-extra a{color:var(--azul-secundario);font-weight:700}
-  .gg-card--prog{background:linear-gradient(135deg,#032F5E,#054782);border-color:transparent;color:#fff}
-  .gg-card--prog h3{color:#fff}
-  .gg-card--prog p{color:#E3E8F0}
-  .gg-card--prog .gg-go{color:var(--amarillo)}
-  .gg-card--prog .gg-type{background:var(--amarillo);color:#2a2218}
-  .gg-pronto{margin:36px auto 0;max-width:1120px;padding:0 24px;font-size:.9375rem;color:#666}
+  .gg-extra a:focus-visible,.gg-chips a:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
+  .gg-pronto{margin:0 auto;max-width:1120px;padding:28px 24px 0;font-size:.9375rem;color:#666}
   .gg-pronto strong{color:var(--azul-principal)}
-  .gg-cierre-sec{padding:40px 24px 56px}
+  .gg-cierre-sec{padding:32px 24px 56px}
   .gg-cierre{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:24px;justify-content:space-between;background:var(--azul-light);border-radius:22px;padding:30px 34px}
   .gg-cierre h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;color:var(--azul-principal);margin:0 0 6px}
   .gg-cierre p{margin:0;color:#4a4f55;font-size:1.0625rem;max-width:620px}
   .gg-cierre-cta{display:flex;flex-direction:column;gap:8px;align-items:center}
   .gg-hablemos{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:12px 34px;border-radius:50px;background:var(--amarillo);color:#2a2218;font-weight:800;font-size:1.0625rem;text-decoration:none;box-shadow:0 12px 28px rgba(242,169,29,.35);transition:transform .15s}
   .gg-hablemos:hover{transform:translateY(-2px)}
+  .gg-hablemos:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
   .gg-cierre-cta small{font-size:.9375rem;color:#4a4f55}
   .gg-cierre-cta small a{color:var(--azul-secundario);font-weight:700}
-  @media (max-width:768px){.gg-sec{padding:36px 16px 4px}.gg-pronto{padding:0 16px}.gg-cierre-sec{padding:32px 16px 44px}.gg-cierre{padding:24px 20px}.gg-hablemos,.gg-cierre-cta{width:100%}}
+  .gg-feat--wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:32px;align-items:end}
+  .gg-feat--wide .gg-top,.gg-feat--wide h3,.gg-feat--wide p,.gg-feat--wide .gg-meta{grid-column:1}
+  .gg-feat--wide .gg-go{grid-column:2;grid-row:1/span 4;align-self:center;margin:0;font-size:1.125rem}
+  .gg-feat--wide .gg-go b{width:40px;height:40px}
+  @media (max-width:900px){.gg-feat{grid-column:auto}.gg-feat--wide{grid-column:1/-1;display:flex}.gg-feat--wide .gg-go{margin-top:auto}}
+  @media (max-width:768px){.gg-sec{padding:40px 16px}.gg-pronto{padding:24px 16px 0}.gg-cierre-sec{padding:28px 16px 44px}.gg-cierre{padding:24px 20px}.gg-hablemos,.gg-cierre-cta{width:100%}.gg-head-ic{width:48px;height:48px}.gg-feat{padding:24px}}
+  @media (prefers-reduced-motion:reduce){.gg-card,.gg-go b{transition:none}}
 </style>
 
-<section class="gg-sec" id="estudiar" aria-labelledby="gg-est">
+<section class="gg-sec gg-c-azul" id="estudiar" aria-labelledby="gg-est">
   <div class="gg-in">
-    <div class="gg-head"><h2 id="gg-est">Estudiar, trabajar y ayudas</h2><p>Para entrar en la universidad, acreditar tu experiencia y saber a qué tienes derecho.</p></div>
+    <div class="gg-head">
+      <span class="gg-head-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
+      <div><h2 id="gg-est">Estudiar, trabajar y ayudas</h2><p>Para entrar en la universidad, acreditar tu experiencia y saber a qué tienes derecho.</p></div>
+    </div>
     <div class="gg-grid">
       <article class="gg-card">
-        <span class="gg-type gg-type--guia">Guía</span>
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></svg></span><span class="gg-type">Guía</span></div>
         <h3>Cómo acceder a la universidad con bachillerato extranjero</h3>
-        <p>Homologación, UNEDasiss, pruebas de acceso, costes y plazos del curso vigente, explicados paso a paso.</p>
-        <a class="gg-go" href="acceso-universidad-bachillerato-extranjero.html">Leer la guía →</a>
+        <p>Homologación, UNEDasiss, pruebas de acceso, costes y plazos del curso vigente.</p>
+        <div class="gg-meta"><span>Paso a paso</span><span>Con fuentes oficiales</span></div>
+        <a class="gg-go" href="acceso-universidad-bachillerato-extranjero.html">Leer la guía <b aria-hidden="true">→</b></a>
       </article>
       <article class="gg-card">
-        <span class="gg-type gg-type--herr">Herramienta</span>
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></span><span class="gg-type">Test</span></div>
         <h3>¿Puedo acceder al PEAC?</h3>
-        <p>Comprueba en 2 minutos si cumples los requisitos en la Comunidad de Madrid y por dónde podrías empezar.</p>
-        <a class="gg-go" href="peac-calculadora.html">Hacer el test →</a>
+        <p>Comprueba si cumples los requisitos en la Comunidad de Madrid y por dónde podrías empezar.</p>
+        <div class="gg-meta"><span>⏱ 2 minutos</span><span>Sin registro</span></div>
+        <a class="gg-go" href="peac-calculadora.html">Hacer el test <b aria-hidden="true">→</b></a>
       </article>
       <article class="gg-card">
-        <span class="gg-type gg-type--herr">Herramienta</span>
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v5c0 4.4 3.4 8.2 8 9 4.6-.8 8-4.6 8-9V7l-8-4Z"/><path d="M9 12h6M12 9v6"/></svg></span><span class="gg-type">Herramienta</span></div>
         <h3>Diagnóstico social Comunidad de Madrid 2026</h3>
-        <p>Una herramienta orientativa para saber a qué ayudas podrías acceder. Rellenas tus datos y obtienes un informe personalizado.</p>
-        <a class="gg-go" href="diagnostico-social-cm-2026.html">Hacer el diagnóstico →</a>
+        <p>Una orientación sobre las ayudas a las que podrías acceder, con un informe personalizado.</p>
+        <div class="gg-meta"><span>Informe personalizado</span><span>Orientativo</span></div>
+        <a class="gg-go" href="diagnostico-social-cm-2026.html">Hacer el diagnóstico <b aria-hidden="true">→</b></a>
       </article>
     </div>
     <p class="gg-extra">¿Vienes a estudiar? <a href="servicios-homologacion.html#rutas">Encuentra tu ruta en Estudios →</a> · ¿Quieres saber más del PEAC? <a href="servicio-peac.html">Mira cómo funciona →</a></p>
   </div>
 </section>
 
-<section class="gg-sec" id="administracion" aria-labelledby="gg-adm">
+<section class="gg-sec gg-sec--alt gg-c-ambar" id="administracion" aria-labelledby="gg-adm">
   <div class="gg-in">
-    <div class="gg-head"><h2 id="gg-adm">Tu día a día con la Administración</h2><p>Identificarte, firmar y recibir tus notificaciones sin depender de nadie.</p></div>
-    <div class="gg-grid gg-grid--4">
-      <article class="gg-card">
-        <span class="gg-type gg-type--guia">Guía</span>
+    <div class="gg-head">
+      <span class="gg-head-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+      <div><h2 id="gg-adm">Tu día a día con la Administración</h2><p>Identificarte, firmar y recibir tus notificaciones sin depender de nadie.</p></div>
+    </div>
+    <div class="gg-grid">
+      <article class="gg-card gg-feat gg-feat--wide">
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg></span><span class="gg-type">★ Empieza por aquí</span></div>
         <h3>Carpeta Ciudadana: qué es y cómo entrar</h3>
-        <p>Tus notificaciones, expedientes y avisos en una sola web del Gobierno. Te llevamos paso a paso hasta entrar.</p>
-        <a class="gg-go" href="guia-carpeta-ciudadana.html">Leer la guía →</a>
+        <p>Tus notificaciones, expedientes y avisos en una sola web del Gobierno. Te llevamos paso a paso hasta entrar de verdad.</p>
+        <div class="gg-meta"><span>Guía</span><span>Paso a paso</span><span>Verificada en junio de 2026</span></div>
+        <a class="gg-go" href="guia-carpeta-ciudadana.html">Leer la guía <b aria-hidden="true">→</b></a>
       </article>
       <article class="gg-card">
-        <span class="gg-type gg-type--herr">Herramienta</span>
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></span><span class="gg-type">Test</span></div>
         <h3>¿Puedo sacar el certificado digital?</h3>
-        <p>Responde una pregunta y te decimos qué camino te corresponde, qué llevar y cuánto cuesta.</p>
-        <a class="gg-go" href="test-certificado-digital.html">Hacer el test →</a>
+        <p>Te decimos qué camino te corresponde, qué llevar y cuánto cuesta.</p>
+        <div class="gg-meta"><span>⏱ 1 pregunta</span></div>
+        <a class="gg-go" href="test-certificado-digital.html">Hacer el test <b aria-hidden="true">→</b></a>
       </article>
       <article class="gg-card">
-        <span class="gg-type gg-type--clase">Clase interactiva</span>
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="M13.5 6.5l4 4"/></svg></span><span class="gg-type">Clase interactiva</span></div>
         <h3>Aprende a firmar digitalmente</h3>
         <p>Firma tus documentos oficiales desde casa, con seguridad y sin miedo a equivocarte.</p>
-        <a class="gg-go" href="guia-firma-digital.html">Empezar la clase →</a>
+        <div class="gg-meta"><span>Paso a paso</span></div>
+        <a class="gg-go" href="guia-firma-digital.html">Empezar la clase <b aria-hidden="true">→</b></a>
       </article>
       <article class="gg-card">
-        <span class="gg-type gg-type--clase">Clase interactiva</span>
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 6h4M9 11h6v6H9z"/></svg></span><span class="gg-type">Clase interactiva</span></div>
         <h3>Escanea tus documentos gratis</h3>
         <p>Prepara tus papeles con el móvil, con buena calidad y sin pagar nada.</p>
-        <a class="gg-go" href="guia-escanear-gratis.html">Empezar la clase →</a>
+        <div class="gg-meta"><span>Paso a paso</span><span>Gratis</span></div>
+        <a class="gg-go" href="guia-escanear-gratis.html">Empezar la clase <b aria-hidden="true">→</b></a>
       </article>
     </div>
     <p class="gg-extra">¿Prefieres que lo hagamos contigo? <a href="paquete-comunicate-administracion.html">Paquete «Comunícate con la Administración» →</a></p>
   </div>
 </section>
 
-<section class="gg-sec" id="regularizacion" aria-labelledby="gg-reg">
+<section class="gg-sec gg-c-rojo" id="regularizacion" aria-labelledby="gg-reg">
   <div class="gg-in">
-    <div class="gg-head"><h2 id="gg-reg">Regularización 2026: si ya presentaste</h2><p>El plazo terminó el 30 de junio de 2026. Esto es para quien espera resolución o ya la tiene.</p></div>
+    <div class="gg-head">
+      <span class="gg-head-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span>
+      <div><h2 id="gg-reg">Regularización 2026: si ya presentaste</h2><p>El plazo terminó el 30 de junio de 2026. Para quien espera resolución o ya la tiene.</p></div>
+    </div>
     <div class="gg-grid">
       <article class="gg-card">
-        <span class="gg-type gg-type--arch">Archivo</span>
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></svg></span><span class="gg-type">Archivo</span></div>
         <h3>Regularización Extraordinaria 2026</h3>
         <p>Qué hacer si ya presentaste tu solicitud y qué vías de extranjería siguen abiertas.</p>
-        <a class="gg-go" href="proceso-2026.html">Ver la página →</a>
+        <a class="gg-go" href="proceso-2026.html">Ver la página <b aria-hidden="true">→</b></a>
       </article>
       <article class="gg-card">
-        <span class="gg-type gg-type--herr">Herramienta</span>
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6M12 17h.01"/></svg></span><span class="gg-type">Test</span></div>
         <h3>¿Y ahora qué hago con mi expediente?</h3>
-        <p>Responde tres preguntas y te decimos qué paso te toca ahora y por dónde puedes mover tu expediente.</p>
-        <a class="gg-go" href="diagnostico_post_presentacion.html">Hacer el diagnóstico →</a>
+        <p>Te decimos qué paso te toca ahora y por dónde puedes mover tu expediente.</p>
+        <div class="gg-meta"><span>⏱ 3 preguntas</span></div>
+        <a class="gg-go" href="diagnostico_post_presentacion.html">Hacer el diagnóstico <b aria-hidden="true">→</b></a>
       </article>
-      <article class="gg-card gg-card--prog">
-        <span class="gg-type">Programa especial</span>
+      <article class="gg-card gg-feat" style="grid-column:auto">
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></span><span class="gg-type">Programa especial</span></div>
         <h3>¿Ya te concedieron la autorización?</h3>
         <p>Dura un año. Prepara a tiempo tu renovación o el cambio a otro permiso.</p>
-        <a class="gg-go" href="extranjeria.html#renovacion-modificacion">Ver el programa →</a>
+        <a class="gg-go" href="extranjeria.html#renovacion-modificacion">Ver el programa <b aria-hidden="true">→</b></a>
       </article>
     </div>
   </div>
