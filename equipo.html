@@ -442,18 +442,15 @@
 </style>
 <header class="hero-h hero-h--int eq-hero">
   <div class="hero-h-wrap">
-    <div class="hero-h-bg eq-trio" aria-hidden="true">
-      <img src="equipo-rostro-sara.webp" width="600" height="600" alt="">
-      <img src="equipo-rostro-nora.webp" width="600" height="600" alt="">
-      <img src="equipo-rostro-bibiana.webp" width="600" height="600" alt="">
-    </div>
     <div class="hero-h-in">
       <p class="hero-h-eyebrow"><i aria-hidden="true"></i>Nuestro equipo</p>
       <h1>Nuestro equipo: <span>personas de confianza que te explican cada paso</span></h1>
+      <div class="eq-hero-r">
       <p class="hero-h-sub"><b>Sara y Nora fundaron Gestiona Seguro</b> y hoy el equipo crece con Bibiana. Cada una aporta su mirada para que tengas una ruta clara.</p>
       <div class="hero-h-ctas">
         <a href="#personas" class="hero-h-btn hero-h-btn--pri">Conócenos ↓</a>
         <a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener" class="hero-h-btn hero-h-btn--sec">Primera consulta gratuita</a>
+      </div>
       </div>
     </div>
   </div>
@@ -463,9 +460,13 @@
 <style>
   .hero-h--int h1{font-size:clamp(2.3rem,4vw,3.2rem);}
   .hero-h h1 span{text-wrap:balance}
-  .eq-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:center;left:52%;padding:44px 40px 44px 0;-webkit-mask-image:none;mask-image:none;background:transparent}
-  .eq-trio img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center 25%;border-radius:18px;box-shadow:0 16px 34px rgba(3,47,94,.16)}
-  .eq-trio img:nth-child(2){transform:translateY(-22px)}
+  .eq-hero .hero-h-wrap{min-height:0}
+  .eq-hero .hero-h-in{max-width:none;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);column-gap:48px;align-items:end;padding:52px 56px 48px}
+  .eq-hero .hero-h-eyebrow{grid-column:1/-1;justify-self:start}
+  .eq-hero h1{margin-bottom:0}
+  .eq-hero .hero-h-sub{max-width:none}
+  .eq-hero .hero-h-ctas{margin-bottom:0}
+  @media (max-width:900px){.eq-hero .hero-h-in{grid-template-columns:1fr;padding:36px 22px 30px}.eq-hero h1{margin-bottom:18px}}
   .pe-sec{padding:40px 24px 36px;scroll-margin-top:80px}
   .pe-in{max-width:1120px;margin:0 auto}
   .pe-h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.75rem,3.4vw,2.5rem);line-height:1.15;color:var(--azul-principal);margin:0 0 10px;text-wrap:balance}
@@ -487,7 +488,7 @@
   .pe-hablemos:hover{transform:translateY(-2px)}
   .pe-cierre-cta small{font-size:.9375rem;color:var(--texto-suave)}
   .pe-cierre-cta small a{color:var(--azul-secundario);font-weight:700}
-  @media (max-width:900px){.eq-grid{grid-template-columns:1fr}.eq-trio{left:auto;height:auto;padding:28px 20px 6px;gap:10px}.eq-trio img:nth-child(2){transform:translateY(-10px)}}
+  @media (max-width:900px){.eq-grid{grid-template-columns:1fr}}
   @media (max-width:768px){.pe-sec{padding:32px 16px}.pe-cierre{padding:24px 20px}.pe-hablemos,.pe-cierre-cta{width:100%}}
 </style>
 
