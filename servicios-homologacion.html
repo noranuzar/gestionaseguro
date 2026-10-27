@@ -590,6 +590,7 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 .es-form-wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:36px;align-items:start}
 .es-form-intro ul{margin:0 0 18px}
 .es-form-alt{margin:0;font-size:.9375rem;color:var(--texto-suave)}
+.es-form-alt+.es-form-alt{margin-top:10px}
 .es-form-alt a{color:var(--azul-secundario);font-weight:700}
 .es-form{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
 .es-f{display:flex;flex-direction:column;gap:6px;margin:0;min-width:0;border:0;padding:0}
@@ -611,7 +612,7 @@ fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;colo
 .es-check input{width:20px;height:20px;margin-top:1px;flex-shrink:0;accent-color:var(--azul-secundario)}
 .es-check a{color:var(--azul-secundario);font-weight:700}
 .es-form-err{margin:0;color:var(--rojo-principal);font-weight:700;font-size:.9375rem}
-.es-form-btn{background:var(--amarillo);color:#2a2218;border:0;cursor:pointer;min-height:56px;box-shadow:0 12px 28px rgba(242,169,29,.35)}
+.es-form-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--amarillo);color:#2a2218;border:0;cursor:pointer;min-height:56px;box-shadow:0 12px 28px rgba(242,169,29,.35)}
 .es-form-btn:hover{background:#E09A10;color:#2a2218}
 .es-form-btn[disabled]{opacity:.7;cursor:wait}
 .es-form-ok{grid-column:1/-1;text-align:center;padding:12px 0}
@@ -979,7 +980,8 @@ fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;colo
           <li>Revisamos tu situación y lo que quieres conseguir.</li>
           <li>Te decimos qué camino encaja contigo y qué plan te conviene, con su precio exacto.</li>
         </ul>
-        <p class="es-form-alt">¿Prefieres elegir hora ya? <a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Reserva en el calendario</a> o escríbenos a <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a>.</p>
+        <p class="es-form-alt">Al enviar se abre WhatsApp con tu consulta ya escrita: solo tienes que pulsar enviar. Te respondemos por WhatsApp con la fecha y la hora de tu consulta.</p>
+        <p class="es-form-alt">¿Prefieres el correo? Escríbenos a <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a>.</p>
       </div>
       <form class="es-form" id="form-estudios" novalidate>
         <input type="hidden" name="seccion" value="Estudios">
@@ -999,12 +1001,12 @@ fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;colo
         <div class="es-f es-f--full"><label for="f-mot">Motivo de la consulta <small>opcional</small></label><textarea id="f-mot" name="motivo" rows="3" maxlength="1500"></textarea></div>
         <label class="es-f--full es-check"><input type="checkbox" name="privacidad" value="Aceptada" required><span>He leído y acepto la <a href="politica-privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
         <p class="es-f--full es-form-err" role="alert" hidden>Revisa los campos marcados.</p>
-        <button class="es-btn es-f--full es-form-btn" type="submit">Enviar mi consulta</button>
+        <button class="es-btn es-f--full es-form-btn" type="submit"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.85-1.45A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.15l-.3-.2-3.05.9.9-2.95-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>Enviar por WhatsApp</button>
       </form>
       <div class="es-form-ok" role="status" hidden>
-        <h3>¡Gracias! Hemos recibido tu consulta</h3>
-        <p>Te escribimos por WhatsApp o por correo para darte cita. Si prefieres elegir hora ya, puedes reservarla ahora.</p>
-        <a class="es-btn es-form-btn" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Elegir hora en el calendario</a>
+        <h3>¡Gracias! Ya casi está</h3>
+        <p>Hemos abierto WhatsApp con tu consulta. <b>Pulsa enviar en WhatsApp</b> y te responderemos con la fecha y la hora de tu consulta gratuita.</p>
+        <a class="es-btn es-form-btn es-form-wa" href="#" target="_blank" rel="noopener">Abrir WhatsApp de nuevo</a>
       </div>
     </div>
   </div>
@@ -1019,10 +1021,15 @@ fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;colo
   f.addEventListener('submit',function(e){e.preventDefault();
     f.querySelectorAll('[aria-invalid]').forEach(function(el){el.removeAttribute('aria-invalid')});
     if(!f.checkValidity()){f.querySelectorAll(':invalid').forEach(function(el){el.setAttribute('aria-invalid','true')});err.hidden=false;var first=f.querySelector(':invalid');first&&first.focus();return;}
-    err.hidden=true;btn.disabled=true;btn.textContent='Enviando…';
+    err.hidden=true;
+    var d=new FormData(f),g=function(k){return (d.get(k)||'').toString().trim()};
+    var msg='Hola, quiero una primera consulta gratuita (Estudios).\n\nNombre: '+g('nombre')+'\nPaís de origen: '+g('pais')+'\nDónde estoy: '+g('ubicacion')+'\nQuiero estudiar: '+g('estudios')+'\nQuiero empezar: '+g('inicio')+'\nCorreo: '+g('email')+'\nWhatsApp: '+g('whatsapp')+(g('motivo')?'\nMotivo: '+g('motivo'):'');
+    var waUrl='https://wa.me/34746049191?text='+encodeURIComponent(msg);
+    wrap.querySelector('.es-form-wa').href=waUrl;
+    window.open(waUrl,'_blank','noopener');
     var done=function(){f.hidden=true;wrap.querySelector('.es-form-intro').hidden=true;ok.hidden=false;ok.focus&&ok.setAttribute('tabindex','-1');ok.focus();(window.dataLayer=window.dataLayer||[]).push({event:'estudios_formulario'});};
-    if(!URL_FORM){done();return;}
-    fetch(URL_FORM,{method:'POST',mode:'no-cors',body:new URLSearchParams(new FormData(f))}).then(done).catch(function(){btn.disabled=false;btn.textContent='Enviar mi consulta';err.textContent='No se ha podido enviar. Inténtalo de nuevo o escríbenos a info@gestionaseguro.com.';err.hidden=false;});
+    if(URL_FORM){try{fetch(URL_FORM,{method:'POST',mode:'no-cors',body:new URLSearchParams(d)})}catch(x){}}
+    done();
   });
 })();
 </script>
