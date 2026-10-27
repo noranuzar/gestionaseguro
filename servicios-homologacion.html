@@ -587,6 +587,38 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 .es-book-cta{flex:0 1 320px;display:flex;flex-direction:column;gap:10px}
 .es-book-cta .es-btn{min-height:56px;font-size:1.0625rem;background:var(--amarillo);color:#2a2218;box-shadow:0 12px 28px rgba(242,169,29,.35)}.es-book-cta .es-btn:hover{background:#E09A10;color:#2a2218;transform:translateY(-2px)}
 .es-book-cta p{margin:0;text-align:center;font-size:.9375rem;color:#595959}
+.es-form-wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:36px;align-items:start}
+.es-form-intro ul{margin:0 0 18px}
+.es-form-alt{margin:0;font-size:.9375rem;color:var(--texto-suave)}
+.es-form-alt a{color:var(--azul-secundario);font-weight:700}
+.es-form{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+.es-f{display:flex;flex-direction:column;gap:6px;margin:0;min-width:0;border:0;padding:0}
+.es-f--full{grid-column:1/-1}
+.es-f label,.es-f legend{font-size:.9375rem;font-weight:700;color:var(--azul-principal);padding:0}
+.es-f small{font-weight:400;color:var(--texto-suave)}
+.es-f input:not([type=radio]),.es-f select,.es-f textarea{font:inherit;font-size:1rem;color:var(--texto);background:#FAF8F3;border:1.5px solid #D9D4C8;border-radius:12px;padding:12px 14px;min-height:48px;width:100%;box-sizing:border-box}
+.es-f textarea{min-height:96px;resize:vertical}
+.es-f input:focus,.es-f select:focus,.es-f textarea:focus{outline:none;border-color:var(--azul-secundario);box-shadow:0 0 0 3px rgba(5,71,130,.15);background:#fff}
+.es-f [aria-invalid="true"]{border-color:var(--rojo-principal)}
+fieldset.es-f{flex-direction:row;flex-wrap:wrap;gap:10px 14px;align-items:center}
+fieldset.es-f legend{width:100%;margin-bottom:6px;float:left}
+.es-opt input{width:18px;height:18px;margin:0;accent-color:var(--azul-secundario)}
+fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;color:var(--texto)}
+.es-form[hidden],.es-form-intro[hidden],.es-form-ok[hidden]{display:none}
+.es-opt{display:inline-flex;align-items:center;gap:8px;font-size:1rem;color:var(--texto);background:#FAF8F3;border:1.5px solid #D9D4C8;border-radius:50px;padding:10px 18px;cursor:pointer}
+.es-opt:has(input:checked){border-color:var(--azul-secundario);background:var(--azul-light)}
+.es-check{display:flex;gap:10px;align-items:flex-start;font-size:.9375rem;color:var(--texto-suave);line-height:1.45}
+.es-check input{width:20px;height:20px;margin-top:1px;flex-shrink:0;accent-color:var(--azul-secundario)}
+.es-check a{color:var(--azul-secundario);font-weight:700}
+.es-form-err{margin:0;color:var(--rojo-principal);font-weight:700;font-size:.9375rem}
+.es-form-btn{background:var(--amarillo);color:#2a2218;border:0;cursor:pointer;min-height:56px;box-shadow:0 12px 28px rgba(242,169,29,.35)}
+.es-form-btn:hover{background:#E09A10;color:#2a2218}
+.es-form-btn[disabled]{opacity:.7;cursor:wait}
+.es-form-ok{grid-column:1/-1;text-align:center;padding:12px 0}
+.es-form-ok p{margin:0 auto 20px;max-width:34em;color:var(--texto-suave)}
+.es-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+@media(max-width:860px){.es-form-wrap{grid-template-columns:1fr;gap:24px}}
+@media(max-width:600px){.es-form{grid-template-columns:1fr}}
 @media(max-width:600px){.es{padding:56px 16px}.es-card{padding:22px}.es-btn{width:100%}.es-book{padding:24px}}
 </style>
 
@@ -940,20 +972,60 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
       <div class="es-person"><img src="equipo-sara.webp" alt="Sara Altamirano Mauricci" width="96" height="96" loading="lazy"><p><b>Sara Altamirano Mauricci</b>Abogada de extranjería (ICAM nº 143312)</p></div>
       <div class="es-person"><img src="equipo-nora.webp" alt="Nora Núñez Zárate" width="96" height="96" loading="lazy"><p><b>Nora Núñez Zárate</b>Documentalista con experiencia en la Administración pública</p></div>
     </div>
-    <div class="es-book">
-      <div>
-        <h3>Cómo es la primera consulta</h3>
+    <div class="es-book es-form-wrap">
+      <div class="es-form-intro">
+        <h3>Cuéntanos tu caso</h3>
         <ul>
           <li>Revisamos tu situación y lo que quieres conseguir.</li>
           <li>Te decimos qué camino encaja contigo y qué plan te conviene, con su precio exacto.</li>
         </ul>
+        <p class="es-form-alt">¿Prefieres elegir hora ya? <a href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Reserva en el calendario</a> o escríbenos a <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a>.</p>
       </div>
-      <div class="es-book-cta">
-        <a class="es-btn es-btn--pri" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Reservar mi primera consulta gratuita</a>
-        <p>o escríbenos a <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a></p>
+      <form class="es-form" id="form-estudios" novalidate>
+        <input type="hidden" name="seccion" value="Estudios">
+        <input type="hidden" name="pagina" value="servicios-homologacion.html">
+        <div class="es-hp" aria-hidden="true"><label>Web <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+        <div class="es-f"><label for="f-nombre">Nombre y apellidos</label><input id="f-nombre" name="nombre" type="text" autocomplete="name" required></div>
+        <div class="es-f"><label for="f-email">Correo electrónico</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="es-f"><label for="f-wa">WhatsApp <small>con prefijo de país</small></label><input id="f-wa" name="whatsapp" type="tel" autocomplete="tel" placeholder="+51 999 999 999" pattern="[+0-9 ()-]{7,20}" required></div>
+        <div class="es-f"><label for="f-pais">País de origen</label><input id="f-pais" name="pais" type="text" list="paises" autocomplete="country-name" required>
+          <datalist id="paises"><option value="Argentina"><option value="Bolivia"><option value="Brasil"><option value="Chile"><option value="Colombia"><option value="Costa Rica"><option value="Cuba"><option value="Ecuador"><option value="El Salvador"><option value="Guatemala"><option value="Honduras"><option value="Marruecos"><option value="México"><option value="Nicaragua"><option value="Panamá"><option value="Paraguay"><option value="Perú"><option value="República Dominicana"><option value="Uruguay"><option value="Venezuela"></datalist></div>
+        <fieldset class="es-f es-f--full"><legend>¿Dónde estás ahora?</legend>
+          <label class="es-opt"><input type="radio" name="ubicacion" value="En mi país" required> En mi país</label>
+          <label class="es-opt"><input type="radio" name="ubicacion" value="Ya en España"> Ya en España</label>
+        </fieldset>
+        <div class="es-f"><label for="f-est">¿Qué quieres estudiar?</label><select id="f-est" name="estudios" required><option value="">Elige una opción</option><option>FP</option><option>Universidad</option><option>Máster o posgrado</option><option>Curso o formación propia</option><option>Aún no lo sé</option></select></div>
+        <div class="es-f"><label for="f-ini">¿Cuándo quieres empezar?</label><select id="f-ini" name="inicio" required><option value="">Elige una opción</option><option>Este curso</option><option>El próximo curso</option><option>Aún no lo sé</option></select></div>
+        <div class="es-f es-f--full"><label for="f-mot">Motivo de la consulta <small>opcional</small></label><textarea id="f-mot" name="motivo" rows="3" maxlength="1500"></textarea></div>
+        <label class="es-f--full es-check"><input type="checkbox" name="privacidad" value="Aceptada" required><span>He leído y acepto la <a href="politica-privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
+        <p class="es-f--full es-form-err" role="alert" hidden>Revisa los campos marcados.</p>
+        <button class="es-btn es-f--full es-form-btn" type="submit">Enviar mi consulta</button>
+      </form>
+      <div class="es-form-ok" role="status" hidden>
+        <h3>¡Gracias! Hemos recibido tu consulta</h3>
+        <p>Te escribimos por WhatsApp o por correo para darte cita. Si prefieres elegir hora ya, puedes reservarla ahora.</p>
+        <a class="es-btn es-form-btn" href="https://calendar.app.google/tJRVmEATMkENRVS39" target="_blank" rel="noopener">Elegir hora en el calendario</a>
       </div>
     </div>
   </div>
+<script>
+(function(){
+  var URL_FORM=''; /* URL /exec del Apps Script */
+  var f=document.getElementById('form-estudios');if(!f)return;
+  var wrap=f.closest('.es-form-wrap'),ok=wrap.querySelector('.es-form-ok'),err=f.querySelector('.es-form-err'),btn=f.querySelector('button[type=submit]');
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href="#primera-consulta"]');if(!a)return;var m=f.motivo,x=(a.getAttribute('aria-label')||'').replace(/^Consultar\s*/,'');
+    if(!x&&a.closest('.es-plan')){var h=a.closest('.es-plan').querySelector('h3');x=h?'Plan '+h.textContent.trim():''}
+    if(x&&!m.value)m.value='Me interesa: '+x+'. ';});
+  f.addEventListener('submit',function(e){e.preventDefault();
+    f.querySelectorAll('[aria-invalid]').forEach(function(el){el.removeAttribute('aria-invalid')});
+    if(!f.checkValidity()){f.querySelectorAll(':invalid').forEach(function(el){el.setAttribute('aria-invalid','true')});err.hidden=false;var first=f.querySelector(':invalid');first&&first.focus();return;}
+    err.hidden=true;btn.disabled=true;btn.textContent='Enviando…';
+    var done=function(){f.hidden=true;wrap.querySelector('.es-form-intro').hidden=true;ok.hidden=false;ok.focus&&ok.setAttribute('tabindex','-1');ok.focus();(window.dataLayer=window.dataLayer||[]).push({event:'estudios_formulario'});};
+    if(!URL_FORM){done();return;}
+    fetch(URL_FORM,{method:'POST',mode:'no-cors',body:new URLSearchParams(new FormData(f))}).then(done).catch(function(){btn.disabled=false;btn.textContent='Enviar mi consulta';err.textContent='No se ha podido enviar. Inténtalo de nuevo o escríbenos a info@gestionaseguro.com.';err.hidden=false;});
+  });
+})();
+</script>
 </section>
 
  <!-- ============ FOOTER COMUNIDAD ============ -->
