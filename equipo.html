@@ -440,36 +440,17 @@
     .hero-h-team p{max-width:none;}
   }
 </style>
-<header class="hero-h hero-h--int eq-hero">
-  <div class="hero-h-wrap">
-    <div class="hero-h-in">
-      <p class="hero-h-eyebrow"><i aria-hidden="true"></i>Quiénes somos</p>
-      <h1>Nuestro equipo: <span>personas de confianza que te explican cada paso</span></h1>
-      <div class="eq-hero-r">
-      <p class="hero-h-sub"><b>Sara y Nora fundaron Gestiona Seguro</b> y hoy el equipo crece con Bibiana. Cada una aporta su mirada para que tengas una ruta clara.</p>
-      <div class="hero-h-ctas">
-        <a href="#personas" class="hero-h-btn hero-h-btn--pri">Conócenos ↓</a>
-        <a href="https://wa.me/34746049191?text=Hola%2C%20vengo%20de%20gestionaseguroweb.com%20%28Equipo%29%20y%20quiero%20una%20primera%20consulta%20gratuita." target="_blank" rel="noopener" class="hero-h-btn hero-h-btn--sec">Primera consulta gratuita</a>
-      </div>
-      </div>
-    </div>
-  </div>
-</header>
 
 <!-- ============ EQUIPO · CONTENIDO ============ -->
 <style>
-  .hero-h--int h1{font-size:clamp(2.3rem,4vw,3.2rem);}
-  .hero-h h1 span{text-wrap:balance}
-  .eq-hero .hero-h-wrap{min-height:0}
-  .eq-hero .hero-h-in{max-width:none;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);column-gap:48px;align-items:end;padding:52px 56px 48px}
-  .eq-hero .hero-h-eyebrow{grid-column:1/-1;justify-self:start}
-  .eq-hero h1{margin-bottom:0}
-  .eq-hero .hero-h-sub{max-width:none}
-  .eq-hero .hero-h-ctas{margin-bottom:0}
-  @media (max-width:900px){.eq-hero .hero-h-in{grid-template-columns:1fr;padding:36px 22px 30px}.eq-hero h1{margin-bottom:18px}}
   .pe-sec{padding:40px 24px 36px;scroll-margin-top:80px}
   .pe-in{max-width:1120px;margin:0 auto}
   .pe-h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.75rem,3.4vw,2.5rem);line-height:1.15;color:var(--azul-principal);margin:0 0 10px;text-wrap:balance}
+  .eq-top{padding-top:132px;background:radial-gradient(1200px 420px at 85% 0%,#E8EEF7 0%,rgba(232,238,247,0) 60%)}
+  @media (max-width:768px){.pe-sec.eq-top{padding-top:104px}}
+  .eq-eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 12px;font-size:.8125rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--azul-principal)}
+  .eq-eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rojo-principal)}
+  .eq-h1{font-family:'Source Sans 3',system-ui,sans-serif;font-weight:800;font-size:clamp(2.3rem,4vw,3.2rem);line-height:1.05;letter-spacing:-.025em;color:var(--azul-principal);margin:0 0 12px}
   .eq-lead{font-size:1.1875rem;color:var(--texto-suave);max-width:40em;margin:0 0 28px}
   .eq-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
   .eq-card{display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:0;background:#fff;border:1px solid #ECE9E2;border-radius:22px;overflow:hidden;box-shadow:0 18px 40px rgba(3,47,94,.07)}
@@ -496,9 +477,10 @@
   @media (max-width:768px){.pe-sec{padding:32px 16px}.pe-cierre{padding:24px 20px}.pe-hablemos,.eq-tel,.pe-cierre-cta{width:100%}.eq-tel{justify-content:center}}
 </style>
 
-<section class="pe-sec" id="personas" aria-labelledby="eq-personas">
+<section class="pe-sec eq-top" id="personas" aria-labelledby="eq-personas">
   <div class="pe-in">
-    <h2 class="pe-h2" id="eq-personas">Las personas que te acompañan</h2>
+    <p class="eq-eyebrow">Quiénes somos</p>
+    <h1 class="eq-h1" id="eq-personas">Nuestro equipo</h1>
     <p class="eq-lead">Revisamos cada caso en equipo, cada una desde lo que mejor conoce.</p>
     <ul class="eq-grid">
       <li class="eq-card">
