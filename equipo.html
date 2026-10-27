@@ -443,7 +443,7 @@
 <header class="hero-h hero-h--int eq-hero">
   <div class="hero-h-wrap">
     <div class="hero-h-in">
-      <p class="hero-h-eyebrow"><i aria-hidden="true"></i>Nuestro equipo</p>
+      <p class="hero-h-eyebrow"><i aria-hidden="true"></i>Quiénes somos</p>
       <h1>Nuestro equipo: <span>personas de confianza que te explican cada paso</span></h1>
       <div class="eq-hero-r">
       <p class="hero-h-sub"><b>Sara y Nora fundaron Gestiona Seguro</b> y hoy el equipo crece con Bibiana. Cada una aporta su mirada para que tengas una ruta clara.</p>
@@ -471,14 +471,16 @@
   .pe-in{max-width:1120px;margin:0 auto}
   .pe-h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.75rem,3.4vw,2.5rem);line-height:1.15;color:var(--azul-principal);margin:0 0 10px;text-wrap:balance}
   .eq-lead{font-size:1.1875rem;color:var(--texto-suave);max-width:40em;margin:0 0 28px}
-  .eq-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;list-style:none;margin:0;padding:0}
-  .eq-card{background:#fff;border:1px solid #ECE9E2;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 14px 34px rgba(3,47,94,.06)}
-  .eq-card img{width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;display:block}
-  .eq-body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px}
-  .eq-tag{align-self:flex-start;font-size:.8125rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--azul-secundario);background:var(--azul-light);padding:5px 12px;border-radius:50px}
-  .eq-card h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem;line-height:1.15;color:var(--azul-principal);margin:0}
-  .eq-role{font-weight:800;color:var(--rojo-principal);font-size:1rem;margin:0}
-  .eq-body p{margin:0;color:var(--texto-suave);font-size:1.0625rem;line-height:1.55}
+  .eq-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
+  .eq-card{display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:0;background:#fff;border:1px solid #ECE9E2;border-radius:22px;overflow:hidden;box-shadow:0 18px 40px rgba(3,47,94,.07)}
+  .eq-card img{width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;object-position:center 30%;display:block}
+  .eq-head{padding:24px 28px 18px}
+  .eq-tag{display:block;font-size:.8125rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--rojo-principal);margin:0 0 10px}
+  .eq-card h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.625rem;line-height:1.15;color:var(--azul-principal);margin:0 0 6px;text-wrap:balance}
+  .eq-role{margin:0;font-size:.9375rem;font-weight:600;line-height:1.45;color:var(--azul-secundario)}
+  .eq-bio{position:relative;padding:20px 28px 28px;display:flex;flex-direction:column;gap:10px}
+  .eq-bio::before{content:"";position:absolute;top:0;left:28px;width:40px;height:3px;border-radius:3px;background:var(--amarillo)}
+  .eq-bio p{margin:0;color:var(--texto-suave);font-size:1rem;line-height:1.65}
   .eq-pend{border:2px dashed var(--amarillo);background:#FEF4DF;color:#6b4500 !important;border-radius:12px;padding:10px 12px;font-size:.9375rem !important}
   .pe-cierre{display:flex;flex-wrap:wrap;align-items:center;gap:24px;justify-content:space-between;background:var(--azul-light);border-radius:22px;padding:30px 34px}
   .pe-cierre h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem;color:var(--azul-principal);margin:0 0 6px}
@@ -499,20 +501,24 @@
     <ul class="eq-grid">
       <li class="eq-card">
         <img src="equipo-rostro-sara.webp" width="600" height="600" loading="lazy" alt="Sara Altamirano Mauricci">
-        <div class="eq-body">
-          <span class="eq-tag">Cofundadora · Extranjería</span>
+        <div class="eq-head">
+          <p class="eq-tag">Cofundadora · Extranjería</p>
           <h3>Sara Altamirano Mauricci</h3>
           <p class="eq-role">Abogada de extranjería (ICAM nº 143312)</p>
+        </div>
+        <div class="eq-bio">
           <p>Especialista en derecho migratorio. Ancla cada información en la norma y el BOE para que sepas exactamente dónde pisas.</p>
           <p>Abogada laboralista defensora de los derechos de los trabajadores migrantes en España. Mediadora judicial civil, familiar y mercantil.</p>
         </div>
       </li>
       <li class="eq-card">
         <img src="equipo-rostro-nora.webp" width="600" height="600" loading="lazy" alt="Nora Núñez Zárate">
-        <div class="eq-body">
-          <span class="eq-tag">Cofundadora · Administración</span>
+        <div class="eq-head">
+          <p class="eq-tag">Cofundadora · Administración</p>
           <h3>Nora Núñez Zárate</h3>
           <p class="eq-role">Documentalista con experiencia en la Administración pública</p>
+        </div>
+        <div class="eq-bio">
           <p>Licenciada en Ciencias de la Documentación (UC3M). 30 años viviendo en España y trabajando en la Administración pública desde 2007.</p>
           <p>Asesora y evaluadora PEAC habilitada por la Comunidad de Madrid.</p>
           <p>Traduce la burocracia a pasos claros y te acompaña en cada trámite, desde tu país o ya en España.</p>
@@ -520,10 +526,12 @@
       </li>
       <li class="eq-card">
         <img src="equipo-rostro-bibiana.webp" width="600" height="600" loading="lazy" alt="Bibiana Andrea Cruz Peralta">
-        <div class="eq-body">
-          <span class="eq-tag">Equipo · Dirección comercial</span>
+        <div class="eq-head">
+          <p class="eq-tag">Equipo · Dirección comercial</p>
           <h3>Bibiana Andrea Cruz Peralta</h3>
           <p class="eq-role">Directora comercial España</p>
+        </div>
+        <div class="eq-bio">
           <p class="eq-pend">Pendiente: 2 frases sobre qué hace Bibiana por la clienta y qué aporta.</p>
         </div>
       </li>
