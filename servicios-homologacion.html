@@ -1030,7 +1030,8 @@ fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;colo
     var done=function(){f.hidden=true;wrap.querySelector('.es-form-intro').hidden=true;ok.hidden=false;ok.focus&&ok.setAttribute('tabindex','-1');ok.focus();(window.dataLayer=window.dataLayer||[]).push({event:'estudios_formulario'});};
     var fallo=function(){btn.disabled=false;btn.innerHTML='Enviar mi consulta';err.innerHTML='No se ha podido enviar. Inténtalo de nuevo o escríbenos por <a href="'+waUrl+'" target="_blank" rel="noopener">WhatsApp</a> o a <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a>.';err.hidden=false;};
     btn.disabled=true;btn.textContent='Enviando…';
-    fetch(URL_FORM,{method:'POST',mode:'no-cors',body:new URLSearchParams(d)}).then(done).catch(fallo);
+    var aWa=function(){f.hidden=true;wrap.querySelector('.es-form-intro').hidden=true;ok.querySelector('h3').textContent='Último paso: envíanos tu consulta por WhatsApp';ok.querySelector('p').textContent='Pulsa el botón y se abrirá WhatsApp con tu consulta ya escrita. Te responderemos con la fecha y la hora de tu consulta gratuita.';var w=ok.querySelector('.es-form-wa');w.className='es-btn es-form-btn es-form-wa';w.textContent='Enviar mi consulta por WhatsApp';ok.hidden=false;(window.dataLayer=window.dataLayer||[]).push({event:'estudios_formulario_wa'});};
+    fetch(URL_FORM,{method:'POST',body:new URLSearchParams(d)}).then(function(r){return r.text()}).then(function(x){if(String(x).trim()==='ok'){done()}else{aWa()}}).catch(aWa);
   });
 })();
 </script>
