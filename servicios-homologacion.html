@@ -412,7 +412,7 @@
   .hero-h-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azul-principal);background:var(--azul-light);padding:8px 15px;border-radius:50px;margin:0 0 22px;}
   .hero-h-eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--rojo-principal);box-shadow:0 0 0 4px rgba(195,18,44,.15);}
   .hero-h h1{font-family:'Source Sans 3',system-ui,sans-serif;font-size:clamp(2.7rem,5.2vw,4.25rem);font-weight:800;line-height:.98;letter-spacing:-.025em;color:var(--azul-principal);margin:0 0 20px;}
-  .hero-h h1 span{display:block;font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:0;font-size:.8em;line-height:1.08;margin-top:8px;color:var(--rojo-principal);}
+  .hero-h h1 span{display:block;font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:0;font-size:.8em;line-height:1.08;margin-top:8px;color:var(--rojo-principal);text-wrap:balance;}
   .hero-h-sub{font-size:1.1875rem;color:var(--texto-suave);line-height:1.55;margin:0 0 30px;max-width:25em;}
   .hero-h-sub b{color:var(--azul-principal);font-weight:700;}
   .hero-h-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px;}
@@ -518,7 +518,7 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 .es--dark p a:not(.es-btn){color:#595959}
 .es-back{display:inline-block;margin-top:28px;font-size:.9375rem;font-weight:600;color:#595959;text-decoration:none}
 .es-case-k{margin:0 0 4px;font-size:.875rem;font-weight:800;color:var(--azul-secundario)}
-.es-case h3,.es-plan h3,.es-goal h3{margin:0 0 12px;font-size:1.3125rem}
+.es-case h3,.es-plan h3,.es-goal h3{margin:0 0 12px;font-size:1.3125rem}.es-case h3,.es-goal h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.5rem;line-height:1.2}
 .es-case p,.es-goal p{font-size:1.0625rem;margin:0 0 12px}
 .es--sep{border-top:1px solid #ECE9E2}
 .es-fam-note{font-size:.9375rem;color:#595959;margin:0 0 32px;max-width:640px}
@@ -581,7 +581,7 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 .es-person p b{display:block;font-size:1.1875rem;color:#fff}
 .es-book{background:#fff;color:var(--texto-principal);border-radius:20px;padding:32px;display:flex;flex-wrap:wrap;gap:32px;align-items:center}
 .es-book>div:first-child{flex:1 1 420px;min-width:0}
-.es-book h3{margin:0 0 14px;font-size:1.375rem}
+.es-book h3{margin:0 0 14px;font-family:'DM Serif Display',serif;font-weight:400;font-size:1.5rem}
 .es-book ul{margin:0;padding-left:20px;font-size:1.0625rem}
 .es-book-cta{flex:0 1 320px;display:flex;flex-direction:column;gap:10px}
 .es-book-cta .es-btn{min-height:56px;font-size:1.0625rem;background:var(--amarillo);color:#2a2218;box-shadow:0 12px 28px rgba(242,169,29,.35)}.es-book-cta .es-btn:hover{background:#E09A10;color:#2a2218;transform:translateY(-2px)}
@@ -612,12 +612,12 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
         <small>RUTA 3</small>
         <strong>Tengo un título extranjero</strong>
         <span>Quiero usarlo para trabajar o seguir estudiando.</span>
-        <span class="es-go">Homologar o convalidar →</span>
+        <span class="es-go">Ver mi caso →</span>
       </a>
       <div class="es-card es-route es-route--4">
         <small>RUTA 4 · Acreditar experiencia</small>
         <strong>Tengo experiencia profesional y quiero acreditarla</strong>
-        <span>El PEAC permite acreditar oficialmente competencias de tu experiencia laboral o formación no formal. Consúltanos y vemos si puedes acceder.</span>
+        <span>Acredita oficialmente las competencias de tu experiencia laboral.</span>
         <span class="es-links">
           <a class="es-go" href="servicio-peac.html">Ver el servicio PEAC →</a>
         </span>
@@ -665,42 +665,9 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
   </div>
 </section>
 
-<!-- BLOQUE 4 · RUTA 2 -->
-<section class="es" id="ya-vivo-en-espana" aria-labelledby="es-r2">
-  <div class="es-in">
-    <span class="es-tag">Ruta 2 · Ya en España</span>
-    <h2 id="es-r2">Estudiar en España si ya vives aquí</h2>
-    <p class="es-sub">Lo que puedes hacer depende de tu situación. Elige la tuya.</p>
-    <div class="es-grid">
-      <div class="es-card es-case">
-        <p class="es-case-k">CASO A</p>
-        <h3>Tengo permiso de residencia</h3>
-        <p>Puedes acceder a la FP o a la universidad. Si tus estudios previos son de otro país, normalmente necesitarás homologarlos o una credencial de acceso.</p>
-        <p class="es-links" style="margin-top:16px"><a class="es-go" href="acceso-universidad-bachillerato-extranjero.html">Cómo acceder a la universidad →</a><a class="es-go" href="#titulo-extranjero">Homologar tu título →</a></p>
-      </div>
-      <div class="es-card es-case">
-        <p class="es-case-k">CASO B</p>
-        <h3>Estoy como turista o sin autorización</h3>
-        <p>En algunos casos se puede pedir la estancia por estudios sin salir de España, y en otros no. Antes de matricularte o pagar un curso, revisamos tu caso.</p>
-        <p style="margin-top:16px"><a class="es-go" href="#primera-consulta">Revisar mi caso en la consulta →</a></p>
-      </div>
-      <div class="es-card es-case">
-        <p class="es-case-k">CASO C</p>
-        <h3>Ya tengo estancia por estudios</h3>
-        <p>Si quieres seguir estudiando, puede prorrogarse. Si quieres pasar a trabajar, existe la modificación a residencia y trabajo. Cada opción tiene sus plazos y requisitos.</p>
-        <p style="margin-top:16px"><a class="es-go" href="extranjeria.html">Ver renovaciones y cambios de permiso →</a></p>
-      </div>
-    </div>
-    <div class="es-ctas">
-      <a class="es-btn es-btn--pri" href="#primera-consulta">Revisar mi caso en la primera consulta</a>
-      <a class="es-btn es-btn--sec" href="#programas-y-planes">Ver programas y planes →</a>
-    </div>
-    <a class="es-back" href="#rutas">↑ Volver a las rutas</a>
-  </div>
-</section>
 
 <!-- BLOQUE 5a · CATÁLOGO DE FORMACIÓN -->
-<section class="es es--w" id="programas-y-planes" aria-labelledby="es-pp">
+<section class="es" id="programas-y-planes" aria-labelledby="es-pp">
   <div class="es-in">
     <span class="es-tag es-tag--r">Para quien viene a estudiar o ya vive en España · Rutas 1 y 2</span>
     <h2 id="es-pp">Encuentra una formación para tu futuro</h2>
@@ -829,8 +796,32 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
   </div>
 </section>
 
+
+
+
+<!-- BLOQUE 7 · FORMACIÓN OFICIAL Y PROPIA -->
+<section class="es es--w" id="formacion-oficial-y-propia" aria-labelledby="es-fo">
+  <div class="es-in">
+    <span class="es-tag">Para todas las rutas</span>
+    <h2 id="es-fo">Formación oficial y formación propia: en qué se diferencian</h2>
+    <p class="es-sub">Antes de matricularte, comprueba qué título vas a obtener.</p>
+    <div class="es-table" tabindex="0" role="region" aria-label="Comparativa de formación oficial y propia">
+      <table>
+        <thead><tr><th scope="col"><span class="es-vh">Aspecto</span></th><th scope="col">Oficial</th><th scope="col">Propia</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Ejemplos</th><td>ESO, Bachillerato, FP de Grado Medio y Superior, Grado, Máster oficial, Doctorado, certificados de profesionalidad</td><td>Títulos propios de universidades y centros privados, cursos no reglados</td></tr>
+          <tr><th scope="row">Validez</th><td>En todo el Estado</td><td>Certifica la formación, pero no es un título oficial por sí solo</td></tr>
+          <tr><th scope="row">Para trabajar</th><td>Necesaria en profesiones que exigen título oficial</td><td>Suma competencias. Según tu caso, podrían acreditarse por el PEAC: consúltanos</td></tr>
+          <tr><th scope="row">Estancia por estudios</th><td>Puede servir, si cumple los requisitos del trámite</td><td>Puede servir según la formación, el centro, la modalidad y la carga lectiva</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin:18px 0 0">Si tienes dudas, <a href="#primera-consulta">revisamos el programa contigo en la consulta</a>.</p>
+  </div>
+</section>
+
 <!-- BLOQUE 5b · PLANES DE ACOMPAÑAMIENTO -->
-<section class="es es--w es--sep" id="planes" aria-labelledby="es-planes">
+<section class="es" id="planes" aria-labelledby="es-planes">
   <div class="es-in">
     <h2 id="es-planes">Planes de acompañamiento</h2>
     <p class="es-sub">Primero revisamos el programa y tu situación; después te explicamos qué acompañamiento necesitas.</p>
@@ -882,6 +873,40 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 })();
 </script>
 
+<!-- BLOQUE 4 · RUTA 2 -->
+<section class="es es--w" id="ya-vivo-en-espana" aria-labelledby="es-r2">
+  <div class="es-in">
+    <span class="es-tag">Ruta 2 · Ya en España</span>
+    <h2 id="es-r2">Estudiar en España si ya vives aquí</h2>
+    <p class="es-sub">Lo que puedes hacer depende de tu situación. Elige la tuya.</p>
+    <div class="es-grid">
+      <div class="es-card es-case">
+        <p class="es-case-k">CASO A</p>
+        <h3>Tengo permiso de residencia</h3>
+        <p>Puedes acceder a la FP o a la universidad. Si tus estudios previos son de otro país, normalmente necesitarás homologarlos o una credencial de acceso.</p>
+        <p class="es-links" style="margin-top:16px"><a class="es-go" href="acceso-universidad-bachillerato-extranjero.html">Cómo acceder a la universidad →</a><a class="es-go" href="#titulo-extranjero">Homologar tu título →</a></p>
+      </div>
+      <div class="es-card es-case">
+        <p class="es-case-k">CASO B</p>
+        <h3>Estoy como turista o sin autorización</h3>
+        <p>En algunos casos se puede pedir la estancia por estudios sin salir de España, y en otros no. Antes de matricularte o pagar un curso, revisamos tu caso.</p>
+        <p style="margin-top:16px"><a class="es-go" href="#primera-consulta">Revisar mi caso en la consulta →</a></p>
+      </div>
+      <div class="es-card es-case">
+        <p class="es-case-k">CASO C</p>
+        <h3>Ya tengo estancia por estudios</h3>
+        <p>Si quieres seguir estudiando, puede prorrogarse. Si quieres pasar a trabajar, existe la modificación a residencia y trabajo. Cada opción tiene sus plazos y requisitos.</p>
+        <p style="margin-top:16px"><a class="es-go" href="extranjeria.html">Ver renovaciones y cambios de permiso →</a></p>
+      </div>
+    </div>
+    <div class="es-ctas">
+      <a class="es-btn es-btn--pri" href="#primera-consulta">Revisar mi caso en la primera consulta</a>
+      <a class="es-btn es-btn--sec" href="#programas-y-planes">Ver programas y planes →</a>
+    </div>
+    <a class="es-back" href="#rutas">↑ Volver a las rutas</a>
+  </div>
+</section>
+
 <!-- BLOQUE 6 · RUTA 3 -->
 <section class="es" id="titulo-extranjero" aria-labelledby="es-r3">
   <div class="es-in">
@@ -901,27 +926,6 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
     </div>
     <div class="es-ctas"><a class="es-btn es-btn--pri" href="#primera-consulta">Revisar mi título en la primera consulta</a></div>
     <a class="es-back" href="#rutas">↑ Volver a las rutas</a>
-  </div>
-</section>
-
-<!-- BLOQUE 7 · FORMACIÓN OFICIAL Y PROPIA -->
-<section class="es es--w" id="formacion-oficial-y-propia" aria-labelledby="es-fo">
-  <div class="es-in">
-    <span class="es-tag">Para todas las rutas</span>
-    <h2 id="es-fo">Formación oficial y formación propia: en qué se diferencian</h2>
-    <p class="es-sub">Antes de matricularte, comprueba qué título vas a obtener.</p>
-    <div class="es-table" tabindex="0" role="region" aria-label="Comparativa de formación oficial y propia">
-      <table>
-        <thead><tr><th scope="col"><span class="es-vh">Aspecto</span></th><th scope="col">Oficial</th><th scope="col">Propia</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Ejemplos</th><td>ESO, Bachillerato, FP de Grado Medio y Superior, Grado, Máster oficial, Doctorado, certificados de profesionalidad</td><td>Títulos propios de universidades y centros privados, cursos no reglados</td></tr>
-          <tr><th scope="row">Validez</th><td>En todo el Estado</td><td>Certifica la formación, pero no es un título oficial por sí solo</td></tr>
-          <tr><th scope="row">Para trabajar</th><td>Necesaria en profesiones que exigen título oficial</td><td>Suma competencias. Según tu caso, podrían acreditarse por el PEAC: consúltanos</td></tr>
-          <tr><th scope="row">Estancia por estudios</th><td>Puede servir, si cumple los requisitos del trámite</td><td>Puede servir según la formación, el centro, la modalidad y la carga lectiva</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="margin:18px 0 0">Si tienes dudas, <a href="#primera-consulta">revisamos el programa contigo en la consulta</a>.</p>
   </div>
 </section>
 
