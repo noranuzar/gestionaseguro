@@ -611,6 +611,8 @@ fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;colo
 .es-check{display:flex;gap:10px;align-items:flex-start;font-size:.9375rem;color:var(--texto-suave);line-height:1.45}
 .es-check input{width:20px;height:20px;margin-top:1px;flex-shrink:0;accent-color:var(--azul-secundario)}
 .es-check a{color:var(--azul-secundario);font-weight:700}
+.es-form-capa{margin:0;font-size:.8125rem;line-height:1.5;color:var(--texto-suave)}
+.es-form-capa a{color:var(--azul-secundario);font-weight:700}
 .es-form-err{margin:0;color:var(--rojo-principal);font-weight:700;font-size:.9375rem}
 .es-form-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--amarillo);color:#2a2218;border:0;cursor:pointer;min-height:56px;box-shadow:0 12px 28px rgba(242,169,29,.35)}
 .es-form-btn:hover{background:#E09A10;color:#2a2218}
@@ -1001,6 +1003,7 @@ fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;colo
         <div class="es-f"><label for="f-ini">¿Cuándo quieres empezar?</label><select id="f-ini" name="inicio" required><option value="">Elige una opción</option><option>Este curso</option><option>El próximo curso</option><option>Aún no lo sé</option></select></div>
         <div class="es-f es-f--full"><label for="f-mot">Motivo de la consulta <small>opcional</small></label><textarea id="f-mot" name="motivo" rows="3" maxlength="1500"></textarea></div>
         <label class="es-f--full es-check"><input type="checkbox" name="privacidad" value="Aceptada" required><span>He leído y acepto la <a href="politica-privacidad.html" target="_blank" rel="noopener">política de privacidad</a>. Usamos tus datos solo para responder a tu consulta.</span></label>
+        <p class="es-f--full es-form-capa"><b>Protección de datos.</b> Responsable: Sara Altamirano Mauricci (Gestiona Seguro). Finalidad: responder a tu consulta y darte cita. Puedes ejercer tus derechos de acceso, rectificación, supresión y demás escribiendo a info@gestionaseguro.com. Más información en la <a href="politica-privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</p>
         <p class="es-f--full es-form-err" role="alert" hidden>Revisa los campos marcados.</p>
         <button class="es-btn es-f--full es-form-btn" type="submit">Enviar mi consulta</button>
       </form>
@@ -1061,7 +1064,7 @@ fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;colo
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 Gestiona Seguro. Información orientativa. No sustituye asesoría legal individual.</p>
+      <p>&copy; 2026 Gestiona Seguro. Información orientativa. No sustituye asesoría legal individual. · <a href="politica-privacidad.html" style="color:inherit;text-decoration:underline">Política de privacidad</a></p>
     </div>
   </div>
 </footer>
