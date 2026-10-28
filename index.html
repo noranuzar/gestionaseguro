@@ -886,18 +886,37 @@
   .gc-link{font-weight:800;font-size:.9375rem;color:#054782;text-decoration:none;}
   .gc-link:hover{text-decoration:underline;}
   .gc-hide{display:none;}
-  @media(max-width:560px){.gc{padding:28px 22px 26px;border-radius:18px;}.gc-overlay{padding:16px 10px;}}
+  .gc-opt .gc-ic.gc-n{font-family:'DM Serif Display',serif;font-size:1.5rem;}
+  .gc-areas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;}
+  .gc-area{box-sizing:border-box;min-height:64px;display:flex;align-items:center;background:#fff;border:1.5px solid #ECE9E2;border-radius:15px;padding:12px 16px;font-size:1rem;font-weight:700;line-height:1.25;color:#032F5E;text-decoration:none;transition:border-color .15s,transform .15s,box-shadow .15s;}
+  .gc-area:hover{border-color:#054782;transform:translateY(-2px);box-shadow:0 10px 24px rgba(3,47,94,.08);}
+  .gc-area.gc-wide{grid-column:1/-1;min-height:56px;background:#E8EEF7;border-color:#E8EEF7;}
+  .gc-ph{font-family:'DM Serif Display',serif;color:#032F5E;font-size:clamp(1.25rem,2.6vw,1.5rem);line-height:1.3;margin:0 0 18px;padding-right:30px;}
+  .gc-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  .gc-card{background:#F6F8FB;border:1.5px solid #ECE9E2;border-radius:14px;padding:12px 14px;}
+  .gc-card b{display:block;font-size:.9375rem;color:#032F5E;font-weight:700;line-height:1.2;margin-bottom:3px;}
+  .gc-card span{font-size:.9rem;line-height:1.35;color:#5e5649;}
+  .gc-note{margin:10px 0 0;font-size:.9375rem;color:#5e5649;}
+  .gc-strip{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;}
+  .gc-strip li{box-sizing:border-box;background:#E8EEF7;color:#032F5E;border-radius:12px;padding:8px 6px 10px;text-align:center;display:flex;flex-direction:column;gap:3px;}
+  .gc-strip small{font-size:.68rem;font-weight:800;color:#5e5649;}
+  .gc-strip b{font-size:.8rem;line-height:1.2;font-weight:700;}
+  .gc-strip em{font-style:normal;font-size:.72rem;color:#5e5649;}
+  .gc-strip li.gc-here{background:#032F5E;color:#fff;}
+  .gc-here small{text-transform:uppercase;letter-spacing:.05em;color:#F2A91D;}
+  .gc-here em{color:#dbe6f5;}
+  @media(max-width:560px){.gc{padding:28px 22px 26px;border-radius:18px;}.gc-overlay{padding:16px 10px;}.gc-strip{grid-template-columns:1fr;gap:5px;}.gc-strip li{flex-direction:row;align-items:center;gap:10px;text-align:left;padding:8px 12px;}.gc-strip small{min-width:62px;}.gc-strip em{margin-left:auto;}.gc-cards{grid-template-columns:1fr;}}
 </style>
 <div class="gc-overlay" id="gcOverlay" onclick="gcBackdrop(event)">
   <div class="gc" role="dialog" aria-modal="true" aria-label="Construye tu proyecto">
     <button class="gc-close" onclick="gcClose()" aria-label="Cerrar">✕</button>
     <span class="gc-eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.6 8.4-2 5.2-5.2 2 2-5.2 5.2-2Z"/></svg>Vamos a construir tu proyecto</span>
-    <div class="gc-prog"><i id="gcBar" style="width:50%"></i></div>
+    <div class="gc-prog" id="gcProg"><i id="gcBar" style="width:50%"></i></div>
 
     <div id="gcS1">
       <h3 class="gc-q">¿Qué quieres hacer en España?</h3>
       <div class="gc-opts">
-        <button class="gc-opt gc-foco" onclick="gcResult('estudios')">
+        <button class="gc-opt gc-foco" onclick="gcStep('gcE2')">
           <span class="gc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 11.8V17c0 1.1 2.7 2.4 6 2.4s6-1.3 6-2.4v-5.2"/><path d="M22 10v4.3"/></svg></span>
           <span class="gc-tx"><b>Estudiar</b><span>Universidad, FP, máster o idiomas</span></span>
           <span class="gc-star">★ Nuestro foco</span>
@@ -915,6 +934,50 @@
           <span class="gc-tx"><b>Ya estoy en España</b><span>Recién llegado/a o con residencia que dar continuidad</span></span>
         </button>
       </div>
+    </div>
+
+    <div id="gcE2" class="gc-hide">
+      <h3 class="gc-q">¿En qué etapa te encuentras?</h3>
+      <div class="gc-opts">
+        <button class="gc-opt" onclick="gcStage('explorando')"><span class="gc-ic gc-n" aria-hidden="true">1</span><span class="gc-tx"><b>Estoy explorando opciones de estudio</b><span>Aún no sé qué estudiar ni dónde.</span></span></button>
+        <button class="gc-opt" onclick="gcStage('buscando')"><span class="gc-ic gc-n" aria-hidden="true">2</span><span class="gc-tx"><b>Estoy buscando un centro</b><span>Sé qué quiero estudiar, pero aún no tengo plaza.</span></span></button>
+        <button class="gc-opt" onclick="gcStage('plaza')"><span class="gc-ic gc-n" aria-hidden="true">3</span><span class="gc-tx"><b>Ya tengo plaza</b><span>Me han admitido o he reservado mi plaza.</span></span></button>
+      </div>
+      <button class="gc-back" onclick="gcStep('gcS1')">← Volver</button>
+    </div>
+
+    <div id="gcEA" class="gc-hide">
+      <h3 class="gc-q">¿Qué área te interesa?</h3>
+      <div class="gc-areas">
+        <a class="gc-area" href="servicios-homologacion.html#p-estetica">Estética y barbería</a>
+        <a class="gc-area" href="servicios-homologacion.html#p-empresa">Empresa, marketing y comercio</a>
+        <a class="gc-area" href="servicios-homologacion.html#p-hosteleria">Hostelería y turismo</a>
+        <a class="gc-area" href="servicios-homologacion.html#p-tecnologia">Tecnología, construcción y docencia</a>
+        <a class="gc-area" href="servicios-homologacion.html#p-salud">Salud, cuidados y deporte</a>
+        <a class="gc-area" href="servicios-homologacion.html#p-expertos">Expertos universitarios</a>
+        <a class="gc-area gc-wide" href="servicios-homologacion.html#programas-y-planes">Aún no lo sé</a>
+      </div>
+      <button class="gc-back" onclick="gcStep('gcE2')">← Volver</button>
+    </div>
+
+    <div id="gcEW" class="gc-hide">
+      <h3 class="gc-q">¿Dónde estás ahora?</h3>
+      <div class="gc-opts">
+        <button class="gc-opt" onclick="gcEst('pais')"><span class="gc-tx"><b>Sigo en mi país</b><span>Voy a viajar a España en breve.</span></span></button>
+        <button class="gc-opt" onclick="gcEst('espana')"><span class="gc-tx"><b>Ya estoy en España</b><span>Ya he llegado o llevo un tiempo aquí.</span></span></button>
+      </div>
+      <button class="gc-back" onclick="gcStep('gcE2')">← Volver</button>
+    </div>
+
+    <div id="gcEst" class="gc-hide">
+      <p class="gc-ph" id="gcEph"></p>
+      <div id="gcEcards" style="margin:0 0 22px;"></div>
+      <ol class="gc-strip" id="gcEstrip" aria-label="Tu recorrido"></ol>
+      <div class="gc-cta" style="margin-top:0;">
+        <a id="gcEgo" href="#" class="gc-g"></a>
+        <a href="servicios-homologacion.html#primera-consulta" class="gc-link">Hablar con nosotras</a>
+      </div>
+      <button class="gc-back" id="gcEback" onclick="gcStep('gcE2')">← Volver</button>
     </div>
 
     <div id="gcRes" class="gc-hide">
@@ -967,13 +1030,31 @@
     yaaqui:{title:'Ya en España: dale continuidad a tu estancia',budget:false,piden:['Si acabas de llegar, hay un plazo corto para formalizar tu estancia por estudios — conviene no dejarlo pasar','Si ya resides: renovación, larga duración, arraigo o nacionalidad, según tu caso','Empadronamiento y la documentación que corresponda a tu situación'],note:'Cada situación tiene sus plazos; definimos tu siguiente paso en la consulta.',link:'extranjeria.html',linkLabel:'Ver extranjería →'}
   };
   function id(x){return document.getElementById(x);}
-  function show(which){['gcS1','gcRes'].forEach(function(x){id(x).classList.add('gc-hide');});id(which).classList.remove('gc-hide');}
+  var EST={
+    buscando:{ph:'Comprueba que tu centro sirve para la residencia por estudios, antes de matricularte.',cards:[['Centros oficiales','Títulos válidos en todo el país.'],['Centros no oficiales','Formación propia del centro.']],note:'Te ayudamos a comprobarlo.',here:['centro'],go:'Comprobar si mi centro sirve →',href:'servicios-homologacion.html#formacion-oficial-y-propia',back:'gcE2'},
+    pais:{ph:'El visado se pide en persona en el consulado español de tu zona. Al llegar a España tienes un mes para pedir la TIE.',here:['visado'],go:'Ver los pasos desde mi país →',href:'servicios-homologacion.html#venir-a-estudiar',back:'gcEW'},
+    espana:{ph:'Si ya tienes autorización de estudios, la prórroga se pide en los 60 días anteriores a que caduque. La TIE, en el mes siguiente a la notificación. Si entraste como turista, cuéntanos tu caso antes de pedir nada.',here:['llegada','prorroga'],go:'Ver mi situación en España →',href:'servicios-homologacion.html#ya-vivo-en-espana',back:'gcEW'}
+  };
+  var PH=[['estudios','Elegir estudios',''],['centro','Elegir centro',''],['visado','Visado',''],['llegada','Llegada y TIE','1 mes'],['prorroga','Prórroga','60 días antes']];
+  function show(which){['gcS1','gcRes','gcE2','gcEA','gcEW','gcEst'].forEach(function(x){id(x).classList.add('gc-hide');});id(which).classList.remove('gc-hide');var e=which.indexOf('gcE')===0;id('gcProg').style.display=e?'none':'';id(which).style.marginTop=e?'24px':'';}
   function bar(w){id('gcBar').style.width=w+'%';}
   window.gcOpen=function(){id('gcOverlay').classList.add('gc-show');document.body.style.overflow='hidden';gcStep1();};
   window.gcClose=function(){id('gcOverlay').classList.remove('gc-show');document.body.style.overflow='';};
   window.gcBackdrop=function(e){if(e.target===id('gcOverlay'))gcClose();};
   document.addEventListener('keydown',function(e){if(e.key==='Escape')gcClose();});
   window.gcStep1=function(){show('gcS1');bar(50);};
+  window.gcStep=function(w){show(w);};
+  window.gcStage=function(k){if(k==='explorando')show('gcEA');else if(k==='plaza')show('gcEW');else gcEst('buscando');};
+  window.gcEst=function(k){
+    var d=EST[k];show('gcEst');
+    id('gcEph').textContent=d.ph;
+    var c=id('gcEcards');
+    c.innerHTML=d.cards?'<div class="gc-cards">'+d.cards.map(function(x){return '<div class="gc-card"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('')+'</div><p class="gc-note">'+d.note+'</p>':'';
+    c.style.display=d.cards?'block':'none';
+    id('gcEstrip').innerHTML=PH.map(function(f,i){var h=d.here.indexOf(f[0])>-1;return '<li'+(h?' class="gc-here" aria-current="step"':'')+'><small>'+(h?'Estás aquí':(i+1))+'</small><b>'+f[1]+'</b><em>'+f[2]+'</em></li>';}).join('');
+    var g=id('gcEgo');g.href=d.href;g.textContent=d.go;
+    id('gcEback').setAttribute('onclick',"gcStep('"+d.back+"')");
+  };
   window.gcResult=function(key){
     var d=DATA[key];show('gcRes');bar(100);
     id('gcIc').innerHTML=IC[key];id('gcTitle').textContent=d.title;

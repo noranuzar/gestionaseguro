@@ -907,6 +907,8 @@ fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;colo
       }
     });
   });
+  var k=panels.map(function(p){return p.id;}).indexOf(location.hash.slice(1));
+  if(k>-1)btns[k].click();
 })();
 </script>
 
