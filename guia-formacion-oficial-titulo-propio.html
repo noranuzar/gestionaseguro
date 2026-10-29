@@ -588,11 +588,6 @@
   .fg-check b{display:block;font-size:1.0625rem;color:var(--azul-principal);margin:0 0 2px}
   .fg-check p{margin:0;font-size:1rem;line-height:1.5;color:#4a4f55}
   .fg-pend{margin:0;border:2px dashed #E09A10;background:#FEF4DF;color:#6b4500;border-radius:16px;padding:20px 22px;font-size:1rem}
-  /* Puente PEAC */
-  .fg-puente{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;background:#fff;border:1px solid #ECE9E2;border-left:6px solid var(--amarillo);border-radius:18px;padding:24px 26px}
-  .fg-puente h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;color:var(--azul-principal);margin:0 0 4px}
-  .fg-puente p{margin:0;color:#4a4f55;font-size:1.0625rem;max-width:36em}
-  .fg-puente a{font-weight:800;color:var(--azul-secundario)}
   .fg-fuentes{max-width:1040px;margin:0 auto;padding:0 24px;font-size:.9375rem;color:var(--texto-suave)}
   .fg-fuentes b{color:var(--azul-principal)}
   .fg-sec a:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
@@ -610,6 +605,25 @@
   .gg-c-azul{--c:#054782;--t:#E8EEF7;--ink:#032F5E}
   .gg-c-ambar{--c:#F2A91D;--t:#FEF4DF;--ink:#6b4500}
   .gg-c-rojo{--c:#C3122C;--t:#FBE9EC;--ink:#9E0F23}
+  .fg-ruta{margin:0}
+  .fg-ruta-k{font-size:.8125rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#F7C766;margin:0 0 8px}
+  .fg-pasos{display:grid;gap:14px;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:6px 0 0;padding:0;counter-reset:paso}
+  .fg-cond .fg-pasos li{padding:18px 16px;color:#E3E8F0}
+  .fg-cond .fg-pasos li::before{position:static;color:#2a2218;font-weight:400}
+  .fg-pasos li{position:relative;counter-increment:paso;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:18px 16px}
+  .fg-pasos li::before{content:counter(paso);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--amarillo);color:#2a2218;font-family:'DM Serif Display',serif;font-size:1.25rem;margin:0 0 10px}
+  .fg-pasos li:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:24px;color:var(--amarillo);font-weight:800;z-index:1}
+  .fg-pasos b{display:block;color:#fff;font-size:1.0625rem;margin:0 0 4px}
+  .fg-pasos span{display:block;color:#E3E8F0;font-size:1rem;line-height:1.45}
+  .fg-ruta-uni{margin:18px 0 0;color:#fff;font-size:1.0625rem}
+  .fg-ruta-pie{margin:22px 0 0;padding:20px 0 0;border-top:1px solid rgba(255,255,255,.16);display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+  .fg-ruta-pie p{margin:0;color:#E3E8F0;font-size:1.0625rem;max-width:30em}
+  .fg-ruta-links{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .fg-ruta-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:12px 26px;border-radius:50px;background:var(--amarillo);color:#2a2218;font-weight:800;font-size:1.0625rem;text-decoration:none;box-shadow:0 12px 28px rgba(242,169,29,.35)}
+  .fg-ruta-sec{color:#fff;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+  .fg-ruta a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  @media (max-width:900px){.fg-pasos{grid-template-columns:repeat(2,minmax(0,1fr))}.fg-pasos li::after{display:none}}
+  @media (max-width:560px){.fg-pasos{grid-template-columns:1fr}.fg-ruta-btn{width:100%}}
   @media (max-width:900px){.fg-claves,.fg-tipos{grid-template-columns:1fr}.fg-sino{grid-template-columns:1fr}}
   @media (max-width:768px){.fg-sec{padding:40px 16px}.fg-check,.fg-cond ul{grid-template-columns:1fr}.fg-cond{padding:24px 20px}.fg-fuentes{padding:0 16px}.gg-cierre-sec{padding:28px 16px 44px}.gg-cierre{padding:24px 20px}.gg-hablemos,.gg-cierre-cta{width:100%}}
 </style>
@@ -737,15 +751,26 @@
   </div>
 </section>
 
-<!-- 6 · Puente PEAC -->
-<section class="fg-sec fg-sec--alt" aria-labelledby="fg-peac">
+<!-- 6 · Ruta PEAC -->
+<section class="fg-sec fg-sec--alt" id="ruta" aria-labelledby="fg-ruta">
   <div class="fg-in">
-    <div class="fg-puente">
-      <div>
-        <h3 id="fg-peac">¿Ya tienes experiencia trabajando?</h3>
-        <p>Tu experiencia y la formación que hagas pueden servir para que te reconozcan competencias por el PEAC. Te explicamos cómo funciona y te guiamos.</p>
+    <div class="fg-cond fg-ruta">
+      <p class="fg-ruta-k">Si haces formación no reglada</p>
+      <h3 id="fg-ruta">La ruta para que tu formación cuente</h3>
+      <ol class="fg-pasos">
+        <li><b>Tu experiencia o tu formación</b><span>Tu trabajo, tus cursos y tus títulos propios.</span></li>
+        <li><b>El PEAC</b><span>Acreditas tus competencias, una a una.</span></li>
+        <li><b>Certificado profesional</b><span>Cuando reúnes todas las de una cualificación.</span></li>
+        <li><b>Título de FP</b><span>Cursando solo los módulos que te falten.</span></li>
+      </ol>
+      <p class="fg-ruta-uni">Y con un título de FP de grado superior puedes acceder a la universidad.</p>
+      <div class="fg-ruta-pie">
+        <p>Es gratuito y tu experiencia ya cuenta. Solo hay que trazar la ruta según el trabajo que quieres, y la hacemos contigo.</p>
+        <div class="fg-ruta-links">
+          <a class="fg-ruta-btn" href="peac-calculadora.html">¿Puedo acceder al PEAC? Haz el test →</a>
+          <a class="fg-ruta-sec" href="servicio-peac.html">Ver cómo te acompañamos</a>
+        </div>
       </div>
-      <a href="servicio-peac.html">Ver cómo funciona el PEAC →</a>
     </div>
   </div>
 </section>
