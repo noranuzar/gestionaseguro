@@ -19,29 +19,29 @@
 }
 
 :root {
-  /* --- Paleta Nature Tech --- */
-  --color-bg: #F5F0E8;              /* Crema cálido */
-  --color-surface: #FFFDF7;          /* Blanco cálido para cards */
-  --color-text: #36454F;             /* Charcoal */
-  --color-text-soft: #6B7B82;        /* Charcoal suave */
-  --color-accent: #8A9A6D;           /* Sage (botones, barra progreso) */
-  --color-accent-hover: #748557;     /* Sage oscuro */
-  --color-green: #6B8F4E;            /* Verde apto */
-  --color-green-bg: #EFF5E8;         /* Fondo verde suave */
-  --color-green-border: #C5D9AB;     /* Borde verde */
-  --color-yellow: #A07830;           /* Ámbar cálido (vía formativa) */
-  --color-yellow-bg: #FDF6E8;        /* Fondo ámbar suave */
-  --color-yellow-border: #E5CFA0;    /* Borde ámbar */
-  --color-red: #C27E5D;              /* Clay / terracota suave */
-  --color-red-bg: #FDF0EA;           /* Fondo terracota suave */
-  --color-red-border: #E4B89E;       /* Borde terracota */
-  --color-border: #DDD8CE;           /* Borde general crema */
-  --color-info-bg: #EEF2E8;          /* Info box verde suave */
-  --color-info-border: #C5D4B5;      /* Borde info */
+  /* --- Paleta Gestiona Seguro --- */
+  --color-bg: #FAF8F3;              /* Crema Gestiona Seguro */
+  --color-surface: #FFFFFF;          /* Blanco para cards */
+  --color-text: #2a2218;             /* Texto */
+  --color-text-soft: #5e5649;        /* Texto suave */
+  --color-accent: #054782;           /* Azul (botones, barra progreso) */
+  --color-accent-hover: #032F5E;     /* Azul oscuro */
+  --color-green: #054782;            /* Apto (azul) */
+  --color-green-bg: #E8EEF7;         /* Fondo azul suave */
+  --color-green-border: #BCCDE4;     /* Borde azul */
+  --color-yellow: #6b4500;           /* Ámbar (vía formativa) */
+  --color-yellow-bg: #FEF4DF;        /* Fondo ámbar suave */
+  --color-yellow-border: #F2D08A;    /* Borde ámbar */
+  --color-red: #9E0F23;              /* Rojo institucional */
+  --color-red-bg: #FCEFF1;           /* Fondo rojo suave */
+  --color-red-border: #F3D3D9;       /* Borde rojo suave */
+  --color-border: #E3DDD0;           /* Borde general crema */
+  --color-info-bg: #F1F5FA;          /* Info box azul muy suave */
+  --color-info-border: #D3DEEC;      /* Borde info */
   --radius: 14px;
   --radius-sm: 10px;
-  --shadow-card: 0 3px 16px rgba(54,69,79,0.06);
-  --shadow-button: 0 3px 10px rgba(54,69,79,0.10);
+  --shadow-card: 0 3px 16px rgba(3,47,94,0.06);
+  --shadow-button: 0 3px 10px rgba(3,47,94,0.14);
   --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
   --transition: 0.25s ease;
 }
@@ -392,6 +392,10 @@ body {
   text-decoration: underline;
 }
 
+.result__icon:empty{display:none}
+.app-header h1,.result__title{font-family:'DM Serif Display',Georgia,serif;font-weight:400}
+.app-header h1{color:#032F5E}
+
 /* --- HIDDEN --- */
 .hidden {
   display: none !important;
@@ -714,10 +718,10 @@ body {
     stepCounter.classList.add('hidden');
     render(`
       <div class="result result--red">
-        <div class="result__icon">🔴</div>
+        <div class="result__icon"></div>
         <div class="result__title">Todavía no puedes acceder</div>
         <div class="result__body">
-          <p>Para el PEAC necesitas tener al menos <strong>18 años</strong> (o 16 para cualificaciones de nivel 1, en algunos casos).</p>
+          <p>Para el PEAC necesitas tener al menos <strong>18 años</strong> para el nivel 1 y 20 para los niveles 2 y 3.</p>
           <p>Pero eso no significa que no puedas prepararte. Mientras tanto puedes formarte y acumular horas que te servirán más adelante.</p>
           <div class="result__next">
             <div class="result__next-title">¿Qué puedes hacer ahora?</div>
@@ -824,7 +828,7 @@ body {
     stepCounter.classList.add('hidden');
     render(`
       <div class="result result--red">
-        <div class="result__icon">🔴</div>
+        <div class="result__icon"></div>
         <div class="result__title">Ahora mismo no puedes presentar la solicitud</div>
         <div class="result__body">
           <p>Para acceder al PEAC necesitas estar en situación regular en España (tener permiso de residencia o trabajo).</p>
@@ -919,7 +923,7 @@ body {
     stepCounter.classList.add('hidden');
     render(`
       <div class="result result--red">
-        <div class="result__icon">🔴</div>
+        <div class="result__icon"></div>
         <div class="result__title">Todavía no cumples los requisitos</div>
         <div class="result__body">
           <p>Tu experiencia en el extranjero no se puede usar para el PEAC en Madrid, y tampoco tienes formación certificada que pueda servir como vía alternativa.</p>
@@ -1016,11 +1020,8 @@ body {
   };
 
   window.__peac_level = function(lvl) {
+    // lvl === 0: no sabe el nivel. No se le asigna ninguno: se evalúa con el mínimo exigido (nivel 1)
     state.answers.level = lvl;
-    if (lvl === 0) {
-      // No sabe el nivel → dar orientación general
-      state.answers.level = 2; // asumimos nivel 2 como el más común
-    }
     window.__peac_step_training();
   };
 
@@ -1028,7 +1029,10 @@ body {
   window.__peac_step_training = function() {
     state.history.push(window.__peac_step_qualification_level);
     const level = state.answers.level;
-    const hoursNeeded = level === 1 ? 200 : 300;
+    const hoursNeeded = level === 1 || level === 0 ? 200 : 300;
+    const hoursText = level === 0
+      ? 'Para el nivel 1 se piden al menos <strong>200 horas</strong> de formación, y para los niveles 2 y 3, <strong>300 horas</strong>.'
+      : `Para el nivel ${level} necesitas al menos <strong>${hoursNeeded} horas</strong> de formación.`;
 
     render(`
       <div class="card">
@@ -1040,7 +1044,7 @@ body {
         </div>
         <div class="info-box">
           <span class="info-box__icon">📋</span>
-          Para el nivel ${level} necesitas al menos <strong>${hoursNeeded} horas</strong> de formación si vas por la vía formativa.
+          ${hoursText} Si ya cumples por experiencia, esta pregunta es opcional: puede darte una segunda vía.
         </div>
         <div class="input-group">
           <label for="hoursInput">¿Cuántas horas de formación acumulada tienes (aproximadamente)?</label>
@@ -1070,17 +1074,17 @@ body {
   // ---- EVALUACIÓN FINAL ----
   function evaluateResult() {
     const a = state.answers;
-    const level = a.level || 2;
+    const level = a.level; // 0 = no sabe el nivel
 
-    // Requisitos por experiencia
-    const expYearsNeeded = level === 1 ? 2 : 3;
+    // Requisitos por experiencia (nivel 1: 2 años; niveles 2 y 3: 3 años)
+    const expYearsNeeded = level === 1 || level === 0 ? 2 : 3;
     const experienceValid = (
       (a.experienceWhere === 'spain' || a.experienceWhere === 'autonomo' || a.experienceWhere === 'abroad_conv')
       && a.experienceYears >= expYearsNeeded
     );
 
     // Requisitos por formación
-    const hoursNeeded = level === 1 ? 200 : 300;
+    const hoursNeeded = level === 1 || level === 0 ? 200 : 300;
     const trainingValid = a.trainingHours >= hoursNeeded;
 
     if (experienceValid) {
@@ -1099,6 +1103,14 @@ body {
     stepCounter.classList.add('hidden');
 
     const specialty = state.answers.specialtyLabel || 'tu especialidad';
+    const yrs = state.answers.experienceYears;
+    const nivelTxt = level === 0 ? '' : ` (nivel ${level})`;
+    const nivelNota = level === 0
+      ? `<p><strong>Sobre el nivel:</strong> ${yrs >= 3
+          ? 'con tus ' + (yrs >= 5 ? '5 años o más' : yrs + ' años') + ' de experiencia cumples el mínimo en los tres niveles.'
+          : 'con ' + yrs + ' años de experiencia cumples el requisito del <strong>nivel 1</strong> (2 años). Para los niveles 2 y 3 se piden 3 años.'}
+          El nivel exacto depende de la cualificación que elijas, y te ayudamos a identificarla.</p>`
+      : '';
 
     const autoWarning = state.answers.experienceWhere === 'autonomo'
       ? '<p><strong>Recuerda:</strong> como autónomo/a, deberás aportar tu <strong>Declaración Responsable de funciones</strong> y el <strong>alta en el IAE (modelo 036/037)</strong> con un epígrafe directamente relacionado con la Cualificación Profesional que quieres acreditar.</p>'
@@ -1121,7 +1133,8 @@ body {
         <div class="result__title">¡Perfil apto para solicitar el PEAC!</div>
         <div class="result__body">
           ${doublePathBanner}
-          <p>Con lo que me cuentas, tienes <strong>experiencia suficiente</strong> para presentar tu solicitud al PEAC en la familia de <strong>${specialty}</strong> (nivel ${level}).</p>
+          <p>Con lo que me cuentas, tienes <strong>experiencia suficiente</strong> para presentar tu solicitud al PEAC en la familia de <strong>${specialty}</strong>${nivelTxt}.</p>
+          ${nivelNota}
           <p>Recuerda: el PEAC acredita <strong>Unidades de Competencia (UC)</strong>. Con las UC que te reconozcan, podrás después obtener un <strong>Certificado de Profesionalidad</strong> o avanzar hacia un <strong>Título de FP</strong>.</p>
           ${autoWarning}
           ${convWarning}
@@ -1157,7 +1170,7 @@ body {
         <div class="result__title">¡Perfil apto por Vía Formativa!</div>
         <div class="result__body">
           <p>${expReason}</p>
-          <p>Pero la buena noticia es rotunda: <strong>tus horas de formación son suficientes</strong> (al menos ${hoursNeeded}h para nivel ${level}) para acceder por la vía formativa en ${state.answers.specialtyLabel || 'tu especialidad'}.</p>
+          <p>Pero la buena noticia es rotunda: <strong>tus horas de formación son suficientes</strong> (al menos ${hoursNeeded}h${level === 0 ? ' para el nivel 1' : ' para nivel ' + level}) para acceder por la vía formativa en ${state.answers.specialtyLabel || 'tu especialidad'}.</p>
           <div class="result__next">
             <div class="result__next-title">Tus próximos pasos</div>
             <ol>
@@ -1189,21 +1202,21 @@ body {
       expGap = 'Tu experiencia en el extranjero no cuenta para el PEAC en Madrid sin convenio reconocido.';
     } else if (expYears < yearsNeeded) {
       const falta = yearsNeeded - expYears;
-      expGap = `Te faltan aproximadamente <strong>${falta} año${falta > 1 ? 's' : ''}</strong> de experiencia cotizada para llegar a los ${yearsNeeded} años que pide el nivel ${level}.`;
+      expGap = `Te faltan aproximadamente <strong>${falta} año${falta > 1 ? 's' : ''}</strong> de experiencia cotizada para llegar a los ${yearsNeeded} años que ${level === 0 ? 'pide el nivel 1' : 'pide el nivel ' + level}.`;
     }
 
     let trainGap = '';
     if (trainHours < hoursNeeded) {
       const faltaH = hoursNeeded - trainHours;
-      trainGap = `En formación te faltan unas <strong>${faltaH} horas</strong> para llegar a las ${hoursNeeded}h que necesita el nivel ${level}.`;
+      trainGap = `En formación te faltan unas <strong>${faltaH} horas</strong> para llegar a las ${hoursNeeded}h que ${level === 0 ? 'necesita el nivel 1' : 'necesita el nivel ' + level}.`;
     }
 
     render(`
       <div class="result result--red">
-        <div class="result__icon">🔴</div>
+        <div class="result__icon"></div>
         <div class="result__title">Todavía no cumples los requisitos</div>
         <div class="result__body">
-          <p>Con lo que me cuentas, ahora mismo no merece la pena que presentes la solicitud. Te explico por qué:</p>
+          <p>Con lo que me cuentas, ahora mismo no llegas ni por la vía de experiencia ni por la vía formativa. Basta con que cumplas una de las dos. Te explico qué te falta:</p>
           ${expGap ? '<p>' + expGap + '</p>' : ''}
           ${trainGap ? '<p>' + trainGap + '</p>' : ''}
           <p>Pero esto tiene solución. El PEAC es una convocatoria permanente — no caduca, no se acaba. Cuando cumplas los requisitos, ahí va a estar.</p>
