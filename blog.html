@@ -401,91 +401,75 @@
   </div>
 </nav>
 
-<!-- ============ HERO ============ -->
+<!-- ============ CABECERA (texto, sin imagen) ============ -->
 <style>
-.hero-h{padding:116px 24px 0;background:radial-gradient(1200px 500px at 85% 0%,#E8EEF7 0%,rgba(232,238,247,0) 60%),linear-gradient(180deg,#FFFFFF 0%,#FAF8F3 100%);}
-  .hero-h-wrap{position:relative;max-width:1120px;margin:0 auto;min-height:580px;border-radius:32px;overflow:hidden;box-shadow:0 30px 70px rgba(3,47,94,.12);background:#fffdf8;}
-  .hero-h-wrap::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;z-index:3;background:linear-gradient(90deg,var(--rojo-principal),var(--amarillo));}
-  .hero-h-bg{position:absolute;top:0;bottom:0;right:0;left:40%;margin:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 24%);mask-image:linear-gradient(90deg,transparent 0,#000 24%);}
-  .hero-h-bg img,.hero-h-bg video{width:100%;height:100%;object-fit:cover;object-position:62% 28%;display:block;}
-  .hero-h-bg video{object-position:38% 30%;}
-  .hero-h-in{position:relative;z-index:2;max-width:596px;padding:58px 0 96px 56px;}
-  .hero-h-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:var(--fs-label);font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azul-principal);background:var(--azul-light);padding:8px 15px;border-radius:50px;margin:0 0 22px;}
-  .hero-h-eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--rojo-principal);box-shadow:0 0 0 4px rgba(195,18,44,.15);}
-  .hero-h h1{font-family:'Source Sans 3',system-ui,sans-serif;font-size:clamp(2.7rem,5.2vw,4.25rem);font-weight:800;line-height:.98;letter-spacing:-.025em;color:var(--azul-principal);margin:0 0 20px;}
-  .hero-h h1 span{display:block;font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:0;font-size:.8em;line-height:1.08;margin-top:8px;color:var(--rojo-principal);}
-  .hero-h-sub{font-size:1.1875rem;color:var(--texto-suave);line-height:1.55;margin:0 0 30px;max-width:25em;}
-  .hero-h-sub b{color:var(--azul-principal);font-weight:700;}
-  .hero-h-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px;}
-  .hero-h-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:0 24px;border-radius:16px;font-weight:800;font-size:1.0625rem;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;}
-  .hero-h-btn svg{width:20px;height:20px;flex-shrink:0;}
-  .hero-h-btn--pri{background:var(--amarillo);color:#2a2218;box-shadow:0 12px 28px rgba(242,169,29,.38),inset 0 -3px 0 rgba(0,0,0,.08);}
-  .hero-h-btn--pri:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(242,169,29,.45),inset 0 -3px 0 rgba(0,0,0,.08);}
-  .hero-h-btn--sec{background:#fff;color:var(--azul-principal);border:2px solid var(--azul-principal);}
-  .hero-h-btn--sec:hover{background:var(--azul-principal);color:#fff;}
-  .hero-h-btn:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px;}
-  .hero-h-team{display:flex;align-items:center;gap:14px;}
-  .hero-h-team p{margin:0;font-size:.9375rem;line-height:1.45;color:var(--texto-suave);max-width:27em;padding-left:14px;border-left:3px solid var(--amarillo);}
-  .hero-h-team b{color:var(--azul-principal);}
-  @media(max-width:1024px) and (min-width:769px){.hero-h-bg{left:44%;}.hero-h-in{max-width:520px;padding-left:40px;}}
-  @media(max-width:768px){
-    .hero-h{padding:94px 14px 0;}
-    .hero-h-wrap{min-height:0;border-radius:24px;display:flex;flex-direction:column;}
-    .hero-h-bg{position:relative;left:auto;height:250px;-webkit-mask-image:none;mask-image:none;}
-    .hero-h-bg img,.hero-h-bg video{object-position:center 22%;}
-    .hero-h-in{max-width:none;padding:24px 22px 8px;}
-    .hero-h h1{font-size:2.5rem;}
-    .hero-h-btn{width:100%;}
-    .hero-h-team{align-items:flex-start;}
-    .hero-h-team p{max-width:none;}
-  }
+  .gh{padding:118px 24px 8px;background:#FAF8F3}
+  .gh-in{max-width:1120px;margin:0 auto}
+  .gh-sello{display:flex;align-items:center;gap:10px;margin:0 0 18px;font-size:.9375rem;font-weight:700;color:#5e5649}
+  .gh-sello img{height:30px;width:auto;opacity:.9}
+  .gh h1{font-family:'Source Sans 3',system-ui,sans-serif;font-size:clamp(2.2rem,4.4vw,3.2rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;color:#032F5E;margin:0 0 10px}
+  .gh h1 span{display:block;font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:0;font-size:.82em;line-height:1.15;margin-top:6px;color:#C3122C}
+  .gh-sub{margin:0 0 26px;font-size:1.125rem;color:#4a4f55}
+  /* Entradas por tema */
+  .gh-temas{display:grid;gap:14px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
+  .gh-temas a{display:flex;align-items:center;gap:14px;height:100%;background:#fff;border:1px solid #E6E2D9;border-left:6px solid var(--c);border-radius:16px;padding:16px 18px;text-decoration:none;transition:box-shadow .15s,transform .15s}
+  .gh-temas a:hover{box-shadow:0 12px 26px rgba(3,47,94,.10);transform:translateY(-2px)}
+  .gh-temas a:focus-visible{outline:3px solid #054782;outline-offset:3px}
+  .gh-ic{flex-shrink:0;width:46px;height:46px;border-radius:12px;background:var(--t);color:var(--ink);display:grid;place-items:center}
+  .gh-ic svg{width:24px;height:24px}
+  .gh-temas b{display:block;font-size:1.125rem;font-weight:800;color:#032F5E;line-height:1.25}
+  .gh-temas small{display:block;font-size:.9375rem;color:#5e5649;margin-top:2px}
+  .gh-temas i{margin-left:auto;font-style:normal;font-weight:800;color:var(--ink)}
+  @media (max-width:900px){.gh-temas{grid-template-columns:1fr}}
+  @media (max-width:768px){.gh{padding:96px 16px 4px}}
 </style>
-<header class="hero-h hero-h--int">
-  <div class="hero-h-wrap">
-    <div class="hero-h-bg">
-      <video id="heroVideo" muted playsinline preload="metadata" poster="guias-hero-poster.webp" width="1120" height="972" aria-hidden="true">
-        <source src="guias-hero.mp4" type="video/mp4">
-      </video>
-    </div>
-    <script>
-    (function(){var v=document.getElementById('heroVideo');if(!v)return;
-      if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-      var p=v.play();if(p&&p.catch)p.catch(function(){});})();
-    </script>
-    <div class="hero-h-in">
-      <p class="hero-h-eyebrow"><i aria-hidden="true"></i>Guías gratuitas</p>
-      <h1>Guías y herramientas gratuitas, <span>para avanzar a tu ritmo</span></h1>
-      <p class="hero-h-sub">Explicaciones claras, tests de un minuto y clases paso a paso para estudiar, acreditar tu experiencia y entenderte con la Administración. <b>Gratis y sin registro.</b></p>
-      <nav class="gg-chips" aria-label="Temas">
-        <a class="gg-c-azul" href="#estudiar"><i aria-hidden="true"></i>Estudiar y trabajar</a><a class="gg-c-ambar" href="#administracion"><i aria-hidden="true"></i>Tus gestiones online</a><a class="gg-c-rojo" href="#regularizacion"><i aria-hidden="true"></i>Extranjería</a>
-      </nav>
-    </div>
+<header class="gh">
+  <div class="gh-in">
+    <p class="gh-sello"><img src="logo-emblema-nav.webp" alt="" width="181" height="136">Guías gratuitas · Sin registro</p>
+    <h1>Guías y herramientas gratuitas, <span>para avanzar a tu ritmo</span></h1>
+    <p class="gh-sub">Elige tu tema:</p>
+    <ul class="gh-temas">
+      <li class="gg-c-azul"><a href="#estudiar"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><span><b>Estudiar y trabajar</b><small>3 recursos</small></span><i aria-hidden="true">↓</i></a></li>
+      <li class="gg-c-ambar"><a href="#administracion"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span><b>Tus gestiones online</b><small>3 recursos</small></span><i aria-hidden="true">↓</i></a></li>
+      <li class="gg-c-rojo"><a href="#regularizacion"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4h11l-1.5 4L15 12H4"/></svg></span><span><b>Extranjería</b><small>2 recursos · 1 aviso urgente</small></span><i aria-hidden="true">↓</i></a></li>
+    </ul>
   </div>
 </header>
 
 <!-- ============ GUÍAS · CONTENIDO ============ -->
 <style>
-  .hero-h--int h1{font-size:clamp(2.3rem,4vw,3.2rem);}
-  .hero-h-bg video{object-position:60% 40%;}
-  .gg-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
-  .gg-chips a{display:inline-flex;align-items:center;gap:8px;min-height:40px;font-size:.9375rem;font-weight:700;color:var(--azul-principal);background:#fff;border:1.5px solid #d4e0f0;border-radius:50px;padding:6px 14px;text-decoration:none;transition:border-color .15s,background .15s}
-  .gg-chips a i{width:10px;height:10px;border-radius:50%;background:var(--c)}
-  .gg-chips a:hover{border-color:var(--azul-principal);background:var(--azul-light)}
   /* Colores por bloque (los mismos de las tarjetas de la portada) */
   .gg-c-azul{--c:#054782;--t:#E8EEF7;--ink:#032F5E}
   .gg-c-ambar{--c:#F2A91D;--t:#FEF4DF;--ink:#6b4500}
   .gg-c-rojo{--c:#C3122C;--t:#FBE9EC;--ink:#9E0F23}
   .gg-avisos{padding:40px 24px 0}
-  .gg-avisos-t{font-family:'Source Sans 3',system-ui,sans-serif;font-size:.8125rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--rojo-principal);margin:0 0 10px}
-  .gg-avisos-l{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-  .gg-avisos-l a{position:relative;display:flex;align-items:center;gap:16px;background:#fff;border:1px solid #ECE9E2;border-left:5px solid var(--rojo-principal);border-radius:14px;padding:14px 18px;text-decoration:none;color:var(--texto);font-size:1.0625rem;line-height:1.45;transition:box-shadow .15s}
-  .gg-avisos-l a:hover{box-shadow:0 10px 24px rgba(3,47,94,.10)}
-  .gg-avisos-l a:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
-  .gg-avisos-l time{flex-shrink:0;font-size:.875rem;font-weight:800;color:#9E0F23;background:#FBE9EC;border-radius:8px;padding:4px 10px;white-space:nowrap}
-  .gg-avisos-l span{flex:1}
-  .gg-avisos-l span b{color:var(--azul-principal)}
-  .gg-avisos-go{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--rojo-principal);color:#fff;flex-shrink:0}
-  @media (max-width:768px){.gg-avisos{padding:28px 16px 0}.gg-avisos-l a{flex-wrap:wrap;gap:8px 12px}.gg-avisos-go{display:none}}
+  
+  .gg-avisos{padding:24px 24px 0}
+  .av{background:#fff;border:1px solid #F3D3D9;border-left:6px solid #C3122C;border-radius:18px;padding:24px 26px}
+  .av-k{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 10px;font-size:.9375rem;font-weight:700;color:#5e5649}
+  .av-urg{font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#C3122C;border-radius:50px;padding:4px 12px}
+  .av-t{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.45rem,2.8vw,1.9rem);line-height:1.2;color:#032F5E;margin:0 0 8px}
+  .av-p{margin:0 0 14px;font-size:1.0625rem;line-height:1.55;color:#4a4f55}
+  .av-p b{color:#032F5E}
+  .av-p--q{margin:20px 0 10px;font-weight:800;color:#032F5E}
+  .av-plazos{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr));list-style:none;margin:0;padding:0}
+  .av-plazo{border-radius:14px;padding:14px 16px}
+  .av-plazo b{display:block;font-size:1.0625rem}
+  .av-plazo span{display:block;font-size:1rem;color:#4a4f55;margin-top:2px}
+  .av-plazo--si{background:#FCEFF1;border:1px solid #F3D3D9}
+  .av-plazo--si b{color:#9E0F23}
+  .av-plazo--si b::before{content:"✓ "}
+  .av-plazo--ojo{background:#FEF4DF;border:1px solid #F6DDA8}
+  .av-plazo--ojo b{color:#6b4500}
+  .av-plazo--ojo b::before{content:"⚠ "}
+  .av-vias{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
+  .av-vias li{background:#FAF8F3;border:1px solid #E6E2D9;border-radius:14px;padding:16px}
+  .av-n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#EAF1F8;color:#032F5E;font-weight:800;margin:0 0 8px}
+  .av-vias b{display:block;font-size:1.0625rem;color:#032F5E;margin:0 0 4px}
+  .av-vias li>span:last-child{display:block;font-size:1rem;line-height:1.5;color:#4a4f55}
+  .av-nota{margin:16px 0 0;font-size:1rem;color:#5e5649}
+  @media (max-width:900px){.av-vias{grid-template-columns:1fr}}
+  @media (max-width:768px){.gg-avisos{padding:20px 16px 0}.av{padding:20px 18px}.av-plazos{grid-template-columns:1fr}}
   .gg-sec{padding:56px 24px;scroll-margin-top:80px}
   .gg-sec--alt{background:#fff}
   .gg-in{max-width:1120px;margin:0 auto}
@@ -545,13 +529,25 @@
 
 <!-- ============ AVISOS ============
      Cada aviso lleva fecha visible y se retira cuando caduca.
-     Aviso Regularización 2026: revisar en enero de 2027. -->
-<section class="gg-avisos" aria-labelledby="gg-avisos-t">
+     Aviso Regularización 2026: fuente RD 316/2026, DA 21.ª, apartado 10. Revisar en enero de 2027. -->
+<section class="gg-avisos" id="aviso-regularizacion" aria-labelledby="gg-av-t">
   <div class="gg-in">
-    <h2 class="gg-avisos-t" id="gg-avisos-t">Avisos</h2>
-    <ul class="gg-avisos-l">
-      <li><a href="proceso-2026.html"><time datetime="2026-06-30">30 jun 2026</time><span>El plazo de la <b>Regularización Extraordinaria 2026</b> terminó: qué pasa ahora si ya presentaste tu solicitud.</span><b class="gg-avisos-go" aria-hidden="true">→</b></a></li>
-    </ul>
+    <div class="av">
+      <p class="av-k"><span class="av-urg">Urgente</span>Aviso · Regularización Extraordinaria 2026</p>
+      <h2 class="av-t" id="gg-av-t">¿Tienes la autorización de la Regularización 2026? Revisa ya tu plazo</h2>
+      <p class="av-p">Tu autorización dura <b>1 año</b>. Antes de que caduque tienes que pedir el siguiente paso.</p>
+      <ol class="av-plazos">
+        <li class="av-plazo av-plazo--si"><b>2 meses antes de que caduque</b><span>Es el momento de pedirlo.</span></li>
+        <li class="av-plazo av-plazo--ojo"><b>Hasta 3 meses después</b><span>Todavía se puede, pero con riesgo de sanción.</span></li>
+      </ol>
+      <p class="av-p av-p--q">¿Qué puedes pedir?</p>
+      <ol class="av-vias">
+        <li><span class="av-n">1</span><b>Modificar</b><span>Pasar a otra autorización de residencia y trabajo.</span></li>
+        <li><span class="av-n">2</span><b>Prórroga de 1 año</b><span>Si no puedes modificar: buscas empleo y estás inscrito o inscrita en el servicio público de empleo, o tienes un informe de integración de tu comunidad autónoma.</span></li>
+        <li><span class="av-n">3</span><b>Prórroga de 4 años</b><span>Si no puedes buscar empleo por enfermedad grave, discapacidad o edad de jubilación.</span></li>
+      </ol>
+      <p class="av-nota">Si lo pides dentro de esos plazos, tu autorización sigue vigente mientras se resuelve.</p>
+    </div>
   </div>
 </section>
 
