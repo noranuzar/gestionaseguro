@@ -403,36 +403,32 @@
 
 <!-- ============ CABECERA (texto, sin imagen) ============ -->
 <style>
-  .gh{padding:118px 24px 8px;background:#FAF8F3}
+  .gh{padding:118px 24px 0}
   .gh-in{max-width:1120px;margin:0 auto}
-  .gh-sello{display:flex;align-items:center;gap:10px;margin:0 0 18px;font-size:.9375rem;font-weight:700;color:#5e5649}
-  .gh-sello img{height:30px;width:auto;opacity:.9}
-  .gh h1{font-family:'Source Sans 3',system-ui,sans-serif;font-size:clamp(2.2rem,4.4vw,3.2rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;color:#032F5E;margin:0 0 10px}
-  .gh h1 span{display:block;font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:0;font-size:.82em;line-height:1.15;margin-top:6px;color:#C3122C}
-  .gh-sub{margin:0 0 26px;font-size:1.125rem;color:#4a4f55}
-  /* Entradas por tema */
+  .gh h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2rem,3.6vw,2.6rem);line-height:1.15;color:#032F5E;margin:0 0 12px;text-wrap:balance}
+  .gh-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+  .gh-meta li{font-size:.9375rem;font-weight:700;color:#5e5649;background:#F1EEE7;border-radius:8px;padding:4px 10px}
+  /* Etiquetas de bloque (Novedades / Elige tu tema) */
+  .gg-lbl{font-family:'Source Sans 3',system-ui,sans-serif;font-size:.875rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#5e5649;margin:0 0 12px}
+  /* Temas: pestañas que abren su panel */
   .gh-temas{display:grid;gap:14px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
-  .gh-temas a{display:flex;align-items:center;gap:14px;height:100%;background:#fff;border:1px solid #E6E2D9;border-left:6px solid var(--c);border-radius:16px;padding:16px 18px;text-decoration:none;transition:box-shadow .15s,transform .15s}
-  .gh-temas a:hover{box-shadow:0 12px 26px rgba(3,47,94,.10);transform:translateY(-2px)}
-  .gh-temas a:focus-visible{outline:3px solid #054782;outline-offset:3px}
+  .gh-tema{display:flex;align-items:center;gap:14px;width:100%;height:100%;background:#fff;border:1px solid #E6E2D9;border-left:6px solid var(--c);border-radius:16px;padding:16px 18px;font:inherit;text-align:left;cursor:pointer;transition:box-shadow .15s,background .15s}
+  .gh-tema:hover{box-shadow:0 12px 26px rgba(3,47,94,.10)}
+  .gh-tema:focus-visible{outline:3px solid #054782;outline-offset:3px}
+  .gh-tema[aria-expanded="true"]{background:var(--t);box-shadow:0 0 0 2px var(--c) inset}
   .gh-ic{flex-shrink:0;width:46px;height:46px;border-radius:12px;background:var(--t);color:var(--ink);display:grid;place-items:center}
+  .gh-tema[aria-expanded="true"] .gh-ic{background:#fff}
   .gh-ic svg{width:24px;height:24px}
-  .gh-temas b{display:block;font-size:1.125rem;font-weight:800;color:#032F5E;line-height:1.25}
-  .gh-temas small{display:block;font-size:.9375rem;color:#5e5649;margin-top:2px}
-  .gh-temas i{margin-left:auto;font-style:normal;font-weight:800;color:var(--ink)}
+  .gh-tema b{font-size:1.125rem;font-weight:800;color:#032F5E;line-height:1.25}
+  .gh-tema i{margin-left:auto;font-style:normal;font-weight:800;color:var(--ink);transition:transform .2s}
+  .gh-tema[aria-expanded="true"] i{transform:rotate(180deg)}
   @media (max-width:900px){.gh-temas{grid-template-columns:1fr}}
-  @media (max-width:768px){.gh{padding:96px 16px 4px}}
+  @media (max-width:768px){.gh{padding:96px 16px 0}}
 </style>
 <header class="gh">
   <div class="gh-in">
-    <p class="gh-sello"><img src="logo-emblema-nav.webp" alt="" width="181" height="136">Guías gratuitas · Sin registro</p>
-    <h1>Guías y herramientas gratuitas, <span>para avanzar a tu ritmo</span></h1>
-    <p class="gh-sub">Elige tu tema:</p>
-    <ul class="gh-temas">
-      <li class="gg-c-azul"><a href="#estudiar"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><span><b>Estudiar y trabajar</b><small>3 recursos</small></span><i aria-hidden="true">↓</i></a></li>
-      <li class="gg-c-ambar"><a href="#administracion"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span><b>Tus gestiones online</b><small>3 recursos</small></span><i aria-hidden="true">↓</i></a></li>
-      <li class="gg-c-rojo"><a href="#regularizacion"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4h11l-1.5 4L15 12H4"/></svg></span><span><b>Extranjería</b><small>2 recursos · 1 aviso urgente</small></span><i aria-hidden="true">↓</i></a></li>
-    </ul>
+    <h1>Guías y herramientas gratuitas para avanzar a tu ritmo</h1>
+    <ul class="gh-meta"><li>Gratis</li><li>Sin registro</li></ul>
   </div>
 </header>
 
@@ -442,18 +438,34 @@
   .gg-c-azul{--c:#054782;--t:#E8EEF7;--ink:#032F5E}
   .gg-c-ambar{--c:#F2A91D;--t:#FEF4DF;--ink:#6b4500}
   .gg-c-rojo{--c:#C3122C;--t:#FBE9EC;--ink:#9E0F23}
-  .gg-avisos{padding:40px 24px 0}
   
-  .gg-avisos{padding:24px 24px 0}
-  .av{background:#fff;border:1px solid #F3D3D9;border-left:6px solid #C3122C;border-radius:18px;padding:24px 26px}
-  .av-k{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 10px;font-size:.9375rem;font-weight:700;color:#5e5649}
-  .av-urg{font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#C3122C;border-radius:50px;padding:4px 12px}
-  .av-t{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.45rem,2.8vw,1.9rem);line-height:1.2;color:#032F5E;margin:0 0 8px}
-  .av-p{margin:0 0 14px;font-size:1.0625rem;line-height:1.55;color:#4a4f55}
+  .gg-blq{padding:28px 24px 0}
+  .gg-sec.gg-panel{padding-top:24px}
+  .gg-desc{margin:0 0 20px;font-size:1.0625rem;color:#4a4f55}
+  .gg-lk{color:inherit;text-decoration:none}
+  .gg-lk::after{content:"";position:absolute;inset:0;border-radius:18px}
+  .gg-lk:focus-visible{outline:none}
+  .gg-card:focus-within{box-shadow:0 0 0 3px #054782}
+  .js .gg-sec[hidden]{display:none}
+  .gg-sec{scroll-margin-top:90px}
+  /* Novedades */
+  .av{background:#fff;border:1px solid #F3D3D9;border-left:6px solid #C3122C;border-radius:16px}
+  .av summary{display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;list-style:none}
+  .av summary::-webkit-details-marker{display:none}
+  .av summary:focus-visible{outline:3px solid #054782;outline-offset:3px;border-radius:12px}
+  .av-urg{flex-shrink:0;font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#C3122C;border-radius:50px;padding:4px 12px}
+  .av-q{font-size:1.0625rem;font-weight:800;color:#032F5E;line-height:1.35}
+  .av summary i{margin-left:auto;font-style:normal;font-weight:800;color:#9E0F23;transition:transform .2s}
+  .av[open] summary i{transform:rotate(180deg)}
+  .av-body{padding:0 18px 20px;display:grid;gap:16px}
+  .av-caso{background:#FAF8F3;border:1px solid #E6E2D9;border-radius:14px;padding:18px}
+  .av-caso h3{font-family:'Source Sans 3',system-ui,sans-serif;font-size:1.125rem;font-weight:800;color:#032F5E;margin:0 0 8px}
+  .av-p{margin:0 0 12px;font-size:1.0625rem;line-height:1.55;color:#4a4f55}
   .av-p b{color:#032F5E}
-  .av-p--q{margin:20px 0 10px;font-weight:800;color:#032F5E}
-  .av-plazos{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr));list-style:none;margin:0;padding:0}
-  .av-plazo{border-radius:14px;padding:14px 16px}
+  .av-p--q{margin:4px 0 0;font-weight:800;color:#032F5E}
+  .av-caso .av-p--q{margin:16px 0 10px}
+  .av-plazos{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr));list-style:none;margin:0;padding:0}
+  .av-plazo{border-radius:12px;padding:12px 14px}
   .av-plazo b{display:block;font-size:1.0625rem}
   .av-plazo span{display:block;font-size:1rem;color:#4a4f55;margin-top:2px}
   .av-plazo--si{background:#FCEFF1;border:1px solid #F3D3D9}
@@ -462,23 +474,19 @@
   .av-plazo--ojo{background:#FEF4DF;border:1px solid #F6DDA8}
   .av-plazo--ojo b{color:#6b4500}
   .av-plazo--ojo b::before{content:"⚠ "}
-  .av-vias{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
-  .av-vias li{background:#FAF8F3;border:1px solid #E6E2D9;border-radius:14px;padding:16px}
-  .av-n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#EAF1F8;color:#032F5E;font-weight:800;margin:0 0 8px}
+  .av-vias{display:grid;gap:10px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
+  .av-vias li{background:#fff;border:1px solid #E6E2D9;border-radius:12px;padding:14px}
+  .av-n{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#EAF1F8;color:#032F5E;font-weight:800;margin:0 0 6px}
   .av-vias b{display:block;font-size:1.0625rem;color:#032F5E;margin:0 0 4px}
   .av-vias li>span:last-child{display:block;font-size:1rem;line-height:1.5;color:#4a4f55}
-  .av-nota{margin:16px 0 0;font-size:1rem;color:#5e5649}
+  .av-nota{margin:12px 0 0;font-size:1rem;color:#5e5649}
+  .av-lista{margin:0;padding:0 0 0 20px;display:grid;gap:8px;font-size:1.0625rem;line-height:1.5;color:#4a4f55}
+  .av-lista a{color:#054782;font-weight:700}
   @media (max-width:900px){.av-vias{grid-template-columns:1fr}}
-  @media (max-width:768px){.gg-avisos{padding:20px 16px 0}.av{padding:20px 18px}.av-plazos{grid-template-columns:1fr}}
+  @media (max-width:768px){.gg-blq{padding:20px 16px 0}.av summary{flex-wrap:wrap;padding:14px 16px}.av-body{padding:0 14px 16px}.av-plazos{grid-template-columns:1fr}}
   .gg-sec{padding:56px 24px;scroll-margin-top:80px}
   .gg-sec--alt{background:#fff}
   .gg-in{max-width:1120px;margin:0 auto}
-  .gg-head{display:flex;align-items:center;gap:16px;margin:0 0 26px}
-  .gg-head-ic{width:56px;height:56px;border-radius:16px;background:var(--c);color:#fff;display:grid;place-items:center;flex-shrink:0;box-shadow:0 10px 22px rgba(3,47,94,.14)}
-  .gg-c-ambar .gg-head-ic{color:#2a2218}
-  .gg-head-ic svg{width:28px;height:28px}
-  .gg-head h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.75rem,3.4vw,2.5rem);line-height:1.15;color:var(--azul-principal);margin:0 0 2px}
-  .gg-head p{margin:0;color:#4a4f55;font-size:1.0625rem}
   .gg-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
   .gg-grid--4{grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
   .gg-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #ECE9E2;border-top:5px solid var(--c);border-radius:18px;padding:24px;transition:transform .18s,box-shadow .18s}
@@ -493,21 +501,6 @@
   .gg-card p{margin:0 0 14px;font-size:1rem;line-height:1.55;color:#4a4f55}
   .gg-meta{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
   .gg-meta span{font-size:.8125rem;font-weight:700;color:#4a4f55;background:#F3F1EC;border-radius:6px;padding:3px 8px}
-  .gg-go{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--azul-principal);text-decoration:none}
-  .gg-go::after{content:"";position:absolute;inset:0;border-radius:18px}
-  .gg-go b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:1rem;transition:transform .18s}
-  .gg-c-ambar .gg-go b{color:#2a2218}
-  .gg-card:hover .gg-go b{transform:translateX(4px)}
-  .gg-go:focus-visible{outline:none}
-  /* Destacado */
-  .gg-feat{grid-column:span 2;background:linear-gradient(135deg,#032F5E,#054782)!important;border:0;border-top:0;color:#fff;padding:30px}
-  .gg-feat .gg-ic{background:rgba(255,255,255,.14);color:#fff}
-  .gg-feat .gg-type{background:var(--amarillo);color:#2a2218}
-  .gg-feat h3{color:#fff;font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem}
-  .gg-feat p{color:#E3E8F0;font-size:1.0625rem;max-width:520px}
-  .gg-feat .gg-meta span{background:rgba(255,255,255,.12);color:#fff}
-  .gg-feat .gg-go{color:#fff}
-  .gg-feat .gg-go b{background:var(--amarillo);color:#2a2218}
   .gg-cierre-sec{padding:32px 24px 56px}
   .gg-cierre{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:24px;justify-content:space-between;background:var(--azul-light);border-radius:22px;padding:30px 34px}
   .gg-cierre h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem;color:var(--azul-principal);margin:0 0 6px}
@@ -518,123 +511,128 @@
   .gg-hablemos:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
   .gg-cierre-cta small{font-size:.9375rem;color:#4a4f55}
   .gg-cierre-cta small a{color:var(--azul-secundario);font-weight:700}
-  .gg-feat--wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:32px;align-items:end}
-  .gg-feat--wide .gg-top,.gg-feat--wide h3,.gg-feat--wide p,.gg-feat--wide .gg-meta{grid-column:1}
-  .gg-feat--wide .gg-go{grid-column:2;grid-row:1/span 4;align-self:center;margin:0;font-size:1.125rem}
-  .gg-feat--wide .gg-go b{width:40px;height:40px}
-  @media (max-width:900px){.gg-feat{grid-column:auto}.gg-feat--wide{grid-column:1/-1;display:flex}.gg-feat--wide .gg-go{margin-top:auto}}
-  @media (max-width:768px){.gg-sec{padding:40px 16px}.gg-cierre-sec{padding:28px 16px 44px}.gg-cierre{padding:24px 20px}.gg-hablemos,.gg-cierre-cta{width:100%}.gg-head-ic{width:48px;height:48px}.gg-feat{padding:24px}}
-  @media (prefers-reduced-motion:reduce){.gg-card,.gg-go b{transition:none}}
+  
+  @media (max-width:768px){.gg-sec{padding:40px 16px}.gg-cierre-sec{padding:28px 16px 44px}.gg-cierre{padding:24px 20px}.gg-hablemos,.gg-cierre-cta{width:100%}}
+  @media (prefers-reduced-motion:reduce){.gg-card{transition:none}}
 </style>
 
-<!-- ============ AVISOS ============
-     Cada aviso lleva fecha visible y se retira cuando caduca.
-     Aviso Regularización 2026: fuente RD 316/2026, DA 21.ª, apartado 10. Revisar en enero de 2027. -->
-<section class="gg-avisos" id="aviso-regularizacion" aria-labelledby="gg-av-t">
+<!-- ============ NOVEDADES ============
+     Cada novedad es una entrada cerrada; la información sale al desplegarla.
+     Regularización 2026: fuente RD 316/2026, DA 21.ª, apartado 10. Revisar en enero de 2027. -->
+<section class="gg-blq" id="novedades" aria-labelledby="gg-nov-t">
   <div class="gg-in">
-    <div class="av">
-      <p class="av-k"><span class="av-urg">Urgente</span>Aviso · Regularización Extraordinaria 2026</p>
-      <h2 class="av-t" id="gg-av-t">¿Tienes la autorización de la Regularización 2026? Revisa ya tu plazo</h2>
-      <p class="av-p">Tu autorización dura <b>1 año</b>. Antes de que caduque tienes que pedir el siguiente paso.</p>
-      <ol class="av-plazos">
-        <li class="av-plazo av-plazo--si"><b>2 meses antes de que caduque</b><span>Es el momento de pedirlo.</span></li>
-        <li class="av-plazo av-plazo--ojo"><b>Hasta 3 meses después</b><span>Todavía se puede, pero con riesgo de sanción.</span></li>
-      </ol>
-      <p class="av-p av-p--q">¿Qué puedes pedir?</p>
-      <ol class="av-vias">
-        <li><span class="av-n">1</span><b>Modificar</b><span>Pasar a otra autorización de residencia y trabajo.</span></li>
-        <li><span class="av-n">2</span><b>Prórroga de 1 año</b><span>Si no puedes modificar: buscas empleo y estás inscrito o inscrita en el servicio público de empleo, o tienes un informe de integración de tu comunidad autónoma.</span></li>
-        <li><span class="av-n">3</span><b>Prórroga de 4 años</b><span>Si no puedes buscar empleo por enfermedad grave, discapacidad o edad de jubilación.</span></li>
-      </ol>
-      <p class="av-nota">Si lo pides dentro de esos plazos, tu autorización sigue vigente mientras se resuelve.</p>
-    </div>
+    <h2 class="gg-lbl" id="gg-nov-t">Novedades</h2>
+    <details class="av">
+      <summary><span class="av-urg">Urgente</span><span class="av-q">¿Presentaste la Regularización 2026? Lo que tienes que saber ahora</span><i aria-hidden="true">▾</i></summary>
+      <div class="av-body">
+        <p class="av-p av-p--q">¿En qué punto estás?</p>
+        <div class="av-caso">
+          <h3>Ya me la concedieron</h3>
+          <p class="av-p">Tu autorización dura <b>1 año</b>. Revisa tu plazo:</p>
+          <ol class="av-plazos">
+            <li class="av-plazo av-plazo--si"><b>2 meses antes de que caduque</b><span>Es el momento de pedirlo.</span></li>
+            <li class="av-plazo av-plazo--ojo"><b>Hasta 3 meses después</b><span>Todavía se puede, pero con riesgo de sanción.</span></li>
+          </ol>
+          <p class="av-p av-p--q">¿Qué puedes pedir?</p>
+          <ol class="av-vias">
+            <li><span class="av-n">1</span><b>Modificar</b><span>Pasar a otra autorización de residencia y trabajo.</span></li>
+            <li><span class="av-n">2</span><b>Prórroga de 1 año</b><span>Si no puedes modificar: buscas empleo y estás inscrito o inscrita en el servicio público de empleo, o tienes un informe de integración de tu comunidad autónoma.</span></li>
+            <li><span class="av-n">3</span><b>Prórroga de 4 años</b><span>Si no puedes buscar empleo por enfermedad grave, discapacidad o edad de jubilación.</span></li>
+          </ol>
+          <p class="av-nota">Si lo pides dentro de esos plazos, tu autorización sigue vigente mientras se resuelve.</p>
+        </div>
+        <div class="av-caso">
+          <h3>Todavía espero la resolución</h3>
+          <ul class="av-lista">
+            <li>Revisa tus notificaciones con regularidad.</li>
+            <li>Si te piden documentos, contesta dentro del plazo que te indiquen.</li>
+            <li>¿No sabes qué paso te toca? <a href="diagnostico_post_presentacion.html">Haz el diagnóstico «¿Y ahora qué hago con mi expediente?»</a></li>
+          </ul>
+        </div>
+      </div>
+    </details>
   </div>
 </section>
 
-<section class="gg-sec gg-c-azul" id="estudiar" aria-labelledby="gg-est">
+<!-- ============ ELIGE TU TEMA ============ -->
+<section class="gg-blq" aria-labelledby="gg-tema-t">
   <div class="gg-in">
-    <div class="gg-head">
-      <span class="gg-head-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
-      <div><h2 id="gg-est">Estudiar y trabajar</h2><p>Accede a la universidad con tus estudios de fuera y descubre si puedes acreditar tu experiencia.</p></div>
-    </div>
+    <h2 class="gg-lbl" id="gg-tema-t">Elige tu tema</h2>
+    <ul class="gh-temas">
+      <li class="gg-c-azul"><button class="gh-tema" type="button" id="tab-estudiar" aria-expanded="false" aria-controls="estudiar"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><b>Estudiar y trabajar</b><i aria-hidden="true">▾</i></button></li>
+      <li class="gg-c-ambar"><button class="gh-tema" type="button" id="tab-administracion" aria-expanded="false" aria-controls="administracion"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b>Tus gestiones online</b><i aria-hidden="true">▾</i></button></li>
+      <li class="gg-c-rojo"><button class="gh-tema" type="button" id="tab-regularizacion" aria-expanded="false" aria-controls="regularizacion"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4h11l-1.5 4L15 12H4"/></svg></span><b>Extranjería</b><i aria-hidden="true">▾</i></button></li>
+    </ul>
+  </div>
+</section>
+
+<section class="gg-sec gg-panel gg-c-azul" id="estudiar" aria-labelledby="tab-estudiar">
+  <div class="gg-in">
+    <p class="gg-desc">Accede a la universidad con tus estudios de fuera y descubre si puedes acreditar tu experiencia.</p>
     <div class="gg-grid">
-      <article class="gg-card gg-feat gg-feat--wide">
-        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><span class="gg-type">★ Empieza por aquí</span></div>
-        <h3>Qué formación te sirve para estudiar en España</h3>
-        <p>Oficial, título propio de universidad o certificado profesional: cuál te permite pedir la estancia por estudios y qué te permite hacer después.</p>
-        <div class="gg-meta"><span>Guía</span><span>Antes de matricularte</span><span>Revisada en octubre de 2026</span></div>
-        <a class="gg-go" href="guia-formacion-oficial-titulo-propio.html">Leer la guía <b aria-hidden="true">→</b></a>
+      <article class="gg-card">
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><span class="gg-type">Guía</span></div>
+        <h3><a class="gg-lk" href="guia-formacion-oficial-titulo-propio.html">Qué formación te sirve para estudiar en España</a></h3>
+        <p>Oficial, título propio o certificado profesional: cuál te permite la estancia por estudios y qué te permite después.</p>
+        <div class="gg-meta"><span>⏱ 4 min</span><span>Revisada en octubre de 2026</span></div>
       </article>
       <article class="gg-card">
         <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></svg></span><span class="gg-type">Guía</span></div>
-        <h3>Cómo acceder a la universidad con bachillerato extranjero</h3>
-        <p>Homologación, UNEDasiss, pruebas de acceso, costes y plazos del curso vigente.</p>
-        <div class="gg-meta"><span>Paso a paso</span><span>Con fuentes oficiales</span></div>
-        <a class="gg-go" href="acceso-universidad-bachillerato-extranjero.html">Leer la guía <b aria-hidden="true">→</b></a>
+        <h3><a class="gg-lk" href="acceso-universidad-bachillerato-extranjero.html">Cómo acceder a la universidad con bachillerato extranjero</a></h3>
+        <p>Homologación, UNEDasiss, pruebas de acceso, costes y plazos.</p>
+        <div class="gg-meta"><span>⏱ 6 min</span></div>
       </article>
       <article class="gg-card">
         <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></span><span class="gg-type">Test</span></div>
-        <h3>¿Puedo acceder al PEAC?</h3>
-        <p>Comprueba si cumples los requisitos en la Comunidad de Madrid y por dónde podrías empezar.</p>
-        <div class="gg-meta"><span>⏱ 2 minutos</span><span>Sin registro</span></div>
-        <a class="gg-go" href="peac-calculadora.html">Hacer el test <b aria-hidden="true">→</b></a>
+        <h3><a class="gg-lk" href="peac-calculadora.html">¿Puedo acceder al PEAC?</a></h3>
+        <p>Comprueba si cumples los requisitos en la Comunidad de Madrid.</p>
+        <div class="gg-meta"><span>⏱ 2 min</span></div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="gg-sec gg-sec--alt gg-c-ambar" id="administracion" aria-labelledby="gg-adm">
+<section class="gg-sec gg-panel gg-c-ambar" id="administracion" aria-labelledby="tab-administracion">
   <div class="gg-in">
-    <div class="gg-head">
-      <span class="gg-head-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
-      <div><h2 id="gg-adm">Tus gestiones online</h2><p>Identifícate, recibe tus notificaciones y firma sin depender de nadie.</p></div>
-    </div>
+    <p class="gg-desc">Identifícate, recibe tus notificaciones y firma sin depender de nadie.</p>
     <div class="gg-grid">
-      <article class="gg-card gg-feat gg-feat--wide">
-        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></span><span class="gg-type">★ Empieza por aquí</span></div>
-        <h3>¿Puedo sacar el certificado digital?</h3>
-        <p>Te decimos qué camino te corresponde, qué llevar y cuánto cuesta.</p>
+      <article class="gg-card">
+        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></span><span class="gg-type">Test</span></div>
+        <h3><a class="gg-lk" href="test-certificado-digital.html">¿Puedo sacar el certificado digital?</a></h3>
+        <p>Qué camino te corresponde según tu situación, qué llevar y cuánto cuesta.</p>
         <div class="gg-meta"><span>⏱ 1 pregunta</span></div>
-        <a class="gg-go" href="test-certificado-digital.html">Hacer el test <b aria-hidden="true">→</b></a>
       </article>
       <article class="gg-card">
         <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg></span><span class="gg-type">Guía</span></div>
-        <h3>Carpeta Ciudadana: qué es y cómo entrar</h3>
-        <p>Tus notificaciones, expedientes y avisos en una sola web del Gobierno. Te llevamos paso a paso hasta entrar de verdad.</p>
-        <div class="gg-meta"><span>Guía</span><span>Paso a paso</span><span>Verificada en junio de 2026</span></div>
-        <a class="gg-go" href="guia-carpeta-ciudadana.html">Leer la guía <b aria-hidden="true">→</b></a>
+        <h3><a class="gg-lk" href="guia-carpeta-ciudadana.html">Carpeta Ciudadana: qué es y cómo entrar</a></h3>
+        <p>Tus notificaciones y expedientes en una sola web del Gobierno, y cómo entrar.</p>
+        <div class="gg-meta"><span>⏱ 5 min</span><span>Revisada en junio de 2026</span></div>
       </article>
       <article class="gg-card">
         <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="M13.5 6.5l4 4"/></svg></span><span class="gg-type">Clase interactiva</span></div>
-        <h3>Aprende a firmar digitalmente</h3>
-        <p>Firma tus documentos oficiales desde casa, con seguridad y sin miedo a equivocarte.</p>
-        <div class="gg-meta"><span>Paso a paso</span></div>
-        <a class="gg-go" href="guia-firma-digital.html">Empezar la clase <b aria-hidden="true">→</b></a>
+        <h3><a class="gg-lk" href="guia-firma-digital.html">Aprende a firmar digitalmente</a></h3>
+        <p>Firma tus documentos oficiales desde casa.</p>
+        <div class="gg-meta"><span>⏱ 4 min</span></div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="gg-sec gg-c-rojo" id="regularizacion" aria-labelledby="gg-reg">
+<section class="gg-sec gg-panel gg-c-rojo" id="regularizacion" aria-labelledby="tab-regularizacion">
   <div class="gg-in">
-    <div class="gg-head">
-      <span class="gg-head-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span>
-      <div><h2 id="gg-reg">Extranjería</h2><p>Si presentaste la Regularización 2026 o vienes de arraigo, qué hacer ahora.</p></div>
-    </div>
+    <p class="gg-desc">Si presentaste la Regularización 2026 o vienes de arraigo, qué hacer ahora.</p>
     <div class="gg-grid">
       <article class="gg-card">
         <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4h11l-1.5 4L15 12H4"/></svg></span><span class="gg-type">Guía</span></div>
-        <h3>La nacionalidad española en 2 años</h3>
+        <h3><a class="gg-lk" href="guia-nacionalidad-latinoamericanos.html">La nacionalidad española en 2 años</a></h3>
         <p>Si eres de Latinoamérica: qué tiempo cuenta, qué exámenes haces y qué documentos necesitas.</p>
-        <div class="gg-meta"><span>Paso a paso</span><span>Revisada en octubre de 2026</span></div>
-        <a class="gg-go" href="guia-nacionalidad-latinoamericanos.html">Leer la guía <b aria-hidden="true">→</b></a>
+        <div class="gg-meta"><span>⏱ 4 min</span><span>Revisada en octubre de 2026</span></div>
       </article>
       <article class="gg-card">
         <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6M12 17h.01"/></svg></span><span class="gg-type">Test</span></div>
-        <h3>¿Y ahora qué hago con mi expediente?</h3>
-        <p>Te decimos qué paso te toca ahora y por dónde puedes mover tu expediente.</p>
+        <h3><a class="gg-lk" href="diagnostico_post_presentacion.html">¿Y ahora qué hago con mi expediente?</a></h3>
+        <p>Qué paso te toca ahora con tu expediente de la Regularización 2026.</p>
         <div class="gg-meta"><span>⏱ 3 preguntas</span></div>
-        <a class="gg-go" href="diagnostico_post_presentacion.html">Hacer el diagnóstico <b aria-hidden="true">→</b></a>
       </article>
     </div>
   </div>
@@ -702,6 +700,21 @@
         hamburger.setAttribute('aria-expanded', 'false');
       });
     });
+
+
+    // Elige tu tema: se abre un panel cada vez; sin JS se ven todos
+    (function(){
+      document.documentElement.classList.add('js');
+      var tabs=[].slice.call(document.querySelectorAll('.gh-tema'));
+      function panel(t){return document.getElementById(t.getAttribute('aria-controls'));}
+      function abrir(t,mover){
+        tabs.forEach(function(o){var on=o===t&&o.getAttribute('aria-expanded')!=='true';o.setAttribute('aria-expanded',on?'true':'false');panel(o).hidden=!on;});
+        if(mover&&t.getAttribute('aria-expanded')==='true')panel(t).scrollIntoView({behavior:'smooth',block:'start'});
+      }
+      tabs.forEach(function(t){panel(t).hidden=true;t.addEventListener('click',function(){abrir(t,true);});});
+      var h=location.hash.slice(1),t=tabs.filter(function(x){return x.getAttribute('aria-controls')===h;})[0];
+      if(t)abrir(t,true);
+    })();
 
     // Reveal on scroll
     const observer = new IntersectionObserver((entries) => {
