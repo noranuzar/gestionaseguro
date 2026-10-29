@@ -412,7 +412,7 @@
   .gg-lbl{font-family:'Source Sans 3',system-ui,sans-serif;font-size:.875rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#5e5649;margin:0 0 12px}
   /* Temas: pestañas que abren su panel */
   .gh-temas{display:grid;gap:14px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
-  .gh-tema{display:flex;align-items:center;gap:14px;width:100%;height:100%;background:#fff;border:1px solid #E6E2D9;border-left:6px solid var(--c);border-radius:16px;padding:16px 18px;font:inherit;text-align:left;cursor:pointer;transition:box-shadow .15s,background .15s}
+  .gh-tema{display:flex;align-items:center;gap:14px;width:100%;height:100%;background:#fff;border:1px solid #E6E2D9;border-radius:16px;padding:16px 18px;font:inherit;text-align:left;cursor:pointer;transition:box-shadow .15s,background .15s}
   .gh-tema:hover{box-shadow:0 12px 26px rgba(3,47,94,.10)}
   .gh-tema:focus-visible{outline:3px solid #054782;outline-offset:3px}
   .gh-tema[aria-expanded="true"]{background:var(--t);box-shadow:0 0 0 2px var(--c) inset}
@@ -427,7 +427,7 @@
 </style>
 <header class="gh">
   <div class="gh-in">
-    <h1>Guías y herramientas gratuitas para avanzar a tu ritmo</h1>
+    <h1>Guías y herramientas gratuitas</h1>
     <ul class="gh-meta"><li>Gratis</li><li>Sin registro</li></ul>
   </div>
 </header>
@@ -449,7 +449,9 @@
   .js .gg-sec[hidden]{display:none}
   .gg-sec{scroll-margin-top:90px}
   /* Novedades */
-  .av{background:#fff;border:1px solid #F3D3D9;border-left:6px solid #C3122C;border-radius:16px}
+  .gg-nov .gg-in{background:#FCEFF1;border:1px solid #F3D3D9;border-radius:20px;padding:18px 20px}
+  .gg-nov .gg-lbl{color:#9E0F23}
+  .av{background:#fff;border:1px solid #F3D3D9;border-radius:14px}
   .av summary{display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;list-style:none}
   .av summary::-webkit-details-marker{display:none}
   .av summary:focus-visible{outline:3px solid #054782;outline-offset:3px;border-radius:12px}
@@ -483,7 +485,7 @@
   .av-lista{margin:0;padding:0 0 0 20px;display:grid;gap:8px;font-size:1.0625rem;line-height:1.5;color:#4a4f55}
   .av-lista a{color:#054782;font-weight:700}
   @media (max-width:900px){.av-vias{grid-template-columns:1fr}}
-  @media (max-width:768px){.gg-blq{padding:20px 16px 0}.av summary{flex-wrap:wrap;padding:14px 16px}.av-body{padding:0 14px 16px}.av-plazos{grid-template-columns:1fr}}
+  @media (max-width:768px){.gg-nov .gg-in{padding:14px}.gg-blq{padding:20px 16px 0}.av summary{flex-wrap:wrap;padding:14px 16px}.av-body{padding:0 14px 16px}.av-plazos{grid-template-columns:1fr}}
   .gg-sec{padding:56px 24px;scroll-margin-top:80px}
   .gg-sec--alt{background:#fff}
   .gg-in{max-width:1120px;margin:0 auto}
@@ -519,7 +521,7 @@
 <!-- ============ NOVEDADES ============
      Cada novedad es una entrada cerrada; la información sale al desplegarla.
      Regularización 2026: fuente RD 316/2026, DA 21.ª, apartado 10. Revisar en enero de 2027. -->
-<section class="gg-blq" id="novedades" aria-labelledby="gg-nov-t">
+<section class="gg-blq gg-nov" id="novedades" aria-labelledby="gg-nov-t">
   <div class="gg-in">
     <h2 class="gg-lbl" id="gg-nov-t">Novedades</h2>
     <details class="av">
