@@ -526,19 +526,20 @@
   .pe-lnk{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 16px;border-radius:50px;border:2px solid var(--azul-principal);background:#fff;color:var(--azul-principal);font-weight:800;font-size:1rem;text-decoration:none;transition:background .15s,color .15s}
   .pe-lnk:hover{background:var(--azul-principal);color:#fff}
   /* Bloque 4 · tarjetas de servicio */
-  .pe-srv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .pe-srv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
   .pe-card{background:#fff;border:1px solid #ECE9E2;border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
   .pe-card-top{padding:18px 22px 14px;border-bottom:1px solid #ECE9E2}
   .pe-mom{display:inline-block;font-size:.8125rem;font-weight:800;letter-spacing:.04em;color:var(--azul-principal);background:var(--azul-light);border-radius:50px;padding:4px 12px;margin:0 0 8px}
   .pe-card h3{font-family:'Source Sans 3',sans-serif;font-size:1.25rem;font-weight:800;color:var(--azul-principal);line-height:1.25;margin:0}
-  .pe-card-body{padding:16px 22px;flex:1}
-  .pe-para{font-family:'DM Serif Display',serif;font-size:1.25rem;line-height:1.3;color:var(--azul-principal);margin:0 0 12px;padding-left:12px;border-left:3px solid var(--amarillo)}
+  .pe-card-body{padding:20px 22px;flex:1}
+  .pe-lbl{font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-secundario);margin:0 0 6px}
+  .pe-para{font-family:'DM Serif Display',serif;font-size:1.25rem;line-height:1.3;color:var(--azul-principal);margin:0 0 16px;padding-left:12px;border-left:3px solid var(--amarillo)}
   .pe-inc{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
   .pe-inc li{font-size:1rem;font-weight:600;color:var(--texto-suave);background:#FAF8F3;border:1px solid #ECE9E2;border-radius:50px;padding:4px 12px}
-  .pe-card-nota{margin:10px 0 0;font-size:1rem;line-height:1.45;color:var(--texto-suave)}
+  .pe-card-nota{margin:14px 0 0;padding-top:12px;border-top:1px solid #ECE9E2;font-size:1rem;line-height:1.45;color:var(--texto-suave)}
   .pe-out{background:var(--azul-light);padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .pe-out p{margin:0;font-size:1rem;line-height:1.35;color:var(--texto)}
-  .pe-out p b{display:block;font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-secundario)}
+  .pe-out p{margin:0;font-size:1.0625rem;line-height:1.35;font-weight:700;color:var(--azul-principal)}
+  .pe-out p b{display:block;margin-bottom:2px;font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-secundario)}
   /* Bloque 5 · FP a medias */
   .pe-fp{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;background:#FEF4DF;border-radius:22px;padding:24px 30px}
   .pe-fp h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem;line-height:1.2;color:var(--azul-principal);margin:0 0 4px}
@@ -581,8 +582,8 @@
     .pe-esp div{background:none;border:0;border-radius:0;padding:10px 0}
     .pe-esp div+div{border-top:1px solid rgba(255,255,255,.14)}
     .pe-prog-cta{margin-top:18px}.pe-prog-cta .pe-btn{width:100%}
-    .pe-srv{gap:10px}
-    .pe-card-top{padding:14px 16px 10px}.pe-card-body{padding:12px 16px}.pe-para{font-size:1.1875rem;margin-bottom:10px}.pe-out{padding:10px 16px}
+    .pe-srv{gap:14px}
+    .pe-card-top{padding:14px 16px 10px}.pe-card-body{padding:16px}.pe-para{font-size:1.1875rem;margin-bottom:14px}.pe-out{padding:14px 16px;flex-direction:column;align-items:stretch;gap:12px}.pe-out .pe-lnk{width:100%}
     .pe-fp{padding:18px 16px}.pe-fp h2{font-size:1.5rem}.pe-fp .pe-lnk{width:100%}
     .pe-quien{grid-template-columns:96px 1fr;padding:18px 16px;gap:14px}
     .pe-foto{grid-row:auto;width:96px;height:96px;border-radius:18px}
@@ -599,7 +600,7 @@
   <div class="pe-in">
     <p class="pe-eyebrow">Qué es el PEAC</p>
     <h2 class="pe-h2" id="pe-que">Lo que sabes hacer, reconocido oficialmente</h2>
-    <p class="pe-sub">Es el procedimiento público que reconoce las competencias que has adquirido trabajando o formándote.</p>
+    <p class="pe-sub">Es el procedimiento público que reconoce las competencias que has adquirido mediante experiencia laboral o formación no formal.</p>
     <div class="pe-pos">
       <div class="pe-pos-base">
         <p class="pe-pos-k">Lo que consigues con el PEAC</p>
@@ -607,7 +608,7 @@
         <p>Cada estándar que demuestras queda reconocido de forma oficial y acumulable.</p>
       </div>
       <div class="pe-pos-op">
-        <div><p class="pe-pos-chip">Según tu caso</p><h3>Puede ayudarte a obtener un certificado profesional</h3><p>Si completas los estándares que lo forman.</p></div>
+        <div><p class="pe-pos-chip">Según tu caso</p><h3>Puede ayudarte a obtener un certificado profesional</h3><p>Si acreditas todos los estándares de competencia que integran ese certificado y cumples los requisitos aplicables.</p></div>
         <div><p class="pe-pos-chip">Según tu caso</p><h3>Puede facilitar que continúes una FP</h3><p>Según las condiciones y la formación que te falte.</p></div>
       </div>
     </div>
@@ -653,22 +654,22 @@
     <div class="pe-srv">
       <article class="pe-card">
         <div class="pe-card-top"><p class="pe-mom">Antes de decidir tu camino</p><h3>Orientación y Plan de Cualificación Profesional</h3></div>
-        <div class="pe-card-body"><p class="pe-para">Tienes experiencia o estudios y no sabes qué te conviene</p><ul class="pe-inc"><li>Tu trayectoria</li><li>Estándares y carencias</li><li>Objetivo y vías</li></ul></div>
+        <div class="pe-card-body"><p class="pe-lbl">Para ti si</p><p class="pe-para">Tienes experiencia o estudios y no sabes qué te conviene</p><p class="pe-lbl">Incluye</p><ul class="pe-inc"><li>Tu trayectoria</li><li>Estándares y carencias</li><li>Objetivo y vías</li></ul></div>
         <div class="pe-out"><p><b>Obtienes</b>Diagnóstico y plan de cualificación con hoja de ruta</p><a class="pe-lnk" data-via="servicio-orientacion" href="#contacto">Me interesa →</a></div>
       </article>
       <article class="pe-card">
         <div class="pe-card-top"><p class="pe-mom">Antes de presentar la solicitud</p><h3>Preparación para la Acreditación</h3></div>
-        <div class="pe-card-body"><p class="pe-para">Vas a presentarte y quieres llegar preparado/a</p><ul class="pe-inc"><li>Revisión documental</li><li>Dosier de evidencias</li><li>Autoevaluación</li></ul></div>
+        <div class="pe-card-body"><p class="pe-lbl">Para ti si</p><p class="pe-para">Vas a presentarte y quieres llegar preparado/a</p><p class="pe-lbl">Incluye</p><ul class="pe-inc"><li>Revisión documental</li><li>Dosier de evidencias</li><li>Autoevaluación</li></ul></div>
         <div class="pe-out"><p><b>Obtienes</b>Dosier organizado y preparación individual</p><a class="pe-lnk" data-via="servicio-preparacion" href="#contacto">Me interesa →</a></div>
       </article>
       <article class="pe-card">
         <div class="pe-card-top"><p class="pe-mom">Con la solicitud presentada</p><h3>Acompañamiento durante el PEAC</h3></div>
-        <div class="pe-card-body"><p class="pe-para">Ya estás en el procedimiento y te surgen dudas</p><ul class="pe-inc"><li>Comunicaciones</li><li>Requerimientos</li><li>Resultados</li></ul><p class="pe-card-nota">No representamos a la Administración ni garantizamos la acreditación.</p></div>
+        <div class="pe-card-body"><p class="pe-lbl">Para ti si</p><p class="pe-para">Ya estás en el procedimiento y te surgen dudas</p><p class="pe-lbl">Incluye</p><ul class="pe-inc"><li>Comunicaciones</li><li>Requerimientos</li><li>Resultados</li></ul><p class="pe-card-nota">No representamos a la Administración ni garantizamos la acreditación.</p></div>
         <div class="pe-out"><p><b>Obtienes</b>Acompañamiento según el alcance contratado</p><a class="pe-lnk" data-via="servicio-acompanamiento" href="#contacto">Me interesa →</a></div>
       </article>
       <article class="pe-card">
         <div class="pe-card-top"><p class="pe-mom">Después de acreditar o con estudios a medias</p><h3>Progresión Profesional y Formativa</h3></div>
-        <div class="pe-card-body"><p class="pe-para">Quieres un certificado o terminar tu FP</p><ul class="pe-inc"><li>Módulos superados</li><li>Posibles equivalencias</li><li>Itinerario</li></ul><p class="pe-card-nota">Las convalidaciones las resuelve el organismo competente.</p></div>
+        <div class="pe-card-body"><p class="pe-lbl">Para ti si</p><p class="pe-para">Quieres un certificado o terminar tu FP</p><p class="pe-lbl">Incluye</p><ul class="pe-inc"><li>Módulos superados</li><li>Posibles equivalencias</li><li>Itinerario</li></ul><p class="pe-card-nota">Las convalidaciones las resuelve el organismo competente.</p></div>
         <div class="pe-out"><p><b>Obtienes</b>Plan de progresión con alternativas</p><a class="pe-lnk" data-via="servicio-progresion" href="#contacto">Me interesa →</a></div>
       </article>
     </div>
@@ -699,7 +700,7 @@
       <li><b>Experiencia</b>Gestión de expedientes del PEAC de la Comunidad de Madrid (2020–2025)</li>
       <li><b>Formación</b>Licenciada en Documentación (UC3M)</li>
     </ul>
-    <p class="pe-quien-pie">Revisamos tu experiencia contigo antes de que presentes nada. No intervenimos en la resolución de tu expediente. <a href="equipo.html">Conoce al equipo →</a></p>
+    <p class="pe-quien-pie">Te orientamos y acompañamos según el momento en el que te encuentres. No intervenimos en la resolución de tu expediente. <a href="equipo.html">Conoce al equipo →</a></p>
   </div>
 </section>
 
