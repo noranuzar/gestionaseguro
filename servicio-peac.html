@@ -440,6 +440,18 @@
     .hero-h-team{align-items:flex-start;}
     .hero-h-team p{max-width:none;}
   }
+  /* PEAC · cabecera (maqueta V3): más baja, botones en cápsula y collage solo en escritorio */
+  .hero-h--int .hero-h-wrap{min-height:470px;}
+  .hero-h--int .hero-h-in{padding:56px 0 56px 56px;}
+  .hero-h--int .hero-h-btn{border-radius:50px;min-height:54px;}
+  .hero-h--int .hero-h-ctas{margin-bottom:0;}
+  @media(min-width:769px){.hero-h--int .hero-h-bg{left:54%;padding:28px 28px 28px 0}}
+  @media(max-width:1024px) and (min-width:769px){.hero-h--int .hero-h-in{padding-left:40px;}}
+  @media(max-width:768px){
+    .hero-h--int .hero-h-bg{display:none;}
+    .hero-h--int .hero-h-in{padding:24px 18px 22px;}
+    .hero-h--int .hero-h-sub{font-size:1.0625rem;margin-bottom:20px;}
+  }
 </style>
 <header class="hero-h hero-h--int">
   <div class="hero-h-wrap">
@@ -447,14 +459,12 @@
       <img src="peac-hero-oficios.webp" srcset="peac-hero-oficios-movil.webp 768w, peac-hero-oficios.webp 1536w" sizes="(max-width:768px) 100vw, 672px" width="1536" height="1024" alt="Personas trabajando en distintos oficios: estética, construcción, cocina, limpieza, administración, electricidad, cuidados, jardinería y peluquería" fetchpriority="high">
     </div>
     <div class="hero-h-in">
-      <p class="hero-h-eyebrow"><i aria-hidden="true"></i>Acreditar experiencia · PEAC</p>
-      <h1>Tu experiencia tiene valor, <span>te ayudamos a acreditarla</span></h1>
-      <p class="hero-h-sub">Si vives o trabajas en España y tienes experiencia laboral o cursos de formación, el PEAC puede reconocer oficialmente lo que sabes hacer. <b>Te guiamos en la Comunidad de Madrid.</b></p>
+      <p class="hero-h-eyebrow"><i aria-hidden="true"></i>PEAC · Comunidad de Madrid</p>
+      <h1>Acredita tu experiencia laboral <span>y conviértela en oportunidades</span></h1>
+      <p class="hero-h-sub">Lo que sabes hacer puede reconocerse oficialmente y abrirte el camino a un certificado profesional o un título de FP.</p>
       <div class="hero-h-ctas">
-        <a href="peac-calculadora.html" class="hero-h-btn hero-h-btn--pri">Comprueba si puedes acceder →</a>
-      </div>
-      <div class="hero-h-team">
-        <p><b>Nora</b> conoce el procedimiento PEAC de la Comunidad de Madrid desde dentro. Revisamos tu experiencia contigo antes de que presentes nada.</p>
+        <a href="peac-calculadora.html" class="hero-h-btn hero-h-btn--pri">Comprueba tu situación →</a>
+        <a href="#contacto" class="hero-h-btn hero-h-btn--sec">Consulta tu caso</a>
       </div>
     </div>
   </div>
