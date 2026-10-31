@@ -549,6 +549,18 @@
   .pe-srv .pe-para{background:#F5E4E2;border-left-width:4px;border-radius:0 12px 12px 0;padding:12px 14px}
   .pe-srv .pe-para-sec{margin-bottom:10px;text-wrap:pretty}
   .pe-srv .pe-inc li{background:var(--azul-light);border-color:#D3DEEC;color:var(--azul-principal)}
+  /* Tarjetas · color por servicio (la barra de la promesa sigue en ámbar) */
+  .pe-srv .pe-card:nth-child(1){--bg:#E5EDF8;--tit:#032F5E;--chip:#C9D8EE;--suave:#EEF3FA}
+  .pe-srv .pe-card:nth-child(2){--bg:#F5E4E2;--tit:#9E3A2F;--chip:#EBCBC7;--suave:#FAEFEE}
+  .pe-srv .pe-card:nth-child(3){--bg:#F7EBD5;--tit:#7A4E0E;--chip:#EDD7AE;--suave:#FBF4E6}
+  .pe-srv .pe-card:nth-child(4){--bg:#D9E9DF;--tit:#245638;--chip:#C3DCCB;--suave:#E5F0E8}
+  .pe-srv .pe-card .pe-card-top{background:var(--bg);border-bottom-color:var(--chip)}
+  .pe-srv .pe-card h3{color:var(--tit)}
+  .pe-srv .pe-card .pe-card-top .pe-mom{background:var(--chip);color:var(--tit)}
+  .pe-srv .pe-card .pe-para{background:var(--suave);color:var(--tit)}
+  .pe-srv .pe-card .pe-lbl,.pe-srv .pe-card .pe-para-sec b{color:var(--tit)}
+  .pe-srv .pe-card .pe-inc li{background:var(--suave);border-color:var(--chip);color:var(--tit)}
+  .pe-srv .pe-card:nth-child(4) .pe-inc li{background:#DCEBE1}
   /* Fichas ampliadas de servicio (dialog) */
   .pe-ficha{margin:auto;width:min(680px,calc(100% - 32px));max-height:88vh;padding:0;border:0;border-radius:20px;background:#fff;color:var(--texto);overflow:auto;box-shadow:0 30px 70px rgba(3,47,94,.25)}
   .pe-ficha::backdrop{background:rgba(3,47,94,.55)}
@@ -680,7 +692,7 @@
     <div class="pe-srv">
       <article class="pe-card">
         <div class="pe-card-top"><p class="pe-mom">Antes de decidir tu camino</p><h3>Diagnóstico y estrategia de cualificación</h3></div>
-        <div class="pe-card-body"><p class="pe-para">Sabes qué competencias puedes acreditar y qué itinerario te conviene</p><p class="pe-para-sec"><b>Para ti si</b>Tienes experiencia o estudios y aún no sabes qué camino seguir</p><p class="pe-lbl">Incluye</p><ul class="pe-inc"><li>Tu trayectoria</li><li>Estándares y carencias</li><li>Objetivo y vías</li></ul></div>
+        <div class="pe-card-body"><p class="pe-para">Sabes qué competencias puedes acreditar y qué itinerario te conviene</p><p class="pe-para-sec"><b>Para ti si</b>Tienes experiencia o estudios y aún no sabes qué camino seguir</p><p class="pe-lbl">Incluye</p><ul class="pe-inc"><li>Tu trayectoria</li><li>Estándares que puedes acreditar</li><li>Objetivo y vías</li></ul></div>
         <div class="pe-out"><p><b>Obtienes</b>Informe de diagnóstico y hoja de ruta</p><a class="pe-lnk" href="#servicio-diagnostico">Ver servicio y ejemplo →</a></div>
       </article>
       <article class="pe-card">
