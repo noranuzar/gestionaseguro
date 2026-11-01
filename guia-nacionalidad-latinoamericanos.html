@@ -366,7 +366,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/gs-layout.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://gestionaseguroweb.com/"}, {"@type": "ListItem", "position": 2, "name": "Guías gratuitas", "item": "https://gestionaseguroweb.com/blog.html"}, {"@type": "ListItem", "position": 3, "name": "Nacionalidad española por residencia para latinoamericanos", "item": "https://gestionaseguroweb.com/guia-nacionalidad-latinoamericanos.html"}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://gestionaseguroweb.com/"}, {"@type": "ListItem", "position": 2, "name": "Centro de Conocimiento", "item": "https://gestionaseguroweb.com/blog.html"}, {"@type": "ListItem", "position": 3, "name": "Nacionalidad española por residencia para latinoamericanos", "item": "https://gestionaseguroweb.com/guia-nacionalidad-latinoamericanos.html"}]}]}</script>
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Gestiona Seguro">
 <meta property="og:title" content="Nacionalidad española en 2 años si eres latinoamericano | Gestiona Seguro">
@@ -394,7 +394,7 @@
       <li><a href="servicios-homologacion.html">Estudios</a></li>
       <li><a href="extranjeria.html">Extranjería</a></li>
       <li><a href="servicio-peac.html">Acreditar experiencia</a></li>
-      <li><a href="blog.html" aria-current="page">Guías gratuitas</a></li>
+      <li><a href="blog.html" aria-current="page">Guías y recursos</a></li>
       <li><a href="equipo.html">Equipo</a></li>
     </ul>
     <button class="gs-burger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
@@ -402,93 +402,9 @@
 </nav>
 
 <!-- ============ PLANTILLA DE GUÍA (v2) ============
-     Cabecera de texto con índice, sin fotos ni bloques oscuros.
+     Cabecera de texto con índice. Estilos en css/gs-recursos.css, sin fotos ni bloques oscuros.
      Color de la sección en --g (Extranjería: rojo). -->
-<style>
-  .gd{--g:#C3122C;--g-t:#FBE9EC;--g-ink:#9E0F23;background:#FAF8F3;color:#2a2218}
-  .gd-in{max-width:780px;margin:0 auto;padding:0 24px}
-  /* Cabecera */
-  .gd-head{padding:118px 0 8px}
-  .gd-sello{display:flex;align-items:center;gap:10px;margin:0 0 22px;font-size:.9375rem;font-weight:700;color:#5e5649}
-  .gd-sello img{height:30px;width:auto;opacity:.9}
-  .gd-sello span{color:var(--g-ink)}
-  .gd-head h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.1rem,4.4vw,2.9rem);line-height:1.12;color:#032F5E;margin:0 0 14px}
-  .gd-sub{font-size:1.1875rem;line-height:1.6;color:#4a4f55;margin:0 0 16px}
-  .gd-sub b{color:#032F5E}
-  .gd-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
-  .gd-meta li{font-size:.9375rem;font-weight:700;color:#5e5649;background:#F1EEE7;border-radius:8px;padding:4px 10px}
-  .gd-indice{background:#fff;border:1px solid #E6E2D9;border-radius:18px;padding:20px 24px}
-  .gd-indice h2{font-family:'Source Sans 3',system-ui,sans-serif;font-size:.875rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#5e5649;margin:0 0 10px}
-  .gd-indice ol{margin:0;padding:0;list-style:none;display:grid;gap:2px}
-  .gd-indice a{display:flex;gap:12px;align-items:baseline;padding:8px 0;font-size:1.0625rem;font-weight:700;color:#032F5E;text-decoration:none;border-top:1px solid #F1EEE7}
-  .gd-indice li:first-child a{border-top:0}
-  .gd-indice a span{flex-shrink:0;min-width:5.2em;font-size:.875rem;font-weight:800;color:var(--g-ink)}
-  .gd-indice a:hover{text-decoration:underline;text-underline-offset:3px}
-  .gd-equipo{margin:18px 0 0;font-size:.9375rem;line-height:1.5;color:#5e5649;padding-left:12px;border-left:3px solid #F2A91D}
-  .gd-equipo b{color:#032F5E}
-  /* Pasos */
-  .gd-paso{padding:44px 0 8px;scroll-margin-top:84px}
-  .gd-paso + .gd-paso{border-top:1px solid #E6E2D9;margin-top:36px}
-  .gd-num{display:inline-block;font-size:.875rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--g-ink);background:var(--g-t);border-radius:50px;padding:4px 12px;margin:0 0 10px}
-  .gd-paso h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.65rem,3.2vw,2.1rem);line-height:1.2;color:#032F5E;margin:0 0 10px}
-  .gd-lead{font-size:1.125rem;line-height:1.65;color:#4a4f55;margin:0 0 22px}
-  /* Claves */
-  .gd-claves{display:grid;gap:12px;list-style:none;margin:0;padding:0;counter-reset:c}
-  .gd-claves li{display:flex;gap:16px;background:#fff;border:1px solid #E6E2D9;border-radius:16px;padding:18px 20px;counter-increment:c}
-  .gd-claves li::before{content:counter(c);flex-shrink:0;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#FEF4DF;color:#6b4500;font-weight:800;font-size:1.0625rem}
-  .gd-claves b{display:block;font-size:1.125rem;color:#032F5E;margin:0 0 2px}
-  .gd-claves p{margin:0;font-size:1.0625rem;line-height:1.55;color:#4a4f55}
-  /* Sí / No */
-  .gd-sino{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
-  .gd-col{border-radius:16px;padding:20px 22px}
-  .gd-col h3{font-family:'Source Sans 3',system-ui,sans-serif;font-size:1.125rem;font-weight:800;margin:0 0 10px}
-  .gd-col ul{margin:0;padding:0;list-style:none}
-  .gd-col li{padding:9px 0;border-top:1px solid rgba(0,0,0,.06);font-size:1.0625rem;line-height:1.5}
-  .gd-col li:first-child{border-top:0;padding-top:0}
-  .gd-col small{display:block;font-size:1rem;color:#5e5649;margin-top:2px}
-  .gd-col--si{background:#EAF1F8;border:1px solid #D4E0F0}
-  .gd-col--si h3{color:#054782}
-  .gd-col--no{background:#FCEFF1;border:1px solid #F3D3D9}
-  .gd-col--no h3{color:#9E0F23}
-  /* Nota destacada: el único énfasis fuerte de la guía */
-  .gd-nota{margin:16px 0 0;background:#FEF4DF;border:1px solid #F6DDA8;border-left:6px solid #F2A91D;border-radius:14px;padding:16px 20px;font-size:1.0625rem;line-height:1.55}
-  .gd-nota b{color:#6b4500}
-  /* Lista numerada */
-  .gd-lista{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:n}
-  .gd-lista li{display:flex;gap:14px;background:#fff;border:1px solid #E6E2D9;border-radius:14px;padding:16px 18px;counter-increment:n}
-  .gd-lista li::before{content:counter(n);flex-shrink:0;display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#EAF1F8;color:#032F5E;font-weight:800}
-  .gd-lista b{display:block;font-size:1.0625rem;color:#032F5E;margin:0 0 2px}
-  .gd-lista p{margin:0;font-size:1.0625rem;line-height:1.5;color:#4a4f55}
-  .gd-lista a{color:#054782;font-weight:700}
-  /* Dos fichas */
-  .gd-dos{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
-  .gd-ficha{background:#fff;border:1px solid #E6E2D9;border-radius:16px;padding:20px 22px}
-  .gd-ficha-k{display:inline-block;font-size:.8125rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:50px;padding:3px 10px;margin:0 0 8px;background:#EAF1F8;color:#032F5E}
-  .gd-ficha--alt .gd-ficha-k{background:#FEF4DF;color:#6b4500}
-  .gd-ficha h3{font-family:'Source Sans 3',system-ui,sans-serif;font-size:1.25rem;font-weight:800;color:#032F5E;margin:0 0 4px}
-  .gd-ficha p{margin:0;font-size:1.0625rem;line-height:1.55;color:#4a4f55}
-  .gd-ficha p + p{margin-top:8px}
-  .gd-otro{margin:22px 0 0;font-size:1.0625rem;color:#4a4f55}
-  .gd-otro b{color:#032F5E}
-  .gd-fuentes{margin:40px 0 0;padding:18px 0 0;border-top:1px solid #E6E2D9;font-size:.9375rem;line-height:1.55;color:#5e5649}
-  .gd-fuentes b{color:#032F5E}
-  /* Cierre */
-  .gd-cierre{margin:28px 0 56px;background:#EAF1F8;border-radius:20px;padding:26px 28px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
-  .gd-cierre h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;color:#032F5E;margin:0 0 6px}
-  .gd-cierre p{margin:0;font-size:1.0625rem;line-height:1.55;color:#4a4f55;max-width:30em}
-  .gd-cta{display:flex;flex-direction:column;gap:8px;align-items:center}
-  .gd-btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:12px 32px;border-radius:50px;background:#F2A91D;color:#2a2218;font-weight:800;font-size:1.0625rem;text-decoration:none;box-shadow:0 10px 24px rgba(242,169,29,.3)}
-  .gd-cta small{font-size:.9375rem;color:#4a4f55}
-  .gd-cta small a{color:#054782;font-weight:700}
-  .gd a:focus-visible{outline:3px solid #054782;outline-offset:3px;border-radius:6px}
-  @media (max-width:700px){
-    .gd-in{padding:0 16px}.gd-head{padding-top:96px}
-    .gd-sino,.gd-dos{grid-template-columns:1fr}
-    .gd-paso{padding-top:32px}.gd-paso + .gd-paso{margin-top:28px}
-    .gd-cierre{padding:22px 20px}.gd-btn,.gd-cta{width:100%}
-    .gd-indice a span{min-width:4.6em}
-  }
-</style>
+<link rel="stylesheet" href="css/gs-recursos.css">
 
 <main class="gd">
   <div class="gd-in">
