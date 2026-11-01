@@ -523,7 +523,7 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 .es-case h3,.es-plan h3,.es-goal h3{margin:0 0 12px;font-size:1.3125rem}.es-case h3,.es-goal h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.5rem;line-height:1.2}
 .es-case p,.es-goal p{font-size:1.0625rem;margin:0 0 12px}
 .es--sep{border-top:1px solid #ECE9E2}
-.es-fam-note{font-size:.9375rem;color:#595959;margin:0 0 32px;max-width:640px}
+.es-fam-note{background:#fff;border-left:4px solid var(--azul-secundario);border-radius:0 12px 12px 0;padding:12px 16px;font-size:1rem;line-height:1.5;color:var(--texto);margin:0 0 32px;max-width:720px}
 .es-areas{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
 .es-area{display:flex;flex-direction:column;gap:8px;text-align:left;font:inherit;color:inherit;background:#fff;border:1px solid #ECE9E2;border-radius:20px;padding:22px;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;min-width:0}
 .es-area:hover{border-color:var(--azul-secundario);box-shadow:0 12px 26px rgba(3,47,94,.08);transform:translateY(-2px)}
@@ -561,8 +561,8 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 .es-plan .es-btn{margin-top:auto}
 .es-plan--star{border:2px solid var(--rojo-principal)}
 .es-star{position:absolute;top:-14px;left:24px;background:var(--rojo-principal);color:#fff;font-size:.8125rem;font-weight:800;padding:4px 12px;border-radius:50px}
-.es-price{margin:28px 0 4px;font-size:1.1875rem;font-weight:800;color:var(--azul-principal);text-align:center}
-.es-excl{margin:0;font-size:1rem;color:#595959;text-align:center}
+.es-price{display:table;margin:28px auto 8px;background:#FEF4DF;border:1px solid #F5D9A0;border-radius:50px;padding:10px 24px;font-size:1.1875rem;font-weight:800;color:#6b4500;text-align:center}
+.es-excl{margin:0;font-size:1rem;color:var(--texto-suave);text-align:center}
 .es-table{overflow-x:auto;border:1px solid #ECE9E2;border-radius:16px}
 .es-table table{width:100%;min-width:620px;border-collapse:collapse;font-size:1.0625rem}
 .es-table thead th{background:var(--azul-principal);color:#fff;text-align:left;padding:16px 20px}
@@ -842,7 +842,7 @@ fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;colo
 
 
 <!-- BLOQUE 5b · PLANES DE ACOMPAÑAMIENTO -->
-<section class="es" id="planes" aria-labelledby="es-planes">
+<section class="es es--w" id="planes" aria-labelledby="es-planes">
   <div class="es-in">
     <h2 id="es-planes">Planes de acompañamiento</h2>
     <p class="es-sub">Primero revisamos el programa y tu situación; después te explicamos qué acompañamiento necesitas.</p>
