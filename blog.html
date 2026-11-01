@@ -434,20 +434,21 @@
 
 <!-- ============ GUÍAS · CONTENIDO ============ -->
 <style>
-  /* Colores por bloque (los mismos de las tarjetas de la portada) */
-  .gg-c-azul{--c:#054782;--t:#E8EEF7;--ink:#032F5E}
-  .gg-c-ambar{--c:#F2A91D;--t:#FEF4DF;--ink:#6b4500}
-  .gg-c-rojo{--c:#C3122C;--t:#FBE9EC;--ink:#9E0F23}
-  
+  .gg-card:focus-within{box-shadow:0 0 0 3px #054782}
+  .gg-sec{scroll-margin-top:90px}
+</style>
+<link rel="stylesheet" href="css/gs-recursos.css">
+<style>
+
   .gg-blq{padding:28px 24px 0}
   .gg-sec.gg-panel{padding-top:24px}
   .gg-desc{margin:0 0 20px;font-size:1.0625rem;color:#4a4f55}
   .gg-lk{color:inherit;text-decoration:none}
   .gg-lk::after{content:"";position:absolute;inset:0;border-radius:18px}
   .gg-lk:focus-visible{outline:none}
-  .gg-card:focus-within{box-shadow:0 0 0 3px #054782}
+
   .js .gg-sec[hidden]{display:none}
-  .gg-sec{scroll-margin-top:90px}
+
   /* Novedades */
   .gg-nov .gg-in{background:#FCEFF1;border:1px solid #F3D3D9;border-radius:20px;padding:18px 20px}
   .av{background:#fff;border:1px solid #F3D3D9;border-radius:14px}
@@ -485,35 +486,7 @@
   .av-lista a{color:#054782;font-weight:700}
   @media (max-width:900px){.av-vias{grid-template-columns:1fr}}
   @media (max-width:768px){.gg-nov .gg-in{padding:14px}.gg-blq{padding:20px 16px 0}.av summary{flex-wrap:wrap;padding:14px 16px}.av-body{padding:0 14px 16px}.av-plazos{grid-template-columns:1fr}}
-  .gg-sec{padding:56px 24px;scroll-margin-top:80px}
-  .gg-sec--alt{background:#fff}
-  .gg-in{max-width:1120px;margin:0 auto}
-  .gg-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
-  .gg-grid--4{grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
-  .gg-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #ECE9E2;border-top:5px solid var(--c);border-radius:18px;padding:24px;transition:transform .18s,box-shadow .18s}
-  .gg-sec--alt .gg-card{background:#FAF8F3}
-  .gg-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(3,47,94,.12)}
-  .gg-card:focus-within{box-shadow:0 0 0 3px var(--azul-secundario)}
-  .gg-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px}
-  .gg-ic{width:48px;height:48px;border-radius:14px;background:var(--t);color:var(--ink);display:grid;place-items:center}
-  .gg-ic svg{width:24px;height:24px}
-  .gg-type{white-space:nowrap;font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:50px;padding:4px 10px;background:var(--t);color:var(--ink)}
-  .gg-card h3{font-family:'Source Sans 3',sans-serif;font-size:1.1875rem;font-weight:800;line-height:1.3;color:var(--azul-principal);margin:0 0 8px}
-  .gg-card p{margin:0 0 14px;font-size:1rem;line-height:1.55;color:#4a4f55}
-  .gg-meta{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
-  .gg-meta span{font-size:.8125rem;font-weight:700;color:#4a4f55;background:#F3F1EC;border-radius:6px;padding:3px 8px}
-  .gg-cierre-sec{padding:32px 24px 56px}
-  .gg-cierre{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:24px;justify-content:space-between;background:var(--azul-light);border-radius:22px;padding:30px 34px}
-  .gg-cierre h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem;color:var(--azul-principal);margin:0 0 6px}
-  .gg-cierre p{margin:0;color:#4a4f55;font-size:1.0625rem;max-width:620px}
-  .gg-cierre-cta{display:flex;flex-direction:column;gap:8px;align-items:center}
-  .gg-hablemos{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:12px 34px;border-radius:50px;background:var(--amarillo);color:#2a2218;font-weight:800;font-size:1.0625rem;text-decoration:none;box-shadow:0 12px 28px rgba(242,169,29,.35);transition:transform .15s}
-  .gg-hablemos:hover{transform:translateY(-2px)}
-  .gg-hablemos:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
-  .gg-cierre-cta small{font-size:.9375rem;color:#4a4f55}
-  .gg-cierre-cta small a{color:var(--azul-secundario);font-weight:700}
-  
-  @media (max-width:768px){.gg-sec{padding:40px 16px}.gg-cierre-sec{padding:28px 16px 44px}.gg-cierre{padding:24px 20px}.gg-hablemos,.gg-cierre-cta{width:100%}}
+
   @media (prefers-reduced-motion:reduce){.gg-card{transition:none}}
 </style>
 
