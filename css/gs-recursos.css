@@ -163,6 +163,7 @@
   .gd-lista li > div > p:only-child{color:#2a2218}
   /* Empleo (ámbar), subtítulos y tablas */
   .gd--empleo{--g:#D9900C;--g-t:#FEF4DF;--g-ink:#6b4500}
+  .gd--tramites{--g:#5e5649;--g-t:#F1EEE7;--g-ink:#3d382f}
   .gd-h3{font-family:'Source Sans 3',system-ui,sans-serif;font-size:1.1875rem;font-weight:800;color:#032F5E;margin:26px 0 8px}
   .gd-tabla{overflow-x:auto;margin:0 0 6px;background:#fff;border:1px solid #E6E2D9;border-radius:16px}
   .gd-tabla table{width:100%;border-collapse:collapse;font-size:1rem;line-height:1.45}

@@ -26,10 +26,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 /* TOKENS UNIFICADOS — idénticos al sitio                       */
 /* ============================================================ */
 :root {
-  --oliva: #556B2F; --oliva-light: #7d9448; --oliva-dark: #3a4a1f; --oliva-bg: #f0f3e8;
-  --arena: #F5F5DC; --arena-warm: #f8f6ed; --arena-dark: #e8e2c8;
-  --terracota: #E2725B; --terracota-dark: #c45a42; --terracota-bg: #fdf3f0;
-  --ambar: #c9922e; --ambar-dark: #8b6914; --ambar-bg: #FEF5D7;
+  --oliva: #054782; --oliva-light: #054782; --oliva-dark: #032F5E; --oliva-bg: #E8EEF7;
+  --arena: #FAF8F3; --arena-warm: #FFFDF8; --arena-dark: #ECE9E2;
+  --terracota: #C3122C; --terracota-dark: #9E0F23; --terracota-bg: #FBE9EC;
+  --ambar: #D9900C; --ambar-dark: #6b4500; --ambar-bg: #FEF4DF;
   --texto: #2a2218; --texto-suave: #5e5649; --blanco: #fffdf8;
 
   --fs-xs: 1rem; --fs-sm: 1.0625rem; --fs-base: 1.125rem; --fs-md: 1.1875rem; --fs-lg: 1.3125rem;
@@ -58,7 +58,7 @@ a { color: inherit; text-decoration: none; }
 /* ============================================================ */
 /* NAVBAR — idéntico al Core del sitio                          */
 /* ============================================================ */
-.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,253,248,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(85,107,47,0.1); transition: all var(--transicion); }
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,253,248,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(5,71,130,0.1); transition: all var(--transicion); }
 .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
 .navbar-inner { height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .logo-header { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
@@ -76,13 +76,13 @@ a { color: inherit; text-decoration: none; }
 .nav-item.active .chevron { transform: rotate(180deg); }
 .dropdown {
   position: absolute; top: calc(100% + 10px); left: 0; min-width: 290px; background: var(--blanco);
-  border: 1px solid rgba(85,107,47,0.12); border-radius: 16px; padding: 10px;
+  border: 1px solid rgba(5,71,130,0.12); border-radius: 16px; padding: 10px;
   box-shadow: 0 12px 32px rgba(42,34,24,0.12), 0 2px 6px rgba(42,34,24,0.05); list-style: none;
   opacity: 0; visibility: hidden; transform: translateY(-8px);
   transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0.22s; z-index: 110;
 }
 .nav-item.active .dropdown { opacity: 1; visibility: visible; transform: translateY(0); transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0s; }
-.dropdown::before { content: ''; position: absolute; top: -6px; left: 24px; width: 12px; height: 12px; background: var(--blanco); border-top: 1px solid rgba(85,107,47,0.12); border-left: 1px solid rgba(85,107,47,0.12); transform: rotate(45deg); }
+.dropdown::before { content: ''; position: absolute; top: -6px; left: 24px; width: 12px; height: 12px; background: var(--blanco); border-top: 1px solid rgba(5,71,130,0.12); border-left: 1px solid rgba(5,71,130,0.12); transform: rotate(45deg); }
 .dropdown-item { display: block; padding: 12px 14px; border-radius: 10px; transition: background var(--transicion); }
 .dropdown-item:hover { background: var(--oliva-bg); }
 .dropdown-item strong { display: block; font-size: var(--fs-xs); font-weight: 700; color: var(--oliva-dark); margin-bottom: 2px; font-family: 'Source Sans 3', sans-serif; }
@@ -93,7 +93,7 @@ a { color: inherit; text-decoration: none; }
 .hamburger span { width: 24px; height: 2px; background: var(--oliva-dark); border-radius: 2px; transition: var(--transicion); }
 @media (max-width: 1024px) {
   .nav-links { display: none; } .hamburger { display: flex; }
-  .nav-links.open { display: flex; flex-direction: column; align-items: stretch; position: absolute; top: 80px; left: 0; right: 0; background: rgba(255,253,248,0.98); backdrop-filter: blur(12px); padding: 16px 20px 24px; gap: 4px; border-bottom: 1px solid rgba(85,107,47,0.08); box-shadow: 0 8px 24px rgba(0,0,0,0.06); max-height: calc(100vh - 80px); overflow-y: auto; }
+  .nav-links.open { display: flex; flex-direction: column; align-items: stretch; position: absolute; top: 80px; left: 0; right: 0; background: rgba(255,253,248,0.98); backdrop-filter: blur(12px); padding: 16px 20px 24px; gap: 4px; border-bottom: 1px solid rgba(5,71,130,0.08); box-shadow: 0 8px 24px rgba(0,0,0,0.06); max-height: calc(100vh - 80px); overflow-y: auto; }
   .nav-links.open .nav-item { width: 100%; }
   .nav-links.open .nav-trigger, .nav-links.open .nav-item > a:not(.nav-cta) { width: 100%; justify-content: space-between; padding: 15px 16px; font-size: var(--fs-sm); }
   .nav-links.open .dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; background: var(--oliva-bg); padding: 0 6px; margin: 0; border-radius: 12px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease, margin 0.3s ease; }
@@ -103,106 +103,19 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ============================================================ */
-/* HERO DE GUÍA                                                 */
-/* ============================================================ */
-.guia-hero { padding: 150px 24px 60px; background: linear-gradient(180deg, #fffdf8 0%, #f8f6ed 100%); text-align: center; }
-.guia-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--oliva-bg); color: var(--oliva); font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; padding: 8px 18px; border-radius: 50px; margin-bottom: 26px; border: 1px solid rgba(85,107,47,0.12); }
-.guia-hero h1 { max-width: 760px; margin: 0 auto 20px; }
-.guia-hero h1 em { font-family: 'Source Sans 3', sans-serif; font-style: normal; font-weight: 700; color: var(--terracota); }
-.guia-hero-sub { font-size: var(--fs-md); color: var(--texto-suave); max-width: 640px; margin: 0 auto 36px; line-height: var(--lh-normal); }
-.guia-hero-acciones { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.btn-grande { display: inline-flex; align-items: center; gap: 10px; padding: 17px 32px; border-radius: 50px; font-weight: 700; font-size: var(--fs-btn-lg); transition: background var(--transicion), transform var(--transicion); }
-.btn-grande--oliva { background: var(--oliva); color: var(--arena); }
-.btn-grande--oliva:hover { background: var(--oliva-dark); transform: translateY(-1px); }
-.btn-grande--terracota { background: var(--terracota); color: #fff; }
-.btn-grande--terracota:hover { background: var(--terracota-dark); transform: translateY(-1px); }
-
-/* ============================================================ */
-/* ESCALERA — navegación de pasos                               */
-/* ============================================================ */
-.escalera-nav { padding: 36px 24px; background: var(--arena-warm); border-bottom: 1px solid var(--arena-dark); }
-.escalera-pasos { display: flex; justify-content: center; gap: 8px; max-width: 760px; margin: 0 auto; flex-wrap: wrap; }
-.escalera-paso { display: flex; align-items: center; gap: 9px; padding: 11px 18px; border-radius: 50px; background: var(--blanco); border: 1.5px solid var(--arena-dark); font-size: var(--fs-xs); font-weight: 700; color: var(--texto-suave); transition: all var(--transicion); }
-.escalera-paso:hover { border-color: var(--oliva-light); color: var(--oliva-dark); }
-.escalera-num { width: 22px; height: 22px; border-radius: 50%; background: var(--oliva); color: var(--arena); display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 800; flex-shrink: 0; }
-
-/* ============================================================ */
-/* SECCIONES DE CONTENIDO                                       */
-/* ============================================================ */
-.guia-sec { padding: 70px 24px; }
-.guia-sec--alt { background: var(--arena-warm); }
-.guia-sec-inner { max-width: 760px; margin: 0 auto; }
-.sec-eyebrow { display: inline-block; font-size: var(--fs-label); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--terracota); margin-bottom: 12px; }
-.guia-sec h2 { margin-bottom: 18px; }
-.guia-sec > .guia-sec-inner > p.lead { font-size: var(--fs-md); color: var(--texto-suave); line-height: var(--lh-normal); margin-bottom: 30px; }
-
-.caja-nota { background: var(--oliva-bg); border-left: 4px solid var(--oliva); border-radius: 0 14px 14px 0; padding: 22px 26px; margin: 24px 0; }
-.caja-nota strong { color: var(--oliva-dark); }
-.caja-nota p { font-size: var(--fs-sm); margin: 0; }
-
-.caja-alerta { background: var(--terracota-bg); border-left: 4px solid var(--terracota); border-radius: 0 14px 14px 0; padding: 22px 26px; margin: 24px 0; }
-.caja-alerta strong { color: var(--terracota-dark); }
-.caja-alerta p { font-size: var(--fs-sm); margin: 0; }
-
-/* Tarjetas de los 3 caminos */
-.caminos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
-.camino-card { background: var(--blanco); border: 1.5px solid var(--arena-dark); border-radius: 20px; padding: 26px 22px; text-align: center; transition: transform var(--transicion), box-shadow var(--transicion); }
-.camino-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(42,34,24,0.08); }
-.camino-card .icon { font-size: 2.2rem; margin-bottom: 14px; }
-.camino-card h3 { font-size: var(--fs-h4); margin-bottom: 8px; }
-.camino-card p { font-size: var(--fs-sm); color: var(--texto-suave); margin: 0; }
-
-/* Tabla número de soporte */
-.tabla-soporte { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: var(--fs-sm); }
-.tabla-soporte th, .tabla-soporte td { padding: 14px 16px; border: 1px solid var(--arena-dark); text-align: left; line-height: 1.5; }
-.tabla-soporte th { background: var(--oliva-bg); color: var(--oliva-dark); font-weight: 800; }
-
-/* Pasos del FNMT */
-.pasos-lista { list-style: none; display: flex; flex-direction: column; gap: 14px; margin: 24px 0; }
-.pasos-lista li { display: flex; gap: 16px; align-items: flex-start; background: var(--blanco); border: 1.5px solid var(--arena-dark); border-radius: 14px; padding: 18px 20px; }
-.pasos-lista .num { width: 32px; height: 32px; border-radius: 50%; background: var(--oliva); color: var(--arena); display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 1rem; flex-shrink: 0; }
-.pasos-lista .txt { font-size: var(--fs-sm); color: var(--texto); line-height: 1.55; padding-top: 4px; }
-.pasos-lista .txt strong { color: var(--oliva-dark); }
-
-.meta-chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 18px 0; }
-.meta-chip { display: inline-flex; align-items: center; gap: 7px; background: var(--blanco); border: 1.5px solid var(--arena-dark); padding: 8px 16px; border-radius: 50px; font-size: var(--fs-xs); font-weight: 700; }
-
-/* CTA al test */
-.cta-test { background: var(--oliva-dark); border-radius: 26px; padding: 44px 40px; text-align: center; margin: 40px 0; }
-.cta-test h3 { color: var(--arena); margin-bottom: 12px; }
-.cta-test p { color: rgba(245,245,220,0.82); max-width: 480px; margin: 0 auto 26px; }
-
-/* CTA servicio final */
-
-/* Resumen final tipo checklist */
-.resumen-final { background: var(--blanco); border: 1.5px solid var(--arena-dark); border-radius: 20px; padding: 30px 32px; margin: 30px 0; }
-.resumen-final h3 { font-size: var(--fs-h4); margin-bottom: 16px; }
-.resumen-final ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.resumen-final li { font-size: var(--fs-sm); color: var(--texto-suave); padding-left: 26px; position: relative; line-height: 1.5; }
-.resumen-final li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--oliva); font-weight: 800; }
-
-@media (max-width: 768px) {
-  .guia-hero { padding: 120px 20px 50px; }
-  .caminos-grid { grid-template-columns: 1fr; }
-  .cta-test { padding: 32px 26px; }
-  .escalera-pasos { gap: 6px; }
-  .escalera-paso span.txt { display: none; }
-}
-
-/* ============================================================ */
 /* FOOTER — idéntico al Core                                    */
 /* ============================================================ */
-.footer { background: var(--oliva-dark); color: rgba(245,245,220,0.8); padding: 56px 0 32px; margin-top: 0; }
-.footer-comunidad-inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; align-items: start; padding-bottom: 22px; border-bottom: 1px solid rgba(245,245,220,0.14); }
+.footer { background: var(--oliva-dark); color: rgba(250,248,243,0.8); padding: 56px 0 32px; margin-top: 0; }
+.footer-comunidad-inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; align-items: start; padding-bottom: 22px; border-bottom: 1px solid rgba(250,248,243,0.14); }
 .footer-comunidad-info h4 { color: var(--arena); margin-bottom: 8px; font-family: 'Source Sans 3', sans-serif; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
-.footer-comunidad-info p { color: rgba(245,245,220,0.82); font-size: 1rem; line-height: 1.6; margin: 0; max-width: 380px; }
+.footer-comunidad-info p { color: rgba(250,248,243,0.82); font-size: 1rem; line-height: 1.6; margin: 0; max-width: 380px; }
 .footer-comunidad-contacto { display: flex; flex-direction: column; gap: 8px; }
 .footer-comunidad-contacto a { color: var(--arena); font-weight: 700; font-size: 0.98rem; }
 .footer-comunidad-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
-.footer-comunidad-links a { display: inline-flex; align-items: center; justify-content: center; padding: 8px 13px; border-radius: 999px; background: rgba(245,245,220,0.12); color: var(--arena); font-weight: 700; font-size: 0.95rem; }
-.footer-comunidad-links a:hover { background: rgba(245,245,220,0.22); }
+.footer-comunidad-links a { display: inline-flex; align-items: center; justify-content: center; padding: 8px 13px; border-radius: 999px; background: rgba(250,248,243,0.12); color: var(--arena); font-weight: 700; font-size: 0.95rem; }
+.footer-comunidad-links a:hover { background: rgba(250,248,243,0.22); }
 .footer-bottom { padding-top: 18px; text-align: center; }
-.footer-bottom p { font-size: 0.95rem; color: rgba(245,245,220,0.78); }
+.footer-bottom p { font-size: 0.95rem; color: rgba(250,248,243,0.78); }
 @media (max-width: 768px) {
   .footer-comunidad-inner { grid-template-columns: 1fr; text-align: center; }
   .footer-comunidad-contacto { align-items: center; }
@@ -244,138 +157,110 @@ a { color: inherit; text-decoration: none; }
   </div>
 </nav>
 
-<!-- ============ HERO ============ -->
-<header class="guia-hero">
-  <div class="container">
-    <span class="guia-hero-badge">📂 Guía práctica · verificada junio 2026</span>
-    <h1>Tu Carpeta Ciudadana: <em>qué es y cómo entrar de verdad</em></h1>
-    <p class="guia-hero-sub">Una sola web del Gobierno reúne tus notificaciones, tus expedientes y tus avisos importantes. Esta guía te lleva paso a paso: entender qué es, preparar el acceso, y entrar de verdad.</p>
-    <div class="guia-hero-acciones">
-      <a href="test-certificado-digital.html" class="btn-grande btn-grande--terracota">Hacer el test de 1 minuto ➔</a>
-      <a href="#entender" class="btn-grande btn-grande--oliva">Empezar a leer ↓</a>
-    </div>
-  </div>
-</header>
+<!-- ============ PLANTILLA DE GUÍA (v2) ============
+     Estilos en css/gs-recursos.css. Color de la sección: Trámites online. -->
+<link rel="stylesheet" href="css/gs-recursos.css">
 
-<!-- ============ ESCALERA NAV ============ -->
-<nav class="escalera-nav">
-  <div class="escalera-pasos">
-    <a href="#entender" class="escalera-paso"><span class="escalera-num">1</span><span class="txt">Entender</span></a>
-    <a href="#preparar" class="escalera-paso"><span class="escalera-num">2</span><span class="txt">Preparar</span></a>
-    <a href="#actuar" class="escalera-paso"><span class="escalera-num">3</span><span class="txt">Actuar</span></a>
-  </div>
-</nav>
+<main class="gd gd--tramites">
+  <div class="gd-in">
 
-<!-- ============ 1. ENTENDER ============ -->
-<section class="guia-sec" id="entender">
-  <div class="guia-sec-inner">
-    <span class="sec-eyebrow">Paso 1 · Entender</span>
-    <h2>Qué es la Carpeta Ciudadana</h2>
-    <p class="lead">Es un espacio digital único del Gobierno de España donde ves, en un solo sitio, tu relación con todas las Administraciones: notificaciones, expedientes abiertos, vida laboral, certificados. No es donde inicias trámites nuevos — es donde consultas el estado de los que ya tienes y donde llegan los avisos importantes.</p>
+    <header class="gd-head">
+      <p class="gd-sello"><img src="logo-emblema-nav.webp" alt="" width="181" height="136">Guía gratuita · <span>Trámites online</span></p>
+      <h1>Tu Carpeta Ciudadana: qué es y cómo entrar de verdad</h1>
+      <p class="gd-sub">Una sola web del Gobierno reúne tus notificaciones, tus expedientes y tus avisos importantes. Esta guía te lleva paso a paso: entender qué es, preparar el acceso, y entrar de verdad.</p>
+      <ul class="gd-meta">
+        <li>⏱ 5 min de lectura</li>
+        <li>Revisada en junio de 2026</li>
+      </ul>
+      <nav class="gd-indice" aria-labelledby="gd-indice-t">
+        <h2 id="gd-indice-t">En esta guía</h2>
+        <ol>
+          <li><a href="#entender"><span>1</span>Qué es la Carpeta Ciudadana</a></li>
+          <li><a href="#preparar"><span>2</span>Lo que necesitas antes de entrar</a></li>
+          <li><a href="#actuar"><span>3</span>Sacar el certificado digital, paso a paso</a></li>
+        </ol>
+      </nav>
+      <p class="gd-equipo"><b>Sara</b>, abogada de extranjería, y <b>Nora</b>, documentalista con experiencia en la Administración pública. Revisamos cada expediente juntas.</p>
+    </header>
 
-    <div class="caja-nota">
-      <strong>Por qué importa especialmente si tienes un expediente de extranjería:</strong>
-      <p>Cuando se resuelve una solicitud de regularización, renovación o nacionalidad, la resolución de concesión o denegación se notifica precisamente aquí. No es una carta que llega a casa — hay que entrar a buscarla.</p>
-    </div>
-
-    <h3 style="margin-top:36px;">Los 3 caminos para entrar</h3>
-    <p>Para entrar necesitas identificarte. Hay tres formas, y no compiten entre sí — eliges la que mejor se adapte a ti.</p>
-
-    <div class="caminos-grid">
-      <div class="camino-card">
-        <div class="icon">🔑</div>
-        <h3>Cl@ve PIN</h3>
-        <p>Clave temporal de un solo uso. Ideal si entras de vez en cuando.</p>
+    <!-- 1 · Entender -->
+    <section class="gd-paso" id="entender" aria-labelledby="t-entender">
+      <p class="gd-num">1</p>
+      <h2 id="t-entender">Qué es la Carpeta Ciudadana</h2>
+      <p class="gd-lead">Es un espacio digital único del Gobierno de España donde ves, en un solo sitio, tu relación con todas las Administraciones: notificaciones, expedientes abiertos, vida laboral, certificados. No es donde inicias trámites nuevos — es donde consultas el estado de los que ya tienes y donde llegan los avisos importantes.</p>
+      <p class="gd-nota"><b>Por qué importa especialmente si tienes un expediente de extranjería:</b> cuando se resuelve una solicitud de regularización, renovación o nacionalidad, la resolución de concesión o denegación se notifica precisamente aquí. No es una carta que llega a casa — hay que entrar a buscarla.</p>
+      <h3 class="gd-h3">Los 3 caminos para entrar</h3>
+      <p class="gd-lead">Para entrar necesitas identificarte. Hay tres formas, y no compiten entre sí — eliges la que mejor se adapte a ti.</p>
+      <div class="gd-tres">
+        <article class="gd-ficha"><span class="gd-ficha-k">Camino 1</span><h3>Cl@ve PIN</h3><p>Clave temporal de un solo uso. Ideal si entras de vez en cuando.</p></article>
+        <article class="gd-ficha"><span class="gd-ficha-k">Camino 2</span><h3>Cl@ve Permanente</h3><p>Usuario y contraseña fijos con código por SMS. Para quien entra a menudo.</p></article>
+        <article class="gd-ficha gd-ficha--alt"><span class="gd-ficha-k">Camino 3</span><h3>Certificado digital</h3><p>Te identifica sin contraseñas. Necesario además si vas a firmar documentos.</p></article>
       </div>
-      <div class="camino-card">
-        <div class="icon">🔐</div>
-        <h3>Cl@ve Permanente</h3>
-        <p>Usuario y contraseña fijos con código por SMS. Para quien entra a menudo.</p>
+    </section>
+
+    <!-- 2 · Preparar -->
+    <section class="gd-paso" id="preparar" aria-labelledby="t-preparar">
+      <p class="gd-num">2</p>
+      <h2 id="t-preparar">Lo que necesitas antes de entrar</h2>
+      <p class="gd-lead">Aquí es donde la mayoría se atasca — no porque sea complicado, sino porque nadie explica estos dos datos con claridad.</p>
+      <h3 class="gd-h3">Registrarte en Cl@ve siendo extranjero</h3>
+      <p class="gd-lead">Necesitas tu NIE más uno de estos documentos: Tarjeta de Identidad de Extranjero (TIE), Certificado de Registro de Ciudadano de la UE, o permiso de residencia. Además, tu pasaporte para acreditar identidad. El registro se hace por internet con videoidentificación, o presencialmente en una oficina de registro Cl@ve.</p>
+      <p class="gd-nota"><b>El dato que más confunde: el número de soporte.</b> No es lo mismo que el NIE. El NIE te identifica para siempre. El número de soporte identifica tu documento físico actual, y cambia cada vez que renuevas la tarjeta.</p>
+      <div class="gd-tabla" role="region" aria-label="Dónde está el número de soporte" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Tu documento</th><th scope="col">Formato</th><th scope="col">Dónde está</th></tr></thead>
+          <tbody>
+            <tr><td>TIE (tarjeta física)</td><td>Letra E + 8 dígitos</td><td>Parte superior derecha del anverso, o el reverso según el modelo</td></tr>
+            <tr><td>Certificado de registro UE</td><td>Letra C + dígitos</td><td>Reverso del documento</td></tr>
+            <tr><td>Tarjeta Roja/Blanca de asilo</td><td>"E00" + últimos 5 números de tu expediente OAR</td><td>No viene impreso, se compone así</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="camino-card">
-        <div class="icon">🪪</div>
-        <h3>Certificado digital</h3>
-        <p>Te identifica sin contraseñas. Necesario además si vas a firmar documentos.</p>
+    </section>
+
+    <!-- 3 · Actuar -->
+    <section class="gd-paso" id="actuar" aria-labelledby="t-actuar">
+      <p class="gd-num">3</p>
+      <h2 id="t-actuar">Sacar el certificado digital, paso a paso</h2>
+      <p class="gd-lead">Es gratuito como persona física. Solo a través de la sede oficial <b>sede.fnmt.gob.es</b> — cualquier otra web que cobre por "gestionarlo" no es oficial.</p>
+      <ol class="gd-lista">
+        <li><div><b>Configuración previa</b><p>Instalas el software que indica la web de FNMT antes de solicitar nada.</p></div></li>
+        <li><div><b>Solicitud por internet</b><p>Recibes por email tu Código de Solicitud. Guárdalo, lo necesitas después.</p></div></li>
+        <li><div><b>Acreditas tu identidad</b><p>Con NIE, esto es siempre presencial (lo explicamos abajo por qué).</p></div></li>
+        <li><div><b>Descargas el certificado</b><p>Con el mismo código.</p></div></li>
+      </ol>
+      <h3 class="gd-h3">Vía presencial: gratis</h3>
+      <ul class="gd-check">
+        <li>Gratis.</li>
+        <li>Certificado en ~1 hora.</li>
+      </ul>
+      <p class="gd-lead" style="margin-top:14px">Pides cita en una oficina de acreditación (AEAT, Seguridad Social u otras — suele requerir cita previa). Llevas tu Código de Solicitud y tu documento de identidad.</p>
+      <p class="gd-nota"><b>Si tienes la concesión pero todavía no la TIE física: mejor ve directo a Cl@ve.</b> La normativa contempla aceptar el documento de concesión, pero en la práctica de las oficinas suele pedirse un dato vinculado a la tarjeta física que todavía no tienes, y eso bloquea la solicitud del certificado. Para registrarte en Cl@ve puedes usar ese mismo documento de concesión como acreditación de residencia, y te da acceso a tu Carpeta Ciudadana igual. Si tu tarjeta está caducada pero ya presentaste la renovación a tiempo, ese caso sí funciona por la vía presencial — lleva también el resguardo de esa renovación.</p>
+      <h3 class="gd-h3">Sobre la videollamada</h3>
+      <p class="gd-nota"><b>Con NIE, la videollamada no es una opción — solo presencial.</b> La propia FNMT confirma que la videoidentificación del certificado solo admite DNI. Si tienes NIE, da igual que tu TIE esté en vigor, que tengas ordenador o móvil: tu único camino es la vía presencial que acabamos de explicar. Esto cambió recientemente respecto a lo que circula en muchos blogs y vídeos — no te fíes de información que diga lo contrario.</p>
+      <div class="gd-ruta-pie">
+        <p><b>¿No sabes cuál te toca a ti?</b> Tu situación puede no ser tan sencilla como "tengo TIE en vigor". Hay casos con concesión sin tarjeta física, renovaciones en trámite, o recursos pendientes — cada uno tiene su propia respuesta.</p>
+        <a class="gd-btn2" href="test-certificado-digital.html">Hacer el test de mi situación →</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 2. PREPARAR ============ -->
-<section class="guia-sec guia-sec--alt" id="preparar">
-  <div class="guia-sec-inner">
-    <span class="sec-eyebrow">Paso 2 · Preparar</span>
-    <h2>Lo que necesitas antes de entrar</h2>
-    <p class="lead">Aquí es donde la mayoría se atasca — no porque sea complicado, sino porque nadie explica estos dos datos con claridad.</p>
-
-    <h3>Registrarte en Cl@ve siendo extranjero</h3>
-    <p>Necesitas tu NIE más uno de estos documentos: Tarjeta de Identidad de Extranjero (TIE), Certificado de Registro de Ciudadano de la UE, o permiso de residencia. Además, tu pasaporte para acreditar identidad. El registro se hace por internet con videoidentificación, o presencialmente en una oficina de registro Cl@ve.</p>
-
-    <div class="caja-alerta">
-      <strong>El dato que más confunde: el número de soporte</strong>
-      <p>No es lo mismo que el NIE. El NIE te identifica para siempre. El número de soporte identifica tu documento físico actual, y cambia cada vez que renuevas la tarjeta.</p>
-    </div>
-
-    <table class="tabla-soporte">
-      <tr><th>Tu documento</th><th>Formato</th><th>Dónde está</th></tr>
-      <tr><td>TIE (tarjeta física)</td><td>Letra E + 8 dígitos</td><td>Parte superior derecha del anverso, o el reverso según el modelo</td></tr>
-      <tr><td>Certificado de registro UE</td><td>Letra C + dígitos</td><td>Reverso del documento</td></tr>
-      <tr><td>Tarjeta Roja/Blanca de asilo</td><td>"E00" + últimos 5 números de tu expediente OAR</td><td>No viene impreso, se compone así</td></tr>
-    </table>
-  </div>
-</section>
-
-<!-- ============ 3. ACTUAR — certificado FNMT ============ -->
-<section class="guia-sec" id="actuar">
-  <div class="guia-sec-inner">
-    <span class="sec-eyebrow">Paso 3 · Actuar</span>
-    <h2>Sacar el certificado digital, paso a paso</h2>
-    <p class="lead">Es gratuito como persona física. Solo a través de la sede oficial <strong>sede.fnmt.gob.es</strong> — cualquier otra web que cobre por "gestionarlo" no es oficial.</p>
-
-    <ol class="pasos-lista">
-      <li><span class="num">1</span><span class="txt"><strong>Configuración previa:</strong> instalas el software que indica la web de FNMT antes de solicitar nada.</span></li>
-      <li><span class="num">2</span><span class="txt"><strong>Solicitud por internet:</strong> recibes por email tu Código de Solicitud. Guárdalo, lo necesitas después.</span></li>
-      <li><span class="num">3</span><span class="txt"><strong>Acreditas tu identidad</strong> — con NIE, esto es siempre presencial (lo explicamos abajo por qué).</span></li>
-      <li><span class="num">4</span><span class="txt"><strong>Descargas el certificado</strong> con el mismo código.</span></li>
-    </ol>
-
-    <h3 style="margin-top:40px;">🏢 Vía presencial — gratis</h3>
-    <div class="meta-chips">
-      <span class="meta-chip">💶 Gratis</span>
-      <span class="meta-chip">⏱️ Certificado en ~1 hora</span>
-    </div>
-    <p>Pides cita en una oficina de acreditación (AEAT, Seguridad Social u otras — suele requerir cita previa). Llevas tu Código de Solicitud y tu documento de identidad.</p>
-
-    <div class="caja-nota">
-      <strong>Si tienes la concesión pero todavía no la TIE física: mejor ve directo a Cl@ve.</strong>
-      <p>La normativa contempla aceptar el documento de concesión, pero en la práctica de las oficinas suele pedirse un dato vinculado a la tarjeta física que todavía no tienes, y eso bloquea la solicitud del certificado. Para registrarte en Cl@ve puedes usar ese mismo documento de concesión como acreditación de residencia, y te da acceso a tu Carpeta Ciudadana igual. Si tu tarjeta está caducada pero ya presentaste la renovación a tiempo, ese caso sí funciona por la vía presencial — lleva también el resguardo de esa renovación.</p>
-    </div>
-
-    <h3 style="margin-top:40px;">💻📱 Sobre la videollamada</h3>
-    <div class="caja-alerta">
-      <strong>Con NIE, la videollamada no es una opción — solo presencial.</strong>
-      <p>La propia FNMT confirma que la videoidentificación del certificado solo admite DNI. Si tienes NIE, da igual que tu TIE esté en vigor, que tengas ordenador o móvil: tu único camino es la vía presencial que acabamos de explicar. Esto cambió recientemente respecto a lo que circula en muchos blogs y vídeos — no te fíes de información que diga lo contrario.</p>
-    </div>
-
-    <div class="cta-test">
-      <h3>¿No sabes cuál te toca a ti?</h3>
-      <p>Tu situación puede no ser tan sencilla como "tengo TIE en vigor". Hay casos con concesión sin tarjeta física, renovaciones en trámite, o recursos pendientes — cada uno tiene su propia respuesta.</p>
-      <a href="test-certificado-digital.html" class="btn-grande btn-grande--terracota">Hacer el test de mi situación ➔</a>
-    </div>
-
-    <h3>Una vez tengas acceso: qué vigilar</h3>
-    <div class="resumen-final">
-      <h3 style="margin-bottom:14px;">Dentro de tu Carpeta Ciudadana</h3>
-      <ul>
-        <li>El <strong>Centro de Mensajes</strong> (desde agosto 2025) avisa de caducidad de documentos, becas y ayudas — actívalo aceptando las condiciones de datos.</li>
-        <li>El SMS o email que recibes <strong>no es la notificación</strong>, es solo un aviso de cortesía. Tienes que entrar y leer el contenido real.</li>
-        <li>Si no entras en <strong>10 días naturales</strong>, se considera notificado igualmente, lo hayas leído o no.</li>
+      <h3 class="gd-h3">Una vez tengas acceso: qué vigilar dentro de tu Carpeta Ciudadana</h3>
+      <ul class="gd-check">
+        <li>El <b>Centro de Mensajes</b> (desde agosto 2025) avisa de caducidad de documentos, becas y ayudas — actívalo aceptando las condiciones de datos.</li>
+        <li>El SMS o email que recibes <b>no es la notificación</b>, es solo un aviso de cortesía. Tienes que entrar y leer el contenido real.</li>
+        <li>Si no entras en <b>10 días naturales</b>, se considera notificado igualmente, lo hayas leído o no.</li>
         <li>Si tienes un expediente de regularización en trámite, la resolución de concesión o denegación llega aquí — revísala con regularidad mientras esperas respuesta.</li>
       </ul>
-    </div>
+    </section>
+
+    <section class="gd-cierre" id="hablemos" aria-labelledby="t-cierre">
+      <div><h2 id="t-cierre">¿Dudas con tu acceso?</h2><p>Cuéntanos tu caso y te decimos qué camino te conviene. La primera consulta es gratuita.</p></div>
+      <div class="gd-cta">
+        <a class="gd-btn" href="https://wa.me/34746049191?text=Hola%2C%20he%20le%C3%ADdo%20la%20gu%C3%ADa%20de%20Carpeta%20Ciudadana%20y%20tengo%20una%20duda." target="_blank" rel="noopener">Hablemos →</a>
+        <small>o escríbenos a <a href="mailto:info@gestionaseguro.com">info@gestionaseguro.com</a></small>
+      </div>
+    </section>
 
   </div>
-</section>
+</main>
 
 <!-- ============ FOOTER (Core) ============ -->
 <footer class="footer" id="contacto">
