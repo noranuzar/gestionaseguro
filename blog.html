@@ -401,55 +401,182 @@
   </div>
 </nav>
 
-<!-- ============ CABECERA (texto, sin imagen) ============ -->
-<style>
-  .gh{padding:118px 24px 0}
-  .gh-in{max-width:1120px;margin:0 auto}
-  .gh h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2rem,3.6vw,2.6rem);line-height:1.15;color:#032F5E;margin:0;text-wrap:balance}
-  /* Etiquetas de bloque (Novedades / Elige tu tema) */
-  .gg-lbl{display:inline-flex;align-items:center;gap:9px;font-family:'Source Sans 3',system-ui,sans-serif;font-size:.875rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#032F5E;background:#E8EEF7;border-radius:50px;padding:7px 15px;margin:0 0 14px}
-  .gg-lbl::before{content:"";width:8px;height:8px;border-radius:50%;background:#F2A91D;box-shadow:0 0 0 4px rgba(242,169,29,.18)}
-  .gg-nov .gg-lbl{color:#fff;background:#C3122C}
-  .gg-nov .gg-lbl::before{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.25)}
-  /* Temas: pestañas que abren su panel */
-  .gh-temas{display:grid;gap:14px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
-  .gh-tema{display:flex;align-items:center;gap:14px;width:100%;height:100%;background:#fff;border:1px solid #E6E2D9;border-radius:16px;padding:16px 18px;font:inherit;text-align:left;cursor:pointer;transition:box-shadow .15s,background .15s}
-  .gh-tema:hover{box-shadow:0 12px 26px rgba(3,47,94,.10)}
-  .gh-tema:focus-visible{outline:3px solid #054782;outline-offset:3px}
-  .gh-tema[aria-expanded="true"]{background:var(--t);box-shadow:0 0 0 2px var(--c) inset}
-  .gh-ic{flex-shrink:0;width:46px;height:46px;border-radius:12px;background:var(--t);color:var(--ink);display:grid;place-items:center}
-  .gh-tema[aria-expanded="true"] .gh-ic{background:#fff}
-  .gh-ic svg{width:24px;height:24px}
-  .gh-tema b{font-size:1.125rem;font-weight:800;color:#032F5E;line-height:1.25}
-  .gh-tema i{margin-left:auto;font-style:normal;font-weight:800;color:var(--ink);transition:transform .2s}
-  .gh-tema[aria-expanded="true"] i{transform:rotate(180deg)}
-  @media (max-width:900px){.gh-temas{grid-template-columns:1fr}}
-  @media (max-width:768px){.gh{padding:96px 16px 0}}
-</style>
-<header class="gh">
-  <div class="gh-in">
-    <h1>Guías y herramientas gratuitas</h1>
-  </div>
-</header>
-
-<!-- ============ GUÍAS · CONTENIDO ============ -->
-<style>
-  .gg-card:focus-within{box-shadow:0 0 0 3px #054782}
-  .gg-sec{scroll-margin-top:90px}
-</style>
+<!-- ============ CENTRO DE CONOCIMIENTO ============
+     Una sola página. Cada tarjeta enlaza al recurso original (sin copias).
+     Estilos comunes: css/gs-recursos.css · estilos propios de esta página: <style> siguiente. -->
 <link rel="stylesheet" href="css/gs-recursos.css">
 <style>
+/* ============ CENTRO DE CONOCIMIENTO · portada (solo blog.html) ============
+   Colores de tema, tarjetas base y cierre: css/gs-recursos.css (gg-). */
+  .cc{--azul:#032F5E;--azul2:#054782;--azul-l:#E8EEF7;--rojo:#C3122C;--rojo-d:#9E0F23;--rojo-l:#FBE9EC;--amar:#F2A91D;--crema:#FAF8F3;--marfil:#FFFDF8;--borde:#E6E2D9;--gris:#4a4f55;--suave:#5e5649;background:var(--marfil);color:#2a2218}
+  .cc-in{max-width:1180px;margin:0 auto;padding:0 32px}
+  .cc a:focus-visible,.cc button:focus-visible,.cc input:focus-visible{outline:3px solid var(--azul2);outline-offset:3px}
+  /* A · Cabecera */
+  .cc-hero{position:relative;z-index:0;background:var(--crema);border-bottom:1px solid var(--borde);overflow:hidden}
+  .cc-hero .cc-in{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:center;padding-top:148px;padding-bottom:64px}
+  .cc-eyebrow{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--borde);border-radius:50px;padding:7px 16px 7px 8px;font-weight:800;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--azul);margin:0}
+  .cc-eyebrow img{height:22px;width:auto}
+  .cc-hero h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.35rem,4.6vw,4rem);line-height:1.05;letter-spacing:-.01em;color:var(--azul);margin:22px 0 18px}
+  .cc-mk{background:linear-gradient(transparent 62%,rgba(242,169,29,.45) 62%,rgba(242,169,29,.45) 92%,transparent 92%)}
+  .cc-lead{font-size:1.25rem;line-height:1.55;color:var(--gris);margin:0 0 28px;max-width:620px}
+  .cc-search{display:none;align-items:center;background:#fff;border:2px solid var(--azul);border-radius:16px;box-shadow:0 14px 34px rgba(3,47,94,.12);overflow:hidden;max-width:640px;margin:0}
+  .js .cc-search{display:flex}
+  .cc-search svg{width:22px;height:22px;margin:0 6px 0 18px;color:var(--azul2);flex-shrink:0}
+  .cc-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:19px 10px;font:inherit;font-size:1.12rem;color:#2a2218}
+  .cc-search input::placeholder{color:#8a8478}
+  .cc-search button{border:0;background:var(--azul);color:#fff;font:inherit;font-weight:800;font-size:1.05rem;padding:19px 28px;cursor:pointer}
+  .cc-pop{display:none;margin:14px 0 0;font-size:.95rem;color:var(--suave);flex-wrap:wrap;gap:8px;align-items:center}
+  .js .cc-pop{display:flex}
+  .cc-pop button{font:inherit;cursor:pointer;background:#fff;border:1px solid var(--borde);border-radius:50px;padding:5px 12px;font-weight:700;color:var(--azul)}
+  .cc-trust{display:flex;gap:26px;flex-wrap:wrap;margin:30px 0 0;padding:20px 0 0;border-top:1px solid var(--borde);list-style:none}
+  .cc-trust li{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--azul);font-size:.98rem}
+  .cc-trust svg{width:22px;height:22px;color:var(--rojo);flex-shrink:0}
+  .cc-people{position:relative;background:#fff;border:1px solid var(--borde);border-radius:26px;padding:30px 30px 26px;box-shadow:0 30px 60px rgba(3,47,94,.10)}
+  .cc-people::before{content:"";position:absolute;top:-14px;right:14px;width:120px;height:120px;border-radius:26px;background:var(--amar);z-index:-1;transform:rotate(8deg)}
+  .cc-sello{display:flex;align-items:center;gap:14px;margin:0 0 20px;padding:0 0 18px;border-bottom:1px solid var(--borde);font-size:.9rem;color:var(--suave)}
+  .cc-sello img{height:54px;width:auto}
+  .cc-sello b{font-family:'DM Serif Display',serif;font-weight:400;color:var(--azul);font-size:1.6rem;line-height:1.15}
+  .cc-who{display:grid;gap:14px;margin:0 0 22px;font-size:1.02rem;line-height:1.5;color:var(--gris)}
+  .cc-who p{margin:0}.cc-who b{color:var(--azul)}
+  .cc-stat{display:flex;gap:12px}
+  .cc-stat p{flex:1;margin:0;background:var(--crema);border-radius:14px;padding:12px 14px;font-size:.85rem;color:var(--suave);font-weight:600}
+  .cc-stat b{display:block;font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:var(--azul);line-height:1}
+  /* Títulos de sección */
+  .cc-sec{padding:72px 0 0}
+  .cc-kick{font-size:.82rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--rojo);margin:0 0 8px}
+  .cc h2.cc-h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.1;color:var(--azul);margin:0 0 28px}
+  /* B · Categorías */
+  .cc-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;list-style:none;margin:0;padding:0}
+  .cc-cat{position:relative;overflow:hidden;border-radius:22px;padding:26px 26px 22px;background:var(--t);border:1px solid rgba(0,0,0,.04);display:flex;flex-direction:column}
+  .cc-cat::after{content:"";position:absolute;right:-40px;bottom:-40px;width:150px;height:150px;border-radius:50%;background:var(--c);opacity:.10;pointer-events:none}
+  .cc-cat.is-on{box-shadow:0 0 0 3px var(--c)}
+  .cc-cat-ic{width:56px;height:56px;border-radius:16px;background:var(--c);color:#fff;display:grid;place-items:center;margin:0 0 18px}
+  .cc-cat-ic svg{width:28px;height:28px}
+  .cc-cat h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.7rem;color:var(--ink);margin:0 0 6px}
+  .cc-cat p{margin:0 0 16px;color:var(--gris);font-size:1.02rem;line-height:1.45}
+  .cc-cat ul{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:8px;position:relative;z-index:1}
+  .cc-cat li a{display:flex;justify-content:space-between;gap:10px;background:#fff;border-radius:12px;padding:10px 12px;font-weight:700;color:var(--azul);font-size:.96rem;text-decoration:none}
+  .cc-cat li a i{font-style:normal;color:var(--c)}
+  .cc-cat li a:hover{text-decoration:underline;text-underline-offset:3px}
+  .cc-go{margin-top:auto;align-self:flex-start;position:relative;z-index:1;font:inherit;font-weight:800;color:var(--ink);font-size:.98rem;background:none;border:0;padding:0;cursor:pointer;text-decoration:none}
+  /* C · Destacado */
+  .cc-feat{margin-top:72px;background:var(--azul);color:#fff;position:relative;overflow:hidden}
+  .cc-feat::before{content:"";position:absolute;left:-120px;top:-120px;width:360px;height:360px;border-radius:50%;border:56px solid rgba(242,169,29,.12)}
+  .cc-feat .cc-in{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding-top:64px;padding-bottom:64px}
+  .cc-tag{display:inline-block;background:var(--amar);color:#2a2218;font-weight:800;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;border-radius:50px;padding:5px 12px;margin:0}
+  .cc-feat h2{font-family:'DM Serif Display',serif;font-weight:400;color:#fff;font-size:clamp(2rem,3.6vw,3rem);line-height:1.1;margin:16px 0 12px}
+  .cc-feat p.cc-feat-txt{color:#D9E2EE;font-size:1.18rem;line-height:1.55;margin:0 0 20px;max-width:540px}
+  .cc-feat-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
+  .cc-feat-meta li{background:rgba(255,255,255,.12);border-radius:8px;padding:4px 10px;font-weight:700;font-size:.9rem}
+  .cc-btn{display:inline-flex;align-items:center;gap:10px;background:var(--amar);color:#2a2218;font-weight:800;border-radius:50px;padding:15px 30px;font-size:1.05rem;text-decoration:none;box-shadow:0 12px 28px rgba(242,169,29,.35);transition:transform .15s}
+  .cc-btn:hover{transform:translateY(-2px)}
+  .cc-feat .cc-btn:focus-visible{outline-color:#fff}
+  .cc-inbox{background:#fff;border-radius:22px;padding:22px;color:#2a2218;box-shadow:0 30px 60px rgba(0,0,0,.25);transform:rotate(-1.5deg)}
+  .cc-inbox-bar{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-weight:800;color:var(--azul)}
+  .cc-inbox-bar i{width:10px;height:10px;border-radius:50%;background:var(--rojo)}
+  .cc-row{display:flex;align-items:center;gap:14px;border:1px solid var(--borde);border-radius:14px;padding:14px;margin:0 0 10px}
+  .cc-row:last-child{margin:0}
+  .cc-row span.d{width:40px;height:40px;border-radius:12px;background:var(--azul-l);flex-shrink:0}
+  .cc-row b{display:block;color:var(--azul)}.cc-row small{color:var(--suave)}
+  .cc-row em{margin-left:auto;white-space:nowrap;font-style:normal;font-size:.78rem;font-weight:800;background:var(--azul-l);color:var(--azul);border-radius:50px;padding:4px 10px}
+  .cc-row.is-new em{background:var(--rojo-l);color:var(--rojo-d)}
+  .cc-cap{font-size:.85rem;color:#B9C6D8;margin:8px 2px 0}
+  /* D · Recursos */
+  .cc-filters{display:none;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+  .js .cc-filters{display:flex}
+  .cc-filters button{font:inherit;cursor:pointer;border:1px solid var(--borde);background:#fff;border-radius:50px;padding:8px 16px;font-weight:700;color:var(--gris)}
+  .cc-filters button[aria-pressed="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+  .cc-count{margin:0 0 14px;font-size:.95rem;color:var(--suave)}
+  .cc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;list-style:none;margin:0;padding:0}
+  .cc-card{position:relative;background:#fff;border:1px solid #ECE9E2;border-radius:20px;padding:22px;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s}
+  .cc-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(3,47,94,.12)}
+  .cc-card:focus-within{box-shadow:0 0 0 3px var(--azul2)}
+  .cc-card[hidden]{display:none}
+  .cc-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 14px}
+  .cc-catl{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:800;color:var(--ink)}
+  .cc-catl i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+  .cc-type{font-size:.72rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;border-radius:50px;padding:4px 10px;background:var(--crema);color:var(--suave);border:1px solid var(--borde)}
+  .cc-type--tool{background:var(--azul);color:#fff;border-color:var(--azul)}
+  .cc-card h3{font-family:'Source Sans 3',system-ui,sans-serif;font-size:1.18rem;line-height:1.3;color:var(--azul);margin:0 0 8px;font-weight:800}
+  .cc-card h3 a{color:inherit;text-decoration:none}
+  .cc-card h3 a::after{content:"";position:absolute;inset:0;border-radius:20px}
+  .cc-card h3 a:focus-visible{outline:none}
+  .cc-for{font-size:.96rem;line-height:1.5;color:var(--gris);margin:0 0 16px}
+  .cc-for b{color:var(--azul)}
+  .cc-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+  .cc-chips{display:flex;gap:6px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+  .cc-chips li{font-size:.8rem;font-weight:700;color:var(--gris);background:#F3F1EC;border-radius:6px;padding:3px 8px}
+  .cc-lk{font-weight:800;color:var(--ink)}
+  .cc-card--tool{background:var(--crema)}
+  .cc-card--big{grid-column:span 2;background:var(--rojo-l);border-color:#F3D3D9;padding:30px;flex-direction:row;gap:30px}
+  .cc-card--big .cc-txt{flex:1;display:flex;flex-direction:column}
+  .cc-card--big h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:2.1rem;line-height:1.12}
+  .cc-side{width:240px;background:#fff;border-radius:16px;padding:18px;align-self:stretch}
+  .cc-side p{margin:0 0 10px;font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rojo-d)}
+  .cc-side ol{margin:0;padding:0 0 0 18px;display:grid;gap:8px;color:var(--azul);font-weight:700;font-size:.95rem}
+  .cc-card--propose{background:transparent;border:2px dashed #D9D3C6;justify-content:center}
+  .cc-card--propose:hover{transform:none;box-shadow:none}
+  @media (min-width:641px) and (max-width:980px){.cc-card--propose{grid-column:span 2}}
+  .cc-card--propose h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.5rem}
+  .cc-btn2{display:inline-block;align-self:flex-start;border:2px solid var(--azul2);color:var(--azul);border-radius:50px;padding:10px 20px;font-weight:800;text-decoration:none}
+  .cc-btn2:hover{background:var(--azul);color:#fff}
+  .cc-empty{margin:4px 0 0;background:#fff;border:1px solid var(--borde);border-radius:16px;padding:18px 20px;color:var(--gris)}
+  .cc-empty a{color:var(--azul2);font-weight:700}
+  .c-tram{--c:#5e5649;--t:#F1EEE7;--ink:#3d382f}
+  .cc .gg-c-ambar{--ink:#6b4500}
+  .cc-cat.gg-c-ambar{--c:#D9900C}
+  /* Lista de recursos en líneas */
+  .cc-list{list-style:none;margin:0;padding:0;background:#fff;border:1px solid #ECE9E2;border-radius:20px;overflow:hidden}
+  .cc-row{position:relative;display:grid;grid-template-columns:150px minmax(0,1fr) auto 24px;gap:18px;align-items:center;padding:16px 22px;border-top:1px solid #F1EEE7;transition:background .15s}
+  .cc-list .cc-card{border:0;border-top:1px solid #F1EEE7;border-radius:0;background:transparent;margin:0}
+  .cc-list .cc-card:hover{transform:none;box-shadow:none;background:#FAF8F3}
+  .cc-list .cc-card:focus-within{box-shadow:inset 0 0 0 3px var(--azul2)}
+  .cc-row:first-child{border-top:0}
+  .cc-row[hidden]{display:none}
+  .cc-row:hover{background:#FAF8F3}
+  .cc-row:focus-within{box-shadow:inset 0 0 0 3px var(--azul2)}
+  .cc-row-t{font-weight:800;font-size:1.06rem;line-height:1.35;color:var(--azul);text-decoration:none}
+  a.cc-row-t::after{content:"";position:absolute;inset:0}
+  a.cc-row-t:focus-visible{outline:none}
+  .cc-row-m{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;align-items:center}
+  .cc-row-m>span:not(.cc-type){font-size:.8rem;font-weight:700;color:var(--gris);background:#F3F1EC;border-radius:6px;padding:3px 8px}
+  .cc-row-go{font-weight:800;color:var(--ink);font-size:1.1rem}
+  .cc-list .cc-row--propose{grid-template-columns:minmax(0,1fr) auto;background:var(--crema)}
+  .cc-row--propose .cc-row-t{font-weight:600;color:var(--gris)}
+  .cc-list .cc-row--propose:hover{background:var(--crema)}
+  @media (max-width:760px){.cc-row{grid-template-columns:minmax(0,1fr) 20px;gap:6px 12px;padding:14px 16px}.cc-row .cc-catl{grid-column:1}.cc-row-t{grid-column:1}.cc-row-m{grid-column:1;justify-content:flex-start}.cc-row-go{grid-column:2;grid-row:1 / span 3}.cc-list .cc-row--propose{grid-template-columns:1fr;gap:10px}.cc-row--propose .cc-btn2{justify-self:start}}
+  /* E · Archivo (aviso de la Regularización 2026, como información histórica) */
+  .cc-arch{margin-top:56px}
+  .cc-arch .av-urg--arch{background:#fff;color:var(--suave);border:1px solid var(--borde)}
+  .cc-arch .av{border-color:var(--borde);background:var(--crema)}
+  .cc-arch .av summary i{color:var(--suave)}
+  /* F · Cierre */
+  .cc-close{margin-top:72px;padding-bottom:72px}
+  .cc-close .gg-cierre{max-width:none;align-items:center}
+  .cc-bub{width:72px;height:72px;border-radius:22px;background:#fff;color:var(--azul2);display:grid;place-items:center;flex-shrink:0;box-shadow:0 10px 24px rgba(3,47,94,.10)}
+  .cc-bub svg{width:36px;height:36px}
+  .cc-close-txt{flex:1;min-width:260px}
+  .cc-hero .cc-in>*,.cc-feat .cc-in>*{min-width:0}
+  @media (max-width:980px){.cc-hero .cc-in,.cc-feat .cc-in{grid-template-columns:minmax(0,1fr);gap:32px}.cc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cc-card--big{grid-column:1/-1}}
+  @media (max-width:640px){
+    .cc-in{padding:0 18px}
+    .cc-hero .cc-in{padding-top:116px;padding-bottom:36px;gap:28px}
+    .cc-lead{font-size:1.05rem;margin:0 0 20px}
+    .cc-search svg{margin-left:12px}.cc-search input{padding:16px 8px;font-size:1rem}.cc-search button{padding:16px}
+    .cc-trust{flex-direction:column;gap:12px}
+    .cc-people{padding:22px}.cc-people::before{width:80px;height:80px}.cc-stat b{font-size:1.5rem}
+    .cc-sec{padding:48px 0 0}
+    .cc-cats{grid-template-columns:1fr;gap:14px}.cc-cat{padding:20px}.cc-cat ul{display:none}.cc-cat-ic{width:46px;height:46px;margin:0 0 12px}.cc-cat h3{font-size:1.45rem}.cc-cat p{margin:0 0 10px}
+    .cc-feat{margin-top:48px}.cc-feat .cc-in{padding-top:40px;padding-bottom:44px}.cc-feat p.cc-feat-txt{font-size:1.05rem}.cc-inbox{transform:none;padding:16px}.cc-btn{width:100%;justify-content:center}
+    .cc-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.cc-filters button{white-space:nowrap;padding:7px 13px}
+    .cc-grid{grid-template-columns:1fr;gap:14px}.cc-card--big{flex-direction:column;padding:22px;gap:16px}.cc-card--big h3{font-size:1.7rem}.cc-side{width:auto}
+    .cc-close{margin-top:48px;padding-bottom:48px}
+  }
+  @media (prefers-reduced-motion:reduce){.cc-card,.cc-btn{transition:none}.cc-card:hover{transform:none}}
+  .cc-featres{margin:0 0 14px;background:var(--azul-l);border-radius:14px;padding:12px 16px;color:var(--azul);font-weight:600}
+  .cc-featres a{color:var(--azul2);font-weight:800}
+  .cc-vh{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-  .gg-blq{padding:28px 24px 0}
-  .gg-sec.gg-panel{padding-top:24px}
-  .gg-desc{margin:0 0 20px;font-size:1.0625rem;color:#4a4f55}
-  .gg-lk{color:inherit;text-decoration:none}
-  .gg-lk::after{content:"";position:absolute;inset:0;border-radius:18px}
-  .gg-lk:focus-visible{outline:none}
-
-  .js .gg-sec[hidden]{display:none}
-
-  /* Novedades */
   .gg-nov .gg-in{background:#FCEFF1;border:1px solid #F3D3D9;border-radius:20px;padding:18px 20px}
   .av{background:#fff;border:1px solid #F3D3D9;border-radius:14px}
   .av summary{display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;list-style:none}
@@ -485,19 +612,164 @@
   .av-lista{margin:0;padding:0 0 0 20px;display:grid;gap:8px;font-size:1.0625rem;line-height:1.5;color:#4a4f55}
   .av-lista a{color:#054782;font-weight:700}
   @media (max-width:900px){.av-vias{grid-template-columns:1fr}}
-  @media (max-width:768px){.gg-nov .gg-in{padding:14px}.gg-blq{padding:20px 16px 0}.av summary{flex-wrap:wrap;padding:14px 16px}.av-body{padding:0 14px 16px}.av-plazos{grid-template-columns:1fr}}
-
-  @media (prefers-reduced-motion:reduce){.gg-card{transition:none}}
+  @media (max-width:768px){.av summary{flex-wrap:wrap;padding:14px 16px}.av-body{padding:0 14px 16px}.av-plazos{grid-template-columns:1fr}}
 </style>
 
-<!-- ============ NOVEDADES ============
-     Cada novedad es una entrada cerrada; la información sale al desplegarla.
-     Regularización 2026: fuente RD 316/2026, DA 21.ª, apartado 10. Revisar en enero de 2027. -->
-<section class="gg-blq gg-nov" id="novedades" aria-labelledby="gg-nov-t">
-  <div class="gg-in">
-    <h2 class="gg-lbl" id="gg-nov-t">Novedades</h2>
+<main class="cc">
+
+<!-- A · Cabecera -->
+<header class="cc-hero">
+  <div class="cc-in">
+    <div>
+      <p class="cc-eyebrow"><img src="logo-emblema-nav.webp" alt="" width="181" height="136">Centro de Conocimiento</p>
+      <h1>Información clara para estudiar, trabajar y <span class="cc-mk">resolver tus trámites</span> en España</h1>
+      <p class="cc-lead">Guías y herramientas gratuitas, explicadas paso a paso y revisadas con la normativa oficial delante. Sin registro.</p>
+      <form class="cc-search" role="search" action="#recursos" onsubmit="return false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <label class="cc-vh" for="cc-q">Busca un trámite</label>
+        <input id="cc-q" type="search" placeholder="¿Qué trámite necesitas? Nacionalidad, estudios, PEAC…" autocomplete="off">
+        <button type="submit">Buscar</button>
+      </form>
+      <p class="cc-pop">Lo más consultado: <button type="button" data-q="Carpeta Ciudadana">Carpeta Ciudadana</button><button type="button" data-q="nacionalidad">Nacionalidad</button><button type="button" data-q="universidad">Universidad</button></p>
+      <ul class="cc-trust">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2Z"/><path d="M8 7h6"/></svg>Fuentes oficiales citadas</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>Fecha de revisión en cada guía</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>Revisado por profesionales</li>
+      </ul>
+    </div>
+    <aside class="cc-people" aria-labelledby="cc-people-t">
+      <p class="cc-sello"><img src="logo-emblema-nav.webp" alt="" width="181" height="136"><span><b id="cc-people-t">Quién revisa estas guías</b></span></p>
+      <div class="cc-who">
+        <p><b>Sara Altamirano</b> · abogada de extranjería. Revisa el contenido jurídico.</p>
+        <p><b>Nora Núñez</b> · documentalista con experiencia en la Administración pública. Contrasta la normativa y las fuentes oficiales.</p>
+      </div>
+      <div class="cc-stat"><p><b>8</b>recursos gratuitos</p><p><b>4</b>áreas de trámites</p></div>
+    </aside>
+  </div>
+</header>
+
+<!-- B · Categorías -->
+<section class="cc-sec" aria-labelledby="cc-cat-t">
+  <div class="cc-in">
+    <p class="cc-kick">Elige por dónde empezar</p>
+    <h2 class="cc-h2" id="cc-cat-t">¿Qué necesitas resolver hoy?</h2>
+    <ul class="cc-cats">
+      <li class="cc-cat gg-c-azul" data-for="estudios">
+        <span class="cc-cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
+        <h3>Estudios y formación</h3>
+        <p>Estudiar en España con tus títulos de fuera: qué formación te sirve y cómo acceder.</p>
+        <ul><li><a href="guia-formacion-oficial-titulo-propio.html">Requisitos de la estancia por estudios<i aria-hidden="true">→</i></a></li><li><a href="acceso-universidad-bachillerato-extranjero.html">Universidad con bachillerato extranjero<i aria-hidden="true">→</i></a></li></ul>
+        <a class="cc-go" href="#recursos" data-filter="estudios">Ver recursos de estudios ↓</a>
+      </li>
+      <li class="cc-cat gg-c-rojo" data-for="extranjeria">
+        <span class="cc-cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4h11l-1.5 4L15 12H4"/></svg></span>
+        <h3>Extranjería y visados</h3>
+        <p>Residencia, renovaciones y nacionalidad: qué cuenta, qué documentos y qué paso te toca.</p>
+        <ul><li><a href="guia-nacionalidad-latinoamericanos.html">La nacionalidad española en 2 años<i aria-hidden="true">→</i></a></li><li><a href="diagnostico_post_presentacion.html">¿Y ahora qué hago con mi expediente?<i aria-hidden="true">→</i></a></li></ul>
+        <a class="cc-go" href="#recursos" data-filter="extranjeria">Ver recursos de extranjería ↓</a>
+      </li>
+      <li class="cc-cat gg-c-ambar" data-for="empleo">
+        <span class="cc-cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span>
+        <h3>Empleo y acreditación</h3>
+        <p>Acredita tu experiencia laboral y traza tu ruta: certificado oficial, FP y empleo.</p>
+        <ul><li><a href="guia-peac-acreditacion-competencias.html">PEAC 2026: qué ha cambiado<i aria-hidden="true">→</i></a></li></ul>
+        <a class="cc-go" href="#recursos" data-filter="empleo">Ver recursos de empleo ↓</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- C · Recurso destacado -->
+<section class="cc-feat" id="cc-feat" aria-labelledby="cc-feat-t">
+  <div class="cc-in">
+    <div>
+      <p class="cc-tag">Recurso destacado</p>
+      <h2 id="cc-feat-t">Carpeta Ciudadana: qué es y cómo entrar</h2>
+      <p class="cc-feat-txt">Tus notificaciones y expedientes en una sola web del Gobierno. Es la forma más sencilla de saber qué te pide la Administración y no perder ningún aviso.</p>
+      <ul class="cc-feat-meta"><li>Guía</li><li>⏱ 5 min</li><li>Revisada en junio de 2026</li></ul>
+      <a class="cc-btn" href="guia-carpeta-ciudadana.html">Leer la guía <span aria-hidden="true">→</span></a>
+    </div>
+    <div aria-hidden="true">
+      <div class="cc-inbox">
+        <div class="cc-inbox-bar"><i></i>Tu Carpeta Ciudadana</div>
+        <div class="cc-row is-new"><span class="d"></span><div><b>Nueva notificación</b><small>Pendiente de abrir</small></div><em>Nueva</em></div>
+        <div class="cc-row"><span class="d"></span><div><b>Expediente en trámite</b><small>Consulta su estado cuando quieras</small></div><em>Al día</em></div>
+        <div class="cc-row"><span class="d"></span><div><b>Tus datos y documentos</b><small>Todo en un mismo sitio</small></div><em>Al día</em></div>
+      </div>
+      <p class="cc-cap">Ilustración orientativa, no es una captura real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- D · Recursos -->
+<section class="cc-sec" id="recursos" aria-labelledby="cc-rec-t">
+  <div class="cc-in">
+    <p class="cc-kick">Todos los recursos</p>
+    <h2 class="cc-h2" id="cc-rec-t">Guías y herramientas para tu caso</h2>
+    <div class="cc-filters" role="group" aria-label="Filtrar recursos">
+      <button type="button" data-filter="todos" aria-pressed="true">Todos</button>
+      <button type="button" data-filter="estudios" aria-pressed="false">Estudios</button>
+      <button type="button" data-filter="extranjeria" aria-pressed="false">Extranjería</button>
+      <button type="button" data-filter="empleo" aria-pressed="false">Empleo</button>
+      <button type="button" data-filter="tramites" aria-pressed="false">Trámites online</button>
+      <button type="button" data-filter="herramienta" aria-pressed="false">Solo herramientas</button>
+    </div>
+    <p class="cc-count cc-vh" id="cc-count" aria-live="polite"></p>
+    <p class="cc-featres" id="cc-featres" hidden>También te puede servir el recurso destacado: <a href="guia-carpeta-ciudadana.html">Carpeta Ciudadana: qué es y cómo entrar →</a></p>
+    <ul class="cc-list" id="cc-grid">
+      <li class="cc-card cc-row gg-c-rojo" data-cat="extranjeria" data-type="guia">
+        <span class="cc-catl"><i aria-hidden="true"></i>Extranjería</span>
+        <a class="cc-row-t" href="guia-nacionalidad-latinoamericanos.html">La nacionalidad española en 2 años</a>
+        <span class="cc-row-m"><span class="cc-type">Guía</span><span>⏱ 4 min</span><span>Revisada en octubre de 2026</span></span>
+        <span class="cc-row-go" aria-hidden="true">→</span>
+      </li>
+      <li class="cc-card cc-row gg-c-azul" data-cat="estudios" data-type="guia">
+        <span class="cc-catl"><i aria-hidden="true"></i>Estudios</span>
+        <a class="cc-row-t" href="guia-formacion-oficial-titulo-propio.html">Estudiar en España: requisitos para solicitar la estancia por estudios</a>
+        <span class="cc-row-m"><span class="cc-type">Guía</span><span>⏱ 4 min</span><span>Revisada en noviembre de 2026</span></span>
+        <span class="cc-row-go" aria-hidden="true">→</span>
+      </li>
+      <li class="cc-card cc-row gg-c-azul" data-cat="estudios" data-type="guia">
+        <span class="cc-catl"><i aria-hidden="true"></i>Estudios</span>
+        <a class="cc-row-t" href="acceso-universidad-bachillerato-extranjero.html">Cómo acceder a la universidad con bachillerato extranjero</a>
+        <span class="cc-row-m"><span class="cc-type">Guía</span><span>⏱ 6 min</span></span>
+        <span class="cc-row-go" aria-hidden="true">→</span>
+      </li>
+      <li class="cc-card cc-row gg-c-ambar" data-cat="empleo" data-type="guia">
+        <span class="cc-catl"><i aria-hidden="true"></i>Empleo</span>
+        <a class="cc-row-t" href="guia-peac-acreditacion-competencias.html">PEAC 2026: qué ha cambiado en la acreditación de competencias profesionales</a>
+        <span class="cc-row-m"><span class="cc-type">Guía</span><span>⏱ 5 min</span><span>Revisada en noviembre de 2026</span></span>
+        <span class="cc-row-go" aria-hidden="true">→</span>
+      </li>
+      <li class="cc-card cc-row gg-c-rojo" data-cat="extranjeria" data-type="herramienta">
+        <span class="cc-catl"><i aria-hidden="true"></i>Extranjería</span>
+        <a class="cc-row-t" href="diagnostico_post_presentacion.html">¿Y ahora qué hago con mi expediente?</a>
+        <span class="cc-row-m"><span class="cc-type cc-type--tool">Herramienta</span><span>⏱ 3 preguntas</span></span>
+        <span class="cc-row-go" aria-hidden="true">→</span>
+      </li>
+      <li class="cc-card cc-row c-tram" data-cat="tramites" data-type="guia">
+        <span class="cc-catl"><i aria-hidden="true"></i>Trámites online</span>
+        <a class="cc-row-t" href="guia-firma-digital.html">Aprende a firmar digitalmente</a>
+        <span class="cc-row-m"><span class="cc-type">Guía</span><span>⏱ 4 min</span></span>
+        <span class="cc-row-go" aria-hidden="true">→</span>
+      </li>
+      <li class="cc-card cc-row c-tram" data-cat="tramites" data-type="herramienta">
+        <span class="cc-catl"><i aria-hidden="true"></i>Trámites online</span>
+        <a class="cc-row-t" href="test-certificado-digital.html">¿Puedo sacar el certificado digital?</a>
+        <span class="cc-row-m"><span class="cc-type cc-type--tool">Herramienta</span><span>⏱ 1 pregunta</span></span>
+        <span class="cc-row-go" aria-hidden="true">→</span>
+      </li>
+      <li class="cc-card cc-row cc-row--propose" data-cat="todos" data-type="propuesta">
+        <span class="cc-row-t">¿Echas en falta un tema? Propónlo y, si es útil para más personas, lo preparamos.</span>
+        <a class="cc-btn2" href="mailto:info@gestionaseguro.com?subject=Propuesta%20de%20tema%20para%20las%20gu%C3%ADas">Proponer un tema</a>
+      </li>
+    </ul>
+    <p class="cc-empty" id="cc-empty" hidden>No hemos encontrado recursos con esa búsqueda. Prueba con otra palabra o <a href="mailto:info@gestionaseguro.com?subject=Propuesta%20de%20tema%20para%20las%20gu%C3%ADas">propónnos el tema</a>.</p>
+
+    <!-- E · Archivo: Regularización 2026 (información histórica; ver D4-B) -->
+    <div class="cc-arch">
     <details class="av">
-      <summary><span class="av-urg">Urgente</span><span class="av-q">¿Presentaste la Regularización 2026? Lo que tienes que saber ahora</span><i aria-hidden="true">▾</i></summary>
+      <summary><span class="av-urg av-urg--arch">Archivo · 2026</span><span class="av-q">¿Presentaste la Regularización 2026? Lo que tienes que saber ahora</span><i aria-hidden="true">▾</i></summary>
       <div class="av-body">
         <p class="av-p av-p--q">¿En qué punto estás?</p>
         <div class="av-caso">
@@ -525,107 +797,28 @@
         </div>
       </div>
     </details>
-  </div>
-</section>
+    </div>
 
-<!-- ============ ELIGE TU TEMA ============ -->
-<section class="gg-blq" aria-labelledby="gg-tema-t">
-  <div class="gg-in">
-    <h2 class="gg-lbl" id="gg-tema-t">Elige tu tema</h2>
-    <ul class="gh-temas">
-      <li class="gg-c-azul"><button class="gh-tema" type="button" id="tab-estudiar" aria-expanded="false" aria-controls="estudiar"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><b>Estudiar y trabajar</b><i aria-hidden="true">▾</i></button></li>
-      <li class="gg-c-ambar"><button class="gh-tema" type="button" id="tab-administracion" aria-expanded="false" aria-controls="administracion"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b>Tus gestiones online</b><i aria-hidden="true">▾</i></button></li>
-      <li class="gg-c-rojo"><button class="gh-tema" type="button" id="tab-regularizacion" aria-expanded="false" aria-controls="regularizacion"><span class="gh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4h11l-1.5 4L15 12H4"/></svg></span><b>Extranjería</b><i aria-hidden="true">▾</i></button></li>
-    </ul>
-  </div>
-</section>
-
-<section class="gg-sec gg-panel gg-c-azul" id="estudiar" aria-labelledby="tab-estudiar">
-  <div class="gg-in">
-    <p class="gg-desc">Accede a la universidad con tus estudios de fuera y descubre si puedes acreditar tu experiencia.</p>
-    <div class="gg-grid">
-      <article class="gg-card">
-        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><span class="gg-type">Guía</span></div>
-        <h3><a class="gg-lk" href="guia-formacion-oficial-titulo-propio.html">Qué formación te sirve para estudiar en España</a></h3>
-        <p>Oficial, título propio o certificado profesional: cuál te permite la estancia por estudios y qué te permite después.</p>
-        <div class="gg-meta"><span>⏱ 4 min</span><span>Revisada en octubre de 2026</span></div>
-      </article>
-      <article class="gg-card">
-        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></svg></span><span class="gg-type">Guía</span></div>
-        <h3><a class="gg-lk" href="acceso-universidad-bachillerato-extranjero.html">Cómo acceder a la universidad con bachillerato extranjero</a></h3>
-        <p>Homologación, UNEDasiss, pruebas de acceso, costes y plazos.</p>
-        <div class="gg-meta"><span>⏱ 6 min</span></div>
-      </article>
-      <article class="gg-card">
-        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></span><span class="gg-type">Test</span></div>
-        <h3><a class="gg-lk" href="peac-calculadora.html">¿Puedo acceder al PEAC?</a></h3>
-        <p>Comprueba si cumples los requisitos en la Comunidad de Madrid.</p>
-        <div class="gg-meta"><span>⏱ 2 min</span></div>
-      </article>
+    <!-- F · Cierre -->
+    <div class="cc-close">
+      <div class="gg-cierre">
+        <div class="cc-bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 11h7M8.5 14h4"/></svg></div>
+        <div class="cc-close-txt">
+          <h2 id="gg-cierre">¿No encuentras lo que buscas?</h2>
+          <p>Cuéntanos tu caso. La primera consulta es gratuita y te decimos qué camino tiene sentido para ti.</p>
+        </div>
+        <div class="gg-cierre-cta">
+          <a class="gg-hablemos" href="https://wa.me/34746049191?text=Hola%2C%20vengo%20de%20gestionaseguroweb.com%20%28Gu%C3%ADas%20gratuitas%29%20y%20quiero%20una%20primera%20consulta%20gratuita." target="_blank" rel="noopener">Hablemos →</a>
+          <small>o escríbenos a <a href="mailto:info@gestionaseguro.com?subject=Gu%C3%ADas%20gratuitas">info@gestionaseguro.com</a></small>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="gg-sec gg-panel gg-c-ambar" id="administracion" aria-labelledby="tab-administracion">
-  <div class="gg-in">
-    <p class="gg-desc">Identifícate, recibe tus notificaciones y firma sin depender de nadie.</p>
-    <div class="gg-grid">
-      <article class="gg-card">
-        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></span><span class="gg-type">Test</span></div>
-        <h3><a class="gg-lk" href="test-certificado-digital.html">¿Puedo sacar el certificado digital?</a></h3>
-        <p>Qué camino te corresponde según tu situación, qué llevar y cuánto cuesta.</p>
-        <div class="gg-meta"><span>⏱ 1 pregunta</span></div>
-      </article>
-      <article class="gg-card">
-        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg></span><span class="gg-type">Guía</span></div>
-        <h3><a class="gg-lk" href="guia-carpeta-ciudadana.html">Carpeta Ciudadana: qué es y cómo entrar</a></h3>
-        <p>Tus notificaciones y expedientes en una sola web del Gobierno, y cómo entrar.</p>
-        <div class="gg-meta"><span>⏱ 5 min</span><span>Revisada en junio de 2026</span></div>
-      </article>
-      <article class="gg-card">
-        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="M13.5 6.5l4 4"/></svg></span><span class="gg-type">Clase interactiva</span></div>
-        <h3><a class="gg-lk" href="guia-firma-digital.html">Aprende a firmar digitalmente</a></h3>
-        <p>Firma tus documentos oficiales desde casa.</p>
-        <div class="gg-meta"><span>⏱ 4 min</span></div>
-      </article>
-    </div>
-  </div>
-</section>
+</main>
 
-<section class="gg-sec gg-panel gg-c-rojo" id="regularizacion" aria-labelledby="tab-regularizacion">
-  <div class="gg-in">
-    <p class="gg-desc">Si presentaste la Regularización 2026 o vienes de arraigo, qué hacer ahora.</p>
-    <div class="gg-grid">
-      <article class="gg-card">
-        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4h11l-1.5 4L15 12H4"/></svg></span><span class="gg-type">Guía</span></div>
-        <h3><a class="gg-lk" href="guia-nacionalidad-latinoamericanos.html">La nacionalidad española en 2 años</a></h3>
-        <p>Si eres de Latinoamérica: qué tiempo cuenta, qué exámenes haces y qué documentos necesitas.</p>
-        <div class="gg-meta"><span>⏱ 4 min</span><span>Revisada en octubre de 2026</span></div>
-      </article>
-      <article class="gg-card">
-        <div class="gg-top"><span class="gg-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6M12 17h.01"/></svg></span><span class="gg-type">Test</span></div>
-        <h3><a class="gg-lk" href="diagnostico_post_presentacion.html">¿Y ahora qué hago con mi expediente?</a></h3>
-        <p>Qué paso te toca ahora con tu expediente de la Regularización 2026.</p>
-        <div class="gg-meta"><span>⏱ 3 preguntas</span></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="gg-cierre-sec" id="contacto" aria-labelledby="gg-cierre">
-  <div class="gg-cierre">
-    <div>
-      <h2 id="gg-cierre">¿No encuentras lo que buscas?</h2>
-      <p>Cuéntanos tu caso. La primera consulta es gratuita y te decimos qué camino tiene sentido para ti.</p>
-    </div>
-    <div class="gg-cierre-cta">
-      <a class="gg-hablemos" href="https://wa.me/34746049191?text=Hola%2C%20vengo%20de%20gestionaseguroweb.com%20%28Gu%C3%ADas%20gratuitas%29%20y%20quiero%20una%20primera%20consulta%20gratuita." target="_blank" rel="noopener">Hablemos →</a>
-      <small>o escríbenos a <a href="mailto:info@gestionaseguro.com?subject=Gu%C3%ADas%20gratuitas">info@gestionaseguro.com</a></small>
-    </div>
-  </div>
-</section>
-
- <!-- ============ FOOTER COMUNIDAD ============ -->
+<!-- ============ FOOTER COMUNIDAD ============ -->
 <footer class="footer footer-comunidad" id="footer-info">
   <div class="container">
    <div class="footer-comunidad-inner">
@@ -654,50 +847,47 @@
   </div>
 </footer>
 
+  <script src="js/gs-layout.js"></script>
   <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    });
-
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    // Cierra menú móvil al click en enlaces simples
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-
-    // Elige tu tema: se abre un panel cada vez; sin JS se ven todos
+    /* Centro de Conocimiento: buscador y filtros sobre las tarjetas de esta página.
+       Sin JavaScript se ven todas las tarjetas y el buscador no aparece. */
     (function(){
       document.documentElement.classList.add('js');
-      var tabs=[].slice.call(document.querySelectorAll('.gh-tema'));
-      function panel(t){return document.getElementById(t.getAttribute('aria-controls'));}
-      function abrir(t,mover){
-        tabs.forEach(function(o){var on=o===t&&o.getAttribute('aria-expanded')!=='true';o.setAttribute('aria-expanded',on?'true':'false');panel(o).hidden=!on;});
-        if(mover&&t.getAttribute('aria-expanded')==='true')panel(t).scrollIntoView({behavior:'smooth',block:'start'});
+      var grid=document.getElementById('cc-grid'); if(!grid)return;
+      var cards=[].slice.call(grid.querySelectorAll('.cc-card'));
+      var btns=[].slice.call(document.querySelectorAll('.cc-filters button'));
+      var q=document.getElementById('cc-q'), empty=document.getElementById('cc-empty'), count=document.getElementById('cc-count');
+      var cats=[].slice.call(document.querySelectorAll('.cc-cat'));
+      var feat=document.getElementById('cc-feat'), featres=document.getElementById('cc-featres');
+      var filtro='todos';
+      function norm(t){return (t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+      function aplicar(){
+        var txt=norm(q&&q.value).trim(), n=0;
+        cards.forEach(function(c){
+          var propuesta=c.getAttribute('data-type')==='propuesta';
+          var okF=filtro==='todos'||c.getAttribute('data-cat')===filtro||c.getAttribute('data-type')===filtro;
+          var okT=!txt||norm(c.textContent).indexOf(txt)>-1;
+          var ver=propuesta?(!txt&&filtro==='todos'):(okF&&okT);
+          c.hidden=!ver; if(ver&&!propuesta)n++;
+        });
+        btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-filter')===filtro));});
+        cats.forEach(function(c){c.classList.toggle('is-on',c.getAttribute('data-for')===filtro);});
+        var fm=!!txt&&norm(feat&&feat.textContent).indexOf(txt)>-1;
+        featres.hidden=!fm;
+        empty.hidden=n>0||fm;
+        count.textContent=n+(n===1?' recurso':' recursos');
       }
-      tabs.forEach(function(t){panel(t).hidden=true;t.addEventListener('click',function(){abrir(t,true);});});
-      var h=location.hash.slice(1),t=tabs.filter(function(x){return x.getAttribute('aria-controls')===h;})[0];
-      if(t)abrir(t,true);
+      function ir(){document.getElementById('recursos').scrollIntoView({behavior:'smooth',block:'start'});}
+      btns.forEach(function(b){b.addEventListener('click',function(){filtro=b.getAttribute('data-filter');aplicar();});});
+      [].slice.call(document.querySelectorAll('.cc-go')).forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();filtro=a.getAttribute('data-filter');if(q)q.value='';aplicar();ir();});});
+      if(q){
+        q.addEventListener('input',function(){if(q.value)filtro='todos';aplicar();});
+        q.form.addEventListener('submit',function(){aplicar();ir();});
+      }
+      [].slice.call(document.querySelectorAll('.cc-pop button')).forEach(function(b){b.addEventListener('click',function(){q.value=b.getAttribute('data-q');filtro='todos';aplicar();ir();});});
+      aplicar();
     })();
-
-    // Reveal on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
   </script>
+
 </body>
 </html>
