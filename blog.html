@@ -546,7 +546,7 @@
   .cc-list .cc-row--propose:hover{background:var(--crema)}
   @media (max-width:760px){.cc-row{grid-template-columns:minmax(0,1fr) 20px;gap:6px 12px;padding:14px 16px}.cc-row .cc-catl{grid-column:1}.cc-row-t{grid-column:1}.cc-row-m{grid-column:1;justify-content:flex-start}.cc-row-go{grid-column:2;grid-row:1 / span 3}.cc-list .cc-row--propose{grid-template-columns:1fr;gap:10px}.cc-row--propose .cc-btn2{justify-self:start}}
   /* E · Archivo (aviso de la Regularización 2026, como información histórica) */
-  .cc-arch{margin-top:56px}
+  .cc-arch{margin-top:56px;scroll-margin-top:110px}
   .cc-arch .av-urg--arch{background:#fff;color:var(--suave);border:1px solid var(--borde)}
   .cc-arch .av{border-color:var(--borde);background:var(--crema)}
   .cc-arch .av summary i{color:var(--suave)}
@@ -767,10 +767,11 @@
     <p class="cc-empty" id="cc-empty" hidden>No hemos encontrado recursos con esa búsqueda. Prueba con otra palabra o <a href="mailto:info@gestionaseguro.com?subject=Propuesta%20de%20tema%20para%20las%20gu%C3%ADas">propónnos el tema</a>.</p>
 
     <!-- E · Archivo: Regularización 2026 (información histórica; ver D4-B) -->
-    <div class="cc-arch">
+    <div class="cc-arch" id="regularizacion">
     <details class="av">
       <summary><span class="av-urg av-urg--arch">Archivo · 2026</span><span class="av-q">¿Presentaste la Regularización 2026? Lo que tienes que saber ahora</span><i aria-hidden="true">▾</i></summary>
       <div class="av-body">
+        <p class="av-p">El plazo para presentar solicitudes terminó el 30 de junio de 2026. Esta información es para quien ya la presentó.</p>
         <p class="av-p av-p--q">¿En qué punto estás?</p>
         <div class="av-caso">
           <h3>Ya me la concedieron</h3>
@@ -886,6 +887,7 @@
       }
       [].slice.call(document.querySelectorAll('.cc-pop button')).forEach(function(b){b.addEventListener('click',function(){q.value=b.getAttribute('data-q');filtro='todos';aplicar();ir();});});
       aplicar();
+      if(location.hash==='#regularizacion'){var d=document.querySelector('#regularizacion details');if(d)d.open=true;}
     })();
   </script>
 
