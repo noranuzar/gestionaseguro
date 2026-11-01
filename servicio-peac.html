@@ -595,13 +595,12 @@
   .pe-ficha .pe-out{position:sticky;bottom:0}
   @media (max-width:768px){.pe-ficha{width:calc(100% - 16px);max-height:92vh}.pe-ficha .pe-card-top{padding:14px 52px 12px 16px}.pe-ficha-body{padding:16px}.pe-ficha .pe-out{flex-direction:column;align-items:stretch;gap:10px}.pe-ficha .pe-out .pe-lnk{width:100%}}
   /* Bloque 6 · quién te acompaña */
-  .pe-quien{display:grid;grid-template-columns:150px 1fr;gap:20px 30px;align-items:center;background:#fff;border:1px solid #ECE9E2;border-radius:22px;padding:26px 30px}
-  .pe-foto{grid-row:span 2;width:150px;height:150px;border-radius:24px;background:repeating-linear-gradient(45deg,#E8EEF7 0 10px,#F1F5FA 10px 20px)}
+  .pe-quien{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start;background:#fff;border:1px solid #ECE9E2;border-radius:22px;padding:26px 30px}
   .pe-quien h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem;color:var(--azul-principal);line-height:1.2;margin:2px 0 0}
   .pe-quien .pe-eyebrow{margin:0}
-  .pe-datos{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;grid-column:2}
-  .pe-datos li{display:grid;grid-template-columns:120px 1fr;gap:12px;font-size:1.0625rem;line-height:1.4}
-  .pe-datos b{font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-secundario);padding-top:3px}
+  .pe-datos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .pe-datos li{display:flex;flex-direction:column;gap:2px;background:var(--azul-light);border-radius:14px;padding:14px 16px;font-size:1.0625rem;line-height:1.4}
+  .pe-datos b{font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-secundario)}
   .pe-quien-pie{grid-column:1/-1;margin:0;font-size:1rem;line-height:1.5;color:var(--texto-suave);border-top:1px solid #ECE9E2;padding-top:12px}
   .pe-quien-pie a{color:var(--azul-secundario);font-weight:700}
   /* Bloque 7 · consulta tu caso */
@@ -633,10 +632,9 @@
     .pe-esp div+div{border-top:1px solid rgba(255,255,255,.14)}
     .pe-prog-cta{margin-top:18px}.pe-prog-cta .pe-btn{width:100%}
     .pe-card-top{padding:14px 16px 10px}.pe-out{padding:14px 16px;flex-direction:column;align-items:stretch;gap:12px}.pe-out .pe-lnk{width:100%}
-    .pe-quien{grid-template-columns:96px 1fr;padding:18px 16px;gap:14px}
-    .pe-foto{grid-row:auto;width:96px;height:96px;border-radius:18px}
+    .pe-quien{padding:18px 16px;gap:14px}
     .pe-quien h2{font-size:1.45rem}
-    .pe-datos{grid-column:1/-1}.pe-datos li{grid-template-columns:1fr;gap:0}
+    .pe-datos{grid-template-columns:1fr}
     .pe-consulta{padding:20px 12px;border-radius:22px}
     .pe-cons-cta{padding:18px 14px}
     .pe-cons-grid{gap:18px}
@@ -808,7 +806,6 @@
 <!-- 6 · QUIÉN TE ACOMPAÑA -->
 <section class="pe-sec" aria-labelledby="pe-quien">
   <div class="pe-in pe-quien">
-    <div class="pe-foto" role="img" aria-label="Fotografía pendiente"></div>
     <div>
       <p class="pe-eyebrow">Quién te acompaña</p>
       <h2 id="pe-quien">Nora Núñez Zárate</h2>
@@ -816,7 +813,7 @@
     <ul class="pe-datos">
       <li><b>Habilitación</b>Asesora y evaluadora del PEAC</li>
       <li><b>Experiencia</b>Gestión de expedientes del PEAC de la Comunidad de Madrid (2020–2025)</li>
-      <li><b>Formación</b>Licenciada en Documentación (UC3M)</li>
+      <li><b>Formación</b>Licenciada en Documentación (Universidad Carlos III de Madrid)</li>
     </ul>
     <p class="pe-quien-pie">Te orientamos y acompañamos según el momento en el que te encuentres. No intervenimos en la resolución de tu expediente. <a href="equipo.html">Conoce al equipo →</a></p>
   </div>
