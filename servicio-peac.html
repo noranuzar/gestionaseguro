@@ -526,41 +526,57 @@
   .pe-lnk{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 16px;border-radius:50px;border:2px solid var(--azul-principal);background:#fff;color:var(--azul-principal);font-weight:800;font-size:1rem;text-decoration:none;transition:background .15s,color .15s}
   .pe-lnk:hover{background:var(--azul-principal);color:#fff}
   /* Bloque 4 · tarjetas de servicio */
-  .pe-srv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-  .pe-card{background:#fff;border:1px solid #ECE9E2;border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
   .pe-card-top{padding:18px 22px 14px;border-bottom:1px solid #ECE9E2}
   .pe-mom{display:inline-block;font-size:.8125rem;font-weight:800;letter-spacing:.04em;color:var(--azul-principal);background:var(--azul-light);border-radius:50px;padding:4px 12px;margin:0 0 8px}
-  .pe-card h3{font-family:'Source Sans 3',sans-serif;font-size:1.25rem;font-weight:800;color:var(--azul-principal);line-height:1.25;margin:0}
-  .pe-card-body{padding:20px 22px;flex:1}
-  .pe-lbl{font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-secundario);margin:0 0 6px}
-  .pe-para{font-family:'DM Serif Display',serif;font-size:1.25rem;line-height:1.3;color:var(--azul-principal);margin:0 0 16px;padding-left:12px;border-left:3px solid var(--amarillo)}
-  .pe-para-sec{margin:0 0 16px;font-size:1rem;line-height:1.45;color:var(--texto)}
-  .pe-para-sec b{display:block;font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-secundario);margin-bottom:2px}
-  .pe-inc{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
-  .pe-inc li{font-size:1rem;font-weight:600;color:var(--texto-suave);background:#FAF8F3;border:1px solid #ECE9E2;border-radius:50px;padding:4px 12px}
   .pe-card-nota{margin:14px 0 0;padding-top:12px;border-top:1px solid #ECE9E2;font-size:1rem;line-height:1.45;color:var(--texto-suave)}
   .pe-out{background:var(--azul-light);padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}
   .pe-out p{margin:0;font-size:1.0625rem;line-height:1.35;font-weight:700;color:var(--azul-principal)}
   .pe-out p b{display:block;margin-bottom:2px;font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-secundario)}
-  /* Tarjetas · contraste y jerarquía */
-  .pe-srv .pe-card{border-color:#E3DDD0;box-shadow:0 10px 26px rgba(3,47,94,.07)}
-  .pe-srv .pe-card-top{background:#F1F5FA;border-bottom-color:#D3DEEC}
-  .pe-srv .pe-card-top .pe-mom{background:#D3DEEC}
-  .pe-srv .pe-para{background:#F5E4E2;border-left-width:4px;border-radius:0 12px 12px 0;padding:12px 14px}
-  .pe-srv .pe-para-sec{margin-bottom:10px;text-wrap:pretty}
-  .pe-srv .pe-inc li{background:var(--azul-light);border-color:#D3DEEC;color:var(--azul-principal)}
-  /* Tarjetas · color por servicio (la barra de la promesa sigue en ámbar) */
-  .pe-srv .pe-card:nth-child(1){--bg:#E5EDF8;--tit:#032F5E;--chip:#C9D8EE;--suave:#EEF3FA}
-  .pe-srv .pe-card:nth-child(2){--bg:#F5E4E2;--tit:#9E3A2F;--chip:#EBCBC7;--suave:#FAEFEE}
-  .pe-srv .pe-card:nth-child(3){--bg:#F7EBD5;--tit:#7A4E0E;--chip:#EDD7AE;--suave:#FBF4E6}
-  .pe-srv .pe-card:nth-child(4){--bg:#D9E9DF;--tit:#245638;--chip:#C3DCCB;--suave:#E5F0E8}
-  .pe-srv .pe-card .pe-card-top{background:var(--bg);border-bottom-color:var(--chip)}
-  .pe-srv .pe-card h3{color:var(--tit)}
-  .pe-srv .pe-card .pe-card-top .pe-mom{background:var(--chip);color:var(--tit)}
-  .pe-srv .pe-card .pe-para{background:var(--suave);color:var(--tit)}
-  .pe-srv .pe-card .pe-lbl,.pe-srv .pe-card .pe-para-sec b{color:var(--tit)}
-  .pe-srv .pe-card .pe-inc li{background:var(--suave);border-color:var(--chip);color:var(--tit)}
-  .pe-srv .pe-card:nth-child(4) .pe-inc li{background:#DCEBE1}
+  .pe-out-cta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;flex-shrink:0}
+  /* Paquetes · azul de base; el Global destacado en ámbar */
+  .pq-lista{max-width:880px;margin:0 auto}
+  .pq{position:relative;background:#fff;border:1px solid #D3DEEC;border-radius:20px;overflow:hidden;transition:box-shadow .15s,transform .15s}
+  .pq:hover{box-shadow:0 14px 30px rgba(3,47,94,.10);transform:translateY(-2px)}
+  .pq--f{border:2px solid var(--amarillo)}
+  .pq-hd,.pq-ft{background:var(--azul-light)}
+  .pq--f .pq-hd,.pq--f .pq-ft{background:#FEF4DF}
+  .pq-hd{padding:20px 24px 16px}
+  .pq-fila{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .pq-chip,.pq-badge{margin:0;font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:50px;padding:4px 12px}
+  .pq-chip{background:#D3DEEC;color:var(--azul-principal)}
+  .pq--f .pq-chip{background:#FAD9A0;color:#6b4500}
+  .pq-badge{background:var(--amarillo);color:#2a2218}
+  .pq h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem;line-height:1.2;color:var(--azul-principal);margin:12px 0 4px}
+  .pq-sub{margin:0 0 4px;font-size:1.0625rem;font-weight:800;color:var(--azul-secundario)}
+  .pq--f .pq-sub,.pq--f .pq-lbl,.pq--f .pq-ft p{color:#6b4500}
+  .pq-ds{margin:0;font-size:1rem;line-height:1.45;color:var(--texto-suave)}
+  .pq-by{padding:18px 24px}
+  .pq-by p{margin:0 0 10px;font-size:1.0625rem;line-height:1.5;color:var(--texto)}
+  .pq-by b{font-weight:700;color:var(--azul-principal)}
+  .pq-by ul{margin:0 0 14px;padding-left:22px;display:flex;flex-direction:column;gap:4px}
+  .pq-by li{font-size:1.0625rem;line-height:1.45}
+  .pq-by li::marker{color:var(--amarillo)}
+  .pq-tl{border-top:1px solid #ECE9E2;padding-top:12px}
+  .pq-tl p{margin:0}
+  .pq-by .pq-lbl{margin:0 0 4px;font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-secundario)}
+  .pq-ft{padding:14px 24px;display:flex;justify-content:space-between;align-items:center;gap:8px 16px;flex-wrap:wrap}
+  .pq-ft p{margin:0;font-size:1rem;font-weight:700;color:var(--azul-principal)}
+  .pq-ver{font-weight:800;font-size:1.0625rem;color:var(--azul-principal);text-decoration:none;white-space:nowrap}
+  .pq-ver::after{content:"";position:absolute;inset:0;border-radius:inherit}
+  .pq-ver:focus-visible{outline:3px solid var(--azul-secundario);outline-offset:3px}
+  .pq-ar{display:flex;justify-content:center;margin:10px 0}
+  .pq-ar span{width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid #D3DEEC;display:flex;align-items:center;justify-content:center;color:var(--azul-principal);font-size:1.125rem;font-weight:800}
+  .pq-previo{background:#fff;border:2px dashed #9DB8DA;border-radius:20px;padding:22px 24px}
+  .pq-previo-k{display:inline-block;margin:0 0 8px;font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--azul-principal);color:#fff;border-radius:50px;padding:4px 12px}
+  .pq-previo h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem;line-height:1.2;color:var(--azul-principal);margin:4px 0 4px}
+  .pq-previo-ds{margin:0 0 14px;font-size:1.0625rem;color:var(--texto-suave)}
+  .pq-pasos{list-style:none;margin:0 0 16px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;counter-reset:paso}
+  .pq-pasos li{counter-increment:paso;background:var(--azul-light);border-radius:14px;padding:14px 16px;font-size:1rem;line-height:1.45;color:var(--texto)}
+  .pq-pasos b{display:block;margin-bottom:2px;font-size:1.0625rem;font-weight:800;color:var(--azul-principal)}
+  .pq-pasos b::before{content:counter(paso) " · ";color:var(--azul-secundario)}
+  .pq-previo-cta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+  .pq-previo-nota{margin:0;font-size:1rem;color:var(--texto-suave)}
+  @media (max-width:768px){.pq-hd,.pq-by{padding:16px}.pq-ft{padding:12px 16px}.pq h3,.pq-previo h3{font-size:1.45rem}.pq-previo{padding:16px}.pq-pasos{grid-template-columns:1fr}.pq-previo-cta .pe-btn,.pq-previo-cta .pe-lnk{width:100%}.pe-ficha .pe-out-cta{flex-direction:column;align-items:stretch}.pe-ficha .pe-out-cta .pe-btn{width:100%}}
   /* Fichas ampliadas de servicio (dialog) */
   .pe-ficha{margin:auto;width:min(680px,calc(100% - 32px));max-height:88vh;padding:0;border:0;border-radius:20px;background:#fff;color:var(--texto);overflow:auto;box-shadow:0 30px 70px rgba(3,47,94,.25)}
   .pe-ficha::backdrop{background:rgba(3,47,94,.55)}
@@ -574,14 +590,10 @@
   .pe-ficha-body h3:first-child{margin-top:0}
   .pe-ficha-body p,.pe-ficha-body li{font-size:1rem;line-height:1.5;margin:0}
   .pe-ficha-body ul,.pe-ficha-body ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
-  .pe-ejemplo{margin-top:18px;background:#F5E4E2;border-left:4px solid var(--amarillo);border-radius:0 12px 12px 0;padding:12px 14px}
+  .pe-ejemplo{margin-top:18px;background:#FEF4DF;border-left:4px solid var(--amarillo);border-radius:0 12px 12px 0;padding:12px 14px}
   .pe-ejemplo h3{margin-top:0}
   .pe-ficha .pe-out{position:sticky;bottom:0}
   @media (max-width:768px){.pe-ficha{width:calc(100% - 16px);max-height:92vh}.pe-ficha .pe-card-top{padding:14px 52px 12px 16px}.pe-ficha-body{padding:16px}.pe-ficha .pe-out{flex-direction:column;align-items:stretch;gap:10px}.pe-ficha .pe-out .pe-lnk{width:100%}}
-  /* Bloque 5 · FP a medias */
-  .pe-fp{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;background:#FEF4DF;border-radius:22px;padding:24px 30px}
-  .pe-fp h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.75rem;line-height:1.2;color:var(--azul-principal);margin:0 0 4px}
-  .pe-fp p{margin:0;font-size:1.0625rem;color:#4a3a1a;max-width:620px}
   /* Bloque 6 · quién te acompaña */
   .pe-quien{display:grid;grid-template-columns:150px 1fr;gap:20px 30px;align-items:center;background:#fff;border:1px solid #ECE9E2;border-radius:22px;padding:26px 30px}
   .pe-foto{grid-row:span 2;width:150px;height:150px;border-radius:24px;background:repeating-linear-gradient(45deg,#E8EEF7 0 10px,#F1F5FA 10px 20px)}
@@ -607,7 +619,7 @@
   .pe-faq details[open] summary::after{content:"–"}
   .pe-faq details p{margin:0 0 14px;font-size:1rem;line-height:1.5;color:var(--texto-suave)}
   .pe-b2b{margin:14px 0 0;font-size:1rem;line-height:1.5;color:var(--texto-suave);border-top:1px solid rgba(3,47,94,.12);padding-top:14px}
-  @media (max-width:900px){.pe-pos,.pe-esp,.pe-cons-grid{grid-template-columns:1fr}.pe-srv{grid-template-columns:1fr}}
+  @media (max-width:900px){.pe-pos,.pe-esp,.pe-cons-grid{grid-template-columns:1fr}}
   @media (max-width:768px){
     .pe-sec{padding:18px 16px}
     .pe-sub{margin-bottom:14px}
@@ -620,9 +632,7 @@
     .pe-esp div{background:none;border:0;border-radius:0;padding:10px 0}
     .pe-esp div+div{border-top:1px solid rgba(255,255,255,.14)}
     .pe-prog-cta{margin-top:18px}.pe-prog-cta .pe-btn{width:100%}
-    .pe-srv{gap:14px}
-    .pe-card-top{padding:14px 16px 10px}.pe-card-body{padding:16px}.pe-para{font-size:1.1875rem;margin-bottom:14px}.pe-out{padding:14px 16px;flex-direction:column;align-items:stretch;gap:12px}.pe-out .pe-lnk{width:100%}
-    .pe-fp{padding:18px 16px}.pe-fp h2{font-size:1.5rem}.pe-fp .pe-lnk{width:100%}
+    .pe-card-top{padding:14px 16px 10px}.pe-out{padding:14px 16px;flex-direction:column;align-items:stretch;gap:12px}.pe-out .pe-lnk{width:100%}
     .pe-quien{grid-template-columns:96px 1fr;padding:18px 16px;gap:14px}
     .pe-foto{grid-row:auto;width:96px;height:96px;border-radius:18px}
     .pe-quien h2{font-size:1.45rem}
@@ -688,72 +698,98 @@
   <div class="pe-in">
     <p class="pe-eyebrow">Servicios profesionales</p>
     <h2 class="pe-h2" id="pe-srv">Te ayudamos donde lo necesites</h2>
-    <p class="pe-sub">Analizamos tu caso y trabajamos contigo. Elige solo el servicio que te sirve.</p>
-    <div class="pe-srv">
-      <article class="pe-card">
-        <div class="pe-card-top"><p class="pe-mom">Antes de decidir tu camino</p><h3>Diagnóstico y estrategia de cualificación</h3></div>
-        <div class="pe-card-body"><p class="pe-para">Sabes qué competencias puedes acreditar y qué itinerario te conviene</p><p class="pe-para-sec"><b>Para ti si</b>Tienes experiencia o estudios y aún no sabes qué camino seguir</p><p class="pe-lbl">Incluye</p><ul class="pe-inc"><li>Tu trayectoria</li><li>Estándares que puedes acreditar</li><li>Objetivo y vías</li></ul></div>
-        <div class="pe-out"><p><b>Obtienes</b>Informe de diagnóstico y hoja de ruta</p><a class="pe-lnk" href="#servicio-diagnostico">Ver servicio y ejemplo →</a></div>
+    <p class="pe-sub">Empieza gratis y elige el nivel de acompañamiento que necesitas. Cada uno incluye el anterior.</p>
+    <div class="pq-lista">
+      <div class="pq-previo">
+        <p class="pq-previo-k">Antes de contratar · Gratis</p>
+        <h3>Comprueba si puedes acceder al PEAC</h3>
+        <p class="pq-previo-ds">Sin coste y sin compromiso, en dos pasos.</p>
+        <ol class="pq-pasos"><li><b>Test de acceso</b>Respondes unas preguntas y ves si cumples los requisitos.</li><li><b>Consulta gratuita</b>Revisamos contigo el resultado y te explicamos cómo solicitarlo.</li></ol>
+        <div class="pq-previo-cta"><a class="pe-btn" data-via="previo-test" href="peac-calculadora.html">Haz el test →</a><a class="pe-lnk" data-via="previo-consulta" href="#contacto">Pide tu consulta gratuita</a></div>
+        <p class="pq-previo-nota">No incluye revisión documental. Si puedes presentarlo por tu cuenta, te explicamos cómo.</p>
+      </div>
+      <div class="pq-ar" aria-hidden="true"><span>↓</span></div>
+      <article class="pq">
+        <div class="pq-hd">
+          <div class="pq-fila"><p class="pq-chip">Básico</p></div>
+          <h3>Diagnóstico y estrategia de cualificación</h3>
+          <p class="pq-sub">Diagnóstico</p>
+          <p class="pq-ds">Sabes qué puedes acreditar y qué itinerario te conviene.</p>
+        </div>
+        <div class="pq-by">
+          <p><b>Para ti si:</b> tienes experiencia o estudios y aún no sabes qué camino seguir.</p>
+          <p><b>Incluye:</b></p>
+          <ul><li>Análisis de tu trayectoria y tu documentación.</li><li>Estándares posibles y lo que te falta.</li><li>Objetivo, ruta y enlaces para que presentes tu solicitud.</li></ul>
+          <div class="pq-tl"><p class="pq-lbl">Te llevas</p><p>Informe de diagnóstico y hoja de ruta.</p></div>
+        </div>
+        <div class="pq-ft"><p>Te damos la ruta. La presentas tú.</p><a class="pq-ver" data-via="paquete-basico-ver" href="#paquete-basico" aria-label="Ver paquete Básico">Ver paquete →</a></div>
       </article>
-      <article class="pe-card">
-        <div class="pe-card-top"><p class="pe-mom">Al solicitar y durante el asesoramiento</p><h3>Preparación y acompañamiento PEAC</h3></div>
-        <div class="pe-card-body"><p class="pe-para">Tu solicitud preparada y apoyo durante el asesoramiento</p><p class="pe-para-sec"><b>Para ti si</b>Vas a presentar tu solicitud y quieres apoyo en el asesoramiento</p><p class="pe-lbl">Incluye</p><ul class="pe-inc"><li>Requisitos y documentación</li><li>Preparación de la solicitud</li><li>Apoyo en el asesoramiento</li></ul></div>
-        <div class="pe-out"><p><b>Obtienes</b>Solicitud preparada y orientación durante el asesoramiento</p><a class="pe-lnk" href="#servicio-preparacion">Ver servicio y ejemplo →</a></div>
+      <div class="pq-ar" aria-hidden="true"><span>↓</span></div>
+      <article class="pq pq--f">
+        <div class="pq-hd">
+          <div class="pq-fila"><p class="pq-chip">Global</p><p class="pq-badge">Nuestro foco</p></div>
+          <h3>Preparación y acompañamiento PEAC</h3>
+          <p class="pq-sub">Diagnóstico + solicitud</p>
+          <p class="pq-ds">Todo el Básico, más tu solicitud preparada, presentada y con apoyo en el asesoramiento.</p>
+        </div>
+        <div class="pq-by">
+          <p><b>Para ti si:</b> vas a presentar tu solicitud y quieres apoyo en el asesoramiento.</p>
+          <p><b>Incluye todo el paquete Básico, más:</b></p>
+          <ul><li>Revisión de requisitos y documentación.</li><li>Solicitud preparada y presentada en tu representación.</li><li>Autoevaluación y evidencias organizadas.</li><li>Comunicaciones y requerimientos.</li><li>Apoyo durante el asesoramiento.</li></ul>
+          <div class="pq-tl"><p class="pq-lbl">Te llevas</p><p>Solicitud presentada y apoyo durante todo el asesoramiento.</p></div>
+        </div>
+        <div class="pq-ft"><p>Lo preparamos y lo presentamos por ti.</p><a class="pq-ver" data-via="paquete-global-ver" href="#paquete-global" aria-label="Ver paquete Global">Ver paquete →</a></div>
       </article>
-      <article class="pe-card">
-        <div class="pe-card-top"><p class="pe-mom">En la evaluación y después</p><h3>Preparación para la evaluación y acreditación</h3></div>
-        <div class="pe-card-body"><p class="pe-para">Te preparamos para demostrar tus competencias y te orientamos tras los resultados</p><p class="pe-para-sec"><b>Para ti si</b>Tu expediente llega a la evaluación y quieres prepararte</p><p class="pe-lbl">Incluye</p><ul class="pe-inc"><li>Estándares</li><li>Preparación de la evaluación</li><li>Resultados y siguientes pasos</li></ul></div>
-        <div class="pe-out"><p><b>Obtienes</b>Preparación individualizada y orientación posterior</p><a class="pe-lnk" href="#servicio-evaluacion">Ver servicio y ejemplo →</a></div>
-      </article>
-      <article class="pe-card">
-        <div class="pe-card-top"><p class="pe-mom">Después de acreditar o con estudios a medias</p><h3>Plan de progresión formativa y profesional</h3></div>
-        <div class="pe-card-body"><p class="pe-para">Lo que ya tienes, convertido en un camino concreto</p><p class="pe-para-sec"><b>Para ti si</b>Ya tienes acreditaciones o estudios previos y buscas un objetivo formativo concreto</p><p class="pe-lbl">Incluye</p><ul class="pe-inc"><li>Acreditaciones</li><li>Formación pendiente</li><li>Itinerario profesional</li></ul></div>
-        <div class="pe-out"><p><b>Obtienes</b>Plan personalizado de progresión</p><a class="pe-lnk" href="#servicio-progresion">Ver servicio y ejemplo →</a></div>
+      <div class="pq-ar" aria-hidden="true"><span>↓</span></div>
+      <article class="pq">
+        <div class="pq-hd">
+          <div class="pq-fila"><p class="pq-chip">Premium</p></div>
+          <h3>Acompañamiento en todo el procedimiento</h3>
+          <p class="pq-sub">Diagnóstico + solicitud + evaluación y progresión</p>
+          <p class="pq-ds">Todo el Global, más preparación para la evaluación y un plan para continuar.</p>
+        </div>
+        <div class="pq-by">
+          <p><b>Para ti si:</b> quieres acompañamiento en todo el procedimiento y saber cómo continuar después.</p>
+          <p><b>Incluye todo el paquete Global, más:</b></p>
+          <ul><li>Preparación para la evaluación.</li><li>Seguimiento hasta la resolución.</li><li>Revisión de estándares acreditados y pendientes.</li><li>Plan de progresión: convalidaciones e itinerarios.</li></ul>
+          <div class="pq-tl"><p class="pq-lbl">Te llevas</p><p>Preparación para la evaluación y plan de progresión.</p></div>
+        </div>
+        <div class="pq-ft"><p>Te acompañamos en cada fase. Decide la Administración.</p><a class="pq-ver" data-via="paquete-premium-ver" href="#paquete-premium" aria-label="Ver paquete Premium">Ver paquete →</a></div>
       </article>
     </div>
-    <dialog class="pe-ficha" id="servicio-diagnostico" aria-labelledby="servicio-diagnostico-t">
-      <div class="pe-card-top"><p class="pe-mom">Antes de decidir tu camino</p><h2 id="servicio-diagnostico-t">Diagnóstico y estrategia de cualificación</h2><button class="pe-ficha-x" type="button" aria-label="Cerrar">×</button></div>
+
+    <dialog class="pe-ficha" id="paquete-basico" aria-labelledby="paquete-basico-t">
+      <div class="pe-card-top"><p class="pe-mom">Básico</p><h2 id="paquete-basico-t">Diagnóstico y estrategia de cualificación</h2><button class="pe-ficha-x" type="button" aria-label="Cerrar">×</button></div>
       <div class="pe-ficha-body">
         <h3>Para quién es</h3><p>Tienes experiencia, cursos o estudios y no sabes si te conviene el PEAC, un certificado o una FP.</p>
-        <h3>Qué hacemos</h3><ul><li>Analizamos tu trayectoria y tu documentación.</li><li>Identificamos los estándares posibles y lo que te falta.</li><li>Definimos contigo un objetivo.</li></ul>
+        <h3>Qué hacemos</h3><ul><li>Analizamos tu trayectoria y tu documentación.</li><li>Identificamos los estándares posibles y lo que te falta.</li><li>Definimos contigo un objetivo.</li><li>Te damos la ruta y los enlaces oficiales para que presentes tú la solicitud.</li></ul>
         <h3>Qué obtienes</h3><p>Un informe de tu situación y una hoja de ruta con los siguientes pasos.</p>
         <div class="pe-ejemplo"><h3>Ejemplo ilustrativo</h3><p>Una auxiliar con seis años en una residencia descubre qué estándares podrían corresponder a su experiencia y qué requisitos debe completar.</p></div>
         <p class="pe-card-nota">A diferencia de la orientación gratuita, este servicio analiza tu documentación. Es orientativo: la acreditación la resuelve la Administración.</p>
       </div>
-      <div class="pe-out"><p><b>¿Te encaja?</b>Cuéntanos tu caso en la primera orientación gratuita (no incluye revisión documental).</p><a class="pe-lnk" data-via="servicio-orientacion" href="#contacto">Me interesa →</a></div>
+      <div class="pe-out"><p><b>¿Te encaja?</b>Cuéntanos tu caso en la primera orientación gratuita (no incluye revisión documental).</p><div class="pe-out-cta"><a class="pe-btn" data-via="paquete-basico-whatsapp" href="https://wa.me/34746049191?text=Hola%2C%20vengo%20de%20la%20web%20%28Acreditar%20experiencia%20%C2%B7%20PEAC%29%20y%20me%20interesa%20el%20paquete%20B%C3%A1sico." target="_blank" rel="noopener">Escríbenos por WhatsApp</a><a class="pe-lnk" data-via="paquete-basico-correo" href="mailto:info@gestionaseguro.com?subject=PEAC%20%C2%B7%20paquete%20B%C3%A1sico&amp;body=Hola%2C%20vengo%20de%20la%20web%20%28Acreditar%20experiencia%20%C2%B7%20PEAC%29%20y%20me%20interesa%20el%20paquete%20B%C3%A1sico.">o por correo</a></div></div>
     </dialog>
-    <dialog class="pe-ficha" id="servicio-preparacion" aria-labelledby="servicio-preparacion-t">
-      <div class="pe-card-top"><p class="pe-mom">Al solicitar y durante el asesoramiento</p><h2 id="servicio-preparacion-t">Preparación y acompañamiento PEAC</h2><button class="pe-ficha-x" type="button" aria-label="Cerrar">×</button></div>
+    <dialog class="pe-ficha" id="paquete-global" aria-labelledby="paquete-global-t">
+      <div class="pe-card-top"><p class="pe-mom">Global</p><h2 id="paquete-global-t">Preparación y acompañamiento PEAC</h2><button class="pe-ficha-x" type="button" aria-label="Cerrar">×</button></div>
       <div class="pe-ficha-body">
         <h3>Para quién es</h3><p>Vas a presentar tu solicitud y quieres apoyo durante el asesoramiento.</p>
-        <h3>Qué hacemos</h3><ul><li>Revisamos tus requisitos y tu documentación.</li><li>Preparamos la solicitud.</li><li>Te orientamos con la autoevaluación y la organización de tus evidencias.</li></ul>
-        <h3>Qué obtienes</h3><p>Tu solicitud preparada y apoyo durante toda la fase de asesoramiento.</p>
+        <h3>Qué hacemos</h3><ul><li>Todo lo del paquete Básico.</li><li>Revisamos tus requisitos y tu documentación.</li><li>Preparamos la solicitud y la presentamos en tu representación (firmas la autorización de representación, Anexo VIII).</li><li>Te orientamos con la autoevaluación y la organización de tus evidencias.</li><li>Atendemos contigo las comunicaciones y los requerimientos de la Administración.</li><li>Te apoyamos durante toda la fase de asesoramiento.</li></ul>
+        <h3>Qué obtienes</h3><p>Tu solicitud preparada y presentada, y apoyo durante toda la fase de asesoramiento.</p>
         <div class="pe-ejemplo"><h3>Ejemplo ilustrativo</h3><p>Un cocinero con cuatro años de contrato presenta su solicitud con la documentación en orden y llega al asesoramiento con sus evidencias organizadas.</p></div>
         <p class="pe-card-nota">Nuestro apoyo complementa al asesor oficial, no lo sustituye.</p>
       </div>
-      <div class="pe-out"><p><b>¿Te encaja?</b>Cuéntanos tu caso en la primera orientación gratuita (no incluye revisión documental).</p><a class="pe-lnk" data-via="servicio-preparacion" href="#contacto">Me interesa →</a></div>
+      <div class="pe-out"><p><b>¿Te encaja?</b>Cuéntanos tu caso en la primera orientación gratuita (no incluye revisión documental).</p><div class="pe-out-cta"><a class="pe-btn" data-via="paquete-global-whatsapp" href="https://wa.me/34746049191?text=Hola%2C%20vengo%20de%20la%20web%20%28Acreditar%20experiencia%20%C2%B7%20PEAC%29%20y%20me%20interesa%20el%20paquete%20Global." target="_blank" rel="noopener">Escríbenos por WhatsApp</a><a class="pe-lnk" data-via="paquete-global-correo" href="mailto:info@gestionaseguro.com?subject=PEAC%20%C2%B7%20paquete%20Global&amp;body=Hola%2C%20vengo%20de%20la%20web%20%28Acreditar%20experiencia%20%C2%B7%20PEAC%29%20y%20me%20interesa%20el%20paquete%20Global.">o por correo</a></div></div>
     </dialog>
-    <dialog class="pe-ficha" id="servicio-evaluacion" aria-labelledby="servicio-evaluacion-t">
-      <div class="pe-card-top"><p class="pe-mom">En la evaluación y después</p><h2 id="servicio-evaluacion-t">Preparación para la evaluación y acreditación</h2><button class="pe-ficha-x" type="button" aria-label="Cerrar">×</button></div>
+    <dialog class="pe-ficha" id="paquete-premium" aria-labelledby="paquete-premium-t">
+      <div class="pe-card-top"><p class="pe-mom">Premium</p><h2 id="paquete-premium-t">Acompañamiento en todo el procedimiento</h2><button class="pe-ficha-x" type="button" aria-label="Cerrar">×</button></div>
       <div class="pe-ficha-body">
-        <h3>Para quién es</h3><p>Tu expediente llega a la fase de evaluación.</p>
-        <h3>Qué hacemos</h3><ul><li>Repasamos los estándares que vas a demostrar.</li><li>Te preparamos para la evaluación.</li><li>Tras los resultados, revisamos los estándares acreditados y los pendientes.</li><li>Te orientamos sobre los pasos para solicitar la acreditación correspondiente.</li></ul>
-        <h3>Qué obtienes</h3><p>Una preparación adaptada a tus estándares y orientación sobre cómo seguir.</p>
-        <div class="pe-ejemplo"><h3>Ejemplo ilustrativo</h3><p>Una peluquera prepara su evaluación estándar por estándar y, tras la resolución, sabe qué opciones tiene para lo pendiente.</p></div>
-        <p class="pe-card-nota">La evaluación la realiza la Administración. No garantizamos la acreditación.</p>
+        <h3>Para quién es</h3><p>Quieres acompañamiento en todo el procedimiento y saber cómo continuar después.</p>
+        <h3>Qué hacemos</h3><ul><li>Todo lo del paquete Global.</li><li>Repasamos los estándares que vas a demostrar.</li><li>Te preparamos para la evaluación.</li><li>Hacemos el seguimiento de tu expediente hasta la resolución.</li><li>Tras los resultados, revisamos los estándares acreditados y los pendientes.</li><li>Te orientamos sobre los pasos para solicitar la acreditación correspondiente.</li><li>Revisamos lo que ya tienes, analizamos posibles equivalencias y convalidaciones y comparamos itinerarios.</li></ul>
+        <h3>Qué obtienes</h3><p>Una preparación adaptada a tus estándares y un plan con tus opciones y la formación que te falta en cada una.</p>
+        <div class="pe-ejemplo"><h3>Ejemplos ilustrativos</h3><p>Una peluquera prepara su evaluación estándar por estándar y, tras la resolución, sabe qué opciones tiene para lo pendiente.</p><p>Una persona con un curso de FP aprobado y dos estándares acreditados ve qué módulos podría convalidar y qué le queda para terminar el título.</p></div>
+        <p class="pe-card-nota">La evaluación la realiza la Administración. No garantizamos la acreditación. El análisis de progresión es orientativo: las convalidaciones las resuelve el organismo competente.</p>
       </div>
-      <div class="pe-out"><p><b>¿Te encaja?</b>Cuéntanos tu caso en la primera orientación gratuita (no incluye revisión documental).</p><a class="pe-lnk" data-via="servicio-acompanamiento" href="#contacto">Me interesa →</a></div>
-    </dialog>
-    <dialog class="pe-ficha" id="servicio-progresion" aria-labelledby="servicio-progresion-t">
-      <div class="pe-card-top"><p class="pe-mom">Después de acreditar o con estudios a medias</p><h2 id="servicio-progresion-t">Plan de progresión formativa y profesional</h2><button class="pe-ficha-x" type="button" aria-label="Cerrar">×</button></div>
-      <div class="pe-ficha-body">
-        <h3>Para quién es</h3><p>Ya tienes acreditaciones, módulos aprobados o una FP sin terminar.</p>
-        <h3>Qué hacemos</h3><ul><li>Revisamos lo que ya tienes.</li><li>Analizamos posibles equivalencias y convalidaciones.</li><li>Comparamos itinerarios.</li></ul>
-        <h3>Qué obtienes</h3><p>Un plan con tus opciones y la formación que te falta en cada una.</p>
-        <div class="pe-ejemplo"><h3>Ejemplo ilustrativo</h3><p>Una persona con un curso de FP aprobado y dos estándares acreditados ve qué módulos podría convalidar y qué le queda para terminar el título.</p></div>
-        <p class="pe-card-nota">El análisis es orientativo. Las convalidaciones las resuelve el organismo competente.</p>
-      </div>
-      <div class="pe-out"><p><b>¿Te encaja?</b>Cuéntanos tu caso en la primera orientación gratuita (no incluye revisión documental).</p><a class="pe-lnk" data-via="servicio-progresion" href="#contacto">Me interesa →</a></div>
+      <div class="pe-out"><p><b>¿Te encaja?</b>Cuéntanos tu caso en la primera orientación gratuita (no incluye revisión documental).</p><div class="pe-out-cta"><a class="pe-btn" data-via="paquete-premium-whatsapp" href="https://wa.me/34746049191?text=Hola%2C%20vengo%20de%20la%20web%20%28Acreditar%20experiencia%20%C2%B7%20PEAC%29%20y%20me%20interesa%20el%20paquete%20Premium." target="_blank" rel="noopener">Escríbenos por WhatsApp</a><a class="pe-lnk" data-via="paquete-premium-correo" href="mailto:info@gestionaseguro.com?subject=PEAC%20%C2%B7%20paquete%20Premium&amp;body=Hola%2C%20vengo%20de%20la%20web%20%28Acreditar%20experiencia%20%C2%B7%20PEAC%29%20y%20me%20interesa%20el%20paquete%20Premium.">o por correo</a></div></div>
     </dialog>
     <script>
     (function(){
@@ -766,17 +802,6 @@
       window.addEventListener('hashchange',sync);sync();
     })();
     </script>
-  </div>
-</section>
-
-<!-- 5 · FP A MEDIAS -->
-<section class="pe-sec" aria-labelledby="pe-fp">
-  <div class="pe-in pe-fp">
-    <div>
-      <h2 id="pe-fp">¿Dejaste una FP a medias?</h2>
-      <p>Revisamos tus estudios y los módulos que aprobaste para ver qué vías tienes de continuar.</p>
-    </div>
-    <a class="pe-lnk" data-via="fp-a-medias" href="#contacto">Revisa tus estudios →</a>
   </div>
 </section>
 
