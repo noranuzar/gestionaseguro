@@ -462,7 +462,7 @@
         <a href="#rutas" class="hero-h-btn hero-h-btn--pri">Encuentra tu ruta ↓</a>
       </div>
       <div class="hero-h-team">
-        <p><b>Sara</b>, abogada de extranjería, y <b>Nora</b>, documentalista con experiencia en la Administración pública. Revisamos cada expediente juntas.</p>
+        <p>Tu primer contacto es <b>Bibiana Cruz</b>, directora comercial.</p>
       </div>
     </div>
   </div>
@@ -576,9 +576,13 @@ a.es-route:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(3,47,94,
 .es--dark .es-sub{color:#E3E8F0}
 .es-team{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));margin-bottom:28px}
 .es-person{display:flex;gap:18px;align-items:center;background:rgba(255,255,255,.08);border-radius:20px;padding:20px}
-.es-person img{width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;background:#fff}
 .es-person p{margin:0;font-size:1rem;color:#E3E8F0}
 .es-person p b{display:block;font-size:1.1875rem;color:#fff}
+.es-person--lead{grid-column:1/-1;background:rgba(255,255,255,.14);border:1px solid rgba(242,169,29,.55)}
+.es-person--lead p b{font-size:1.5rem}
+.es-team-pie{grid-column:1/-1;margin:0;font-size:1rem;line-height:1.5;color:#E3E8F0}
+.es.es--dark .es-team p.es-team-pie a{color:#F7C766;font-weight:700}
+@media(max-width:600px){.es-person--lead p b{font-size:1.25rem}}
 .es-book{background:#fff;color:var(--texto-principal);border-radius:20px;padding:32px;display:flex;flex-wrap:wrap;gap:32px;align-items:center}
 .es-book>div:first-child{flex:1 1 420px;min-width:0}
 .es-book h3{margin:0 0 14px;font-family:'DM Serif Display',serif;font-weight:400;font-size:1.5rem}
@@ -974,8 +978,8 @@ fieldset.es-f label.es-opt{padding:10px 18px;font-weight:600;font-size:1rem;colo
     <h2 id="es-pc">Habla con nosotras antes de dar el paso</h2>
     <p class="es-sub">La primera consulta es gratuita y sirve para ver qué camino te corresponde.</p>
     <div class="es-team">
-      <div class="es-person"><img src="equipo-sara.webp" alt="Sara Altamirano Mauricci" width="96" height="96" loading="lazy"><p><b>Sara Altamirano Mauricci</b>Abogada de extranjería (ICAM nº 143312)</p></div>
-      <div class="es-person"><img src="equipo-nora.webp" alt="Nora Núñez Zárate" width="96" height="96" loading="lazy"><p><b>Nora Núñez Zárate</b>Documentalista con experiencia en la Administración pública</p></div>
+      <div class="es-person es-person--lead"><p><b>Bibiana Cruz Peralta</b>Directora comercial España · Te atiende desde la primera consulta</p></div>
+      <p class="es-team-pie">Te orientamos y acompañamos según el momento en el que te encuentres. No intervenimos en la resolución de tu expediente. <a href="equipo.html">Conoce al equipo →</a></p>
     </div>
     <div class="es-book es-form-wrap">
       <div class="es-form-intro">
